@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Karty — Domek na Drzewie</title>
+  <meta name="description" content="Karty tygodniowe #domeknadrzewie52" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>Domek na Drzewie</h1>
+            <small>#domeknadrzewie52</small>
+          </div>
+        </a>
+
+        <div class="links">
+          <a data-nav href="index.html">Start</a>
+          <a data-nav href="about.html">O projekcie</a>
+          <a data-nav href="cards.html">Karty</a>
+          <a data-nav href="contact.html">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <h2>Karty tygodniowe</h2>
+        <p>
+          Tu możesz publikować karty — w formie obrazka, opisu, oraz (jeśli chcesz) pliku PDF do pobrania.
+        </p>
+        <p class="kicker">
+          Wersja startowa: poniżej są przykładowe “kafelki”. Podmienisz tekst i dodasz swoje grafiki.
+        </p>
+      </div>
+
+      <section class="section">
+        <h3>Styczeń (przykład)</h3>
+        <div class="grid">
+
+          <div class="card">
+            <h3>Tydzień 1 — Urban bathing</h3>
+            <p>Krótki spacer, uważność na detale miasta i zieleni. Oddychaj wolniej.</p>
+            <div class="actions">
+              <a class="btn" href="#" target="_blank" rel="noopener">Zobacz post na IG</a>
+              <a class="btn primary" data-track="download" href="downloads/tydzien-1.pdf">Pobierz PDF</a>
+            </div>
+            <p class="kicker">Dodaj folder <code class="inline">downloads/</code> gdy będziesz mieć PDF-y.</p>
+          </div>
+
+          <div class="card">
+            <h3>Tydzień 2 — (twoja nazwa)</h3>
+            <p>Opis 1–2 zdania. Co robię w tym tygodniu?</p>
+            <div class="actions">
+              <a class="btn" href="#">Zobacz post</a>
+              <a class="btn primary" data-track="download" href="#">Pobierz PDF</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Tydzień 3 — (twoja nazwa)</h3>
+            <p>Opis 1–2 zdania. Jakie pytanie refleksyjne?</p>
+            <div class="actions">
+              <a class="btn" href="#">Zobacz post</a>
+              <a class="btn primary" data-track="download" href="#">Pobierz PDF</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <span>© <span id="year"></span> Domek na Drzewie</span>
+        <span>PDF-y: kliknięcia można trackować w analityce</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="assets/script.js"></script>
+</body>
+</html>
