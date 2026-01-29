@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kontakt — Domek na Drzewie</title>
+  <meta name="description" content="Kontakt — Domek na Drzewie" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>Domek na Drzewie</h1>
+            <small>#domeknadrzewie52</small>
+          </div>
+        </a>
+
+        <div class="links">
+          <a data-nav href="index.html">Start</a>
+          <a data-nav href="about.html">O projekcie</a>
+          <a data-nav href="cards.html">Karty</a>
+          <a data-nav href="contact.html">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <h2>Kontakt</h2>
+        <p>
+          Na start najprościej: link do Instagrama + e-mail.
+        </p>
+
+        <div class="grid" style="margin-top:14px;">
+          <div class="card">
+            <h3>Instagram</h3>
+            <p>Wstaw tutaj swój @handle.</p>
+            <div class="actions">
+              <a class="btn primary" href="#" target="_blank" rel="noopener">Otwórz Instagram</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>E-mail</h3>
+            <p>Wstaw adres e-mail (na początku możesz użyć darmowego).</p>
+            <div class="actions">
+              <a class="btn" href="mailto:twoj.email@przyklad.pl">Napisz e-mail</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>W przyszłości</h3>
+            <p>Formularz zapisu na newsletter / warsztaty (np. MailerLite) — bez serwera.</p>
+            <p class="kicker">Da się wkleić jako embed.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <span>© <span id="year"></span> Domek na Drzewie</span>
+        <span>Miasto + natura</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="assets/script.js"></script>
+</body>
+</html>
