@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Domek na Drzewie — #domeknadrzewie52</title>
+  <meta name="description" content="Przestrzeń na oddech i uważność. Urban + natura. #domeknadrzewie52" />
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <!-- Analytics goes here later (GA / Plausible / Fathom / Cloudflare) -->
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>Domek na Drzewie</h1>
+            <small>#domeknadrzewie52</small>
+          </div>
+        </a>
+
+        <div class="links">
+          <a data-nav href="index.html">Start</a>
+          <a data-nav href="about.html">O projekcie</a>
+          <a data-nav href="cards.html">Karty</a>
+          <a data-nav href="contact.html">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="card">
+            <h2>Przestrzeń na oddech i uważność.</h2>
+            <p>
+              Małe kroki w stronę natury, relacji i spokoju — także w mieście.
+              Projekt, który rośnie w stronę fundacji.
+            </p>
+
+            <div class="badges">
+              <span class="badge"><strong>1×</strong> w tygodniu</span>
+              <span class="badge">mikropraktyki</span>
+              <span class="badge">urban bathing</span>
+              <span class="badge">zimowe tempo</span>
+            </div>
+
+            <div class="actions">
+              <a class="btn primary" href="cards.html">Zobacz karty</a>
+              <a class="btn" href="about.html">Poznaj ideę</a>
+            </div>
+
+            <p class="kicker">
+              Wersja startowa strony — prosta i lekka. Z czasem możesz dodać galerię, PDF-y do druku, formularz zapisu.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Co tu będzie?</h3>
+            <div class="list">
+              <div class="item">
+                <strong>52 tygodnie uważności</strong>
+                <p>Jedna karta / jeden tydzień. Do czytania, praktyki i refleksji.</p>
+              </div>
+              <div class="item">
+                <strong>Materiały do pobrania</strong>
+                <p>PDF-y do druku, mini-plakaty, krótkie instrukcje spacerów i ćwiczeń.</p>
+              </div>
+              <div class="item">
+                <strong>Rozwój w stronę fundacji</strong>
+                <p>Edukacja przyrodnicza + dostępność + działania lokalne.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="section">
+          <h3>Najbliższy krok</h3>
+          <div class="grid">
+            <div class="card">
+              <h3>1) Podstawowa strona</h3>
+              <p>To już jest. Wrzucasz pliki na GitHub Pages i działa.</p>
+              <p class="kicker">Wystarczy repo + 4 pliki HTML.</p>
+            </div>
+            <div class="card">
+              <h3>2) Karty jako galeria</h3>
+              <p>Dodasz obrazki i krótkie opisy. Możesz też linkować do IG.</p>
+              <p class="kicker">Może być 100% statycznie.</p>
+            </div>
+            <div class="card">
+              <h3>3) Statystyki i pobrania</h3>
+              <p>Dodamy analitykę (np. Cloudflare lub Google) oraz tracking kliknięć PDF.</p>
+              <p class="kicker">Bez WordPressa, bez serwera.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <span>© <span id="year"></span> Domek na Drzewie</span>
+        <span>Hashtag: <code class="inline">#domeknadrzewie52</code></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="assets/script.js"></script>
+</body>
+</html>
