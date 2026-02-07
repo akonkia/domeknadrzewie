@@ -1,11 +1,34 @@
+/* Domek na Drzewie — light, inviting theme (greens first, warm reds as accents) */
+
 :root{
-  --bg:#f8faf8;              /* jasne, miękkie tło */
-  --card:#ffffff;            /* białe, lekkie karty */
-  --text:#2e4638;            /* ciemna naturalna zieleń */
-  --muted:#70877a;           /* delikatniejsza zieleń/szarość */
-  --accent:#7ac59b;          /* ciepła zieleń – listki */
-  --accent2:#82bdf3;         /* pastelowy niebieski – niebo */
-  --border: rgba(46,70,56,.15);  /* delikatny zielony cień */
+  /* Base */
+  --bg: #fbfcf7;                 /* warm off-white */
+  --card: #ffffff;               /* clean card */
+  --text: #2f3a2e;               /* deep green-grey */
+  --muted: #60705f;              /* softer text */
+
+  /* Greens (primary identity) — from your palette */
+  --green-1: #CED8B7;            /* soft light green */
+  --green-2: #B2C3A6;            /* deeper sage */
+
+  /* Accents */
+  --accent: #5f7a59;             /* primary action green (derived) */
+
+  /* Warm reds/oranges (accents only) — from your palette */
+  --red-1: #FCD8AC;              /* peach highlight */
+  --red-2: #FABB82;              /* warm orange */
+  --red-3: #F78B6A;              /* coral */
+  --accent2: #C64A38;            /* strong accent red */
+
+  /* Lines, surfaces, shadow */
+  --border: rgba(47,58,46,.14);
+  --shadow: 0 10px 28px rgba(47,58,46,.10);
+
+  /* Surface tints */
+  --tint-1: rgba(206,216,183,.30); /* green wash */
+  --tint-2: rgba(178,195,166,.28); /* sage wash */
+  --warm-1: rgba(252,216,172,.35); /* peach wash */
+  --warm-2: rgba(250,187,130,.35); /* warm orange wash */
 }
 
 *{ box-sizing:border-box; }
@@ -14,31 +37,32 @@ html,body{ height:100%; }
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+
+  /* Light, calming backdrop: greens dominate, warm accents are subtle */
   background:
-    radial-gradient(1100px 550px at 20% -10%, rgba(122,197,155,.28), transparent 60%),
-    radial-gradient(900px 500px at 85% 10%, rgba(130,189,243,.20), transparent 55%),
-    radial-gradient(800px 500px at 40% 110%, rgba(122,197,155,.16), transparent 60%),
+    radial-gradient(1100px 520px at 15% -10%, rgba(206,216,183,.58), transparent 62%),
+    radial-gradient(900px 520px at 85% 5%, rgba(178,195,166,.38), transparent 58%),
+    radial-gradient(900px 520px at 40% 115%, rgba(252,216,172,.22), transparent 60%),
     var(--bg);
+
   color:var(--text);
   line-height:1.6;
 }
 
-/* LINKS */
-a{ color:var(--accent2); text-decoration:none; }
+a{ color: var(--accent); text-decoration:none; }
 a:hover{ text-decoration:underline; }
 
-/* LAYOUT */
 .container{
   width:min(1050px, 92vw);
   margin:0 auto;
 }
 
-/* HEADER */
+/* Header / Nav */
 .header{
   position:sticky;
   top:0;
   backdrop-filter: blur(10px);
-  background: rgba(255,255,255,.75);
+  background: rgba(251,252,247,.80);
   border-bottom:1px solid var(--border);
   z-index:10;
 }
@@ -51,21 +75,22 @@ a:hover{ text-decoration:underline; }
   padding:14px 0;
 }
 
-/* BRAND */
 .brand{
   display:flex;
   align-items:center;
   gap:10px;
-  min-width: 220px;
+  min-width:220px;
 }
+
 .logo{
   width:34px;height:34px;
   border-radius:12px;
   background:
-    radial-gradient(circle at 35% 30%, rgba(255,255,255,.45), transparent 55%),
-    linear-gradient(135deg, rgba(122,197,155,1), rgba(130,189,243,.7));
-  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,.55), transparent 55%),
+    linear-gradient(135deg, var(--green-2), rgba(206,216,183,.90));
+  box-shadow: 0 8px 18px rgba(47,58,46,.18);
 }
+
 .brand h1{
   font-size:14px;
   letter-spacing:.6px;
@@ -73,6 +98,7 @@ a:hover{ text-decoration:underline; }
   margin:0;
   color:var(--text);
 }
+
 .brand small{
   display:block;
   color:var(--muted);
@@ -80,81 +106,130 @@ a:hover{ text-decoration:underline; }
   margin-top:2px;
 }
 
-/* NAV LINKS */
 .links{
   display:flex;
   gap:14px;
   flex-wrap:wrap;
   justify-content:flex-end;
 }
+
 .links a{
   padding:8px 10px;
   border-radius:12px;
   border:1px solid transparent;
   color:var(--muted);
 }
+
 .links a[aria-current="page"]{
   color:var(--text);
   border-color: var(--border);
-  background: rgba(122,197,155,.12);
+  background: rgba(206,216,183,.45);
 }
+
 .links a:hover{
   border-color: var(--border);
-  background: rgba(122,197,155,.10);
+  background: rgba(178,195,166,.30);
   text-decoration:none;
 }
 
-/* HERO */
+/* Hero */
 .hero{
   padding:48px 0 18px;
 }
 
-/* CARDS */
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.3fr .9fr;
+  gap:18px;
+  align-items:stretch;
+}
+
+@media (max-width: 860px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .brand{ min-width:auto; }
+}
+
+/* Cards */
 .card{
-  background: var(--card);
+  background: rgba(255,255,255,.92);
   border:1px solid var(--border);
   border-radius:22px;
   padding:18px;
-  box-shadow: 0 8px 26px rgba(0,0,0,.08);
+  box-shadow: var(--shadow);
 }
+
 .card h2{
   margin:0 0 10px;
   font-size:28px;
   letter-spacing:-.3px;
   color:var(--text);
 }
+
 .card h3{
   margin:0 0 8px;
   font-size:18px;
   color:var(--text);
 }
+
 .card p{
   margin:0 0 12px;
   color:var(--muted);
 }
 
-/* GRID */
+/* Sections */
+.section{
+  padding:16px 0 40px;
+}
+
+.section h3{
+  margin:0 0 12px;
+  font-size:18px;
+  color:var(--text);
+}
+
+/* Grid */
 .grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap:14px;
 }
+
 @media (max-width: 900px){
   .grid{ grid-template-columns: 1fr; }
 }
 
-/* BADGES */
+/* Badges */
+.badges{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+
 .badge{
   font-size:12px;
   padding:6px 10px;
   border-radius:999px;
   border:1px solid var(--border);
-  background: #f3f7f4;
+  background: rgba(206,216,183,.25);
   color: var(--text);
 }
 
-/* BUTTONS */
-.btn{
+.badge strong{ font-weight:650; }
+
+/* Actions / Buttons
+   You currently use .btn in CSS and .button in HTML in some places,
+   so we style both consistently. */
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+/* base button */
+.btn,
+.button{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -162,32 +237,86 @@ a:hover{ text-decoration:underline; }
   padding:10px 12px;
   border-radius:14px;
   border:1px solid var(--border);
-  background: #f3f7f4;
+  background: rgba(206,216,183,.28);
   color:var(--text);
   cursor:pointer;
-}
-.btn.primary{
-  border-color: var(--accent);
-  background: rgba(122,197,155,.18);
-}
-.btn:hover{
-  background: rgba(122,197,155,.25);
   text-decoration:none;
 }
 
+.btn:hover,
+.button:hover{
+  text-decoration:none;
+  background: rgba(206,216,183,.45);
+}
+
+/* primary (green) */
+.btn.primary,
+.button.primary{
+  border-color: rgba(95,122,89,.35);
+  background: rgba(178,195,166,.45);
+}
+
+/* ghost (lighter) */
+.button.ghost,
+.btn.ghost{
+  background: rgba(255,255,255,.72);
+}
+
+/* accent (warm) — use sparingly */
+.btn.accent,
+.button.accent{
+  border-color: rgba(198,74,56,.28);
+  background: rgba(252,216,172,.55);
+}
+.btn.accent:hover,
+.button.accent:hover{
+  background: rgba(250,187,130,.55);
+}
+
+/* focus states */
+.btn:focus-visible,
+.button:focus-visible,
+.links a:focus-visible{
+  outline: 2px solid rgba(95,122,89,.55);
+  outline-offset: 2px;
+  text-decoration:none;
+}
+
+/* Kicker */
 .kicker{
   color:var(--muted);
   font-size:13px;
   margin-top:2px;
 }
 
-/* FOOTER */
+/* Lists */
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:10px;
+}
+
+.item{
+  padding:12px 12px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background: rgba(206,216,183,.18);
+}
+
+.item p{
+  margin:6px 0 0;
+  color:var(--muted);
+}
+
+/* Footer */
 .footer{
   padding:26px 0 34px;
   border-top:1px solid var(--border);
   color: var(--muted);
   background: rgba(255,255,255,.55);
 }
+
 .footer .row{
   display:flex;
   justify-content:space-between;
@@ -195,12 +324,23 @@ a:hover{ text-decoration:underline; }
   flex-wrap:wrap;
 }
 
-/* INLINE CODE */
+/* Inline code */
 code.inline{
   padding:2px 6px;
   border-radius:10px;
   border:1px solid var(--border);
-  background: #f3f7f4;
+  background: rgba(206,216,183,.22);
   color: var(--text);
   font-size: 12px;
+}
+
+/* Small niceties */
+hr{
+  border:0;
+  border-top:1px solid var(--border);
+  margin:18px 0;
+}
+
+::selection{
+  background: rgba(250,187,130,.45);
 }
