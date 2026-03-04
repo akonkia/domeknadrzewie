@@ -1,117 +1,350 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Domek na Drzewie — Pages Test</title>
-  <meta name="description" content="GitHub Pages + custom domain test page." />
+  <title>Domek na Drzewie</title>
+  <meta name="description" content="Domek na Drzewie — blisko natury, uważnie, pięknie. Karty, spacery i małe praktyki, które pomagają wracać do siebie." />
+  <meta name="theme-color" content="#1e5b3a" />
   <style>
-    :root { color-scheme: light dark; }
-    body {
-      margin: 0;
+    :root{
+      --bg:#0b1410;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.14);
+      --accent:#7bd389;
+      --accent2:#b8f2c6;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      line-height: 1.5;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(123,211,137,.22), transparent 60%),
+        radial-gradient(680px 420px at 85% 18%, rgba(184,242,198,.16), transparent 60%),
+        radial-gradient(900px 600px at 55% 105%, rgba(123,211,137,.14), transparent 55%),
+        linear-gradient(180deg, #07110d, var(--bg));
     }
-    header {
-      padding: 28px 18px;
-      background: linear-gradient(135deg, #1b5e20, #7cb342);
-      color: #fff;
+    a{color:inherit}
+    .wrap{max-width:1080px; margin:0 auto; padding:22px 18px 64px;}
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:10px 0 0;
     }
-    header h1 { margin: 0 0 6px; font-size: 22px; }
-    header p { margin: 0; opacity: .95; }
-    main { max-width: 820px; margin: 0 auto; padding: 18px; }
-    .card {
-      border: 1px solid rgba(127,127,127,.25);
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:0;
+    }
+    .mark{
+      width:42px; height:42px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(123,211,137,.35), rgba(184,242,198,.18));
+      border:1px solid var(--line);
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      position:relative;
+      overflow:hidden;
+    }
+    .mark:before{
+      content:"";
+      position:absolute; inset:-20%;
+      background: radial-gradient(circle at 30% 40%, rgba(255,255,255,.22), transparent 55%);
+      transform: rotate(12deg);
+    }
+    .brand h1{
+      margin:0; font-size:15px; letter-spacing:.2px; font-weight:700;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .brand small{display:block; margin-top:2px; color:var(--muted); font-size:12px}
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .chip{
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      text-decoration:none;
+      font-size:13px;
+    }
+    .chip:hover{background: rgba(255,255,255,.07)}
+    .hero{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 1.25fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .panel{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-left{padding:26px 22px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(123,211,137,.25);
+      background: rgba(123,211,137,.10);
+      color: rgba(255,255,255,.9);
+      font-size:13px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(123,211,137,.18);
+    }
+    .hero h2{
+      margin:14px 0 8px;
+      font-size:38px;
+      line-height:1.06;
+      letter-spacing:-.5px;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      max-width:56ch;
+    }
+    .cta{
+      margin-top:18px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
       border-radius: 14px;
-      padding: 16px;
-      margin: 14px 0;
-      background: rgba(127,127,127,.07);
+      padding:11px 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      display:inline-flex; gap:10px; align-items:center;
+      font-weight:650;
+      font-size:14px;
     }
-    code, pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 13px;
+    .btn.primary{
+      border-color: rgba(123,211,137,.35);
+      background: linear-gradient(135deg, rgba(123,211,137,.28), rgba(184,242,198,.10));
     }
-    pre {
-      padding: 12px;
-      border-radius: 12px;
-      overflow: auto;
-      background: rgba(0,0,0,.08);
+    .btn:hover{filter: brightness(1.05)}
+    .btn svg{opacity:.9}
+    .hero-right{
+      padding:0;
+      display:flex;
+      flex-direction:column;
     }
-    .ok {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(0, 160, 70, .18);
-      border: 1px solid rgba(0, 160, 70, .35);
-      color: inherit;
-      font-weight: 600;
+    .hero-right-top{
+      padding:18px 18px 8px;
+      border-bottom:1px solid var(--line);
+      background: rgba(255,255,255,.03);
     }
-    .btn {
-      display: inline-block;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(127,127,127,.35);
-      text-decoration: none;
-      color: inherit;
-      background: rgba(255,255,255,.08);
+    .mini-title{margin:0; font-size:14px; letter-spacing:.2px}
+    .mini-sub{margin:6px 0 0; color:var(--muted); font-size:13px}
+    .list{
+      padding:12px 18px 18px;
+      display:grid; gap:10px;
     }
-    footer { padding: 18px; opacity: .75; }
+    .item{
+      padding:12px 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+    }
+    .item b{display:block; font-size:14px}
+    .item span{display:block; margin-top:4px; color:var(--muted); font-size:13px; line-height:1.4}
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .card{
+      padding:16px 16px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, var(--card2), rgba(255,255,255,.03));
+      border-radius: 18px;
+    }
+    .card h3{margin:0 0 6px; font-size:14px}
+    .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.45}
+    section{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .wide{grid-column: 1 / -1}
+    .note{
+      padding:16px;
+      border-radius: 18px;
+      border: 1px dashed rgba(123,211,137,.35);
+      background: rgba(123,211,137,.08);
+      color: rgba(255,255,255,.86);
+    }
+    footer{
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr}
+      section{grid-template-columns:1fr}
+      .hero h2{font-size:32px}
+      .grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Domek na Drzewie — GitHub Pages Test</h1>
-    <p>If you can see this page under your domain, DNS + Pages are working.</p>
-  </header>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>Domek na Drzewie</h1>
+          <small>Blisko natury. Uważnie. Pięknie.</small>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Nawigacja">
+        <a class="chip" href="#o-projekcie">O projekcie</a>
+        <a class="chip" href="#karty">Karty</a>
+        <a class="chip" href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
 
-  <main>
-    <div class="card">
-      <div class="ok">✅ Loaded</div>
-      <p style="margin-top:10px">
-        This is a single static <code>index.html</code> file. No React build needed.
-      </p>
+    <div class="hero">
+      <div class="panel hero-left">
+        <div class="kicker"><span class="dot"></span> Strona testowa — wkrótce pełna wersja</div>
+        <h2>Małe praktyki, które pomagają wracać do siebie — przez naturę.</h2>
+        <p>
+          Domek na Drzewie to projekt o spokojnym kontakcie z przyrodą: krótkich spacerach,
+          prostych obserwacjach, kartach inspiracji i materiałach, które można zabrać ze sobą
+          do parku, lasu albo na miejską ścieżkę.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#karty" title="Zobacz, co tu będzie">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v18m0 0 7-7m-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Zobacz, co planuję
+          </a>
+          <a class="btn" href="#kontakt">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            Napisz do mnie
+          </a>
+        </div>
+
+        <div class="grid" aria-label="Skróty">
+          <div class="card">
+            <h3>🌿 Karty uważności</h3>
+            <p>Krótkie tematy + prompt + refleksje. Do spacerów i codziennych chwil.</p>
+          </div>
+          <div class="card">
+            <h3>🧭 Ścieżki i mapki</h3>
+            <p>Małe trasy w mieście i poza nim — z ciekawostkami i zadaniami.</p>
+          </div>
+          <div class="card">
+            <h3>🎨 Minimalna estetyka</h3>
+            <p>Prosto, spokojnie, dużo oddechu. Treści i obrazki, które nie męczą.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel hero-right" aria-label="Szybkie informacje">
+        <div class="hero-right-top">
+          <p class="mini-title"><b>Co tu znajdziesz</b></p>
+          <p class="mini-sub">Krótko i konkretnie — wersja startowa.</p>
+        </div>
+        <div class="list">
+          <div class="item">
+            <b>1) Karty “kąpieli miejskich”</b>
+            <span>Inspiracje do uważnego spaceru w parku, na wałach, na osiedlu.</span>
+          </div>
+          <div class="item">
+            <b>2) Materiały dla rodzin</b>
+            <span>Proste zadania dla dzieci (i dorosłych), żeby wspólnie zauważać więcej.</span>
+          </div>
+          <div class="item">
+            <b>3) Projekt rośnie powoli</b>
+            <span>Najpierw treści i rytm. Potem strona, sklepik, drukowane dodatki.</span>
+          </div>
+        </div>
+      </aside>
     </div>
 
-    <div class="card">
-      <h2 style="margin:0 0 10px; font-size:18px;">Live environment</h2>
-      <pre id="env">Loading…</pre>
-      <a class="btn" href="./">Reload</a>
-      <a class="btn" href="./test-path/">Test a subpath</a>
-      <p style="margin-top:10px; opacity:.85">
-        If <code>./test-path/</code> gives 404, that’s normal unless you also add a folder named
-        <code>test-path</code> with its own <code>index.html</code>.
-      </p>
-    </div>
+    <section id="o-projekcie">
+      <div class="panel" style="padding:18px 18px;">
+        <h3 style="margin:0 0 8px; font-size:16px;">O projekcie</h3>
+        <p style="margin:0; color:var(--muted);">
+          Domek na Drzewie powstał z potrzeby tworzenia miejsc i treści, które zbliżają ludzi do natury.
+          To zaproszenie do krótkich chwil wyciszenia — nawet w mieście — i do budowania w sobie
+          miękkiej, dobrej uważności.
+        </p>
+      </div>
 
-    <div class="card">
-      <h2 style="margin:0 0 10px; font-size:18px;">Next steps</h2>
-      <ol>
-        <li>Enable Pages: <code>Settings → Pages → Deploy from a branch</code></li>
-        <li>Set custom domain in Pages settings (optional but recommended)</li>
-        <li>Turn on <code>Enforce HTTPS</code> once available</li>
-      </ol>
-      <p style="margin:0; opacity:.85">
-        Tip: add a <code>CNAME</code> file (no extension) in the published folder with your domain name to keep it attached.
-      </p>
-    </div>
-  </main>
+      <div class="panel" style="padding:18px 18px;">
+        <h3 style="margin:0 0 8px; font-size:16px;">Jak możesz korzystać</h3>
+        <ul style="margin:0; padding-left:18px; color:var(--muted);">
+          <li>Wybierz kartę (temat tygodnia) i idź na krótki spacer.</li>
+          <li>Zrób jedno zdjęcie albo jedną notatkę — bez presji.</li>
+          <li>Odpowiedz na 1–2 pytania refleksyjne w swoim tempie.</li>
+        </ul>
+      </div>
 
-  <footer>
-    <small>© <span id="year"></span> Domek na Drzewie — test page</small>
-  </footer>
+      <div class="panel wide" id="karty" style="padding:18px 18px;">
+        <h3 style="margin:0 0 8px; font-size:16px;">Karty (wersja startowa)</h3>
+        <p style="margin:0; color:var(--muted);">
+          Tu wkrótce pojawią się pierwsze karty do pobrania oraz archiwum tygodni.
+          Jeśli chcesz, możesz już teraz trzymać stronę w zakładkach.
+        </p>
+        <div class="note" style="margin-top:12px">
+          <b>Test techniczny:</b> jeśli widzisz tę stronę pod swoim adresem domeny, to znaczy,
+          że GitHub Pages + DNS są poprawnie podpięte.
+          <div style="margin-top:10px" class="mono" id="where"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="panel wide" style="padding:18px 18px;">
+        <h3 style="margin:0 0 8px; font-size:16px;">Kontakt</h3>
+        <p style="margin:0; color:var(--muted);">
+          To jest strona startowa. Dodaj tu później swój e-mail / formularz / linki do social mediów.
+        </p>
+        <p style="margin:12px 0 0; color:var(--muted);">
+          <b>Do uzupełnienia:</b> wstaw linki do Instagrama, newslettera albo repozytorium z kartami.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <div><b>Domek na Drzewie</b></div>
+        <div>© <span id="year"></span> • Wersja testowa</div>
+      </div>
+      <div class="mono" id="status"></div>
+    </footer>
+  </div>
 
   <script>
-    const env = {
-      href: location.href,
-      origin: location.origin,
-      host: location.host,
-      hostname: location.hostname,
-      protocol: location.protocol,
-      pathname: location.pathname,
-      userAgent: navigator.userAgent
-    };
-    document.getElementById("env").textContent = JSON.stringify(env, null, 2);
     document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("where").textContent = "Adres: " + location.href;
+    const isHttps = location.protocol === "https:";
+    document.getElementById("status").textContent =
+      (isHttps ? "HTTPS ✅" : "HTTP (wkrótce HTTPS) ⏳") + " • host: " + location.host;
   </script>
 </body>
 </html>
