@@ -304,6 +304,8 @@
     .contact-band {
       text-align: center;
     }
+    
+    
 
     .icon-card {
       padding: 12px 10px;
@@ -333,49 +335,50 @@
       font-size: 0.96rem;
     }
 
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 24px;
-    }
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
 
-    .material-card {
-      background: white;
-      border: 1px solid rgba(36,49,38,0.08);
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
+.material-card {
+  background: white;
+  border: 1px solid rgba(36,49,38,0.08);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  grid-column: 1 / -1;
+}
 
-    .material-badge {
-      display: inline-block;
-      padding: 7px 12px;
-      background: rgba(103,135,96,0.12);
-      color: var(--sage);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.75rem;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
+.material-badge {
+  display: inline-block;
+  padding: 7px 12px;
+  background: rgba(103,135,96,0.12);
+  color: var(--sage);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
 
-    .material-card h3 {
-      font-size: 1.38rem;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
+.material-card h3 {
+  font-size: 1.38rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
 
-    .material-card > p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
+.material-card > p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
 
-    .material-list {
-      display: grid;
-      gap: 12px;
-      text-align: left;
-    }
+.material-list {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
 
 .material-item {
   display: grid;
@@ -702,7 +705,7 @@
         </div>
 <div class="materials-grid">
     
-  <article class="material-card">
+  <article class="material-card full-width">
             <span class="material-badge">Miejskie kąpiele leśne</span>
             <h3>#domeknadrzewie52</h3>
             <p>Seria kart na każdy tydzień roku, inspirowanych przyrodą, uważnością i sezonową obserwacją.</p>
