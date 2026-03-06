@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projekt: Domek na Drzewie</title>
-  <meta name="description" content="Projekt Domek na Drzewie — o projekcie i materiały do pobrania lub czytania." />
+  <meta name="description" content="Projekt: Domek na Drzewie — o projekcie i materiały do pobrania lub czytania." />
   <style>
     :root {
       --sage: #678760;
@@ -245,17 +245,26 @@
       letter-spacing: 0.03em;
       margin-bottom: 12px;
     }
+.quick-card-bottom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .quick-card-top p {
-      color: rgba(255,255,255,0.92);
-      line-height: 1.7;
-    }
+.quick-card:nth-child(2) .quick-card-bottom img {
+  object-fit: fit;
+}
 
-    .quick-card-bottom img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
+.quick-card-bottom {
+  height: 220px;
+  background: #f6f4ee;
+  border-top: 1px solid rgba(36,49,38,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
 
     .pages {
       padding: 48px 0 40px;
@@ -509,17 +518,40 @@
 .quick-card-text p:last-child {
   margin-bottom: 0;
 }
+.download-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.download-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  background: rgba(103,135,96,0.1);
+  color: var(--sage);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 999px;
+}
+
+.download-links a:hover {
+  background: var(--sage);
+  color: white;
+}
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="#about" aria-label="Projekt Domek na Drzewie">
+      <a class="brand" href="#about" aria-label="Projekt: Domek na Drzewie">
         <div class="brand-mark">
           <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
         </div>
         <div>
-          <div class="brand-title">Projekt Domek na Drzewie</div>
+          <div class="brand-title">Projekt: Domek na Drzewie</div>
           <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
         </div>
       </a>
@@ -571,7 +603,7 @@
           <p>Zainspiruj się, ściągnij za darmo, podpatrz, co polecamy.</p>
         </div>
         <div class="quick-card-bottom">
-          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2A.png" alt="Logo Projektu Domek na Drzewie" />
         </div>
       </article>
 
@@ -580,8 +612,8 @@
           <h3>Kontakt</h3>
           <p>Masz pytania? Chcesz dołączyć do inicjatywy? Możesz znaleźć nas na Facebooku i Instagramie.</p>
         </div>
-        <div class="quick-card-bottom">
-          <p> </p>
+                <div class="quick-card-bottom">
+          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
         </div>
       </article>
     </div>
@@ -649,64 +681,49 @@
             <div class="material-list">
               <div class="material-item">
                 <div>
-                  <strong>Karta tygodniowa 01</strong>
-                  <span>PDF lub grafika do pobrania</span>
+                  <strong>Tydzień 01</strong>
+                  <span>Temat: Bezruch</span>
                 </div>
-                <a href="#">Pobierz</a>
+                <div class="download-links">
+    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" download>Obraz</a>
+    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1B.png" download>Refleksja</a>
+        <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
+  </div>
               </div>
               <div class="material-item">
                 <div>
-                  <strong>Karta tygodniowa 02</strong>
-                  <span>Wersja do czytania na stronie</span>
+                  <strong>Tydzień 02</strong>
+                  <span>Temat: Wytrwałość</span>
                 </div>
-                <a href="#">Czytaj</a>
+                <div class="download-links">
+    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2A.png" download>Obraz</a>
+    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2B.png" download>Refleksja</a>
+        <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank" rel="noreferrer">Instagram</a>
+  </div>
               </div>
               <div class="material-item">
                 <div>
-                  <strong>Karta tygodniowa 03</strong>
-                  <span>Link do wpisu lub posta</span>
+                  <strong>Tydzień 03</strong>
+                  <span>Temat: Powolność</span>
                 </div>
-                <a href="#">Otwórz</a>
+                <div class="download-links">
+    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3A.png" download>Obraz</a>
+    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3B.png" download>Refleksja</a>
+        <a href="https://www.instagram.com/reel/DUMYPA-DIhl/" target="_blank" rel="noreferrer">Instagram</a>
+  </div>
               </div>
             </div>
           </article>
 
-          <article class="material-card">
-            <span class="material-badge">Zasoby</span>
-            <h3>Inne materiały</h3>
-            <p>Dodatkowe przewodniki, krótsze teksty, miejskie kąpiele leśne lub publikacje do przeczytania.</p>
-            <div class="material-list">
-              <div class="material-item">
-                <div>
-                  <strong>Przewodnik sezonowy</strong>
-                  <span>PDF do pobrania</span>
-                </div>
-                <a href="#">Pobierz</a>
-              </div>
-              <div class="material-item">
-                <div>
-                  <strong>Notatka o projekcie</strong>
-                  <span>Krótki tekst na stronie</span>
-                </div>
-                <a href="#">Czytaj</a>
-              </div>
-              <div class="material-item">
-                <div>
-                  <strong>Spacer miejski</strong>
-                  <span>Opis trasy i refleksji</span>
-                </div>
-                <a href="#">Otwórz</a>
-              </div>
-            </div>
-          </article>
+
         </div>
 
         <div class="contact-band">
           <h3>Śledź nowe publikacje</h3>
-          <p>Linki są powtórzone także tutaj, żeby osoba przeglądająca materiały mogła od razu przejść do Twoich kanałów.</p>
+          <p>Bądź na bieżaco - mamy wielkie plany!.</p>
           <div class="contact-actions">
             <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-            <a class="social-chip alt" href="https://facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+            <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
           </div>
         </div>
       </section>
@@ -715,7 +732,7 @@
 
   <footer class="footer">
     <div class="container footer-box">
-      <div><strong>Projekt Domek na Drzewie</strong> • Rośniemy z natury</div>
+      <div><strong>Projekt: Domek na Drzewie</strong> • Rośniemy z natury</div>
       <div>marzec 2026</div>
     </div>
   </footer>
