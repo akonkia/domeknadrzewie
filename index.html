@@ -377,35 +377,44 @@
       text-align: left;
     }
 
-    .material-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 14px 16px;
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #faf9f5;
-    }
+.material-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid rgba(36,49,38,0.08);
+  background: #faf9f5;
+}
 
-    .material-item strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.98rem;
-    }
+.material-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
 
-    .material-item span {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
+.material-thumb {
+  display: block;
+  width: 150px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(36,49,38,0.08);
+  background: #f3f1eb;
+  box-shadow: 0 8px 18px rgba(36,49,38,0.08);
+}
 
-    .material-item a {
-      color: var(--sage);
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      white-space: nowrap;
-    }
+.material-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
 
+.material-thumb:hover img {
+  transform: scale(1.03);
+}
     .contact-band {
       margin-top: 30px;
       padding: 28px;
@@ -528,17 +537,36 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 38px;
-  padding: 8px 12px;
-  background: rgba(103,135,96,0.1);
-  color: var(--sage);
-  font-weight: 700;
-  font-size: 0.85rem;
+  min-height: 40px;
+  padding: 10px 16px;
   border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 18px rgba(36,49,38,0.10);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  white-space: nowrap;
 }
 
 .download-links a:hover {
-  background: var(--sage);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(36,49,38,0.14);
+  filter: brightness(1.03);
+}
+
+.download-links a:nth-child(1) {
+  background: linear-gradient(135deg, var(--sage), #88a67f);
+  color: white;
+}
+
+.download-links a:nth-child(2) {
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  color: #3d2a10;
+}
+
+.download-links a:nth-child(3) {
+  background: linear-gradient(135deg, #b44f72, #ee7a78);
   color: white;
 }
   </style>
@@ -673,50 +701,62 @@
           </p>
         </div>
 
-        <div class="materials-grid">
-          <article class="material-card">
-            <span class="material-badge">Miejskie kąpiele leśne</span>
-            <h3>#domeknadrzewie52</h3>
-            <p>Seria kart na każdy tydzień roku, inspirowanych przyrodą, uważnością i sezonową obserwacją.</p>
-            <div class="material-list">
-              <div class="material-item">
-                <div>
-                  <strong>Tydzień 01</strong>
-                  <span>Temat: Bezruch</span>
-                </div>
-                <div class="download-links">
-    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" download>Obraz</a>
-    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1B.png" download>Refleksja</a>
-        <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
+<div class="material-item">
+  <div class="material-main">
+    <div>
+      <strong>Tydzień 01</strong>
+      <span>Temat: Bezruch</span>
+    </div>
+
+    <div class="download-links">
+      <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" download>Obraz</a>
+      <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1B.png" download>Refleksja</a>
+      <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
+    </div>
   </div>
-              </div>
-              <div class="material-item">
-                <div>
-                  <strong>Tydzień 02</strong>
-                  <span>Temat: Wytrwałość</span>
-                </div>
-                <div class="download-links">
-    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2A.png" download>Obraz</a>
+
+  <a class="material-thumb" href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" alt="Podgląd karty Tydzień 01" />
+  </a>
+</div>
+
+<div class="material-item">
+  <div class="material-main">
+    <div>
+        <strong>Tydzień 02</strong>
+        <span>Temat: Wytrwałość</span>
+    </div>
+
+    <div class="download-links">
+      <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2A.png" download>Obraz</a>
     <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2B.png" download>Refleksja</a>
         <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank" rel="noreferrer">Instagram</a>
+    </div>
   </div>
-              </div>
-              <div class="material-item">
-                <div>
+
+  <a class="material-thumb" href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2A.png" alt="Podgląd karty Tydzień 02" />
+  </a>
+</div>
+<div class="material-item">
+  <div class="material-main">
+    <div>
                   <strong>Tydzień 03</strong>
                   <span>Temat: Powolność</span>
-                </div>
-                <div class="download-links">
-    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3A.png" download>Obraz</a>
+    </div>
+
+    <div class="download-links">
+      <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3A.png" download>Obraz</a>
     <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3B.png" download>Refleksja</a>
         <a href="https://www.instagram.com/reel/DUMYPA-DIhl/" target="_blank" rel="noreferrer">Instagram</a>
+    </div>
   </div>
-              </div>
-            </div>
-          </article>
 
+  <a class="material-thumb" href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3A.png" alt="Podgląd karty Tydzień 03" />
+  </a>
+</div>
 
-        </div>
 
         <div class="contact-band">
           <h3>Śledź nowe publikacje</h3>
