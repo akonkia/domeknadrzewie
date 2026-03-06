@@ -1,350 +1,744 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Domek na Drzewie</title>
-  <meta name="description" content="Domek na Drzewie — blisko natury, uważnie, pięknie. Karty, spacery i małe praktyki, które pomagają wracać do siebie." />
-  <meta name="theme-color" content="#1e5b3a" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projekt: Domek na Drzewie</title>
+  <meta name="description" content="Projekt Domek na Drzewie — o projekcie i materiały do pobrania lub czytania." />
   <style>
-    :root{
-      --bg:#0b1410;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.08);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --line: rgba(255,255,255,.14);
-      --accent:#7bd389;
-      --accent2:#b8f2c6;
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
+    :root {
+      --sage: #678760;
+      --orange: #fb9b27;
+      --gold: #fcc15d;
+      --mist: #d3d4d5;
+      --cream: #f5f4ef;
+      --white: #ffffff;
+      --text: #243126;
+      --muted: #5e675f;
+      --line: rgba(36, 49, 38, 0.1);
+      --hero-overlay: rgba(36, 49, 38, 0.26);
+      --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
+      --max: 1120px;
       --radius: 18px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(900px 520px at 15% 10%, rgba(123,211,137,.22), transparent 60%),
-        radial-gradient(680px 420px at 85% 18%, rgba(184,242,198,.16), transparent 60%),
-        radial-gradient(900px 600px at 55% 105%, rgba(123,211,137,.14), transparent 55%),
-        linear-gradient(180deg, #07110d, var(--bg));
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #f3f1eb;
     }
-    a{color:inherit}
-    .wrap{max-width:1080px; margin:0 auto; padding:22px 18px 64px;}
-    header{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:10px 0 0;
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width:0;
+
+    .topbar {
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid rgba(36,49,38,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(10px);
     }
-    .mark{
-      width:42px; height:42px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(123,211,137,.35), rgba(184,242,198,.18));
-      border:1px solid var(--line);
-      box-shadow: 0 10px 26px rgba(0,0,0,.28);
-      position:relative;
-      overflow:hidden;
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
-    .mark:before{
-      content:"";
-      position:absolute; inset:-20%;
-      background: radial-gradient(circle at 30% 40%, rgba(255,255,255,.22), transparent 55%);
-      transform: rotate(12deg);
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
     }
-    .brand h1{
-      margin:0; font-size:15px; letter-spacing:.2px; font-weight:700;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+
+    .brand-mark {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid rgba(36,49,38,0.08);
+      flex-shrink: 0;
     }
-    .brand small{display:block; margin-top:2px; color:var(--muted); font-size:12px}
-    .nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .chip{
-      padding:8px 10px; border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      text-decoration:none;
-      font-size:13px;
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
     }
-    .chip:hover{background: rgba(255,255,255,.07)}
-    .hero{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: 1.25fr .85fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    .panel{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-left{padding:26px 22px}
-    .kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:7px 10px; border-radius:999px;
-      border:1px solid rgba(123,211,137,.25);
-      background: rgba(123,211,137,.10);
-      color: rgba(255,255,255,.9);
-      font-size:13px;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(123,211,137,.18);
-    }
-    .hero h2{
-      margin:14px 0 8px;
-      font-size:38px;
-      line-height:1.06;
-      letter-spacing:-.5px;
-    }
-    .hero p{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.55;
-      max-width:56ch;
-    }
-    .cta{
-      margin-top:18px;
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
-    .btn{
-      border-radius: 14px;
-      padding:11px 14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      text-decoration:none;
-      display:inline-flex; gap:10px; align-items:center;
-      font-weight:650;
-      font-size:14px;
-    }
-    .btn.primary{
-      border-color: rgba(123,211,137,.35);
-      background: linear-gradient(135deg, rgba(123,211,137,.28), rgba(184,242,198,.10));
-    }
-    .btn:hover{filter: brightness(1.05)}
-    .btn svg{opacity:.9}
-    .hero-right{
-      padding:0;
-      display:flex;
-      flex-direction:column;
-    }
-    .hero-right-top{
-      padding:18px 18px 8px;
-      border-bottom:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .mini-title{margin:0; font-size:14px; letter-spacing:.2px}
-    .mini-sub{margin:6px 0 0; color:var(--muted); font-size:13px}
-    .list{
-      padding:12px 18px 18px;
-      display:grid; gap:10px;
-    }
-    .item{
-      padding:12px 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      border-radius: 16px;
-    }
-    .item b{display:block; font-size:14px}
-    .item span{display:block; margin-top:4px; color:var(--muted); font-size:13px; line-height:1.4}
-    .grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    .card{
-      padding:16px 16px;
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, var(--card2), rgba(255,255,255,.03));
-      border-radius: 18px;
-    }
-    .card h3{margin:0 0 6px; font-size:14px}
-    .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.45}
-    section{
-      margin-top:20px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    .wide{grid-column: 1 / -1}
-    .note{
-      padding:16px;
-      border-radius: 18px;
-      border: 1px dashed rgba(123,211,137,.35);
-      background: rgba(123,211,137,.08);
-      color: rgba(255,255,255,.86);
-    }
-    footer{
-      margin-top:26px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
+
+    .brand-subtitle {
+      margin-top: 4px;
       color: var(--muted);
-      font-size:13px;
+      font-size: 0.92rem;
     }
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
-    @media (max-width: 880px){
-      .hero{grid-template-columns:1fr}
-      section{grid-template-columns:1fr}
-      .hero h2{font-size:32px}
-      .grid{grid-template-columns:1fr}
+
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex-wrap: wrap;
     }
+
+    .nav-links button,
+    .nav-links a {
+      min-height: 88px;
+      padding: 0 22px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text);
+      border-left: 1px solid rgba(36,49,38,0.06);
+      transition: 0.18s ease;
+    }
+
+    .nav-links button:hover,
+    .nav-links a:hover,
+    .nav-links button.active {
+      background: var(--sage);
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+        url('/mnt/data/Environmental-Organization-Website-Design-788x871.jpg') center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 62px 0;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.18);
+    }
+
+    .hero-text {
+      margin: 18px auto 0;
+      max-width: 56ch;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn,
+    .social-chip {
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 0;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.18s ease;
+    }
+
+    .cta-btn.primary {
+      background: var(--sage);
+      color: white;
+    }
+
+    .cta-btn.secondary {
+      background: rgba(255,255,255,0.16);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.24);
+    }
+
+    .quick-grid-wrap {
+      margin-top: -58px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .quick-card {
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .quick-card-top {
+      background: linear-gradient(135deg, #75a06c, #4f6f49);
+      color: white;
+      padding: 26px;
+      min-height: 170px;
+    }
+
+    .quick-card:nth-child(2) .quick-card-top {
+      background: linear-gradient(135deg, #f0b248, #fb9b27);
+    }
+
+    .quick-card:nth-child(3) .quick-card-top {
+      background: linear-gradient(135deg, #7e9b76, #678760);
+    }
+
+    .quick-card-top h3 {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 12px;
+    }
+
+    .quick-card-top p {
+      color: rgba(255,255,255,0.92);
+      line-height: 1.7;
+    }
+
+    .quick-card-bottom img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .pages {
+      padding: 48px 0 40px;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .section-title p {
+      margin: 12px auto 0;
+      max-width: 62ch;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .about-icons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .icon-card,
+    .material-card,
+    .contact-band {
+      text-align: center;
+    }
+
+    .icon-card {
+      padding: 12px 10px;
+    }
+
+    .icon-circle {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #3d4a46;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .icon-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .icon-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .material-card {
+      background: white;
+      border: 1px solid rgba(36,49,38,0.08);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .material-badge {
+      display: inline-block;
+      padding: 7px 12px;
+      background: rgba(103,135,96,0.12);
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .material-card h3 {
+      font-size: 1.38rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .material-card > p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .material-list {
+      display: grid;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .material-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid rgba(36,49,38,0.08);
+      background: #faf9f5;
+    }
+
+    .material-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.98rem;
+    }
+
+    .material-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .material-item a {
+      color: var(--sage);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .contact-band {
+      margin-top: 30px;
+      padding: 28px;
+      background: white;
+      border: 1px solid rgba(36,49,38,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-band h3 {
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .contact-band p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .social-chip {
+      background: var(--sage);
+      color: white;
+    }
+
+    .social-chip.alt {
+      background: var(--orange);
+    }
+
+    .footer {
+      padding: 0 0 34px;
+    }
+
+    .footer-box {
+      border-top: 1px solid rgba(36,49,38,0.1);
+      padding-top: 20px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 940px) {
+      .quick-grid,
+      .about-icons,
+      .materials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-grid-wrap {
+        margin-top: 24px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 10px 0 14px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .nav-links button,
+      .nav-links a {
+        min-height: 52px;
+        padding: 0 14px;
+      }
+
+      .hero {
+        min-height: 420px;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 10vw, 3.2rem);
+      }
+
+      .material-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    .quick-card-text {
+  display: block;
+  height: auto;
+  padding: 24px 26px;
+  background: #f8f6f0;
+}
+
+.quick-card-text p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 0.97rem;
+}
+
+.quick-card-text p:last-child {
+  margin-bottom: 0;
+}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#about" aria-label="Projekt Domek na Drzewie">
+        <div class="brand-mark">
+          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+        </div>
         <div>
-          <h1>Domek na Drzewie</h1>
-          <small>Blisko natury. Uważnie. Pięknie.</small>
+          <div class="brand-title">Projekt Domek na Drzewie</div>
+          <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
         </div>
-      </div>
-      <nav class="nav" aria-label="Nawigacja">
-        <a class="chip" href="#o-projekcie">O projekcie</a>
-        <a class="chip" href="#karty">Karty</a>
-        <a class="chip" href="#kontakt">Kontakt</a>
+      </a>
+
+      <nav class="nav-links" aria-label="Nawigacja">
+        <button class="active" data-page="about">O projekcie</button>
+        <button data-page="materials">Materiały</button>
+        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
       </nav>
-    </header>
-
-    <div class="hero">
-      <div class="panel hero-left">
-        <div class="kicker"><span class="dot"></span> Strona testowa — wkrótce pełna wersja</div>
-        <h2>Małe praktyki, które pomagają wracać do siebie — przez naturę.</h2>
-        <p>
-          Domek na Drzewie to projekt o spokojnym kontakcie z przyrodą: krótkich spacerach,
-          prostych obserwacjach, kartach inspiracji i materiałach, które można zabrać ze sobą
-          do parku, lasu albo na miejską ścieżkę.
-        </p>
-
-        <div class="cta">
-          <a class="btn primary" href="#karty" title="Zobacz, co tu będzie">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3v18m0 0 7-7m-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Zobacz, co planuję
-          </a>
-          <a class="btn" href="#kontakt">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
-            Napisz do mnie
-          </a>
-        </div>
-
-        <div class="grid" aria-label="Skróty">
-          <div class="card">
-            <h3>🌿 Karty uważności</h3>
-            <p>Krótkie tematy + prompt + refleksje. Do spacerów i codziennych chwil.</p>
-          </div>
-          <div class="card">
-            <h3>🧭 Ścieżki i mapki</h3>
-            <p>Małe trasy w mieście i poza nim — z ciekawostkami i zadaniami.</p>
-          </div>
-          <div class="card">
-            <h3>🎨 Minimalna estetyka</h3>
-            <p>Prosto, spokojnie, dużo oddechu. Treści i obrazki, które nie męczą.</p>
-          </div>
-        </div>
-      </div>
-
-      <aside class="panel hero-right" aria-label="Szybkie informacje">
-        <div class="hero-right-top">
-          <p class="mini-title"><b>Co tu znajdziesz</b></p>
-          <p class="mini-sub">Krótko i konkretnie — wersja startowa.</p>
-        </div>
-        <div class="list">
-          <div class="item">
-            <b>1) Karty “kąpieli miejskich”</b>
-            <span>Inspiracje do uważnego spaceru w parku, na wałach, na osiedlu.</span>
-          </div>
-          <div class="item">
-            <b>2) Materiały dla rodzin</b>
-            <span>Proste zadania dla dzieci (i dorosłych), żeby wspólnie zauważać więcej.</span>
-          </div>
-          <div class="item">
-            <b>3) Projekt rośnie powoli</b>
-            <span>Najpierw treści i rytm. Potem strona, sklepik, drukowane dodatki.</span>
-          </div>
-        </div>
-      </aside>
     </div>
+  </header>
 
-    <section id="o-projekcie">
-      <div class="panel" style="padding:18px 18px;">
-        <h3 style="margin:0 0 8px; font-size:16px;">O projekcie</h3>
-        <p style="margin:0; color:var(--muted);">
-          Domek na Drzewie powstał z potrzeby tworzenia miejsc i treści, które zbliżają ludzi do natury.
-          To zaproszenie do krótkich chwil wyciszenia — nawet w mieście — i do budowania w sobie
-          miękkiej, dobrej uważności.
-        </p>
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-kicker">Projekt blisko natury</span>
+      <h1>Materiały, refleksje i edukacja inspirowane przyrodą</h1>
+      <p class="hero-text">
+        Projekt <strong>Domek na Drzewie </strong>powstał z potrzeby stworzenia miejsca i treści, które zbliżają ludzi do natury. Wierzymy, że przyroda ma niezwykłą moc regulowania, wyciszania i wspierania człowieka, niezależnie od wieku czy doświadczeń.
+      </p>
+      <div class="hero-actions">
+        <button class="cta-btn primary" data-page="about">Poznaj projekt</button>
+        <button class="cta-btn secondary" data-page="materials">Zobacz materiały</button>
       </div>
+    </div>
+  </section>
 
-      <div class="panel" style="padding:18px 18px;">
-        <h3 style="margin:0 0 8px; font-size:16px;">Jak możesz korzystać</h3>
-        <ul style="margin:0; padding-left:18px; color:var(--muted);">
-          <li>Wybierz kartę (temat tygodnia) i idź na krótki spacer.</li>
-          <li>Zrób jedno zdjęcie albo jedną notatkę — bez presji.</li>
-          <li>Odpowiedz na 1–2 pytania refleksyjne w swoim tempie.</li>
-        </ul>
-      </div>
+  <section class="quick-grid-wrap">
+    <div class="container quick-grid">
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>O projekcie</h3>
+          <p>Tworzymy materiały, które pomagają odkrywać świat roślin: proste, przystępne, inspirujące i oparte na szacunku do siebie nawzajem i do natury.</p> 
+          <p>Chcemy, aby każdy mógł poczuć ten kontakt choćby na chwilę, nawet w codziennym pośpiechu, nawet w mieście.</p>
 
-      <div class="panel wide" id="karty" style="padding:18px 18px;">
-        <h3 style="margin:0 0 8px; font-size:16px;">Karty (wersja startowa)</h3>
-        <p style="margin:0; color:var(--muted);">
-          Tu wkrótce pojawią się pierwsze karty do pobrania oraz archiwum tygodni.
-          Jeśli chcesz, możesz już teraz trzymać stronę w zakładkach.
-        </p>
-        <div class="note" style="margin-top:12px">
-          <b>Test techniczny:</b> jeśli widzisz tę stronę pod swoim adresem domeny, to znaczy,
-          że GitHub Pages + DNS są poprawnie podpięte.
-          <div style="margin-top:10px" class="mono" id="where"></div>
         </div>
-      </div>
-    </section>
+        <div class="quick-card-bottom quick-card-text">
+  <p>Nasz domek na drzewie jest symbolem bezpiecznego miejsca, światła między liśćmi i chwili zatrzymania.</p>
 
-    <section id="kontakt">
-      <div class="panel wide" style="padding:18px 18px;">
-        <h3 style="margin:0 0 8px; font-size:16px;">Kontakt</h3>
-        <p style="margin:0; color:var(--muted);">
-          To jest strona startowa. Dodaj tu później swój e-mail / formularz / linki do social mediów.
-        </p>
-        <p style="margin:12px 0 0; color:var(--muted);">
-          <b>Do uzupełnienia:</b> wstaw linki do Instagrama, newslettera albo repozytorium z kartami.
-        </p>
-      </div>
-    </section>
 
-    <footer>
-      <div>
-        <div><b>Domek na Drzewie</b></div>
-        <div>© <span id="year"></span> • Wersja testowa</div>
-      </div>
-      <div class="mono" id="status"></div>
-    </footer>
-  </div>
+
+  <p>Dziś budujemy podstawy: wiedzę, materiały i idee, które inspirują do większej uważności.</p>
+</div>
+      </article>
+
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>Materiały</h3>
+          <p>Zainspiruj się, ściągnij za darmo, podpatrz, co polecamy.</p>
+        </div>
+        <div class="quick-card-bottom">
+          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+        </div>
+      </article>
+
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>Kontakt</h3>
+          <p>Masz pytania? Chcesz dołączyć do inicjatywy? Możesz znaleźć nas na Facebooku i Instagramie.</p>
+        </div>
+        <div class="quick-card-bottom">
+          <p> </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <main class="pages">
+    <div class="container">
+      <section id="about" class="page active">
+        <div class="section-title">
+          <h2>Misja</h2>
+          <p>
+            Projekt <strong>Domek na Drzewie</strong> pomaga budować spokojniejszy kontakt z naturą i z bliskimi. Łączy proste materiały edukacyjne, refleksję i estetykę, która nie przytłacza.
+          </p>
+        </div>
+
+        <div class="about-icons">
+          <article class="icon-card">
+            <div class="icon-circle">🌿</div>
+            <h3>Natura</h3>
+            <p>Rośliny, sezony, obserwacja i codzienne obcowanie z przyrodą.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">☼</div>
+            <h3>Uważność</h3>
+            <p>Krótkie formy, które pomagają zwolnić i zauważyć więcej.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">✎</div>
+            <h3>Materiały</h3>
+            <p>Karty, notatki, refleksje i treści do czytania lub pobrania.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">◎</div>
+            <h3>Dostępność</h3>
+            <p>Prosty język, darmowe i inspirujące materiały, dla wszystkich.</p>
+          </article>
+        </div>
+
+        <div class="contact-band">
+          <h3>Kontakt</h3>
+          <p>Najprostszy sposób, by śledzić projekt i mieć łatwy dostęp do nowych materiałów.</p>
+          <div class="contact-actions">
+            <a class="social-chip" href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="materials" class="page">
+        <div class="section-title">
+          <h2>Materiały</h2>
+          <p>
+            Tu możesz umieścić wszystko, co ma być czytane lub pobierane: karty tygodniowe, PDF-y, wpisy, przewodniki sezonowe i linki do zewnętrznych publikacji.
+          </p>
+        </div>
+
+        <div class="materials-grid">
+          <article class="material-card">
+            <span class="material-badge">Miejskie kąpiele leśne</span>
+            <h3>#domeknadrzewie52</h3>
+            <p>Seria kart na każdy tydzień roku, inspirowanych przyrodą, uważnością i sezonową obserwacją.</p>
+            <div class="material-list">
+              <div class="material-item">
+                <div>
+                  <strong>Karta tygodniowa 01</strong>
+                  <span>PDF lub grafika do pobrania</span>
+                </div>
+                <a href="#">Pobierz</a>
+              </div>
+              <div class="material-item">
+                <div>
+                  <strong>Karta tygodniowa 02</strong>
+                  <span>Wersja do czytania na stronie</span>
+                </div>
+                <a href="#">Czytaj</a>
+              </div>
+              <div class="material-item">
+                <div>
+                  <strong>Karta tygodniowa 03</strong>
+                  <span>Link do wpisu lub posta</span>
+                </div>
+                <a href="#">Otwórz</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="material-card">
+            <span class="material-badge">Zasoby</span>
+            <h3>Inne materiały</h3>
+            <p>Dodatkowe przewodniki, krótsze teksty, miejskie kąpiele leśne lub publikacje do przeczytania.</p>
+            <div class="material-list">
+              <div class="material-item">
+                <div>
+                  <strong>Przewodnik sezonowy</strong>
+                  <span>PDF do pobrania</span>
+                </div>
+                <a href="#">Pobierz</a>
+              </div>
+              <div class="material-item">
+                <div>
+                  <strong>Notatka o projekcie</strong>
+                  <span>Krótki tekst na stronie</span>
+                </div>
+                <a href="#">Czytaj</a>
+              </div>
+              <div class="material-item">
+                <div>
+                  <strong>Spacer miejski</strong>
+                  <span>Opis trasy i refleksji</span>
+                </div>
+                <a href="#">Otwórz</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="contact-band">
+          <h3>Śledź nowe publikacje</h3>
+          <p>Linki są powtórzone także tutaj, żeby osoba przeglądająca materiały mogła od razu przejść do Twoich kanałów.</p>
+          <div class="contact-actions">
+            <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="social-chip alt" href="https://facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-box">
+      <div><strong>Projekt Domek na Drzewie</strong> • Rośniemy z natury</div>
+      <div>marzec 2026</div>
+    </div>
+  </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("where").textContent = "Adres: " + location.href;
-    const isHttps = location.protocol === "https:";
-    document.getElementById("status").textContent =
-      (isHttps ? "HTTPS ✅" : "HTTP (wkrótce HTTPS) ⏳") + " • host: " + location.host;
+    const buttons = document.querySelectorAll('[data-page]');
+    const pages = document.querySelectorAll('.page');
+    const tabs = document.querySelectorAll('.nav-links button');
+
+    function setPage(pageId) {
+      pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.page === pageId));
+      window.location.hash = pageId;
+      const main = document.querySelector('.pages');
+      if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => setPage(button.dataset.page));
+    });
+
+    const initial = window.location.hash.replace('#', '');
+    if (initial === 'materials' || initial === 'about') setPage(initial);
   </script>
 </body>
 </html>
