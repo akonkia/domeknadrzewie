@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project: Tree House</title>
+  <meta name="description" content="Project: Tree House - about the project and materials to download or read." />
+  <style>
+    :root {
+      --sage: #678760;
+      --orange: #fb9b27;
+      --gold: #fcc15d;
+      --mist: #d3d4d5;
+      --cream: #f5f4ef;
+      --white: #ffffff;
+      --text: #243126;
+      --muted: #5e675f;
+      --line: rgba(36, 49, 38, 0.1);
+      --hero-overlay: rgba(36, 49, 38, 0.26);
+      --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
+      --max: 1120px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #f3f1eb;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid rgba(36,49,38,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid rgba(36,49,38,0.08);
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-subtitle {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+.nav-links {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.lang-link {
+  min-height: 88px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orange) !important;
+  color: white !important;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-left: 1px solid rgba(36,49,38,0.06);
+}
+
+.lang-link:hover {
+  background: #e68e20 !important;
+  color: white !important;
+}
+
+    .nav-links button,
+    .nav-links a {
+      min-height: 88px;
+      padding: 0 22px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text);
+      border-left: 1px solid rgba(36,49,38,0.06);
+      transition: 0.18s ease;
+    }
+
+    .nav-links button:hover,
+    .nav-links a:hover,
+    .nav-links button.active {
+      background: var(--sage);
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+        url('/mnt/data/Environmental-Organization-Website-Design-788x871.jpg') center/cover no-repeat;
+      color: white;
+    }
+    
+    .lang-link {
+  min-height: 88px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orange) !important;
+  color: white !important;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-left: 1px solid rgba(36,49,38,0.06);
+}
+
+.lang-link:hover {
+  background: #e68e20 !important;
+  color: white !important;
+}
+
+    .hero-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 62px 0;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.18);
+    }
+
+    .hero-text {
+      margin: 18px auto 0;
+      max-width: 56ch;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn,
+    .social-chip {
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 0;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.18s ease;
+    }
+
+    .cta-btn.primary {
+      background: var(--sage);
+      color: white;
+    }
+
+    .cta-btn.secondary {
+      background: rgba(255,255,255,0.16);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.24);
+    }
+
+    .quick-grid-wrap {
+      margin-top: -58px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .quick-card {
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .quick-card-top {
+      background: linear-gradient(135deg, #75a06c, #4f6f49);
+      color: white;
+      padding: 26px;
+      min-height: 170px;
+    }
+
+    .quick-card:nth-child(2) .quick-card-top {
+      background: linear-gradient(135deg, #f0b248, #fb9b27);
+    }
+
+    .quick-card:nth-child(3) .quick-card-top {
+      background: linear-gradient(135deg, #7e9b76, #678760);
+    }
+
+    .quick-card-top h3 {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 12px;
+    }
+.quick-card-bottom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quick-card:nth-child(2) .quick-card-bottom img {
+  object-fit: fit;
+}
+
+.quick-card-bottom {
+  height: 220px;
+  background: #f6f4ee;
+  border-top: 1px solid rgba(36,49,38,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+    .pages {
+      padding: 48px 0 40px;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .section-title p {
+      margin: 12px auto 0;
+      max-width: 62ch;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .about-icons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .icon-card,
+    .material-card,
+    .contact-band {
+      text-align: center;
+    }
+    
+    
+
+    .icon-card {
+      padding: 12px 10px;
+    }
+
+    .icon-circle {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #3d4a46;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .icon-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .icon-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.material-card {
+  background: white;
+  border: 1px solid rgba(36,49,38,0.08);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  grid-column: 1 / -1;
+}
+
+.material-badge {
+  display: inline-block;
+  padding: 7px 12px;
+  background: rgba(103,135,96,0.12);
+  color: var(--sage);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.material-card h3 {
+  font-size: 1.38rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.material-card > p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.material-list {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.material-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid rgba(36,49,38,0.08);
+  background: #faf9f5;
+}
+
+.material-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.material-thumb {
+  display: block;
+  width: 150px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(36,49,38,0.08);
+  background: #f3f1eb;
+  box-shadow: 0 8px 18px rgba(36,49,38,0.08);
+}
+
+.material-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.material-thumb:hover img {
+  transform: scale(1.03);
+}
+    .contact-band {
+      margin-top: 30px;
+      padding: 28px;
+      background: white;
+      border: 1px solid rgba(36,49,38,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-band h3 {
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .contact-band p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .social-chip {
+      background: var(--sage);
+      color: white;
+    }
+
+    .social-chip.alt {
+      background: var(--orange);
+    }
+
+    .footer {
+      padding: 0 0 34px;
+    }
+
+    .footer-box {
+      border-top: 1px solid rgba(36,49,38,0.1);
+      padding-top: 20px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 940px) {
+      .quick-grid,
+      .about-icons,
+      .materials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-grid-wrap {
+        margin-top: 24px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 10px 0 14px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .nav-links button,
+      .nav-links a {
+        min-height: 52px;
+        padding: 0 14px;
+      }
+
+      .hero {
+        min-height: 420px;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 10vw, 3.2rem);
+      }
+
+      .material-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    .quick-card-text {
+  display: block;
+  height: auto;
+  padding: 24px 26px;
+  background: #f8f6f0;
+}
+
+.quick-card-text p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 0.97rem;
+}
+
+.quick-card-text p:last-child {
+  margin-bottom: 0;
+}
+.download-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.download-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 18px rgba(36,49,38,0.10);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  white-space: nowrap;
+}
+
+.download-links a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(36,49,38,0.14);
+  filter: brightness(1.03);
+}
+
+.download-links a:nth-child(1) {
+  background: linear-gradient(135deg, var(--sage), #88a67f);
+  color: white;
+}
+
+.download-links a:nth-child(2) {
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  color: #3d2a10;
+}
+
+.download-links a:nth-child(3) {
+  background: linear-gradient(135deg, #b44f72, #ee7a78);
+  color: white;
+}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#about" aria-label="Project: Tree house">
+        <div class="brand-mark">
+          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Project Tree house logo" />
+        </div>
+        <div>
+          <div class="brand-title">Project: Tree House</div>
+          <div class="brand-subtitle">An educational and social project inspired by nature.</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Nawigacja">
+        <button class="active" data-page="about">O projekcie</button>
+        <button data-page="materials">Materiały</button>
+        <a class="lang-link" href="/en/" lang="en" hreflang="en">English</a>
+        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-kicker">Projekt blisko natury</span>
+      <h1>Materiały, refleksje i edukacja inspirowane przyrodą</h1>
+      <p class="hero-text">
+        Projekt <strong>Domek na Drzewie </strong>powstał z potrzeby stworzenia miejsca i treści, które zbliżają ludzi do natury. Wierzymy, że przyroda ma niezwykłą moc regulowania, wyciszania i wspierania człowieka, niezależnie od wieku czy doświadczeń.
+      </p>
+      <div class="hero-actions">
+        <button class="cta-btn primary" data-page="about">Poznaj projekt</button>
+        <button class="cta-btn secondary" data-page="materials">Zobacz materiały</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-grid-wrap">
+    <div class="container quick-grid">
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>O projekcie</h3>
+          <p>Tworzymy materiały, które pomagają odkrywać świat roślin: proste, przystępne, inspirujące i oparte na szacunku do siebie nawzajem i do natury.</p> 
+          <p>Chcemy, aby każdy mógł poczuć ten kontakt choćby na chwilę, nawet w codziennym pośpiechu, nawet w mieście.</p>
+
+        </div>
+        <div class="quick-card-bottom quick-card-text">
+  <p>Nasz domek na drzewie jest symbolem bezpiecznego miejsca, światła między liśćmi i chwili zatrzymania.</p>
+
+
+
+  <p>Dziś budujemy podstawy: wiedzę, materiały i idee, które inspirują do większej uważności.</p>
+</div>
+      </article>
+
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>Materiały</h3>
+          <p>Zainspiruj się, ściągnij za darmo, podpatrz, co polecamy.</p>
+        </div>
+        <div class="quick-card-bottom">
+          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2A.png" alt="Logo Projektu Domek na Drzewie" />
+        </div>
+      </article>
+
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>Kontakt</h3>
+          <p>Masz pytania? Chcesz dołączyć do inicjatywy? Możesz znaleźć nas na Facebooku i Instagramie.</p>
+        </div>
+                <div class="quick-card-bottom">
+          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <main class="pages">
+    <div class="container">
+      <section id="about" class="page active">
+        <div class="section-title">
+          <h2>Misja</h2>
+          <p>
+            Projekt <strong>Domek na Drzewie</strong> pomaga budować spokojniejszy kontakt z naturą i z bliskimi. Łączy proste materiały edukacyjne, refleksję i estetykę, która nie przytłacza.
+          </p>
+        </div>
+
+        <div class="about-icons">
+          <article class="icon-card">
+            <div class="icon-circle">🌿</div>
+            <h3>Natura</h3>
+            <p>Rośliny, sezony, obserwacja i codzienne obcowanie z przyrodą.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">☼</div>
+            <h3>Uważność</h3>
+            <p>Krótkie formy, które pomagają zwolnić i zauważyć więcej.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">✎</div>
+            <h3>Materiały</h3>
+            <p>Karty, notatki, refleksje i treści do czytania lub pobrania.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">◎</div>
+            <h3>Dostępność</h3>
+            <p>Prosty język, darmowe i inspirujące materiały, dla wszystkich.</p>
+          </article>
+        </div>
+
+        <div class="contact-band">
+          <h3>Kontakt</h3>
+          <p>Najprostszy sposób, by śledzić projekt i mieć łatwy dostęp do nowych materiałów.</p>
+          <div class="contact-actions">
+            <a class="social-chip" href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="materials" class="page">
+        <div class="section-title">
+          <h2>Materiały</h2>
+          <p>
+            Do czytania lub pobierania: karty tygodniowe, PDF-y, wpisy, przewodniki sezonowe i linki do zewnętrznych publikacji.
+          </p>
+        </div>
+<div class="materials-grid">
+    
+  <article class="material-card full-width">
+            <span class="material-badge">Miejskie kąpiele leśne</span>
+            <h3>#domeknadrzewie52</h3>
+            <p>Seria kart na każdy tydzień roku, inspirowanych przyrodą, uważnością i sezonową obserwacją.</p>
+            <div class="material-list">
+<div class="material-item">
+  <div class="material-main">
+    <div>
+      <strong>Tydzień 01</strong>
+      <span>Temat: Bezruch</span>
+    </div>
+
+    <div class="download-links">
+      <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" download>Obraz</a>
+      <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1B.png" download>Refleksja</a>
+      <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
+    </div>
+  </div>
+
+  <a class="material-thumb" href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" alt="Podgląd karty Tydzień 01" />
+  </a>
+</div>
+
+<div class="material-item">
+  <div class="material-main">
+    <div>
+        <strong>Tydzień 02</strong>
+        <span>Temat: Wytrwałość</span>
+    </div>
+
+    <div class="download-links">
+      <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2A.png" download>Obraz</a>
+    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2B.png" download>Refleksja</a>
+        <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank" rel="noreferrer">Instagram</a>
+    </div>
+  </div>
+
+  <a class="material-thumb" href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/2A.png" alt="Podgląd karty Tydzień 02" />
+  </a>
+</div>
+<div class="material-item">
+  <div class="material-main">
+    <div>
+                  <strong>Tydzień 03</strong>
+                  <span>Temat: Powolność</span>
+    </div>
+
+    <div class="download-links">
+      <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3A.png" download>Obraz</a>
+    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3B.png" download>Refleksja</a>
+        <a href="https://www.instagram.com/reel/DUMYPA-DIhl/" target="_blank" rel="noreferrer">Instagram</a>
+    </div>
+  </div>
+
+  <a class="material-thumb" href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materials/kapiele_miejskie/3A.png" alt="Podgląd karty Tydzień 03" />
+  </a>
+</div>
+</article>
+</div>
+
+        <div class="contact-band">
+          <h3>Śledź nowe publikacje</h3>
+          <p>Bądź na bieżaco - mamy wielkie plany!.</p>
+          <div class="contact-actions">
+            <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-box">
+      <div><strong>Projekt: Domek na Drzewie</strong> • Rośniemy z natury</div>
+      <div>marzec 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('[data-page]');
+    const pages = document.querySelectorAll('.page');
+    const tabs = document.querySelectorAll('.nav-links button');
+
+    function setPage(pageId) {
+      pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.page === pageId));
+      window.location.hash = pageId;
+      const main = document.querySelector('.pages');
+      if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => setPage(button.dataset.page));
+    });
+
+    const initial = window.location.hash.replace('#', '');
+    if (initial === 'materials' || initial === 'about') setPage(initial);
+  </script>
+</body>
+</html>
