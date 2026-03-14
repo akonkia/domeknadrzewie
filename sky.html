@@ -232,8 +232,7 @@
     .window-frame,
     .window-bar,
     .window-sill,
-    .glass-glow,
-    .window-overlay {
+    .glass-glow {
       position: absolute;
       pointer-events: none;
     }
@@ -243,31 +242,6 @@
     .window-sill,
     .glass-glow {
       z-index: 4;
-    }
-
-    .window-overlay {
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      z-index: 5;
-      transition: opacity 0.6s ease;
-    }
-
-    .foreground-day {
-      opacity: 1;
-    }
-
-    .foreground-night {
-      opacity: 0;
-    }
-
-    .sky-card.night-scene .foreground-day {
-      opacity: 0;
-    }
-
-    .sky-card.night-scene .foreground-night {
-      opacity: 1;
     }
 
     .forecast {
@@ -437,9 +411,6 @@
         <div class="window-bar horizontal" aria-hidden="true"></div>
         <div class="window-sill" aria-hidden="true"></div>
         <div class="glass-glow" aria-hidden="true"></div>
-
-        <img class="window-overlay foreground-day" src="/images/sky-window-day.png" alt="" aria-hidden="true">
-        <img class="window-overlay foreground-night" src="/images/sky-window-night.png" alt="" aria-hidden="true">
       </div>
 
       <div class="text-overlay">
@@ -1025,8 +996,6 @@
       console.assert(document.getElementById('labelMoonset') !== null, 'Moonset label should exist');
       console.assert(document.getElementById('locationInput') !== null, 'Location input should exist');
       console.assert(document.getElementById('searchBtn') !== null, 'Search button should exist');
-      console.assert(document.querySelector('.foreground-day') !== null, 'Day overlay should exist');
-      console.assert(document.querySelector('.foreground-night') !== null, 'Night overlay should exist');
     }
 
     refreshBtn.addEventListener('click', () => refreshWeather(true));
