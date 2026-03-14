@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -232,57 +232,42 @@
     .window-frame,
     .window-bar,
     .window-sill,
-    .glass-glow {
+    .glass-glow,
+    .window-overlay {
       position: absolute;
       pointer-events: none;
+    }
+
+    .window-frame,
+    .window-bar,
+    .window-sill,
+    .glass-glow {
       z-index: 4;
     }
 
-    .window-frame {
-      inset: 14px;
-      border: 10px solid rgba(255,255,255,0.36);
-      border-radius: 24px;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.28),
-        inset 0 18px 30px rgba(255,255,255,0.08),
-        inset 0 -18px 30px rgba(72, 81, 92, 0.08);
+    .window-overlay {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 5;
+      transition: opacity 0.6s ease;
     }
 
-    .window-bar.vertical {
-      top: 24px;
-      bottom: 24px;
-      left: 50%;
-      width: 8px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(231,236,240,0.52) 50%, rgba(255,255,255,0.3) 100%);
-      border-radius: 999px;
+    .foreground-day {
+      opacity: 1;
     }
 
-    .window-bar.horizontal {
-      left: 24px;
-      right: 24px;
-      top: 50%;
-      height: 8px;
-      transform: translateY(-50%);
-      background: linear-gradient(90deg, rgba(255,255,255,0.28) 0%, rgba(231,236,240,0.5) 50%, rgba(255,255,255,0.28) 100%);
-      border-radius: 999px;
+    .foreground-night {
+      opacity: 0;
     }
 
-    .window-sill {
-      left: 26px;
-      right: 26px;
-      bottom: 18px;
-      height: 20px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(219,225,230,0.42) 100%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    .sky-card.night-scene .foreground-day {
+      opacity: 0;
     }
 
-    .glass-glow {
-      inset: 26px;
-      border-radius: 18px;
-      background: linear-gradient(115deg, rgba(255,255,255,0.12) 0%, transparent 24%, transparent 72%, rgba(255,255,255,0.1) 100%);
-      mix-blend-mode: screen;
+    .sky-card.night-scene .foreground-night {
+      opacity: 1;
     }
 
     .forecast {
@@ -452,6 +437,9 @@
         <div class="window-bar horizontal" aria-hidden="true"></div>
         <div class="window-sill" aria-hidden="true"></div>
         <div class="glass-glow" aria-hidden="true"></div>
+
+        <img class="window-overlay foreground-day" src="/images/sky-window-day.png" alt="" aria-hidden="true">
+        <img class="window-overlay foreground-night" src="/images/sky-window-night.png" alt="" aria-hidden="true">
       </div>
 
       <div class="text-overlay">
@@ -593,6 +581,7 @@
     const cloudLayer = document.getElementById('cloudLayer');
     const constellationLayer = document.getElementById('constellationLayer');
     const birds = document.getElementById('birds');
+    const skyCard = document.querySelector('.sky-card');
 
     const tempEl = document.getElementById('temp');
     const stateEl = document.getElementById('state');
@@ -672,8 +661,16 @@
       99: { label: { pl: 'Silna burza z gradem', en: 'Severe thunderstorm with hail' }, mood: { pl: 'Surowe', en: 'Severe' }, reflection: { pl: 'Zostań przy tym, co daje schronienie.', en: 'Stay close to what offers shelter.' } }
     };
 
-    function formatTime(dateString, timezone = currentLocation.timezone) {
-      const date = new Date(dateString);
+    function asDate(value) {
+      if (value instanceof Date) return value;
+      if (typeof value === 'number') {
+        return new Date(value > 1e12 ? value : value * 1000);
+      }
+      return new Date(value);
+    }
+
+    function formatTime(dateValue, timezone = currentLocation.timezone) {
+      const date = asDate(dateValue);
       return new Intl.DateTimeFormat(LANG === 'en' ? 'en-GB' : 'pl-PL', {
         hour: '2-digit', minute: '2-digit', hour12: false, timeZone: timezone
       }).format(date);
@@ -721,21 +718,22 @@
       clockEl.textContent = `${t('nowPrefix')}: ${time}`;
     }
 
-    function getNowInTimezone(timezone) {
-      return new Date(new Date().toLocaleString('en-US', { timeZone: timezone }));
+    function getNowInTimezone() {
+      return new Date();
     }
 
     function updateLivePositions() {
       updateClock();
       if (!liveSceneData) return;
       const timezone = liveSceneData.timezone || currentLocation.timezone || DEFAULT_LOCATION.timezone;
-      const currentDate = getNowInTimezone(timezone);
+      const currentDate = getNowInTimezone();
+      const bodyAltitudes = getBodyAltitudes(currentDate, liveSceneData.latitude, liveSceneData.longitude);
       const liveCurrent = {
-        time: currentDate.toISOString(),
+        time: currentDate.getTime(),
         cloud_cover: liveSceneData.cloud_cover,
         weather_code: liveSceneData.weather_code,
         precipitation: liveSceneData.precipitation,
-        is_day: currentDate >= liveSceneData.sunriseDate && currentDate <= liveSceneData.sunsetDate ? 1 : 0
+        is_day: typeof bodyAltitudes.sunAltitude === 'number' ? (bodyAltitudes.sunAltitude > -0.8 ? 1 : 0) : 0
       };
       const scene = getSceneFromWeather(liveCurrent, liveSceneData.sunriseDate, liveSceneData.sunsetDate);
       applyScene(scene, liveCurrent, liveSceneData.sunriseDate, liveSceneData.sunsetDate);
@@ -846,7 +844,7 @@
     }
 
     function getSceneFromWeather(current, sunriseDate, sunsetDate) {
-      const currentTime = new Date(current.time);
+      const currentTime = asDate(current.time);
       const weatherCode = current.weather_code;
       const precipitation = current.precipitation || 0;
       if ([51,53,55,61,63,65,80,81,82].includes(weatherCode) || precipitation > 0.2) return 'rain';
@@ -880,7 +878,7 @@
       document.documentElement.style.setProperty('--sky-top', palette.skyTop);
       document.documentElement.style.setProperty('--sky-bottom', palette.skyBottom);
 
-      const now = new Date(current.time);
+      const now = asDate(current.time);
       const daylightTotal = (sunriseDate instanceof Date && sunsetDate instanceof Date && !Number.isNaN(sunriseDate.getTime()) && !Number.isNaN(sunsetDate.getTime()))
         ? Math.max(1, sunsetDate.getTime() - sunriseDate.getTime()) : 1;
       const daylightProgress = (sunriseDate instanceof Date && sunsetDate instanceof Date && !Number.isNaN(sunriseDate.getTime()) && !Number.isNaN(sunsetDate.getTime()))
@@ -909,6 +907,7 @@
       moon.style.transform = scene === 'night' ? 'scale(1.05)' : 'scale(1)';
 
       stars.style.opacity = scene === 'night' ? palette.stars : 0;
+      skyCard.classList.toggle('night-scene', scene === 'night');
       rain.style.opacity = palette.rain;
       birds.style.opacity = palette.birds;
       [...cloudLayer.children].forEach((cloud, index) => { cloud.style.opacity = Math.max(0, palette.clouds - index * 0.14); });
@@ -925,7 +924,7 @@
     }
 
     async function fetchWeather(location) {
-      const params = new URLSearchParams({ latitude: String(location.latitude), longitude: String(location.longitude), current: 'temperature_2m,weather_code,cloud_cover,is_day,precipitation', daily: 'sunrise,sunset', timezone: location.timezone || 'auto', forecast_days: '1' });
+      const params = new URLSearchParams({ latitude: String(location.latitude), longitude: String(location.longitude), current: 'temperature_2m,weather_code,cloud_cover,is_day,precipitation', daily: 'sunrise,sunset', timezone: location.timezone || 'auto', timeformat: 'unixtime', forecast_days: '1' });
       const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params.toString()}`, { headers: { Accept: 'application/json' } });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
@@ -942,10 +941,10 @@
       };
 
       const timezone = data.timezone || currentLocation.timezone || DEFAULT_LOCATION.timezone;
-      const currentDate = new Date(current.time);
+      const currentDate = asDate(current.time);
       const astronomy = getAstronomyForDay(currentDate, currentLocation.latitude, currentLocation.longitude, timezone);
-      const sunriseDate = astronomy?.sunrise || null;
-      const sunsetDate = astronomy?.sunset || null;
+      const sunriseDate = astronomy?.sunrise || (data.daily?.sunrise?.[0] != null ? asDate(data.daily.sunrise[0]) : null);
+      const sunsetDate = astronomy?.sunset || (data.daily?.sunset?.[0] != null ? asDate(data.daily.sunset[0]) : null);
       const scene = getSceneFromWeather(current, sunriseDate, sunsetDate);
       applyScene(scene, current, sunriseDate, sunsetDate);
       renderConstellation(getProminentConstellation(currentDate, currentLocation.latitude, currentLocation.longitude, scene === 'night'), scene === 'night');
@@ -1019,12 +1018,15 @@
       console.assert(document.querySelector('meta[name="viewport"]') !== null, 'Viewport meta tag should exist');
       console.assert(typeof moonPhaseFromDate === 'function', 'moonPhaseFromDate should be defined');
       console.assert(typeof getAstronomyForDay === 'function', 'getAstronomyForDay should be defined');
+      console.assert(asDate(1742000000) instanceof Date, 'asDate should convert unix seconds');
       console.assert(document.getElementById('moonriseTime') !== null, 'Moonrise field should exist');
       console.assert(document.getElementById('moonsetTime') !== null, 'Moonset field should exist');
       console.assert(document.getElementById('labelSunrise') !== null, 'Sunrise label should exist');
       console.assert(document.getElementById('labelMoonset') !== null, 'Moonset label should exist');
       console.assert(document.getElementById('locationInput') !== null, 'Location input should exist');
       console.assert(document.getElementById('searchBtn') !== null, 'Search button should exist');
+      console.assert(document.querySelector('.foreground-day') !== null, 'Day overlay should exist');
+      console.assert(document.querySelector('.foreground-night') !== null, 'Night overlay should exist');
     }
 
     refreshBtn.addEventListener('click', () => refreshWeather(true));
