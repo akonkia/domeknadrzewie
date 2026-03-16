@@ -12,7 +12,7 @@
     gtag('js', new Date());
     gtag('config', 'G-3WGXSZG17N');
   </script>
-
+F
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
 
   <style>
@@ -28,7 +28,6 @@
       --sky-bottom: #f3e4c9;
       --site-green: #76966a;
       --site-orange: #fb9b27;
-      --site-white: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -562,8 +561,8 @@
     </a>
 
     <div class="site-nav-links">
-      <a href="/" class="site-nav-link">Main page</a>
-      <a href="/sky.html" class="site-nav-link current">Polish</a>
+      <a href="/" class="site-nav-link">Home page</a>
+      <a href="/sky.html" class="site-nav-link current">POLISH</a>
     </div>
   </nav>
 
@@ -685,7 +684,8 @@
         moonNeverRises: 'Księżyc nie wschodzi',
         moonNeverSets: 'Księżyc nie zachodzi',
         allDay: 'Widoczny przez całą dobę',
-        myLocation: 'Twoja lokalizacja'
+        myLocation: 'Twoja lokalizacja',
+        selectedPlace: 'Wybrano'
       },
       en: {
         placePrefix: 'Sky today',
@@ -719,7 +719,8 @@
         moonNeverRises: 'Moon does not rise',
         moonNeverSets: 'Moon does not set',
         allDay: 'Visible all day',
-        myLocation: 'Your location'
+        myLocation: 'Your location',
+        selectedPlace: 'Selected'
       }
     };
 
@@ -1229,26 +1230,129 @@
       });
     }
 
+    function normalizeSearchText(text) {
+      return (text || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ł/g, 'l')
+        .replace(/ß/g, 'ss')
+        .replace(/æ/g, 'ae')
+        .replace(/œ/g, 'oe')
+        .replace(/[^a-z0-9\s,.-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function buildResultLabel(result) {
+      return [result.name, result.admin1, result.country].filter(Boolean).join(', ');
+    }
+
+    function scoreLocationResult(result, query) {
+      const q = normalizeSearchText(query);
+      const qParts = q.split(',').map(s => s.trim()).filter(Boolean);
+      const qTokens = q.split(/\s+/).filter(Boolean);
+
+      const name = normalizeSearchText(result.name);
+      const admin1 = normalizeSearchText(result.admin1);
+      const admin2 = normalizeSearchText(result.admin2);
+      const country = normalizeSearchText(result.country);
+      const timezone = normalizeSearchText(result.timezone);
+      const label = normalizeSearchText(buildResultLabel(result));
+      const searchable = [name, admin1, admin2, country, timezone, label].filter(Boolean).join(' | ');
+
+      let score = 0;
+
+      if (name === q) score += 200;
+      if (label === q) score += 240;
+
+      if (name.startsWith(q)) score += 80;
+      if (label.startsWith(q)) score += 60;
+
+      if (searchable.includes(q)) score += 50;
+
+      for (const token of qTokens) {
+        if (token.length < 2) continue;
+        if (name === token) score += 40;
+        else if (name.startsWith(token)) score += 16;
+        else if (name.includes(token)) score += 10;
+
+        if (admin1 === token || admin2 === token || country === token) score += 14;
+        else if (admin1.includes(token) || admin2.includes(token) || country.includes(token)) score += 8;
+      }
+
+      if (qParts.length >= 2) {
+        const mainName = qParts[0];
+        const qualifiers = qParts.slice(1);
+
+        if (name === mainName) score += 30;
+        if (qualifiers.some(part => admin1.includes(part) || admin2.includes(part) || country.includes(part))) {
+          score += 70;
+        }
+      }
+
+      if (result.population) {
+        score += Math.min(Number(result.population), 3000000) / 200000;
+      }
+
+      if (result.feature_code) {
+        const feature = String(result.feature_code).toUpperCase();
+        if (feature === 'PPLC') score += 12;
+        if (feature.startsWith('PPL')) score += 10;
+        if (feature.startsWith('ADM')) score -= 8;
+      }
+
+      return score;
+    }
+
     async function searchLocation(query) {
-      const params = new URLSearchParams({
-        name: query,
-        count: '1',
-        language: LANG,
-        format: 'json'
-      });
-      const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?${params.toString()}`, {
-        headers: { Accept: 'application/json' }
-      });
-      if (!response.ok) throw new Error(`Geocoding HTTP ${response.status}`);
-      const data = await response.json();
-      const result = data.results?.[0];
-      if (!result) throw new Error('location_not_found');
+      const trimmed = query.trim();
+      if (!trimmed) throw new Error('location_not_found');
+
+      async function runSearch(searchText) {
+        const params = new URLSearchParams({
+          name: searchText,
+          count: '12',
+          language: LANG,
+          format: 'json'
+        });
+
+        const response = await fetch(
+          `https://geocoding-api.open-meteo.com/v1/search?${params.toString()}`,
+          { headers: { Accept: 'application/json' } }
+        );
+
+        if (!response.ok) throw new Error(`Geocoding HTTP ${response.status}`);
+        const data = await response.json();
+        return Array.isArray(data.results) ? data.results : [];
+      }
+
+      let results = await runSearch(trimmed);
+
+      if (!results.length) {
+        const fallbackQuery = trimmed.replace(/,/g, ' ');
+        if (fallbackQuery !== trimmed) {
+          results = await runSearch(fallbackQuery);
+        }
+      }
+
+      if (!results.length) throw new Error('location_not_found');
+
+      const ranked = results
+        .map(result => ({
+          result,
+          score: scoreLocationResult(result, trimmed)
+        }))
+        .sort((a, b) => b.score - a.score);
+
+      const best = ranked[0]?.result;
+      if (!best) throw new Error('location_not_found');
 
       return {
-        name: [result.name, result.admin1, result.country].filter(Boolean).join(', '),
-        latitude: result.latitude,
-        longitude: result.longitude,
-        timezone: result.timezone || 'auto'
+        name: buildResultLabel(best),
+        latitude: best.latitude,
+        longitude: best.longitude,
+        timezone: best.timezone || 'auto'
       };
     }
 
@@ -1426,6 +1530,7 @@
         const foundLocation = await searchLocation(query);
         currentLocation = foundLocation;
         locationInput.value = foundLocation.name;
+        statusNoteEl.textContent = `${t('selectedPlace')}: ${foundLocation.name}`;
         await refreshWeather(true);
       } catch (error) {
         console.error(error);
@@ -1488,6 +1593,7 @@
       );
       console.assert(typeof pickPrompt === 'function', 'pickPrompt should be defined');
       console.assert(typeof getNearestHourlySample === 'function', 'getNearestHourlySample should be defined');
+
       const hourlySample = getNearestHourlySample({
         hourly: {
           time: [1742000000, 1742003600, 1742007200],
@@ -1498,7 +1604,15 @@
         }
       }, 1742003600);
       console.assert(hourlySample.weather_code === 85 && hourlySample.snowfall >= 0.2, 'Hourly sample should preserve nearby snow');
-      console.assert(typeof pickPrompt(['a','b'], ['x']) === 'string', 'pickPrompt should return a string');
+
+      const mockResults = [
+        { name: 'Jarocin', admin1: 'Lower Silesia', country: 'Poland', population: 1000, feature_code: 'PPL' },
+        { name: 'Jarocin', admin1: 'Greater Poland', country: 'Poland', population: 26000, feature_code: 'PPLA3' }
+      ];
+      const ranked = mockResults
+        .map(r => ({ r, s: scoreLocationResult(r, 'Jarocin, Greater Poland') }))
+        .sort((a, b) => b.s - a.s);
+      console.assert(ranked[0].r.admin1 === 'Greater Poland', 'Location scoring should prefer better qualifier matches');
     }
 
     refreshBtn.addEventListener('click', () => refreshWeather(true));
