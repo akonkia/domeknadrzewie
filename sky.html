@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niebo dziś — widok z okna</title>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WGXSZG17N"></script>
   <script>
-  <title>Niebo dziś — widok z okna</title>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3WGXSZG17N');
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
+
   <style>
     :root {
       --ink: #2f3e34;
@@ -211,13 +219,8 @@
       pointer-events: none;
     }
 
-    .rain {
-      z-index: 1;
-    }
-
-    .snow {
-      z-index: 3;
-    }
+    .rain { z-index: 1; }
+    .snow { z-index: 3; }
 
     .drop {
       position: absolute;
@@ -255,12 +258,6 @@
     .glass-glow {
       position: absolute;
       pointer-events: none;
-    }
-
-    .window-frame,
-    .window-bar,
-    .window-sill,
-    .glass-glow {
       z-index: 4;
     }
 
@@ -530,8 +527,8 @@
         refreshFailed: 'Nie udało się odświeżyć',
         calmWindow: 'Na razie zostawiam okno spokojne. Spróbuj odświeżyć za chwilę.',
         weatherConnectionFailed: 'Błąd połączenia z pogodą. Zostają ostatnie dostępne dane lub widok domyślny.',
-        moonNeverRises: 'Księżyc pozostaje poniżej horyzontu',
-        moonNeverSets: 'Księżyc pozostaje nad horyzontem',
+        moonNeverRises: 'Księżyc nie wschodzi',
+        moonNeverSets: 'Księżyc nie zachodzi',
         allDay: 'Widoczny przez całą dobę',
         myLocation: 'Twoja lokalizacja'
       },
@@ -564,8 +561,8 @@
         refreshFailed: 'Could not refresh',
         calmWindow: 'Leaving the window calm for now. Try refreshing in a moment.',
         weatherConnectionFailed: 'Weather connection failed. Keeping the last available data or fallback view.',
-        moonNeverRises: 'Moon stays below the horizon',
-        moonNeverSets: 'Moon stays above the horizon',
+        moonNeverRises: 'Moon does not rise',
+        moonNeverSets: 'Moon does not set',
         allDay: 'Visible all day',
         myLocation: 'Your location'
       }
@@ -660,12 +657,12 @@
 
     function getNearestHourlySample(data, targetTime) {
       const hourly = data?.hourly;
-      if (!hourly?.time || !Array.isArray(hourly.time) || hourly.time.length === 0) {
-        return null;
-      }
+      if (!hourly?.time || !Array.isArray(hourly.time) || hourly.time.length === 0) return null;
+
       const target = asDate(targetTime).getTime();
       let bestIndex = 0;
       let bestDiff = Infinity;
+
       for (let i = 0; i < hourly.time.length; i += 1) {
         const diff = Math.abs(asDate(hourly.time[i]).getTime() - target);
         if (diff < bestDiff) {
@@ -693,12 +690,7 @@
         }
       }
 
-      return {
-        weather_code,
-        precipitation,
-        snowfall,
-        showers
-      };
+      return { weather_code, precipitation, snowfall, showers };
     }
 
     const buildConditionDetail = (current, nearNow = null) => {
@@ -711,83 +703,77 @@
       const effectiveCode = nearNow?.weather_code ?? current.weather_code;
 
       if (Number.isFinite(wind)) {
-        const windText = LANG === 'en'
-          ? `Wind ${Math.round(wind)} km/h`
-          : `Wiatr ${Math.round(wind)} km/h`;
+        const windText = LANG === 'en' ? `Wind ${Math.round(wind)} km/h` : `Wiatr ${Math.round(wind)} km/h`;
         parts.push(windText);
       }
 
       if (Number.isFinite(gusts) && gusts > (wind || 0) + 4) {
-        const gustText = LANG === 'en'
-          ? `gusts ${Math.round(gusts)} km/h`
-          : `porywy ${Math.round(gusts)} km/h`;
+        const gustText = LANG === 'en' ? `gusts ${Math.round(gusts)} km/h` : `porywy ${Math.round(gusts)} km/h`;
         parts.push(gustText);
       }
 
       if ([71,73,75,77,85,86].includes(effectiveCode) || snowfall > 0) {
-        const snowText = LANG === 'en'
-          ? `Snow ${formatNumber(snowfall || 0.1)} cm/h`
-          : `Śnieg ${formatNumber(snowfall || 0.1)} cm/h`;
+        const snowText = LANG === 'en' ? `Snow ${formatNumber(snowfall || 0.1)} cm/h` : `Śnieg ${formatNumber(snowfall || 0.1)} cm/h`;
         parts.push(snowText);
       } else if ([80,81,82].includes(effectiveCode) || showers > 0) {
-        const showerText = LANG === 'en'
-          ? `Showers ${formatNumber(showers || precipitation || 0.1)} mm`
-          : `Przelotne opady ${formatNumber(showers || precipitation || 0.1)} mm`;
+        const showerText = LANG === 'en' ? `Showers ${formatNumber(showers || precipitation || 0.1)} mm` : `Przelotne opady ${formatNumber(showers || precipitation || 0.1)} mm`;
         parts.push(showerText);
       } else if ([51,53,55,61,63,65].includes(effectiveCode) || precipitation > 0) {
-        const rainText = LANG === 'en'
-          ? `Rain ${formatNumber(precipitation || 0.1)} mm`
-          : `Deszcz ${formatNumber(precipitation || 0.1)} mm`;
+        const rainText = LANG === 'en' ? `Rain ${formatNumber(precipitation || 0.1)} mm` : `Deszcz ${formatNumber(precipitation || 0.1)} mm`;
         parts.push(rainText);
       }
 
-      if (!parts.length) {
-        return LANG === 'en' ? 'No active precipitation' : 'Brak aktywnych opadów';
-      }
+      if (!parts.length) return LANG === 'en' ? 'No active precipitation' : 'Brak aktywnych opadów';
       return parts.join(' · ');
     };
 
     const weatherCodeMap = {
-      0: { label: { pl: 'Bezchmurnie', en: 'Clear sky' }, mood: { pl: 'Przejrzyste', en: 'Clear' }, prompts: { pl: ['Sprawdź, gdzie światło zatrzymuje się dziś najdłużej.', 'Co dziś wydaje się prostsze, kiedy patrzysz w jasne niebo?', 'Jakie miejsce w Tobie jest dziś najbardziej przejrzyste?', 'Co w Twoim dniu potrzebuje dziś przestrzeni, a nie pośpiechu?', 'Co wydaje się lżejsze, gdy nic nie zasłania widoku?', 'Jaka myśl dziś oddycha najswobodniej?', 'Co możesz dziś zobaczyć bez dopowiadania reszty?', 'Gdzie jasność pomaga Ci zaufać temu, co proste?'], en: ['Notice where the light lingers longest today.', 'What feels simpler today when you look at a clear sky?', 'Which part of you feels most open today?', 'What in your day needs space rather than haste?', 'What feels lighter when nothing blocks the view?', 'Which thought breathes most freely today?', 'What can you see clearly without adding more to it?', 'Where does brightness help you trust simplicity?'] } },
-      1: { label: { pl: 'Przeważnie pogodnie', en: 'Mostly clear' }, mood: { pl: 'Jasne', en: 'Bright' }, prompts: { pl: ['Nie wszystko musi być wyraźne, by było dobre.', 'Co dziś jest wystarczająco dobre, nawet jeśli nieidealne?', 'Gdzie możesz pozwolić sobie na odrobinę lekkości?', 'Co rozjaśnia Ci dzień, choć jest małe?', 'Jak wygląda dziś dobro, które nie musi być perfekcyjne?', 'Co może być po prostu wystarczające?', 'Jaka drobna rzecz robi dziś największą różnicę?', 'Co pozwala Ci dziś nie dociskać wszystkiego do końca?'], en: ['Not everything has to be sharp to be good.', 'What is good enough today, even if it is not perfect?', 'Where can you allow yourself a little lightness?', 'What brightens your day, even if it is small?', 'What does goodness look like today without perfection?', 'What could simply be enough?', 'Which small thing makes the biggest difference today?', 'What lets you stop forcing everything to completion?'] } },
-      2: { label: { pl: 'Częściowe zachmurzenie', en: 'Partly cloudy' }, mood: { pl: 'Miękkie', en: 'Soft' }, prompts: { pl: ['Między światłem i cieniem też jest miejsce na oddech.', 'Co dziś jest pośrodku — nie ciężkie, nie lekkie, tylko prawdziwe?', 'Jak wygląda Twoja równowaga między jasnością i cieniem?', 'Co możesz zostawić niedopowiedziane, ale wciąż ważne?', 'Co dziś nie potrzebuje skrajności?', 'Jak wygląda łagodna równowaga w Twoim dniu?', 'Co może być jednocześnie niepewne i spokojne?', 'Gdzie półcień okazuje się wystarczający?'], en: ['There is breathing room between light and shadow too.', 'What sits in the middle today — not heavy, not light, just true?', 'What does your balance between brightness and shade look like?', 'What can stay unfinished and still matter?', 'What does not need an extreme today?', 'What does gentle balance look like in your day?', 'What can be uncertain and calm at the same time?', 'Where is half-light enough?'] } },
-      3: { label: { pl: 'Pochmurno', en: 'Overcast' }, mood: { pl: 'Matowe', en: 'Muted' }, prompts: { pl: ['Policz, ile odcieni szarości ma dziś niebo.', 'Co dziś jest ciche, ale obecne?', 'Gdzie potrzebujesz dziś łagodności zamiast energii?', 'Jakie rzeczy nadal istnieją, nawet jeśli nie błyszczą?', 'Co dziś może pozostać stonowane?', 'Jak smakuje dzień bez fajerwerków?', 'Co nadal ma znaczenie, gdy nic nie przyciąga uwagi?', 'Gdzie spokój ukrywa się pod zwyczajnością?'], en: ['Count how many shades of grey the sky holds today.', 'What is quiet today, but still present?', 'Where do you need gentleness instead of energy today?', 'What still matters, even if it is not shining?', 'What can stay muted today?', 'What does a day without fireworks feel like?', 'What still matters when nothing is demanding attention?', 'Where does calm hide inside ordinariness?'] } },
-      45: { label: { pl: 'Mgła', en: 'Fog' }, mood: { pl: 'Mleczne', en: 'Milky' }, prompts: { pl: ['Pozwól rzeczom być niewyraźnymi przez chwilę.', 'Co dziś nie musi być jeszcze rozstrzygnięte?', 'Jak wygląda zaufanie, kiedy nie widzisz całej drogi?', 'Co możesz dziś zrobić bez pełnej pewności?', 'Co możesz odłożyć bez poczucia winy, aż obraz się wyostrzy?', 'Jak brzmi cierpliwość wobec niewiadomego?', 'Co dziś bardziej potrzebuje obecności niż odpowiedzi?', 'W czym możesz zgodzić się na tymczasową niejasność?'], en: ['Let things stay unclear for a little while.', 'What does not need to be decided yet today?', 'What does trust look like when you cannot see the whole road?', 'What can you do today without complete certainty?', 'What can you put down without guilt until the view sharpens?', 'What does patience with the unknown sound like?', 'What needs presence more than an answer today?', 'Where can you allow temporary uncertainty?'] } },
-      48: { label: { pl: 'Szadź i mgła', en: 'Rime fog' }, mood: { pl: 'Zamglone', en: 'Hazy' }, prompts: { pl: ['To, co niewidoczne, też może mieć swój rytm.', 'Co działa w Tobie cicho, bez pokazywania się?', 'Jaką wartość ma dziś coś subtelnego?', 'Co dojrzewa poza zasięgiem wzroku?', 'Co potrzebuje dziś ciszy, żeby rosnąć?', 'Jak rozpoznajesz to, co delikatne, ale ważne?', 'Co istnieje nawet wtedy, gdy nie można tego nazwać?', 'Która niewidoczna praca trwa w tle?'], en: ['What is unseen can still have its own rhythm.', 'What is quietly working in you without showing itself?', 'What value does something subtle hold today?', 'What is ripening outside your field of view?', 'What needs quiet in order to grow today?', 'How do you recognize what is delicate but important?', 'What exists even when it cannot yet be named?', 'Which unseen work continues in the background?'] } },
-      51: { label: { pl: 'Lekka mżawka', en: 'Light drizzle' }, mood: { pl: 'Perliste', en: 'Pearled' }, prompts: { pl: ['Posłuchaj drobnych rzeczy, które zwykle giną w tle.', 'Co dziś jest delikatne, ale uporczywe?', 'Jakie małe sygnały warto dziś zauważyć?', 'Co pojawia się tylko wtedy, gdy zwalniasz?', 'Jaką wiadomość niosą dziś rzeczy najmniejsze?', 'Co cicho wraca do Ciebie raz po raz?', 'Które drobiazgi tworzą dziś nastrój dnia?', 'Co da się usłyszeć tylko w miękkim rytmie?'], en: ['Listen for the small things that usually fade into the background.', 'What is delicate today, but persistent?', 'Which small signals are worth noticing today?', 'What appears only when you slow down?', 'What message is carried by the smallest things today?', 'What quietly returns to you again and again?', 'Which details shape the mood of the day?', 'What can be heard only in a softer rhythm?'] } },
-      53: { label: { pl: 'Mżawka', en: 'Drizzle' }, mood: { pl: 'Wilgotne', en: 'Damp' }, prompts: { pl: ['Nie śpiesz się. Krople też nie muszą.', 'Jak wygląda dziś rytm, który nie wymaga pośpiechu?', 'Co zyskuje, kiedy pozwalasz mu trwać powoli?', 'Która część dnia mogłaby dziś być bardziej miękka?', 'Co dziś potrzebuje tempa spaceru, nie biegu?', 'Jak wygląda cierpliwość w małej skali?', 'Co może dojść do Ciebie tylko wtedy, gdy nie przyspieszasz?', 'Która czynność mogłaby dziś stać się prostsza i wolniejsza?'], en: ['Do not hurry. The drops do not have to either.', 'What rhythm today does not require haste?', 'What gains something when you let it unfold slowly?', 'Which part of the day could be softer today?', 'What needs walking pace rather than running today?', 'What does patience look like on a small scale?', 'What reaches you only when you stop speeding up?', 'Which task could become simpler and slower today?'] } },
-      55: { label: { pl: 'Gęsta mżawka', en: 'Dense drizzle' }, mood: { pl: 'Wilgotne', en: 'Damp' }, prompts: { pl: ['Niebo dziś mówi cicho, ale nie przestaje.', 'Co wraca dziś do Ciebie cierpliwie?', 'Jaką wiadomość niesie coś, co nie ustępuje?', 'Co trwa mimo braku spektaklu?', 'Co pozostaje ważne bez podnoszenia głosu?', 'Jak wygląda wytrwałość bez napięcia?', 'Które uczucie lub myśl utrzymuje się łagodnie, ale stale?', 'Co dzisiaj bardziej trwa niż błyszczy?'], en: ['The sky is speaking softly today, but it does not stop.', 'What keeps returning to you patiently today?', 'What message is carried by something that does not give up?', 'What lasts even without drama?', 'What stays important without raising its voice?', 'What does steadiness look like without tension?', 'Which feeling or thought keeps returning gently?', 'What lasts today more than it shines?'] } },
-      61: { label: { pl: 'Lekki deszcz', en: 'Light rain' }, mood: { pl: 'Srebrzyste', en: 'Silvery' }, prompts: { pl: ['Deszcz układa świat w prostszy rytm.', 'Co dziś może być prostsze, niż próbujesz to zrobić?', 'Jakie napięcie może dziś odpłynąć?', 'Co warto dziś puścić wolniej?', 'Co dzisiaj daje się uporządkować samo przez zwolnienie?', 'Jak wygląda ulga, która nie potrzebuje wielkich gestów?', 'Co myje się z Ciebie przez samą obecność chwili?', 'Jaką jedną rzecz możesz dziś uprościć?'], en: ['Rain arranges the world into a simpler rhythm.', 'What could be simpler today than you are making it?', 'What tension could loosen today?', 'What is worth letting move more slowly today?', 'What becomes ordered just by slowing down?', 'What does relief look like without large gestures?', 'What is washed from you simply by being present?', 'What is one thing you can simplify today?'] } },
-      63: { label: { pl: 'Deszcz', en: 'Rain' }, mood: { pl: 'Srebrzyste', en: 'Silvery' }, prompts: { pl: ['Posłuchaj przez chwilę tego, czego zwykle nie chcesz słyszeć.', 'Co dziś domaga się uwagi, choć wolisz to odłożyć?', 'Jak brzmi prawda, kiedy nie próbujesz jej zagłuszyć?', 'Co oczyszcza się przez samo nazwanie?', 'Co dziś potrzebuje uczciwego spojrzenia?', 'Jaką ulgę przynosi przyznanie czegoś po cichu?', 'Co wraca do porządku, kiedy przestajesz odwracać wzrok?', 'Jaka rzecz zasługuje dziś na spokojne uznanie?'], en: ['For a moment, listen to what you usually try not to hear.', 'What asks for attention today, even if you would rather postpone it?', 'What does truth sound like when you stop drowning it out?', 'What clears simply by being named?', 'What needs an honest look today?', 'What relief comes from quietly admitting something?', 'What returns to order when you stop looking away?', 'What deserves calm acknowledgment today?'] } },
-      65: { label: { pl: 'Mocny deszcz', en: 'Heavy rain' }, mood: { pl: 'Deszczowe', en: 'Rainy' }, prompts: { pl: ['Nie wszystko, co intensywne, musi być złe.', 'Co dziś jest mocne, ale niekoniecznie groźne?', 'Jak odróżniasz intensywność od chaosu?', 'Co może Cię dziś utrzymać pośrodku większego hałasu?', 'Co jest dziś pełne, ale nie niebezpieczne?', 'Jak utrzymać spokój bez odcinania się od siły chwili?', 'Co pozwala Ci przyjąć intensywność bez kurczenia się?', 'Jaki rodzaj siły możesz dziś uznać zamiast zwalczać?'], en: ['Not everything intense has to be bad.', 'What feels strong today without being harmful?', 'How do you tell intensity apart from chaos?', 'What can keep you steady in the middle of greater noise today?', 'What feels full today without being dangerous?', 'How do you stay calm without cutting yourself off from the force of the moment?', 'What lets you receive intensity without shrinking from it?', 'What kind of strength can you recognize today rather than resist?'] } },
-      71: { label: { pl: 'Lekki śnieg', en: 'Light snow' }, mood: { pl: 'Jasne', en: 'Pale' }, prompts: { pl: ['Pozwól myślom opaść miękko.', 'Co dziś może osiąść bez walki?', 'Jak wygląda łagodność w praktyce?', 'Co potrzebuje dziś ciszy bardziej niż rozwiązania?', 'Co może dziś spaść z Ciebie łagodnie?', 'Jakie napięcie mogłoby osiąść jak płatek śniegu?', 'Co prosi dziś bardziej o otulenie niż naprawę?', 'Jaka myśl mogłaby dziś wylądować delikatniej?'], en: ['Let your thoughts settle softly.', 'What can come to rest today without a struggle?', 'What does gentleness look like in practice?', 'What needs quiet more than a solution today?', 'What could fall away from you gently today?', 'What tension could settle like a snowflake?', 'What asks for covering rather than fixing today?', 'Which thought could land more softly today?'] } },
-      73: { label: { pl: 'Śnieg', en: 'Snow' }, mood: { pl: 'Przytłumione', en: 'Muted' }, prompts: { pl: ['Cisza też potrafi przykrywać świat.', 'Co dziś jest wyciszone, ale nie nieobecne?', 'Jaką ulgę daje dziś przytłumienie bodźców?', 'Co chcesz dziś ochronić miękką warstwą ciszy?', 'Co potrzebuje dziś łagodnego przykrycia?', 'Jak brzmi spokój, kiedy jest bardziej miękki niż pusty?', 'Co robi się łatwiejsze, gdy jest ciszej?', 'Co pozostaje ważne nawet w przytłumieniu?'], en: ['Silence can cover the world too.', 'What is muted today, but not absent?', 'What relief comes from having fewer signals today?', 'What would you like to protect with a soft layer of quiet?', 'What needs gentle covering today?', 'What does calm sound like when it is softer rather than empty?', 'What becomes easier when it is quieter?', 'What remains important even when it is hushed?'] } },
-      75: { label: { pl: 'Mocny śnieg', en: 'Heavy snow' }, mood: { pl: 'Białe', en: 'White' }, prompts: { pl: ['Dziś mniej znaczy więcej.', 'Co dziś naprawdę nie jest potrzebne?', 'Jak wygląda prostota, kiedy robi się miejsce?', 'Co możesz dziś odłożyć bez straty?', 'Z czego możesz dziś zrezygnować z ulgą?', 'Jak wygląda dzień, kiedy jest w nim mniej hałasu i więcej miejsca?', 'Co robi się wyraźniejsze, gdy wszystkiego jest mniej?', 'Co może dziś zostać tylko najważniejsze?'], en: ['Today, less means more.', 'What is truly unnecessary today?', 'What does simplicity look like when it makes room?', 'What can you set down today without losing anything?', 'What can you give up today with relief?', 'What does a day look like with less noise and more room?', 'What becomes clearer when there is less of everything?', 'What if only the most important thing remained today?'] } },
-      80: { label: { pl: 'Przelotny deszcz', en: 'Rain showers' }, mood: { pl: 'Ruchliwe', en: 'Restless' }, prompts: { pl: ['Rzeczy mogą przychodzić i odchodzić bez ostrzeżenia.', 'Co dziś jest chwilowe, a jednak warte zauważenia?', 'Jak reagujesz na zmienność bez napinania się?', 'Co wraca do równowagi po krótkim zakłóceniu?', 'Jak rozpoznajesz to, co przelotne, ale ważne?', 'Co mija szybciej, niż się obawiasz?', 'Co wraca do Ciebie po małym wahaniu?', 'Jak wygląda elastyczność wobec krótkich zmian?'], en: ['Things can come and go without warning.', 'What is brief today, yet worth noticing?', 'How do you respond to change without tightening up?', 'What returns to balance after a brief disruption?', 'How do you recognize what is brief but important?', 'What passes faster than you fear?', 'What comes back after a small wobble?', 'What does flexibility look like around quick changes?'] } },
-      81: { label: { pl: 'Przelotny deszcz', en: 'Rain showers' }, mood: { pl: 'Ruchliwe', en: 'Restless' }, prompts: { pl: ['Zobacz, co wraca po chwilowym deszczu.', 'Co odsłania się po krótkim zamieszaniu?', 'Jakie małe odrodzenie jest dziś możliwe?', 'Co wraca na swoje miejsce, gdy minie zakłócenie?', 'Co okazuje się nadal obecne po chwilowym chaosie?', 'Jak wygląda odbudowanie rytmu po krótkiej przerwie?', 'Co odzyskuje kształt po małym rozproszeniu?', 'Co dziś wraca łagodniej, niż się spodziewasz?'], en: ['Notice what returns after a passing rain.', 'What reveals itself after a brief disturbance?', 'What small renewal is possible today?', 'What settles back into place when the interruption passes?', 'What turns out to still be there after a brief spell of chaos?', 'What does rhythm returning after a brief pause look like?', 'What regains shape after a small disruption?', 'What comes back more gently than you expected today?'] } },
-      82: { label: { pl: 'Silne przelotne opady', en: 'Heavy showers' }, mood: { pl: 'Niespokojne', en: 'Unsettled' }, prompts: { pl: ['Oddychaj wolniej niż dzieje się pogoda.', 'Jak możesz zwolnić, kiedy świat przyspiesza?', 'Co dziś daje Ci rytm mocniejszy niż zamieszanie?', 'Jak utrzymujesz środek, gdy wszystko się przemieszcza?', 'Co może być dziś Twoim spokojniejszym tempem?', 'Jak wracasz do ciała, kiedy wszystko dzieje się naraz?', 'Co przypomina Ci dziś o własnym rytmie?', 'Co pomaga Ci nie gonić każdej zmiany?'], en: ['Breathe more slowly than the weather is changing.', 'How can you slow down when the world speeds up?', 'What gives you a steadier rhythm than the turmoil today?', 'How do you keep your center when everything is shifting?', 'What could be your calmer pace today?', 'How do you return to the body when everything happens at once?', 'What reminds you of your own rhythm today?', 'What helps you stop chasing every change?'] } },
-      95: { label: { pl: 'Burza', en: 'Thunderstorm' }, mood: { pl: 'Elektryczne', en: 'Electric' }, prompts: { pl: ['Gdy świat robi się głośny, szukaj tego, co stabilne.', 'Co dziś naprawdę daje Ci oparcie?', 'Jakie schronienie jest dla Ciebie realne, a nie symboliczne?', 'Co pozostaje Twoje nawet pośród hałasu?', 'Co jest dziś dla Ciebie ziemią pod stopami?', 'Gdzie kończy się hałas, a zaczyna oparcie?', 'Jak rozpoznajesz swoje miejsce schronienia?', 'Co jest nadal solidne, kiedy wszystko wokół drży?'], en: ['When the world gets loud, look for what stays steady.', 'What truly holds you today?', 'What shelter is real for you, not just symbolic?', 'What remains yours even in the middle of noise?', 'What is your ground today?', 'Where does noise end and support begin?', 'How do you recognize your place of shelter?', 'What stays solid when everything around you shakes?'] } },
-      96: { label: { pl: 'Burza z gradem', en: 'Thunderstorm with hail' }, mood: { pl: 'Elektryczne', en: 'Electric' }, prompts: { pl: ['Nie odpowiadaj pośpiechem na chaos.', 'Co dziś potrzebuje od Ciebie spokoju, nie reakcji?', 'Jak wygląda nieuleganie pędowi chwili?', 'Co ochroni Cię przed działaniem z samego napięcia?', 'Co możesz dziś zatrzymać, zanim zareagujesz?', 'Jak brzmi rozsądek pośród impulsu?', 'Co daje Ci pauzę, kiedy wszystko chce natychmiast?', 'Jak wygląda siła, która nie jest gwałtowna?'], en: ['Do not answer chaos with haste.', 'What needs calm from you today rather than reaction?', 'What does resisting the rush of the moment look like?', 'What protects you from acting out of tension alone?', 'What can you pause today before you react?', 'What does reason sound like inside impulse?', 'What gives you a pause when everything wants immediacy?', 'What does strength look like when it is not violent?'] } },
-      99: { label: { pl: 'Silna burza z gradem', en: 'Severe thunderstorm with hail' }, mood: { pl: 'Surowe', en: 'Severe' }, prompts: { pl: ['Zostań przy tym, co daje schronienie.', 'Co jest dziś Twoim najprawdziwszym bezpiecznym miejscem?', 'Jak rozpoznajesz, do czego wrócić, gdy robi się zbyt dużo?', 'Co pomaga Ci przetrwać, zamiast tylko reagować?', 'Co jest dziś naprawdę ochronne, a nie tylko znajome?', 'Jak wygląda wybór schronienia zamiast walki?', 'Co pomaga Ci wrócić do tego, co podstawowe?', 'Gdzie dziś jest Twoje najmocniejsze tak dla bezpieczeństwa?'], en: ['Stay close to what offers shelter.', 'What is your truest safe place today?', 'How do you know what to return to when it all becomes too much?', 'What helps you endure instead of merely react?', 'What is truly protective today rather than merely familiar?', 'What does choosing shelter instead of struggle look like?', 'What helps you return to what is basic?', 'Where is your strongest yes to safety today?'] } }
+      0: { label: { pl: 'Bezchmurnie', en: 'Clear sky' }, mood: { pl: 'Przejrzyste', en: 'Clear' }, prompts: { pl: ['Sprawdź, gdzie światło zatrzymuje się dziś najdłużej.'], en: ['Notice where the light lingers longest today.'] } },
+      1: { label: { pl: 'Przeważnie pogodnie', en: 'Mostly clear' }, mood: { pl: 'Jasne', en: 'Bright' }, prompts: { pl: ['Nie wszystko musi być wyraźne, by było dobre.'], en: ['Not everything has to be sharp to be good.'] } },
+      2: { label: { pl: 'Częściowe zachmurzenie', en: 'Partly cloudy' }, mood: { pl: 'Miękkie', en: 'Soft' }, prompts: { pl: ['Między światłem i cieniem też jest miejsce na oddech.'], en: ['There is breathing room between light and shadow too.'] } },
+      3: { label: { pl: 'Pochmurno', en: 'Overcast' }, mood: { pl: 'Matowe', en: 'Muted' }, prompts: { pl: ['Policz, ile odcieni szarości ma dziś niebo.'], en: ['Count how many shades of grey the sky holds today.'] } },
+      45: { label: { pl: 'Mgła', en: 'Fog' }, mood: { pl: 'Mleczne', en: 'Milky' }, prompts: { pl: ['Pozwól rzeczom być niewyraźnymi przez chwilę.'], en: ['Let things stay unclear for a little while.'] } },
+      48: { label: { pl: 'Szadź i mgła', en: 'Rime fog' }, mood: { pl: 'Zamglone', en: 'Hazy' }, prompts: { pl: ['To, co niewidoczne, też może mieć swój rytm.'], en: ['What is unseen can still have its own rhythm.'] } },
+      51: { label: { pl: 'Lekka mżawka', en: 'Light drizzle' }, mood: { pl: 'Perliste', en: 'Pearled' }, prompts: { pl: ['Posłuchaj drobnych rzeczy, które zwykle giną w tle.'], en: ['Listen for the small things that usually fade into the background.'] } },
+      53: { label: { pl: 'Mżawka', en: 'Drizzle' }, mood: { pl: 'Wilgotne', en: 'Damp' }, prompts: { pl: ['Nie śpiesz się. Krople też nie muszą.'], en: ['Do not hurry. The drops do not have to either.'] } },
+      55: { label: { pl: 'Gęsta mżawka', en: 'Dense drizzle' }, mood: { pl: 'Wilgotne', en: 'Damp' }, prompts: { pl: ['Niebo dziś mówi cicho, ale nie przestaje.'], en: ['The sky is speaking softly today, but it does not stop.'] } },
+      61: { label: { pl: 'Lekki deszcz', en: 'Light rain' }, mood: { pl: 'Srebrzyste', en: 'Silvery' }, prompts: { pl: ['Deszcz układa świat w prostszy rytm.'], en: ['Rain arranges the world into a simpler rhythm.'] } },
+      63: { label: { pl: 'Deszcz', en: 'Rain' }, mood: { pl: 'Srebrzyste', en: 'Silvery' }, prompts: { pl: ['Posłuchaj przez chwilę tego, czego zwykle nie chcesz słyszeć.'], en: ['For a moment, listen to what you usually try not to hear.'] } },
+      65: { label: { pl: 'Mocny deszcz', en: 'Heavy rain' }, mood: { pl: 'Deszczowe', en: 'Rainy' }, prompts: { pl: ['Nie wszystko, co intensywne, musi być złe.'], en: ['Not everything intense has to be bad.'] } },
+      71: { label: { pl: 'Lekki śnieg', en: 'Light snow' }, mood: { pl: 'Jasne', en: 'Pale' }, prompts: { pl: ['Pozwól myślom opaść miękko.'], en: ['Let your thoughts settle softly.'] } },
+      73: { label: { pl: 'Śnieg', en: 'Snow' }, mood: { pl: 'Przytłumione', en: 'Muted' }, prompts: { pl: ['Cisza też potrafi przykrywać świat.'], en: ['Silence can cover the world too.'] } },
+      75: { label: { pl: 'Mocny śnieg', en: 'Heavy snow' }, mood: { pl: 'Białe', en: 'White' }, prompts: { pl: ['Dziś mniej znaczy więcej.'], en: ['Today, less means more.'] } },
+      80: { label: { pl: 'Przelotny deszcz', en: 'Rain showers' }, mood: { pl: 'Ruchliwe', en: 'Restless' }, prompts: { pl: ['Rzeczy mogą przychodzić i odchodzić bez ostrzeżenia.'], en: ['Things can come and go without warning.'] } },
+      81: { label: { pl: 'Przelotny deszcz', en: 'Rain showers' }, mood: { pl: 'Ruchliwe', en: 'Restless' }, prompts: { pl: ['Zobacz, co wraca po chwilowym deszczu.'], en: ['Notice what returns after a passing rain.'] } },
+      82: { label: { pl: 'Silne przelotne opady', en: 'Heavy showers' }, mood: { pl: 'Niespokojne', en: 'Unsettled' }, prompts: { pl: ['Oddychaj wolniej niż dzieje się pogoda.'], en: ['Breathe more slowly than the weather is changing.'] } },
+      95: { label: { pl: 'Burza', en: 'Thunderstorm' }, mood: { pl: 'Elektryczne', en: 'Electric' }, prompts: { pl: ['Gdy świat robi się głośny, szukaj tego, co stabilne.'], en: ['When the world gets loud, look for what stays steady.'] } },
+      96: { label: { pl: 'Burza z gradem', en: 'Thunderstorm with hail' }, mood: { pl: 'Elektryczne', en: 'Electric' }, prompts: { pl: ['Nie odpowiadaj pośpiechem na chaos.'], en: ['Do not answer chaos with haste.'] } },
+      99: { label: { pl: 'Silna burza z gradem', en: 'Severe thunderstorm with hail' }, mood: { pl: 'Surowe', en: 'Severe' }, prompts: { pl: ['Zostań przy tym, co daje schronienie.'], en: ['Stay close to what offers shelter.'] } }
     };
 
     function asDate(value) {
       if (value instanceof Date) return value;
-      if (typeof value === 'number') {
-        return new Date(value > 1e12 ? value : value * 1000);
-      }
+      if (typeof value === 'number') return new Date(value > 1e12 ? value : value * 1000);
       return new Date(value);
     }
 
     function formatTime(dateValue, timezone = currentLocation.timezone) {
       const date = asDate(dateValue);
       return new Intl.DateTimeFormat(LANG === 'en' ? 'en-GB' : 'pl-PL', {
-        hour: '2-digit', minute: '2-digit', hour12: false, timeZone: timezone
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: timezone
       }).format(date);
     }
 
     function getLocalDateParts(date, timezone) {
-      const parts = new Intl.DateTimeFormat('en-CA', { timeZone: timezone, year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(date);
+      const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: timezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(date);
       const map = Object.fromEntries(parts.map((p) => [p.type, p.value]));
       return { year: Number(map.year), month: Number(map.month), day: Number(map.day) };
     }
@@ -800,12 +786,18 @@
     function formatMoonEvent(date, timezone) {
       if (!(date instanceof Date) || Number.isNaN(date.getTime())) return '—';
       return new Intl.DateTimeFormat(LANG === 'en' ? 'en-GB' : 'pl-PL', {
-        hour: '2-digit', minute: '2-digit', hour12: false, timeZone: timezone
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: timezone
       }).format(date);
     }
 
     function applyStaticText() {
-      const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+      };
       setText('labelSunrise', t('sunrise'));
       setText('labelSunset', t('sunset'));
       setText('labelMoonPhase', t('moon'));
@@ -824,7 +816,10 @@
 
     function updateClock() {
       const time = new Intl.DateTimeFormat(LANG === 'en' ? 'en-GB' : 'pl-PL', {
-        hour: '2-digit', minute: '2-digit', hour12: false, timeZone: currentLocation.timezone || DEFAULT_LOCATION.timezone
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: currentLocation.timezone || DEFAULT_LOCATION.timezone
       }).format(new Date());
       clockEl.textContent = `${t('nowPrefix')}: ${time}`;
     }
@@ -836,7 +831,7 @@
     function updateLivePositions() {
       updateClock();
       if (!liveSceneData) return;
-      const timezone = liveSceneData.timezone || currentLocation.timezone || DEFAULT_LOCATION.timezone;
+
       const currentDate = getNowInTimezone();
       const bodyAltitudes = getBodyAltitudes(currentDate, liveSceneData.latitude, liveSceneData.longitude);
       const liveCurrent = {
@@ -848,6 +843,7 @@
         showers: liveSceneData.showers || 0,
         is_day: typeof bodyAltitudes.sunAltitude === 'number' ? (bodyAltitudes.sunAltitude > -0.8 ? 1 : 0) : 0
       };
+
       const scene = getSceneFromWeather(liveCurrent, liveSceneData.sunriseDate, liveSceneData.sunsetDate);
       applyScene(scene, liveCurrent, liveSceneData.sunriseDate, liveSceneData.sunsetDate);
       const prominentConstellation = getProminentConstellation(currentDate, liveSceneData.latitude, liveSceneData.longitude, scene === 'night');
@@ -858,6 +854,7 @@
       const phases = LANG === 'en'
         ? ['New moon','Waxing crescent','First quarter','Waxing gibbous','Full moon','Waning gibbous','Last quarter','Waning crescent']
         : ['Nów','Przybywający sierp','Pierwsza kwadra','Przybywający garb','Pełnia','Ubywający garb','Ostatnia kwadra','Ubywający sierp'];
+
       const knownNewMoon = new Date('2026-01-18T00:00:00Z');
       const synodicMonth = 29.53058867;
       const days = (date - knownNewMoon) / 86400000;
@@ -870,6 +867,7 @@
       const phases = LANG === 'en'
         ? ['New moon','Waxing crescent','First quarter','Waxing gibbous','Full moon','Waning gibbous','Last quarter','Waning crescent']
         : ['Nów','Przybywający sierp','Pierwsza kwadra','Przybywający garb','Pełnia','Ubywający garb','Ostatnia kwadra','Ubywający sierp'];
+
       if (typeof phaseValue !== 'number') return null;
       if (phaseValue < 0.0625 || phaseValue >= 0.9375) return phases[0];
       if (phaseValue < 0.1875) return phases[1];
@@ -883,17 +881,37 @@
 
     function getAstronomyForDay(date, latitude, longitude, timezone) {
       if (!window.SunCalc) return null;
+
       const localNoon = buildLocalNoon(date, timezone);
+      const prevDayNoon = new Date(localNoon.getTime() - 24 * 60 * 60 * 1000);
+      const nextDayNoon = new Date(localNoon.getTime() + 24 * 60 * 60 * 1000);
+
       const sunTimes = window.SunCalc.getTimes(localNoon, latitude, longitude);
-      const moonTimes = window.SunCalc.getMoonTimes(localNoon, latitude, longitude);
+
+      const moonToday = window.SunCalc.getMoonTimes(localNoon, latitude, longitude);
+      const moonPrev = window.SunCalc.getMoonTimes(prevDayNoon, latitude, longitude);
+      const moonNext = window.SunCalc.getMoonTimes(nextDayNoon, latitude, longitude);
+
       const illumination = window.SunCalc.getMoonIllumination(localNoon);
+
+      const pickNearest = (events) => {
+        const valid = events
+          .filter(Boolean)
+          .filter(d => d instanceof Date && !Number.isNaN(d.getTime()))
+          .sort((a, b) => Math.abs(a - date) - Math.abs(b - date));
+        return valid[0] || null;
+      };
+
+      const moonrise = pickNearest([moonToday.rise, moonPrev.rise, moonNext.rise]);
+      const moonset = pickNearest([moonToday.set, moonPrev.set, moonNext.set]);
+
       return {
         sunrise: sunTimes.sunrise || null,
         sunset: sunTimes.sunset || null,
-        moonrise: moonTimes.rise || null,
-        moonset: moonTimes.set || null,
-        moonAlwaysUp: Boolean(moonTimes.alwaysUp),
-        moonAlwaysDown: Boolean(moonTimes.alwaysDown),
+        moonrise,
+        moonset,
+        moonAlwaysUp: Boolean(moonToday.alwaysUp),
+        moonAlwaysDown: Boolean(moonToday.alwaysDown),
         moonPhaseValue: illumination?.phase ?? null
       };
     }
@@ -945,8 +963,13 @@
       constellationLayer.innerHTML = '';
       constellationLayer.style.opacity = visible && constellation ? '1' : '0';
       if (!visible || !constellation) return;
+
       const anchorX = 58, anchorY = 34, scale = 1.2;
-      const points = constellation.stars.map((star) => ({ x: anchorX + (star.x - 50) * scale, y: anchorY + (star.y - 40) * scale }));
+      const points = constellation.stars.map((star) => ({
+        x: anchorX + (star.x - 50) * scale,
+        y: anchorY + (star.y - 40) * scale
+      }));
+
       for (const point of points) {
         const starEl = document.createElement('div');
         starEl.className = 'constellation-star';
@@ -962,10 +985,16 @@
       const precipitation = current.precipitation || 0;
       const snowfall = current.snowfall || 0;
       const showers = current.showers || 0;
+
       if ([71,73,75,77,85,86].includes(weatherCode) || snowfall > 0) return 'snow';
       if ([51,53,55,61,63,65,80,81,82].includes(weatherCode) || (precipitation > 0.2 && snowfall <= 0 && showers >= 0)) return 'rain';
       if (!current.is_day) return 'night';
-      if (!(sunriseDate instanceof Date) || Number.isNaN(sunriseDate.getTime()) || !(sunsetDate instanceof Date) || Number.isNaN(sunsetDate.getTime())) return current.is_day ? 'day' : 'night';
+
+      if (!(sunriseDate instanceof Date) || Number.isNaN(sunriseDate.getTime()) ||
+          !(sunsetDate instanceof Date) || Number.isNaN(sunsetDate.getTime())) {
+        return current.is_day ? 'day' : 'night';
+      }
+
       const dawnEnd = sunriseDate.getTime() + 90 * 60 * 1000;
       const duskStart = sunsetDate.getTime() - 90 * 60 * 1000;
       if (currentTime.getTime() <= dawnEnd) return 'dawn';
@@ -1001,10 +1030,14 @@
       document.documentElement.style.setProperty('--sky-bottom', palette.skyBottom);
 
       const now = asDate(current.time);
-      const daylightTotal = (sunriseDate instanceof Date && sunsetDate instanceof Date && !Number.isNaN(sunriseDate.getTime()) && !Number.isNaN(sunsetDate.getTime()))
+      const daylightTotal = (sunriseDate instanceof Date && sunsetDate instanceof Date &&
+        !Number.isNaN(sunriseDate.getTime()) && !Number.isNaN(sunsetDate.getTime()))
         ? Math.max(1, sunsetDate.getTime() - sunriseDate.getTime()) : 1;
-      const daylightProgress = (sunriseDate instanceof Date && sunsetDate instanceof Date && !Number.isNaN(sunriseDate.getTime()) && !Number.isNaN(sunsetDate.getTime()))
+
+      const daylightProgress = (sunriseDate instanceof Date && sunsetDate instanceof Date &&
+        !Number.isNaN(sunriseDate.getTime()) && !Number.isNaN(sunsetDate.getTime()))
         ? clamp((now.getTime() - sunriseDate.getTime()) / daylightTotal, 0, 1) : palette.sunPath;
+
       const sunPath = scene === 'night' ? palette.sunPath : daylightProgress;
 
       const bodyAltitudes = getBodyAltitudes(now, currentLocation.latitude, currentLocation.longitude);
@@ -1023,6 +1056,7 @@
       const moonTop = 235 - Math.sin(Math.PI * clamp(moonPath, 0, 1)) * 155;
       moon.style.left = `${moonLeft}%`;
       moon.style.top = `${moonTop}px`;
+
       let moonOpacity = 0;
       if (moonVisible) moonOpacity = scene === 'night' ? 1 : scene === 'day' ? 0.16 : Math.max(0.28, palette.moonOpacity);
       moon.style.opacity = moonOpacity;
@@ -1033,6 +1067,7 @@
       rain.style.opacity = palette.rain;
       snow.style.opacity = palette.snow;
       birds.style.opacity = palette.birds;
+
       [...cloudLayer.children].forEach((cloud, index) => {
         const baseOpacity = Math.max(0, palette.clouds - index * 0.14);
         cloud.style.opacity = scene === 'snow' ? Math.max(0, baseOpacity - 0.18) : baseOpacity;
@@ -1040,26 +1075,53 @@
     }
 
     async function searchLocation(query) {
-      const params = new URLSearchParams({ name: query, count: '1', language: LANG, format: 'json' });
-      const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?${params.toString()}`, { headers: { Accept: 'application/json' } });
+      const params = new URLSearchParams({
+        name: query,
+        count: '1',
+        language: LANG,
+        format: 'json'
+      });
+      const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?${params.toString()}`, {
+        headers: { Accept: 'application/json' }
+      });
       if (!response.ok) throw new Error(`Geocoding HTTP ${response.status}`);
       const data = await response.json();
       const result = data.results?.[0];
       if (!result) throw new Error('location_not_found');
-      return { name: [result.name, result.admin1, result.country].filter(Boolean).join(', '), latitude: result.latitude, longitude: result.longitude, timezone: result.timezone || 'auto' };
+
+      return {
+        name: [result.name, result.admin1, result.country].filter(Boolean).join(', '),
+        latitude: result.latitude,
+        longitude: result.longitude,
+        timezone: result.timezone || 'auto'
+      };
     }
 
     async function fetchWeather(location) {
-      const params = new URLSearchParams({ latitude: String(location.latitude), longitude: String(location.longitude), current: 'temperature_2m,weather_code,cloud_cover,is_day,precipitation,snowfall,showers,wind_speed_10m,wind_gusts_10m', hourly: 'weather_code,precipitation,snowfall,showers', daily: 'sunrise,sunset', timezone: location.timezone || 'auto', timeformat: 'unixtime', forecast_days: '1' });
-      const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params.toString()}`, { headers: { Accept: 'application/json' } });
+      const params = new URLSearchParams({
+        latitude: String(location.latitude),
+        longitude: String(location.longitude),
+        current: 'temperature_2m,weather_code,cloud_cover,is_day,precipitation,snowfall,showers,wind_speed_10m,wind_gusts_10m',
+        hourly: 'weather_code,precipitation,snowfall,showers',
+        daily: 'sunrise,sunset',
+        timezone: location.timezone || 'auto',
+        timeformat: 'unixtime',
+        forecast_days: '1'
+      });
+      const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params.toString()}`, {
+        headers: { Accept: 'application/json' }
+      });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
     }
 
     function pickPrompt(promptList, seedParts = []) {
       if (!Array.isArray(promptList) || promptList.length === 0) {
-        return LANG === 'en' ? 'Look up for a moment and notice what the sky is doing.' : 'Spójrz przez chwilę w górę i zauważ, co robi niebo.';
+        return LANG === 'en'
+          ? 'Look up for a moment and notice what the sky is doing.'
+          : 'Spójrz przez chwilę w górę i zauważ, co robi niebo.';
       }
+
       const seed = seedParts.join('|');
       let hash = 0;
       for (let i = 0; i < seed.length; i += 1) {
@@ -1073,7 +1135,9 @@
     function applyWeather(data) {
       const current = data.current;
       if (!current) throw new Error('weather_incomplete');
+
       lastWeather = data;
+
       const nearNow = getNearestHourlySample(data, current.time);
       const effectiveCode = nearNow?.weather_code ?? current.weather_code;
       const effectiveCurrent = {
@@ -1083,12 +1147,13 @@
         snowfall: Math.max(current.snowfall || 0, nearNow?.snowfall || 0),
         showers: Math.max(current.showers || 0, nearNow?.showers || 0)
       };
+
       const weatherInfo = weatherCodeMap[effectiveCurrent.weather_code] || {
         label: { pl: 'Warunki zmienne', en: 'Variable conditions' },
         mood: { pl: 'Nieoczywiste', en: 'Uncertain' },
         prompts: {
-          pl: ['Zobacz, jaka pogoda naprawdę tu jest.', 'Co w tym momencie jest najbardziej rzeczywiste?', 'Jakie małe odczucie warto dziś zauważyć?'],
-          en: ['Notice what the weather is actually doing here.', 'What feels most real in this moment?', 'Which small feeling is worth noticing today?']
+          pl: ['Zobacz, jaka pogoda naprawdę tu jest.'],
+          en: ['Notice what the weather is actually doing here.']
         }
       };
 
@@ -1097,11 +1162,26 @@
       const astronomy = getAstronomyForDay(currentDate, currentLocation.latitude, currentLocation.longitude, timezone);
       const sunriseDate = astronomy?.sunrise || (data.daily?.sunrise?.[0] != null ? asDate(data.daily.sunrise[0]) : null);
       const sunsetDate = astronomy?.sunset || (data.daily?.sunset?.[0] != null ? asDate(data.daily.sunset[0]) : null);
+
       const scene = getSceneFromWeather(effectiveCurrent, sunriseDate, sunsetDate);
       applyScene(scene, effectiveCurrent, sunriseDate, sunsetDate);
-      renderConstellation(getProminentConstellation(currentDate, currentLocation.latitude, currentLocation.longitude, scene === 'night'), scene === 'night');
+      renderConstellation(
+        getProminentConstellation(currentDate, currentLocation.latitude, currentLocation.longitude, scene === 'night'),
+        scene === 'night'
+      );
 
-      liveSceneData = { sunriseDate, sunsetDate, timezone, latitude: currentLocation.latitude, longitude: currentLocation.longitude, cloud_cover: effectiveCurrent.cloud_cover || 0, weather_code: effectiveCurrent.weather_code, precipitation: effectiveCurrent.precipitation || 0, snowfall: effectiveCurrent.snowfall || 0, showers: effectiveCurrent.showers || 0 };
+      liveSceneData = {
+        sunriseDate,
+        sunsetDate,
+        timezone,
+        latitude: currentLocation.latitude,
+        longitude: currentLocation.longitude,
+        cloud_cover: effectiveCurrent.cloud_cover || 0,
+        weather_code: effectiveCurrent.weather_code,
+        precipitation: effectiveCurrent.precipitation || 0,
+        snowfall: effectiveCurrent.snowfall || 0,
+        showers: effectiveCurrent.showers || 0
+      };
 
       tempEl.textContent = `${Math.round(current.temperature_2m)}°C`;
       stateEl.textContent = weatherInfo.label[LANG] || weatherInfo.label.pl;
@@ -1109,11 +1189,28 @@
       skyMoodEl.textContent = weatherInfo.mood[LANG] || weatherInfo.mood.pl;
       sunriseTimeEl.textContent = sunriseDate ? formatMoonEvent(sunriseDate, timezone) : '—';
       sunsetTimeEl.textContent = sunsetDate ? formatMoonEvent(sunsetDate, timezone) : '—';
-      moonPhaseEl.textContent = astronomy?.moonPhaseValue != null ? moonPhaseFromIllumination(astronomy.moonPhaseValue) : moonPhaseFromDate(currentDate);
-      moonriseTimeEl.textContent = astronomy?.moonAlwaysUp ? t('allDay') : astronomy?.moonrise ? formatMoonEvent(astronomy.moonrise, timezone) : t('moonNeverRises');
-      moonsetTimeEl.textContent = astronomy?.moonAlwaysDown ? t('moonNeverSets') : astronomy?.moonset ? formatMoonEvent(astronomy.moonset, timezone) : t('moonNeverSets');
+      moonPhaseEl.textContent = astronomy?.moonPhaseValue != null
+        ? moonPhaseFromIllumination(astronomy.moonPhaseValue)
+        : moonPhaseFromDate(currentDate);
+
+      if (astronomy?.moonAlwaysUp) {
+        moonriseTimeEl.textContent = t('allDay');
+        moonsetTimeEl.textContent = t('moonNeverSets');
+      } else if (astronomy?.moonAlwaysDown) {
+        moonriseTimeEl.textContent = t('moonNeverRises');
+        moonsetTimeEl.textContent = t('moonNeverSets');
+      } else {
+        moonriseTimeEl.textContent = astronomy?.moonrise ? formatMoonEvent(astronomy.moonrise, timezone) : '—';
+        moonsetTimeEl.textContent = astronomy?.moonset ? formatMoonEvent(astronomy.moonset, timezone) : '—';
+      }
+
       const promptList = weatherInfo.prompts?.[LANG] || weatherInfo.prompts?.pl || [];
-      reflectionEl.textContent = pickPrompt(promptList, [effectiveCurrent.weather_code, currentLocation.name, currentDate.toISOString().slice(0, 13)]);
+      reflectionEl.textContent = pickPrompt(promptList, [
+        effectiveCurrent.weather_code,
+        currentLocation.name,
+        currentDate.toISOString().slice(0, 13)
+      ]);
+
       placeLabelEl.textContent = `${t('placePrefix')} · ${currentLocation.name}`;
       statusNoteEl.textContent = `${t('sourcePrefix')} ${t('sourceValue')} · ${t('lastUpdate')} ${formatTime(current.time, timezone)}`;
       updateClock();
@@ -1121,8 +1218,16 @@
 
     async function refreshWeather(showLoading = true) {
       try {
-        refreshBtn.disabled = true; locateBtn.disabled = true; searchBtn.disabled = true; locationInput.disabled = true;
-        if (showLoading) { stateEl.textContent = t('loadingWeather'); statusNoteEl.textContent = t('fetchingLatest'); }
+        refreshBtn.disabled = true;
+        locateBtn.disabled = true;
+        searchBtn.disabled = true;
+        locationInput.disabled = true;
+
+        if (showLoading) {
+          stateEl.textContent = t('loadingWeather');
+          statusNoteEl.textContent = t('fetchingLatest');
+        }
+
         const data = await fetchWeather(currentLocation);
         if (data.timezone) currentLocation.timezone = data.timezone;
         applyWeather(data);
@@ -1131,22 +1236,38 @@
         stateEl.textContent = t('refreshFailed');
         reflectionEl.textContent = t('calmWindow');
         statusNoteEl.textContent = t('weatherConnectionFailed');
+
         if (!lastWeather) {
-          tempEl.textContent = '--°C'; conditionDetailEl.textContent = ''; skyMoodEl.textContent = '--'; sunriseTimeEl.textContent = '--:--'; sunsetTimeEl.textContent = '--:--';
-          moonPhaseEl.textContent = moonPhaseFromDate(new Date()); moonriseTimeEl.textContent = '--:--'; moonsetTimeEl.textContent = '--:--';
+          tempEl.textContent = '--°C';
+          conditionDetailEl.textContent = '';
+          skyMoodEl.textContent = '--';
+          sunriseTimeEl.textContent = '--:--';
+          sunsetTimeEl.textContent = '--:--';
+          moonPhaseEl.textContent = moonPhaseFromDate(new Date());
+          moonriseTimeEl.textContent = '—';
+          moonsetTimeEl.textContent = '—';
         }
       } finally {
-        refreshBtn.disabled = false; locateBtn.disabled = false; searchBtn.disabled = false; locationInput.disabled = false;
+        refreshBtn.disabled = false;
+        locateBtn.disabled = false;
+        searchBtn.disabled = false;
+        locationInput.disabled = false;
       }
     }
 
     async function handleLocationSearch(event) {
       event.preventDefault();
       const query = locationInput.value.trim();
-      if (!query) { statusNoteEl.textContent = t('typeLocation'); return; }
+      if (!query) {
+        statusNoteEl.textContent = t('typeLocation');
+        return;
+      }
+
       try {
         statusNoteEl.textContent = t('searchingPlace');
-        searchBtn.disabled = true; locationInput.disabled = true;
+        searchBtn.disabled = true;
+        locationInput.disabled = true;
+
         const foundLocation = await searchLocation(query);
         currentLocation = foundLocation;
         locationInput.value = foundLocation.name;
@@ -1155,17 +1276,37 @@
         console.error(error);
         statusNoteEl.textContent = error.message === 'location_not_found' ? t('placeNotFound') : t('searchFailed');
       } finally {
-        searchBtn.disabled = false; locationInput.disabled = false;
+        searchBtn.disabled = false;
+        locationInput.disabled = false;
       }
     }
 
     function useBrowserLocation() {
-      if (!navigator.geolocation) { statusNoteEl.textContent = t('geoUnavailable'); return; }
+      if (!navigator.geolocation) {
+        statusNoteEl.textContent = t('geoUnavailable');
+        return;
+      }
+
       statusNoteEl.textContent = t('askGeo');
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        currentLocation = { name: t('myLocation'), latitude: position.coords.latitude, longitude: position.coords.longitude, timezone: 'auto' };
-        await refreshWeather(true);
-      }, () => { statusNoteEl.textContent = t('geoFailed'); }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          currentLocation = {
+            name: t('myLocation'),
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            timezone: 'auto'
+          };
+          await refreshWeather(true);
+        },
+        () => {
+          statusNoteEl.textContent = t('geoFailed');
+        },
+        {
+          enableHighAccuracy: false,
+          timeout: 10000,
+          maximumAge: 300000
+        }
+      );
     }
 
     function runSmokeTests() {
@@ -1182,10 +1323,25 @@
       console.assert(document.getElementById('snow') !== null, 'Snow layer should exist');
       console.assert(document.getElementById('conditionDetail') !== null, 'Condition detail field should exist');
       console.assert(document.querySelectorAll('.flake').length >= 40, 'Snow scene should have enough flakes');
-      console.assert(getSceneFromWeather({ time: Date.now(), weather_code: 85, precipitation: 0, snowfall: 0.2, showers: 0, is_day: 1 }, new Date(Date.now()-3600000), new Date(Date.now()+3600000)) === 'snow', 'Snow showers should trigger snow scene');
+      console.assert(
+        getSceneFromWeather(
+          { time: Date.now(), weather_code: 85, precipitation: 0, snowfall: 0.2, showers: 0, is_day: 1 },
+          new Date(Date.now() - 3600000),
+          new Date(Date.now() + 3600000)
+        ) === 'snow',
+        'Snow showers should trigger snow scene'
+      );
       console.assert(typeof pickPrompt === 'function', 'pickPrompt should be defined');
       console.assert(typeof getNearestHourlySample === 'function', 'getNearestHourlySample should be defined');
-      const hourlySample = getNearestHourlySample({ hourly: { time: [1742000000,1742003600,1742007200], weather_code: [3,85,3], precipitation: [0,0.4,0], snowfall: [0,0.2,0], showers: [0,0,0] } }, 1742003600);
+      const hourlySample = getNearestHourlySample({
+        hourly: {
+          time: [1742000000, 1742003600, 1742007200],
+          weather_code: [3, 85, 3],
+          precipitation: [0, 0.4, 0],
+          snowfall: [0, 0.2, 0],
+          showers: [0, 0, 0]
+        }
+      }, 1742003600);
       console.assert(hourlySample.weather_code === 85 && hourlySample.snowfall >= 0.2, 'Hourly sample should preserve nearby snow');
       console.assert(typeof pickPrompt(['a','b'], ['x']) === 'string', 'pickPrompt should return a string');
     }
@@ -1193,7 +1349,10 @@
     refreshBtn.addEventListener('click', () => refreshWeather(true));
     locateBtn.addEventListener('click', useBrowserLocation);
     locationForm.addEventListener('submit', handleLocationSearch);
-    searchBtn.addEventListener('click', (event) => { event.preventDefault(); handleLocationSearch(event); });
+    searchBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      handleLocationSearch(event);
+    });
 
     applyStaticText();
     runSmokeTests();
