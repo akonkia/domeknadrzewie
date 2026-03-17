@@ -213,12 +213,6 @@
     .quick-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .quick-card {
-      background: white;
-      box-shadow: var(--shadow);
     }
 
     .single-feature {
@@ -227,42 +221,49 @@
       margin: 0 auto;
     }
 
+    .quick-card {
+      background: rgba(255,255,255,0.97);
+      border: 1px solid rgba(36,49,38,0.08);
+      box-shadow: 0 14px 30px rgba(32,42,33,0.06);
+      overflow: hidden;
+    }
+
     .quick-card-top {
-      background: linear-gradient(135deg, #f0b248, #fb9b27);
-      color: white;
-      padding: 26px;
-      min-height: 170px;
+      padding: 28px 30px 18px;
+      background: #fbfaf6;
+      border-bottom: 1px solid rgba(36,49,38,0.08);
+    }
+
+    .quick-kicker {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      background: rgba(103,135,96,0.10);
+      color: var(--sage);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .quick-card-top h3 {
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 12px;
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+      text-transform: none;
     }
 
-    .quick-card-text {
-      display: block;
-      height: auto;
-      padding: 24px 26px;
-      background: #f8f6f0;
-    }
-
-    .quick-card-text p {
-      margin: 0 0 14px;
+    .quick-card-top p {
+      margin: 0;
       color: var(--muted);
-      line-height: 1.75;
-      font-size: 0.97rem;
-    }
-
-    .quick-card-text p:last-child {
-      margin-bottom: 0;
+      line-height: 1.8;
+      font-size: 0.98rem;
     }
 
     .quick-card-bottom {
-      background: #f6f4ee;
-      border-top: 1px solid rgba(36,49,38,0.08);
-      padding: 20px;
+      padding: 22px 30px 26px;
+      background: white;
     }
 
     .quick-list-title {
@@ -271,42 +272,53 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
     }
 
     .quick-list {
       margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-list li {
+      position: relative;
       padding-left: 18px;
       color: var(--muted);
       line-height: 1.75;
-      font-size: 0.97rem;
+      font-size: 0.98rem;
+    }
+
+    .quick-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.75em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      transform: translateY(-50%);
     }
 
     .quick-list li + li {
-      margin-top: 8px;
+      margin-top: 10px;
+    }
+
+    .quick-list a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .quick-list a:hover {
+      color: var(--sage);
+      border-bottom-color: rgba(103,135,96,0.35);
     }
 
     .page-wrap {
       padding: 48px 0 40px;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-
-    .section-title p {
-      margin: 12px auto 0;
-      max-width: 62ch;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1rem;
     }
 
     .materials-grid {
@@ -314,6 +326,14 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
       margin-top: 24px;
+    }
+
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -110px;
+      visibility: hidden;
+      grid-column: 1 / -1;
     }
 
     .material-card,
@@ -569,6 +589,12 @@
         width: 100%;
         max-width: 220px;
       }
+
+      .quick-card-top,
+      .quick-card-bottom {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
   </style>
 </head>
@@ -577,7 +603,7 @@
     <div class="container nav">
       <a class="brand" href="/" aria-label="Projekt: Domek na Drzewie">
         <div class="brand-mark">
-          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
         </div>
         <div>
           <div class="brand-title">Projekt: Domek na Drzewie</div>
@@ -587,8 +613,8 @@
 
       <nav class="nav-links" aria-label="Nawigacja">
         <a href="/">O projekcie</a>
-        <a href="/materials/" class="active" aria-current="page">Materiały</a>
-        <a class="lang-link" href="/en/materials/" lang="en" hreflang="en">English</a>
+        <a href="/materialy/" class="active" aria-current="page">Materiały</a>
+        <a class="lang-link" href="/en/materialy/" lang="en" hreflang="en">English</a>
         <a href="/sky.html">Niebo dziś</a>
         <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
         <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
@@ -610,14 +636,17 @@
     <div class="container quick-grid">
       <article class="quick-card single-feature">
         <div class="quick-card-top">
-          <h3>Zainspiruj się do działania</h3>
-          <p>Cała biblioteka materiałów.</p>
+          <span class="quick-kicker">Biblioteka</span>
+          <h3>Dostępne serie materiałów</h3>
+          <p>Tu znajdziesz aktualne i przyszłe cykle kart, refleksji oraz materiałów do pobrania.</p>
         </div>
-        <div class="quick-card-bottom quick-card-text">
-          <p class="quick-list-title">Dostępne materiały:</p>
-          <ul class="quick-list">
-            <li>Seria kart tygodniowych „Miejskie kąpiele uważności”</li>
 
+        <div class="quick-card-bottom">
+          <p class="quick-list-title">Obecnie dostępne:</p>
+          <ul class="quick-list">
+            <li><a href="#kapiele-lesne">Seria kart tygodniowych „Miejskie kąpiele leśne”</a></li>
+            <li><a href="#materialy-sezonowe">Materiały sezonowe</a></li>
+            <li><a href="#dla-dzieci">Karty do druku dla dzieci</a></li>
           </ul>
         </div>
       </article>
@@ -628,6 +657,8 @@
     <div class="container">
       <section id="materialy">
         <div class="materials-grid">
+
+          <span id="kapiele-lesne" class="section-anchor" aria-hidden="true"></span>
           <article class="material-card">
             <span class="material-badge">Miejskie kąpiele leśne</span>
             <h2 class="material-series-title">Miejskie kąpiele leśne</h2>
@@ -644,7 +675,7 @@
                     <span>Temat: Bezruch</span>
                   </div>
                   <div class="download-links">
-                    <a href= "https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/kapiele_miejskie/1A.png" download>Obraz</a>
+                    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/kapiele_miejskie/1A.png" download>Obraz</a>
                     <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/kapiele_miejskie/1B.png" download>Refleksja</a>
                     <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
                   </div>
@@ -661,8 +692,8 @@
                     <span>Temat: Wytrwałość</span>
                   </div>
                   <div class="download-links">
-                    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/materialy/kapiele_miejskie/2A.png" download>Obraz</a>
-                    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/materialy/kapiele_miejskie/2B.png" download>Refleksja</a>
+                    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/kapiele_miejskie/2A.png" download>Obraz</a>
+                    <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/kapiele_miejskie/2B.png" download>Refleksja</a>
                     <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank" rel="noreferrer">Instagram</a>
                   </div>
                 </div>
@@ -706,6 +737,25 @@
               </div>
             </div>
           </article>
+
+          <span id="materialy-sezonowe" class="section-anchor" aria-hidden="true"></span>
+          <article class="material-card">
+            <span class="material-badge">Wkrótce</span>
+            <h2 class="material-series-title">Materiały sezonowe</h2>
+            <p class="material-series-text">
+              Miejsce na przyszłe zestawy sezonowe, karty tematyczne i materiały związane z rytmem roku.
+            </p>
+          </article>
+
+          <span id="dla-dzieci" class="section-anchor" aria-hidden="true"></span>
+          <article class="material-card">
+            <span class="material-badge">Wkrótce</span>
+            <h2 class="material-series-title">Karty do druku dla dzieci</h2>
+            <p class="material-series-text">
+              Tutaj możesz później dodać materiały dla dzieci, proste karty aktywności i zasoby do wspólnego działania.
+            </p>
+          </article>
+
         </div>
 
         <div class="contact-band">
