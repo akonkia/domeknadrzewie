@@ -15,7 +15,7 @@
   <title>Materiały | Projekt: Domek na Drzewie</title>
   <meta
     name="description"
-    content="Materiały Projektu Domek na Drzewie — karty, refleksje i treści inspirowane naturą do czytania i pobierania."
+    content="Materiały Projektu Domek na Drzewie — karty, refleksje, kolorowanki i treści inspirowane naturą do czytania i pobierania."
   />
 
   <style>
@@ -444,7 +444,8 @@
       flex-wrap: wrap;
     }
 
-    .download-links a {
+    .download-links a,
+    .set-actions a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -460,25 +461,95 @@
       white-space: nowrap;
     }
 
-    .download-links a:hover {
+    .download-links a:hover,
+    .set-actions a:hover {
       transform: translateY(-1px);
       box-shadow: 0 12px 22px rgba(36,49,38,0.14);
       filter: brightness(1.03);
     }
 
-    .download-links a:nth-child(1) {
+    .download-links a:nth-child(1),
+    .set-actions a:nth-child(1) {
       background: linear-gradient(135deg, var(--sage), #88a67f);
       color: white;
     }
 
-    .download-links a:nth-child(2) {
+    .download-links a:nth-child(2),
+    .set-actions a:nth-child(2) {
       background: linear-gradient(135deg, var(--gold), var(--orange));
       color: #3d2a10;
     }
 
-    .download-links a:nth-child(3) {
+    .download-links a:nth-child(3),
+    .set-actions a:nth-child(3) {
       background: linear-gradient(135deg, #b44f72, #ee7a78);
       color: white;
+    }
+
+    .set-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .set-card {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid rgba(36,49,38,0.08);
+      background: #faf9f5;
+      text-align: left;
+    }
+
+    .set-cover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border: 1px solid rgba(36,49,38,0.08);
+      background: #f3f1eb;
+      box-shadow: 0 8px 18px rgba(36,49,38,0.08);
+    }
+
+    .set-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    .set-cover:hover img {
+      transform: scale(1.03);
+    }
+
+    .set-content h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .set-meta {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--sage);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .set-content p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .set-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .contact-band {
@@ -555,6 +626,14 @@
       .quick-grid-wrap {
         margin-top: 24px;
       }
+
+      .set-card {
+        grid-template-columns: 1fr;
+      }
+
+      .set-cover {
+        max-width: 260px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -627,7 +706,7 @@
       <span class="hero-kicker">Biblioteka materiałów</span>
       <h1>Materiały do czytania i pobierania</h1>
       <p class="hero-text">
-        Karty tygodniowe, refleksje i inne treści inspirowane naturą.
+        Karty tygodniowe, refleksje, kolorowanki i inne treści inspirowane naturą.
       </p>
     </div>
   </section>
@@ -736,7 +815,7 @@
                 </a>
               </div>
 
-                            <div class="material-item">
+              <div class="material-item">
                 <div class="material-main">
                   <div>
                     <strong>Tydzień 05</strong>
@@ -753,7 +832,7 @@
                 </a>
               </div>
 
-                            <div class="material-item">
+              <div class="material-item">
                 <div class="material-main">
                   <div>
                     <strong>Tydzień 06</strong>
@@ -770,7 +849,7 @@
                 </a>
               </div>
 
-                            <div class="material-item">
+              <div class="material-item">
                 <div class="material-main">
                   <div>
                     <strong>Tydzień 07</strong>
@@ -787,7 +866,7 @@
                 </a>
               </div>
 
-                            <div class="material-item">
+              <div class="material-item">
                 <div class="material-main">
                   <div>
                     <strong>Tydzień 08</strong>
@@ -804,7 +883,7 @@
                 </a>
               </div>
 
-                            <div class="material-item">
+              <div class="material-item">
                 <div class="material-main">
                   <div>
                     <strong>Tydzień 09</strong>
@@ -821,7 +900,7 @@
                 </a>
               </div>
 
-                            <div class="material-item">
+              <div class="material-item">
                 <div class="material-main">
                   <div>
                     <strong>Tydzień 10</strong>
@@ -837,9 +916,6 @@
                   <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/kapiele_miejskie/10A.png" alt="Podgląd karty Tydzień 10" />
                 </a>
               </div>
-
-
-              
             </div>
           </article>
 
@@ -854,11 +930,39 @@
 
           <span id="dla-dzieci" class="section-anchor" aria-hidden="true"></span>
           <article class="material-card">
-            <span class="material-badge">Wkrótce</span>
+            <span class="material-badge">Dla dzieci</span>
             <h2 class="material-series-title">Karty do druku dla dzieci</h2>
             <p class="material-series-text">
-              Materiały dla dzieci, proste karty aktywności i zasoby do wspólnego działania.
+              Kolorowanki, proste aktywności i materiały do wspólnego działania.
             </p>
+
+            <div class="set-grid">
+              <article class="set-card">
+                <a class="set-cover" href="/materialy/kolorowanki/wiosna-01/" aria-label="Zobacz zestaw Wiosenne kolorowanki — zestaw 01">
+                  <img
+                    src="https://placehold.co/800x1000/f3f1eb/678760?text=Wiosenne+kolorowanki"
+                    alt="Miniatura zestawu Wiosenne kolorowanki — zestaw 01"
+                  />
+                </a>
+
+                <div class="set-content">
+                  <span class="set-meta">Kolorowanki • 5 stron • PDF + PNG</span>
+                  <h3>Wiosenne kolorowanki — zestaw 01</h3>
+                  <p>
+                    Zestaw prostych kart do druku z motywami pierwszych oznak wiosny:
+                    gnom, ptaki, pąki, kwiaty i drobne obserwacje przyrodnicze.
+                  </p>
+
+                  <div class="set-actions">
+                    <a href="/materialy/kolorowanki/wiosna-01/">Zobacz zestaw</a>
+                    <a href="#">Pobierz PDF</a>
+                    <a href="#">Instagram</a>
+                  </div>
+                </div>
+              </article>
+
+            
+            </div>
           </article>
 
         </div>
