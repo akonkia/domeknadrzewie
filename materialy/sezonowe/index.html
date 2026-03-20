@@ -12,23 +12,28 @@
     gtag('config', 'G-3WGXSZG17N');
   </script>
 
-  <title>Kolorowanka: Indy | Projekt: Domek na Drzewie</title>
+  <title>Karty sezonowe | Projekt: Domek na Drzewie</title>
   <meta
     name="description"
-    content="Kolorowanka: Indy — pojedyncza karta do druku dla dzieci inspirowana przyrodą i spokojną obserwacją."
+    content="Karty sezonowe do czytania, refleksji i spokojnej obserwacji przyrody. Materiały inspirowane rytmem roku i zmianami w naturze."
   />
 
   <style>
     :root {
       --sage: #678760;
+      --sage-dark: #587252;
       --orange: #fb9b27;
       --gold: #fcc15d;
+      --cream: #f3f1eb;
+      --paper: #fffdf9;
       --white: #ffffff;
       --text: #243126;
       --muted: #5e675f;
-      --hero-overlay: rgba(36, 49, 38, 0.28);
-      --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
+      --line: rgba(36,49,38,0.08);
+      --hero-overlay: rgba(36,49,38,0.34);
+      --shadow: 0 14px 30px rgba(32, 42, 33, 0.08);
       --max: 1120px;
+      --content: 980px;
     }
 
     * { box-sizing: border-box; }
@@ -38,20 +43,26 @@
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
-      background: #f3f1eb;
+      background: var(--cream);
     }
 
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin: 0; }
 
     .container {
       width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
     }
 
+    .narrow {
+      width: min(calc(100% - 32px), var(--content));
+      margin: 0 auto;
+    }
+
     .topbar {
       background: rgba(255,255,255,0.94);
-      border-bottom: 1px solid rgba(36,49,38,0.08);
+      border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 40;
@@ -79,7 +90,7 @@
       border-radius: 50%;
       overflow: hidden;
       background: var(--white);
-      border: 1px solid rgba(36,49,38,0.08);
+      border: 1px solid var(--line);
       flex-shrink: 0;
     }
 
@@ -110,10 +121,7 @@
 
     .nav-links a {
       min-height: 88px;
-      padding: 0 22px;
-      border: 0;
-      background: transparent;
-      font: inherit;
+      padding: 0 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -133,78 +141,66 @@
     }
 
     .lang-link {
-      min-height: 88px;
-      padding: 0 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       background: var(--orange) !important;
       color: white !important;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      border-left: 1px solid rgba(36,49,38,0.06);
     }
 
     .lang-link:hover {
       background: #e68e20 !important;
-      color: white !important;
     }
 
     .hero {
       position: relative;
-      min-height: 340px;
+      min-height: 320px;
       display: flex;
       align-items: center;
       background:
         linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-        url('https://placehold.co/1600x900/dbe5d3/5e675f?text=Kolorowanka+Indy') center/cover no-repeat;
+        url('https://placehold.co/1600x900/c9d7bf/4e5d4f?text=Karty+sezonowe') center/cover no-repeat;
       color: white;
     }
 
     .hero-inner {
-      width: min(calc(100% - 32px), var(--max));
+      width: min(calc(100% - 32px), 900px);
       margin: 0 auto;
-      padding: 58px 0;
+      padding: 56px 0;
       text-align: center;
     }
 
     .hero-kicker {
       display: inline-block;
       padding: 8px 14px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 800;
     }
 
-    h1, h2, h3, p { margin: 0; }
-
     h1 {
-      margin-top: 18px;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 0.96;
+      margin-top: 16px;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.02;
       letter-spacing: 0.01em;
       text-transform: uppercase;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.18);
+      text-shadow: 0 4px 18px rgba(0,0,0,0.16);
     }
 
     .hero-text {
       margin: 18px auto 0;
-      max-width: 58ch;
-      font-size: 1.05rem;
+      max-width: 62ch;
+      font-size: 1.03rem;
       line-height: 1.8;
       color: rgba(255,255,255,0.93);
     }
 
     .page-wrap {
-      padding: 34px 0 40px;
+      padding: 34px 0 44px;
     }
 
     .breadcrumbs {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       color: var(--muted);
       font-size: 0.94rem;
       line-height: 1.6;
@@ -212,98 +208,65 @@
 
     .breadcrumbs a {
       color: var(--sage);
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .single-layout {
-      display: grid;
-      grid-template-columns: 380px minmax(0, 1fr);
-      gap: 26px;
-      align-items: start;
-    }
-
-    .preview-card,
-    .info-card,
+    .intro-card,
+    .set-card,
     .contact-band {
-      background: white;
-      border: 1px solid rgba(36,49,38,0.08);
+      background: var(--paper);
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
     }
 
-    .preview-card {
-      padding: 18px;
+    .intro-card {
+      padding: 30px;
+      margin-bottom: 28px;
     }
 
-    .preview-image {
-      display: block;
-      overflow: hidden;
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #f3f1eb;
-    }
-
-    .preview-image img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-
-    .info-card {
-      padding: 28px;
-      text-align: left;
-    }
-
-    .item-badge {
+    .section-kicker {
       display: inline-block;
       padding: 7px 12px;
       background: rgba(103,135,96,0.12);
       color: var(--sage);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
       margin-bottom: 16px;
     }
 
-    .item-title {
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      line-height: 1.02;
+    .intro-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.06;
       text-transform: uppercase;
       letter-spacing: 0.02em;
       margin-bottom: 12px;
     }
 
-    .item-meta {
-      color: var(--sage);
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      margin-bottom: 16px;
-    }
-
-    .item-description {
+    .intro-text {
       color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 20px;
-      max-width: 62ch;
+      line-height: 1.82;
+      max-width: 68ch;
+      margin-bottom: 18px;
     }
 
-    .item-points {
-      margin: 0 0 22px;
+    .intro-points {
+      margin: 0;
       padding: 0;
       list-style: none;
       display: grid;
       gap: 10px;
     }
 
-    .item-points li {
+    .intro-points li {
       position: relative;
       padding-left: 18px;
       color: var(--muted);
       line-height: 1.75;
     }
 
-    .item-points li::before {
+    .intro-points li::before {
       content: "";
       position: absolute;
       left: 0;
@@ -315,18 +278,103 @@
       transform: translateY(-50%);
     }
 
-    .action-row {
+    .section-head {
+      margin: 0 0 18px;
+    }
+
+    .section-title {
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .set-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .set-card {
+      overflow: hidden;
+    }
+
+    .set-thumb {
+      display: block;
+      background: #ebe8df;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .set-thumb img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    .set-card:hover .set-thumb img {
+      transform: scale(1.02);
+    }
+
+    .set-body {
+      padding: 18px;
+    }
+
+    .set-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.73rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--sage-dark);
+      background: rgba(103,135,96,0.10);
+      padding: 6px 10px;
+    }
+
+    .set-card h3 {
+      font-size: 1.1rem;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .set-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .set-meta {
+      color: var(--sage-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .card-actions,
+    .contact-actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
 
-    .action-row a,
+    .button,
+    .card-actions a,
     .social-chip {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
+      min-height: 44px;
       padding: 10px 16px;
       border-radius: 999px;
       font-weight: 800;
@@ -338,28 +386,22 @@
       white-space: nowrap;
     }
 
-    .action-row a:hover,
+    .button:hover,
+    .card-actions a:hover,
     .social-chip:hover {
       transform: translateY(-1px);
       box-shadow: 0 12px 22px rgba(36,49,38,0.14);
       filter: brightness(1.03);
     }
 
-    .action-row a:nth-child(1),
-    .social-chip {
+    .btn-sage {
       background: linear-gradient(135deg, var(--sage), #88a67f);
       color: white;
     }
 
-    .action-row a:nth-child(2),
-    .social-chip.alt {
+    .btn-gold {
       background: linear-gradient(135deg, var(--gold), var(--orange));
       color: #3d2a10;
-    }
-
-    .action-row a:nth-child(3) {
-      background: linear-gradient(135deg, #b44f72, #ee7a78);
-      color: white;
     }
 
     .contact-band {
@@ -369,7 +411,7 @@
     }
 
     .contact-band h3 {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       text-transform: uppercase;
       margin-bottom: 10px;
     }
@@ -382,10 +424,7 @@
     }
 
     .contact-actions {
-      display: flex;
       justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
       margin-top: 18px;
     }
 
@@ -405,12 +444,8 @@
     }
 
     @media (max-width: 980px) {
-      .single-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .preview-card {
-        max-width: 420px;
+      .set-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -431,16 +466,20 @@
       }
 
       .hero {
-        min-height: 300px;
+        min-height: 280px;
       }
 
       h1 {
         font-size: clamp(2rem, 9vw, 3rem);
       }
 
-      .info-card,
+      .intro-card,
       .contact-band {
         padding: 22px;
+      }
+
+      .set-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -461,7 +500,7 @@
       <nav class="nav-links" aria-label="Nawigacja">
         <a href="/">O projekcie</a>
         <a href="/materialy/" class="active">Materiały</a>
-        <a class="lang-link" href="/en/materials/coloring-pages/indy.html" lang="en" hreflang="en">English</a>
+        <a class="lang-link" href="/en/materials/seasonal-cards/" lang="en" hreflang="en">English</a>
         <a href="/sky.html">Niebo dziś</a>
         <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
         <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
@@ -471,67 +510,103 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <span class="hero-kicker">Karty do druku dla dzieci</span>
-      <h1>Kolorowanka: Indy</h1>
+      <span class="hero-kicker">Materiały do czytania i refleksji</span>
+      <h1>Karty sezonowe</h1>
       <p class="hero-text">
-        Pojedyncza karta do druku dla dzieci inspirowana spokojną obserwacją przyrody i pierwszymi oznakami wiosny.
+        Karty inspirowane rytmem roku, zmianami w przyrodzie i spokojną obserwacją tego,
+        co dzieje się wokół nas w kolejnych porach sezonu.
       </p>
     </div>
   </section>
 
   <main class="page-wrap">
-    <div class="container">
+    <div class="narrow">
       <nav class="breadcrumbs" aria-label="Okruszki">
         <a href="/">Strona główna</a>
         <span> / </span>
         <a href="/materialy/">Materiały</a>
         <span> / </span>
-        <a href="/materialy/#dla-dzieci">Karty do druku dla dzieci</a>
-        <span> / </span>
-        <span>Kolorowanka: Indy</span>
+        <span>Karty sezonowe</span>
       </nav>
 
-      <section class="single-layout">
-        <article class="preview-card">
-          <a class="preview-image" href="https://placehold.co/1000x1250/f3f1eb/678760?text=Kolorowanka+Indy" target="_blank" rel="noreferrer">
-            <img
-              src="https://placehold.co/1000x1250/f3f1eb/678760?text=Kolorowanka+Indy"
-              alt="Podgląd kolorowanki Indy"
-            />
+      <section class="intro-card">
+        <span class="section-kicker">O tej kategorii</span>
+        <h2 class="intro-title">Materiały inspirowane naturą i rytmem roku</h2>
+        <p class="intro-text">
+          Karty sezonowe pomagają zatrzymać uwagę przy drobnych zmianach w przyrodzie:
+          świetle, zapachach, temperaturze, roślinach, ptakach i codziennych rytuałach.
+          Można z nich korzystać samodzielnie, z dziećmi, podczas spaceru albo jako inspiracji do rozmowy i refleksji.
+        </p>
+
+        <ul class="intro-points">
+          <li>Materiały do czytania, obserwacji i spokojnego bycia blisko natury.</li>
+          <li>Karty do wykorzystania w domu, edukacji i podczas spacerów.</li>
+          <li>Z czasem mogą tu pojawiać się kolejne zestawy związane z porami roku.</li>
+        </ul>
+      </section>
+
+      <section class="section-head">
+        <span class="section-kicker">Dostępne zestawy</span>
+        <h2 class="section-title">Przegląd kart sezonowych</h2>
+        <p class="section-text">
+          Poniżej możesz dodać pierwsze zestawy. Na razie zostawiłam trzy przykładowe kafelki,
+          żeby łatwo było rozwijać stronę później.
+        </p>
+      </section>
+
+      <section class="set-grid">
+        <article class="set-card">
+          <a class="set-thumb" href="/materialy/karty-sezonowe/wczesna-wiosna-01.html">
+            <img src="https://placehold.co/800x1000/e4eadc/5c6c5b?text=Wczesna+wiosna+01" alt="Okładka zestawu Wczesna wiosna — zestaw 01" />
           </a>
+          <div class="set-body">
+            <span class="set-label">Karty sezonowe</span>
+            <h3>Wczesna wiosna — zestaw 01</h3>
+            <p>Karty inspirowane pierwszymi oznakami wiosny, cichą obserwacją i zmianą rytmu przyrody.</p>
+            <div class="set-meta">Placeholder • dodaj własny zestaw</div>
+            <div class="card-actions">
+              <a class="btn-sage" href="/materialy/karty-sezonowe/wczesna-wiosna-01.html">Otwórz zestaw</a>
+            </div>
+          </div>
         </article>
 
-        <article class="info-card">
-          <span class="item-badge">Kolorowanka do druku</span>
-          <h2 class="item-title">Kolorowanka: Indy</h2>
-          <div class="item-meta">1 karta • PNG • dla dzieci</div>
+        <article class="set-card">
+          <a class="set-thumb" href="/materialy/karty-sezonowe/wiosenne-swiatlo-01.html">
+            <img src="https://placehold.co/800x1000/f1ead6/7a6b4f?text=Wiosenne+%C5%9Bwiat%C5%82o+01" alt="Okładka zestawu Wiosenne światło — zestaw 01" />
+          </a>
+          <div class="set-body">
+            <span class="set-label">Karty sezonowe</span>
+            <h3>Wiosenne światło — zestaw 01</h3>
+            <p>Zestaw poświęcony temu, jak zmienia się światło, nastrój dnia i sposób patrzenia na najbliższe otoczenie.</p>
+            <div class="set-meta">Placeholder • dodaj własny zestaw</div>
+            <div class="card-actions">
+              <a class="btn-sage" href="/materialy/karty-sezonowe/wiosenne-swiatlo-01.html">Otwórz zestaw</a>
+            </div>
+          </div>
+        </article>
 
-          <p class="item-description">
-            To pojedyncza kolorowanka do druku. Możesz tu dodać krótki opis ilustracji,
-            poziomu trudności albo informację dla rodziców i nauczycieli. Ten układ jest
-            przygotowany pod jeden gotowy obraz, bez sugerowania całego zestawu.
-          </p>
-
-          <ul class="item-points">
-            <li>Jedna gotowa karta do pobrania i wydruku.</li>
-            <li>Przyjazna forma dla dzieci i prosty układ strony.</li>
-            <li>Dobra baza do późniejszego dodawania kolejnych pojedynczych kolorowanek.</li>
-          </ul>
-
-          <div class="action-row">
-            <a href="#">Pobierz PNG</a>
-            <a href="#">Instagram</a>
-            <a href="/materialy/#dla-dzieci">Wróć do materiałów</a>
+        <article class="set-card">
+          <a class="set-thumb" href="/materialy/karty-sezonowe/majowe-obserwacje-01.html">
+            <img src="https://placehold.co/800x1000/e6efd8/5a7355?text=Majowe+obserwacje+01" alt="Okładka zestawu Majowe obserwacje — zestaw 01" />
+          </a>
+          <div class="set-body">
+            <span class="set-label">Karty sezonowe</span>
+            <h3>Majowe obserwacje — zestaw 01</h3>
+            <p>Karty skupione na drobnych szczegółach późniejszej wiosny: kwiatach, liściach, zapachach i dźwiękach.</p>
+            <div class="set-meta">Placeholder • dodaj własny zestaw</div>
+            <div class="card-actions">
+              <a class="btn-sage" href="/materialy/karty-sezonowe/majowe-obserwacje-01.html">Otwórz zestaw</a>
+            </div>
           </div>
         </article>
       </section>
 
       <div class="contact-band">
         <h3>Śledź nowe materiały</h3>
-        <p>Na Instagramie i Facebooku pojawiają się nowe kolorowanki, karty i kolejne materiały do pobrania.</p>
+        <p>Na Instagramie i Facebooku pojawiają się nowe karty, refleksje i kolejne materiały inspirowane naturą.</p>
         <div class="contact-actions">
-          <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+          <a class="social-chip btn-sage" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="social-chip btn-gold" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
         </div>
       </div>
     </div>
