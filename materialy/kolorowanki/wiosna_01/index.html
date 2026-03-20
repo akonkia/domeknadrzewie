@@ -15,20 +15,25 @@
   <title>Wiosenne kolorowanki — zestaw 01 | Projekt: Domek na Drzewie</title>
   <meta
     name="description"
-    content="Wiosenne kolorowanki — zestaw 01. Kilka prostych kart do druku dla dzieci inspirowanych pierwszymi oznakami wiosny."
+    content="Wiosenne kolorowanki — zestaw 01. Prosta kolorowanka do druku dla dzieci inspirowana pierwszymi oznakami wiosny."
   />
 
   <style>
     :root {
       --sage: #678760;
+      --sage-dark: #587252;
       --orange: #fb9b27;
       --gold: #fcc15d;
+      --cream: #f3f1eb;
+      --paper: #fffdf9;
       --white: #ffffff;
       --text: #243126;
       --muted: #5e675f;
-      --hero-overlay: rgba(36, 49, 38, 0.28);
-      --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
+      --line: rgba(36,49,38,0.08);
+      --hero-overlay: rgba(36, 49, 38, 0.26);
+      --shadow: 0 14px 30px rgba(32, 42, 33, 0.08);
       --max: 1120px;
+      --content: 860px;
     }
 
     * { box-sizing: border-box; }
@@ -38,20 +43,27 @@
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
-      background: #f3f1eb;
+      background: var(--cream);
     }
 
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3, p { margin: 0; }
 
     .container {
       width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
     }
 
+    .narrow {
+      width: min(calc(100% - 32px), var(--content));
+      margin: 0 auto;
+    }
+
     .topbar {
       background: rgba(255,255,255,0.94);
-      border-bottom: 1px solid rgba(36,49,38,0.08);
+      border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 40;
@@ -79,7 +91,7 @@
       border-radius: 50%;
       overflow: hidden;
       background: var(--white);
-      border: 1px solid rgba(36,49,38,0.08);
+      border: 1px solid var(--line);
       flex-shrink: 0;
     }
 
@@ -110,10 +122,7 @@
 
     .nav-links a {
       min-height: 88px;
-      padding: 0 22px;
-      border: 0;
-      background: transparent;
-      font: inherit;
+      padding: 0 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -133,27 +142,17 @@
     }
 
     .lang-link {
-      min-height: 88px;
-      padding: 0 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       background: var(--orange) !important;
       color: white !important;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      border-left: 1px solid rgba(36,49,38,0.06);
     }
 
     .lang-link:hover {
       background: #e68e20 !important;
-      color: white !important;
     }
 
     .hero {
       position: relative;
-      min-height: 360px;
+      min-height: 320px;
       display: flex;
       align-items: center;
       background:
@@ -163,48 +162,46 @@
     }
 
     .hero-inner {
-      width: min(calc(100% - 32px), var(--max));
+      width: min(calc(100% - 32px), 900px);
       margin: 0 auto;
-      padding: 58px 0;
+      padding: 54px 0;
       text-align: center;
     }
 
     .hero-kicker {
       display: inline-block;
       padding: 8px 14px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 800;
     }
 
-    h1, h2, h3, p { margin: 0; }
-
     h1 {
-      margin-top: 18px;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 0.96;
+      margin-top: 16px;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.02;
       letter-spacing: 0.01em;
       text-transform: uppercase;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.18);
+      text-shadow: 0 4px 18px rgba(0,0,0,0.16);
     }
 
     .hero-text {
       margin: 18px auto 0;
-      max-width: 58ch;
-      font-size: 1.05rem;
+      max-width: 60ch;
+      font-size: 1.03rem;
       line-height: 1.8;
       color: rgba(255,255,255,0.93);
     }
 
     .page-wrap {
-      padding: 34px 0 40px;
+      padding: 34px 0 44px;
     }
 
     .breadcrumbs {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       color: var(--muted);
       font-size: 0.94rem;
       line-height: 1.6;
@@ -212,62 +209,41 @@
 
     .breadcrumbs a {
       color: var(--sage);
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .set-layout {
-      display: grid;
-      grid-template-columns: 360px minmax(0, 1fr);
-      gap: 26px;
-      align-items: start;
-    }
-
-    .cover-card,
     .info-card,
-    .gallery-card,
+    .page-card,
     .contact-band {
-      background: white;
-      border: 1px solid rgba(36,49,38,0.08);
+      background: var(--paper);
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
     }
 
-    .cover-card {
-      padding: 18px;
-    }
-
-    .cover-image {
-      display: block;
-      overflow: hidden;
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #f3f1eb;
-    }
-
-    .cover-image img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-
     .info-card {
-      padding: 28px;
-      text-align: left;
+      padding: 30px;
+      margin-bottom: 24px;
     }
 
-    .set-badge {
+    .set-badge,
+    .section-kicker {
       display: inline-block;
       padding: 7px 12px;
       background: rgba(103,135,96,0.12);
       color: var(--sage);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
+    }
+
+    .set-badge {
       margin-bottom: 16px;
     }
 
     .set-title {
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      line-height: 1.02;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.06;
       text-transform: uppercase;
       letter-spacing: 0.02em;
       margin-bottom: 12px;
@@ -278,14 +254,14 @@
       font-weight: 800;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       margin-bottom: 16px;
     }
 
     .set-description {
       color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 20px;
+      line-height: 1.82;
+      margin-bottom: 18px;
       max-width: 62ch;
     }
 
@@ -324,13 +300,14 @@
       flex-wrap: wrap;
     }
 
+    .button,
     .action-row a,
     .card-actions a,
     .social-chip {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
+      min-height: 44px;
       padding: 10px 16px;
       border-radius: 999px;
       font-weight: 800;
@@ -342,6 +319,7 @@
       white-space: nowrap;
     }
 
+    .button:hover,
     .action-row a:hover,
     .card-actions a:hover,
     .social-chip:hover {
@@ -350,76 +328,58 @@
       filter: brightness(1.03);
     }
 
-    .action-row a:nth-child(1),
-    .card-actions a:nth-child(1),
-    .social-chip {
+    .btn-sage {
       background: linear-gradient(135deg, var(--sage), #88a67f);
       color: white;
     }
 
-    .action-row a:nth-child(2),
-    .card-actions a:nth-child(2),
-    .social-chip.alt {
+    .btn-gold {
       background: linear-gradient(135deg, var(--gold), var(--orange));
       color: #3d2a10;
     }
 
-    .action-row a:nth-child(3),
-    .card-actions a:nth-child(3) {
+    .btn-rose {
       background: linear-gradient(135deg, #b44f72, #ee7a78);
       color: white;
     }
 
-    .gallery-card {
-      margin-top: 28px;
-      padding: 28px;
+    .section-head {
+      margin: 0 0 18px;
     }
 
     .section-kicker {
-      display: inline-block;
       margin-bottom: 10px;
-      padding: 6px 10px;
-      background: rgba(103,135,96,0.10);
-      color: var(--sage);
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
     }
 
-    .gallery-title {
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      margin-bottom: 8px;
+    .section-title {
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
       text-transform: uppercase;
       letter-spacing: 0.02em;
+      margin-top: 10px;
+      margin-bottom: 8px;
     }
 
-    .gallery-text {
+    .section-text {
       color: var(--muted);
       line-height: 1.8;
-      margin-bottom: 22px;
-      max-width: 62ch;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
     }
 
     .page-card {
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #faf9f5;
-      padding: 14px;
-      text-align: left;
+      padding: 18px;
+    }
+
+    .page-card-inner {
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
     }
 
     .page-thumb {
       display: block;
       overflow: hidden;
-      border: 1px solid rgba(36,49,38,0.08);
+      border: 1px solid var(--line);
       background: #f3f1eb;
-      margin-bottom: 12px;
     }
 
     .page-thumb img {
@@ -430,30 +390,39 @@
     }
 
     .page-thumb:hover img {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
-    .page-card h3 {
-      font-size: 1rem;
+    .page-title {
+      font-size: 1.28rem;
       line-height: 1.3;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
-    .page-card p {
+    .page-description {
       color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.7;
-      margin-bottom: 12px;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .file-meta {
+      color: var(--sage-dark);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
     }
 
     .contact-band {
-      margin-top: 30px;
+      margin-top: 28px;
       padding: 28px;
       text-align: center;
     }
 
     .contact-band h3 {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       text-transform: uppercase;
       margin-bottom: 10px;
     }
@@ -486,16 +455,8 @@
     }
 
     @media (max-width: 980px) {
-      .set-layout {
+      .page-card-inner {
         grid-template-columns: 1fr;
-      }
-
-      .cover-card {
-        max-width: 420px;
-      }
-
-      .card-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -516,7 +477,7 @@
       }
 
       .hero {
-        min-height: 300px;
+        min-height: 280px;
       }
 
       h1 {
@@ -524,13 +485,9 @@
       }
 
       .info-card,
-      .gallery-card,
+      .page-card,
       .contact-band {
         padding: 22px;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -564,14 +521,14 @@
       <span class="hero-kicker">Karty do druku dla dzieci</span>
       <h1>Wiosenne kolorowanki — zestaw 01</h1>
       <p class="hero-text">
-        Kilka prostych kolorowanek do druku inspirowanych pierwszymi oznakami wiosny,
+        Prosta kolorowanka inspirowana pierwszymi oznakami wiosny,
         spokojną obserwacją i przyrodą blisko domu.
       </p>
     </div>
   </section>
 
   <main class="page-wrap">
-    <div class="container">
+    <div class="narrow">
       <nav class="breadcrumbs" aria-label="Okruszki">
         <a href="/">Strona główna</a>
         <span> / </span>
@@ -582,65 +539,66 @@
         <span>Wiosenne kolorowanki — zestaw 01</span>
       </nav>
 
-      <section class="set-layout">
+      <section class="info-card">
+        <span class="set-badge">Kolorowanki do druku</span>
+        <h2 class="set-title">Wiosenne kolorowanki — zestaw 01</h2>
+        <div class="set-meta">1 kolorowanka • PNG i PDF • dla dzieci 4–6 lat</div>
 
-
-        <article class="info-card">
-          <span class="set-badge">Kolorowanki do druku</span>
-          <h2 class="set-title">Wiosenne kolorowanki — zestaw 01</h2>
-          <div class="set-meta">3 strony • PNG • dla dzieci</div>
-
-          <p class="set-description">
-            Zestaw prostych kolorowanek dla dzieci przedszkolnych (4-6 lat). 
-          </p>
-
-          <ul class="set-points">
-            <li>Darmowe karty do pobrania i wydruku.</li>
-            <li>Wspólny temat: pierwsze oznaki wiosny i obserwacja przyrody.</li>
-          </ul>
-
-          <div class="action-row">
-
-            <a href="/materialy/#dla-dzieci">Wróć do materiałów</a>
-          </div>
-        </article>
-      </section>
-
-      <section class="gallery-card">
-        <span class="section-kicker">Zawartość zestawu</span>
-        <h2 class="gallery-title">Kolorowanki w tym zestawie</h2>
-        <p class="gallery-text">
-          Kolorowanki do pobrania jako PNG oraz PDF.
+        <p class="set-description">
+          Prosta kolorowanka dla dzieci przedszkolnych inspirowana pierwszymi oznakami wiosny.
+          Dobra do spokojnej aktywności w domu, przedszkolu albo podczas zajęć o przyrodzie.
         </p>
 
-        <div class="card-grid">
-          <article class="page-card">
-            <a class="page-thumb" href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png" target="_blank" rel="noreferrer">
-              <img
-                src="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png"
-                alt="Podgląd kolorowanki Krasnal Major na tropie wiosny"
-              />
-            </a>
-            <h3>Kolorowanka: Krasnal Major na tropie wiosny</h3>
-            <p>Prosta karta do druku z motywem spokojnej obserwacji przyrody.</p>
-            <div class="card-actions">
-              <a href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.pdf">Pobierz PDF</a>
-              <a href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png">Podgląd</a>
-            </div>
-          </article>
+        <ul class="set-points">
+          <li>Darmowa karta do pobrania i wydruku.</li>
+          <li>Motyw: obserwacja przyrody i pierwsze ślady wiosny.</li>
+          <li>Wersja PNG do szybkiego podglądu oraz PDF do druku.</li>
+        </ul>
 
-  
-
-
+        <div class="action-row">
+          <a class="btn-sage" href="/materialy/#dla-dzieci">Wróć do materiałów</a>
         </div>
       </section>
+
+      <section class="section-head">
+        <span class="section-kicker">Zawartość zestawu</span>
+        <h2 class="section-title">Kolorowanka w tym zestawie</h2>
+        <p class="section-text">
+          Możesz obejrzeć podgląd obrazka albo pobrać wersję PDF do wydruku.
+        </p>
+      </section>
+
+      <article class="page-card">
+        <div class="page-card-inner">
+          <a class="page-thumb" href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png" target="_blank" rel="noreferrer">
+            <img
+              src="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png"
+              alt="Podgląd kolorowanki Krasnal Major na tropie wiosny"
+            />
+          </a>
+
+          <div>
+            <h3 class="page-title">Kolorowanka: Krasnal Major na tropie wiosny</h3>
+            <div class="file-meta">Pliki: PNG i PDF</div>
+            <p class="page-description">
+              Prosta karta do druku z motywem spokojnej obserwacji przyrody.
+              Sprawdzi się jako pojedyncza aktywność albo element większego wiosennego zestawu.
+            </p>
+
+            <div class="card-actions">
+              <a class="btn-sage" href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.pdf" target="_blank" rel="noreferrer">Pobierz PDF</a>
+              <a class="btn-gold" href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png" target="_blank" rel="noreferrer">Podgląd PNG</a>
+            </div>
+          </div>
+        </div>
+      </article>
 
       <div class="contact-band">
         <h3>Śledź nowe materiały</h3>
         <p>Na Instagramie i Facebooku pojawiają się nowe kolorowanki, karty i kolejne materiały do pobrania.</p>
         <div class="contact-actions">
-          <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+          <a class="social-chip btn-sage" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="social-chip btn-gold" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
         </div>
       </div>
     </div>
