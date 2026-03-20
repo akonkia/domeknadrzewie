@@ -15,7 +15,7 @@
   <title>Karty sezonowe | Projekt: Domek na Drzewie</title>
   <meta
     name="description"
-    content="Karty sezonowe do czytania, refleksji i spokojnej obserwacji przyrody. Materiały inspirowane rytmem roku i zmianami w naturze."
+    content="Karty sezonowe inspirowane przyrodą i uważną obserwacją. Zobacz kartę: Zasady krokusowego turysty."
   />
 
   <style>
@@ -30,10 +30,10 @@
       --text: #243126;
       --muted: #5e675f;
       --line: rgba(36,49,38,0.08);
-      --hero-overlay: rgba(36,49,38,0.34);
+      --hero-overlay: rgba(36,49,38,0.30);
       --shadow: 0 14px 30px rgba(32, 42, 33, 0.08);
       --max: 1120px;
-      --content: 980px;
+      --content: 900px;
     }
 
     * { box-sizing: border-box; }
@@ -151,12 +151,12 @@
 
     .hero {
       position: relative;
-      min-height: 320px;
+      min-height: 300px;
       display: flex;
       align-items: center;
       background:
         linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-        url('https://placehold.co/1600x900/c9d7bf/4e5d4f?text=Karty+sezonowe') center/cover no-repeat;
+        url('https://placehold.co/1600x900/d7dfcc/5d6e5a?text=Karty+sezonowe') center/cover no-repeat;
       color: white;
     }
 
@@ -189,7 +189,7 @@
 
     .hero-text {
       margin: 18px auto 0;
-      max-width: 62ch;
+      max-width: 60ch;
       font-size: 1.03rem;
       line-height: 1.8;
       color: rgba(255,255,255,0.93);
@@ -212,7 +212,7 @@
     }
 
     .intro-card,
-    .set-card,
+    .resource-card,
     .contact-band {
       background: var(--paper);
       border: 1px solid var(--line);
@@ -295,70 +295,82 @@
       line-height: 1.8;
     }
 
-    .set-grid {
+    .resource-card {
+      padding: 18px;
+    }
+
+    .resource-inner {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
     }
 
-    .set-card {
-      overflow: hidden;
-    }
-
-    .set-thumb {
+    .resource-thumb {
       display: block;
-      background: #ebe8df;
-      border-bottom: 1px solid var(--line);
       overflow: hidden;
+      border: 1px solid var(--line);
+      background: #f3f1eb;
     }
 
-    .set-thumb img {
+    .resource-thumb img {
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
       transition: transform 0.2s ease;
     }
 
-    .set-card:hover .set-thumb img {
+    .resource-thumb:hover img {
       transform: scale(1.02);
     }
 
-    .set-body {
-      padding: 18px;
-    }
-
-    .set-label {
-      display: inline-block;
-      margin-bottom: 10px;
-      font-size: 0.73rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--sage-dark);
-      background: rgba(103,135,96,0.10);
-      padding: 6px 10px;
-    }
-
-    .set-card h3 {
-      font-size: 1.1rem;
+    .resource-title {
+      font-size: 1.32rem;
       line-height: 1.3;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .set-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.75;
-      margin-bottom: 14px;
-    }
-
-    .set-meta {
+    .resource-meta {
       color: var(--sage-dark);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       margin-bottom: 14px;
+    }
+
+    .resource-description {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .resource-points {
+      margin: 0 0 18px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .resource-points li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .resource-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.78em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      transform: translateY(-50%);
     }
 
     .card-actions,
@@ -368,7 +380,6 @@
       flex-wrap: wrap;
     }
 
-    .button,
     .card-actions a,
     .social-chip {
       display: inline-flex;
@@ -386,7 +397,6 @@
       white-space: nowrap;
     }
 
-    .button:hover,
     .card-actions a:hover,
     .social-chip:hover {
       transform: translateY(-1px);
@@ -443,9 +453,9 @@
       font-size: 0.95rem;
     }
 
-    @media (max-width: 980px) {
-      .set-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (max-width: 900px) {
+      .resource-inner {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -466,7 +476,7 @@
       }
 
       .hero {
-        min-height: 280px;
+        min-height: 270px;
       }
 
       h1 {
@@ -474,12 +484,9 @@
       }
 
       .intro-card,
+      .resource-card,
       .contact-band {
         padding: 22px;
-      }
-
-      .set-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -510,11 +517,10 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <span class="hero-kicker">Materiały do czytania i refleksji</span>
+      <span class="hero-kicker">Materiały sezonowe</span>
       <h1>Karty sezonowe</h1>
       <p class="hero-text">
-        Karty inspirowane rytmem roku, zmianami w przyrodzie i spokojną obserwacją tego,
-        co dzieje się wokół nas w kolejnych porach sezonu.
+        Materiały inspirowane rytmem natury, spokojną obserwacją i odpowiedzialnym byciem wśród roślin i zwierząt.
       </p>
     </div>
   </section>
@@ -531,75 +537,59 @@
 
       <section class="intro-card">
         <span class="section-kicker">O tej kategorii</span>
-        <h2 class="intro-title">Materiały inspirowane naturą i rytmem roku</h2>
+        <h2 class="intro-title">Karty inspirowane porami roku i uważnością w przyrodzie</h2>
         <p class="intro-text">
-          Karty sezonowe pomagają zatrzymać uwagę przy drobnych zmianach w przyrodzie:
-          świetle, zapachach, temperaturze, roślinach, ptakach i codziennych rytuałach.
-          Można z nich korzystać samodzielnie, z dziećmi, podczas spaceru albo jako inspiracji do rozmowy i refleksji.
+          W tej sekcji znajdują się materiały związane z sezonowymi zjawiskami w przyrodzie.
+          To karty do czytania, pobierania i udostępniania — pomocne w rozmowie z dziećmi,
+          podczas spacerów albo jako delikatne przypomnienie, jak korzystać z natury z szacunkiem.
         </p>
 
         <ul class="intro-points">
-          <li>Materiały do czytania, obserwacji i spokojnego bycia blisko natury.</li>
-          <li>Karty do wykorzystania w domu, edukacji i podczas spacerów.</li>
-          <li>Z czasem mogą tu pojawiać się kolejne zestawy związane z porami roku.</li>
+          <li>Materiały do pobrania i wykorzystania w domu, edukacji lub social mediach.</li>
+          <li>Krótkie treści skupione na przyrodzie, obserwacji i odpowiedzialnym zachowaniu.</li>
+          <li>Z czasem mogą tu pojawiać się kolejne karty związane z porami roku.</li>
         </ul>
       </section>
 
       <section class="section-head">
-        <span class="section-kicker">Dostępne zestawy</span>
-        <h2 class="section-title">Przegląd kart sezonowych</h2>
+        <span class="section-kicker">Dostępny materiał</span>
+        <h2 class="section-title">Aktualnie dostępna karta</h2>
         <p class="section-text">
-          Poniżej możesz dodać pierwsze zestawy. Na razie zostawiłam trzy przykładowe kafelki,
-          żeby łatwo było rozwijać stronę później.
+          Na razie znajduje się tu jedna karta sezonowa. Gdy pojawią się kolejne, łatwo rozbudujesz tę stronę.
         </p>
       </section>
 
-      <section class="set-grid">
-        <article class="set-card">
-          <a class="set-thumb" href="/materialy/karty-sezonowe/wczesna-wiosna-01.html">
-            <img src="https://placehold.co/800x1000/e4eadc/5c6c5b?text=Wczesna+wiosna+01" alt="Okładka zestawu Wczesna wiosna — zestaw 01" />
+      <article class="resource-card">
+        <div class="resource-inner">
+          <a class="resource-thumb" href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/sezonowe/zasady_krokusowego_turysty.png" target="_blank" rel="noreferrer">
+            <img
+              src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/sezonowe/zasady_krokusowego_turysty.png"
+              alt="Podgląd karty Zasady krokusowego turysty"
+            />
           </a>
-          <div class="set-body">
-            <span class="set-label">Karty sezonowe</span>
-            <h3>Wczesna wiosna — zestaw 01</h3>
-            <p>Karty inspirowane pierwszymi oznakami wiosny, cichą obserwacją i zmianą rytmu przyrody.</p>
-            <div class="set-meta">Placeholder • dodaj własny zestaw</div>
-            <div class="card-actions">
-              <a class="btn-sage" href="/materialy/karty-sezonowe/wczesna-wiosna-01.html">Otwórz zestaw</a>
-            </div>
-          </div>
-        </article>
 
-        <article class="set-card">
-          <a class="set-thumb" href="/materialy/karty-sezonowe/wiosenne-swiatlo-01.html">
-            <img src="https://placehold.co/800x1000/f1ead6/7a6b4f?text=Wiosenne+%C5%9Bwiat%C5%82o+01" alt="Okładka zestawu Wiosenne światło — zestaw 01" />
-          </a>
-          <div class="set-body">
-            <span class="set-label">Karty sezonowe</span>
-            <h3>Wiosenne światło — zestaw 01</h3>
-            <p>Zestaw poświęcony temu, jak zmienia się światło, nastrój dnia i sposób patrzenia na najbliższe otoczenie.</p>
-            <div class="set-meta">Placeholder • dodaj własny zestaw</div>
-            <div class="card-actions">
-              <a class="btn-sage" href="/materialy/karty-sezonowe/wiosenne-swiatlo-01.html">Otwórz zestaw</a>
-            </div>
-          </div>
-        </article>
+          <div>
+            <h3 class="resource-title">Zasady krokusowego turysty</h3>
+            <div class="resource-meta">1 karta • PNG • materiał sezonowy</div>
 
-        <article class="set-card">
-          <a class="set-thumb" href="/materialy/karty-sezonowe/majowe-obserwacje-01.html">
-            <img src="https://placehold.co/800x1000/e6efd8/5a7355?text=Majowe+obserwacje+01" alt="Okładka zestawu Majowe obserwacje — zestaw 01" />
-          </a>
-          <div class="set-body">
-            <span class="set-label">Karty sezonowe</span>
-            <h3>Majowe obserwacje — zestaw 01</h3>
-            <p>Karty skupione na drobnych szczegółach późniejszej wiosny: kwiatach, liściach, zapachach i dźwiękach.</p>
-            <div class="set-meta">Placeholder • dodaj własny zestaw</div>
+            <p class="resource-description">
+              Karta przypominająca, jak odpowiedzialnie odwiedzać miejsca, w których kwitną krokusy.
+              Może służyć jako materiał edukacyjny, grafika do udostępnienia albo wsparcie do rozmowy z dziećmi o szacunku do przyrody.
+            </p>
+
+            <ul class="resource-points">
+              <li>Krótka forma, dobra do szybkiego przeczytania i udostępnienia.</li>
+              <li>Temat: ochrona krokusów i właściwe zachowanie odwiedzających.</li>
+              <li>Wersja PNG do podglądu w przeglądarce.</li>
+            </ul>
+
             <div class="card-actions">
-              <a class="btn-sage" href="/materialy/karty-sezonowe/majowe-obserwacje-01.html">Otwórz zestaw</a>
+              <a class="btn-sage" href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/materialy/sezonowe/zasady_krokusowego_turysty.png" target="_blank" rel="noreferrer">Otwórz kartę</a>
+              <a class="btn-gold" href="/materialy/">Wróć do materiałów</a>
             </div>
           </div>
-        </article>
-      </section>
+        </div>
+      </article>
 
       <div class="contact-band">
         <h3>Śledź nowe materiały</h3>
