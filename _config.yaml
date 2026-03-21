@@ -1,0 +1,19 @@
+title: "Domek na Drzewie"
+description: "Nature-inspired writing, reflections, and educational materials."
+url: "https://domeknadrzewie.edu.pl"
+baseurl: ""
+
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+
+collections_dir: .
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
