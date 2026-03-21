@@ -9,8 +9,6 @@ permalink: /blog/:year/:month/:day/:title/
 plugins:
   - jekyll-feed
 
-collections_dir: .
-
 defaults:
   - scope:
       path: ""
