@@ -35,10 +35,14 @@ title: Blog
     }
 
     .post-card {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 20px;
+      align-items: stretch;
       background: rgba(255,255,255,0.9);
       border: 1px solid rgba(36,49,38,0.08);
       border-radius: 18px;
-      padding: 22px 24px;
+      padding: 18px;
       box-shadow: 0 14px 30px rgba(36,49,38,0.06);
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
@@ -48,6 +52,23 @@ title: Blog
       transform: translateY(-2px);
       box-shadow: 0 18px 36px rgba(36,49,38,0.10);
       border-color: rgba(103,135,96,0.35);
+    }
+
+    .post-thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(36,49,38,0.08);
+      background: #fff;
+      display: block;
+    }
+
+    .post-card-content {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .post-card time {
@@ -81,6 +102,16 @@ title: Blog
       letter-spacing: 0.04em;
       color: #678760;
     }
+
+    @media (max-width: 700px) {
+      .post-card {
+        grid-template-columns: 1fr;
+      }
+
+      .post-thumb {
+        aspect-ratio: 16 / 9;
+      }
+    }
   </style>
 
   <div class="blog-intro">
@@ -90,14 +121,19 @@ title: Blog
 
   <div class="post-list">
     {% for post in site.posts %}
+      {% assign thumb_image = post.cover | default: '/assets/img/blog/default-cover.png' %}
+      {% assign thumb_alt = post.cover_alt | default: post.title %}
       <a class="post-link" href="{{ post.url }}">
         <article class="post-card">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
-          <h2>{{ post.title }}</h2>
-          {% if post.excerpt %}
-            <p>{{ post.excerpt | strip_html }}</p>
-          {% endif %}
-          <span class="read-more">Open post</span>
+          <img class="post-thumb" src="{{ thumb_image }}" alt="{{ thumb_alt }}">
+          <div class="post-card-content">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+            <h2>{{ post.title }}</h2>
+            {% if post.excerpt %}
+              <p>{{ post.excerpt | strip_html }}</p>
+            {% endif %}
+            <span class="read-more">Open post</span>
+          </div>
         </article>
       </a>
     {% endfor %}
