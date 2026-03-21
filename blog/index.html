@@ -149,15 +149,15 @@ title: Blog
         {% assign is_placeholder = true %}
       {% endif %}
 
-      <a class="post-link" href="{{ post.url }}">
+      <a class="post-link" href="{{ post.url | relative_url }}">
         <article class="post-card">
           {% if is_placeholder %}
             <div class="post-thumb-frame placeholder" aria-label="{{ thumb_alt }}">
-              <img src="{{ thumb_image }}" alt="{{ thumb_alt }}">
+              <img src="{{ thumb_image | relative_url }}" alt="{{ thumb_alt }}">
             </div>
           {% else %}
             <div class="post-thumb-frame has-image">
-              <img src="{{ thumb_image }}" alt="{{ thumb_alt }}">
+              <img src="{{ thumb_image | relative_url }}" alt="{{ thumb_alt }}">
             </div>
           {% endif %}
 
