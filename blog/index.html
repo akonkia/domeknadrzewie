@@ -1,15 +1,77 @@
 ---
 layout: default
 title: Blog
-description: Reflections, nature notes, and project writing.
 ---
 
-<h1>Blog</h1>
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      <small>{{ post.date | date: "%-d.%m.%Y" }}</small>
-    </li>
-  {% endfor %}
-</ul>
+<section class="blog-index">
+  <style>
+    .blog-intro {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .blog-intro h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      text-transform: uppercase;
+    }
+
+    .blog-intro p {
+      margin: 0 auto;
+      max-width: 60ch;
+      color: #5e675f;
+      line-height: 1.8;
+    }
+
+    .post-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .post-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(36,49,38,0.08);
+      border-radius: 18px;
+      padding: 22px 24px;
+      box-shadow: 0 14px 30px rgba(36,49,38,0.06);
+    }
+
+    .post-card time {
+      display: block;
+      color: #5e675f;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .post-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+    }
+
+    .post-card p {
+      margin: 0;
+      color: #5e675f;
+      line-height: 1.75;
+    }
+  </style>
+
+  <div class="blog-intro">
+    <h1>Blog</h1>
+    <p>A timeline of the project: notes, milestones, materials, and slow growth.</p>
+  </div>
+
+  <div class="post-list">
+    {% for post in site.posts %}
+      <article class="post-card">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        {% if post.excerpt %}
+          <p>{{ post.excerpt | strip_html }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
