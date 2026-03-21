@@ -2,8 +2,10 @@
 layout: post
 title: "Dobre początki - the beginning"
 date: 2026-02-15
-lang: pl
-excerpt: "W lutym 2026 strona projektu zaczęła nabierać wyraźniejszego kształtu jako miejsce dla materiałów, refleksji i spokojnego wzrostu."
+lang:
+  - pl
+  - en
+excerpt: "W lutym 2026 strona projektu zaczęła nabierać wyraźniejszego kształtu jako miejsce dla materiałów, refleksji i spokojnego wzrostu. (en) In February 2026, the project site began to take shape more clearly as a place for material, reflection, and quiet growth.”
 tags: [timeline, beginnings, website, project]
 ---
 
