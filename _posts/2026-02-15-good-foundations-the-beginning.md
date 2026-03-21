@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Good foundations - the beginning"
+title: "Dobre początki - the beginning"
 date: 2026-02-15
 lang: pl
 excerpt: "W lutym 2026 strona projektu zaczęła nabierać wyraźniejszego kształtu jako miejsce dla materiałów, refleksji i spokojnego wzrostu."
