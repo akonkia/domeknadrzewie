@@ -3,21 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}" />
-  <link rel="stylesheet" href="/assets/css/blog.css" />
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Domek na Drzewie</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 }}" />
+  <style>
+    :root {
+      --sage: #678760;
+      --orange: #fb9b27;
+      --cream: #f5f4ef;
+      --text: #243126;
+      --muted: #5e675f;
+      --line: rgba(36,49,38,0.10);
+      --max: 920px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: #f3f1eb;
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid rgba(36,49,38,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(10px);
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      min-height: 82px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      border-left: 1px solid rgba(36,49,38,0.06);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: var(--sage);
+      color: white;
+    }
+
+    .page {
+      padding: 42px 0 56px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 10px 0 14px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links a {
+        min-height: 52px;
+        padding: 0 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="/">Strona główna</a>
-      <a href="/materialy/">Materiały</a>
-      <a href="/blog/">Blog</a>
-    </nav>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/">Domek na Drzewie</a>
+      <nav class="nav-links" aria-label="Navigation">
+        <a href="/">Home</a>
+        <a href="/materialy/">Materiały</a>
+        <a href="/en/materials/">Materials</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    {{ content }}
+  <main class="page">
+    <div class="container">
+      {{ content }}
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="container">
+      Domek na Drzewie • blog timeline
+    </div>
+  </footer>
 </body>
 </html>
