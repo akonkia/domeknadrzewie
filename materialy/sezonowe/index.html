@@ -15,7 +15,7 @@
   <title>Karty sezonowe | Projekt: Domek na Drzewie</title>
   <meta
     name="description"
-    content="Karty sezonowe inspirowane przyrodą i uważną obserwacją. Zobacz kartę: Zasady krokusowego turysty."
+    content="Karty sezonowe inspirowane przyrodą i uważną obserwacją. Przegląd kategorii sezonowych i materiałów wiosennych."
   />
 
   <style>
@@ -34,6 +34,7 @@
       --shadow: 0 14px 30px rgba(32, 42, 33, 0.08);
       --max: 1120px;
       --content: 900px;
+      --radius: 18px;
     }
 
     * { box-sizing: border-box; }
@@ -212,11 +213,13 @@
     }
 
     .intro-card,
+    .season-card,
     .resource-card,
     .contact-band {
       background: var(--paper);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
+      border-radius: var(--radius);
     }
 
     .intro-card {
@@ -251,7 +254,8 @@
       margin-bottom: 18px;
     }
 
-    .intro-points {
+    .intro-points,
+    .resource-points {
       margin: 0;
       padding: 0;
       list-style: none;
@@ -259,14 +263,16 @@
       gap: 10px;
     }
 
-    .intro-points li {
+    .intro-points li,
+    .resource-points li {
       position: relative;
       padding-left: 18px;
       color: var(--muted);
       line-height: 1.75;
     }
 
-    .intro-points li::before {
+    .intro-points li::before,
+    .resource-points li::before {
       content: "";
       position: absolute;
       left: 0;
@@ -295,6 +301,67 @@
       line-height: 1.8;
     }
 
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .season-card {
+      padding: 24px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .season-card.active-season {
+      background: linear-gradient(180deg, #fffdf9 0%, #f7f4ea 100%);
+      border-color: rgba(103,135,96,0.20);
+    }
+
+    .season-card.coming-soon {
+      background: #fcfbf7;
+      opacity: 0.9;
+    }
+
+    .season-name {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+
+    .season-desc {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .season-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      width: fit-content;
+    }
+
+    .season-badge.live {
+      background: rgba(103,135,96,0.14);
+      color: var(--sage);
+    }
+
+    .season-badge.soon {
+      background: rgba(251,155,39,0.14);
+      color: #9c5f11;
+    }
+
     .resource-card {
       padding: 18px;
     }
@@ -311,6 +378,7 @@
       overflow: hidden;
       border: 1px solid var(--line);
       background: #f3f1eb;
+      border-radius: 14px;
     }
 
     .resource-thumb img {
@@ -344,33 +412,6 @@
       font-size: 0.98rem;
       line-height: 1.8;
       margin-bottom: 14px;
-    }
-
-    .resource-points {
-      margin: 0 0 18px;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 8px;
-    }
-
-    .resource-points li {
-      position: relative;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .resource-points li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.78em;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--orange);
-      transform: translateY(-50%);
     }
 
     .card-actions,
@@ -454,7 +495,8 @@
     }
 
     @media (max-width: 900px) {
-      .resource-inner {
+      .resource-inner,
+      .season-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -484,6 +526,7 @@
       }
 
       .intro-card,
+      .season-card,
       .resource-card,
       .contact-band {
         padding: 22px;
@@ -547,14 +590,68 @@
         <ul class="intro-points">
           <li>Materiały do pobrania i wykorzystania w domu, edukacji lub social mediach.</li>
           <li>Krótkie treści skupione na przyrodzie, obserwacji i odpowiedzialnym zachowaniu.</li>
+          <li>Układ podzielony na sezony, aby łatwo rozbudowywać stronę o kolejne pory roku.</li>
         </ul>
       </section>
 
       <section class="section-head">
+        <span class="section-kicker">Kategorie</span>
+        <h2 class="section-title">Pory roku</h2>
+        <p class="section-text">
+          Na razie dostępne są materiały wiosenne. Z czasem pojawią się tu także kolejne sezony.
+        </p>
+      </section>
+
+      <section class="season-grid" aria-label="Kategorie sezonowe">
+        <article class="season-card active-season">
+          <div>
+            <span class="season-badge live">Dostępne teraz</span>
+            <h3 class="season-name">Wiosna</h3>
+            <p class="season-desc">
+              Materiały o pierwszych oznakach sezonu, kwiatach, miejskich spacerach i uważnym kontakcie z budzącą się przyrodą.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-sage" href="#wiosna">Zobacz materiały</a>
+          </div>
+        </article>
+
+        <article class="season-card coming-soon">
+          <div>
+            <span class="season-badge soon">W przygotowaniu</span>
+            <h3 class="season-name">Lato</h3>
+            <p class="season-desc">
+              Miejsce na przyszłe materiały związane z pełnią zieleni, światłem, wodą i letnimi obserwacjami.
+            </p>
+          </div>
+        </article>
+
+        <article class="season-card coming-soon">
+          <div>
+            <span class="season-badge soon">W przygotowaniu</span>
+            <h3 class="season-name">Jesień</h3>
+            <p class="season-desc">
+              Tutaj później pojawią się karty o zmianie, zbiorach, liściach, wyciszeniu i przygotowaniu do zimy.
+            </p>
+          </div>
+        </article>
+
+        <article class="season-card coming-soon">
+          <div>
+            <span class="season-badge soon">W przygotowaniu</span>
+            <h3 class="season-name">Zima</h3>
+            <p class="season-desc">
+              Przestrzeń na przyszłe materiały o bezruchu, śladach, ciszy, odpoczynku i zimowym krajobrazie.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section id="wiosna" class="section-head">
         <span class="section-kicker">Dostępny materiał</span>
         <h2 class="section-title">Wiosna</h2>
         <p class="section-text">
-          Karty sezonowe: wiosna.
+          Karty sezonowe związane z wiosenną obserwacją i odpowiedzialnym korzystaniem z miejsc przyrodniczych.
         </p>
       </section>
 
@@ -569,7 +666,7 @@
 
           <div>
             <h3 class="resource-title">Zasady krokusowego turysty</h3>
-            <div class="resource-meta">1 karta • PNG • materiał sezonowy</div>
+            <div class="resource-meta">Wiosna • 1 karta • PNG • materiał sezonowy</div>
 
             <p class="resource-description">
               Karta przypominająca, jak odpowiedzialnie odwiedzać miejsca, w których kwitną krokusy.
