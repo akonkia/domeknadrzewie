@@ -173,12 +173,20 @@
     }
 
     .hero-actions {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 150px;
+}
+
+.hero-actions a,
+.hero-actions .hero-chip {
+  position: relative;
+  z-index: 3;
+}
 
     .cta-btn {
       min-height: 46px;
