@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dobre początki - the beginning"
+title: "Dobre początki - good beginnings"
 date: 2026-02-15
 lang:
   - pl
