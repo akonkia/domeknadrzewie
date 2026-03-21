@@ -29,7 +29,7 @@
       --text: #243126;
       --muted: #5e675f;
       --line: rgba(36, 49, 38, 0.1);
-      --hero-overlay: rgba(36, 49, 38, 0.26);
+      --hero-overlay: rgba(36, 49, 38, 0.18);
       --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
       --max: 1120px;
       --radius: 18px;
@@ -146,9 +146,10 @@
 
     .hero {
       position: relative;
-      min-height: 420px;
+      min-height: 430px;
       display: flex;
       align-items: center;
+      justify-content: center;
       background:
         linear-gradient(var(--hero-overlay), var(--hero-overlay)),
         url('https://placehold.co/1600x900/d9e2d0/5f705b?text=Materials') center/cover no-repeat;
@@ -158,40 +159,21 @@
     .hero-inner {
       width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
-      padding: 62px 0;
+      padding: 70px 0 62px;
       text-align: center;
     }
 
-    .hero-kicker {
-      display: inline-block;
-      padding: 8px 14px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.2);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
     h1 {
-      margin-top: 18px;
-      font-size: clamp(2.5rem, 6vw, 4.4rem);
-      line-height: 0.96;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.95;
       letter-spacing: 0.01em;
       text-transform: uppercase;
+      color: white;
       text-shadow: 0 4px 18px rgba(0,0,0,0.18);
     }
 
-    .hero-text {
-      margin: 18px auto 0;
-      max-width: 58ch;
-      font-size: 1.08rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.92);
-    }
-
     .hero-actions {
-      margin-top: 28px;
+      margin-top: 30px;
       display: flex;
       justify-content: center;
       gap: 12px;
@@ -223,9 +205,13 @@
       border: 1px solid rgba(255,255,255,0.24);
     }
 
+    .cta-btn.primary:hover,
+    .cta-btn.secondary:hover {
+      transform: translateY(-1px);
+    }
+
     .cta-btn.secondary:hover {
       background: rgba(255,255,255,0.28);
-      transform: translateY(-1px);
     }
 
     .pages {
@@ -491,11 +477,11 @@
       }
 
       .hero {
-        min-height: 360px;
+        min-height: 340px;
       }
 
       h1 {
-        font-size: clamp(2.1rem, 10vw, 3.2rem);
+        font-size: clamp(2.4rem, 12vw, 4rem);
       }
 
       .material-item {
@@ -534,11 +520,7 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <span class="hero-kicker">Nature-inspired resources</span>
       <h1>Materials</h1>
-      <p class="hero-text">
-        Printable cards, colouring pages, reflections, and simple educational materials inspired by nature, quiet observation, and everyday contact with the natural world.
-      </p>
       <div class="hero-actions">
         <a class="cta-btn primary" href="#for-children">For children</a>
         <a class="cta-btn secondary" href="#seasonal-cards">Seasonal cards</a>
