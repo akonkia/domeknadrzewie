@@ -24,6 +24,24 @@ layout: default
       text-transform: uppercase;
     }
 
+    .post-cover-wrap {
+      margin: 26px 0 28px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .post-cover {
+      display: block;
+      width: 100%;
+      max-width: 760px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(36,49,38,0.08);
+      box-shadow: 0 14px 30px rgba(36,49,38,0.08);
+      background: #fff;
+    }
+
     .post-body {
       background: rgba(255,255,255,0.88);
       border: 1px solid rgba(36,49,38,0.08);
@@ -52,10 +70,17 @@ layout: default
     }
   </style>
 
+  {% assign cover_image = page.cover | default: '/assets/img/blog/default-cover.png' %}
+  {% assign cover_alt = page.cover_alt | default: page.title %}
+
   <header class="post-header">
     <div class="post-date">{{ page.date | date: "%-d %B %Y" }}</div>
     <h1>{{ page.title }}</h1>
   </header>
+
+  <div class="post-cover-wrap">
+    <img class="post-cover" src="{{ cover_image }}" alt="{{ cover_alt }}">
+  </div>
 
   <div class="post-body">
     {{ content }}
