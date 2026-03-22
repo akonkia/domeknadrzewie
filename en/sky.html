@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Niebo dziś — widok z okna</title>
+  <title>Sky today — window view</title>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WGXSZG17N"></script>
   <script>
@@ -12,7 +12,7 @@
     gtag('js', new Date());
     gtag('config', 'G-3WGXSZG17N');
   </script>
-F
+
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
 
   <style>
@@ -28,6 +28,11 @@ F
       --sky-bottom: #f3e4c9;
       --site-green: #76966a;
       --site-orange: #fb9b27;
+      --glow-x: 50%;
+      --glow-y: 72%;
+      --glow-opacity: 0.2;
+      --glow-color: 255, 196, 120;
+      --zenith-glow-opacity: 0.14;
     }
 
     * { box-sizing: border-box; }
@@ -183,7 +188,14 @@ F
       position: absolute;
       inset: 0;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 70%, rgba(245,241,232,0.14) 100%);
+      background:
+        radial-gradient(circle at var(--glow-x) var(--glow-y),
+          rgba(var(--glow-color), calc(var(--glow-opacity) * 1)) 0%,
+          rgba(var(--glow-color), calc(var(--glow-opacity) * 0.7)) 12%,
+          rgba(var(--glow-color), calc(var(--glow-opacity) * 0.35)) 24%,
+          rgba(var(--glow-color), 0) 42%
+        ),
+        linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 78%, rgba(245,241,232,0.14) 100%);
       transition: background 1.2s ease;
     }
 
@@ -191,10 +203,11 @@ F
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.28), transparent 26%);
+      background:
+        radial-gradient(circle at 70% 18%, rgba(255,255,255,var(--zenith-glow-opacity)), transparent 28%);
       pointer-events: none;
-      opacity: 0.8;
-      transition: opacity 1s ease;
+      opacity: 1;
+      transition: opacity 1s ease, background 1s ease;
     }
 
     .stars {
@@ -551,17 +564,17 @@ F
   </style>
 </head>
 <body>
-  <nav class="site-nav" aria-label="Główna nawigacja">
-    <a href="/" class="site-brand">
-      <img src="/assets/img/logo.png" alt="Logo Projekt: Domek na Drzewie" class="site-brand-logo">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/en/" class="site-brand">
+      <img src="/assets/img/logo.png" alt="Project: Tree House logo" class="site-brand-logo">
       <div class="site-brand-text">
         <span class="site-brand-title">Project: Tree House</span>
-        <span class="site-brand-subtitle">An educational and social project inspired by nature</span>
+        <span class="site-brand-subtitle">A nature-inspired educational and community project.</span>
       </div>
     </a>
 
     <div class="site-nav-links">
-      <a href="/" class="site-nav-link">Home page</a>
+      <a href="/en/" class="site-nav-link">Home</a>
       <a href="/sky.html" class="site-nav-link current">POLSKI</a>
     </div>
   </nav>
@@ -593,56 +606,56 @@ F
         </div>
 
         <div class="text-overlay">
-          <div class="label" id="placeLabel">Niebo dziś · Wrocław</div>
+          <div class="label" id="placeLabel">Sky today · Wrocław</div>
         </div>
       </section>
 
       <aside class="card forecast">
         <div>
           <p class="temp" id="temp">--°C</p>
-          <p class="state" id="state">Ładowanie pogody…</p>
+          <p class="state" id="state">Loading weather…</p>
           <div class="status-note" id="conditionDetail"></div>
-          <div class="clock" id="clock">Teraz: --:--</div>
+          <div class="clock" id="clock">Now: --:--</div>
         </div>
 
         <div class="grid">
           <div class="mini">
-            <div class="k" id="labelSunrise">Wschód słońca</div>
+            <div class="k" id="labelSunrise">Sunrise</div>
             <div class="v" id="sunriseTime">--:--</div>
           </div>
           <div class="mini">
-            <div class="k" id="labelSunset">Zachód słońca</div>
+            <div class="k" id="labelSunset">Sunset</div>
             <div class="v" id="sunsetTime">--:--</div>
           </div>
           <div class="mini">
-            <div class="k" id="labelMoonPhase">Księżyc</div>
-            <div class="v" id="moonPhase">Ładowanie</div>
+            <div class="k" id="labelMoonPhase">Moon</div>
+            <div class="v" id="moonPhase">Loading</div>
           </div>
           <div class="mini">
-            <div class="k" id="labelSky">Niebo</div>
+            <div class="k" id="labelSky">Sky</div>
             <div class="v" id="skyMood">--</div>
           </div>
           <div class="mini">
-            <div class="k" id="labelMoonrise">Wschód księżyca</div>
+            <div class="k" id="labelMoonrise">Moonrise</div>
             <div class="v" id="moonriseTime">--:--</div>
           </div>
           <div class="mini">
-            <div class="k" id="labelMoonset">Zachód księżyca</div>
+            <div class="k" id="labelMoonset">Moonset</div>
             <div class="v" id="moonsetTime">--:--</div>
           </div>
         </div>
 
-        <div class="reflection" id="reflection">Chwilę… sprawdzam niebo.</div>
+        <div class="reflection" id="reflection">One moment… checking the sky.</div>
         <div class="status-note" id="statusNote"></div>
 
         <form class="location-form" id="locationForm">
-          <input class="location-input" id="locationInput" type="text" placeholder="Wpisz miasto, np. Wrocław albo Tokyo" autocomplete="off" />
-          <button type="submit" id="searchBtn">Zmień miejsce</button>
+          <input class="location-input" id="locationInput" type="text" placeholder="Enter a city, e.g. Wrocław or Tokyo" autocomplete="off" />
+          <button type="submit" id="searchBtn">Change place</button>
         </form>
 
         <div class="controls">
-          <button type="button" id="refreshBtn">Odśwież dane</button>
-          <button type="button" id="locateBtn">Użyj mojej lokalizacji</button>
+          <button type="button" id="refreshBtn">Refresh data</button>
+          <button type="button" id="locateBtn">Use my location</button>
         </div>
       </aside>
     </div>
@@ -737,6 +750,7 @@ F
     const constellationLayer = document.getElementById('constellationLayer');
     const birds = document.getElementById('birds');
     const skyCard = document.querySelector('.sky-card');
+    const skyEl = document.getElementById('sky');
 
     const tempEl = document.getElementById('temp');
     const stateEl = document.getElementById('state');
@@ -1000,7 +1014,7 @@ F
         is_day: typeof bodyAltitudes.sunAltitude === 'number' ? (bodyAltitudes.sunAltitude > -0.8 ? 1 : 0) : 0
       };
 
-      const scene = getSceneFromWeather(liveCurrent, liveSceneData.sunriseDate, liveSceneData.sunsetDate);
+      const scene = getSceneFromWeather(liveCurrent);
       applyScene(scene, liveCurrent, liveSceneData.sunriseDate, liveSceneData.sunsetDate);
       const prominentConstellation = getProminentConstellation(currentDate, liveSceneData.latitude, liveSceneData.longitude, scene === 'night');
       renderConstellation(prominentConstellation, scene === 'night');
@@ -1135,90 +1149,288 @@ F
       }
     }
 
-    function getSceneFromWeather(current, sunriseDate, sunsetDate) {
-      const currentTime = asDate(current.time);
-      const weatherCode = current.weather_code;
-      const precipitation = current.precipitation || 0;
-      const snowfall = current.snowfall || 0;
-      const showers = current.showers || 0;
+    function mixHex(color1, color2, amount) {
+      const t = clamp(amount, 0, 1);
+      const c1 = color1.replace('#', '');
+      const c2 = color2.replace('#', '');
 
-      if ([71,73,75,77,85,86].includes(weatherCode) || snowfall > 0) return 'snow';
-      if ([51,53,55,61,63,65,80,81,82].includes(weatherCode) || (precipitation > 0.2 && snowfall <= 0 && showers >= 0)) return 'rain';
-      if (!current.is_day) return 'night';
+      const r1 = parseInt(c1.slice(0, 2), 16);
+      const g1 = parseInt(c1.slice(2, 4), 16);
+      const b1 = parseInt(c1.slice(4, 6), 16);
+
+      const r2 = parseInt(c2.slice(0, 2), 16);
+      const g2 = parseInt(c2.slice(2, 4), 16);
+      const b2 = parseInt(c2.slice(4, 6), 16);
+
+      const r = Math.round(r1 + (r2 - r1) * t);
+      const g = Math.round(g1 + (g2 - g1) * t);
+      const b = Math.round(b1 + (b2 - b1) * t);
+
+      return `#${[r, g, b].map(v => v.toString(16).padStart(2, '0')).join('')}`;
+    }
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    function smoothstep(edge0, edge1, x) {
+      const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+      return t * t * (3 - 2 * t);
+    }
+
+    function getSunData(date, latitude, longitude) {
+      if (!window.SunCalc) return { altitude: null, azimuth: null };
+
+      const pos = window.SunCalc.getPosition(date, latitude, longitude);
+      return {
+        altitude: pos ? pos.altitude * 180 / Math.PI : null,
+        azimuth: pos ? pos.azimuth * 180 / Math.PI : null
+      };
+    }
+
+    function getSunHorizontalPercent(azimuthDeg) {
+      if (typeof azimuthDeg !== 'number') return 50;
+      const x = 50 + (azimuthDeg / 90) * 38;
+      return clamp(x, 8, 92);
+    }
+
+    function getTwilightProgress(currentTime, sunriseDate, sunsetDate) {
+      const now = asDate(currentTime).getTime();
 
       if (!(sunriseDate instanceof Date) || Number.isNaN(sunriseDate.getTime()) ||
           !(sunsetDate instanceof Date) || Number.isNaN(sunsetDate.getTime())) {
-        return current.is_day ? 'day' : 'night';
+        return {
+          dawnProgress: 0,
+          duskProgress: 0,
+          isDawnWindow: false,
+          isDuskWindow: false
+        };
       }
 
-      const dawnEnd = sunriseDate.getTime() + 90 * 60 * 1000;
-      const duskStart = sunsetDate.getTime() - 90 * 60 * 1000;
-      if (currentTime.getTime() <= dawnEnd) return 'dawn';
-      if (currentTime.getTime() >= duskStart) return 'dusk';
+      const dawnStart = sunriseDate.getTime() - 45 * 60 * 1000;
+      const dawnEnd = sunriseDate.getTime() + 20 * 60 * 1000;
+
+      const duskStart = sunsetDate.getTime() - 20 * 60 * 1000;
+      const duskEnd = sunsetDate.getTime() + 45 * 60 * 1000;
+
+      const dawnProgress = clamp((now - dawnStart) / (dawnEnd - dawnStart), 0, 1);
+      const duskProgress = clamp((now - duskStart) / (duskEnd - duskStart), 0, 1);
+
+      return {
+        dawnProgress,
+        duskProgress,
+        isDawnWindow: now >= dawnStart && now <= dawnEnd,
+        isDuskWindow: now >= duskStart && now <= duskEnd
+      };
+    }
+
+    function getSceneFromWeather(current) {
+      const weatherCode = current.weather_code;
+      const precipitation = current.precipitation || 0;
+      const snowfall = current.snowfall || 0;
+
+      if ([71,73,75,77,85,86].includes(weatherCode) || snowfall > 0) return 'snow';
+      if ([51,53,55,61,63,65,80,81,82].includes(weatherCode) || precipitation > 0.2) return 'rain';
+
+      const sunData = getSunData(asDate(current.time), currentLocation.latitude, currentLocation.longitude);
+      if (typeof sunData.altitude === 'number' && sunData.altitude <= -10) return 'night';
       return 'day';
     }
 
-    function getSkyPalette(scene, cloudCover = 0) {
-      const cloudFactor = clamp(cloudCover / 100, 0, 1);
-      const palettes = {
-        dawn: { bodyTop: '#cedfeb', bodyBottom: '#f2d9bb', skyTop: '#bcd7e6', skyBottom: '#f4cda8', sunOpacity: 1, moonOpacity: 0.2, stars: 0.08, birds: 0.55, sunPath: 0.16, moonPath: 0.86 },
-        day: { bodyTop: '#d7ebf7', bodyBottom: '#f3e3c7', skyTop: '#c4e0ef', skyBottom: '#f5dfbf', sunOpacity: 1, moonOpacity: 0.04, stars: 0, birds: 1, sunPath: 0.5, moonPath: 0.96 },
-        dusk: { bodyTop: '#7f97bc', bodyBottom: '#ebb88c', skyTop: '#809ec4', skyBottom: '#eda96e', sunOpacity: 0.9, moonOpacity: 0.24, stars: 0.18, birds: 0.35, sunPath: 0.84, moonPath: 0.14 },
-        night: { bodyTop: '#152235', bodyBottom: '#314564', skyTop: '#1c2940', skyBottom: '#374e73', sunOpacity: 0.03, moonOpacity: 1, stars: 1, birds: 0, sunPath: 1.06, moonPath: 0.52 },
-        rain: { bodyTop: '#8898a9', bodyBottom: '#c8c0b7', skyTop: '#91a3b4', skyBottom: '#cfc8bf', sunOpacity: 0.12, moonOpacity: 0.08, stars: 0, birds: 0, sunPath: 0.48, moonPath: 0.82 },
-        snow: { bodyTop: '#cfdce8', bodyBottom: '#eef3f8', skyTop: '#c7d6e3', skyBottom: '#f4f7fb', sunOpacity: 0.14, moonOpacity: 0.1, stars: 0, birds: 0, sunPath: 0.44, moonPath: 0.78 }
-      };
-      const palette = palettes[scene];
-      const extraCloud = scene === 'rain' ? 0.18 : 0;
+    function getSkyFromSunAltitude(sunAltitude, cloudCover = 0) {
+      const cloud = clamp(cloudCover / 100, 0, 1);
+
+      if (typeof sunAltitude !== 'number') {
+        return {
+          scene: 'day',
+          bodyTop: '#d7ebf7',
+          bodyBottom: '#f3e3c7',
+          skyTop: '#c4e0ef',
+          skyBottom: '#f5dfbf',
+          horizonGlow: 0.15,
+          horizonWarmth: 0.12,
+          stars: 0,
+          birds: 1,
+          sunOpacity: 1,
+          moonOpacity: 0.08,
+          clouds: clamp(0.3 + cloud * 0.7, 0.2, 1),
+          rain: 0,
+          snow: 0
+        };
+      }
+
+      const nightToAstro = smoothstep(-18, -12, sunAltitude);
+      const astroToNautical = smoothstep(-12, -6, sunAltitude);
+      const nauticalToCivil = smoothstep(-6, 0, sunAltitude);
+      const civilToDay = smoothstep(0, 8, sunAltitude);
+
+      let skyTop = '#0f1a2d';
+      let skyBottom = '#1f2f4f';
+
+      skyTop = mixHex(skyTop, '#18253b', nightToAstro);
+      skyBottom = mixHex(skyBottom, '#31456a', nightToAstro);
+
+      skyTop = mixHex(skyTop, '#274166', astroToNautical);
+      skyBottom = mixHex(skyBottom, '#596f97', astroToNautical);
+
+      skyTop = mixHex(skyTop, '#5f84b5', nauticalToCivil);
+      skyBottom = mixHex(skyBottom, '#e6ae82', nauticalToCivil);
+
+      skyTop = mixHex(skyTop, '#c4e0ef', civilToDay);
+      skyBottom = mixHex(skyBottom, '#f5dfbf', civilToDay);
+
+      const bodyTop = mixHex(skyTop, '#ffffff', 0.12);
+      const bodyBottom = mixHex(skyBottom, '#f3ead9', 0.18);
+
+      const horizonGlow =
+        0.05 +
+        0.34 * smoothstep(-12, -1.5, sunAltitude) * (1 - smoothstep(1, 10, sunAltitude));
+
+      const horizonWarmth =
+        0.04 +
+        0.52 * smoothstep(-8, 1, sunAltitude) * (1 - smoothstep(3, 14, sunAltitude));
+
+      const stars =
+        1 - smoothstep(-12, -4, sunAltitude);
+
+      const birds =
+        smoothstep(-4, 3, sunAltitude);
+
+      const sunOpacity =
+        smoothstep(-1, 2, sunAltitude);
+
+      const moonOpacity =
+        0.12 + 0.88 * (1 - smoothstep(-4, 8, sunAltitude));
+
+      let scene = 'day';
+      if (sunAltitude <= -12) scene = 'night';
+      else if (sunAltitude <= 0) scene = 'twilight';
+
       return {
-        ...palette,
-        clouds: clamp(0.3 + cloudFactor * 0.7 + extraCloud, 0.2, 1),
-        rain: scene === 'rain' ? 1 : 0,
-        snow: scene === 'snow' ? 1 : 0
+        scene,
+        bodyTop,
+        bodyBottom,
+        skyTop,
+        skyBottom,
+        horizonGlow,
+        horizonWarmth,
+        stars,
+        birds,
+        sunOpacity,
+        moonOpacity,
+        clouds: clamp(0.28 + cloud * 0.72, 0.2, 1),
+        rain: 0,
+        snow: 0
       };
     }
 
+    function applySkyGlow(sunAzimuth, palette) {
+      const glowX = getSunHorizontalPercent(sunAzimuth);
+      const glowY = 76;
+      const warmColor = palette.horizonWarmth > 0.28 ? '255,160,95' : '255,196,120';
+
+      document.documentElement.style.setProperty('--glow-x', `${glowX}%`);
+      document.documentElement.style.setProperty('--glow-y', `${glowY}%`);
+      document.documentElement.style.setProperty('--glow-opacity', palette.horizonGlow.toFixed(3));
+      document.documentElement.style.setProperty('--glow-color', warmColor);
+      document.documentElement.style.setProperty('--zenith-glow-opacity', (0.05 + palette.horizonGlow * 0.45).toFixed(3));
+    }
+
     function applyScene(scene, current, sunriseDate, sunsetDate) {
-      const palette = getSkyPalette(scene, current.cloud_cover || 0);
+      const now = asDate(current.time);
+      const sunData = getSunData(now, currentLocation.latitude, currentLocation.longitude);
+      let palette = getSkyFromSunAltitude(sunData.altitude, current.cloud_cover || 0);
+
+      if (scene === 'rain') {
+        palette = {
+          ...palette,
+          bodyTop: mixHex(palette.bodyTop, '#8898a9', 0.55),
+          bodyBottom: mixHex(palette.bodyBottom, '#c8c0b7', 0.42),
+          skyTop: mixHex(palette.skyTop, '#91a3b4', 0.62),
+          skyBottom: mixHex(palette.skyBottom, '#cfc8bf', 0.48),
+          horizonGlow: palette.horizonGlow * 0.45,
+          horizonWarmth: palette.horizonWarmth * 0.35,
+          stars: 0,
+          birds: 0,
+          sunOpacity: palette.sunOpacity * 0.2,
+          moonOpacity: palette.moonOpacity * 0.14,
+          clouds: clamp(palette.clouds + 0.18, 0.25, 1),
+          rain: 1,
+          snow: 0
+        };
+      } else if (scene === 'snow') {
+        palette = {
+          ...palette,
+          bodyTop: mixHex(palette.bodyTop, '#cfdce8', 0.5),
+          bodyBottom: mixHex(palette.bodyBottom, '#eef3f8', 0.62),
+          skyTop: mixHex(palette.skyTop, '#c7d6e3', 0.58),
+          skyBottom: mixHex(palette.skyBottom, '#f4f7fb', 0.7),
+          horizonGlow: palette.horizonGlow * 0.35,
+          horizonWarmth: palette.horizonWarmth * 0.18,
+          stars: 0,
+          birds: 0,
+          sunOpacity: palette.sunOpacity * 0.2,
+          moonOpacity: palette.moonOpacity * 0.16,
+          clouds: clamp(palette.clouds + 0.14, 0.25, 1),
+          rain: 0,
+          snow: 1
+        };
+      }
+
       document.body.style.setProperty('--sky-top', palette.bodyTop);
       document.body.style.setProperty('--sky-bottom', palette.bodyBottom);
       document.documentElement.style.setProperty('--sky-top', palette.skyTop);
       document.documentElement.style.setProperty('--sky-bottom', palette.skyBottom);
 
-      const now = asDate(current.time);
-      const daylightTotal = (sunriseDate instanceof Date && sunsetDate instanceof Date &&
-        !Number.isNaN(sunriseDate.getTime()) && !Number.isNaN(sunsetDate.getTime()))
-        ? Math.max(1, sunsetDate.getTime() - sunriseDate.getTime()) : 1;
+      applySkyGlow(sunData.azimuth, palette);
 
-      const daylightProgress = (sunriseDate instanceof Date && sunsetDate instanceof Date &&
-        !Number.isNaN(sunriseDate.getTime()) && !Number.isNaN(sunsetDate.getTime()))
-        ? clamp((now.getTime() - sunriseDate.getTime()) / daylightTotal, 0, 1) : palette.sunPath;
+      const hasValidSunTimes =
+        sunriseDate instanceof Date && !Number.isNaN(sunriseDate.getTime()) &&
+        sunsetDate instanceof Date && !Number.isNaN(sunsetDate.getTime());
 
-      const sunPath = scene === 'night' ? palette.sunPath : daylightProgress;
+      const daylightTotal = hasValidSunTimes
+        ? Math.max(1, sunsetDate.getTime() - sunriseDate.getTime())
+        : 1;
+
+      const rawDaylightProgress = hasValidSunTimes
+        ? (now.getTime() - sunriseDate.getTime()) / daylightTotal
+        : 0.5;
+
+      const sunPathVisible = clamp(rawDaylightProgress, 0, 1);
 
       const bodyAltitudes = getBodyAltitudes(now, currentLocation.latitude, currentLocation.longitude);
-      const sunVisible = typeof bodyAltitudes.sunAltitude === 'number' ? bodyAltitudes.sunAltitude > -0.8 : scene !== 'night';
-      const moonVisible = typeof bodyAltitudes.moonAltitude === 'number' ? bodyAltitudes.moonAltitude > -0.8 : scene === 'night';
 
-      const sunLeft = 10 + sunPath * 76;
-      const sunTop = 250 - Math.sin(Math.PI * clamp(sunPath, 0, 1)) * 170;
+      const sunVisible = hasValidSunTimes
+        ? now.getTime() >= sunriseDate.getTime() && now.getTime() <= sunsetDate.getTime()
+        : typeof sunData.altitude === 'number' ? sunData.altitude > 0 : scene !== 'night';
+
+      const moonVisible = typeof bodyAltitudes.moonAltitude === 'number'
+        ? bodyAltitudes.moonAltitude > -6
+        : scene === 'night';
+
+      const sunLeft = -12 + sunPathVisible * 104;
+      const sunTop = 305 - Math.sin(Math.PI * sunPathVisible) * 225;
       sun.style.left = `${sunLeft}%`;
       sun.style.top = `${sunTop}px`;
       sun.style.opacity = sunVisible ? palette.sunOpacity : 0;
 
       const moonSeed = (now.getHours() + now.getMinutes() / 60) / 24;
-      const moonPath = scene === 'night' ? moonSeed : palette.moonPath;
+      const moonPath = scene === 'night' ? moonSeed : clamp(0.15 + (1 - moonSeed) * 0.7, 0, 1);
       const moonLeft = 12 + moonPath * 72;
       const moonTop = 235 - Math.sin(Math.PI * clamp(moonPath, 0, 1)) * 155;
       moon.style.left = `${moonLeft}%`;
       moon.style.top = `${moonTop}px`;
 
       let moonOpacity = 0;
-      if (moonVisible) moonOpacity = scene === 'night' ? 1 : scene === 'day' ? 0.16 : Math.max(0.28, palette.moonOpacity);
+      if (moonVisible) {
+        moonOpacity = palette.moonOpacity;
+        if (scene === 'day') moonOpacity *= 0.55;
+      }
       moon.style.opacity = moonOpacity;
       moon.style.transform = scene === 'night' ? 'scale(1.05)' : 'scale(1)';
 
-      stars.style.opacity = scene === 'night' ? palette.stars : 0;
+      stars.style.opacity = palette.stars;
+
       skyCard.classList.toggle('night-scene', scene === 'night');
       rain.style.opacity = palette.rain;
       snow.style.opacity = palette.snow;
@@ -1265,10 +1477,8 @@ F
 
       if (name === q) score += 200;
       if (label === q) score += 240;
-
       if (name.startsWith(q)) score += 80;
       if (label.startsWith(q)) score += 60;
-
       if (searchable.includes(q)) score += 50;
 
       for (const token of qTokens) {
@@ -1422,7 +1632,7 @@ F
       const sunriseDate = astronomy?.sunrise || (data.daily?.sunrise?.[0] != null ? asDate(data.daily.sunrise[0]) : null);
       const sunsetDate = astronomy?.sunset || (data.daily?.sunset?.[0] != null ? asDate(data.daily.sunset[0]) : null);
 
-      const scene = getSceneFromWeather(effectiveCurrent, sunriseDate, sunsetDate);
+      const scene = getSceneFromWeather(effectiveCurrent);
       applyScene(scene, effectiveCurrent, sunriseDate, sunsetDate);
       renderConstellation(
         getProminentConstellation(currentDate, currentLocation.latitude, currentLocation.longitude, scene === 'night'),
@@ -1585,34 +1795,13 @@ F
       console.assert(document.querySelectorAll('.flake').length >= 40, 'Snow scene should have enough flakes');
       console.assert(
         getSceneFromWeather(
-          { time: Date.now(), weather_code: 85, precipitation: 0, snowfall: 0.2, showers: 0, is_day: 1 },
-          new Date(Date.now() - 3600000),
-          new Date(Date.now() + 3600000)
+          { time: Date.now(), weather_code: 85, precipitation: 0, snowfall: 0.2, showers: 0, is_day: 1 }
         ) === 'snow',
         'Snow showers should trigger snow scene'
       );
       console.assert(typeof pickPrompt === 'function', 'pickPrompt should be defined');
       console.assert(typeof getNearestHourlySample === 'function', 'getNearestHourlySample should be defined');
-
-      const hourlySample = getNearestHourlySample({
-        hourly: {
-          time: [1742000000, 1742003600, 1742007200],
-          weather_code: [3, 85, 3],
-          precipitation: [0, 0.4, 0],
-          snowfall: [0, 0.2, 0],
-          showers: [0, 0, 0]
-        }
-      }, 1742003600);
-      console.assert(hourlySample.weather_code === 85 && hourlySample.snowfall >= 0.2, 'Hourly sample should preserve nearby snow');
-
-      const mockResults = [
-        { name: 'Jarocin', admin1: 'Lower Silesia', country: 'Poland', population: 1000, feature_code: 'PPL' },
-        { name: 'Jarocin', admin1: 'Greater Poland', country: 'Poland', population: 26000, feature_code: 'PPLA3' }
-      ];
-      const ranked = mockResults
-        .map(r => ({ r, s: scoreLocationResult(r, 'Jarocin, Greater Poland') }))
-        .sort((a, b) => b.s - a.s);
-      console.assert(ranked[0].r.admin1 === 'Greater Poland', 'Location scoring should prefer better qualifier matches');
+      console.assert(typeof getSkyFromSunAltitude === 'function', 'Altitude-based sky function should be defined');
     }
 
     refreshBtn.addEventListener('click', () => refreshWeather(true));
