@@ -163,6 +163,42 @@ title: Blog
   </div>
 
   <div class="post-list">
+    <div class="post-list">
+
+  <!-- SKY CARD (paste here) -->
+  <a class="post-link" href="/sky.html">
+    <article class="post-card sky-card">
+      <div class="post-thumb-frame sky-frame">
+        <div class="sky-mini-scene" id="skyMiniScene">
+          <div class="sky-mini-stars" id="skyMiniStars"></div>
+          <div class="sky-mini-sun" id="skyMiniSun"></div>
+          <div class="sky-mini-moon" id="skyMiniMoon"></div>
+
+          <div class="sky-mini-clouds" id="skyMiniClouds">
+            <div class="sky-mini-cloud one"></div>
+            <div class="sky-mini-cloud two"></div>
+            <div class="sky-mini-cloud three"></div>
+          </div>
+
+          <div class="sky-mini-overlay">
+            <div class="sky-mini-label" id="skyMiniLabel">Sky today</div>
+            <p class="sky-mini-hook" id="skyMiniHook">Open full sky view</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-card-content">
+        <time>Live</time>
+        <h2>Sky today</h2>
+        <p>A quiet, real-time view of light, rhythm and the passing day.</p>
+        <span class="read-more">Open view</span>
+      </div>
+    </article>
+  </a>
+
+  <!-- YOUR POSTS START HERE -->
+  {% assign default_cover = '/assets/img/default-cover.png' %}
+  {% for post in site.posts %}
     {% assign default_cover = '/assets/img/default-cover.png' %}
     {% for post in site.posts %}
       {% assign thumb_image = post.cover | default: default_cover %}
