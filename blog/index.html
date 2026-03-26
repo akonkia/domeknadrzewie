@@ -2,7 +2,9 @@
 layout: default
 title: Blog
 ---
+
 <h1 style="background:red;color:white;">THIS IS THE BLOG PAGE</h1>
+
 <section class="blog-index">
   <style>
     .blog-intro {
@@ -10,29 +12,6 @@ title: Blog
       margin-bottom: 34px;
     }
 
-<a class="sky-mini-card" href="/sky.html" aria-label="Open full sky view">
-  <div class="sky-mini-scene" id="skyMiniScene">
-    <div class="sky-mini-stars" id="skyMiniStars"></div>
-    <div class="sky-mini-sun" id="skyMiniSun"></div>
-    <div class="sky-mini-moon" id="skyMiniMoon"></div>
-
-    <div class="sky-mini-clouds" id="skyMiniClouds">
-      <div class="sky-mini-cloud one"></div>
-      <div class="sky-mini-cloud two"></div>
-      <div class="sky-mini-cloud three"></div>
-    </div>
-
-    <div class="sky-mini-rain" id="skyMiniRain"></div>
-    <div class="sky-mini-snow" id="skyMiniSnow"></div>
-    <div class="sky-mini-birds" id="skyMiniBirds">◠◡◠</div>
-
-    <div class="sky-mini-overlay">
-      <div class="sky-mini-label" id="skyMiniLabel">Sky today</div>
-      <p class="sky-mini-hook" id="skyMiniHook">Open full view</p>
-    </div>
-  </div>
-</a>
-    
     .blog-intro h1 {
       margin: 0 0 10px;
       font-size: clamp(2rem, 5vw, 3.4rem);
@@ -163,42 +142,36 @@ title: Blog
   </div>
 
   <div class="post-list">
-    <div class="post-list">
 
-  <!-- SKY CARD (paste here) -->
-  <a class="post-link" href="/sky.html">
-    <article class="post-card sky-card">
-      <div class="post-thumb-frame sky-frame">
-        <div class="sky-mini-scene" id="skyMiniScene">
-          <div class="sky-mini-stars" id="skyMiniStars"></div>
-          <div class="sky-mini-sun" id="skyMiniSun"></div>
-          <div class="sky-mini-moon" id="skyMiniMoon"></div>
-
-          <div class="sky-mini-clouds" id="skyMiniClouds">
-            <div class="sky-mini-cloud one"></div>
-            <div class="sky-mini-cloud two"></div>
-            <div class="sky-mini-cloud three"></div>
-          </div>
-
-          <div class="sky-mini-overlay">
-            <div class="sky-mini-label" id="skyMiniLabel">Sky today</div>
-            <p class="sky-mini-hook" id="skyMiniHook">Open full sky view</p>
+    <!-- SKY CARD -->
+    <a class="post-link" href="/sky.html">
+      <article class="post-card sky-card">
+        <div class="post-thumb-frame sky-frame">
+          <div class="sky-mini-scene" id="skyMiniScene">
+            <div class="sky-mini-stars" id="skyMiniStars"></div>
+            <div class="sky-mini-sun" id="skyMiniSun"></div>
+            <div class="sky-mini-moon" id="skyMiniMoon"></div>
+            <div class="sky-mini-clouds" id="skyMiniClouds">
+              <div class="sky-mini-cloud one"></div>
+              <div class="sky-mini-cloud two"></div>
+              <div class="sky-mini-cloud three"></div>
+            </div>
+            <div class="sky-mini-overlay">
+              <div class="sky-mini-label" id="skyMiniLabel">Sky today</div>
+              <p class="sky-mini-hook" id="skyMiniHook">Open full sky view</p>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="post-card-content">
+          <time>Live</time>
+          <h2>Sky today</h2>
+          <p>A quiet, real-time view of light, rhythm and the passing day.</p>
+          <span class="read-more">Open view</span>
+        </div>
+      </article>
+    </a>
 
-      <div class="post-card-content">
-        <time>Live</time>
-        <h2>Sky today</h2>
-        <p>A quiet, real-time view of light, rhythm and the passing day.</p>
-        <span class="read-more">Open view</span>
-      </div>
-    </article>
-  </a>
-
-  <!-- YOUR POSTS START HERE -->
-  {% assign default_cover = '/assets/img/default-cover.png' %}
-  {% for post in site.posts %}
+    <!-- BLOG POSTS -->
     {% assign default_cover = '/assets/img/default-cover.png' %}
     {% for post in site.posts %}
       {% assign thumb_image = post.cover | default: default_cover %}
@@ -231,5 +204,6 @@ title: Blog
         </article>
       </a>
     {% endfor %}
+
   </div>
 </section>
