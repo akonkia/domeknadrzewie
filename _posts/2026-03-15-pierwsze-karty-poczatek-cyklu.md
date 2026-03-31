@@ -26,7 +26,7 @@ To, co na początku było pojedynczymi próbami, zaczęło tworzyć powtarzalny 
 Rytm, do którego można wracać.
 Cykl nie jest zamkniętą historią, ale procesem — czymś, co rozwija się razem z czasem, pogodą i doświadczeniem.
 
-##Tydzień 11 — Odradzanie##
+##Tydzień 11 — Odradzanie
 Wczesna wiosna nie przychodzi gwałtownie.
 Nie narzuca się — raczej pojawia się w drobnych sygnałach.
 Ten tydzień skupia się na tym, co dopiero zaczyna się wyłaniać.
@@ -34,11 +34,11 @@ Wyjdź na zewnątrz i zatrzymaj się na chwilę.
 Wsłuchaj się w dźwięki: śpiew ptaków, odległe nawoływania, ruch powietrza między gałęziami.
 Zobacz, co jest jeszcze niepewne, ale już obecne.
 
-##Refleksja##
+##Refleksja
 Jakie dźwięki zwiastują dla mnie odnowę?
 Co zaczyna pojawiać się w moim życiu, powoli, lecz wyraźnie?
 Czy potrafię zostawić temu przestrzeń, zamiast przyspieszać?
-##Dalej##
+##Dalej
 Pojawienie się kart zmienia sposób, w jaki projekt się rozwija.
 Z pojedynczego miejsca w sieci zaczyna powstawać coś bardziej regularnego — rytm, który można śledzić tydzień po tygodniu.
 To dopiero początek tej części drogi.
