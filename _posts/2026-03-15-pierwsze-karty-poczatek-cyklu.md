@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pierwsze karty — początek cyklu / First cards — beginning of the series"
+title: "Pierwsze karty - początek cyklu / First cards - beginning of the series"
 date: 2026-03-31
 lang:
   - pl
