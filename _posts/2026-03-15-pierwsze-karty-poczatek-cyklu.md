@@ -26,7 +26,7 @@ To, co na początku było pojedynczymi próbami, zaczęło tworzyć powtarzalny 
 Rytm, do którego można wracać.
 Cykl nie jest zamkniętą historią, ale procesem, czymś, co rozwija się razem z czasem, pogodą i doświadczeniem.
 
-##Tydzień 11 — Odradzanie
+## Tydzień 11 — Odradzanie
 Wczesna wiosna nie przychodzi gwałtownie.
 Nie narzuca się, raczej pojawia się w drobnych sygnałach.
 Ten tydzień skupia się na tym, co dopiero zaczyna się wyłaniać.
@@ -34,12 +34,12 @@ Wyjdź na zewnątrz i zatrzymaj się na chwilę.
 Wsłuchaj się w dźwięki: śpiew ptaków, odległe nawoływania, ruch powietrza między gałęziami.
 Zobacz, co jest jeszcze niepewne, ale już obecne.
 
-##Refleksja
+## Refleksja
 Jakie dźwięki zwiastują dla mnie odnowę?
 Co zaczyna pojawiać się w moim życiu, powoli, lecz wyraźnie?
 Czy potrafię zostawić temu przestrzeń, zamiast przyspieszać?
 
-##Dalej
+## Dalej
 Pojawienie się kart zmienia sposób, w jaki projekt się rozwija.
 Z pojedynczego miejsca w sieci zaczyna powstawać coś bardziej regularnego — rytm, który można śledzić tydzień po tygodniu.
 To dopiero początek tej części drogi.
@@ -52,7 +52,7 @@ The cards were created as a simple form of pause, something you can take with yo
 They are not instructions.
 They are invitations.
 
-##About the #domeknadrzewie52 series ##
+## About the #domeknadrzewie52 series
 Over time, the cards began to form a cycle: 52 weeks of mindfulness rooted in the rhythm of the seasons.
 Each week offers:
 a simple observation or practice in nature
@@ -63,7 +63,7 @@ What began as individual attempts started to create a repeating rhythm.
 A rhythm you can return to.
 The series is not a closed story, but a process, something that evolves with time, weather, and experience.
 
-##Week 11 — Emergence##
+## Week 11 — Emergence
 Early spring does not arrive suddenly.
 It does not demand attention, it appears in small signals.
 This week focuses on what is just beginning to emerge.
@@ -71,12 +71,12 @@ Step outside and pause for a moment.
 Listen to the sounds: birds singing, distant calls, the movement of air through branches.
 Notice what is still uncertain, but already present.
 
-##Reflection##
+## Reflection
 What sounds signal renewal to me?
 What is beginning to appear in my life, slowly but clearly?
 Can I give it space instead of trying to accelerate it?
 
-##Moving forward##
+## Moving forward
 The appearance of the cards changes how the project develops.
 From a single place on the web, it begins to form something more regular — a rhythm that can be followed week by week.
 This is only the beginning of this part of the journey.
