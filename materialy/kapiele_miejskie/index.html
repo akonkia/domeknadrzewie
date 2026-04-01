@@ -312,6 +312,18 @@
     .material-thumb:hover img {
       transform: scale(1.03);
     }
+    
+    .card-text {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.card-reflection {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
 
     .download-links,
     .contact-actions {
@@ -425,8 +437,73 @@
       }
 
       .material-item {
-        grid-template-columns: 1fr;
-      }
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 28px;
+  padding: 26px;
+  background: #faf9f5;
+  border: 1px solid rgba(36,49,38,0.08);
+  box-shadow: var(--shadow);
+}
+
+.material-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.material-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.material-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.material-header span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.material-body {
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.material-reflection {
+  margin-top: 4px;
+}
+
+.material-reflection strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.material-reflection ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text);
+}
+
+.material-links {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.material-links a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(103,135,96,0.12);
+  color: var(--sage);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
 
       .material-thumb {
         width: 100%;
@@ -485,33 +562,138 @@
         <span>Miejskie kąpiele leśne</span>
       </nav>
 
-      <section class="intro-card">
-        <span class="section-kicker">O serii</span>
-        <h2 class="intro-title">Cotygodniowe karty inspirowane naturą</h2>
-        <p class="intro-text">
-          Seria „Miejskie kąpiele leśne” to krótkie materiały do zatrzymania uwagi,
-          obserwacji i refleksji. Każdy tydzień zawiera kartę główną oraz kartę refleksji.
-        </p>
-        <div class="intro-tag">#DOMEKNADRZEWIE52</div>
-      </section>
+    <section class="intro-card">
+      <span class="section-kicker">O cyklu</span>
+      <h2 class="intro-title">Karty tygodniowe inspirowane naturą</h2>
+
+      <p class="intro-text">
+        Cykl <strong>#domeknadrzewie52</strong> to 52 tygodnie uważności zakorzenionej w naturze i rytmie pór roku.
+        Każda karta jest zaproszeniem do zatrzymania się na moment i zauważenia tego, co dzieje się tu i teraz —
+        w otoczeniu i we własnym doświadczeniu.
+      </p>
+
+      <p class="intro-text">
+        To nie jest plan do zrealizowania ani wyzwanie. To łagodny rytm, do którego można wracać.
+        Każdy tydzień przynosi prostą praktykę, temat osadzony w aktualnym czasie roku oraz pytania,
+        które pomagają pogłębić uważność.
+      </p>
+
+      <p class="intro-text">
+        Każda karta składa się z czterech elementów:
+        obraz jako punkt wejścia, temat tygodnia, krótkie zaproszenie do obserwacji
+        oraz pytania do refleksji. Można z niej skorzystać w dowolny sposób —
+        podczas spaceru, w domu, przez chwilę lub dłużej.
+      </p>
+
+      <p class="intro-text">
+        Z czasem karty tworzą opowieść o cykliczności:
+        o wzroście, zatrzymaniu, odpuszczaniu i odradzaniu.
+        To proces, który rozwija się razem z porami roku.
+      </p>
+
+      <div class="intro-tag">#DOMEKNADRZEWIE52</div>
+    </section>
+    
+    <section class="intro-card">
+  <span class="section-kicker">Inspiracja</span>
+  <h2 class="intro-title">Kąpiele leśne w miejskim wydaniu</h2>
+
+  <p class="intro-text">
+    Cykl inspirowany jest praktyką kąpieli leśnych, znaną jako <em>shinrin-yoku</em>,
+    japońską formą uważnego przebywania w naturze, opartą na powolnym spacerze,
+    obserwacji i otwarciu zmysłów.
+  </p>
+
+  <p class="intro-text">
+    W tym projekcie ta idea zostaje przeniesiona do przestrzeni miejskiej.
+    Nie każdy ma dostęp do lasu, ale każdy ma dostęp do jakiejś formy natury:
+    drzew przy ulicy, zmieniającego się światła, ruchu powietrza, dźwięków ptaków między budynkami.
+  </p>
+
+  <p class="intro-text">
+    „Kąpiele leśne w mieście” nie próbują odtworzyć lasu.
+    Zamiast tego proponują zauważenie tego, co już jest - w najbliższym otoczeniu.
+  </p>
+
+  <p class="intro-text">
+    To praktyka uważności osadzona w codzienności:
+    w drodze do pracy, podczas krótkiego spaceru, między jednym miejscem a drugim.
+  </p>
+
+  <p class="intro-text">
+    Nie chodzi o ucieczkę z miasta.  
+    Chodzi o bycie w nim inaczej.
+  </p>
+</section>
+
+<section class="intro-card">
+  <span class="section-kicker">Dostępność</span>
+  <h2 class="intro-title">Materiały dostępne bezpłatnie</h2>
+
+  <p class="intro-text">
+    Wszystkie materiały w tym cyklu są dostępne bezpłatnie.
+  </p>
+
+  <p class="intro-text">
+    Możesz je przeglądać, pobierać i wracać do nich w dowolnym momencie:
+    bez logowania, bez ograniczeń, we własnym tempie.
+  </p>
+
+  <p class="intro-text">
+    Projekt powstał jako otwarta przestrzeń, do której każdy może mieć dostęp,
+    niezależnie od miejsca i sytuacji.
+  </p>
+
+  <p class="intro-text">
+    Jeśli chcesz, możesz podzielić się kartami z innymi lub wracać do nich wtedy,
+    gdy tego potrzebujesz.
+  </p>
+</section>
 
       <section class="material-list">
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 01</strong>
-              <span>Temat: Bezruch</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" download>Obraz</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" alt="Podgląd karty Tydzień 01" />
-          </a>
-        </div>
+          
+          <div class="material-item">
+               <div class="material-visual">
+    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" alt="Tydzień 01" />
+    </a>
+  </div>
+              
+  <div class="material-content">
+
+
+
+          <div class="material-header">
+      <h3>Tydzień 01</h3>
+      <span>Temat: Bezruch</span>
+    </div>
+
+    <p class="material-body">
+      Wejdź powoli w zieloną przestrzeń. Rób częste pauzy.
+      Usiądź lub stań nieruchomo na pięć minut.
+      Pozwól, by cisza dotarła do ciebie.
+    </p>
+
+         <div class="material-reflection">
+      <strong>Refleksja</strong>
+      <ul>
+        <li>Jakie dźwięki trwają, gdy otoczenie cichnie?</li>
+        <br>
+        <li>Gdzie w moim ciele odczuwam stan bezruchu?</li>
+      </ul>
+    </div>
+    </div>
+
+    <div class="download-links">
+      <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" download>Obraz</a>
+      <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1B.png" download>Refleksja</a>
+      <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
+    </div>
+
+  </div>
+
+</div>
+          
 
         <div class="material-item">
           <div class="material-main">
