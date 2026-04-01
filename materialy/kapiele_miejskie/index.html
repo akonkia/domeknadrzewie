@@ -58,6 +58,7 @@
       margin: 0 auto;
     }
 
+    /* Navigation */
     .topbar {
       background: rgba(255,255,255,0.94);
       border-bottom: 1px solid rgba(36,49,38,0.08);
@@ -92,31 +93,11 @@
       flex-shrink: 0;
     }
 
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-title { font-size: 1.35rem; font-weight: 800; letter-spacing: 0.01em; }
+    .brand-subtitle { margin-top: 4px; color: var(--muted); font-size: 0.92rem; }
 
-    .brand-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-    }
-
-    .brand-subtitle {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
+    .nav-links { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
     .nav-links a {
       min-height: 88px;
       padding: 0 22px;
@@ -132,21 +113,10 @@
       transition: 0.18s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: var(--sage);
-      color: white;
-    }
+    .nav-links a:hover, .nav-links a.active { background: var(--sage); color: white; }
+    .lang-link { background: var(--orange) !important; color: white !important; }
 
-    .lang-link {
-      background: var(--orange) !important;
-      color: white !important;
-    }
-
-    .lang-link:hover {
-      background: #e68e20 !important;
-    }
-
+    /* Hero */
     .hero {
       position: relative;
       min-height: 340px;
@@ -193,32 +163,18 @@
       color: rgba(255,255,255,0.92);
     }
 
-    .page-wrap {
-      padding: 34px 0 44px;
-    }
+    /* Layout */
+    .page-wrap { padding: 34px 0 44px; }
+    .breadcrumbs { margin-bottom: 22px; color: var(--muted); font-size: 0.94rem; line-height: 1.6; }
+    .breadcrumbs a { color: var(--sage); font-weight: 700; }
 
-    .breadcrumbs {
-      margin-bottom: 22px;
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.6;
-    }
-
-    .breadcrumbs a {
-      color: var(--sage);
-      font-weight: 700;
-    }
-
-    .intro-card,
-    .contact-band {
+    /* Intro Cards */
+    .intro-card {
       background: white;
       border: 1px solid rgba(36,49,38,0.08);
       box-shadow: var(--shadow);
-    }
-
-    .intro-card {
-      padding: 30px;
-      margin-bottom: 28px;
+      padding: 40px;
+      margin-bottom: 24px;
       text-align: center;
     }
 
@@ -235,18 +191,19 @@
     }
 
     .intro-title {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      line-height: 1.06;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.1;
       text-transform: uppercase;
       letter-spacing: 0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
 
     .intro-text {
       color: var(--muted);
-      line-height: 1.82;
-      max-width: 68ch;
-      margin: 0 auto 18px;
+      line-height: 1.8;
+      max-width: 72ch;
+      margin: 0 auto 20px;
+      font-size: 1rem;
     }
 
     .intro-tag {
@@ -255,288 +212,96 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       font-size: 0.88rem;
+      margin-top: 10px;
     }
 
-    .material-list {
-      display: grid;
-      gap: 14px;
-    }
-
+    /* Material Items */
+    .material-list { display: grid; gap: 24px; margin-top: 40px; }
     .material-item {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 150px;
-      gap: 18px;
-      align-items: center;
-      padding: 18px 20px;
-      border: 1px solid rgba(36,49,38,0.08);
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      padding: 30px;
       background: #faf9f5;
+      border: 1px solid rgba(36,49,38,0.08);
       box-shadow: var(--shadow);
-    }
-
-    .material-main {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      min-width: 0;
       text-align: left;
     }
 
-    .material-main strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1.05rem;
-    }
-
-    .material-main span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .material-thumb {
-      display: block;
-      width: 150px;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #f3f1eb;
-      box-shadow: 0 8px 18px rgba(36,49,38,0.08);
-    }
-
-    .material-thumb img {
+    .material-visual img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.2s ease;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(36,49,38,0.1);
     }
 
-    .material-thumb:hover img {
-      transform: scale(1.03);
-    }
-    
-    .card-text {
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--muted);
-}
+    .material-content { display: flex; flex-direction: column; gap: 16px; }
+    .material-header h3 { font-size: 1.4rem; text-transform: uppercase; margin: 0; }
+    .material-header span { color: var(--muted); font-weight: 700; font-size: 0.95rem; }
+    .material-body { line-height: 1.8; color: var(--muted); font-size: 0.95rem; }
 
-.card-reflection {
-  margin-top: 6px;
-  font-size: 0.9rem;
-  color: var(--text);
-}
-
-    .download-links,
-    .contact-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .material-reflection strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: var(--sage);
+      letter-spacing: 0.05em;
     }
 
-    .download-links a,
-    .social-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 10px 16px;
+    .material-reflection ul { margin: 0; padding-left: 18px; color: var(--text); }
+    .material-reflection li { margin-bottom: 6px; font-size: 0.92rem; }
+
+    .download-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .download-links a {
+      padding: 8px 16px;
       border-radius: 999px;
       font-weight: 800;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      box-shadow: 0 8px 18px rgba(36,49,38,0.10);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-      white-space: nowrap;
+      transition: 0.2s;
     }
 
-    .download-links a:hover,
-    .social-chip:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 22px rgba(36,49,38,0.14);
-      filter: brightness(1.03);
-    }
+    .download-links a:nth-child(1) { background: var(--sage); color: white; }
+    .download-links a:nth-child(2) { background: var(--gold); color: #3d2a10; }
+    .download-links a:nth-child(3) { background: #b44f72; color: white; }
+    .download-links a:hover { transform: translateY(-1px); filter: brightness(1.05); }
 
-    .download-links a:nth-child(1),
-    .social-chip {
-      background: linear-gradient(135deg, var(--sage), #88a67f);
-      color: white;
-    }
+    /* Footer & Contact */
+    .contact-band { background: white; border: 1px solid rgba(36,49,38,0.08); padding: 40px; text-align: center; margin-top: 40px; }
+    .contact-actions { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+    .social-chip { padding: 12px 20px; border-radius: 999px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; background: var(--sage); color: white; }
+    .social-chip.alt { background: var(--orange); }
 
-    .download-links a:nth-child(2),
-    .social-chip.alt {
-      background: linear-gradient(135deg, var(--gold), var(--orange));
-      color: #3d2a10;
-    }
+    .footer { padding: 40px 0; border-top: 1px solid var(--line); margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
+    .footer-box { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
-    .download-links a:nth-child(3) {
-      background: linear-gradient(135deg, #b44f72, #ee7a78);
-      color: white;
-    }
-
-    .contact-band {
-      margin-top: 30px;
-      padding: 28px;
-      text-align: center;
-    }
-
-    .contact-band h3 {
-      font-size: 1.35rem;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .contact-band p {
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 56ch;
-      margin: 0 auto;
-    }
-
-    .contact-actions {
-      justify-content: center;
-      margin-top: 18px;
-    }
-
-    .footer {
-      padding: 0 0 34px;
-    }
-
-    .footer-box {
-      border-top: 1px solid rgba(36,49,38,0.1);
-      padding-top: 20px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 760px) {
-      .nav {
-        padding: 10px 0 14px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        width: 100%;
-      }
-
-      .nav-links a {
-        min-height: 52px;
-        padding: 0 14px;
-      }
-
-      .hero {
-        min-height: 280px;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 9vw, 3rem);
-      }
-
-      .material-item {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 28px;
-  padding: 26px;
-  background: #faf9f5;
-  border: 1px solid rgba(36,49,38,0.08);
-  box-shadow: var(--shadow);
-}
-
-.material-visual img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 6px;
-}
-
-.material-content {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.material-header h3 {
-  margin: 0;
-  font-size: 1.4rem;
-}
-
-.material-header span {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.material-body {
-  line-height: 1.8;
-  color: var(--muted);
-}
-
-.material-reflection {
-  margin-top: 4px;
-}
-
-.material-reflection strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.material-reflection ul {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--text);
-}
-
-.material-links {
-  margin-top: 8px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.material-links a {
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(103,135,96,0.12);
-  color: var(--sage);
-  font-weight: 700;
-  font-size: 0.8rem;
-}
-
-      .material-thumb {
-        width: 100%;
-        max-width: 220px;
-      }
-
-      .intro-card,
-      .contact-band {
-        padding: 22px;
-      }
+    @media (max-width: 800px) {
+      .material-item { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+      .material-visual { max-width: 320px; margin: 0 auto; }
+      .nav { flex-direction: column; align-items: flex-start; padding: 15px 0; }
+      .nav-links a { min-height: 50px; border: none; }
     }
   </style>
 </head>
 <body>
+
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="/" aria-label="Projekt: Domek na Drzewie">
         <div class="brand-mark">
-          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo" />
         </div>
         <div>
           <div class="brand-title">Projekt: Domek na Drzewie</div>
           <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
         </div>
       </a>
-
-      <nav class="nav-links" aria-label="Nawigacja">
+      <nav class="nav-links">
         <a href="/">O projekcie</a>
         <a href="/materialy/" class="active">Materiały</a>
-        <a class="lang-link" href="/en/materials/urban-bathing/" lang="en" hreflang="en">English</a>
-        <a href="/sky.html">Niebo dziś</a>
-        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+        <a class="lang-link" href="/en/">English</a>
+        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank">Instagram</a>
       </nav>
     </div>
   </header>
@@ -555,314 +320,366 @@
   <main class="page-wrap">
     <div class="narrow">
       <nav class="breadcrumbs" aria-label="Okruszki">
-        <a href="/">Strona główna</a>
-        <span> / </span>
-        <a href="/materialy/">Materiały</a>
-        <span> / </span>
-        <span>Miejskie kąpiele leśne</span>
+        <a href="/">Strona główna</a> / <a href="/materialy/">Materiały</a> / <span>Miejskie kąpiele leśne</span>
       </nav>
 
-    <section class="intro-card">
-      <span class="section-kicker">O cyklu</span>
-      <h2 class="intro-title">Karty tygodniowe inspirowane naturą</h2>
+      <section class="intro-card">
+        <span class="section-kicker">O cyklu</span>
+        <h2 class="intro-title">Karty tygodniowe inspirowane naturą</h2>
+        <p class="intro-text">
+          Cykl <strong>#domeknadrzewie52</strong> to 52 tygodnie uważności zakorzenionej w naturze i rytmie pór roku.
+          Każda karta jest zaproszeniem do zatrzymania się na moment i zauważenia tego, co dzieje się tu i teraz —
+          w otoczeniu i we własnym doświadczeniu.
+        </p>
+        <p class="intro-text">
+          To nie jest plan do zrealizowania ani wyzwanie. To łagodny rytm, do którego można wracać.
+          Każdy tydzień przynosi prostą praktykę, temat osadzony w aktualnym czasie roku oraz pytania,
+          które pomagają pogłębić uważność.
+        </p>
+        <p class="intro-text">
+          Każda karta składa się z czterener elementów: obraz jako punkt wejścia, temat tygodnia, krótkie zaproszenie do obserwacji
+          oraz pytania do refleksji. Można z niej skorzystać w dowolny sposób — podczas spaceru, w domu, przez chwilę lub dłużej.
+        </p>
+        <p class="intro-text">
+          Z czasem karty tworzą opowieść o cykliczności: o wzroście, zatrzymaniu, odpuszczaniu i odradzaniu.
+          To proces, który rozwija się razem z porami roku.
+        </p>
+        <div class="intro-tag">#DOMEKNADRZEWIE52</div>
+      </section>
 
-      <p class="intro-text">
-        Cykl <strong>#domeknadrzewie52</strong> to 52 tygodnie uważności zakorzenionej w naturze i rytmie pór roku.
-        Każda karta jest zaproszeniem do zatrzymania się na moment i zauważenia tego, co dzieje się tu i teraz —
-        w otoczeniu i we własnym doświadczeniu.
-      </p>
+      <section class="intro-card">
+        <span class="section-kicker">Inspiracja</span>
+        <h2 class="intro-title">Kąpiele leśne w miejskim wydaniu</h2>
+        <p class="intro-text">
+          Cykl inspirowany jest praktyką kąpieli leśnych, znaną jako <em>shinrin-yoku</em>,
+          japońską formą uważnego przebywania w naturze, opartą na powolnym spacerze,
+          obserwacji i otwarciu zmysłów.
+        </p>
+        <p class="intro-text">
+          W tym projekcie ta idea zostaje przeniesiona do przestrzeni miejskiej.
+          Nie każdy ma dostęp do lasu, ale każdy ma dostęp do jakiejś formy natury:
+          drzew przy ulicy, zmieniającego się światła, ruchu powietrza, dźwięków ptaków między budynkami.
+        </p>
+        <p class="intro-text">
+          „Kąpiele leśne w mieście” nie próbują odtworzyć lasu. Zamiast tego proponują zauważenie tego, co już jest - w najbliższym otoczeniu.
+        </p>
+        <p class="intro-text">
+          To praktyka uważności osadzona w codzienności: w drodze do pracy, podczas krótkiego spaceru, między jednym miejscem a drugim.
+          Nie chodzi o ucieczkę z miasta. Chodzi o bycie w nim inaczej.
+        </p>
+      </section>
 
-      <p class="intro-text">
-        To nie jest plan do zrealizowania ani wyzwanie. To łagodny rytm, do którego można wracać.
-        Każdy tydzień przynosi prostą praktykę, temat osadzony w aktualnym czasie roku oraz pytania,
-        które pomagają pogłębić uważność.
-      </p>
-
-      <p class="intro-text">
-        Każda karta składa się z czterech elementów:
-        obraz jako punkt wejścia, temat tygodnia, krótkie zaproszenie do obserwacji
-        oraz pytania do refleksji. Można z niej skorzystać w dowolny sposób —
-        podczas spaceru, w domu, przez chwilę lub dłużej.
-      </p>
-
-      <p class="intro-text">
-        Z czasem karty tworzą opowieść o cykliczności:
-        o wzroście, zatrzymaniu, odpuszczaniu i odradzaniu.
-        To proces, który rozwija się razem z porami roku.
-      </p>
-
-      <div class="intro-tag">#DOMEKNADRZEWIE52</div>
-    </section>
-    
-    <section class="intro-card">
-  <span class="section-kicker">Inspiracja</span>
-  <h2 class="intro-title">Kąpiele leśne w miejskim wydaniu</h2>
-
-  <p class="intro-text">
-    Cykl inspirowany jest praktyką kąpieli leśnych, znaną jako <em>shinrin-yoku</em>,
-    japońską formą uważnego przebywania w naturze, opartą na powolnym spacerze,
-    obserwacji i otwarciu zmysłów.
-  </p>
-
-  <p class="intro-text">
-    W tym projekcie ta idea zostaje przeniesiona do przestrzeni miejskiej.
-    Nie każdy ma dostęp do lasu, ale każdy ma dostęp do jakiejś formy natury:
-    drzew przy ulicy, zmieniającego się światła, ruchu powietrza, dźwięków ptaków między budynkami.
-  </p>
-
-  <p class="intro-text">
-    „Kąpiele leśne w mieście” nie próbują odtworzyć lasu.
-    Zamiast tego proponują zauważenie tego, co już jest - w najbliższym otoczeniu.
-  </p>
-
-  <p class="intro-text">
-    To praktyka uważności osadzona w codzienności:
-    w drodze do pracy, podczas krótkiego spaceru, między jednym miejscem a drugim.
-  </p>
-
-  <p class="intro-text">
-    Nie chodzi o ucieczkę z miasta.  
-    Chodzi o bycie w nim inaczej.
-  </p>
-</section>
-
-<section class="intro-card">
-  <span class="section-kicker">Dostępność</span>
-  <h2 class="intro-title">Materiały dostępne bezpłatnie</h2>
-
-  <p class="intro-text">
-    Wszystkie materiały w tym cyklu są dostępne bezpłatnie.
-  </p>
-
-  <p class="intro-text">
-    Możesz je przeglądać, pobierać i wracać do nich w dowolnym momencie:
-    bez logowania, bez ograniczeń, we własnym tempie.
-  </p>
-
-  <p class="intro-text">
-    Projekt powstał jako otwarta przestrzeń, do której każdy może mieć dostęp,
-    niezależnie od miejsca i sytuacji.
-  </p>
-
-  <p class="intro-text">
-    Jeśli chcesz, możesz podzielić się kartami z innymi lub wracać do nich wtedy,
-    gdy tego potrzebujesz.
-  </p>
-</section>
+      <section class="intro-card">
+        <span class="section-kicker">Dostępność</span>
+        <h2 class="intro-title">Materiały dostępne bezpłatnie</h2>
+        <p class="intro-text">
+          Wszystkie materiały w tym cyklu są dostępne bezpłatnie. Możesz je przeglądać, pobierać i wracać do nich w dowolnym momencie.
+        </p>
+        <p class="intro-text">
+          Projekt powstał jako otwarta przestrzeń, do której każdy może mieć dostęp, niezależnie od miejsca i sytuacji.
+          Jeśli chcesz, możesz podzielić się kartami z innymi lub wracać do nich wtedy, gdy tego potrzebujesz.
+        </p>
+      </section>
 
       <section class="material-list">
-          
-          <div class="material-item">
-               <div class="material-visual">
-    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" target="_blank">
-      <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" alt="Tydzień 01" />
-    </a>
-  </div>
-              
-  <div class="material-content">
-
-
-
-          <div class="material-header">
-      <h3>Tydzień 01</h3>
-      <span>Temat: Bezruch</span>
-    </div>
-
-    <p class="material-body">
-      Wejdź powoli w zieloną przestrzeń. Rób częste pauzy.
-      Usiądź lub stań nieruchomo na pięć minut.
-      Pozwól, by cisza dotarła do ciebie.
-    </p>
-
-         <div class="material-reflection">
-      <strong>Refleksja</strong>
-      <ul>
-        <li>Jakie dźwięki trwają, gdy otoczenie cichnie?</li>
-        <br>
-        <li>Gdzie w moim ciele odczuwam stan bezruchu?</li>
-      </ul>
-    </div>
-    </div>
-
-    <div class="download-links">
-      <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" download>Obraz</a>
-      <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1B.png" download>Refleksja</a>
-      <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
-    </div>
-
-  </div>
-
-</div>
-          
 
         <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 02</strong>
-              <span>Temat: Wytrwałość</span>
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" alt="Tydzień 01" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 01 - Cichy korzeń</h3>
+              <span>Temat: Bezruch</span>
+            </div>
+            <p class="material-body">
+              Wejdź powoli w zieloną przestrzeń. Rób częste pauzy. Usiądź lub stań nieruchomo na pięć minut.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Jakie dźwięki trwają, gdy otoczenie cichnie?</li>
+                <li>Gdzie w moim ciele odczuwam stan bezruchu?</li>
+              </ul>
+            </div>
+            <div class="download-links">
+              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" download>Obraz</a>
+              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1B.png" download>Refleksja</a>
+              <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank">Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="material-item">
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" alt="Tydzień 02" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 02 - Ukryta siła</h3>
+              <span>Temat: Ukryta siła</span>
+            </div>
+            <p class="material-body">
+              Szukaj oznak wytrwałości — igieł wiecznie zielonych, mchu, porostów, szczelnie zamkniętych pąków. Dotykaj ich delikatnie. Zwróć uwagę na faktury ukształtowane przez zimno i czas.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Co/kto pomógł mi przetrwać trudne pory roku?</li>
+                <li>W jakich okolicznościach czuję w sobie spokój, który daje mi siłę?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" alt="Podgląd karty Tydzień 02" />
-          </a>
         </div>
 
         <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 03</strong>
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" alt="Tydzień 03" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 03 - Niespieszna Ścieżka</h3>
               <span>Temat: Powolność</span>
+            </div>
+            <p class="material-body">
+              Idź o połowę wolniej niż zwykle. Niech twój oddech wyznacza rytm. Przy każdym kroku poczuj ziemię w pełni, zanim uniesiesz stopę.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Co zaczynam zauważać dopiero wtedy, gdy nigdzie się nie spieszę?</li>
+                <li>Dokąd w moim życiu biegnę bez potrzeby — i co próbuję dogonić?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/reel/DUMYPA-DIhl/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DUV2YvGDUgG/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" alt="Podgląd karty Tydzień 03" />
-          </a>
         </div>
 
         <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 04</strong>
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" alt="Tydzień 04" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 04 - Światło, które sięga do nas</h3>
               <span>Temat: Przebudzenie</span>
+            </div>
+            <p class="material-body">
+              Unieś dłoń w stronę światła. Pozwól, by ciepło spoczęło na twoich ubraniach, na skórze, i rozświetliło cichą przestrzeń w tobie. Poczuj, jak światło osiada na twojej skórze, kiedy je zapraszasz.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Która część mnie jest gotowa sięgnąć po coś nowego?</li>
+                <li>Co rozgrzewa mnie od środka, gdy daję sobie chwilę na oddech?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DUbjN9eDuqn/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DUn-M6TDKpW/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" alt="Podgląd karty Tydzień 04" />
-          </a>
         </div>
 
         <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 05</strong>
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" alt="Tydzień 05" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 05 - Zimowy oddech</h3>
               <span>Temat: Odpoczynek</span>
+            </div>
+            <p class="material-body">
+              Usiądź przy oknie lub na zewnątrz. Obserwuj miękkość każdego oddechu.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Co mogłoby znaczyć, odpoczywać bez poczucia winy?</li>
+                <li>Które myśli wciąż krążą, a które mogę teraz delikatnie wypuścić?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DUlPveYjD1b" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DU6D4A6jk5L/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" alt="Podgląd karty Tydzień 05" />
-          </a>
         </div>
 
         <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 06</strong>
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" alt="Tydzień 06" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 06 - Ukryta iskra</h3>
               <span>Temat: Subtelna energia</span>
+            </div>
+            <p class="material-body">
+              Szukaj małych miejsc, w których gromadzi się ciepło. Może to promień słońca na ścianie, albo szalik ogrzany Twoim oddechem.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Jakie ciepło noszę w sobie, którego jeszcze nie zauważyłam/em?</li>
+                <li>Gdzie w moim życiu coś się zaczyna, nawet jeśli jeszcze nie umiem tego nazwać?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DU3e1A7jGsj/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DVMH6kOjGq_/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" alt="Podgląd karty Tydzień 06" />
-          </a>
         </div>
 
         <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 07</strong>
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" alt="Tydzień 07" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 07 - Oszroniony pąk</h3>
               <span>Temat: Potencjał</span>
+            </div>
+            <p class="material-body">
+              Poszukaj krzewu albo drzewa i przyjrzyj się uważnie jego pąkom - małym obietnicom czekającym na odpowiednią chwilę.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Co dojrzewa we mnie po cichu, zanim będzie mogło się pokazać światu?</li>
+                <li>Jaki najmniejszy znak „już się zaczyna” potrafię dziś zauważyć?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DVJmcDWjOpY/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DVeJb09jrR4/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" alt="Podgląd karty Tydzień 07" />
-          </a>
         </div>
 
         <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 08</strong>
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" alt="Tydzień 08" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 08 - Pierwszy Chór</h3>
               <span>Temat: Przebudzenie</span>
+            </div>
+            <p class="material-body">
+              Zauważ, że długo było cicho, a teraz ptasi śpiew wyraźnie się wybija. Najpierw uchwyć jeden głos, potem poszerz uwagę na cały chór.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Co czuję, gdy cisza pęka: ulgę, ciepło, napięcie, spokój?</li>
+                <li>Jakie „pierwsze nuty” wracają do mojego życia po okresie milczenia?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DVWc74KjGhG/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DVwK83jDq6L/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" alt="Podgląd karty Tydzień 08" />
-          </a>
         </div>
 
         <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 09</strong>
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/9A.png" alt="Tydzień 09" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 09 - Zimozielony</h3>
               <span>Temat: Stałość</span>
+            </div>
+            <p class="material-body">
+              Spędź chwilę przy jednym zimozielonym drzewie lub krzewie. Oddychaj razem z nim.
+Jak? Ustaw spokojny rytm, np.: 4 sekundy wdech, 6 sekund wydech. Powtórz 5 razy.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Jakie małe rzeczy regularnie mnie uspokajają i podtrzymują, niezależnie od nastroju? Rytm snu, kubek herbaty, spacer, czyjś głos, światło w oknie, prysznic, porządek w jednej szufladzie, chwila ciszy...?</li>
+              
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/9A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/9B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DVrMeDYDtey/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DWCI7kKDHlM/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/9A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/9A.png" alt="Podgląd karty Tydzień 09" />
-          </a>
         </div>
 
-                <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 10</strong>
-              <span>Temat: Rozlużnianie</span>
+        <div class="material-item">
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/10A.png" alt="Tydzień 10" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 10 - Odwilż</h3>
+              <span>Temat: Rozluźnianie</span>
+            </div>
+            <p class="material-body">
+              Wyjdź na zewnątrz i poszukaj oznak roztopu: małych kałuż, ciemniejącej kory, cichego połysku mokrej ziemi. Zatrzymaj się tam na chwilę.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Gdzie w moim życiu mogę bezpiecznie trochę zmięknąć?</li>
+                <li>Co się zmienia, gdy pozwalam tej chwili być dokładnie taką, jaka jest, bez trzymania się i oporu?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/10A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/10B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DWW5qTUju-O" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DWUK6lDjNqX/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/10A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/10A.png" alt="Podgląd karty Tydzień 10" />
-          </a>
         </div>
 
-                <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Tydzień 11</strong>
+        <div class="material-item">
+          <div class="material-visual">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/11A.png" alt="Tydzień 11" />
+          </div>
+          <div class="material-content">
+            <div class="material-header">
+              <h3>Tydzień 11 - Przebudzenie Ziemi</h3>
               <span>Temat: Odradzanie</span>
+            </div>
+            <p class="material-body">
+              Wyjdź na zewnątrz i zatrzymaj się na moment. Wsłuchaj się w ciche sygnały powracającego życia: śpiew ptaków, dalekie nawoływania, łagodny ruch w gałęziach. Dostrzeż to, co nieśmiało się pojawia.
+            </p>
+            <div class="material-reflection">
+              <strong>Refleksja</strong>
+              <ul>
+                <li>Jakie dźwięki zwiastują dla mnie odnowę?</li>
+                <li>Co zaczyna kiełkować w moim życiu, powoli, lecz pewnie?</li>
+                <li>Czy potrafię pozwolić temu procesowi toczyć się we własnym rytmie?</li>
+              </ul>
             </div>
             <div class="download-links">
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/11A.png" download>Obraz</a>
               <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/11B.png" download>Refleksja</a>
-              <a href="https://www.instagram.com/p/DWjmt-xjAnA/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/p/DWmN1KkDhq_/" target="_blank">Instagram</a>
             </div>
           </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/11A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/11A.png" alt="Podgląd karty Tydzień 11" />
-          </a>
         </div>
 
       </section>
@@ -871,8 +688,8 @@
         <h3>Śledź nowe publikacje</h3>
         <p>Bądź na bieżąco z nowymi materiałami i kolejnymi tygodniami serii.</p>
         <div class="contact-actions">
-          <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+          <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank">Instagram</a>
+          <a class="social-chip alt" href="https://facebook.com/..." target="_blank">Facebook</a>
         </div>
       </div>
     </div>
@@ -881,8 +698,9 @@
   <footer class="footer">
     <div class="container footer-box">
       <div><strong>Projekt: Domek na Drzewie</strong> • Rośniemy z natury</div>
-      <div>marzec 2026</div>
+      <div>kwiecień 2026</div>
     </div>
   </footer>
+
 </body>
 </html>
