@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -14,7 +13,7 @@
   </script>
 
   <title>Miejskie kąpiele leśne | Projekt: Domek na Drzewie</title>
-  <meta name="description" content="Miejskie kąpiele leśne — bezpłatne karty uważności do pobrania. Cotygodniowe materiały inspirowane przyrodą i rytmem roku – pobierz i zacznij praktykę." />
+  <meta name="description" content="Miejskie kąpiele leśne — bezpłatne karty uważności do pobrania. Cotygodniowe materiały inspirowane przyrodą i rytmem roku." />
 
   <style>
     :root {
@@ -40,11 +39,11 @@
       font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
       background: #f3f1eb;
+      line-height: 1.6;
     }
 
-    img { display: block; max-width: 100%; }
+    img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
-    h1, h2, h3, p { margin: 0; }
 
     .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
     .narrow { width: min(calc(100% - 32px), var(--content)); margin: 0 auto; }
@@ -52,28 +51,24 @@
     /* Navigation */
     .topbar {
       background: rgba(255,255,255,0.94);
-      border-bottom: 1px solid rgba(36,49,38,0.08);
+      border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 100;
       backdrop-filter: blur(10px);
     }
-
     .nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
-    .brand-mark { width: 58px; height: 58px; border-radius: 50%; overflow: hidden; background: var(--white); border: 1px solid rgba(36,49,38,0.08); flex-shrink: 0; }
-    .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
-    .brand-title { font-size: 1.35rem; font-weight: 800; letter-spacing: 0.01em; }
-    .brand-subtitle { margin-top: 4px; color: var(--muted); font-size: 0.92rem; }
-
-    .nav-links { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark { width: 58px; height: 58px; border-radius: 50%; overflow: hidden; border: 1px solid var(--line); flex-shrink: 0; }
+    .brand-title { font-size: 1.2rem; font-weight: 800; }
+    
+    .nav-links { display: flex; align-items: stretch; }
     .nav-links a {
-      min-height: 88px; padding: 0 22px; display: inline-flex; align-items: center; justify-content: center;
-      text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.82rem; font-weight: 800;
-      color: var(--text); border-left: 1px solid rgba(36,49,38,0.06); transition: 0.18s ease;
+      min-height: 88px; padding: 0 20px; display: flex; align-items: center;
+      text-transform: uppercase; font-size: 0.8rem; font-weight: 800;
+      border-left: 1px solid var(--line); transition: 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { background: var(--sage); color: white; }
-    .lang-link { background: var(--orange) !important; color: white !important; }
 
     /* Hero */
     .hero {
@@ -81,115 +76,61 @@
       min-height: 360px; 
       display: flex; 
       align-items: center;
-      background: var(--sage);
       background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
         url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/Environmental-Organization-Website-Design-788x871.jpg') center/cover no-repeat;
       color: white;
+      text-align: center;
     }
-    .hero-inner { width: min(calc(100% - 32px), 920px); margin: 0 auto; padding: 50px 0; text-align: center; }
-    .hero-kicker { display: inline-block; padding: 8px 14px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.2); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; font-weight: 800; }
-    h1 { margin-top: 18px; font-size: clamp(2.3rem, 5vw, 4rem); line-height: 0.96; letter-spacing: 0.01em; text-transform: uppercase; text-shadow: 0 4px 18px rgba(0,0,0,0.18); }
-    .hero-text { margin: 18px auto 0; max-width: 58ch; font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.92); }
+    .hero-inner { width: min(calc(100% - 32px), 920px); margin: 0 auto; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; margin: 0; text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 
     /* Filters */
-    .filter-section { background: white; padding: 25px; margin: 30px 0; border: 1px solid rgba(36,49,38,0.08); box-shadow: var(--shadow); }
+    .filter-section { background: white; padding: 25px; margin: 30px 0; border: 1px solid var(--line); box-shadow: var(--shadow); }
     .filter-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-    .filter-group:last-child { margin-bottom: 0; }
-    .filter-label { font-weight: 800; font-size: 0.72rem; text-transform: uppercase; color: var(--sage); min-width: 85px; }
-    .filter-btn { padding: 6px 14px; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 0.78rem; border-radius: 20px; font-weight: 600; transition: 0.2s; }
+    .filter-label { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; color: var(--sage); min-width: 85px; }
+    .filter-btn { padding: 6px 16px; border: 1px solid var(--line); background: transparent; cursor: pointer; border-radius: 20px; font-weight: 600; font-size: 0.8rem; transition: 0.2s; }
     .filter-btn:hover { border-color: var(--sage); color: var(--sage); }
     .filter-btn.active { background: var(--sage); color: white; border-color: var(--sage); }
 
     /* Material Items */
-    .material-list { display: grid; gap: 24px; margin-top: 20px; }
+    .material-list { display: grid; gap: 30px; margin-top: 20px; }
     .material-item { 
-        position: relative;
         display: grid; 
-        grid-template-columns: 280px 1fr; 
+        grid-template-columns: 300px 1fr; 
         gap: 32px; 
-        padding: 30px; 
-        background: #faf9f5; 
-        border: 1px solid rgba(36,49,38,0.08); 
-        box-shadow: var(--shadow); 
-        text-align: left; 
-        animation: fadeIn 0.4s ease-out; 
+        padding: 35px; 
+        background: white; 
+        border: 1px solid var(--line); 
+        box-shadow: var(--shadow);
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
 
-    /* SHARE BUTTON */
-    .share-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: white;
-        border: 1px solid var(--line);
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.2s;
-        z-index: 5;
-        color: var(--sage);
-    }
-    .share-btn:hover { background: var(--sage); color: white; border-color: var(--sage); }
+    .material-visual img { width: 100%; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+    .material-header h3 { font-size: 1.5rem; text-transform: uppercase; margin: 0 0 8px 0; }
+    .material-meta { color: var(--muted); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
+    .material-body { font-size: 1rem; color: var(--text); margin-bottom: 20px; }
     
-    .share-btn::after {
-        content: 'Skopiowano!';
-        position: absolute;
-        bottom: 115%;
-        right: 0;
-        background: var(--text);
-        color: white;
-        font-size: 0.65rem;
-        padding: 4px 8px;
-        border-radius: 4px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-    .share-btn.copied::after { opacity: 1; }
+    .material-reflection { background: var(--cream); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+    .material-reflection strong { display: block; margin-bottom: 10px; color: var(--sage); text-transform: uppercase; font-size: 0.8rem; }
+    .material-reflection ul { margin: 0; padding-left: 20px; }
+    .material-reflection li { margin-bottom: 8px; }
 
-    .material-visual img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 8px 20px rgba(36,49,38,0.1); }
-    .material-content { display: flex; flex-direction: column; gap: 16px; }
-    .material-header h3 { font-size: 1.4rem; text-transform: uppercase; margin: 0; padding-right: 40px; }
-    .material-header span { color: var(--muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
-    .material-body { line-height: 1.8; color: var(--muted); font-size: 0.95rem; }
-    .material-reflection strong { display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; color: var(--sage); letter-spacing: 0.05em; }
-    .material-reflection ul { margin: 0; padding-left: 18px; color: var(--text); }
-    .material-reflection li { margin-bottom: 6px; font-size: 0.92rem; }
+    .download-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .download-links a { padding: 10px 22px; border-radius: 30px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; transition: 0.2s; }
+    .btn-main { background: var(--sage); color: white; }
+    .btn-alt { background: var(--gold); color: #3d2a10; }
+    .btn-insta { background: #b44f72; color: white; }
 
-    .download-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-    .download-links a { padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 0.78rem; text-transform: uppercase; transition: 0.2s; }
-    .download-links a:nth-child(1) { background: var(--sage); color: white; }
-    .download-links a:nth-child(2) { background: var(--gold); color: #3d2a10; }
-    .download-links a:nth-child(3) { background: #b44f72; color: white; }
+    /* Week Nav */
+    .week-nav-row { display: flex; gap: 10px; margin-top: 30px; border-top: 1px solid var(--line); padding-top: 25px; }
+    .nav-arrow-btn { flex: 1; padding: 12px; background: white; border: 1px solid var(--line); cursor: pointer; font-weight: 800; text-transform: uppercase; font-size: 0.7rem; border-radius: 4px; transition: 0.2s; }
+    .nav-arrow-btn:hover { border-color: var(--sage); color: var(--sage); }
+    .nav-arrow-btn.disabled { visibility: hidden; }
 
-    /* Navigation Buttons */
-    .week-nav-row { display: flex; gap: 8px; justify-content: space-between; margin-top: 20px; flex-wrap: wrap; }
-    .nav-arrow-btn { flex: 1; padding: 10px; background: white; border: 1px solid var(--line); cursor: pointer; font-weight: 800; text-transform: uppercase; font-size: 0.65rem; border-radius: 4px; color: var(--muted); transition: 0.2s; min-width: 80px; }
-    .nav-arrow-btn:hover { border-color: var(--sage); color: var(--sage); background: var(--cream); }
-    .nav-arrow-btn.disabled { visibility: hidden; pointer-events: none; }
-
-    /* Intro Cards */
-    .intro-card { background: white; border: 1px solid rgba(36,49,38,0.08); box-shadow: var(--shadow); padding: 40px; margin: 40px 0; text-align: center; }
-    .section-kicker { display: inline-block; padding: 7px 12px; background: rgba(103,135,96,0.12); color: var(--sage); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.74rem; font-weight: 800; margin-bottom: 16px; }
-    .intro-title { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.1; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 20px; }
-    .intro-text { color: var(--muted); line-height: 1.8; max-width: 72ch; margin: 0 auto 20px; font-size: 1rem; }
-
-    .contact-band { background: white; border: 1px solid rgba(36,49,38,0.08); padding: 40px; text-align: center; margin-top: 40px; }
-    .social-chip { display: inline-block; padding: 12px 20px; border-radius: 999px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; background: var(--sage); color: white; margin: 5px; }
-    .social-chip.alt { background: var(--orange); }
-
-    .footer { padding: 40px 0; border-top: 1px solid var(--line); margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
-
-    @media (max-width: 800px) {
-      .material-item { grid-template-columns: 1fr; padding: 20px; }
+    @media (max-width: 850px) {
+      .material-item { grid-template-columns: 1fr; padding: 25px; }
       .material-visual { max-width: 320px; margin: 0 auto; }
-      .nav { flex-direction: column; align-items: flex-start; padding: 15px 0; }
-      .nav-links a { min-height: 50px; border: none; padding: 0 15px; }
+      .nav { flex-direction: column; padding: 15px 0; }
+      .nav-links a { min-height: 50px; border: none; }
     }
   </style>
 </head>
@@ -199,330 +140,174 @@
     <div class="container nav">
       <a class="brand" href="/">
         <div class="brand-mark"><img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo" /></div>
-        <div>
-          <div class="brand-title">Projekt: Domek na Drzewie</div>
-          <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
-        </div>
+        <div class="brand-title">Projekt: Domek na Drzewie</div>
       </a>
-      <nav class="nav-links" aria-label="Nawigacja">
+      <nav class="nav-links">
         <a href="/">O projekcie</a>
-        <a href="/materialy/" class="active" aria-current="page">Materiały</a>
-        <a class="lang-link" href="/en/materials/" lang="en" hreflang="en">English</a>
-        <a href="/sky.html">Niebo dziś</a>
-        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="#" class="active">Materiały</a>
+        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank">Instagram</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero-inner">
-      <span class="hero-kicker">Seria cotygodniowa</span>
       <h1>Miejskie kąpiele leśne</h1>
-      <p class="hero-text">Bezpłatny cykl kart uważności do samodzielnej praktyki i pobrania</p>
+      <p>Bezpłatne karty uważności do pobrania</p>
     </div>
   </section>
-  
-  <div id="intro-sections">
-    <section class="intro-card">
-      <span class="section-kicker">O cyklu</span>
-      <h2 class="intro-title">Karty tygodniowe inspirowane naturą</h2>
-      <p class="intro-text">Cykl #domeknadrzewie52 to 52 tygodnie uważności zakorzenionej w naturze i rytmie pór roku.</p>
-    </section>
-  </div>
 
-  <main class="page-wrap">
-    <div class="narrow">
-      
-      <nav class="filter-section">
-        <div class="filter-group">
-          <span class="filter-label">Pora roku:</span>
-          <button class="filter-btn" data-type="season" data-val="All" onclick="applyFilter(this)">Wszystkie</button>
-          <button class="filter-btn" data-type="season" data-val="Zima" onclick="applyFilter(this)">Zima</button>
-          <button class="filter-btn" data-type="season" data-val="Wiosna" onclick="applyFilter(this)">Wiosna</button>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Miesiąc:</span>
-          <button class="filter-btn" data-type="month" data-val="Styczeń" onclick="applyFilter(this)">Styczeń</button>
-          <button class="filter-btn" data-type="month" data-val="Luty" onclick="applyFilter(this)">Luty</button>
-          <button class="filter-btn" data-type="month" data-val="Marzec" onclick="applyFilter(this)">Marzec</button>
-        </div>
-      </nav>
-
-      <section id="materialList" class="material-list"></section>
-
-            <section id="materialList" class="material-list"></section>
-
-      <section class="intro-card">
-        <span class="section-kicker">O cyklu</span>
-        <h2 class="intro-title">Jak korzystać?</h2>
-        <p class="intro-text">
-          Cykl <strong>#domeknadrzewie52</strong> to 52 tygodnie uważności zakorzenionej w naturze i rytmie pór roku.
-          Każda karta jest zaproszeniem do zatrzymania się na moment i zauważenia tego, co dzieje się tu i teraz —
-          w otoczeniu i we własnym doświadczeniu.
-        </p>
-        <p class="intro-text">
-          To nie jest plan do zrealizowania ani wyzwanie. To łagodny rytm, do którego można wracać.
-          Każdy tydzień przynosi prostą praktykę, temat osadzony w aktualnym czasie roku oraz pytania,
-          które pomagają pogłębić uważność.
-        </p>
-        <p class="intro-text">
-          Każda karta składa się z czterech elementów: obraz jako punkt wejścia, temat tygodnia, krótkie zaproszenie do obserwacji
-          oraz pytania do refleksji. Można z niej skorzystać w dowolny sposób — podczas spaceru, w domu, przez chwilę lub dłużej.
-        </p>
-        <p class="intro-text">
-          Z czasem karty tworzą opowieść o cykliczności: o wzroście, zatrzymaniu, odpuszczaniu i odradzaniu.
-          To proces, który rozwija się razem z porami roku.
-        </p>
-        <div class="intro-tag">#DOMEKNADRZEWIE52</div>
-      </section>
-
-      <section class="intro-card">
-        <span class="section-kicker">Inspiracja</span>
-        <h2 class="intro-title">Kąpiele leśne w miejskim wydaniu</h2>
-        <p class="intro-text">
-          Cykl inspirowany jest praktyką kąpieli leśnych, znaną jako <em>shinrin-yoku</em>,
-          japońską formą uważnego przebywania w naturze, opartą na powolnym spacerze,
-          obserwacji i otwarciu zmysłów.
-        </p>
-        <p class="intro-text">
-          W tym projekcie ta idea zostaje przeniesiona do przestrzeni miejskiej.
-          Nie każdy ma dostęp do lasu, ale każdy ma dostęp do jakiejś formy natury:
-          drzew przy ulicy, zmieniającego się światła, ruchu powietrza, dźwięków ptaków między budynkami.
-        </p>
-        <p class="intro-text">
-          „Kąpiele leśne w mieście” nie próbują odtworzyć lasu. Zamiast tego proponują zauważenie tego, co już jest - w najbliższym otoczeniu.
-        </p>
-        <p class="intro-text">
-          To praktyka uważności osadzona w codzienności: w drodze do pracy, podczas krótkiego spaceru, między jednym miejscem a drugim.
-          Nie chodzi o ucieczkę z miasta. Chodzi o bycie w nim inaczej.
-        </p>
-      </section>
-
-      <section class="intro-card">
-        <span class="section-kicker">Dostępność</span>
-        <h2 class="intro-title">Materiały dostępne bezpłatnie</h2>
-        <p class="intro-text">
-          Wszystkie materiały w tym cyklu są dostępne bezpłatnie. Możesz je przeglądać, pobierać i wracać do nich w dowolnym momencie.
-        </p>
-        <p class="intro-text">
-          Projekt powstał jako otwarta przestrzeń, do której każdy może mieć dostęp, niezależnie od miejsca i sytuacji.
-          Jeśli chcesz, możesz podzielić się kartami z innymi lub wracać do nich wtedy, gdy tego potrzebujesz.
-        </p>
-      </section>
-
-      <div class="contact-band">
-        <h3>Śledź nowe publikacje</h3>
-        <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank">Instagram</a>
-        <a class="social-chip alt" href="#">Facebook</a>
+  <main class="narrow">
+    <nav class="filter-section">
+      <div class="filter-group">
+        <span class="filter-label">Pora roku:</span>
+        <button class="filter-btn active" data-type="season" data-val="All" onclick="applyFilter(this)">Wszystkie</button>
+        <button class="filter-btn" data-type="season" data-val="Zima" onclick="applyFilter(this)">Zima</button>
+        <button class="filter-btn" data-type="season" data-val="Wiosna" onclick="applyFilter(this)">Wiosna</button>
       </div>
-    </div>
-  </main>
+      <div class="filter-group">
+        <span class="filter-label">Miesiąc:</span>
+        <button class="filter-btn" data-type="month" data-val="Styczeń" onclick="applyFilter(this)">Styczeń</button>
+        <button class="filter-btn" data-type="month" data-val="Luty" onclick="applyFilter(this)">Luty</button>
+        <button class="filter-btn" data-type="month" data-val="Marzec" onclick="applyFilter(this)">Marzec</button>
+      </div>
+    </nav>
 
-  <footer class="footer">
-    <div class="container" style="display:flex; justify-content:space-between;">
-      <div><strong>Projekt: Domek na Drzewie</strong></div>
-      <div>kwiecień 2026</div>
-    </div>
-  </footer>
+    <section id="materialList" class="material-list"></section>
+  </main>
 
   <script>
     const cardsData = [
-  { 
-    id: 1, 
-    title: "Cichy korzeń", 
-    theme: "Bezruch", 
-    season: "Zima", 
-    month: "Styczeń", 
-    img: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-B.png", 
-    alt: "Bezpłatna karta uważności Tydzień 01 - Cichy korzeń. Projekt Domek na Drzewie, miejskie kąpiele leśne do pobrania.",
-    insta: "DT_RCYoDvNk" 
-  },
-  { 
-    id: 2, 
-    title: "Ukryta siła", 
-    theme: "Wytrwałość", 
-    season: "Zima", 
-    month: "Styczeń", 
-    img: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-B.png", 
-    alt: "Darmowa karta edukacyjna Tydzień 02 - Ukryta siła. Detale mchu i natury zimą do pobrania.",
-    insta: "DUEAsDsjI_j" 
-  },
-  { 
-    id: 3, 
-    title: "Niespieszna Ścieżka", 
-    theme: "Powolność", 
-    season: "Zima", 
-    month: "Styczeń", 
-    img: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-B.png", 
-    alt: "Bezpłatna karta Tydzień 03 - Niespieszna Ścieżka. Ćwiczenie uważnego spaceru w mieście, materiały PDF.",
-    insta: "DUV2YvGDUgG" 
-  },
-  { 
-    id: 4, 
-    title: "Światło, które sięga do nas", 
-    theme: "Przebudzenie", 
-    season: "Zima", 
-    month: "Styczeń", 
-    img: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-B.png", 
-    alt: "Karta inspiracji Tydzień 04 - Zimowe światło. Darmowe ćwiczenia uważności Projekt Domek na Drzewie.",
-    insta: "DUn-M6TDKpW" 
-  },
-  { 
-    id: 5, 
-    title: "Zimowy oddech", 
-    theme: "Odpoczynek", 
-    season: "Zima", 
-    month: "Luty", 
-    img: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-B.png", 
-    alt: "Bezpłatna praktyka oddechowa Tydzień 05 - Zimowy oddech. Karta uważności do pobrania za darmo.",
-    insta: "DU6D4A6jk5L" 
-  },
-  { 
-    id: 6, 
-    title: "Ukryta iskra", 
-    theme: "Subtelna energia", 
-    season: "Zima", 
-    month: "Luty", 
-    img: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-B.png", 
-    alt: "Tydzień 06 - Ukryta iskra. Darmowe materiały edukacyjne o uważności w naturze miejskiej.",
-    insta: "DVMH6kOjGq_" 
-  },
-  { 
-    id: 7, 
-    title: "Oszroniony pąk", 
-    theme: "Potencjał", 
-    season: "Zima", 
-    month: "Luty", 
-    img: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-B.png", 
-    alt: "Karta Tydzień 07 - Oszroniony pąk. Zimowe shinrin-yoku w mieście, materiały do pobrania bezpłatnie.",
-    insta: "DVeJb09jrR4" 
-  },
-  { 
-    id: 8, 
-    title: "Pierwszy Chór", 
-    theme: "Przebudzenie", 
-    season: "Zima", 
-    month: "Luty", 
-    img: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-B.png", 
-    alt: "Darmowa karta Tydzień 08 - Pierwszy Chór. Uważność słuchu i ptasi śpiew w mieście, ćwiczenia free.",
-    insta: "DVwK83jDq6L" 
-  },
-  { 
-    id: 9, 
-    title: "Zimozielony", 
-    theme: "Stałość", 
-    season: "Zima", 
-    month: "Marzec", 
-    img: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-A.png", 
-    imgB: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-B.png", 
-    alt: "Tydzień 09 - Zimozielony. Karta uważności z drzewem iglastym, darmowy PDF do praktyki w parku.",
-    insta: "DWCI7kKDHlM" 
-  },
-  { 
-    id: 10, 
-    title: "Odwilż", 
-    theme: "Rozluźnianie", 
-    season: "Wiosna", 
-    month: "Marzec", 
-    img: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-A.png", 
-    imgB: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-B.png", 
-    alt: "Bezpłatna karta wiosenna Tydzień 10 - Odwilż. Praktyka akceptacji i uważności w przyrodzie do pobrania.",
-    insta: "DWUK6lDjNqX" 
-  },
-  { 
-    id: 11, 
-    title: "Przebudzenie Ziemi", 
-    theme: "Odradzanie", 
-    season: "Wiosna", 
-    month: "Marzec", 
-    img: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-A.png", 
-    imgB: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-B.png", 
-    alt: "Tydzień 11 - Przebudzenie Ziemi. Darmowa karta uważności na wiosnę, projekt Domek na Drzewie.",
-    insta: "DWmN1KkDhq_" 
-  }
-];
+      { 
+        id: 1, title: "Cichy korzeń", theme: "Bezruch", season: "Zima", month: "Styczeń", 
+        body: "Wejdź powoli w zieloną przestrzeń. Rób częste pauzy. Usiądź lub stań nieruchomo na pięć minut.", 
+        reflection: ["Jakie dźwięki trwają, gdy otoczenie cichnie?", "Gdzie w moim ciele odczuwam stan bezruchu?"], 
+        img: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-B.png", 
+        insta: "DT_RCYoDvNk" 
+      },
+      { 
+        id: 2, title: "Ukryta siła", theme: "Wytrwałość", season: "Zima", month: "Styczeń", 
+        body: "Szukaj oznak wytrwałości — igieł wiecznie zielonych, mchu, porostów, szczelnie zamkniętych pąków. Dotykaj ich delikatnie.", 
+        reflection: ["Co/kto pomógł mi przetrwać trudne pory roku?", "W jakich okolicznościach czuję w sobie spokój?"], 
+        img: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-B.png", 
+        insta: "DUEAsDsjI_j" 
+      },
+      { 
+        id: 3, title: "Niespieszna Ścieżka", theme: "Powolność", season: "Zima", month: "Styczeń", 
+        body: "Idź o połowę wolniej niż zwykle. Niech twój oddech wyznacza rytm. Przy każdym kroku poczuj ziemię w pełni.", 
+        reflection: ["Co zaczynam zauważać dopiero wtedy, gdy nigdzie się nie spieszę?", "Dokąd w moim życiu biegnę bez potrzeby?"], 
+        img: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-B.png", 
+        insta: "DUV2YvGDUgG" 
+      },
+      { 
+        id: 4, title: "Światło, które sięga do nas", theme: "Przebudzenie", season: "Zima", month: "Styczeń", 
+        body: "Unieś dłoń w stronę światła. Pozwól, by ciepło spoczęło na twoich ubraniach, na skórze, i rozświetliło cichą przestrzeń w tobie.", 
+        reflection: ["Która część mnie jest gotowa sięgnąć po coś nowego?", "Co rozgrzewa mnie od środka?"], 
+        img: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-B.png", 
+        insta: "DUn-M6TDKpW" 
+      },
+      { 
+        id: 5, title: "Zimowy oddech", theme: "Odpoczynek", season: "Zima", month: "Luty", 
+        body: "Usiądź przy oknie lub na zewnątrz. Obserwuj miękkość każdego oddechu.", 
+        reflection: ["Co mogłoby znaczyć, odpoczywać bez poczucia winy?", "Które myśli wciąż krążą, a które mogę teraz wypuścić?"], 
+        img: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-B.png", 
+        insta: "DU6D4A6jk5L" 
+      },
+      { 
+        id: 6, title: "Ukryta iskra", theme: "Subtelna energia", season: "Zima", month: "Luty", 
+        body: "Szukaj małych miejsc, w których gromadzi się ciepło. Może to promień słońca na ścianie, albo szalik ogrzany Twoim oddechem.", 
+        reflection: ["Jakie ciepło noszę w sobie?", "Gdzie w moim życiu coś się zaczyna?"], 
+        img: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-B.png", 
+        insta: "DVMH6kOjGq_" 
+      },
+      { 
+        id: 7, title: "Oszroniony pąk", theme: "Potencjał", season: "Zima", month: "Luty", 
+        body: "Poszukaj krzewu albo drzewa i przyjrzyj się uważnie jego pąkom - małym obietnicom czekającym na odpowiednią chwilę.", 
+        reflection: ["Co dojrzewa we mnie po cichu?", "Jaki najmniejszy znak „już się zaczyna” potrafię dziś zauważyć?"], 
+        img: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-B.png", 
+        insta: "DVeJb09jrR4" 
+      },
+      { 
+        id: 8, title: "Pierwszy Chór", theme: "Przebudzenie", season: "Zima", month: "Luty", 
+        body: "Zauważ, że długo było cicho, a teraz ptasi śpiew wyraźnie się wybija. Najpierw uchwyć jeden głos.", 
+        reflection: ["Co czuję, gdy cisza pęka?", "Jakie „pierwsze nuty” wracają do mojego życia?"], 
+        img: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-B.png", 
+        insta: "DVwK83jDq6L" 
+      },
+      { 
+        id: 9, title: "Zimozielony", theme: "Stałość", season: "Zima", month: "Marzec", 
+        body: "Spędź chwilę przy jednym zimozielonym drzewie. Oddychaj razem z nim w rytmie: 4s wdech, 6s wydech.", 
+        reflection: ["Jakie małe rzeczy regularnie mnie uspokajają i podtrzymują?"], 
+        img: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-A.png", 
+        imgB: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-B.png", 
+        insta: "DWCI7kKDHlM" 
+      },
+      { 
+        id: 10, title: "Odwilż", theme: "Rozluźnianie", season: "Wiosna", month: "Marzec", 
+        body: "Wyjdź na zewnątrz i poszukaj oznak roztopu: małych kałuż, ciemniejącej kory, cichego połysku mokrej ziemi.", 
+        reflection: ["Gdzie w moim życiu mogę bezpiecznie trochę zmięknąć?", "Co się zmienia, gdy pozwalam tej chwili być?"], 
+        img: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-A.png", 
+        imgB: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-B.png", 
+        insta: "DWUK6lDjNqX" 
+      },
+      { 
+        id: 11, title: "Przebudzenie Ziemi", theme: "Odradzanie", season: "Wiosna", month: "Marzec", 
+        body: "Wsłuchaj się w ciche sygnały powracającego życia: śpiew ptaków, łagodny ruch w gałęziach.", 
+        reflection: ["Co zaczyna kiełkować w moim życiu, powoli, lecz pewnie?", "Czy potrafię pozwolić temu procesowi toczyć się we własnym rytmie?"], 
+        img: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-A.png", 
+        imgB: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-B.png", 
+        insta: "DWmN1KkDhq_" 
+      }
+    ];
+
     const listElement = document.getElementById('materialList');
     const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
 
-    /**
-     * COPY LINK LOGIC
-     */
-    function copyCardLink(id) {
-        const url = window.location.origin + window.location.pathname + '#tydzien-' + id;
-        navigator.clipboard.writeText(url).then(() => {
-            const btn = event.currentTarget;
-            btn.classList.add('copied');
-            setTimeout(() => btn.classList.remove('copied'), 2000);
-        });
-    }
-
-    function updateFilterUI(card) {
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if(btn.getAttribute('data-type') === 'month' && btn.getAttribute('data-val') === card.month) btn.classList.add('active');
-        if(btn.getAttribute('data-type') === 'season' && btn.getAttribute('data-val') === card.season) btn.classList.add('active');
-      });
-    }
-
     function render(data, isSingleView = false) {
-      if (data.length === 0) {
+      if (!data.length) {
         listElement.innerHTML = "<p>Brak kart dla tego wyboru.</p>";
         return;
       }
+      
       const firstId = 1;
       const lastId = Math.max(...cardsData.map(c => c.id));
 
-      listElement.innerHTML = data.map(card => {
-        const prevId = card.id > firstId ? card.id - 1 : null;
-        const nextId = card.id < lastId ? card.id + 1 : null;
-        return `
-        <article class="material-item" id="week-card-${card.id}">
-          <button class="share-btn" onclick="copyCardLink(${card.id})" title="Kopiuj link do tego tygodnia">🔗</button>
+      listElement.innerHTML = data.map(card => `
+        <article class="material-item">
           <div class="material-visual">
-  <img src="${imgPath}${card.img}" alt="${card.alt}" loading="lazy" width="280" height="380">
-</div>
+            <img src="${imgPath}${card.img}?v=2026" alt="${card.title}" loading="lazy">
+          </div>
           <div class="material-content">
-            <header class="material-header">
+            <header>
+              <span class="material-meta">${card.season} • ${card.month} • ${card.theme}</span>
               <h3>Tydzień ${card.id.toString().padStart(2, '0')} - ${card.title}</h3>
-              <span>${card.season} • ${card.month} • ${card.theme}</span>
             </header>
-            <p class="material-body">${card.body}</p>
+            <div class="material-body">${card.body}</div>
             <div class="material-reflection">
-              <strong>Refleksja</strong>
+              <strong>Refleksja:</strong>
               <ul>${card.reflection.map(q => `<li>${q}</li>`).join('')}</ul>
             </div>
             <div class="download-links">
-			
-              <div class="download-links">
-  <a href="${imgPath}${card.img}" download title="Pobierz bezpłatną kartę">Pobierz obraz</a>
-  <a href="${imgPath}${card.imgB}" download title="Pobierz zadanie do refleksji">Pobierz zadanie</a>
-  <a href="https://www.instagram.com/p/${card.insta}/" target="_blank">Instagram</a>
-</div>
-             
+              <a href="${imgPath}${card.img}?v=2026" download class="btn-main">Pobierz obraz</a>
+              <a href="${imgPath}${card.imgB}?v=2026" download class="btn-alt">Pobierz zadanie</a>
+              <a href="https://instagram.com/p/${card.insta}/" target="_blank" class="btn-insta">Instagram</a>
+            </div>
             ${isSingleView ? `
             <div class="week-nav-row">
-              <button class="nav-arrow-btn ${card.id === firstId ? 'disabled' : ''}" onclick="showSpecificWeek(${firstId})">⇤ Pierwszy</button>
-              <button class="nav-arrow-btn ${!prevId ? 'disabled' : ''}" onclick="showSpecificWeek(${prevId})">← Poprzedni</button>
-              <button class="nav-arrow-btn ${!nextId ? 'disabled' : ''}" onclick="showSpecificWeek(${nextId})">Następny →</button>
-              <button class="nav-arrow-btn ${card.id === lastId ? 'disabled' : ''}" onclick="showSpecificWeek(${lastId})">Ostatni ⇥</button>
+              <button class="nav-arrow-btn ${card.id <= firstId ? 'disabled' : ''}" onclick="showSpecificWeek(${card.id - 1})">← Poprzedni</button>
+              <button class="nav-arrow-btn ${card.id >= lastId ? 'disabled' : ''}" onclick="showSpecificWeek(${card.id + 1})">Następny →</button>
             </div>` : ''}
           </div>
-        </article>`;
-      }).join('');
-      
-      // Update URL hash if single view
-      if(isSingleView) {
-          history.replaceState(null, null, '#tydzien-' + data[0].id);
-      }
+        </article>
+      `).join('');
     }
 
     function applyFilter(btn) {
@@ -530,40 +315,28 @@
       btn.classList.add('active');
       const type = btn.getAttribute('data-type');
       const val = btn.getAttribute('data-val');
+      
       const filtered = val === 'All' ? cardsData : cardsData.filter(c => c[type] === val);
-
+      
       if (type === 'month') {
         render([filtered[0]], true);
       } else {
-        const sorted = val === 'All' ? [...filtered].sort((a,b) => b.id - a.id) : [...filtered].sort((a,b) => a.id - b.id);
+        const sorted = [...filtered].sort((a,b) => b.id - a.id);
         render(sorted, false);
-        if(val === 'All') history.replaceState(null, null, ' '); // Clear hash if showing all
       }
     }
 
     function showSpecificWeek(id) {
       const card = cardsData.find(c => c.id === id);
-      if (card) { 
-        render([card], true); 
-        updateFilterUI(card);
-        window.scrollTo({top: listElement.offsetTop - 120, behavior: 'smooth'}); 
+      if (card) {
+        render([card], true);
+        window.scrollTo({top: listElement.offsetTop - 100, behavior: 'smooth'});
       }
     }
 
-    // INITIAL LOAD LOGIC
     window.addEventListener('DOMContentLoaded', () => {
-      const hash = window.location.hash;
-      const weekMatch = hash.match(/#tydzien-(\d+)/);
-      
-      if (weekMatch) {
-          const weekId = parseInt(weekMatch[1]);
-          showSpecificWeek(weekId);
-      } else {
-          // Default: show latest
-          const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
-          render([latest], true);
-          updateFilterUI(latest);
-      }
+      const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
+      render([latest], true);
     });
   </script>
 </body>
