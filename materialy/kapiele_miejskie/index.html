@@ -13,8 +13,7 @@
   </script>
 
   <title>Miejskie kąpiele leśne | Projekt: Domek na Drzewie</title>
-  <meta name="description" content="Miejskie kąpiele leśne — bezpłatne karty uważności do pobrania. Cotygodniowe materiały inspirowane przyrodą i rytmem roku." />
-
+  
   <style>
     :root {
       --sage: #678760;
@@ -36,7 +35,7 @@
 
     body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: Inter, Arial, sans-serif;
       color: var(--text);
       background: #f3f1eb;
       line-height: 1.6;
@@ -57,80 +56,60 @@
       z-index: 100;
       backdrop-filter: blur(10px);
     }
-    .nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; }
     .brand { display: flex; align-items: center; gap: 14px; }
-    .brand-mark { width: 58px; height: 58px; border-radius: 50%; overflow: hidden; border: 1px solid var(--line); flex-shrink: 0; }
-    .brand-title { font-size: 1.2rem; font-weight: 800; }
-    
-    .nav-links { display: flex; align-items: stretch; }
-    .nav-links a {
-      min-height: 88px; padding: 0 20px; display: flex; align-items: center;
-      text-transform: uppercase; font-size: 0.8rem; font-weight: 800;
-      border-left: 1px solid var(--line); transition: 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { background: var(--sage); color: white; }
+    .brand-mark { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 1px solid var(--line); }
+    .nav-links a { padding: 10px 15px; text-transform: uppercase; font-size: 0.8rem; font-weight: 800; }
+    .nav-links a.active { color: var(--sage); border-bottom: 2px solid var(--sage); }
 
     /* Hero */
-    .hero {
-      position: relative; 
-      min-height: 360px; 
-      display: flex; 
-      align-items: center;
-      background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-        url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/Environmental-Organization-Website-Design-788x871.jpg') center/cover no-repeat;
-      color: white;
-      text-align: center;
+    .hero { 
+      min-height: 300px; display: flex; align-items: center; justify-content: center; text-align: center;
+      background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), 
+      url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/Environmental-Organization-Website-Design-788x871.jpg') center/cover;
+      color: white; 
     }
-    .hero-inner { width: min(calc(100% - 32px), 920px); margin: 0 auto; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; margin: 0; text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; margin: 0; }
 
     /* Filters */
     .filter-section { background: white; padding: 25px; margin: 30px 0; border: 1px solid var(--line); box-shadow: var(--shadow); }
-    .filter-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-    .filter-label { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; color: var(--sage); min-width: 85px; }
-    .filter-btn { padding: 6px 16px; border: 1px solid var(--line); background: transparent; cursor: pointer; border-radius: 20px; font-weight: 600; font-size: 0.8rem; transition: 0.2s; }
-    .filter-btn:hover { border-color: var(--sage); color: var(--sage); }
+    .filter-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .filter-label { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; color: var(--sage); min-width: 80px; }
+    .filter-btn { padding: 6px 14px; border: 1px solid var(--line); background: transparent; cursor: pointer; border-radius: 20px; font-size: 0.8rem; transition: 0.2s; }
     .filter-btn.active { background: var(--sage); color: white; border-color: var(--sage); }
 
-    /* Material Items */
-    .material-list { display: grid; gap: 30px; margin-top: 20px; }
+    /* Cards */
+    .material-list { display: grid; gap: 30px; margin-bottom: 50px; }
     .material-item { 
-        display: grid; 
-        grid-template-columns: 300px 1fr; 
-        gap: 32px; 
-        padding: 35px; 
-        background: white; 
-        border: 1px solid var(--line); 
-        box-shadow: var(--shadow);
+      display: grid; grid-template-columns: 300px 1fr; gap: 30px; 
+      padding: 30px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow);
     }
-
-    .material-visual img { width: 100%; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-    .material-header h3 { font-size: 1.5rem; text-transform: uppercase; margin: 0 0 8px 0; }
+    .material-visual img { border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .material-header h3 { font-size: 1.5rem; margin: 0 0 5px 0; text-transform: uppercase; }
     .material-meta { color: var(--muted); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
-    .material-body { font-size: 1rem; color: var(--text); margin-bottom: 20px; }
-    
-    .material-reflection { background: var(--cream); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
-    .material-reflection strong { display: block; margin-bottom: 10px; color: var(--sage); text-transform: uppercase; font-size: 0.8rem; }
+    .material-body { margin-bottom: 20px; }
+    .material-reflection { background: var(--cream); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    .material-reflection strong { display: block; color: var(--sage); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 10px; }
     .material-reflection ul { margin: 0; padding-left: 20px; }
-    .material-reflection li { margin-bottom: 8px; }
 
-    .download-links { display: flex; gap: 12px; flex-wrap: wrap; }
-    .download-links a { padding: 10px 22px; border-radius: 30px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; transition: 0.2s; }
+    .download-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .download-links a, .download-links button { 
+        padding: 10px 20px; border-radius: 25px; font-weight: 800; font-size: 0.75rem; 
+        text-transform: uppercase; transition: 0.2s; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;
+    }
     .btn-main { background: var(--sage); color: white; }
     .btn-alt { background: var(--gold); color: #3d2a10; }
+    .btn-copy { background: #e0e7ff; color: #4338ca; }
     .btn-insta { background: #b44f72; color: white; }
 
-    /* Week Nav */
-    .week-nav-row { display: flex; gap: 10px; margin-top: 30px; border-top: 1px solid var(--line); padding-top: 25px; }
-    .nav-arrow-btn { flex: 1; padding: 12px; background: white; border: 1px solid var(--line); cursor: pointer; font-weight: 800; text-transform: uppercase; font-size: 0.7rem; border-radius: 4px; transition: 0.2s; }
+    .week-nav-row { display: flex; gap: 10px; margin-top: 25px; border-top: 1px solid var(--line); padding-top: 20px; }
+    .nav-arrow-btn { flex: 1; padding: 12px; cursor: pointer; border: 1px solid var(--line); background: white; font-weight: 800; text-transform: uppercase; font-size: 0.7rem; transition: 0.2s; }
     .nav-arrow-btn:hover { border-color: var(--sage); color: var(--sage); }
     .nav-arrow-btn.disabled { visibility: hidden; }
 
     @media (max-width: 850px) {
-      .material-item { grid-template-columns: 1fr; padding: 25px; }
-      .material-visual { max-width: 320px; margin: 0 auto; }
-      .nav { flex-direction: column; padding: 15px 0; }
-      .nav-links a { min-height: 50px; border: none; }
+      .material-item { grid-template-columns: 1fr; }
+      .material-visual { max-width: 300px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -140,27 +119,23 @@
     <div class="container nav">
       <a class="brand" href="/">
         <div class="brand-mark"><img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo" /></div>
-        <div class="brand-title">Projekt: Domek na Drzewie</div>
+        <div style="margin-left:10px"><strong>Projekt: Domek na Drzewie</strong></div>
       </a>
       <nav class="nav-links">
         <a href="/">O projekcie</a>
         <a href="#" class="active">Materiały</a>
-        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank">Instagram</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
-    <div class="hero-inner">
-      <h1>Miejskie kąpiele leśne</h1>
-      <p>Bezpłatne karty uważności do pobrania</p>
-    </div>
+    <h1>Miejskie kąpiele leśne</h1>
   </section>
 
   <main class="narrow">
     <nav class="filter-section">
       <div class="filter-group">
-        <span class="filter-label">Pora roku:</span>
+        <span class="filter-label">Sezon:</span>
         <button class="filter-btn active" data-type="season" data-val="All" onclick="applyFilter(this)">Wszystkie</button>
         <button class="filter-btn" data-type="season" data-val="Zima" onclick="applyFilter(this)">Zima</button>
         <button class="filter-btn" data-type="season" data-val="Wiosna" onclick="applyFilter(this)">Wiosna</button>
@@ -178,113 +153,31 @@
 
   <script>
     const cardsData = [
-      { 
-        id: 1, title: "Cichy korzeń", theme: "Bezruch", season: "Zima", month: "Styczeń", 
-        body: "Wejdź powoli w zieloną przestrzeń. Rób częste pauzy. Usiądź lub stań nieruchomo na pięć minut.", 
-        reflection: ["Jakie dźwięki trwają, gdy otoczenie cichnie?", "Gdzie w moim ciele odczuwam stan bezruchu?"], 
-        img: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-B.png", 
-        insta: "DT_RCYoDvNk" 
-      },
-      { 
-        id: 2, title: "Ukryta siła", theme: "Wytrwałość", season: "Zima", month: "Styczeń", 
-        body: "Szukaj oznak wytrwałości — igieł wiecznie zielonych, mchu, porostów, szczelnie zamkniętych pąków. Dotykaj ich delikatnie.", 
-        reflection: ["Co/kto pomógł mi przetrwać trudne pory roku?", "W jakich okolicznościach czuję w sobie spokój?"], 
-        img: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-B.png", 
-        insta: "DUEAsDsjI_j" 
-      },
-      { 
-        id: 3, title: "Niespieszna Ścieżka", theme: "Powolność", season: "Zima", month: "Styczeń", 
-        body: "Idź o połowę wolniej niż zwykle. Niech twój oddech wyznacza rytm. Przy każdym kroku poczuj ziemię w pełni.", 
-        reflection: ["Co zaczynam zauważać dopiero wtedy, gdy nigdzie się nie spieszę?", "Dokąd w moim życiu biegnę bez potrzeby?"], 
-        img: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-B.png", 
-        insta: "DUV2YvGDUgG" 
-      },
-      { 
-        id: 4, title: "Światło, które sięga do nas", theme: "Przebudzenie", season: "Zima", month: "Styczeń", 
-        body: "Unieś dłoń w stronę światła. Pozwól, by ciepło spoczęło na twoich ubraniach, na skórze, i rozświetliło cichą przestrzeń w tobie.", 
-        reflection: ["Która część mnie jest gotowa sięgnąć po coś nowego?", "Co rozgrzewa mnie od środka?"], 
-        img: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-B.png", 
-        insta: "DUn-M6TDKpW" 
-      },
-      { 
-        id: 5, title: "Zimowy oddech", theme: "Odpoczynek", season: "Zima", month: "Luty", 
-        body: "Usiądź przy oknie lub na zewnątrz. Obserwuj miękkość każdego oddechu.", 
-        reflection: ["Co mogłoby znaczyć, odpoczywać bez poczucia winy?", "Które myśli wciąż krążą, a które mogę teraz wypuścić?"], 
-        img: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-B.png", 
-        insta: "DU6D4A6jk5L" 
-      },
-      { 
-        id: 6, title: "Ukryta iskra", theme: "Subtelna energia", season: "Zima", month: "Luty", 
-        body: "Szukaj małych miejsc, w których gromadzi się ciepło. Może to promień słońca na ścianie, albo szalik ogrzany Twoim oddechem.", 
-        reflection: ["Jakie ciepło noszę w sobie?", "Gdzie w moim życiu coś się zaczyna?"], 
-        img: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-B.png", 
-        insta: "DVMH6kOjGq_" 
-      },
-      { 
-        id: 7, title: "Oszroniony pąk", theme: "Potencjał", season: "Zima", month: "Luty", 
-        body: "Poszukaj krzewu albo drzewa i przyjrzyj się uważnie jego pąkom - małym obietnicom czekającym na odpowiednią chwilę.", 
-        reflection: ["Co dojrzewa we mnie po cichu?", "Jaki najmniejszy znak „już się zaczyna” potrafię dziś zauważyć?"], 
-        img: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-B.png", 
-        insta: "DVeJb09jrR4" 
-      },
-      { 
-        id: 8, title: "Pierwszy Chór", theme: "Przebudzenie", season: "Zima", month: "Luty", 
-        body: "Zauważ, że długo było cicho, a teraz ptasi śpiew wyraźnie się wybija. Najpierw uchwyć jeden głos.", 
-        reflection: ["Co czuję, gdy cisza pęka?", "Jakie „pierwsze nuty” wracają do mojego życia?"], 
-        img: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-B.png", 
-        insta: "DVwK83jDq6L" 
-      },
-      { 
-        id: 9, title: "Zimozielony", theme: "Stałość", season: "Zima", month: "Marzec", 
-        body: "Spędź chwilę przy jednym zimozielonym drzewie. Oddychaj razem z nim w rytmie: 4s wdech, 6s wydech.", 
-        reflection: ["Jakie małe rzeczy regularnie mnie uspokajają i podtrzymują?"], 
-        img: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-A.png", 
-        imgB: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-B.png", 
-        insta: "DWCI7kKDHlM" 
-      },
-      { 
-        id: 10, title: "Odwilż", theme: "Rozluźnianie", season: "Wiosna", month: "Marzec", 
-        body: "Wyjdź na zewnątrz i poszukaj oznak roztopu: małych kałuż, ciemniejącej kory, cichego połysku mokrej ziemi.", 
-        reflection: ["Gdzie w moim życiu mogę bezpiecznie trochę zmięknąć?", "Co się zmienia, gdy pozwalam tej chwili być?"], 
-        img: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-A.png", 
-        imgB: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-B.png", 
-        insta: "DWUK6lDjNqX" 
-      },
-      { 
-        id: 11, title: "Przebudzenie Ziemi", theme: "Odradzanie", season: "Wiosna", month: "Marzec", 
-        body: "Wsłuchaj się w ciche sygnały powracającego życia: śpiew ptaków, łagodny ruch w gałęziach.", 
-        reflection: ["Co zaczyna kiełkować w moim życiu, powoli, lecz pewnie?", "Czy potrafię pozwolić temu procesowi toczyć się we własnym rytmie?"], 
-        img: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-A.png", 
-        imgB: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-B.png", 
-        insta: "DWmN1KkDhq_" 
-      }
+      { id: 1, title: "Cichy korzeń", theme: "Bezruch", season: "Zima", month: "Styczeń", body: "Wejdź powoli w zieloną przestrzeń. Rób częste pauzy. Usiądź lub stań nieruchomo na pięć minut.", reflection: ["Jakie dźwięki trwają, gdy otoczenie cichnie?", "Gdzie w moim ciele odczuwam stan bezruchu?"], img: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-A.png", imgB: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-B.png", insta: "DT_RCYoDvNk" },
+      { id: 2, title: "Ukryta siła", theme: "Wytrwałość", season: "Zima", month: "Styczeń", body: "Szukaj oznak wytrwałości — igieł wiecznie zielonych, mchu, porostów, szczelnie zamkniętych pąków. Dotykaj ich delikatnie.", reflection: ["Co/kto pomógł mi przetrwać trudne pory roku?", "W jakich okolicznościach czuję w sobie spokój?"], img: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-A.png", imgB: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-B.png", insta: "DUEAsDsjI_j" },
+      { id: 3, title: "Niespieszna Ścieżka", theme: "Powolność", season: "Zima", month: "Styczeń", body: "Idź o połowę wolniej niż zwykle. Niech twój oddech wyznacza rytm. Przy każdym kroku poczuj ziemię w pełni.", reflection: ["Co zaczynam zauważać dopiero wtedy, gdy nigdzie się nie spieszę?", "Dokąd w moim życiu biegnę bez potrzeby?"], img: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-A.png", imgB: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-B.png", insta: "DUV2YvGDUgG" },
+      { id: 4, title: "Światło, które sięga do nas", theme: "Przebudzenie", season: "Zima", month: "Styczeń", body: "Unieś dłoń w stronę światła. Pozwól, by ciepło spoczęło na twoich ubraniach, na skórze, i rozświetliło cichą przestrzeń w tobie.", reflection: ["Która część mnie jest gotowa sięgnąć po coś nowego?", "Co rozgrzewa mnie od środka?"], img: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-A.png", imgB: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-B.png", insta: "DUn-M6TDKpW" },
+      { id: 5, title: "Zimowy oddech", theme: "Odpoczynek", season: "Zima", month: "Luty", body: "Usiądź przy oknie lub na zewnątrz. Obserwuj miękkość każdego oddechu.", reflection: ["Co mogłoby znaczyć, odpoczywać bez poczucia winy?", "Które myśli wciąż krążą, a które mogę teraz wypuścić?"], img: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-A.png", imgB: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-B.png", insta: "DU6D4A6jk5L" },
+      { id: 6, title: "Ukryta iskra", theme: "Subtelna energia", season: "Zima", month: "Luty", body: "Szukaj małych miejsc, w których gromadzi się ciepło. Może to promień słońca na ścianie, albo szalik ogrzany Twoim oddechem.", reflection: ["Jakie ciepło noszę w sobie?", "Gdzie w moim życiu coś się zaczyna?"], img: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-A.png", imgB: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-B.png", insta: "DVMH6kOjGq_" },
+      { id: 7, title: "Oszroniony pąk", theme: "Potencjał", season: "Zima", month: "Luty", body: "Poszukaj krzewu albo drzewa i przyjrzyj się uważnie jego pąkom - małym obietnicom czekającym na odpowiednią chwilę.", reflection: ["Co dojrzewa we mnie po cichu?", "Jaki najmniejszy znak „już się zaczyna” potrafię dziś zauważyć?"], img: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-A.png", imgB: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-B.png", insta: "DVeJb09jrR4" },
+      { id: 8, title: "Pierwszy Chór", theme: "Przebudzenie", season: "Zima", month: "Luty", body: "Zauważ, że długo było cicho, a teraz ptasi śpiew wyraźnie się wybija. Najpierw uchwyć jeden głos.", reflection: ["Co czuję, gdy cisza pęka?", "Jakie „pierwsze nuty” wracają do mojego życia?"], img: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-A.png", imgB: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-B.png", insta: "DVwK83jDq6L" },
+      { id: 9, title: "Zimozielony", theme: "Stałość", season: "Zima", month: "Marzec", body: "Spędź chwilę przy jednym zimozielonym drzewie. Oddychaj razem z nim w rytmie: 4s wdech, 6s wydech.", reflection: ["Jakie małe rzeczy regularnie mnie uspokajają i podtrzymują?"], img: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-A.png", imgB: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-B.png", insta: "DWCI7kKDHlM" },
+      { id: 10, title: "Odwilż", theme: "Rozluźnianie", season: "Wiosna", month: "Marzec", body: "Wyjdź na zewnątrz i poszukaj oznak roztopu: małych kałuż, ciemniejącej kory, cichego połysku mokrej ziemi.", reflection: ["Gdzie w moim życiu mogę bezpiecznie trochę zmięknąć?", "Co się zmienia, gdy pozwalam tej chwili być?"], img: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-A.png", imgB: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-B.png", insta: "DWUK6lDjNqX" },
+      { id: 11, title: "Przebudzenie Ziemi", theme: "Odradzanie", season: "Wiosna", month: "Marzec", body: "Wsłuchaj się w ciche sygnały powracającego życia: śpiew ptaków, łagodny ruch w gałęziach.", reflection: ["Co zaczyna kiełkować w moim życiu, powoli, lecz pewnie?", "Czy potrafię pozwolić temu procesowi toczyć się we własnym rytmie?"], img: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-A.png", imgB: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-B.png", insta: "DWmN1KkDhq_" }
     ];
 
     const listElement = document.getElementById('materialList');
     const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
 
     function render(data, isSingleView = false) {
-      if (!data.length) {
-        listElement.innerHTML = "<p>Brak kart dla tego wyboru.</p>";
-        return;
-      }
+      if (!data.length) { listElement.innerHTML = "<p>Brak kart.</p>"; return; }
       
       const firstId = 1;
       const lastId = Math.max(...cardsData.map(c => c.id));
 
       listElement.innerHTML = data.map(card => `
         <article class="material-item">
-          <div class="material-visual">
-            <img src="${imgPath}${card.img}?v=2026" alt="${card.title}" loading="lazy">
-          </div>
+          <div class="material-visual"><img src="${imgPath}${card.img}?v=2026" alt="${card.title}"></div>
           <div class="material-content">
             <header>
               <span class="material-meta">${card.season} • ${card.month} • ${card.theme}</span>
@@ -296,8 +189,9 @@
               <ul>${card.reflection.map(q => `<li>${q}</li>`).join('')}</ul>
             </div>
             <div class="download-links">
-              <a href="${imgPath}${card.img}?v=2026" download class="btn-main">Pobierz obraz</a>
-              <a href="${imgPath}${card.imgB}?v=2026" download class="btn-alt">Pobierz zadanie</a>
+              <a href="${imgPath}${card.img}?v=2026" download class="btn-main">Obraz</a>
+              <a href="${imgPath}${card.imgB}?v=2026" download class="btn-alt">Zadanie</a>
+              <button onclick="copyLink(${card.id})" class="btn-copy">🔗 Kopiuj link</button>
               <a href="https://instagram.com/p/${card.insta}/" target="_blank" class="btn-insta">Instagram</a>
             </div>
             ${isSingleView ? `
@@ -308,6 +202,16 @@
           </div>
         </article>
       `).join('');
+    }
+
+    function copyLink(id) {
+      const url = window.location.origin + window.location.pathname + '#tydzien-' + id;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = event.currentTarget;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "✅ Skopiowano!";
+        setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+      });
     }
 
     function applyFilter(btn) {
@@ -329,14 +233,30 @@
     function showSpecificWeek(id) {
       const card = cardsData.find(c => c.id === id);
       if (card) {
+        window.location.hash = 'tydzien-' + id;
         render([card], true);
         window.scrollTo({top: listElement.offsetTop - 100, behavior: 'smooth'});
       }
     }
 
+    function handleRouting() {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#tydzien-')) {
+        const id = parseInt(hash.replace('#tydzien-', ''));
+        if (!isNaN(id)) {
+          showSpecificWeek(id);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    window.addEventListener('hashchange', handleRouting);
     window.addEventListener('DOMContentLoaded', () => {
-      const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
-      render([latest], true);
+      if (!handleRouting()) {
+        const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
+        render([latest], true);
+      }
     });
   </script>
 </body>
