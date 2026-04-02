@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -13,7 +14,7 @@
   </script>
 
   <title>Miejskie kąpiele leśne | Projekt: Domek na Drzewie</title>
-  <meta name="description" content="Miejskie kąpiele leśne — cotygodniowe karty inspirowane przyrodą, uważnością i rytmem roku." />
+  <meta name="description" content="Miejskie kąpiele leśne — bezpłatne karty uważności do pobrania. Cotygodniowe materiały inspirowane przyrodą i rytmem roku – pobierz i zacznij praktykę." />
 
   <style>
     :root {
@@ -74,7 +75,7 @@
     .nav-links a:hover, .nav-links a.active { background: var(--sage); color: white; }
     .lang-link { background: var(--orange) !important; color: white !important; }
 
-    /* Hero - Green Style */
+    /* Hero */
     .hero {
       position: relative; 
       min-height: 360px; 
@@ -101,12 +102,59 @@
 
     /* Material Items */
     .material-list { display: grid; gap: 24px; margin-top: 20px; }
-    .material-item { display: grid; grid-template-columns: 280px 1fr; gap: 32px; padding: 30px; background: #faf9f5; border: 1px solid rgba(36,49,38,0.08); box-shadow: var(--shadow); text-align: left; animation: fadeIn 0.4s ease-out; }
+    .material-item { 
+        position: relative;
+        display: grid; 
+        grid-template-columns: 280px 1fr; 
+        gap: 32px; 
+        padding: 30px; 
+        background: #faf9f5; 
+        border: 1px solid rgba(36,49,38,0.08); 
+        box-shadow: var(--shadow); 
+        text-align: left; 
+        animation: fadeIn 0.4s ease-out; 
+    }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+
+    /* SHARE BUTTON */
+    .share-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: white;
+        border: 1px solid var(--line);
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+        z-index: 5;
+        color: var(--sage);
+    }
+    .share-btn:hover { background: var(--sage); color: white; border-color: var(--sage); }
+    
+    .share-btn::after {
+        content: 'Skopiowano!';
+        position: absolute;
+        bottom: 115%;
+        right: 0;
+        background: var(--text);
+        color: white;
+        font-size: 0.65rem;
+        padding: 4px 8px;
+        border-radius: 4px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    .share-btn.copied::after { opacity: 1; }
 
     .material-visual img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 8px 20px rgba(36,49,38,0.1); }
     .material-content { display: flex; flex-direction: column; gap: 16px; }
-    .material-header h3 { font-size: 1.4rem; text-transform: uppercase; margin: 0; }
+    .material-header h3 { font-size: 1.4rem; text-transform: uppercase; margin: 0; padding-right: 40px; }
     .material-header span { color: var(--muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
     .material-body { line-height: 1.8; color: var(--muted); font-size: 0.95rem; }
     .material-reflection strong { display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; color: var(--sage); letter-spacing: 0.05em; }
@@ -125,7 +173,7 @@
     .nav-arrow-btn:hover { border-color: var(--sage); color: var(--sage); background: var(--cream); }
     .nav-arrow-btn.disabled { visibility: hidden; pointer-events: none; }
 
-    /* Explanation Section - Lowered */
+    /* Intro Cards */
     .intro-card { background: white; border: 1px solid rgba(36,49,38,0.08); box-shadow: var(--shadow); padding: 40px; margin: 40px 0; text-align: center; }
     .section-kicker { display: inline-block; padding: 7px 12px; background: rgba(103,135,96,0.12); color: var(--sage); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.74rem; font-weight: 800; margin-bottom: 16px; }
     .intro-title { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.1; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 20px; }
@@ -156,10 +204,13 @@
           <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
         </div>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Nawigacja">
         <a href="/">O projekcie</a>
-        <a href="#" class="active">Materiały</a>
-        <a class="lang-link" href="/en/">English</a>
+        <a href="/materialy/" class="active" aria-current="page">Materiały</a>
+        <a class="lang-link" href="/en/materials/" lang="en" hreflang="en">English</a>
+        <a href="/sky.html">Niebo dziś</a>
+        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
       </nav>
     </div>
   </header>
@@ -168,18 +219,17 @@
     <div class="hero-inner">
       <span class="hero-kicker">Seria cotygodniowa</span>
       <h1>Miejskie kąpiele leśne</h1>
-      <p class="hero-text">Cykl kart inspirowanych przyrodą, uważnością i rytmem roku.</p>
+      <p class="hero-text">Bezpłatny cykl kart uważności do samodzielnej praktyki i pobrania</p>
     </div>
   </section>
   
-  
-      <div id="intro-sections">
-        <section class="intro-card">
-          <span class="section-kicker">O cyklu</span>
-          <h2 class="intro-title">Karty tygodniowe inspirowane naturą</h2>
-          <p class="intro-text">Cykl #domeknadrzewie52 to 52 tygodnie uważności zakorzenionej w naturze i rytmie pór roku. Każda karta to zaproszenie do wyjścia na zewnątrz, zatrzymania się i nawiązania kontaktu z otaczającą nas przyrodą – nawet w sercu miasta.</p>
-        </section>
-      </div>
+  <div id="intro-sections">
+    <section class="intro-card">
+      <span class="section-kicker">O cyklu</span>
+      <h2 class="intro-title">Karty tygodniowe inspirowane naturą</h2>
+      <p class="intro-text">Cykl #domeknadrzewie52 to 52 tygodnie uważności zakorzenionej w naturze i rytmie pór roku.</p>
+    </section>
+  </div>
 
   <main class="page-wrap">
     <div class="narrow">
@@ -200,6 +250,8 @@
       </nav>
 
       <section id="materialList" class="material-list"></section>
+
+            <section id="materialList" class="material-list"></section>
 
       <section class="intro-card">
         <span class="section-kicker">O cyklu</span>
@@ -258,6 +310,7 @@
           Jeśli chcesz, możesz podzielić się kartami z innymi lub wracać do nich wtedy, gdy tego potrzebujesz.
         </p>
       </section>
+
       <div class="contact-band">
         <h3>Śledź nowe publikacje</h3>
         <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank">Instagram</a>
@@ -275,31 +328,171 @@
 
   <script>
     const cardsData = [
-      { id: 1, title: "Cichy korzeń", theme: "Bezruch", season: "Zima", month: "Styczeń", body: "Wejdź powoli w zieloną przestrzeń. Rób częste pauzy. Usiądź lub stań nieruchomo na pięć minut.", reflection: ["Jakie dźwięki trwają, gdy otoczenie cichnie?", "Gdzie w moim ciele odczuwam stan bezruchu?"], img: "1A.png", imgB: "1B.png", insta: "DT_RCYoDvNk" },
-      { id: 2, title: "Ukryta siła", theme: "Wytrwałość", season: "Zima", month: "Styczeń", body: "Szukaj oznak wytrwałości — igieł wiecznie zielonych, mchu, porostów, szczelnie zamkniętych pąków. Dotykaj ich delikatnie.", reflection: ["Co/kto pomógł mi przetrwać trudne pory roku?", "W jakich okolicznościach czuję w sobie spokój?"], img: "2A.png", imgB: "2B.png", insta: "DUEAsDsjI_j" },
-      { id: 3, title: "Niespieszna Ścieżka", theme: "Powolność", season: "Zima", month: "Styczeń", body: "Idź o połowę wolniej niż zwykle. Niech twój oddech wyznacza rytm.", reflection: ["Co zaczynam zauważać dopiero wtedy, gdy nigdzie się nie spieszę?", "Dokąd w moim życiu biegnę bez potrzeby?"], img: "3A.png", imgB: "3B.png", insta: "DUV2YvGDUgG" },
-      { id: 4, title: "Światło, które sięga do nas", theme: "Przebudzenie", season: "Zima", month: "Styczeń", body: "Unieś dłoń w stronę światła. Pozwól, by ciepło spoczęło na twoich ubraniach, na skórze.", reflection: ["Która część mnie jest gotowa sięgnąć po coś nowego?", "Co rozgrzewa mnie od środka?"], img: "4A.png", imgB: "4B.png", insta: "DUn-M6TDKpW" },
-      { id: 5, title: "Zimowy oddech", theme: "Odpoczynek", season: "Zima", month: "Luty", body: "Usiądź przy oknie lub na zewnątrz. Obserwuj miękkość każdego oddechu.", reflection: ["Co mogłoby znaczyć, odpoczywać bez poczucia winy?", "Które myśli wciąż krążą?"], img: "5A.png", imgB: "5B.png", insta: "DU6D4A6jk5L" },
-      { id: 6, title: "Ukryta iskra", theme: "Subtelna energia", season: "Zima", month: "Luty", body: "Szukaj małych miejsc, w których gromadzi się ciepło.", reflection: ["Jakie ciepło noszę w sobie?", "Gdzie w moim życiu coś się zaczyna?"], img: "6A.png", imgB: "6B.png", insta: "DVMH6kOjGq_" },
-      { id: 7, title: "Oszroniony pąk", theme: "Potencjał", season: "Zima", month: "Luty", body: "Poszukaj krzewu albo drzewa i przyjrzyj się uważnie jego pąkom.", reflection: ["Co dojrzewa we mnie po cichu?", "Jaki najmniejszy znak potrafię dziś zauważyć?"], img: "7A.png", imgB: "7B.png", insta: "DVeJb09jrR4" },
-      { id: 8, title: "Pierwszy Chór", theme: "Przebudzenie", season: "Zima", month: "Luty", body: "Zauważ, że długo było cicho, a teraz ptasi śpiew wyraźnie się wybija.", reflection: ["Co czuję, gdy cisza pęka?", "Jakie „pierwsze nuty” wracają do mojego życia?"], img: "8A.png", imgB: "8B.png", insta: "DVwK83jDq6L" },
-      { id: 9, title: "Zimozielony", theme: "Stałość", season: "Zima", month: "Marzec", body: "Spędź chwilę przy jednym zimozielonym drzewie lub krzewie. Oddychaj razem z nim.", reflection: ["Jakie małe rzeczy regularnie mnie uspokajają?"], img: "9A.png", imgB: "9B.png", insta: "DWCI7kKDHlM" },
-      { id: 10, title: "Odwilż", theme: "Rozluźnianie", season: "Wiosna", month: "Marzec", body: "Wyjdź na zewnątrz i poszukaj oznak roztopu: małych kałuż, ciemniejącej kory.", reflection: ["Gdzie w moim życiu mogę bezpiecznie trochę zmięknąć?", "Co się zmienia, gdy pozwalam tej chwili być?"], img: "10A.png", imgB: "10B.png", insta: "DWUK6lDjNqX" },
-      { id: 11, title: "Przebudzenie Ziemi", theme: "Odradzanie", season: "Wiosna", month: "Marzec", body: "Wsłuchaj się w ciche sygnały powracającego życia: śpiew ptaków.", reflection: ["Jakie dźwięki zwiastują dla mnie odnowę?", "Co zaczyna kiełkować w moim życiu?"], img: "11A.png", imgB: "11B.png", insta: "DWmN1KkDhq_" }
-    ];
+  { 
+    id: 1, 
+    title: "Cichy korzeń", 
+    theme: "Bezruch", 
+    season: "Zima", 
+    month: "Styczeń", 
+    body: "Wejdź powoli w zieloną przestrzeń. Rób częste pauzy. Usiądź lub stań nieruchomo na pięć minut.", 
+    reflection: ["Jakie dźwięki trwają, gdy otoczenie cichnie?", "Gdzie w moim ciele odczuwam stan bezruchu?"], 
+    img: "1A.png", 
+    imgB: "1B.png", 
+    alt: "Karta uważności Tydzień 01 - Cichy korzeń. Projekt Domek na Drzewie, miejskie kąpiele leśne w temacie bezruchu.",
+    insta: "DT_RCYoDvNk" 
+  },
+  { 
+    id: 2, 
+    title: "Ukryta siła", 
+    theme: "Ukryta siła", 
+    season: "Zima", 
+    month: "Styczeń", 
+    body: "Szukaj oznak wytrwałości — igieł wiecznie zielonych, mchu, porostów, szczelnie zamkniętych pąków. Dotykaj ich delikatnie. Zwróć uwagę na faktury ukształtowane przez zimno i czas.", 
+    reflection: ["Co/kto pomógł mi przetrwać trudne pory roku?", "W jakich okolicznościach czuję w sobie spokój, który daje mi siłę?"], 
+    img: "2A.png", 
+    imgB: "2B.png", 
+    alt: "Karta edukacyjna Tydzień 02 - Ukryta siła. Detale mchu i igieł sosnowych zimą, motyw wytrwałości w naturze.",
+    insta: "DUEAsDsjI_j" 
+  },
+  { 
+    id: 3, 
+    title: "Niespieszna Ścieżka", 
+    theme: "Powolność", 
+    season: "Zima", 
+    month: "Styczeń", 
+    body: "Idź o połowę wolniej niż zwykle. Niech twój oddech wyznacza rytm. Przy każdym kroku poczuj ziemię w pełni, zanim uniesiesz stopę.", 
+    reflection: ["Co zaczynam zauważać dopiero wtedy, gdy nigdzie się nie spieszę?", "Dokąd w moim życiu biegnę bez potrzeby — i co próbuję dogonić?"], 
+    img: "3A.png", 
+    imgB: "3B.png", 
+    alt: "Miejskie kąpiele leśne Tydzień 03 - Niespieszna Ścieżka. Ilustracja ścieżki w miejskim lesie, praktyka uważnego chodzenia.",
+    insta: "DUV2YvGDUgG" 
+  },
+  { 
+    id: 4, 
+    title: "Światło, które sięga do nas", 
+    theme: "Przebudzenie", 
+    season: "Zima", 
+    month: "Styczeń", 
+    body: "Unieś dłoń w stronę światła. Pozwól, by ciepło spoczęło na twoich ubraniach, na skórze, i rozświetliło cichą przestrzeń w tobie. Poczuj, jak światło osiada na twojej skórze, kiedy je zapraszasz.", 
+    reflection: ["Która część mnie jest gotowa sięgnąć po coś nowego?", "Co rozgrzewa mnie od środka, gdy daję sobie chwilę na oddech?"], 
+    img: "4A.png", 
+    imgB: "4B.png", 
+    alt: "Karta inspiracji Tydzień 04 - Światło. Promienie słońca przebijające się przez gałęzie drzew, motyw zimowego przebudzenia.",
+    insta: "DUn-M6TDKpW" 
+  },
+  { 
+    id: 5, 
+    title: "Zimowy oddech", 
+    theme: "Odpoczynek", 
+    season: "Zima", 
+    month: "Luty", 
+    body: "Usiądź przy oknie lub na zewnątrz. Obserwuj miękkość każdego oddechu.", 
+    reflection: ["Co mogłoby znaczyć, odpoczywać bez poczucia winy?", "Które myśli wciąż krążą, a które mogę teraz delikatnie wypuścić?"], 
+    img: "5A.png", 
+    imgB: "5B.png", 
+    alt: "Karta uważności Tydzień 05 - Zimowy oddech. Spokojny pejzaż zimowy, praktyka oddechowa shinrin-yoku w mieście.",
+    insta: "DU6D4A6jk5L" 
+  },
+  { 
+    id: 6, 
+    title: "Ukryta iskra", 
+    theme: "Subtelna energia", 
+    season: "Zima", 
+    month: "Luty", 
+    body: "Szukaj małych miejsc, w których gromadzi się ciepło. Może to promień słońca na ścianie, albo szalik ogrzany Twoim oddechem.", 
+    reflection: ["Jakie ciepło noszę w sobie, którego jeszcze nie zauważyłam/em?", "Gdzie w moim życiu coś się zaczyna, nawet jeśli jeszcze nie umiem tego nazwać?"], 
+    img: "6A.png", 
+    imgB: "6B.png", 
+    alt: "Tydzień 06 - Ukryta iskra. Fotografia gry światła i cienia w miejskiej zieleni, poszukiwanie energii w codzienności.",
+    insta: "DVMH6kOjGq_" 
+  },
+  { 
+    id: 7, 
+    title: "Oszroniony pąk", 
+    theme: "Potencjał", 
+    season: "Zima", 
+    month: "Luty", 
+    body: "Poszukaj krzewu albo drzewa i przyjrzyj się uważnie jego pąkom - małym obietnicom czekającym na odpowiednią chwilę.", 
+    reflection: ["Co dojrzewa we mnie po cichu, zanim będzie mogło się pokazać światu?", "Jaki najmniejszy znak „już się zaczyna” potrafię dziś zauważyć?"], 
+    img: "7A.png", 
+    imgB: "7B.png", 
+    alt: "Tydzień 07 - Oszroniony pąk. Zbliżenie na pąki drzew pokryte szronem, symbol ukrytego potencjału i cierpliwości.",
+    insta: "DVeJb09jrR4" 
+  },
+  { 
+    id: 8, 
+    title: "Pierwszy Chór", 
+    theme: "Przebudzenie", 
+    season: "Zima", 
+    month: "Luty", 
+    body: "Zauważ, że długo było cicho, a teraz ptasi śpiew wyraźnie się wybija. Najpierw uchwyć jeden głos, potem poszerz uwagę na cały chór.", 
+    reflection: ["Co czuję, gdy cisza pęka: ulgę, ciepło, napięcie, spokój?", "Jakie „pierwsze nuty” wracają do mojego życia po okresie milczenia?"], 
+    img: "8A.png", 
+    imgB: "8B.png", 
+    alt: "Karta Tydzień 08 - Pierwszy Chór. Ilustracja nawiązująca do ptasiego śpiewu i budzącej się przyrody na przedwiośniu.",
+    insta: "DVwK83jDq6L" 
+  },
+  { 
+    id: 9, 
+    title: "Zimozielony", 
+    theme: "Stałość", 
+    season: "Zima", 
+    month: "Marzec", 
+    body: "Spędź chwilę przy jednym zimozielonym drzewie lub krzewie. Oddychaj razem z nim. Jak? Ustaw spokojny rytm, np.: 4 sekundy wdech, 6 sekund wydech. Powtórz 5 razy.", 
+    reflection: ["Jakie małe rzeczy regularnie mnie uspokajają i podtrzymują, niezależnie od nastroju?"], 
+    img: "9A.png", 
+    imgB: "9B.png", 
+    alt: "Tydzień 09 - Zimozielony. Drzewo iglaste w parku miejskim, motyw stałości i spokojnego oddechu w naturze.",
+    insta: "DWCI7kKDHlM" 
+  },
+  { 
+    id: 10, 
+    title: "Odwilż", 
+    theme: "Rozluźnianie", 
+    season: "Wiosna", 
+    month: "Marzec", 
+    body: "Wyjdź na zewnątrz i poszukaj oznak roztopu: małych kałuż, ciemniejącej kory, cichego połysku mokrej ziemi. Zatrzymaj się tam na chwilę.", 
+    reflection: ["Gdzie w moim życiu mogę bezpiecznie trochę zmięknąć?", "Co się zmienia, gdy pozwalam tej chwili być dokładnie taką, jaka jest?"], 
+    img: "10A.png", 
+    imgB: "10B.png", 
+    alt: "Tydzień 10 - Odwilż. Mokra kora drzewa i ślady wiosennych roztopów, symbol akceptacji i rozluźnienia.",
+    insta: "DWUK6lDjNqX" 
+  },
+  { 
+    id: 11, 
+    title: "Przebudzenie Ziemi", 
+    theme: "Odradzanie", 
+    season: "Wiosna", 
+    month: "Marzec", 
+    body: "Wyjdź na zewnątrz i zatrzymaj się na moment. Wsłuchaj się w ciche sygnały powracającego życia: śpiew ptaków, łagodny ruch w gałęziach.", 
+    reflection: ["Jakie dźwięki zwiastują dla mnie odnowę?", "Co zaczyna kiełkować w moim życiu, powoli, lecz pewnie?", "Czy potrafię pozwolić temu procesowi toczyć się we własnym rytmie?"], 
+    img: "11A.png", 
+    imgB: "11B.png", 
+    alt: "Tydzień 11 - Przebudzenie Ziemi. Wiosenny krajobraz miejski, pąki i pierwsze zielone listki jako symbol odradzania się.",
+    insta: "DWmN1KkDhq_" 
+  }
+];
 
     const listElement = document.getElementById('materialList');
     const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
 
+    /**
+     * COPY LINK LOGIC
+     */
+    function copyCardLink(id) {
+        const url = window.location.origin + window.location.pathname + '#tydzien-' + id;
+        navigator.clipboard.writeText(url).then(() => {
+            const btn = event.currentTarget;
+            btn.classList.add('copied');
+            setTimeout(() => btn.classList.remove('copied'), 2000);
+        });
+    }
+
     function updateFilterUI(card) {
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
-        if(btn.getAttribute('data-type') === 'month' && btn.getAttribute('data-val') === card.month) {
-          btn.classList.add('active');
-        }
-        if(btn.getAttribute('data-type') === 'season' && btn.getAttribute('data-val') === card.season) {
-          btn.classList.add('active');
-        }
+        if(btn.getAttribute('data-type') === 'month' && btn.getAttribute('data-val') === card.month) btn.classList.add('active');
+        if(btn.getAttribute('data-type') === 'season' && btn.getAttribute('data-val') === card.season) btn.classList.add('active');
       });
     }
 
@@ -315,8 +508,11 @@
         const prevId = card.id > firstId ? card.id - 1 : null;
         const nextId = card.id < lastId ? card.id + 1 : null;
         return `
-        <article class="material-item">
-          <div class="material-visual"><img src="${imgPath}${card.img}" alt="Tydzień ${card.id}"></div>
+        <article class="material-item" id="week-card-${card.id}">
+          <button class="share-btn" onclick="copyCardLink(${card.id})" title="Kopiuj link do tego tygodnia">🔗</button>
+          <div class="material-visual">
+  <img src="${imgPath}${card.img}" alt="${card.alt}" loading="lazy" width="280" height="380">
+</div>
           <div class="material-content">
             <header class="material-header">
               <h3>Tydzień ${card.id.toString().padStart(2, '0')} - ${card.title}</h3>
@@ -328,10 +524,13 @@
               <ul>${card.reflection.map(q => `<li>${q}</li>`).join('')}</ul>
             </div>
             <div class="download-links">
-              <a href="${imgPath}${card.img}" download>Obraz</a>
-              <a href="${imgPath}${card.imgB}" download>Zadanie</a>
-              <a href="https://www.instagram.com/p/${card.insta}/" target="_blank">Instagram</a>
-            </div>
+			
+              <div class="download-links">
+  <a href="${imgPath}${card.img}" download title="Pobierz bezpłatną kartę">Pobierz obraz</a>
+  <a href="${imgPath}${card.imgB}" download title="Pobierz zadanie do refleksji">Pobierz zadanie</a>
+  <a href="https://www.instagram.com/p/${card.insta}/" target="_blank">Instagram</a>
+</div>
+             
             ${isSingleView ? `
             <div class="week-nav-row">
               <button class="nav-arrow-btn ${card.id === firstId ? 'disabled' : ''}" onclick="showSpecificWeek(${firstId})">⇤ Pierwszy</button>
@@ -342,24 +541,26 @@
           </div>
         </article>`;
       }).join('');
+      
+      // Update URL hash if single view
+      if(isSingleView) {
+          history.replaceState(null, null, '#tydzien-' + data[0].id);
+      }
     }
 
     function applyFilter(btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
       const type = btn.getAttribute('data-type');
       const val = btn.getAttribute('data-val');
       const filtered = val === 'All' ? cardsData : cardsData.filter(c => c[type] === val);
-
-      // Show intro only if "All" is selected, otherwise it stays under the filtered content
-      document.getElementById('intro-sections').style.display = (val === 'All') ? 'block' : 'block';
 
       if (type === 'month') {
         render([filtered[0]], true);
       } else {
         const sorted = val === 'All' ? [...filtered].sort((a,b) => b.id - a.id) : [...filtered].sort((a,b) => a.id - b.id);
         render(sorted, false);
+        if(val === 'All') history.replaceState(null, null, ' '); // Clear hash if showing all
       }
     }
 
@@ -372,10 +573,20 @@
       }
     }
 
+    // INITIAL LOAD LOGIC
     window.addEventListener('DOMContentLoaded', () => {
-      const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
-      render([latest], true);
-      updateFilterUI(latest);
+      const hash = window.location.hash;
+      const weekMatch = hash.match(/#tydzien-(\d+)/);
+      
+      if (weekMatch) {
+          const weekId = parseInt(weekMatch[1]);
+          showSpecificWeek(weekId);
+      } else {
+          // Default: show latest
+          const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
+          render([latest], true);
+          updateFilterUI(latest);
+      }
     });
   </script>
 </body>
