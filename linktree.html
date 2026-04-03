@@ -34,7 +34,6 @@
             text-align: center;
         }
 
-        /* Resetowanie kolorów linków - usuwamy fioletowy */
         a {
             color: var(--dark-green);
             text-decoration: none;
@@ -71,7 +70,7 @@
             margin-bottom: 45px;
         }
 
-        /* Główna karta (Najnowsza) */
+        /* Główna karta */
         .main-link {
             position: relative;
             display: block;
@@ -129,14 +128,14 @@
         .secondary-links {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 12px;
         }
 
         .sec-btn {
             background: var(--white);
-            padding: 22px 15px;
+            padding: 20px 12px;
             border-radius: 18px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -146,7 +145,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--dark-green) !important; /* Wymuszenie koloru */
+            color: var(--dark-green) !important;
+        }
+
+        /* Wyróżnienie artykułu */
+        .btn-highlight {
+            background: #fdfaf5;
+            border: 1px solid var(--sage);
         }
 
         .sec-btn:active {
@@ -159,16 +164,17 @@
             grid-column: span 2;
         }
 
+        /* Poprawiona widoczność stopki */
         .footer {
-            margin-top: 60px;
+            margin-top: 50px;
             font-family: 'Bodoni Moda', serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-style: italic;
-            opacity: 0.7;
-            color: var(--sage);
+            color: var(--dark-green); /* Ciemniejszy kolor dla czytelności */
+            line-height: 1.4;
+            padding: 0 10px;
         }
 
-        /* Animacja wejścia */
         .fade-in {
             animation: fadeIn 1.2s ease-out;
         }
@@ -184,33 +190,35 @@
     <div class="container fade-in">
         <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo" class="logo">
         <h1>Uważność w Mieście</h1>
-        <p class="subtitle">Miejskie kąpiele leśne</p>
+        <p class="subtitle">Projekt: Domek na Drzewie</p>
 
         <a href="https://domeknadrzewie.edu.pl/materialy/kapiele_miejskie/#tydzien-11" class="main-link">
             <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-A.png" alt="Tydzień 11">
             <div class="overlay">
-                <span class="tag">Pobierz teraz</span>
+                <span class="tag">Aktualna karta</span>
                 <h2>Tydzień 11: Przebudzenie Ziemi</h2>
             </div>
         </a>
 
         <div class="secondary-links">
-            <a href="https://domeknadrzewie.edu.pl/materialy/kapiele_miejskie/#tydzien-10" class="sec-btn">
-                Poprzedni tydzień
+            <a href="https://domeknadrzewie.edu.pl/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/" class="sec-btn full-width btn-highlight">
+                📖 Czym są miejskie kąpiele uważności? (Przewodnik)
             </a>
+
             <a href="https://domeknadrzewie.edu.pl/materialy/kapiele_miejskie/" class="sec-btn">
                 Wszystkie karty
             </a>
+            <a href="https://domeknadrzewie.edu.pl/" class="sec-btn">
+                O projekcie
+            </a>
+            
             <a href="https://www.instagram.com/projekt.domeknadrzewie" class="sec-btn full-width">
                 Obserwuj na Instagramie
-            </a>
-            <a href="https://domeknadrzewie.edu.pl/" class="sec-btn full-width">
-                O projekcie
             </a>
         </div>
 
         <div class="footer">
-            Zatrzymaj się na chwilę w miejskiej dżungli...
+            „Zatrzymaj się na chwilę w miejskiej dżungli,<br>by usłyszeć bicie serca natury.”
         </div>
     </div>
 
