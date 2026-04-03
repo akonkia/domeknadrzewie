@@ -9,7 +9,7 @@ excerpt: "Odkryj, jak czerpać z terapeutycznej mocy natury w samym sercu betonu
 tags: [shinrin-yoku, kąpiele leśne, uważność, urban bathing, wellbeing]
 ---
 
-Większość z nas marzy o ucieczce do głuszczy, by odetchnąć od miejskiego zgiełku. Ale co, jeśli las jest za daleko, a Ty masz tylko 15 minut przerwy w pracy? Tu z pomocą przychodzą **miejskie kąpiele leśne** – autorska adaptacja japońskiej sztuki **Shinrin-yoku**, stworzona z myślą o mieszkańcach miast.
+Większość z nas marzy o ucieczce do głuszy, by odetchnąć od miejskiego zgiełku. Ale co, jeśli las jest za daleko, a Ty masz tylko 15 minut przerwy w pracy? Tu z pomocą przychodzą **miejskie kąpiele leśne** – autorska adaptacja japońskiej sztuki **Shinrin-yoku**, stworzona z myślą o mieszkańcach miast.
 
 Dowiedz się, jak czerpać z terapeutycznej mocy natury, korzystając z tego, co masz pod ręką: miejskiego parku, skweru, a nawet pojedynczego drzewa.
 
