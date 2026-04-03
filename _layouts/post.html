@@ -3,40 +3,53 @@ layout: default
 ---
 <article class="post">
   <style>
+    /* Kontener całego posta */
+    .post {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Nagłówek: Data i Tytuł */
     .post-header {
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       text-align: center;
     }
 
     .post-date {
-      color: #5e675f;
+      color: #678760; /* Twój kolor szałwiowy */
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-size: 0.82rem;
-      font-weight: 800;
-      margin-bottom: 10px;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: block;
     }
 
     .post h1 {
-      margin: 0;
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      line-height: 1.02;
+      margin: 0 auto;
+      max-width: 800px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.1;
       text-transform: uppercase;
+      color: #243126; /* Ciemna zieleń */
+      font-family: 'Bodoni Moda', serif; /* Jeśli masz załadowaną tę czcionkę */
     }
 
+    /* Sekcja zdjęcia - teraz mniejsza i bardziej "filmowa" */
     .post-cover-wrap {
-      margin: 26px 0 28px;
+      margin: 0 0 40px 0;
       display: flex;
       justify-content: center;
     }
 
     .post-cover-frame {
       width: 100%;
-      max-width: 760px;
-      aspect-ratio: 16 / 9;
-      border-radius: 18px;
-      border: 1px solid rgba(36,49,38,0.08);
-      box-shadow: 0 14px 30px rgba(36,49,38,0.08);
+      max-width: 650px; /* Szerokość zdjęcia jest teraz mniejsza niż tekstu */
+      aspect-ratio: 21 / 9; /* Bardzo szerokie, niskie zdjęcie - eleganckie */
+      border-radius: 12px;
+      border: 1px solid rgba(36,49,38,0.06);
+      box-shadow: 0 10px 25px rgba(36,49,38,0.05);
       overflow: hidden;
       background: linear-gradient(180deg, #f8f5ee 0%, #efe9de 100%);
     }
@@ -45,14 +58,14 @@ layout: default
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      padding: 1.5rem;
     }
 
     .post-cover-frame.placeholder img {
-      width: min(220px, 42%);
+      width: 120px;
       height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 18px rgba(36,49,38,0.08));
+      opacity: 0.4;
+      filter: grayscale(1);
     }
 
     .post-cover-frame.has-image img {
@@ -60,33 +73,76 @@ layout: default
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.5s ease;
     }
 
+    /* Główna treść artykułu */
     .post-body {
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(36,49,38,0.08);
-      border-radius: 18px;
-      padding: 28px;
+      max-width: 720px; /* Idealna szerokość do czytania */
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(103, 135, 96, 0.1);
+      border-radius: 16px;
+      padding: 45px;
       line-height: 1.8;
-      box-shadow: 0 14px 30px rgba(36,49,38,0.06);
+      color: #243126;
+      box-shadow: 0 15px 35px rgba(36, 49, 38, 0.04);
+      font-family: 'Inter', sans-serif;
     }
 
+    /* Stylizacja tekstu wewnątrz body */
     .post-body h2 {
-      margin-top: 1.8em;
-      margin-bottom: 0.6em;
-      font-size: 1.2rem;
+      margin-top: 2.2em;
+      margin-bottom: 0.8em;
+      font-size: 1.1rem;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #3e4a3f;
+      border-bottom: 1px solid rgba(103, 135, 96, 0.15);
+      padding-bottom: 8px;
     }
 
-    .post-body p,
+    .post-body p {
+      margin-bottom: 1.5em;
+    }
+
     .post-body ul {
-      margin: 0 0 1.1em;
+      margin-bottom: 1.5em;
+      padding-left: 1.2em;
+    }
+
+    .post-body li {
+      margin-bottom: 0.6em;
+    }
+
+    .post-body blockquote {
+      margin: 2em 0;
+      padding: 20px 30px;
+      background: #f8f6f2;
+      border-left: 4px solid #678760;
+      font-style: italic;
+      border-radius: 0 8px 8px 0;
     }
 
     .post-body hr {
       border: 0;
-      border-top: 1px solid rgba(36,49,38,0.10);
-      margin: 2rem 0;
+      border-top: 1px solid rgba(36,49,38,0.1);
+      margin: 3rem 0;
+    }
+
+    /* Responsywność dla telefonów */
+    @media (max-width: 600px) {
+      .post-body {
+        padding: 25px;
+        border-radius: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+      }
+      .post-cover-frame {
+        aspect-ratio: 16 / 9; /* Na telefonie lepiej dać nieco wyższe zdjęcie */
+        border-radius: 8px;
+      }
     }
   </style>
 
@@ -99,20 +155,14 @@ layout: default
   {% endif %}
 
   <header class="post-header">
-    <div class="post-date">{{ page.date | date: "%-d %B %Y" }}</div>
+    <span class="post-date">{{ page.date | date: "%-d %B %Y" }}</span>
     <h1>{{ page.title }}</h1>
   </header>
 
   <div class="post-cover-wrap">
-    {% if is_placeholder %}
-      <div class="post-cover-frame placeholder" aria-label="{{ cover_alt }}">
-        <img src="{{ cover_image }}" alt="{{ cover_alt }}">
-      </div>
-    {% else %}
-      <div class="post-cover-frame has-image">
-        <img src="{{ cover_image }}" alt="{{ cover_alt }}">
-      </div>
-    {% endif %}
+    <div class="post-cover-frame {% if is_placeholder %}placeholder{% else %}has-image{% endif %}" aria-label="{{ cover_alt }}">
+      <img src="{{ cover_image }}" alt="{{ cover_alt }}">
+    </div>
   </div>
 
   <div class="post-body">
