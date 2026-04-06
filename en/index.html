@@ -247,9 +247,11 @@
     }
 
     .quick-card {
-      background: white;
-      box-shadow: var(--shadow);
-    }
+  background: white;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
 
     .quick-card-top {
       background: linear-gradient(135deg, #75a06c, #4f6f49);
@@ -279,20 +281,24 @@
       object-fit: cover;
     }
 
-    .quick-card:nth-child(2) .quick-card-bottom img {
-      object-fit: contain;
-    }
+    .quick-card:nth-child(2) img {
+  width: 100%;
+  height: 100%;       /* Force image to fill the container height */
+  object-fit: cover;  /* Crops the image to fill the space without distortion */
+  display: block;
+}
 
     .quick-card-bottom {
-      height: 220px;
-      background: #f6f4ee;
-      border-top: 1px solid rgba(36,49,38,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 20px;
-    }
+  min-height: 220px;
+  flex: 1;
+  background: #f6f4ee;
+  border-top: 1px solid rgba(36,49,38,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
 
     .quick-card-text {
       display: block;
@@ -314,19 +320,21 @@
 
     /* mini sky card */
     .sky-mini-card {
-      display: block;
-      height: 100%;
-    }
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
     .sky-mini-scene {
-      position: relative;
-      height: 220px;
-      background: linear-gradient(180deg, #d9ebf6 0%, #f3e4c9 70%, rgba(245,241,232,0.14) 100%);
-      border-top: 1px solid rgba(36,49,38,0.08);
-      overflow: hidden;
-      transition: background 0.8s ease;
-      padding: 0;
-    }
+  position: relative;
+  min-height: 220px;
+  flex: 1;
+  background: linear-gradient(180deg, #d9ebf6 0%, #f3e4c9 70%, rgba(245,241,232,0.14) 100%);
+  border-top: 1px solid rgba(36,49,38,0.08);
+  overflow: hidden;
+  transition: background 0.8s ease;
+  padding: 0;
+}
 
     .sky-mini-scene::after {
       content: "";
@@ -764,6 +772,11 @@
       .about-icons,
       .materials-grid {
         grid-template-columns: 1fr;
+        
+    .quick-card:nth-child(2) .quick-card-bottom {
+    max-height: 220px;
+  }
+  }
       }
 
       .quick-grid-wrap {
@@ -865,11 +878,11 @@
           <p>Get inspired, download for free and explore what we recommend.</p>
         </div>
         <div class="quick-card-bottom">
-          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" alt="Resources preview" />
+          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-marzec-tydzien-12-poranne-szepty-wiosenne-paki-niebo-12A.png" alt="Logo Projektu Domek na Drzewie" />
         </div>
-      </article>
-
-      <article class="quick-card">
+     </article> 
+     
+     <article class="quick-card">
         <div class="quick-card-top">
           <h3>Sky today</h3>
           <p>A small preview of the full page: the rhythm of the day, changing light and a quiet look upward.</p>
