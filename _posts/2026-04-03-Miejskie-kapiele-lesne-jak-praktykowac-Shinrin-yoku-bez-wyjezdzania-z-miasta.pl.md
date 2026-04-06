@@ -5,7 +5,7 @@ date: 2026-04-03
 translation_id: urban-forest-bathing-2026
 lang:
   - pl
-excerpt: "Odkryj, jak czerpać z terapeutycznej mocy natury w samym sercu betonu. Przewodnik po miejskim Shinrin-yoku i darmowe karty uważności. (en) Discover how to tap into the therapeutic power of nature in the heart of the city. A guide to urban Shinrin-yoku with free mindfulness cards."
+excerpt: "Odkryj, jak czerpać z terapeutycznej mocy natury w samym sercu betonu. Przewodnik po miejskim Shinrin-yoku i darmowe karty uważności."
 tags: [shinrin-yoku, kąpiele leśne, uważność, urban bathing, wellbeing]
 ---
 
