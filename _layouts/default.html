@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="{{ page.lang | default: 'pl' }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -102,6 +102,15 @@
       align-items: stretch;
       gap: 0;
       flex-wrap: wrap;
+      {% if page.lang == 'pl' %}
+  <a href="/en/blog/">
+    <span class="nav-label"><span class="nav-pl">English Version</span></span>
+  </a>
+{% else %}
+  <a href="/blog/">
+    <span class="nav-label"><span class="nav-pl">Polska wersja</span></span>
+  </a>
+{% endif %}
     }
 
     .nav-links a {
