@@ -112,7 +112,6 @@
       .nav-links a { min-height: 66px; border-right: none; border-bottom: 1px solid rgba(36,49,38,0.06); }
     }
 
-    /* Scene Styles */
     .sky-mini-card { display: block; margin-bottom: 32px; border-radius: 18px; overflow: hidden; box-shadow: 0 14px 30px rgba(36,49,38,0.08); }
     .sky-mini-scene { position: relative; height: 200px; background: linear-gradient(180deg, #d9ebf6 0%, #f3e4c9 70%); overflow: hidden; transition: background 0.8s ease; }
   </style>
@@ -120,7 +119,7 @@
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="/">
+      <a class="brand" href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
         <span class="brand-mark">
           <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo" />
         </span>
@@ -131,19 +130,19 @@
       </a>
 
       <nav class="nav-links" aria-label="Navigation">
-        <a href="/">
+        <a href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
           <span class="nav-label">
             <span class="nav-pl">{% if page.lang == 'en' %}Home{% else %}Strona główna{% endif %}</span>
           </span>
         </a>
 
-        <a href="/materialy/">
+        <a href="{% if page.lang == 'en' %}/en/materialy/{% else %}/materialy/{% endif %}">
           <span class="nav-label">
             <span class="nav-pl">{% if page.lang == 'en' %}Materials{% else %}Materiały{% endif %}</span>
           </span>
         </a>
 
-        <a href="/blog/" class="{% if page.url contains '/blog/' %}active{% endif %}">
+        <a href="{% if page.lang == 'en' %}/en/blog/{% else %}/blog/{% endif %}" class="{% if page.url contains '/blog/' %}active{% endif %}">
           <span class="nav-label">
             <span class="nav-pl">Blog</span>
           </span>
