@@ -8,6 +8,9 @@
 
   {% if page.translation_id %}
     {% assign translations = site.posts | where: "translation_id", page.translation_id %}
+    {% if translations.size == 0 %}
+      {% assign translations = site.pages | where: "translation_id", page.translation_id %}
+    {% endif %}
     {% for trans in translations %}
       <link rel="alternate" hreflang="{{ trans.lang }}" href="{{ site.url }}{{ trans.url }}" />
     {% endfor %}
@@ -111,9 +114,6 @@
       .nav-links { display: grid; grid-template-columns: 1fr; }
       .nav-links a { min-height: 66px; border-right: none; border-bottom: 1px solid rgba(36,49,38,0.06); }
     }
-
-    .sky-mini-card { display: block; margin-bottom: 32px; border-radius: 18px; overflow: hidden; box-shadow: 0 14px 30px rgba(36,49,38,0.08); }
-    .sky-mini-scene { position: relative; height: 200px; background: linear-gradient(180deg, #d9ebf6 0%, #f3e4c9 70%); overflow: hidden; transition: background 0.8s ease; }
   </style>
 </head>
 <body>
@@ -150,9 +150,13 @@
 
         {% if page.translation_id %}
           {% assign translations = site.posts | where: "translation_id", page.translation_id %}
+          {% if translations.size == 0 %}
+            {% assign translations = site.pages | where: "translation_id", page.translation_id %}
+          {% endif %}
+          
           {% for trans in translations %}
             {% if trans.lang != page.lang %}
-              <a href="{{ trans.url }}" style="background: rgba(103, 135, 96, 0.1); font-weight: bold;">
+              <a href="{{ trans.url | relative_url }}" style="background: rgba(103, 135, 96, 0.1); font-weight: bold;">
                 <span class="nav-label">
                   <span class="nav-pl">{% if trans.lang == 'en' %}English{% else %}Polski{% endif %}</span>
                 </span>
@@ -160,11 +164,16 @@
             {% endif %}
           {% endfor %}
         {% else %}
-           {% if page.lang == 'en' %}
-             <a href="/" style="background: rgba(103, 135, 96, 0.1);"><span class="nav-label"><span class="nav-pl">Polski</span></span></a>
-           {% else %}
-             <a href="/en/" style="background: rgba(103, 135, 96, 0.1);"><span class="nav-label"><span class="nav-pl">English</span></span></a>
-           {% endif %}
+          {% comment %} Fallback for pages without IDs - ensures proper label and link {% endcomment %}
+          {% if page.lang == 'en' %}
+            <a href="/blog/" style="background: rgba(103, 135, 96, 0.1);">
+              <span class="nav-label"><span class="nav-pl">Polski</span></span>
+            </a>
+          {% else %}
+            <a href="/en/blog/" style="background: rgba(103, 135, 96, 0.1);">
+              <span class="nav-label"><span class="nav-pl">English</span></span>
+            </a>
+          {% endif %}
         {% endif %}
       </nav>
     </div>
