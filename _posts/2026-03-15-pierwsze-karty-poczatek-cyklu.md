@@ -176,9 +176,9 @@ layout: default
     {{ content }}
 
     <div class="post-footer-nav">
-      <a href="https://domeknadrzewie.edu.pl/materialy/kapiele_miejskie/#tydzien-11" class="nav-card">
+      <a href="https://domeknadrzewie.edu.pl/materialy/kapiele_miejskie/#tydzien-12" class="nav-card">
         <span>Aktualna praktyka</span>
-        <strong>Tydzień 11: Pobierz kartę uważności 🌿</strong>
+        <strong>Tydzień 12: Pobierz kartę uważności 🌿</strong>
       </a>
       
       <a href="https://domeknadrzewie.edu.pl/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/" class="nav-card">
