@@ -231,6 +231,12 @@
   overflow: hidden;
   transition: background 0.8s ease;
 }
+    {% if page.translation_id %}
+  {% assign translations = site.posts | where: "translation_id", page.translation_id %}
+  {% for trans in translations %}
+    <link rel="alternate" hreflang="{{ trans.lang }}" href="{{ site.url }}{{ trans.url }}" />
+  {% endfor %}
+{% endif %}
   </style>
 </head>
 <body>
