@@ -13,11 +13,9 @@ permalink: /blog/en/
   </div>
 
   <div class="post-list">
-    {% assign index = forloop.index0 | modulo: fallback_images.size %}
     
     {% comment %} 
-      This is the filter: It looks in your shared _posts folder 
-      and ONLY picks out the ones marked with 'lang: en'
+      Filter posts by language (English only)
     {% endcomment %}
     {% assign filtered_posts = site.posts | where: "lang", "en" %}
     
@@ -27,20 +25,28 @@ permalink: /blog/en/
       
       <a class="post-link" href="{{ post.url | relative_url }}">
         <article class="post-card">
+          
           <div class="post-thumb-frame has-image">
-             <img src="{{ thumb_image | relative_url }}" alt="{{ thumb_alt }}">
+            <img src="{{ thumb_image | relative_url }}" alt="{{ thumb_alt }}">
           </div>
 
           <div class="post-card-content">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%-d %B %Y" }}
+            </time>
+            
             <h2>{{ post.title }}</h2>
+            
             {% if post.excerpt %}
               <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
             {% endif %}
+            
             <span class="read-more">Open post</span>
           </div>
+
         </article>
       </a>
     {% endfor %}
+    
   </div>
 </section>
