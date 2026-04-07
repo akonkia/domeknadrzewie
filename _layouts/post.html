@@ -121,8 +121,9 @@ layout: default
   </div>
 
   {% assign posts_in_lang = site.posts 
-    | where: "lang", page.lang 
-    | sort: "date" %}
+  | where: "lang", page.lang 
+  | sort: "title" 
+  | sort: "date" %}
 
   {% assign prev_post = nil %}
   {% assign next_post = nil %}
