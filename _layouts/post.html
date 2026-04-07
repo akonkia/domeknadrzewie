@@ -22,26 +22,33 @@ layout: default
 
 
 {% comment %} 
-  1. Force clean strings to avoid hidden character mismatches
+  1. THE FLATTENER: 
+     If lang is an array ["pl"], 'join' turns it into "pl".
+     If lang is already a string "pl", 'join' does nothing.
 {% endcomment %}
-{% assign current_lang = page.lang | strip %}
-{% assign posts_in_lang = site.posts | where: "lang", current_lang %}
+{% assign raw_page_lang = page.lang | join: "" | strip %}
+
+{% comment %} 
+  2. BUILD THE FILTERED LIST MANUALLY 
+{% endcomment %}
+{% assign filtered_posts = "" | split: "" %}
+{% for p in site.posts %}
+  {% assign p_lang = p.lang | join: "" | strip %}
+  {% if p_lang == raw_page_lang %}
+    {% assign filtered_posts = filtered_posts | push: p %}
+  {% endif %}
+{% endfor %}
 
 <nav class="post-nav">
-  {% for p in posts_in_lang %}
+  {% for p in filtered_posts %}
     {% if p.url == page.url %}
       
-      {% comment %} 
-        Jekyll site.posts is Newest (0) to Oldest (Last).
-        - Earlier Post (Older) = Index + 1
-        - Next Post (Newer) = Index - 1
-      {% endcomment %}
       {% assign prev_idx = forloop.index0 | plus: 1 %}
       {% assign next_idx = forloop.index0 | minus: 1 %}
 
-      <div class="nav-slot" style="flex: 1;">
-        {% if prev_idx < posts_in_lang.size %}
-          {% assign prev_p = posts_in_lang[prev_idx] %}
+      <div class="nav-slot">
+        {% if prev_idx < filtered_posts.size %}
+          {% assign prev_p = filtered_posts[prev_idx] %}
           <a href="{{ prev_p.url | relative_url }}" class="post-nav-card">
             <span class="post-nav-label">← Poprzedni</span>
             <span class="post-nav-title">{{ prev_p.title }}</span>
@@ -49,25 +56,23 @@ layout: default
         {% endif %}
       </div>
 
-      <div class="nav-slot" style="flex: 1; text-align: right;">
+      <div class="nav-slot" style="text-align: right;">
         {% if next_idx >= 0 %}
-          {% assign next_p = posts_in_lang[next_idx] %}
+          {% assign next_p = filtered_posts[next_idx] %}
           <a href="{{ next_p.url | relative_url }}" class="post-nav-card next">
             <span class="post-nav-label">Następny →</span>
             <span class="post-nav-title">{{ next_p.title }}</span>
           </a>
         {% endif %}
       </div>
-
+      
     {% endif %}
   {% endfor %}
 </nav>
 
-{% comment %} KEEP DEBUGGER FOR ONE MORE PUSH {% endcomment %}
-<div style="background: #eee; padding: 10px; font-size: 11px; margin-top: 40px; border: 1px solid #ccc;">
-  <strong>Final Debug:</strong> 
-  Searching for: "{{ current_lang }}" | 
-  Found: {{ posts_in_lang.size }} posts.
+{% comment %} Verify the "Flattener" worked {% endcomment %}
+<div style="background: #000; color: #0f0; padding: 10px; font-family: monospace; font-size: 11px; margin-top: 40px;">
+  DEBUG: Cleaned Lang is "{{ raw_page_lang }}" | Found: {{ filtered_posts.size }}
 </div>
 
 
