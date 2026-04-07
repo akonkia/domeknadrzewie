@@ -28,7 +28,3 @@ Dobre rzeczy potrzebują dobrych fundamentów.
 Dlatego ten wpis otwiera oś czasu strony nie wielkim ogłoszeniem, ale spokojnym początkiem. Od tego miejsca będzie można śledzić, jak projekt rośnie: jakie materiały się pojawiają, jakie pomysły dojrzewają i jak z wielu drobnych elementów powstaje własne miejsce w sieci.
 
 Tutaj zaczyna się internetowa oś czasu projektu.
-
-So this post opens the website timeline not with a grand announcement, but with a quiet beginning. From here, it will be possible to follow how the project grows: what materials appear, which ideas mature, and how many small elements gradually become a home of their own online.
-
-This is where the online timeline of the project begins.
