@@ -146,25 +146,21 @@ layout: default
       }
     }
   </style>
-{% assign fallback_images = "/assets/img/fallback/fallback-backlit-1.jpg,/assets/img/fallback/fallback-backlit-2.jpg,/assets/img/fallback/fallback-forest-1.jpg,/assets/img/fallback/fallback-forest-2.jpg,/assets/img/fallback/fallback-forest-3.jpg,/assets/img/fallback/fallback-shadow-1.jpg,/assets/img/fallback/fallback-shadow-2.jpeg" | split: "," %}
 
-{% assign index = page.url | size | modulo: fallback_images.size %}
-{% assign default_cover = fallback_images[index] | strip %}
-
-{% assign cover_image = page.cover | default: default_cover %}
-{% assign cover_alt = page.cover_alt | default: page.title %}
-{% assign is_placeholder = page.cover == nil %}
 
   <header class="post-header">
     <span class="post-date">{{ page.date | date: "%-d %B %Y" }}</span>
     <h1>{{ page.title }}</h1>
   </header>
 
-  <div class="post-cover-wrap">
-    <div class="post-cover-frame {% if is_placeholder %}placeholder{% else %}has-image{% endif %}" aria-label="{{ cover_alt }}">
-      <img src="{{ site.url }}{{ cover_image }}" alt="{{ cover_alt }}">
-    </div>
+  {% assign cover_image = page.cover %}
+{% assign cover_alt = page.cover_alt | default: page.title %}
+
+<div class="post-cover-wrap">
+  <div class="post-cover-frame">
+    <img src="{{ site.url }}{{ cover_image }}" alt="{{ cover_alt }}">
   </div>
+</div>
 
   <div class="post-body">
     {{ content }}
