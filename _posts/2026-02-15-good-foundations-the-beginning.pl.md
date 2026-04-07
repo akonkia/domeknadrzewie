@@ -4,6 +4,7 @@ title: "Dobre początki"
 date: 2026-02-15
 lang:
   - pl
+translation_id:	good-foundations-2026
 excerpt: "W lutym 2026 strona projektu zaczęła nabierać wyraźniejszego kształtu jako miejsce dla materiałów, refleksji i spokojnego wzrostu."
 tags: [początek, strona, projekt]
 ---
