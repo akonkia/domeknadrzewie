@@ -30,7 +30,7 @@ translation_id: blog-main
   </div>
 
   <div class="post-list">
-    {% assign default_cover = '/assets/img/default-cover.png' %}
+    {% assign index = forloop.index0 | modulo: fallback_images.size %}
     
     {% comment %} 
       CHANGED: We now loop through 'filtered_posts' instead of 'site.posts'
