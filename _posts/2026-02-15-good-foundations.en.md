@@ -6,7 +6,7 @@ good-foundations-2026
 lang:
   - en
 excerpt: "In February 2026, the project site began to take shape more clearly as a place for material, reflection, and quiet growth."
-tags: [timeline, beginnings, website, project]
+tags: [timeline, beginnings, website, project, start]
 ---
 
 
