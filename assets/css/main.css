@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. BLOG INDEX (The List of Posts)
-   ========================================================================== */
+/* BLOG INDEX */
 
 .blog-index {
   margin-top: 20px;
@@ -109,55 +107,16 @@
   color: #678760;
 }
 
-/* ==========================================================================
-   2. BLOG POST (Individual Article Layout)
-   ========================================================================== */
-
-.post {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.post-header {
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.post-date {
-  color: #678760;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.75rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  display: block;
-}
-
-.post h1 {
-  margin: 0 auto;
-  max-width: 800px;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  line-height: 1.1;
-  text-transform: uppercase;
-  color: #243126;
-  font-family: 'Bodoni Moda', serif;
-}
-
-.post-cover-wrap {
-  margin: 0 0 40px 0;
-  display: flex;
-  justify-content: center;
-}
+@media (max-width: 700px) {
+  .post-card {
+    grid-template-columns: 1fr;
+  }
 
 .post-cover-frame {
   width: 100%;
-  max-width: 650px;
-  border-radius: 12px;
-  border: 1px solid rgba(36,49,38,0.06);
-  box-shadow: 0 10px 25px rgba(36,49,38,0.05);
+  aspect-ratio: 16 / 9; /* or 3 / 2 if you prefer */
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  border-radius: 12px; /* optional */
 }
 
 .post-cover-frame img {
@@ -167,49 +126,14 @@
   display: block;
 }
 
-.post-body {
-  max-width: 720px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(103, 135, 96, 0.1);
-  border-radius: 16px;
-  padding: 45px;
-  line-height: 1.8;
-  color: #243126;
-  box-shadow: 0 15px 35px rgba(36, 49, 38, 0.04);
-  font-family: 'Inter', sans-serif;
-}
-
-.post-body h2 {
-  margin-top: 2.2em;
-  margin-bottom: 0.8em;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #3e4a3f;
-  border-bottom: 1px solid rgba(103, 135, 96, 0.15);
-  padding-bottom: 8px;
-}
-
-.post-body blockquote {
-  margin: 2em 0;
-  padding: 20px 30px;
-  background: #f8f6f2;
-  border-left: 4px solid #678760;
-  font-style: italic;
-  border-radius: 0 8px 8px 0;
-}
-
-/* ==========================================================================
-   3. POST NAVIGATION (Earlier / Next Buttons)
-   ========================================================================== */
-
-.post-nav {
+  .post-thumb-frame {
+    aspect-ratio: 16 / 9;
+  }
+  .post-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
-  margin: 48px auto 0;
-  max-width: 720px;
+  margin-top: 48px;
 }
 
 .post-nav-card {
@@ -218,7 +142,6 @@
   gap: 6px;
   padding: 18px 20px;
   background: #ffffff;
-  border: 1px solid rgba(36,49,38,0.08);
   border-radius: 14px;
   text-decoration: none;
   color: inherit;
@@ -229,7 +152,6 @@
 .post-nav-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 32px rgba(36,49,38,0.10);
-  border-color: rgba(103,135,96,0.3);
 }
 
 .post-nav-label {
@@ -246,39 +168,23 @@
   line-height: 1.3;
 }
 
+/* alignment */
+.post-nav-card.prev {
+  text-align: left;
+}
+
 .post-nav-card.next {
   text-align: right;
 }
 
-/* ==========================================================================
-   4. RESPONSIVE DESIGN (Media Queries)
-   ========================================================================== */
-
-/* Tablet/Small Desktop */
-@media (max-width: 700px) {
-  .post-card {
-    grid-template-columns: 1fr;
-  }
-  .post-thumb-frame {
-    aspect-ratio: 16 / 9;
-  }
-}
-
-/* Mobile */
+/* mobile */
 @media (max-width: 640px) {
-  .post-body {
-    padding: 25px;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-  }
-
   .post-nav {
     grid-template-columns: 1fr;
   }
-
+  
   .post-nav-card.next {
     text-align: left;
   }
+}
 }
