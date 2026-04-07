@@ -6,7 +6,7 @@ cover: /assets/img/fallback/fallback-forest-1.jpg
 cover_alt: Leśne światło w mieście
 excerpt: Odkryj, jak czerpać z terapeutycznej mocy natury w samym sercu miasta. Przewodnik po miejskim Shinrin-yoku wraz z darmowymi kartami uważności.
 
-Tags: shinrin-yoku #kąpieleleśne #uważność #urbanbathing
+Tags: shinrin-yoku kąpieleleśne uważność urbanbathing
 lang: pl
 ---
 
