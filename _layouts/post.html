@@ -151,10 +151,15 @@ layout: default
 
   {% assign cover_image = page.cover | default: site.default_cover %}
 {% assign cover_alt = page.cover_alt | default: page.title %}
+{% assign cdn = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main" %}
 
 <div class="post-cover-wrap">
     <div class="post-cover-frame">
-    <img src="{{ cover_image | relative_url }}" alt="{{ cover_alt }}">
+    {% if cover_image contains 'http' %}
+  <img src="{{ cover_image }}" alt="{{ cover_alt }}">
+{% else %}
+  <img src="{{ cdn }}{{ cover_image }}" alt="{{ cover_alt }}">
+{% endif %}
   </div>
 </div>
 
