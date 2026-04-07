@@ -169,7 +169,7 @@ layout: default
 {% assign next_post = nil %}
 
 {% for post in posts_in_lang %}
-  {% if post.url == page.url %}
+  {{% if post.id == page.id %}
 
     {% assign prev_index = forloop.index0 | plus: 1 %}
     {% assign next_index = forloop.index0 | minus: 1 %}
