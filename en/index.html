@@ -768,16 +768,24 @@
     }
 
     @media (max-width: 940px) {
-      .quick-grid,
-      .about-icons,
-      .materials-grid {
-        grid-template-columns: 1fr;
-        
-    .quick-card:nth-child(2) .quick-card-bottom {
-    max-height: 220px;
+  .quick-grid,
+  .about-icons,
+  .materials-grid {
+    grid-template-columns: 1fr;
   }
+
+  .quick-grid-wrap {
+    margin-top: 24px;
   }
-      }
+
+  /* Lock Card 2 image height */
+  .quick-card:nth-child(2) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
 
       .quick-grid-wrap {
         margin-top: 24px;
