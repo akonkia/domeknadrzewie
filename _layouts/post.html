@@ -146,13 +146,21 @@ layout: default
     }
   </style>
 
-  {% assign default_cover = '/assets/img/blog/default-cover.png' %}
-  {% assign cover_image = page.cover | default: default_cover %}
-  {% assign cover_alt = page.cover_alt | default: page.title %}
-  {% assign is_placeholder = false %}
-  {% if cover_image == default_cover %}
-    {% assign is_placeholder = true %}
-  {% endif %}
+  {% assign fallback_images = 
+  "/assets/img/fallback/fallback-backlit-1.jpg,
+   /assets/img/fallback/fallback-backlit-2.jpg,
+   /assets/img/fallback/fallback-forest-1.jpg,
+   /assets/img/fallback/fallback-forest-2.jpg,
+   /assets/img/fallback/fallback-forest-3.jpg,
+   /assets/img/fallback/fallback-shadow-1.jpg,
+   /assets/img/fallback/fallback-shadow-2.jpeg" | split: "," %}
+
+{% assign index = page.url | size | modulo: fallback_images.size %}
+{% assign default_cover = fallback_images[index] | strip %}
+
+{% assign cover_image = page.cover | default: default_cover %}
+{% assign cover_alt = page.cover_alt | default: page.title %}
+{% assign is_placeholder = page.cover == nil %}
 
   <header class="post-header">
     <span class="post-date">{{ page.date | date: "%-d %B %Y" }}</span>
