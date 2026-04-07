@@ -155,11 +155,7 @@ layout: default
 
 <div class="post-cover-wrap">
     <div class="post-cover-frame">
-    {% if cover_image contains 'http' %}
-  <img src="{{ cover_image }}" alt="{{ cover_alt }}">
-{% else %}
-  <img src="{{ cdn }}{{ cover_image }}" alt="{{ cover_alt }}">
-{% endif %}
+    <img src="{{ cdn }}{{ cover_image }}" alt="{{ cover_alt }}">
   </div>
 </div>
 
