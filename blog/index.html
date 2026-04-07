@@ -17,7 +17,7 @@ permalink: /blog/
     {% assign filtered_posts = site.posts | where: "lang", "pl" %}
     
     {% for post in filtered_posts %}
-      {% assign thumb_image = post.cover | default: default_cover %}
+      {% assign thumb_image = post.cover | default: site.default_cover %}
       {% assign thumb_alt = post.cover_alt | default: post.title %}
       
       <a class="post-link" href="{{ post.url | relative_url }}">
