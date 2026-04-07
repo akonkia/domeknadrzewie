@@ -3,60 +3,47 @@ layout: default
 title: Blog
 lang: pl
 translation_id: blog-main
+permalink: /blog/
 ---
 
-{% comment %} 
-  1. Determine the current language (default to Polish)
-{% endcomment %}
-{% assign current_lang = page.lang | default: 'pl' %}
-
-{% comment %} 
-  2. Filter posts to only show the ones matching the current language
-{% endcomment %}
-{% assign filtered_posts = site.posts | where: "lang", current_lang %}
-
 <section class="blog-index">
-
-
   <div class="blog-intro">
     <h1>Blog</h1>
-    <p>
-      {% if current_lang == 'en' %}
-        A timeline of the project: notes, milestones, materials, and slow growth.
-      {% else %}
-        Oś czasu projektu: notatki, kamienie milowe, materiały i powolny wzrost.
-      {% endif %}
-    </p>
+    <p>Oś czasu projektu: notatki, etapy, materiały i powolny wzrost.</p>
   </div>
 
   <div class="post-list">
-    {% assign index = forloop.index0 | modulo: fallback_images.size %}
     
-    {% comment %} 
-      CHANGED: We now loop through 'filtered_posts' instead of 'site.posts'
-    {% endcomment %}
+    {% assign filtered_posts = site.posts | where: "lang", "pl" %}
+    
     {% for post in filtered_posts %}
       {% assign thumb_image = post.cover | default: default_cover %}
       {% assign thumb_alt = post.cover_alt | default: post.title %}
       
       <a class="post-link" href="{{ post.url | relative_url }}">
         <article class="post-card">
+          
           <div class="post-thumb-frame has-image">
-             <img src="{{ thumb_image | relative_url }}" alt="{{ thumb_alt }}">
+            <img src="{{ thumb_image | relative_url }}" alt="{{ thumb_alt }}">
           </div>
 
           <div class="post-card-content">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%-d %B %Y" }}
+            </time>
+            
             <h2>{{ post.title }}</h2>
+            
             {% if post.excerpt %}
               <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
             {% endif %}
-            <span class="read-more">
-              {% if current_lang == 'en' %}Open post{% else %}Czytaj więcej{% endif %}
-            </span>
+            
+            <span class="read-more">Czytaj</span>
           </div>
+
         </article>
       </a>
     {% endfor %}
+    
   </div>
 </section>
