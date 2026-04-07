@@ -1,856 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Urban Forest Bathing | Treehouse Project</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WGXSZG17N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3WGXSZG17N');
+  </script>
 
-<style>
-:root {
-  --sage: #678760;
-  --orange: #fb9b27;
-  --gold: #fcc15d;
-  --cream: #f5f4ef;
-  --white: #ffffff;
-  --text: #243126;
-  --muted: #5e675f;
-  --line: rgba(36, 49, 38, 0.1);
-  --hero-overlay: rgba(36, 49, 38, 0.4);
-  --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
-  --max: 1120px;
-  --content: 980px;
-}
-* { box-sizing: border-box; }
-body { margin:0; font-family: Inter, Arial; background:#f3f1eb; }
-
-.container { width:min(100% - 32px, var(--max)); margin:auto; }
-.narrow { width:min(100% - 32px, var(--content)); margin:auto; }
-
-.topbar { background:white; position:sticky; top:0; z-index:100; border-bottom:1px solid var(--line);}
-.nav { display:flex; justify-content:space-between; align-items:center; min-height:80px;}
-.nav-links a { margin-left:15px; font-weight:700; }
-
-.hero {
-  min-height:300px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  text-align:center;
-  background:
-    linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-    url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/Environmental-Organization-Website-Design-788x871.jpg') center/cover;
-}
-
-.filter-section { background:white; padding:20px; margin:20px 0;}
-.filter-btn { margin:5px; padding:6px 12px; cursor:pointer;}
-.filter-btn.active { background:var(--sage); color:white;}
-
-.material-item { background:white; padding:20px; margin-bottom:20px;}
-</style>
-</head>
-
-<body>
-
-<header class="topbar">
-  <div class="container nav">
-    <strong>Treehouse Project</strong>
-    <nav class="nav-links">
-      <a href="#">About</a>
-      <a href="#" class="active">Resources</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <h1>Urban Forest Bathing</h1>
-</section>
-
-<main class="narrow">
-
-<nav class="filter-section">
-  <div>
-    <strong>Season:</strong>
-    <button class="filter-btn active" data-type="season" data-val="All" onclick="applyFilter(this)">All</button>
-    <button class="filter-btn" data-type="season" data-val="Winter" onclick="applyFilter(this)">Winter</button>
-    <button class="filter-btn" data-type="season" data-val="Spring" onclick="applyFilter(this)">Spring</button>
-  </div>
-
-  <div>
-    <strong>Month:</strong>
-    <button class="filter-btn" data-type="month" data-val="January" onclick="applyFilter(this)">January</button>
-    <button class="filter-btn" data-type="month" data-val="February" onclick="applyFilter(this)">February</button>
-    <button class="filter-btn" data-type="month" data-val="March" onclick="applyFilter(this)">March</button>
-  </div>
-</nav>
-
-<section id="materialList"></section>
-
-</main>
-
-<script>
-const cardsData = [
-{
-id:1,
-title:"Silent Root",
-season:"Winter",
-month:"January",
-theme:"Stillness",
-body:"Enter a green space slowly. Pause often.",
-reflection:["What remains in silence?"]
-},
-{
-id:2,
-title:"Hidden Strength",
-season:"Winter",
-month:"January",
-theme:"Endurance",
-body:"Look for resilience in nature.",
-reflection:["What helps me endure?"]
-},
-{
-id:10,
-title:"Thaw",
-season:"Spring",
-month:"March",
-theme:"Softening",
-body:"Look for signs of melting.",
-reflection:["Where can I soften?"]
-}
-];
-
-const list = document.getElementById("materialList");
-
-function render(data){
-  list.innerHTML = data.map(c=>`
-    <div class="material-item">
-      <h3>Week ${c.id} – ${c.title}</h3>
-      <p>${c.body}</p>
-      <ul>${c.reflection.map(r=>`<li>${r}</li>`).join("")}</ul>
-    </div>
-  `).join("");
-}
-
-function applyFilter(btn){
-  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-
-  const type = btn.dataset.type;
-  const val = btn.dataset.val;
-
-  if(val==="All"){
-    render(cardsData);
-    return;
-  }
-
-  const filtered = cardsData.filter(c=>c[type]===val);
-  render(filtered);
-}
-
-function handleRouting(){
-  const hash = location.hash;
-  if(hash.startsWith("#week-")){
-    const id = parseInt(hash.replace("#week-",""));
-    const card = cardsData.find(c=>c.id===id);
-    if(card){
-      render([card]);
-      return;
+  <title>Urban forest bathing| Project: Treehouse</title>
+  
+  <style>
+    :root {
+      --sage: #678760;
+      --orange: #fb9b27;
+      --gold: #fcc15d;
+      --cream: #f5f4ef;
+      --white: #ffffff;
+      --text: #243126;
+      --muted: #5e675f;
+      --line: rgba(36, 49, 38, 0.1);
+      --hero-overlay: rgba(36, 49, 38, 0.4);
+      --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
+      --max: 1120px;
+      --content: 980px;
     }
-  }
-  render(cardsData);
-}
 
-window.addEventListener("DOMContentLoaded", handleRouting);
-window.addEventListener("hashchange", handleRouting);
-</script>
-
-</body>
-</html>    * { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: Inter, Arial, sans-serif;
       color: var(--text);
       background: #f3f1eb;
-    }
-
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    h1, h2, h3, p { margin: 0; }
-
-    .container {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
-    }
-
-    .narrow {
-      width: min(calc(100% - 32px), var(--content));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      background: rgba(255,255,255,0.94);
-      border-bottom: 1px solid rgba(36,49,38,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      min-height: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid rgba(36,49,38,0.08);
-      flex-shrink: 0;
-    }
-
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-    }
-
-    .brand-subtitle {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      min-height: 88px;
-      padding: 0 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--text);
-      border-left: 1px solid rgba(36,49,38,0.06);
-      transition: 0.18s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: var(--sage);
-      color: white;
-    }
-
-    .lang-link {
-      background: var(--orange) !important;
-      color: white !important;
-    }
-
-    .lang-link:hover {
-      background: #e68e20 !important;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 340px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-        url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/Environmental-Organization-Website-Design-788x871.jpg') center/cover no-repeat;
-      color: white;
-    }
-
-    .hero-inner {
-      width: min(calc(100% - 32px), 920px);
-      margin: 0 auto;
-      padding: 58px 0;
-      text-align: center;
-    }
-
-    .hero-kicker {
-      display: inline-block;
-      padding: 8px 14px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.2);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    h1 {
-      margin-top: 18px;
-      font-size: clamp(2.3rem, 5vw, 4rem);
-      line-height: 0.96;
-      letter-spacing: 0.01em;
-      text-transform: uppercase;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.18);
-    }
-
-    .hero-text {
-      margin: 18px auto 0;
-      max-width: 58ch;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.92);
-    }
-
-    .page-wrap {
-      padding: 34px 0 44px;
-    }
-
-    .breadcrumbs {
-      margin-bottom: 22px;
-      color: var(--muted);
-      font-size: 0.94rem;
       line-height: 1.6;
     }
 
-    .breadcrumbs a {
-      color: var(--sage);
-      font-weight: 700;
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .narrow { width: min(calc(100% - 32px), var(--content)); margin: 0 auto; }
+
+    /* Navigation */
+    .topbar {
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
     }
+    .nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 1px solid var(--line); }
+    .nav-links a { padding: 10px 15px; text-transform: uppercase; font-size: 0.8rem; font-weight: 800; }
+    .nav-links a.active { color: var(--sage); border-bottom: 2px solid var(--sage); }
 
-    .intro-card,
-    .contact-band {
-      background: white;
-      border: 1px solid rgba(36,49,38,0.08);
-      box-shadow: var(--shadow);
+    /* Hero */
+    .hero { 
+      min-height: 300px; display: flex; align-items: center; justify-content: center; text-align: center;
+      background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), 
+      url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/Environmental-Organization-Website-Design-788x871.jpg') center/cover;
+      color: white; 
     }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; margin: 0; }
 
-    .intro-card {
-      padding: 30px;
-      margin-bottom: 28px;
-      text-align: center;
+    /* Filters */
+    .filter-section { background: white; padding: 25px; margin: 30px 0; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .filter-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .filter-label { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; color: var(--sage); min-width: 80px; }
+    .filter-btn { padding: 6px 14px; border: 1px solid var(--line); background: transparent; cursor: pointer; border-radius: 20px; font-size: 0.8rem; transition: 0.2s; }
+    .filter-btn.active { background: var(--sage); color: white; border-color: var(--sage); }
+
+    /* Cards */
+    .material-list { display: grid; gap: 30px; margin-bottom: 50px; }
+    .material-item { 
+      display: grid; grid-template-columns: 300px 1fr; gap: 30px; 
+      padding: 30px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow);
     }
+    .material-visual img { border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .material-header h3 { font-size: 1.5rem; margin: 0 0 5px 0; text-transform: uppercase; }
+    .material-meta { color: var(--muted); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
+    .material-body { margin-bottom: 20px; }
+    .material-reflection { background: var(--cream); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    .material-reflection strong { display: block; color: var(--sage); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 10px; }
+    .material-reflection ul { margin: 0; padding-left: 20px; }
 
-    .section-kicker {
-      display: inline-block;
-      padding: 7px 12px;
-      background: rgba(103,135,96,0.12);
-      color: var(--sage);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.74rem;
-      font-weight: 800;
-      margin-bottom: 16px;
+    .download-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .download-links a, .download-links button { 
+        padding: 10px 20px; border-radius: 25px; font-weight: 800; font-size: 0.75rem; 
+        text-transform: uppercase; transition: 0.2s; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;
     }
+    .btn-main { background: var(--sage); color: white; }
+    .btn-alt { background: var(--gold); color: #3d2a10; }
+    .btn-copy { background: #e0e7ff; color: #4338ca; }
+    .btn-insta { background: #b44f72; color: white; }
 
-    .intro-title {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      line-height: 1.06;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin-bottom: 12px;
-    }
+    .week-nav-row { display: flex; gap: 10px; margin-top: 25px; border-top: 1px solid var(--line); padding-top: 20px; }
+    .nav-arrow-btn { flex: 1; padding: 12px; cursor: pointer; border: 1px solid var(--line); background: white; font-weight: 800; text-transform: uppercase; font-size: 0.7rem; transition: 0.2s; }
+    .nav-arrow-btn:hover { border-color: var(--sage); color: var(--sage); }
+    .nav-arrow-btn.disabled { visibility: hidden; }
 
-    .intro-text {
-      color: var(--muted);
-      line-height: 1.82;
-      max-width: 68ch;
-      margin: 0 auto 18px;
-    }
-
-    .intro-tag {
-      color: var(--sage);
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.88rem;
-    }
-
-    .material-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .material-item {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 150px;
-      gap: 18px;
-      align-items: center;
-      padding: 18px 20px;
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #faf9f5;
-      box-shadow: var(--shadow);
-    }
-
-    .material-main {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      min-width: 0;
-      text-align: left;
-    }
-
-    .material-main strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1.05rem;
-    }
-
-    .material-main span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .material-thumb {
-      display: block;
-      width: 150px;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #f3f1eb;
-      box-shadow: 0 8px 18px rgba(36,49,38,0.08);
-    }
-
-    .material-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.2s ease;
-    }
-
-    .material-thumb:hover img {
-      transform: scale(1.03);
-    }
-
-    .download-links,
-    .contact-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .download-links a,
-    .social-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      box-shadow: 0 8px 18px rgba(36,49,38,0.10);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-      white-space: nowrap;
-    }
-
-    .download-links a:hover,
-    .social-chip:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 22px rgba(36,49,38,0.14);
-      filter: brightness(1.03);
-    }
-
-    .download-links a:nth-child(1),
-    .social-chip {
-      background: linear-gradient(135deg, var(--sage), #88a67f);
-      color: white;
-    }
-
-    .download-links a:nth-child(2),
-    .social-chip.alt {
-      background: linear-gradient(135deg, var(--gold), var(--orange));
-      color: #3d2a10;
-    }
-
-    .download-links a:nth-child(3) {
-      background: linear-gradient(135deg, #b44f72, #ee7a78);
-      color: white;
-    }
-
-    .contact-band {
-      margin-top: 30px;
-      padding: 28px;
-      text-align: center;
-    }
-
-    .contact-band h3 {
-      font-size: 1.35rem;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .contact-band p {
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 56ch;
-      margin: 0 auto;
-    }
-
-    .contact-actions {
-      justify-content: center;
-      margin-top: 18px;
-    }
-
-    .footer {
-      padding: 0 0 34px;
-    }
-
-    .footer-box {
-      border-top: 1px solid rgba(36,49,38,0.1);
-      padding-top: 20px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 760px) {
-      .nav {
-        padding: 10px 0 14px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        width: 100%;
-      }
-
-      .nav-links a {
-        min-height: 52px;
-        padding: 0 14px;
-      }
-
-      .hero {
-        min-height: 280px;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 9vw, 3rem);
-      }
-
-      .material-item {
-        grid-template-columns: 1fr;
-      }
-
-      .material-thumb {
-        width: 100%;
-        max-width: 220px;
-      }
-
-      .intro-card,
-      .contact-band {
-        padding: 22px;
-      }
+    @media (max-width: 850px) {
+      .material-item { grid-template-columns: 1fr; }
+      .material-visual { max-width: 300px; margin: 0 auto; }
     }
   </style>
 </head>
 <body>
+
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="/en/" aria-label="Project: Tree House">
-        <div class="brand-mark">
-          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project: Tree House logo" />
-        </div>
-        <div>
-          <div class="brand-title">Project: Tree House</div>
-          <div class="brand-subtitle">An educational and social project inspired by nature.</div>
-        </div>
+      <a class="brand" href="/">
+        <div class="brand-mark"><img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo" /></div>
+        <div style="margin-left:10px"><strong>Project: Treehouse</strong></div>
       </a>
-
-      <nav class="nav-links" aria-label="Navigation">
-        <a href="/en/">About</a>
-        <a href="/en/materials/" class="active">Materials</a>
-        <a class="lang-link" href="/materialy/kapiele_miejskie/" lang="pl" hreflang="pl">Polski</a>
-        <a href="/en/sky.html">Sky today</a>
-        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+      <nav class="nav-links">
+        <a href="/">About</a>
+        <a href="#" class="active">Materials</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
-    <div class="hero-inner">
-      <span class="hero-kicker">Weekly series</span>
-      <h1>Urban forest bathing</h1>
-      <p class="hero-text">
-        A cycle of cards inspired by nature, mindfulness and the rhythm of the year — for reading,
-        downloading and gently returning to nature close to home.
-      </p>
-    </div>
+    <h1>Urban forest bathing</h1>
   </section>
 
-  <main class="page-wrap">
-    <div class="narrow">
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="/en/">Home</a>
-        <span> / </span>
-        <a href="/en/materials/">Materials</a>
-        <span> / </span>
-        <span>Urban forest bathing</span>
-      </nav>
-
-      <section class="intro-card">
-        <span class="section-kicker">About the series</span>
-        <h2 class="intro-title">Weekly cards inspired by nature</h2>
-        <p class="intro-text">
-          The “Urban forest bathing” series offers short materials for attention, observation
-          and reflection. Each week includes a main card and a reflection card.
-        </p>
-        <div class="intro-tag">#DOMEKNADRZEWIE52</div>
-      </section>
-
-      <section class="material-list">
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 01</strong>
-              <span>Theme: Stillness</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/1Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" alt="Week 01 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 02</strong>
-              <span>Theme: Perseverance</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/2Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" alt="Week 02 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 03</strong>
-              <span>Theme: Slowness</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/3Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/reel/DUMYPA-DIhl/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" alt="Week 03 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 04</strong>
-              <span>Theme: Awakening</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/4Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DUbjN9eDuqn/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" alt="Week 04 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 05</strong>
-              <span>Theme: Rest</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/5Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DUlPveYjD1b" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" alt="Week 05 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 06</strong>
-              <span>Theme: Subtle energy</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/6Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DU3e1A7jGsj/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" alt="Week 06 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 07</strong>
-              <span>Theme: Potential</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/7Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DVJmcDWjOpY/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" alt="Week 07 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 08</strong>
-              <span>Theme: Awakening</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/8Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DVWc74KjGhG/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" alt="Week 08 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 09</strong>
-              <span>Theme: Steadiness</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/9A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/9Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DVrMeDYDtey/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/9A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/9A.png" alt="Week 09 card preview" />
-          </a>
-        </div>
-
-        <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 10</strong>
-              <span>Theme: Awakening</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/10A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/10Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DUbjN9eDuqn/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/10A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/10A.png" alt="Week 10 card preview" />
-          </a>
-        </div>
-
-                <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 11</strong>
-              <span>Theme: Emergence</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/11A.png" download>Image</a>
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/urban-bathing/11Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DWjmt-xjAnA/" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/11A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/11A.png" alt="Week 11 card preview" />
-          </a>
-        </div>
-
-                <div class="material-item">
-          <div class="material-main">
-            <div>
-              <strong>Week 12</strong>
-              <span>Theme: Tiny Wonders</span>
-            </div>
-            <div class="download-links">
-              <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-marzec-tydzien-12-poranne-szepty-wiosenne-paki-niebo-12A.png" download>Image</a>
-              <a href="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/en/materials/urban-bathing/spring-march-week-12-tiny-wonders-spring-buds-sky-12Ben.png" download>Reflection</a>
-              <a href="https://www.instagram.com/p/DWszgyEjOc_" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
-          </div>
-          <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-marzec-tydzien-12-poranne-szepty-wiosenne-paki-niebo-12A.png" target="_blank" rel="noreferrer">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-marzec-tydzien-12-poranne-szepty-wiosenne-paki-niebo-12A.png" alt="Week 12 card preview" />
-          </a>
-        </div>
-        
-        
-      </section>
-
-      <div class="contact-band">
-        <h3>Follow new publications</h3>
-        <p>Stay up to date with new resources and the next weeks of the series.</p>
-        <div class="contact-actions">
-          <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
-        </div>
+  <main class="narrow">
+    <nav class="filter-section">
+      <div class="filter-group">
+        <span class="filter-label">Season:</span>
+        <button class="filter-btn active" data-type="season" data-val="All" onclick="applyFilter(this)">All</button>
+        <button class="filter-btn" data-type="season" data-val="Winter" onclick="applyFilter(this)">Winter</button>
+        <button class="filter-btn" data-type="season" data-val="Spring" onclick="applyFilter(this)">Spring</button>
       </div>
-    </div>
+      <div class="filter-group">
+        <span class="filter-label">Month:</span>
+        <button class="filter-btn" data-type="month" data-val="January" onclick="applyFilter(this)">January</button>
+        <button class="filter-btn" data-type="month" data-val="February" onclick="applyFilter(this)">February</button>
+        <button class="filter-btn" data-type="month" data-val="March" onclick="applyFilter(this)">March</button>
+      </div>
+    </nav>
+
+    <section id="materialList" class="material-list"></section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-box">
-      <div><strong>Project: Tree House</strong> • Growing with nature</div>
-      <div>March 2026</div>
-    </div>
-  </footer>
+  <script>
+    const cardsData = [
+      { id: 1, title: "Cichy korzeń", theme: "Bezruch", season: "Winter", month: "January", body: "Wejdź powoli w zieloną przestrzeń. Rób częste pauzy. Usiądź lub stań nieruchomo na pięć minut.", reflection: ["Jakie dźwięki trwają, gdy otoczenie cichnie?", "Gdzie w moim ciele odczuwam stan bezruchu?"], img: "miejskie-kapiele-lesne-Winter-styczen-01-cichy-korzen-A.png", imgB: "miejskie-kapiele-lesne-Winter-styczen-01-cichy-korzen-B.png", insta: "DT_RCYoDvNk" },
+      { id: 2, title: "Ukryta siła", theme: "Wytrwałość", season: "Winter", month: "January", body: "Szukaj oznak wytrwałości — igieł wiecznie zielonych, mchu, porostów, szczelnie zamkniętych pąków. Dotykaj ich delikatnie.", reflection: ["Co/kto pomógł mi przetrwać trudne pory roku?", "W jakich okolicznościach czuję w sobie spokój?"], img: "miejskie-kapiele-lesne-Winter-styczen-02-ukryta-sila-A.png", imgB: "miejskie-kapiele-lesne-Winter-styczen-02-ukryta-sila-B.png", insta: "DUEAsDsjI_j" },
+      { id: 3, title: "Niespieszna Ścieżka", theme: "Powolność", season: "Winter", month: "January", body: "Idź o połowę wolniej niż zwykle. Niech twój oddech wyznacza rytm. Przy każdym kroku poczuj ziemię w pełni.", reflection: ["Co zaczynam zauważać dopiero wtedy, gdy nigdzie się nie spieszę?", "Dokąd w moim życiu biegnę bez potrzeby?"], img: "miejskie-kapiele-lesne-Winter-styczen-03-niespieszna-sciezka-A.png", imgB: "miejskie-kapiele-lesne-Winter-styczen-03-niespieszna-sciezka-B.png", insta: "DUV2YvGDUgG" },
+      { id: 4, title: "Światło, które sięga do nas", theme: "Przebudzenie", season: "Winter", month: "January", body: "Unieś dłoń w stronę światła. Pozwól, by ciepło spoczęło na twoich ubraniach, na skórze, i rozświetliło cichą przestrzeń w tobie.", reflection: ["Która część mnie jest gotowa sięgnąć po coś nowego?", "Co rozgrzewa mnie od środka?"], img: "miejskie-kapiele-lesne-Winter-styczen-04-zimowe-swiatlo-A.png", imgB: "miejskie-kapiele-lesne-Winter-styczen-04-zimowe-swiatlo-B.png", insta: "DUn-M6TDKpW" },
+      { id: 5, title: "Zimowy oddech", theme: "Odpoczynek", season: "Winter", month: "February", body: "Usiądź przy oknie lub na zewnątrz. Obserwuj miękkość każdego oddechu.", reflection: ["Co mogłoby znaczyć, odpoczywać bez poczucia winy?", "Które myśli wciąż krążą, a które mogę teraz wypuścić?"], img: "miejskie-kapiele-lesne-Winter-February-05-zimowy-oddech-A.png", imgB: "miejskie-kapiele-lesne-Winter-February-05-zimowy-oddech-B.png", insta: "DU6D4A6jk5L" },
+      { id: 6, title: "Ukryta iskra", theme: "Subtelna energia", season: "Winter", month: "February", body: "Szukaj małych miejsc, w których gromadzi się ciepło. Może to promień słońca na ścianie, albo szalik ogrzany Twoim oddechem.", reflection: ["Jakie ciepło noszę w sobie?", "Gdzie w moim życiu coś się zaczyna?"], img: "miejskie-kapiele-lesne-Winter-February-06-ukryta-iskra-A.png", imgB: "miejskie-kapiele-lesne-Winter-February-06-ukryta-iskra-B.png", insta: "DVMH6kOjGq_" },
+      { id: 7, title: "Oszroniony pąk", theme: "Potencjał", season: "Winter", month: "February", body: "Poszukaj krzewu albo drzewa i przyjrzyj się uważnie jego pąkom - małym obietnicom czekającym na odpowiednią chwilę.", reflection: ["Co dojrzewa we mnie po cichu?", "Jaki najmniejszy znak „już się zaczyna” potrafię dziś zauważyć?"], img: "miejskie-kapiele-lesne-Winter-February-07-oszroniony-pak-A.png", imgB: "miejskie-kapiele-lesne-Winter-February-07-oszroniony-pak-B.png", insta: "DVeJb09jrR4" },
+      { id: 8, title: "Pierwszy Chór", theme: "Przebudzenie", season: "Winter", month: "February", body: "Wyjdź na 2–3 minuty i posłuchaj. Zauważ, że długo było cicho, a teraz ptasi śpiew wyraźnie się wybija. Najpierw uchwyć jeden głos, potem poszerz uwagę na cały chór.", reflection: ["Co czuję, gdy cisza pęka: ulgę, ciepło, napięcie, spokój?", "Jakie „pierwsze nuty” wracają do mojego życia po okresie milczenia?"], img: "miejskie-kapiele-lesne-Winter-February-08-pierwszy-chor-A.png", imgB: "miejskie-kapiele-lesne-Winter-February-08-pierwszy-chor-B.png", insta: "DVwK83jDq6L" },
+      { id: 9, title: "Zimozielony", theme: "Stałość", season: "Winter", month: "March", body: "Spędź chwilę przy jednym zimozielonym drzewie. Oddychaj razem z nim w rytmie: 4s wdech, 6s wydech.", reflection: ["Jakie małe rzeczy regularnie mnie uspokajają i podtrzymują?"], img: "miejskie-kapiele-lesne-Winter-March-09-zimozielony-A.png", imgB: "miejskie-kapiele-lesne-Winter-March-09-zimozielony-B.png", insta: "DWCI7kKDHlM" },
+      { id: 10, title: "Odwilż", theme: "Rozluźnianie", season: "Spring", month: "March", body: "Wyjdź na zewnątrz i poszukaj oznak roztopu: małych kałuż, ciemniejącej kory, cichego połysku mokrej ziemi.", reflection: ["Gdzie w moim życiu mogę bezpiecznie trochę zmięknąć?", "Co się zmienia, gdy pozwalam tej chwili być dokładnie taką, jaka jest, bez trzymania się i oporu?"], img: "miejskie-kapiele-lesne-Spring-March-10-odwilz-A.png", imgB: "miejskie-kapiele-lesne-Spring-March-10-odwilz-B.png", insta: "DWUK6lDjNqX" },
+      { id: 11, title: "Przebudzenie Ziemi", theme: "Odradzanie", season: "Spring", month: "March", body: "Wyjdź na zewnątrz i zatrzymaj się na moment. Wsłuchaj się w ciche sygnały powracającego życia: śpiew ptaków, dalekie nawoływania, łagodny ruch w gałęziach. Dostrzeż to, co nieśmiało się pojawia.", reflection: ["Jakie dźwięki zwiastują dla mnie odnowę?","Co zaczyna kiełkować w moim życiu, powoli, lecz pewnie?", "Czy potrafię pozwolić temu procesowi toczyć się we własnym rytmie?"], img: "miejskie-kapiele-lesne-Spring-March-11-przebudzenie-ziemi-A.png", imgB: "miejskie-kapiele-lesne-Spring-March-11-przebudzenie-ziemi-B.png", insta: "DWmN1KkDhq_" },
+    {
+  id: 12,
+  title: "Poranne Szepty",
+  theme: "Drobne zachwyty",
+  season: "Spring",
+  month: "March",
+  body: "Poświęć kilka minut każdego poranka, by usiąść przy oknie lub pod drzewem. Zamknij oczy, oddychaj spokojnie i pozwól swojej uwadze podążać za dźwiękami wczesnej wiosny — pierwszym śpiewem ptaków, szelestem gałęzi, cichym pulsem budzącego się życia. Zauważ, które z nich przywołują w Tobie spokój, ciekawość lub lekkość.",
+  reflection: [
+    "Które małe radości przemawiają do Ciebie teraz najgłośniej?",
+    "Jak te subtelne momenty wpływają na Twój nastrój lub sposób patrzenia na dzień?",
+    "Gdzie jeszcze w ciągu dnia możesz zatrzymać się, by usłyszeć tę cichą muzykę wokół siebie?"
+  ],
+  img: "Spring-March-tydzien-12-poranne-szepty-wiosenne-paki-niebo-12A.png",
+  imgB: "Spring-March-tydzien-12-poranne-szepty-wiosenne-paki-niebo-12B.png",
+  insta: "DWszgyEjOc_"
+}
+    ];
+
+    const listElement = document.getElementById('materialList');
+    const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
+
+    function render(data, isSingleView = false) {
+      if (!data.length) { listElement.innerHTML = "<p>Brak kart.</p>"; return; }
+      
+      const firstId = 1;
+      const lastId = Math.max(...cardsData.map(c => c.id));
+
+      listElement.innerHTML = data.map(card => `
+        <article class="material-item">
+          <div class="material-visual"><img src="${imgPath}${card.img}?v=2026" alt="${card.title}"></div>
+          <div class="material-content">
+            <header>
+              <span class="material-meta">${card.season} • ${card.month} • ${card.theme}</span>
+              <h3>Tydzień ${card.id.toString().padStart(2, '0')} - ${card.title}</h3>
+            </header>
+            <div class="material-body">${card.body}</div>
+            <div class="material-reflection">
+              <strong>Refleksja:</strong>
+              <ul>${card.reflection.map(q => `<li>${q}</li>`).join('')}</ul>
+            </div>
+            <div class="download-links">
+              <a href="${imgPath}${card.img}?v=2026" download class="btn-main">Obraz</a>
+              <a href="${imgPath}${card.imgB}?v=2026" download class="btn-alt">Zadanie</a>
+              <button onclick="copyLink(${card.id})" class="btn-copy">🔗 Kopiuj link</button>
+              <a href="https://instagram.com/p/${card.insta}/" target="_blank" class="btn-insta">Instagram</a>
+            </div>
+            ${isSingleView ? `
+            <div class="week-nav-row">
+              <button class="nav-arrow-btn ${card.id <= firstId ? 'disabled' : ''}" onclick="showSpecificWeek(${card.id - 1})">← Poprzedni</button>
+              <button class="nav-arrow-btn ${card.id >= lastId ? 'disabled' : ''}" onclick="showSpecificWeek(${card.id + 1})">Następny →</button>
+            </div>` : ''}
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function copyLink(id) {
+      const url = window.location.origin + window.location.pathname + '#tydzien-' + id;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = event.currentTarget;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "✅ Skopiowano!";
+        setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+      });
+    }
+
+    function applyFilter(btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const type = btn.getAttribute('data-type');
+      const val = btn.getAttribute('data-val');
+      
+      const filtered = val === 'All' ? cardsData : cardsData.filter(c => c[type] === val);
+      
+      if (type === 'month') {
+        render([filtered[0]], true);
+      } else {
+        const sorted = [...filtered].sort((a,b) => b.id - a.id);
+        render(sorted, false);
+      }
+    }
+
+    function showSpecificWeek(id) {
+      const card = cardsData.find(c => c.id === id);
+      if (card) {
+        window.location.hash = 'tydzien-' + id;
+        render([card], true);
+        window.scrollTo({top: listElement.offsetTop - 100, behavior: 'smooth'});
+      }
+    }
+
+    function handleRouting() {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#tydzien-')) {
+        const id = parseInt(hash.replace('#tydzien-', ''));
+        if (!isNaN(id)) {
+          showSpecificWeek(id);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    window.addEventListener('hashchange', handleRouting);
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!handleRouting()) {
+        const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
+        render([latest], true);
+      }
+    });
+  </script>
 </body>
 </html>
