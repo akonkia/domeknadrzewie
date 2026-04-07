@@ -60,7 +60,7 @@ Even brief contact with urban greenery triggers real changes in your body:
 
 ## Your daily dose of the forest (without leaving town)
 
-Urban forest bathing isn't a hobby for the few—it's a mental hygiene tool for everyone. Don't wait for a vacation to feel peace. The forest can start at your bus stop or right outside your window.
+Urban forest bathing isn't a hobby for the few - it's a mental hygiene tool for everyone. Don't wait for a vacation to feel peace. The forest can start at your bus stop or right outside your window.
 
 > **Remember:** The best forest is the one you can visit today.
 
