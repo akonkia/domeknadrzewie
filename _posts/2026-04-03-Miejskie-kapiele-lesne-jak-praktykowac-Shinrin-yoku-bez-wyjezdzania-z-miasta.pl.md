@@ -2,6 +2,8 @@
 layout: post
 title: "Miejskie kąpiele leśne: Jak praktykować Shinrin-yoku bez wyjeżdżania z miasta?"
 date: 2026-04-03
+cover: /assets/img/fallback/fallback-forest-1.jpg
+cover_alt: Leśne światło w mieście
 lang: pl
 ---
 
