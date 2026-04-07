@@ -146,15 +146,7 @@ layout: default
       }
     }
   </style>
-
-  {% assign fallback_images = 
-  "/assets/img/fallback/fallback-backlit-1.jpg,
-   /assets/img/fallback/fallback-backlit-2.jpg,
-   /assets/img/fallback/fallback-forest-1.jpg,
-   /assets/img/fallback/fallback-forest-2.jpg,
-   /assets/img/fallback/fallback-forest-3.jpg,
-   /assets/img/fallback/fallback-shadow-1.jpg,
-   /assets/img/fallback/fallback-shadow-2.jpeg" | split: "," %}
+{% assign fallback_images = "/assets/img/fallback/fallback-backlit-1.jpg,/assets/img/fallback/fallback-backlit-2.jpg,/assets/img/fallback/fallback-forest-1.jpg,/assets/img/fallback/fallback-forest-2.jpg,/assets/img/fallback/fallback-forest-3.jpg,/assets/img/fallback/fallback-shadow-1.jpg,/assets/img/fallback/fallback-shadow-2.jpeg" | split: "," %}
 
 {% assign index = page.url | size | modulo: fallback_images.size %}
 {% assign default_cover = fallback_images[index] | strip %}
