@@ -162,25 +162,17 @@ layout: default
   <div class="post-body">
     {{ content }}
   </div>
-  {% assign posts_in_lang = site.posts | where: "lang", page.lang %}
 
-{% assign prev_post = nil %}
+  {% assign prev_post = nil %}
 {% assign next_post = nil %}
 
-{% for post in posts_in_lang %}
-  {% if post.url == page.url %}
-    {% assign index = forloop.index0 %}
-    
-    {% if index > 0 %}
-      {% assign prev_post = posts_in_lang[index | minus: 1] %}
-    {% endif %}
-    
-    {% if index < posts_in_lang.size | minus: 1 %}
-      {% assign next_post = posts_in_lang[index | plus: 1] %}
-    {% endif %}
-    
-  {% endif %}
-{% endfor %}
+{% if page.previous and page.previous.lang == page.lang %}
+  {% assign prev_post = page.previous %}
+{% endif %}
+
+{% if page.next and page.next.lang == page.lang %}
+  {% assign next_post = page.next %}
+{% endif %}
 
 <nav class="post-nav container">
   
