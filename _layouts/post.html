@@ -157,8 +157,8 @@ layout: default
 {% assign cover_alt = page.cover_alt | default: page.title %}
 
 <div class="post-cover-wrap">
-  <div class="post-cover-frame">
-    <img src="{{ site.url }}{{ cover_image }}" alt="{{ cover_alt }}">
+    <div class="post-cover-frame">
+    <img src="{{ cover_image | relative_url }}" alt="{{ cover_alt }}">
   </div>
 </div>
 
