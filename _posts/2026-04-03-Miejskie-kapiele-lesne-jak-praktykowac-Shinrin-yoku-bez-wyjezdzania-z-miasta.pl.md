@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Miejskie kąpiele leśne: Jak praktykować Shinrin-yoku bez wyjeżdżania z miasta?
+title: "Miejskie kąpiele leśne: Jak praktykować Shinrin-yoku bez wyjeżdżania z miasta?"
 date: 2026-04-03
 lang: pl
 ---
