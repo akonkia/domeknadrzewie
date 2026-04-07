@@ -13,7 +13,7 @@ permalink: /blog/en/
   </div>
 
   <div class="post-list">
-    {% assign default_cover = '/assets/img/default-cover.png' %}
+    {% assign index = forloop.index0 | modulo: fallback_images.size %}
     
     {% comment %} 
       This is the filter: It looks in your shared _posts folder 
