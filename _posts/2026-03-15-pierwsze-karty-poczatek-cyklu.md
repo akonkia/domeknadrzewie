@@ -2,6 +2,7 @@
 layout: post
 title: "Pierwsze karty - początek cyklu / First cards - beginning of the series"
 date: 2026-03-31
+translation_id:	first-cards-2026
 lang:
   - pl
   - en
