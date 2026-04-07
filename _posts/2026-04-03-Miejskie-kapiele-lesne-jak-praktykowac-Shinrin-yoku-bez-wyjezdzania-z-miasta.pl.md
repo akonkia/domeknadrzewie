@@ -69,8 +69,3 @@ Wiemy, że w mieście trudno o skupienie. Dlatego przygotowaliśmy specjalny cyk
 
 🌿 **[Pobierz bezpłatne Karty Miejskich Kąpieli Leśnych i odnajdź swój spokój w samym sercu miasta](https://domeknadrzewie.edu.pl/materialy/kapiele_miejskie/)**
 
----
-
-Urban forest bathing isn’t a hobby for the few—it’s a mental hygiene tool for everyone. Don’t wait for a vacation to feel peace. The forest can start at your bus stop or right outside your window.
-
-> **Remember:** The best forest is the one you can visit today.
