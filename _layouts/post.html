@@ -20,10 +20,6 @@ layout: default
     {{ content }}
   </div>
 
-
-{% comment %} 
-  ANDREA'S LOGIC: First, grab only the posts that match this page's language 
-{% endcomment %}
 {% assign posts_in_lang = site.posts | where: "lang", page.lang %}
 
 <nav class="post-nav">
@@ -31,38 +27,38 @@ layout: default
     {% if p.url == page.url %}
       
       {% comment %} 
-        In Jekyll, the first post in the array is the NEWEST.
-        - To go to an EARLIER post, we go FORWARD in the array (+1).
-        - To go to a NEWER post, we go BACKWARD in the array (-1).
+        Jekyll site.posts is sorted NEWEST to OLDEST.
+        Previous Post (Older) = Current Index + 1
+        Next Post (Newer)     = Current Index - 1
       {% endcomment %}
       
       {% assign prev_idx = forloop.index0 | plus: 1 %}
       {% assign next_idx = forloop.index0 | minus: 1 %}
 
-      {% comment %} --- EARLIER (Poprzedni) --- {% endcomment %}
-      {% if prev_idx < posts_in_lang.size %}
-        {% assign prev_post = posts_in_lang[prev_idx] %}
-        <a href="{{ prev_post.url | relative_url }}" class="post-nav-card prev">
-          <span class="post-nav-label">← Poprzedni</span>
-          <span class="post-nav-title">{{ prev_post.title }}</span>
-        </a>
-      {% else %}
-        {% comment %} Empty div ensures the 'Next' button stays on the right {% endcomment %}
-        <div style="flex: 1;"></div>
-      {% endif %}
+      <div class="nav-slot">
+        {% if prev_idx < posts_in_lang.size %}
+          {% assign prev_p = posts_in_lang[prev_idx] %}
+          <a href="{{ prev_p.url | relative_url }}" class="post-nav-card">
+            <span class="post-nav-label">← Poprzedni</span>
+            <span class="post-nav-title">{{ prev_p.title }}</span>
+          </a>
+        {% endif %}
+      </div>
 
-      {% comment %} --- NEXT (Następny) --- {% endcomment %}
-      {% if next_idx >= 0 %}
-        {% assign next_post = posts_in_lang[next_idx] %}
-        <a href="{{ next_post.url | relative_url }}" class="post-nav-card next">
-          <span class="post-nav-label">Następny →</span>
-          <span class="post-nav-title">{{ next_post.title }}</span>
-        </a>
-      {% endif %}
+      <div class="nav-slot" style="text-align: right;">
+        {% if next_idx >= 0 %}
+          {% assign next_p = posts_in_lang[next_idx] %}
+          <a href="{{ next_p.url | relative_url }}" class="post-nav-card next">
+            <span class="post-nav-label">Następny →</span>
+            <span class="post-nav-title">{{ next_p.title }}</span>
+          </a>
+        {% endif %}
+      </div>
 
     {% endif %}
   {% endfor %}
 </nav>
+
 
  
 </article>
