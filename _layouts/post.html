@@ -20,17 +20,23 @@ layout: default
     {{ content }}
   </div>
 
+{% comment %} 1. Create a collection of posts filtered by the current page's language {% endcomment %}
 {% assign posts_in_lang = site.posts | where: "lang", page.lang %}
 
 {% for p in posts_in_lang %}
   {% if p.url == page.url %}
+    {% comment %} 
+       Since site.posts is Newest -> Oldest:
+       Index + 1 is an older post (Earlier)
+       Index - 1 is a newer post (Next)
+    {% endcomment %}
     {% assign prev_idx = forloop.index0 | plus: 1 %}
     {% assign next_idx = forloop.index0 | minus: 1 %}
-    
+
     {% if prev_idx < posts_in_lang.size %}
       {% assign prev_p = posts_in_lang[prev_idx] %}
     {% endif %}
-    
+
     {% if next_idx >= 0 %}
       {% assign next_p = posts_in_lang[next_idx] %}
     {% endif %}
@@ -44,6 +50,7 @@ layout: default
       <span class="post-nav-title">{{ prev_p.title }}</span>
     </a>
   {% else %}
+    {% comment %} Spacer to keep the 'Next' button on the right if no 'Earlier' exists {% endcomment %}
     <div></div>
   {% endif %}
 
