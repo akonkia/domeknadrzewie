@@ -185,17 +185,21 @@ layout: default
   {% endif %}
 {% endfor %}
 
-<nav class="post-nav">
+<nav class="post-nav container">
+  
   {% if prev_post %}
-    <a href="{{ prev_post.url | relative_url }}">
-      ← {{ prev_post.title }}
+    <a class="post-nav-card prev" href="{{ prev_post.url | relative_url }}">
+      <span class="post-nav-label">← Earlier</span>
+      <span class="post-nav-title">{{ prev_post.title }}</span>
     </a>
   {% endif %}
 
   {% if next_post %}
-    <a href="{{ next_post.url | relative_url }}">
-      {{ next_post.title }} →
+    <a class="post-nav-card next" href="{{ next_post.url | relative_url }}">
+      <span class="post-nav-label">Next →</span>
+      <span class="post-nav-title">{{ next_post.title }}</span>
     </a>
   {% endif %}
+
 </nav>
 </article>
