@@ -6,6 +6,8 @@ baseurl: ""
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
 
+default_cover: /assets/img/default-cover.png
+
 plugins:
   - jekyll-feed
 
