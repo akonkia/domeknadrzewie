@@ -764,20 +764,24 @@
     }
 
     @media (max-width: 940px) {
-      .quick-grid,
-      .about-icons,
-      
-      .materials-grid {
-        grid-template-columns: 1fr;
-        
-    @media (max-width: 940px) {
-  /* ... your other media query code ... */
+  .quick-grid,
+  .about-icons,
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
 
-  /* Forces both Card 2 and Card 3 bottom sections to be identical height */
-  
+  .quick-grid-wrap {
+    margin-top: 24px;
+  }
+
+  /* Lock Card 2 image height */
+  .quick-card:nth-child(2) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 }
-      }
 
       .quick-grid-wrap {
         margin-top: 24px;
