@@ -25,11 +25,15 @@ layout: default
 <div style="background: #fff9c4; border: 2px dashed #fbc02d; padding: 20px; margin-top: 50px; font-family: monospace; font-size: 14px; color: #333;">
   <h3 style="margin-top: 0;">🛠 Jekyll Debugger</h3>
   <ul>
-    <li><strong>Layout file loading:</strong> <span style="color: green;">YES</span></li>
-    <li><strong>Language detected:</strong> "{{ page.lang }}"</li>
-    {% assign debug_posts = site.posts | where: "lang", page.lang %}
-    <li><strong>Posts found with this lang:</strong> {{ debug_posts.size }}</li>
-  </ul>
+  <li><strong>Total site.posts found:</strong> {{ site.posts.size }}</li>
+  <li><strong>List of all posts and their languages:</strong>
+    <ul style="font-size: 11px;">
+      {% for p in site.posts %}
+        <li>{{ p.title }} — Lang: "{{ p.lang }}" | Path: {{ p.path }}</li>
+      {% endfor %}
+    </ul>
+  </li>
+</ul>
 
   {% comment %} Logic Attempt {% endcomment %}
   {% for p in debug_posts %}
