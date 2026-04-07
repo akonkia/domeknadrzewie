@@ -166,11 +166,7 @@ layout: default
     <h1>{{ page.title }}</h1>
   </header>
 
-  <div class="post-cover-wrap">
-    <div class="post-cover-frame {% if is_placeholder %}placeholder{% else %}has-image{% endif %}" aria-label="{{ cover_alt }}">
-      <img src="{{ cover_image }}" alt="{{ cover_alt }}">
-    </div>
-  </div>
+
 
   <div class="post-body">
     {{ content }}
