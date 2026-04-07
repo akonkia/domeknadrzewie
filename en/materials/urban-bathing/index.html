@@ -1,40 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WGXSZG17N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-3WGXSZG17N');
-  </script>
+<title>Urban Forest Bathing | Treehouse Project</title>
 
-  <title>Urban forest bathing | Project: Tree House</title>
-  <meta
-    name="description"
-    content="Urban forest bathing — weekly cards inspired by nature, mindfulness and the rhythm of the year."
-  />
+<style>
+:root {
+  --sage: #678760;
+  --orange: #fb9b27;
+  --gold: #fcc15d;
+  --cream: #f5f4ef;
+  --white: #ffffff;
+  --text: #243126;
+  --muted: #5e675f;
+  --line: rgba(36, 49, 38, 0.1);
+  --hero-overlay: rgba(36, 49, 38, 0.4);
+  --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
+  --max: 1120px;
+  --content: 980px;
+}
+* { box-sizing: border-box; }
+body { margin:0; font-family: Inter, Arial; background:#f3f1eb; }
 
-  <style>
-    :root {
-      --sage: #678760;
-      --orange: #fb9b27;
-      --gold: #fcc15d;
-      --cream: #f5f4ef;
-      --white: #ffffff;
-      --text: #243126;
-      --muted: #5e675f;
-      --line: rgba(36, 49, 38, 0.1);
-      --hero-overlay: rgba(36, 49, 38, 0.26);
-      --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
-      --max: 1120px;
-      --content: 980px;
+.container { width:min(100% - 32px, var(--max)); margin:auto; }
+.narrow { width:min(100% - 32px, var(--content)); margin:auto; }
+
+.topbar { background:white; position:sticky; top:0; z-index:100; border-bottom:1px solid var(--line);}
+.nav { display:flex; justify-content:space-between; align-items:center; min-height:80px;}
+.nav-links a { margin-left:15px; font-weight:700; }
+
+.hero {
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  text-align:center;
+  background:
+    linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+    url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/Environmental-Organization-Website-Design-788x871.jpg') center/cover;
+}
+
+.filter-section { background:white; padding:20px; margin:20px 0;}
+.filter-btn { margin:5px; padding:6px 12px; cursor:pointer;}
+.filter-btn.active { background:var(--sage); color:white;}
+
+.material-item { background:white; padding:20px; margin-bottom:20px;}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <strong>Treehouse Project</strong>
+    <nav class="nav-links">
+      <a href="#">About</a>
+      <a href="#" class="active">Resources</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Urban Forest Bathing</h1>
+</section>
+
+<main class="narrow">
+
+<nav class="filter-section">
+  <div>
+    <strong>Season:</strong>
+    <button class="filter-btn active" data-type="season" data-val="All" onclick="applyFilter(this)">All</button>
+    <button class="filter-btn" data-type="season" data-val="Winter" onclick="applyFilter(this)">Winter</button>
+    <button class="filter-btn" data-type="season" data-val="Spring" onclick="applyFilter(this)">Spring</button>
+  </div>
+
+  <div>
+    <strong>Month:</strong>
+    <button class="filter-btn" data-type="month" data-val="January" onclick="applyFilter(this)">January</button>
+    <button class="filter-btn" data-type="month" data-val="February" onclick="applyFilter(this)">February</button>
+    <button class="filter-btn" data-type="month" data-val="March" onclick="applyFilter(this)">March</button>
+  </div>
+</nav>
+
+<section id="materialList"></section>
+
+</main>
+
+<script>
+const cardsData = [
+{
+id:1,
+title:"Silent Root",
+season:"Winter",
+month:"January",
+theme:"Stillness",
+body:"Enter a green space slowly. Pause often.",
+reflection:["What remains in silence?"]
+},
+{
+id:2,
+title:"Hidden Strength",
+season:"Winter",
+month:"January",
+theme:"Endurance",
+body:"Look for resilience in nature.",
+reflection:["What helps me endure?"]
+},
+{
+id:10,
+title:"Thaw",
+season:"Spring",
+month:"March",
+theme:"Softening",
+body:"Look for signs of melting.",
+reflection:["Where can I soften?"]
+}
+];
+
+const list = document.getElementById("materialList");
+
+function render(data){
+  list.innerHTML = data.map(c=>`
+    <div class="material-item">
+      <h3>Week ${c.id} – ${c.title}</h3>
+      <p>${c.body}</p>
+      <ul>${c.reflection.map(r=>`<li>${r}</li>`).join("")}</ul>
+    </div>
+  `).join("");
+}
+
+function applyFilter(btn){
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+
+  const type = btn.dataset.type;
+  const val = btn.dataset.val;
+
+  if(val==="All"){
+    render(cardsData);
+    return;
+  }
+
+  const filtered = cardsData.filter(c=>c[type]===val);
+  render(filtered);
+}
+
+function handleRouting(){
+  const hash = location.hash;
+  if(hash.startsWith("#week-")){
+    const id = parseInt(hash.replace("#week-",""));
+    const card = cardsData.find(c=>c.id===id);
+    if(card){
+      render([card]);
+      return;
     }
+  }
+  render(cardsData);
+}
 
-    * { box-sizing: border-box; }
+window.addEventListener("DOMContentLoaded", handleRouting);
+window.addEventListener("hashchange", handleRouting);
+</script>
+
+</body>
+</html>    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
