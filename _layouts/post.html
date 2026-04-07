@@ -20,44 +20,52 @@ layout: default
     {{ content }}
   </div>
 
-{% comment %} 1. Create a collection of posts filtered by the current page's language {% endcomment %}
+{% comment %} 
+  1. Capture all posts in the current language and store them in an array
+{% endcomment %}
 {% assign posts_in_lang = site.posts | where: "lang", page.lang %}
 
+{% comment %} 
+  2. Loop through that filtered list to find the current post's position
+{% endcomment %}
 {% for p in posts_in_lang %}
   {% if p.url == page.url %}
     {% comment %} 
-       Since site.posts is Newest -> Oldest:
-       Index + 1 is an older post (Earlier)
-       Index - 1 is a newer post (Next)
+       Jekyll site.posts is sorted Newest to Oldest.
+       index + 1 = The post written before this (Earlier)
+       index - 1 = The post written after this (Next)
     {% endcomment %}
-    {% assign prev_idx = forloop.index0 | plus: 1 %}
-    {% assign next_idx = forloop.index0 | minus: 1 %}
+    {% assign prev_index = forloop.index0 | plus: 1 %}
+    {% assign next_index = forloop.index0 | minus: 1 %}
 
-    {% if prev_idx < posts_in_lang.size %}
-      {% assign prev_p = posts_in_lang[prev_idx] %}
+    {% if prev_index < posts_in_lang.size %}
+      {% assign prev_post = posts_in_lang[prev_index] %}
     {% endif %}
 
-    {% if next_idx >= 0 %}
-      {% assign next_p = posts_in_lang[next_idx] %}
+    {% if next_index >= 0 %}
+      {% assign next_post = posts_in_lang[next_index] %}
     {% endif %}
   {% endif %}
 {% endfor %}
 
+{% comment %} 
+  3. Render the Navigation using your "Before" Screenshot styles
+{% endcomment %}
 <nav class="post-nav">
-  {% if prev_p %}
-    <a href="{{ prev_p.url | relative_url }}" class="post-nav-card prev">
+  {% if prev_post %}
+    <a href="{{ prev_post.url | relative_url }}" class="post-nav-card prev">
       <span class="post-nav-label">← Poprzedni</span>
-      <span class="post-nav-title">{{ prev_p.title }}</span>
+      <span class="post-nav-title">{{ prev_post.title }}</span>
     </a>
   {% else %}
-    {% comment %} Spacer to keep the 'Next' button on the right if no 'Earlier' exists {% endcomment %}
-    <div></div>
+    {% comment %} Keep empty div for layout alignment {% endcomment %}
+    <div style="flex: 1;"></div>
   {% endif %}
 
-  {% if next_p %}
-    <a href="{{ next_p.url | relative_url }}" class="post-nav-card next">
+  {% if next_post %}
+    <a href="{{ next_post.url | relative_url }}" class="post-nav-card next">
       <span class="post-nav-label">Następny →</span>
-      <span class="post-nav-title">{{ next_p.title }}</span>
+      <span class="post-nav-title">{{ next_post.title }}</span>
     </a>
   {% endif %}
 </nav>
