@@ -2,105 +2,6 @@
 layout: default
 ---
 <article class="post">
-  <style>
-    .post {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .post-header {
-      margin-bottom: 24px;
-      text-align: center;
-    }
-
-    .post-date {
-      color: #678760;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .post h1 {
-      margin: 0 auto;
-      max-width: 800px;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      line-height: 1.1;
-      text-transform: uppercase;
-      color: #243126;
-      font-family: 'Bodoni Moda', serif;
-    }
-
-    .post-cover-wrap {
-      margin: 0 0 40px 0;
-      display: flex;
-      justify-content: center;
-    }
-
-    .post-cover-frame {
-      width: 100%;
-      max-width: 650px;
-      border-radius: 12px;
-      border: 1px solid rgba(36,49,38,0.06);
-      box-shadow: 0 10px 25px rgba(36,49,38,0.05);
-      overflow: hidden;
-    }
-
-    .post-cover-frame img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .post-body {
-      max-width: 720px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(103, 135, 96, 0.1);
-      border-radius: 16px;
-      padding: 45px;
-      line-height: 1.8;
-      color: #243126;
-      box-shadow: 0 15px 35px rgba(36, 49, 38, 0.04);
-      font-family: 'Inter', sans-serif;
-    }
-
-    .post-body h2 {
-      margin-top: 2.2em;
-      margin-bottom: 0.8em;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #3e4a3f;
-      border-bottom: 1px solid rgba(103, 135, 96, 0.15);
-      padding-bottom: 8px;
-    }
-
-    .post-body p { margin-bottom: 1.5em; }
-
-    .post-body blockquote {
-      margin: 2em 0;
-      padding: 20px 30px;
-      background: #f8f6f2;
-      border-left: 4px solid #678760;
-      font-style: italic;
-      border-radius: 0 8px 8px 0;
-    }
-
-    @media (max-width: 600px) {
-      .post-body {
-        padding: 25px;
-        border-radius: 0;
-        border: none;
-        background: transparent;
-        box-shadow: none;
-      }
-    }
-  </style>
-
   <header class="post-header">
     <span class="post-date">{{ page.date | date: "%-d %B %Y" }}</span>
     <h1>{{ page.title }}</h1>
@@ -120,39 +21,28 @@ layout: default
     {{ content }}
   </div>
 
-  {% assign posts_in_lang = site.posts 
-  | where: "lang", page.lang 
-  | sort: "title" 
-  | sort: "date" %}
-
-  {% assign prev_post = nil %}
-  {% assign next_post = nil %}
-
+  {% comment %} --- Navigation Logic --- {% endcomment %}
+  {% assign posts_in_lang = site.posts | where: "lang", page.lang %}
+  
   {% for post in posts_in_lang %}
-    {% if post.id == page.id %}
-
+    {% if post.url == page.url %}
       {% assign current_index = forloop.index0 %}
-      {% assign prev_index = current_index | minus: 1 %}
-      {% assign next_index = current_index | plus: 1 %}
-
-      {% if prev_index >= 0 %}
-        {% assign prev_post = posts_in_lang[prev_index] %}
-      {% endif %}
-
-      {% if next_index < posts_in_lang.size %}
-        {% assign next_post = posts_in_lang[next_index] %}
-      {% endif %}
-
+      {% assign prev_index = current_index | plus: 1 %}
+      {% assign next_index = current_index | minus: 1 %}
     {% endif %}
   {% endfor %}
 
-  <nav class="post-nav container">
-    
+  {% assign prev_post = posts_in_lang[prev_index] %}
+  {% assign next_post = posts_in_lang[next_index] %}
+
+  <nav class="post-nav">
     {% if prev_post %}
       <a class="post-nav-card prev" href="{{ prev_post.url | relative_url }}">
         <span class="post-nav-label">← Earlier</span>
         <span class="post-nav-title">{{ prev_post.title }}</span>
       </a>
+    {% else %}
+      <div style="flex:1"></div>
     {% endif %}
 
     {% if next_post %}
@@ -161,6 +51,5 @@ layout: default
         <span class="post-nav-title">{{ next_post.title }}</span>
       </a>
     {% endif %}
-
   </nav>
 </article>
