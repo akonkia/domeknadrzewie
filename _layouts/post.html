@@ -163,23 +163,22 @@ layout: default
     {{ content }}
   </div>
 
- {% assign posts_in_lang = site.posts | where: "lang", page.lang %}
+{% assign posts_in_lang = site.posts 
+  | where: "lang", page.lang 
+  | sort: "date" %}
 
 {% assign prev_post = nil %}
 {% assign next_post = nil %}
 
 {% for post in posts_in_lang %}
-  {{% if post.id == page.id %}
+  {% if post.id == page.id %}
 
-    {% assign prev_index = forloop.index0 | plus: 1 %}
-    {% assign next_index = forloop.index0 | minus: 1 %}
-
-    {% if prev_index < posts_in_lang.size %}
-      {% assign prev_post = posts_in_lang[prev_index] %}
+    {% if forloop.index0 > 0 %}
+      {% assign prev_post = posts_in_lang[forloop.index0 | minus: 1] %}
     {% endif %}
 
-    {% if next_index >= 0 %}
-      {% assign next_post = posts_in_lang[next_index] %}
+    {% if forloop.index0 < posts_in_lang.size | minus: 1 %}
+      {% assign next_post = posts_in_lang[forloop.index0 | plus: 1] %}
     {% endif %}
 
   {% endif %}
