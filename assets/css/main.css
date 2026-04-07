@@ -112,6 +112,20 @@
     grid-template-columns: 1fr;
   }
 
+.post-cover-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* or 3 / 2 if you prefer */
+  overflow: hidden;
+  border-radius: 12px; /* optional */
+}
+
+.post-cover-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
   .post-thumb-frame {
     aspect-ratio: 16 / 9;
   }
