@@ -2,7 +2,7 @@
 layout: post
 title: "Good beginnings"
 date: 2026-02-15
-good-foundations-2026
+translation_id: good-foundations-2026
 lang:
   - en
 excerpt: "In February 2026, the project site began to take shape more clearly as a place for material, reflection, and quiet growth."
