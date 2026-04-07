@@ -162,7 +162,7 @@ layout: default
 
   <div class="post-cover-wrap">
     <div class="post-cover-frame {% if is_placeholder %}placeholder{% else %}has-image{% endif %}" aria-label="{{ cover_alt }}">
-      <img src="/assets/img/fallback/fallback-forest-1.jpg" alt="test">
+      <img src="{{ '/assets/img/fallback/fallback-forest-1.jpg' | absolute_url }}" alt="test">
     </div>
   </div>
 
