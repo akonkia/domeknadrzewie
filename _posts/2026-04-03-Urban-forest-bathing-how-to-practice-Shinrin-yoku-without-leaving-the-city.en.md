@@ -3,8 +3,7 @@ layout: post
 title: "Urban Forest Bathing: How to Practice Shinrin-yoku Without Leaving the City?"
 date: 2026-04-03
 translation_id: urban-forest-bathing-2026
-lang:
-  - en
+lang: en
 excerpt: "Discover how to tap into the therapeutic power of nature in the heart of the city. A guide to urban Shinrin-yoku with free mindfulness cards."
 tags: [shinrin-yoku, kąpiele leśne, uważność, urban bathing, wellbeing]
 ---
@@ -38,10 +37,11 @@ In the city, we are always rushing. During a forest bath, walk so slowly that yo
 
 ### 4. Activate 5 senses in the concrete
 Focusing on small details allows you to "switch off" the city noise:
-* **Sight:** Look at the fractals in the leaves or the texture of the bark.
-* **Sound:** Try to isolate the sound of rustling leaves from the hum of the street.
-* **Touch:** Feel the coolness of a stone or the roughness of a trunk.
-* **Smell:** Inhale the scent of the earth after rain or freshly cut grass.
+
+- **Sight:** Look at the fractals in the leaves or the texture of the bark.  
+- **Sound:** Try to isolate the sound of rustling leaves from the hum of the street.  
+- **Touch:** Feel the coolness of a stone or the roughness of a trunk.  
+- **Smell:** Inhale the scent of the earth after rain or freshly cut grass.  
 
 ### 5. Use the "Invitations"
 If your mind is still circling your to-do list, use ready-made mindfulness exercises (invitations) to help you "anchor" yourself in the here and now.
@@ -52,9 +52,9 @@ If your mind is still circling your to-do list, use ready-made mindfulness exerc
 
 Even brief contact with urban greenery triggers real changes in your body:
 
-* **Attention Restoration (ART):** According to *Attention Restoration Theory*, contact with nature (even in a park) allows the part of the brain responsible for focus and work-related concentration to rest.
-* **Cortisol drop:** Just 15–20 minutes of looking at greenery lowers levels of the stress hormone.
-* **Improved mood:** Urban forest bathing reduces feelings of anxiety and the mental fatigue that comes from living in high-density areas.
+- **Attention Restoration (ART):** According to *Attention Restoration Theory*, contact with nature (even in a park) allows the part of the brain responsible for focus and work-related concentration to rest.  
+- **Cortisol drop:** Just 15–20 minutes of looking at greenery lowers levels of the stress hormone.  
+- **Improved mood:** Urban forest bathing reduces feelings of anxiety and the mental fatigue that comes from living in high-density areas.  
 
 ---
 
@@ -64,9 +64,10 @@ Urban forest bathing isn't a hobby for the few—it's a mental hygiene tool for 
 
 > **Remember:** The best forest is the one you can visit today.
 
-### Start Your Practice with Our Mindfulness Cards
+---
+
+## Start Your Practice with Our Mindfulness Cards
 
 We know that finding focus in the city can be a challenge. That’s why we’ve created a special series of exercises designed to guide you every step of the way. Each card features one simple task that you can practice in any park or green space.
 
-🌿 **["Download free Urban Forest Bathing Cards and find your peace in the heart of the city.](https://domeknadrzewie.edu.pl/en/materials/urban-bathing/)**
-
+🌿 **[Download free Urban Forest Bathing Cards and find your peace in the heart of the city.](https://domeknadrzewie.edu.pl/en/materials/urban-bathing/)**
