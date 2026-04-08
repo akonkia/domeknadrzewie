@@ -96,7 +96,15 @@
       transition: 0.18s ease;
       text-align: center;
     }
-
+    .menu-toggle {
+  display: none;
+  font-size: 22px;
+  background: none;
+  border: 1px solid rgba(36,49,38,0.15);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
     .nav-links a:hover, .nav-links a.active { background: var(--sage); color: white; }
     .nav-label { display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.08; gap: 4px; }
     .nav-pl { display: block; font-size: 0.94rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -130,29 +138,35 @@
     font-size: 0.75rem;
   }
 
-  .nav-links {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    border-top: 1px solid rgba(36,49,38,0.06);
-  }
+.menu-toggle {
+  display: block;
+}
 
-  .nav-links a {
-    min-height: 44px;          /* ↓ key change */
-    padding: 0 12px;          /* ↓ tighter */
-    font-size: 0.85rem;       /* ↓ slightly smaller */
-    border-right: 1px solid rgba(36,49,38,0.06);
-    flex: 0 0 auto;
-  }
+.nav-links {
+  display: none; /* 👈 hidden by default */
+  flex-direction: column;
+  width: 100%;
+  background: white;
+  border-top: 1px solid rgba(36,49,38,0.06);
+}
+
+.nav-links.active {
+  display: flex; /* 👈 shown when clicked */
+}
+
+.nav-links a {
+  min-height: 48px;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(36,49,38,0.06);
+  justify-content: flex-start;
+}
 
   .nav-pl {
     font-size: 0.78rem;
     letter-spacing: 0.02em;
   }
 
-  .nav-links::-webkit-scrollbar {
-    display: none;
-  }
+
 }
 }
   </style>
