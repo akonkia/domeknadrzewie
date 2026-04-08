@@ -141,7 +141,7 @@
     font-size: 0.75rem;
   }
 
-.menu-toggle {
+.ggle {
   display: block;
 }
 
@@ -193,7 +193,14 @@
           <span class="brand-subtitle">Blog</span>
         </span>
       </a>
-<button class="menu-toggle" aria-label="Toggle menu">☰</button>
+<button class="menu-toggle" aria-label="Toggle menu">
+  <span class="leaf-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
+      
       <nav class="nav-links" aria-label="Navigation">
         <a href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
           <span class="nav-label">
