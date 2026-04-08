@@ -207,22 +207,6 @@
   margin: 3px 0;
 }
 
-/* 🌿 SAFE leaf styling (isolated) */
-.menu-toggle {
-  border-radius: 60% 40% 60% 40% / 60% 60% 40% 40%;
-  background: rgba(103,135,96,0.08);
-  border-color: rgba(103,135,96,0.3);
-}
-
-/* hamburger lines */
-.menu-toggle span {
-  display: block;
-  height: 2px;
-  width: 60%;
-  background: #243126;
-  margin: 4px auto;
-  border-radius: 2px;
-}
 
 
   </style>
@@ -239,11 +223,7 @@
           <span class="brand-subtitle">Blog</span>
         </span>
       </a>
-<<button class="menu-toggle" aria-label="Menu">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+<button class="menu-toggle" aria-label="Menu">☰</button>
       
       <nav class="nav-links" aria-label="Navigation">
         <a href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
