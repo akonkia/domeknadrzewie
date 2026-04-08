@@ -4,42 +4,25 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% if page.title %}{{ page.title }} | {% endif %}Domek na Drzewie</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 }}{% else %}Nature-inspired writing, reflections, and educational materials.{% endif %}" />
 
-  {% if page.translation_id %}
-    {% assign translations = site.posts | where: "translation_id", page.translation_id %}
-    {% if translations.size == 0 %}
-      {% assign translations = site.pages | where: "translation_id", page.translation_id %}
-    {% endif %}
-    {% for trans in translations %}
-      <link rel="alternate" hreflang="{{ trans.lang }}" href="{{ site.url }}{{ trans.url }}" />
-    {% endfor %}
-  {% endif %}
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Domek na Drzewie</title>
 
   <style>
     :root {
       --sage: #678760;
-      --cream: #f5f4ef;
       --text: #243126;
       --muted: #5e675f;
       --line: rgba(36,49,38,0.10);
       --max: 1120px;
-      --shadow: 0 14px 30px rgba(36,49,38,0.06);
     }
-    
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: Inter, Arial, sans-serif;
       background: #f3f1eb;
       color: var(--text);
     }
-
-    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(calc(100% - 32px), var(--max));
@@ -52,7 +35,6 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      backdrop-filter: blur(10px);
     }
 
     .nav {
@@ -60,249 +42,133 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      min-width: 0;
     }
 
     .brand-mark {
-      width: 58px; height: 58px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       overflow: hidden;
-      background: #fff;
-      border: 1px solid rgba(36,49,38,0.08);
-      flex-shrink: 0;
-      box-shadow: var(--shadow);
     }
 
-    .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .brand-text { min-width: 0; }
-    .brand-title { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.01em; line-height: 1.1; }
-    .brand-subtitle { margin-top: 4px; font-size: 0.88rem; color: var(--muted); line-height: 1.3; }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-    .nav-links { display: flex; align-items: stretch; gap: 0; 
-                transition: all 0.25s ease;;
-                flex-wrap: wrap; }
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    /* DESKTOP NAV */
+    .nav-links {
+      display: flex;
+    }
 
     .nav-links a {
-      min-height: 96px;
-      padding: 0 26px;
-      display: inline-flex;
+      padding: 0 20px;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      border-left: 1px solid rgba(36,49,38,0.06);
-      transition: 0.18s ease;
-      text-align: center;
+      min-height: 96px;
     }
 
-    .nav-links a:hover, .nav-links a.active { background: var(--sage); color: white; }
-    .nav-label { display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.08; gap: 4px; }
-    .nav-pl { display: block; font-size: 0.94rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+    /* HAMBURGER */
+    .menu-toggle {
+      display: none;
+      font-size: 22px;
+      background: none;
+      border: 1px solid rgba(36,49,38,0.15);
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
 
-    .page { padding: 42px 0 56px; }
-    .footer { border-top: 1px solid var(--line); padding: 24px 0 36px; color: var(--muted); font-size: 0.95rem; }
-
+    /* MOBILE */
     @media (max-width: 900px) {
-      .nav { padding: 12px 0 16px; flex-direction: column; align-items: flex-start; }
-      .brand { width: 100%; }
-     
-      .nav-links a { min-height: 78px; padding: 0 18px; border-left: none; border-right: 1px solid rgba(36,49,38,0.06); flex: 1 1 0; }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-  .menu-toggle {
-    display: block;
-  }
+      .menu-toggle {
+        display: block;
+        margin-top: 10px;
+      }
 
-  .nav-links {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-  background: white;
-  border-top: 1px solid rgba(36,49,38,0.06);
-}
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        border-top: 1px solid rgba(36,49,38,0.06);
+      }
 
-  .nav-links.active {
-    display: flex;
-  }
-}
+      .nav-links.active {
+        display: flex;
+      }
 
-    @media (max-width: 640px) {
-  .nav {
-    min-height: auto;
-    gap: 10px;
-  }
-
-  .brand-mark {
-    width: 42px;
-    height: 42px;
-  }
-
-  .brand-title {
-    font-size: 1rem;
-  }
-
-  .brand-subtitle {
-    font-size: 0.75rem;
-  }
-
-.ggle {
-  display: block;
-}
-
-
-
-.nav-links a {
-  min-height: 48px;
-  padding: 0 16px;
-  border-bottom: 1px solid rgba(36,49,38,0.06);
-  justify-content: flex-start;
-}
-
-  .nav-pl {
-    font-size: 0.78rem;
-    letter-spacing: 0.02em;
-  }
-
-
-}
-.leaf-icon {
-  display: block;
-  width: 22px;
-  height: 16px;
-  position: relative;
-}
-
-.leaf-icon span {
-  display: block;
-  height: 2px;
-  background: #243126;
-  margin: 3px 0;
-}
-
-.menu-toggle {
-  display: none;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(36,49,38,0.15);
-  border-radius: 10px;
-  padding: 6px;
-  background: none;
-  cursor: pointer;
-}
-
-.leaf-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  width: 100%;
-  height: 100%;
-}
-
-.leaf-icon span {
-  display: block;
-  height: 2px;
-  background: #243126;
-  border-radius: 2px;
-}
+      .nav-links a {
+        min-height: 56px;
+        padding: 0 16px;
+        border-bottom: 1px solid rgba(36,49,38,0.06);
+      }
+    }
   </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
-        <span class="brand-mark">
-          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo" />
-        </span>
-        <span class="brand-text">
-          <span class="brand-title">{% if page.lang == 'en' %}The Tree House Project{% else %}Projekt: Domek na Drzewie{% endif %}</span>
-          <span class="brand-subtitle">Blog</span>
-        </span>
-      </a>
-<button class="menu-toggle" aria-label="Menu">☰</button>
-      
-      <nav class="nav-links" aria-label="Navigation">
-        <a href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
-          <span class="nav-label">
-            <span class="nav-pl">{% if page.lang == 'en' %}Home{% else %}Strona główna{% endif %}</span>
-          </span>
-        </a>
 
-        <a href="{% if page.lang == 'en' %}/en/materials/{% else %}/materialy/{% endif %}">
-          <span class="nav-label">
-            <span class="nav-pl">{% if page.lang == 'en' %}Materials{% else %}Materiały{% endif %}</span>
-          </span>
-        </a>
+<header class="topbar">
+  <div class="container nav">
 
-        <a href="{% if page.lang == 'en' %}/en/blog/{% else %}/blog/{% endif %}" class="{% if page.url contains '/blog/' %}active{% endif %}">
-          <span class="nav-label">
-            <span class="nav-pl">Blog</span>
-          </span>
-        </a>
+    <a class="brand" href="/">
+      <span class="brand-mark">
+        <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo" />
+      </span>
+      <span class="brand-title">Domek na Drzewie</span>
+    </a>
 
-        {% if page.translation_id %}
-          {% assign translations = site.posts | where: "translation_id", page.translation_id %}
-          {% if translations.size == 0 %}
-            {% assign translations = site.pages | where: "translation_id", page.translation_id %}
-          {% endif %}
-          
-          {% for trans in translations %}
-            {% if trans.lang != page.lang %}
-              <a href="{{ trans.url | relative_url }}" style="background: rgba(103, 135, 96, 0.1); font-weight: bold;">
-                <span class="nav-label">
-                  <span class="nav-pl">{% if trans.lang == 'en' %}English{% else %}Polski{% endif %}</span>
-                </span>
-              </a>
-            {% endif %}
-          {% endfor %}
-        {% else %}
-          {% comment %} Fallback for pages without IDs - ensures proper label and link {% endcomment %}
-          {% if page.lang == 'en' %}
-            <a href="/blog/" style="background: rgba(103, 135, 96, 0.1);">
-              <span class="nav-label"><span class="nav-pl">Polski</span></span>
-            </a>
-          {% else %}
-            <a href="/en/blog/" style="background: rgba(103, 135, 96, 0.1);">
-              <span class="nav-label"><span class="nav-pl">English</span></span>
-            </a>
-          {% endif %}
-        {% endif %}
-      </nav>
-    </div>
-  </header>
+    <button class="menu-toggle" aria-label="Menu">☰</button>
 
-  <main class="page">
-    <div class="container">
-      {{ content }}
-    </div>
-  </main>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/materialy/">Materiały</a>
+      <a href="/blog/">Blog</a>
+    </nav>
 
-  <footer class="footer">
-    <div class="container">
-      Domek na Drzewie • project timeline
-    </div>
-  </footer>
+  </div>
+</header>
+
+<main class="container">
+  {{ content }}
+</main>
+
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.nav-links');
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav-links');
 
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
 
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('active');
-        });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
       });
-    }
-  });
+    });
+  }
+});
 </script>
+
 </body>
 </html>
