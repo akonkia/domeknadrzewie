@@ -112,9 +112,24 @@
     }
 
     @media (max-width: 640px) {
-      .nav-links { display: grid; grid-template-columns: 1fr; }
-      .nav-links a { min-height: 66px; border-right: none; border-bottom: 1px solid rgba(36,49,38,0.06); }
-    }
+  .nav-links {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-top: 1px solid rgba(36,49,38,0.06);
+  }
+
+  .nav-links a {
+    min-height: 56px;
+    padding: 0 16px;
+    border-right: 1px solid rgba(36,49,38,0.06);
+    flex: 0 0 auto;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
