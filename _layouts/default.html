@@ -112,6 +112,24 @@
     }
 
     @media (max-width: 640px) {
+  .nav {
+    min-height: auto;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.75rem;
+  }
+
   .nav-links {
     display: flex;
     overflow-x: auto;
@@ -120,15 +138,22 @@
   }
 
   .nav-links a {
-    min-height: 56px;
-    padding: 0 16px;
+    min-height: 44px;          /* ↓ key change */
+    padding: 0 12px;          /* ↓ tighter */
+    font-size: 0.85rem;       /* ↓ slightly smaller */
     border-right: 1px solid rgba(36,49,38,0.06);
     flex: 0 0 auto;
+  }
+
+  .nav-pl {
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
   }
 
   .nav-links::-webkit-scrollbar {
     display: none;
   }
+}
 }
   </style>
 </head>
