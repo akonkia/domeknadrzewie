@@ -313,6 +313,22 @@
     link.addEventListener('click', () => {
       nav.classList.remove('active');
     });
+
+      <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-links');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+
+        // 👇 visual debug
+        toggle.style.background = "rgba(103,135,96,0.2)";
+      });
+    }
+  });
+</script>
 </script>
 </body>
 </html>
