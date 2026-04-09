@@ -27,6 +27,12 @@ layout: default
      If lang is already a string "pl", 'join' does nothing.
 {% endcomment %}
 {% assign raw_page_lang = page.lang | join: "" | strip %}
+{% assign prev_label = "← Poprzedni" %}
+{% assign next_label = "Następny →" %}
+{% if raw_page_lang == "en" %}
+  {% assign prev_label = "← Previous" %}
+  {% assign next_label = "Next →" %}
+{% endif %}
 
 {% comment %} 
   2. BUILD THE FILTERED LIST MANUALLY 
@@ -50,7 +56,7 @@ layout: default
         {% if prev_idx < filtered_posts.size %}
           {% assign prev_p = filtered_posts[prev_idx] %}
           <a href="{{ prev_p.url | relative_url }}" class="post-nav-card">
-            <span class="post-nav-label">← Poprzedni</span>
+            <span class="post-nav-label">{{ prev_label }}</span>
             <span class="post-nav-title">{{ prev_p.title }}</span>
           </a>
         {% endif %}
@@ -60,7 +66,7 @@ layout: default
         {% if next_idx >= 0 %}
           {% assign next_p = filtered_posts[next_idx] %}
           <a href="{{ next_p.url | relative_url }}" class="post-nav-card next">
-            <span class="post-nav-label">Następny →</span>
+            <span class="post-nav-label">{{ next_label }}</span>
             <span class="post-nav-title">{{ next_p.title }}</span>
           </a>
         {% endif %}
