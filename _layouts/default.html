@@ -37,7 +37,7 @@
     body {
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
-      background: #f3f1eb;
+      background: #faf7f0;
       color: var(--text);
     }
 
@@ -113,21 +113,58 @@
       transition: 0.18s ease;
       text-align: center;
     }
+    /* BEGIN: Organic mobile menu toggle */
     .menu-toggle {
       display: none;
       width: 48px;
       height: 48px;
       padding: 0;
       border: 1px solid rgba(36,49,38,0.12);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.92);
-      box-shadow: var(--shadow);
+      border-radius: 55% 45% 58% 42% / 44% 53% 47% 56%;
+      background: linear-gradient(135deg, rgba(251,155,39,0.28), rgba(252,193,93,0.32) 48%, rgba(103,135,96,0.22));
+      box-shadow:
+        0 16px 34px rgba(36,49,38,0.10),
+        inset 0 1px 0 rgba(255,255,255,0.8);
       cursor: pointer;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       gap: 5px;
       flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      transition:
+        transform 0.28s ease,
+        border-radius 0.34s ease,
+        box-shadow 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      transition: transform 0.35s ease, opacity 0.28s ease, border-radius 0.35s ease;
+    }
+
+    .menu-toggle::before {
+      inset: 5px;
+      border-radius: 58% 42% 46% 54% / 48% 58% 42% 52%;
+      background: rgba(255,255,255,0.64);
+      z-index: 0;
+    }
+
+    .menu-toggle::after {
+      width: 70px;
+      height: 70px;
+      right: -18px;
+      top: -22px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.38), rgba(255,255,255,0));
+      opacity: 0.9;
+      z-index: 0;
     }
 
     .menu-toggle span {
@@ -137,6 +174,27 @@
       border-radius: 999px;
       background: var(--text);
       transition: transform 0.22s ease, opacity 0.22s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (hover: hover) {
+      .menu-toggle:hover {
+        transform: translateY(-2px) rotate(-4deg) scale(1.04);
+        border-radius: 42% 58% 44% 56% / 53% 41% 59% 47%;
+        box-shadow:
+          0 22px 42px rgba(36,49,38,0.14),
+          inset 0 1px 0 rgba(255,255,255,0.88);
+      }
+
+      .menu-toggle:hover::before {
+        transform: scale(1.03) rotate(8deg);
+        border-radius: 46% 54% 42% 58% / 56% 42% 58% 44%;
+      }
+
+      .menu-toggle:hover::after {
+        transform: translate(-4px, 4px) scale(1.08);
+      }
     }
 
     .menu-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -150,6 +208,69 @@
     .menu-toggle[aria-expanded="true"] span:nth-child(3) {
       transform: translateY(-7px) rotate(-45deg);
     }
+
+    .menu-toggle[aria-expanded="true"] {
+      transform: rotate(8deg) scale(1.05);
+      border-radius: 42% 58% 44% 56% / 53% 41% 59% 47%;
+      background: linear-gradient(135deg, rgba(251,155,39,0.36), rgba(252,193,93,0.42) 48%, rgba(103,135,96,0.28));
+      box-shadow:
+        0 22px 42px rgba(36,49,38,0.14),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .menu-toggle[aria-expanded="true"]::before {
+      transform: scale(1.06) rotate(10deg);
+      border-radius: 44% 56% 40% 60% / 60% 39% 61% 40%;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .menu-toggle[aria-expanded="true"]::after {
+      transform: translate(-6px, 6px) scale(1.12);
+    }
+    /* END: Organic mobile menu toggle */
+    /*
+      FALLBACK: Classic mobile menu toggle
+      To revert, replace the entire "BEGIN/END: Organic mobile menu toggle" block above
+      with the snippet below.
+
+      .menu-toggle {
+        display: none;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: 1px solid rgba(36,49,38,0.12);
+        border-radius: 16px;
+        background: rgba(255,255,255,0.92);
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .menu-toggle span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--text);
+        transition: transform 0.22s ease, opacity 0.22s ease;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    */
 
     .nav-links a:hover, .nav-links a.active { background: var(--sage); color: white; }
     .nav-links a[href*="/en/blog/"][style],
@@ -168,8 +289,9 @@
     .page {
       padding: 42px 0 56px;
       background:
-        radial-gradient(circle at top right, rgba(251,155,39,0.10), transparent 28%),
-        linear-gradient(180deg, rgba(252,193,93,0.08), transparent 140px);
+        radial-gradient(circle at top right, rgba(251,155,39,0.10), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 30%),
+        linear-gradient(180deg, #fffdf8 0%, #f8f5ee 100%);
     }
     .nav-label { display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.08; gap: 4px; }
     .nav-pl { display: block; font-size: 0.94rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -201,6 +323,7 @@
         display: inline-flex;
       }
 
+      /* BEGIN: Organic mobile menu panel */
       .nav-links {
         max-height: 0;
         overflow: hidden;
@@ -238,6 +361,46 @@
       .nav-label {
         align-items: flex-start;
       }
+      /* END: Organic mobile menu panel */
+      /*
+        FALLBACK: Classic mobile menu panel
+        To revert, replace the entire "BEGIN/END: Organic mobile menu panel" block above
+        with the snippet below.
+
+        .nav-links {
+          max-height: 0;
+          overflow: hidden;
+          opacity: 0;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          background: rgba(255,255,255,0.96);
+          border: 1px solid rgba(36,49,38,0.06);
+          border-radius: 18px;
+          box-shadow: var(--shadow);
+          transition: max-height 0.35s ease, opacity 0.25s ease;
+        }
+
+        .nav-links.active {
+          max-height: 400px;
+          opacity: 1;
+        }
+
+        .nav-links a {
+          min-height: 56px;
+          width: 100%;
+          padding: 0 18px;
+          border-left: none;
+          border-right: none;
+          border-bottom: 1px solid rgba(36,49,38,0.06);
+          justify-content: flex-start;
+          flex: none;
+        }
+
+        .nav-links a:last-child {
+          border-bottom: none;
+        }
+      */
     }
 
     @media (max-width: 640px) {
