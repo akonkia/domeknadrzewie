@@ -1,9 +1,18 @@
 ---
 layout: default
 ---
+{% assign raw_page_lang = page.lang | join: "" | strip %}
+{% assign months_pl = "stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia" | split: "|" %}
+{% assign months_en = "January|February|March|April|May|June|July|August|September|October|November|December" | split: "|" %}
+{% assign month_index = page.date | date: "%-m" | minus: 1 %}
+{% if raw_page_lang == "en" %}
+  {% assign month_name = months_en[month_index] %}
+{% else %}
+  {% assign month_name = months_pl[month_index] %}
+{% endif %}
 <article class="post">
   <header class="post-header">
-    <span class="post-date">{{ page.date | date: "%-d %B %Y" }}</span>
+    <span class="post-date">{{ page.date | date: "%-d" }} {{ month_name }} {{ page.date | date: "%Y" }}</span>
     <h1>{{ page.title }}</h1>
   </header>
 
@@ -26,7 +35,6 @@ layout: default
      If lang is an array ["pl"], 'join' turns it into "pl".
      If lang is already a string "pl", 'join' does nothing.
 {% endcomment %}
-{% assign raw_page_lang = page.lang | join: "" | strip %}
 {% assign prev_label = "← Poprzedni" %}
 {% assign next_label = "Następny →" %}
 {% if raw_page_lang == "en" %}
