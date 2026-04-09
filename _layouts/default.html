@@ -20,6 +20,8 @@
   <style>
     :root {
       --sage: #678760;
+      --orange: #fb9b27;
+      --gold: #fcc15d;
       --cream: #f5f4ef;
       --text: #243126;
       --muted: #5e675f;
@@ -53,6 +55,14 @@
       top: 0;
       z-index: 40;
       backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(36,49,38,0.04);
+    }
+
+    .topbar::before {
+      content: "";
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--gold), var(--sage));
     }
 
     .nav {
@@ -61,6 +71,10 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+    }
+
+    .nav-head {
+      display: contents;
     }
 
     .brand {
@@ -85,8 +99,8 @@
     .brand-title { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.01em; line-height: 1.1; }
     .brand-subtitle { margin-top: 4px; font-size: 0.88rem; color: var(--muted); line-height: 1.3; }
 
-    .nav-links { display: flex; align-items: stretch; gap: 0; 
-                transition: all 0.25s ease;;
+    .nav-links { display: flex; align-items: stretch; gap: 0;
+                transition: all 0.25s ease;
                 flex-wrap: wrap; }
 
     .nav-links a {
@@ -100,97 +114,160 @@
       text-align: center;
     }
     .menu-toggle {
-  display: none;
-  font-size: 22px;
-  background: none;
-  border: 1px solid rgba(36,49,38,0.15);
-  border-radius: 8px;
-  padding: 6px 10px;
-  cursor: pointer;
-}
+      display: none;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border: 1px solid rgba(36,49,38,0.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.92);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     .nav-links a:hover, .nav-links a.active { background: var(--sage); color: white; }
+    .nav-links a[href*="/en/blog/"][style],
+    .nav-links a[href="/blog/"][style] {
+      background: var(--orange) !important;
+      color: white;
+      font-weight: 800;
+    }
+
+    .nav-links a[href*="/en/blog/"][style]:hover,
+    .nav-links a[href="/blog/"][style]:hover {
+      background: #e68e20 !important;
+      color: white;
+    }
+
+    .page {
+      padding: 42px 0 56px;
+      background:
+        radial-gradient(circle at top right, rgba(251,155,39,0.10), transparent 28%),
+        linear-gradient(180deg, rgba(252,193,93,0.08), transparent 140px);
+    }
     .nav-label { display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.08; gap: 4px; }
     .nav-pl { display: block; font-size: 0.94rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
-
-    .page { padding: 42px 0 56px; }
     .footer { border-top: 1px solid var(--line); padding: 24px 0 36px; color: var(--muted); font-size: 0.95rem; }
 
     @media (max-width: 900px) {
-        .menu-toggle {
-    display: block;
-  }
-      .nav { padding: 12px 0 16px; flex-direction: column; align-items: flex-start; }
-      .brand { width: 100%; }
-     
-      .nav-links a { min-height: 78px; padding: 0 18px; border-left: none; border-right: 1px solid rgba(36,49,38,0.06); flex: 1 1 0; }
+      .nav {
+        min-height: auto;
+        padding: 12px 0 16px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
 
- 
+      .nav-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+      }
 
-  .nav-links {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
+      .brand {
+        width: auto;
+        flex: 1;
+      }
 
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background: white;
-  border-top: 1px solid rgba(36,49,38,0.06);
+      .menu-toggle {
+        display: inline-flex;
+      }
 
-  transition: max-height 0.35s ease, opacity 0.25s ease;
-}
+      .nav-links {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(255,255,255,0.96);
+        border: 1px solid rgba(36,49,38,0.06);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        transition: max-height 0.35s ease, opacity 0.25s ease;
+      }
 
-.nav-links.active {
-  max-height: 400px;
-  opacity: 1;
-}
-}
+      .nav-links.active {
+        max-height: 400px;
+        opacity: 1;
+      }
+
+      .nav-links a {
+        min-height: 56px;
+        width: 100%;
+        padding: 0 18px;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(36,49,38,0.06);
+        justify-content: flex-start;
+        flex: none;
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+
+      .nav-label {
+        align-items: flex-start;
+      }
+    }
 
     @media (max-width: 640px) {
-  .nav {
-    min-height: auto;
-    gap: 10px;
-  }
+      .nav {
+        gap: 10px;
+      }
 
-  .brand-mark {
-    width: 42px;
-    height: 42px;
-  }
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+      }
 
-  .brand-title {
-    font-size: 1rem;
-  }
+      .brand-title {
+        font-size: 1rem;
+      }
 
-  .brand-subtitle {
-    font-size: 0.75rem;
-  }
+      .brand-subtitle {
+        font-size: 0.75rem;
+      }
 
-.nav-links a {
-  min-height: 48px;
-  padding: 0 16px;
-  border-bottom: 1px solid rgba(36,49,38,0.06);
-  justify-content: flex-start;
-}
-      .menu-toggle {
-  display: block;
-  font-size: 22px;
-  background: none;
-  border: 1px solid rgba(36,49,38,0.15);
-  padding: 6px 10px;
-  cursor: pointer;
-  border-radius: 14px;
-        
-}
+      .nav-links a {
+        min-height: 48px;
+        padding: 0 16px;
+      }
 
-
-  .nav-pl {
-    font-size: 0.78rem;
-    letter-spacing: 0.02em;
-  }
-
-
-}
+      .nav-pl {
+        font-size: 0.78rem;
+        letter-spacing: 0.02em;
+      }
+    }
 .leaf-icon {
   display: block;
   width: 22px;
@@ -212,18 +289,24 @@
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
-        <span class="brand-mark">
-          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo" />
-        </span>
-        <span class="brand-text">
-          <span class="brand-title">{% if page.lang == 'en' %}The Tree House Project{% else %}Projekt: Domek na Drzewie{% endif %}</span>
-          <span class="brand-subtitle">Blog</span>
-        </span>
-      </a>
-<button class="menu-toggle" aria-label="Menu">☰</button>
+      <div class="nav-head">
+        <a class="brand" href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
+          <span class="brand-mark">
+            <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo" />
+          </span>
+          <span class="brand-text">
+            <span class="brand-title">{% if page.lang == 'en' %}The Tree House Project{% else %}Projekt: Domek na Drzewie{% endif %}</span>
+            <span class="brand-subtitle">Blog</span>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
       
-      <nav class="nav-links" aria-label="Navigation">
+      <nav class="nav-links" id="site-menu" aria-label="Navigation">
         <a href="{% if page.lang == 'en' %}/en/{% else %}/{% endif %}">
           <span class="nav-label">
             <span class="nav-pl">{% if page.lang == 'en' %}Home{% else %}Strona główna{% endif %}</span>
@@ -291,12 +374,14 @@
 
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
+        const isOpen = nav.classList.toggle('active');
+        toggle.setAttribute('aria-expanded', String(isOpen));
       });
 
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
           nav.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
         });
       });
     }
