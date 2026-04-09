@@ -6,6 +6,8 @@ translation_id: blog-main
 permalink: /blog/
 ---
 
+{% assign months_pl = "stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia" | split: "|" %}
+
 <section class="blog-index">
   <div class="blog-intro">
     <h1>Blog</h1>
@@ -19,6 +21,7 @@ permalink: /blog/
     {% for post in filtered_posts %}
       {% assign thumb_image = post.cover | default: site.default_cover %}
       {% assign thumb_alt = post.cover_alt | default: post.title %}
+      {% assign month_index = post.date | date: "%-m" | minus: 1 %}
       
       <a class="post-link" href="{{ post.url | relative_url }}">
         <article class="post-card">
@@ -29,7 +32,7 @@ permalink: /blog/
 
           <div class="post-card-content">
             <time datetime="{{ post.date | date_to_xmlschema }}">
-              {{ post.date | date: "%-d %B %Y" }}
+              {{ post.date | date: "%-d" }} {{ months_pl[month_index] }} {{ post.date | date: "%Y" }}
             </time>
             
             <h2>{{ post.title }}</h2>
@@ -47,3 +50,4 @@ permalink: /blog/
     
   </div>
 </section>
+
