@@ -78,6 +78,10 @@
       gap: 20px;
     }
 
+    .nav-head {
+      display: contents;
+    }
+
     .brand {
       display: flex;
       align-items: center;
@@ -119,6 +123,147 @@
       gap: 0;
       flex-wrap: wrap;
     }
+
+    /* BEGIN: Organic mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      width: 56px;
+      height: 56px;
+      padding: 0;
+      border: 1px solid rgba(251,155,39,0.30);
+      border-radius: 55% 45% 58% 42% / 44% 53% 47% 56%;
+      background: linear-gradient(135deg, rgba(251,155,39,0.42), rgba(252,193,93,0.52) 48%, rgba(103,135,96,0.30));
+      box-shadow:
+        0 18px 40px rgba(36,49,38,0.14),
+        0 0 0 8px rgba(255,244,196,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      animation: organic-toggle-float 4.2s ease-in-out infinite;
+      transition:
+        transform 0.28s ease,
+        border-radius 0.34s ease,
+        box-shadow 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      transition: transform 0.35s ease, opacity 0.28s ease, border-radius 0.35s ease;
+    }
+
+    .menu-toggle::before {
+      inset: 4px;
+      border-radius: 58% 42% 46% 54% / 48% 58% 42% 52%;
+      background: rgba(255,255,255,0.70);
+      z-index: 0;
+    }
+
+    .menu-toggle::after {
+      width: 84px;
+      height: 84px;
+      right: -22px;
+      top: -26px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.54), rgba(255,255,255,0));
+      opacity: 1;
+      z-index: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2.5px;
+      border-radius: 999px;
+      background: var(--text);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.28);
+      transition: transform 0.28s ease, opacity 0.22s ease, width 0.28s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-toggle span:nth-child(2) {
+      width: 18px;
+    }
+
+    .menu-toggle:focus-visible {
+      outline: none;
+      box-shadow:
+        0 20px 42px rgba(36,49,38,0.16),
+        0 0 0 10px rgba(251,155,39,0.16),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    @media (hover: hover) {
+      .menu-toggle:hover {
+        transform: translateY(-3px) rotate(-7deg) scale(1.10);
+        border-radius: 42% 58% 44% 56% / 53% 41% 59% 47%;
+        box-shadow:
+          0 26px 48px rgba(36,49,38,0.18),
+          0 0 0 10px rgba(255,244,196,0.22),
+          inset 0 1px 0 rgba(255,255,255,0.88);
+      }
+
+      .menu-toggle:hover::before {
+        transform: scale(1.06) rotate(10deg);
+        border-radius: 46% 54% 42% 58% / 56% 42% 58% 44%;
+      }
+
+      .menu-toggle:hover::after {
+        transform: translate(-6px, 6px) scale(1.14);
+      }
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(8.5px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+      width: 8px;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] {
+      animation: none;
+      transform: rotate(10deg) scale(1.12);
+      border-radius: 38% 62% 42% 58% / 56% 38% 62% 44%;
+      background: linear-gradient(135deg, rgba(251,155,39,0.48), rgba(252,193,93,0.58) 48%, rgba(103,135,96,0.34));
+      box-shadow:
+        0 28px 54px rgba(36,49,38,0.20),
+        0 0 0 12px rgba(255,244,196,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .menu-toggle[aria-expanded="true"]::before {
+      transform: scale(1.10) rotate(14deg);
+      border-radius: 42% 58% 36% 64% / 64% 34% 66% 36%;
+      background: rgba(255,255,255,0.78);
+    }
+
+    .menu-toggle[aria-expanded="true"]::after {
+      transform: translate(-8px, 9px) scale(1.18);
+    }
+
+    @keyframes organic-toggle-float {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      35% { transform: rotate(-3deg) translateY(-1px); }
+      70% { transform: rotate(2deg) translateY(1px); }
+    }
+    /* END: Organic mobile menu toggle */
 
     .nav-links a {
       min-height: 88px;
@@ -464,17 +609,117 @@
       .nav {
         padding: 10px 0 14px;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
       }
 
-      .nav-links {
+      .nav-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         width: 100%;
+        gap: 16px;
+      }
+
+      .brand {
+        flex: 1;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      /* BEGIN: Organic mobile menu panel */
+      .nav-links {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,251,242,0.98));
+        border: 1px solid rgba(251,155,39,0.12);
+        border-radius: 30px 24px 34px 22px;
+        box-shadow:
+          0 20px 44px rgba(36,49,38,0.10),
+          inset 0 1px 0 rgba(255,255,255,0.8);
+        position: relative;
+        transform: translateY(-8px) scale(0.985, 0.94);
+        transform-origin: top center;
+        will-change: max-height, opacity, transform, border-radius;
+        transition:
+          max-height 0.58s cubic-bezier(0.25, 0.9, 0.3, 1),
+          opacity 0.32s ease,
+          transform 0.58s cubic-bezier(0.25, 0.9, 0.3, 1),
+          border-radius 0.58s cubic-bezier(0.25, 0.9, 0.3, 1);
+      }
+
+      .nav-links::before,
+      .nav-links::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        transition: transform 0.58s cubic-bezier(0.25, 0.9, 0.3, 1), opacity 0.32s ease;
+      }
+
+      .nav-links::before {
+        inset: 0;
+        border-radius: inherit;
+        background:
+          radial-gradient(circle at 14% 12%, rgba(255,244,196,0.58), transparent 22%),
+          radial-gradient(circle at 88% 18%, rgba(251,155,39,0.16), transparent 18%),
+          radial-gradient(circle at 18% 82%, rgba(103,135,96,0.12), transparent 20%);
+        opacity: 0.85;
+      }
+
+      .nav-links::after {
+        width: 130px;
+        height: 68px;
+        top: -14px;
+        right: 18px;
+        border-radius: 58% 42% 60% 40% / 46% 58% 42% 54%;
+        background: radial-gradient(circle, rgba(255,255,255,0.48), rgba(255,255,255,0));
+        opacity: 0.8;
+      }
+
+      .nav-links.active {
+        max-height: 460px;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        border-radius: 28px 26px 32px 24px;
       }
 
       .nav-links a {
         min-height: 52px;
+        width: 100%;
         padding: 0 14px;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(36,49,38,0.06);
+        justify-content: flex-start;
+        text-align: left;
+        position: relative;
+        z-index: 1;
       }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links.active::before {
+        transform: scale(1.01, 1.03);
+      }
+
+      .nav-links.active::after {
+        transform: translate(-5px, 6px) scale(1.03);
+      }
+
+      @media (hover: hover) {
+        .nav-links a:hover {
+          transform: translateX(4px);
+          padding-left: 18px;
+        }
+      }
+      /* END: Organic mobile menu panel */
 
       .hero {
         min-height: 280px;
@@ -495,17 +740,24 @@
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="/" aria-label="Projekt: Domek na Drzewie">
-        <div class="brand-mark">
-          <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
-        </div>
-        <div>
-          <div class="brand-title">Projekt: Domek na Drzewie</div>
-          <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
-        </div>
-      </a>
+      <div class="nav-head">
+        <a class="brand" href="/" aria-label="Projekt: Domek na Drzewie">
+          <div class="brand-mark">
+            <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+          </div>
+          <div>
+            <div class="brand-title">Projekt: Domek na Drzewie</div>
+            <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
+          </div>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
-      <nav class="nav-links" aria-label="Nawigacja">
+      <nav class="nav-links" id="site-menu" aria-label="Nawigacja">
         <a href="/">O projekcie</a>
         <a href="/materialy/" class="active">Materiały</a>
         <a class="lang-link" href="/en/materials/colouring_pages/spring_01/" lang="en" hreflang="en">English</a>
@@ -610,5 +862,23 @@
       <div>marzec 2026</div>
     </div>
   </footer>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-links');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
