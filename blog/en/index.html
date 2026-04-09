@@ -6,6 +6,8 @@ translation_id: blog-main
 permalink: /blog/en/
 ---
 
+{% assign months_en = "January|February|March|April|May|June|July|August|September|October|November|December" | split: "|" %}
+
 <section class="blog-index">
   <div class="blog-intro">
     <h1>Blog</h1>
@@ -22,6 +24,7 @@ permalink: /blog/en/
     {% for post in filtered_posts %}
       {% assign thumb_image = post.cover | default: site.default_cover %}
       {% assign thumb_alt = post.cover_alt | default: post.title %}
+      {% assign month_index = post.date | date: "%-m" | minus: 1 %}
       
       <a class="post-link" href="{{ post.url | relative_url }}">
         <article class="post-card">
@@ -32,7 +35,7 @@ permalink: /blog/en/
 
           <div class="post-card-content">
             <time datetime="{{ post.date | date_to_xmlschema }}">
-              {{ post.date | date: "%-d %B %Y" }}
+              {{ post.date | date: "%-d" }} {{ months_en[month_index] }} {{ post.date | date: "%Y" }}
             </time>
             
             <h2>{{ post.title }}</h2>
