@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="/assets/css/main.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WGXSZG17N"></script>
@@ -795,16 +796,13 @@
       .nav {
         padding: 10px 0 14px;
         flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        width: 100%;
+        align-items: stretch;
       }
 
       .nav-links button,
       .nav-links a {
         min-height: 52px;
+        width: 100%;
         padding: 0 14px;
       }
 
@@ -829,17 +827,24 @@
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="#about" aria-label="Project: Tree House">
-        <div class="brand-mark">
-          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project Tree House logo" />
-        </div>
-        <div>
-          <div class="brand-title">Project: Tree House</div>
-          <div class="brand-subtitle">An educational and social project inspired by nature.</div>
-        </div>
-      </a>
+      <div class="nav-head">
+        <a class="brand" href="#about" aria-label="Project: Tree House">
+          <div class="brand-mark">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project Tree House logo" />
+          </div>
+          <div>
+            <div class="brand-title">Project: Tree House</div>
+            <div class="brand-subtitle">An educational and social project inspired by nature.</div>
+          </div>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
-      <nav class="nav-links" aria-label="Navigation">
+      <nav class="nav-links" id="site-menu" aria-label="Navigation">
         <button class="active" data-page="about">About</button>
         <a href="/en/materials/">Resources</a>
         <a href="/blog/en/">Blog</a>
@@ -1064,6 +1069,8 @@
     const buttons = document.querySelectorAll('[data-page]');
     const pages = document.querySelectorAll('.page');
     const tabs = document.querySelectorAll('.nav-links button');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-links');
 
     function setPage(pageId) {
       pages.forEach(page => page.classList.toggle('active', page.id === pageId));
@@ -1074,11 +1081,31 @@
     }
 
     buttons.forEach(button => {
-      button.addEventListener('click', () => setPage(button.dataset.page));
+      button.addEventListener('click', () => {
+        setPage(button.dataset.page);
+        if (navMenu && menuToggle) {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
 
     const initial = window.location.hash.replace('#', '');
     if (initial === 'materials' || initial === 'about') setPage(initial);
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
     (function () {
       if (!window.SunCalc) return;
