@@ -7,7 +7,6 @@ lang: en
 categories: [mindfulness, nature, spring]
 tags: [mindfulness practice, nature meditation, spring mindfulness, awareness exercise, slow living]
 image: /assets/img/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png
----
 translation_id:	flower-in-bloom-2026
 ---
 
