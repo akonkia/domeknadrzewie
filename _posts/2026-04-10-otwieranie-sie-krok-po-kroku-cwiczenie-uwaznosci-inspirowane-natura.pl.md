@@ -6,7 +6,7 @@ date: 2026-04-10
 lang: pl
 categories: [uważność, natura, wiosna]
 tags: [ćwiczenie uważności, uważność w naturze, wiosna, praktyka uważności, slow life]
-image: /assets/img/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png
+cover: /assets/img/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png
 translation_id:	flower-in-bloom-2026
 ---
 
