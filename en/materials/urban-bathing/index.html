@@ -100,7 +100,6 @@
     .btn-main { background: var(--sage); color: white; }
     .btn-alt { background: var(--gold); color: #3d2a10; }
     .btn-copy { background: #e0e7ff; color: #4338ca; }
-    .btn-insta { background: #b44f72; color: white; }
 
     .week-nav-row { display: flex; gap: 10px; margin-top: 25px; border-top: 1px solid var(--line); padding-top: 20px; }
     .nav-arrow-btn { flex: 1; padding: 12px; cursor: pointer; border: 1px solid var(--line); background: white; font-weight: 800; text-transform: uppercase; font-size: 0.7rem; transition: 0.2s; }
@@ -238,7 +237,7 @@
               <a href="${imgPath}${card.img}?v=2026" download class="btn-main">Image</a>
               <a href="${imgPath}${card.imgB}?v=2026" download class="btn-alt">Reflection</a>
               <button onclick="copyLink(${card.id})" class="btn-copy">🔗 Copy link</button>
-              <a href="https://instagram.com/p/${card.insta}/" target="_blank" class="btn-insta">Instagram</a>
+          
             </div>
             ${isSingleView ? `
             <div class="week-nav-row">
