@@ -6,6 +6,20 @@
 <title>Start here</title>
 
 <style>
+:root {
+  --sage: #678760;
+  --orange: #fb9b27;
+  --gold: #fcc15d;
+  --mist: #d3d4d5;
+  --cream: #f5f4ef;
+  --white: #ffffff;
+  --text: #243126;
+  --muted: #5e675f;
+  --line: rgba(36, 49, 38, 0.1);
+  --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
+  --max: 1120px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -13,7 +27,12 @@ body {
   color: #2f3a2f;
 }
 
-/* ===== NAV (IDENTITY) ===== */
+.container {
+  width: min(calc(100% - 32px), var(--max));
+  margin: 0 auto;
+}
+
+/* ===== NAV ===== */
 
 .site-nav {
   width: 100%;
@@ -42,26 +61,16 @@ body {
   object-fit: contain;
 }
 
-.site-brand-text {
-  display: grid;
-  gap: 4px;
-}
-
 .site-brand-title {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   font-weight: 700;
-  line-height: 1.1;
 }
 
 .site-brand-subtitle {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  line-height: 1.25;
   color: #4f5f53;
 }
 
-/* NAV BUTTON AREA */
 .site-nav-links {
   display: flex;
   align-items: center;
@@ -69,23 +78,20 @@ body {
   padding-right: 16px;
 }
 
-/* PRIMARY BUTTON */
 .site-nav-link.primary {
   padding: 14px 22px;
   border-radius: 999px;
   text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  background: #6f8f6b;
-  color: #ffffff;
+  background: var(--sage);
+  color: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 
 .site-nav-link.primary:hover {
   background: #5f7d5c;
-  transform: translateY(-1px);
 }
 
 /* ===== MAP ===== */
@@ -98,25 +104,14 @@ body {
 
 .map img {
   width: 100%;
-  display: block;
   border-radius: 6px;
-  filter: brightness(0.92) saturate(0.9);
 }
 
 /* ZONES */
+
 .zone {
   position: absolute;
-  display: block;
   border-radius: 18px;
-  overflow: hidden;
-}
-
-.zone::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: inherit;
 }
 
 .zone::before {
@@ -125,33 +120,68 @@ body {
   inset: 0;
   background: rgba(255,255,255,0.12);
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: 0.25s;
 }
 
 .zone:hover::before {
   opacity: 1;
 }
 
-/* LABELS */
+/* LABELS (FIXED) */
+
 .label {
   position: absolute;
-  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
   font-weight: 500;
-  line-height: 1.3;
-  max-width: 180px;
+  line-height: 1.35;
+  max-width: 260px;
   color: white;
   text-shadow:
     0 1px 3px rgba(0,0,0,0.6),
     0 0 6px rgba(0,0,0,0.4);
 }
 
-/* VISIBILITY */
+/* DESKTOP ZONES */
+
+.zone-top { top: 0%; left: 0%; width: 100%; height: 35%; }
+.zone-center { top: 46%; left: 33%; width: 30%; height: 50%; border-radius: 50%; }
+.zone-left { top: 48%; left: 0%; width: 34%; height: 38%; }
+.zone-right { top: 48%; left: 66%; width: 34%; height: 38%; }
+
+/* LABEL POSITIONS (FIXED) */
+
+.label-top {
+  top: 14%;
+  left: 6%;
+}
+
+.label-center {
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.label-left {
+  top: 72%;
+  left: 6%;
+}
+
+.label-right {
+  top: 72%;
+  right: 6%;
+  text-align: right;
+}
+
+/* MOBILE */
+
 .zone-mobile,
 .label-mobile {
   display: none;
 }
 
 @media (max-width: 700px) {
+
   .zone-desktop,
   .label-desktop {
     display: none;
@@ -161,22 +191,6 @@ body {
   .label-mobile {
     display: block;
   }
-}
-
-/* DESKTOP ZONES */
-.zone-top { top: 0%; left: 0%; width: 100%; height: 35%; }
-.zone-center { top: 46%; left: 33%; width: 30%; height: 50%; border-radius: 50%; }
-.zone-left { top: 48%; left: 0%; width: 34%; height: 38%; }
-.zone-right { top: 48%; left: 66%; width: 34%; height: 38%; }
-
-/* LABEL POSITIONS */
-.label-top { top: 10%; left: 5%; }
-.label-center { top: 44%; left: 38%; }
-.label-left { top: 70%; left: 5%; }
-.label-right { top: 70%; right: 5%; text-align: right; }
-
-/* MOBILE */
-@media (max-width: 700px) {
 
   .map img {
     height: 75vh;
@@ -184,84 +198,87 @@ body {
     object-position: 80% center;
   }
 
-  .zone::before {
-    opacity: 0.18;
-  }
-
-  .zone-top { top: 0%; left: 0%; width: 100%; height: 35%; }
-  .zone-center { top: 45%; left: -10%; width: 60%; height: 60%; border-radius: 50%; }
+  .zone-top { height: 35%; }
+  .zone-center { top: 45%; left: -10%; width: 60%; height: 60%; }
   .zone-bottom { top: 45%; left: 50%; width: 100%; height: 60%; }
 
   .label-top { top: 18%; left: 16%; }
-  .label-center { top: 65%; left: 12%; }
+  .label-center { top: 65%; left: 12%; transform: none; }
   .label-bottom { top: 65%; left: 56%; }
 }
 
-/* fallback */
-.fallback {
-  max-width: 720px;
-  margin: 30px auto 60px;
-  padding: 0 20px;
-  font-size: 0.95rem;
+/* FOOTER */
+
+.footer {
+  padding: 34px 0;
+}
+
+.footer-box {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="site-nav">
   <a href="/" class="site-brand">
-    <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo" class="site-brand-logo">
-    <div class="site-brand-text">
-      <span class="site-brand-title">Welcome, what are you looking for?</span>
-      <span class="site-brand-subtitle">Choose a place to begin.</span>
+    <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" class="site-brand-logo">
+    <div>
+      <div class="site-brand-title">Welcome</div>
+      <div class="site-brand-subtitle">Choose a place to begin</div>
     </div>
   </a>
-
   <div class="site-nav-links">
-    <a href="/en/sky/" class="site-nav-link primary">Zacznij po polsku →</a>
+    <a href="/en/sky/" class="site-nav-link primary">Po polsku →</a>
   </div>
 </nav>
 
-<!-- MAP -->
 <div class="map">
 
-  <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/890202c2a02607ba5039a0ede80e3aeb74bc06fd/assets/img/for-who-it-is-mindful-hub-starting-place-map.jpg" alt="Mindfulness map">
+<img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/890202c2a02607ba5039a0ede80e3aeb74bc06fd/assets/img/for-who-it-is-mindful-hub-starting-place-map.jpg">
 
-  <!-- DESKTOP -->
-  <a href="/blog/" class="zone zone-top zone-desktop"></a>
-  <div class="label label-top label-desktop">📖 I want to understand more</div>
+<!-- DESKTOP -->
+<a href="/blog/" class="zone zone-top zone-desktop"></a>
+<div class="label label-top label-desktop">📖 I want to understand more about the project</div>
 
-  <a href="/materialy/dla_dzieci/" class="zone zone-center zone-desktop"></a>
-  <div class="label label-center label-desktop">🐿️ For children</div>
+<a href="/materialy/dla_dzieci/" class="zone zone-center zone-desktop"></a>
+<div class="label label-center label-desktop">🐿️ Free printable resources for children</div>
 
-  <a href="/materialy/kapiele_miejskie/#tydzien-1" class="zone zone-left zone-desktop"></a>
-  <div class="label label-left label-desktop">🌱 I want to get closer to nature</div>
+<a href="/materialy/kapiele_miejskie/#tydzien-1" class="zone zone-left zone-desktop"></a>
+<div class="label label-left label-desktop">🌱 I want to get closer to nature</div>
 
-  <a href="/materialy/" class="zone zone-right zone-desktop"></a>
-  <div class="label label-right label-desktop">🍃 Mindfulness exercises</div>
+<a href="/materialy/" class="zone zone-right zone-desktop"></a>
+<div class="label label-right label-desktop">🍃 Mindfulness exercises</div>
 
-  <!-- MOBILE -->
-  <a href="/blog/" class="zone zone-top zone-mobile"></a>
-  <div class="label label-top label-mobile">📖 Learn more</div>
+<!-- MOBILE -->
+<a href="/blog/" class="zone zone-top zone-mobile"></a>
+<div class="label label-top label-mobile">📖 Learn more</div>
 
-  <a href="/materialy/dla_dzieci/" class="zone zone-center zone-mobile"></a>
-  <div class="label label-center label-mobile">🐿️ For children</div>
+<a href="/materialy/dla_dzieci/" class="zone zone-center zone-mobile"></a>
+<div class="label label-center label-mobile">🐿️ For children</div>
 
-  <a href="/materialy/" class="zone zone-bottom zone-mobile"></a>
-  <div class="label label-bottom label-mobile">
-    🌱 Explore nature & mindfulness
-  </div>
+<a href="/materialy/" class="zone zone-bottom zone-mobile"></a>
+<div class="label label-bottom label-mobile">🌱 Explore nature & mindfulness</div>
 
 </div>
 
 <div class="fallback">
-  Or begin here:<br>
-  <a href="/materialy/kapiele_miejskie/#tydzien-1">
-    Browse what we can offer.
-  </a>
+Not sure? Start here:<br>
+<a href="/materialy/kapiele_miejskie/#tydzien-1">Start with a simple practice</a>
 </div>
+
+<footer class="footer">
+  <div class="container footer-box">
+    <div><strong>Project: Tree House</strong> • We grow naturally</div>
+    <div>April 2026</div>
+  </div>
+</footer>
 
 </body>
 </html>
