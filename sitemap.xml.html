@@ -2,84 +2,51 @@
 layout: null
 permalink: /sitemap.xml
 ---
-
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- assign base = site.url -%}
 
-{% assign base = "https://domeknadrzewie.edu.pl" %}
+{%- comment -%} ===================== STATIC PAGES ===================== {%- endcomment -%}
+{%- assign static_pages = site.pages | where_exp: "page", "page.sitemap != false" -%}
 
-<!-- ===================== -->
-<!-- STATIC PAGES -->
-<!-- ===================== -->
-
-{% assign static_pages = site.pages | where_exp: "page", "page.sitemap != false" %}
-
-{% for page in static_pages %}
-  {% unless page.url contains "/404" or page.url contains ".xml" %}
-
+{%- for page in static_pages -%}
+  {%- unless page.url contains "/404" or page.url contains ".xml" or page.url contains "/assets/" -%}
   <url>
-    <loc>{{ base }}{{ page.url }}</loc>
+    <loc>{{ base }}{{ page.url | remove: "index.html" }}</loc>
     <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
-
-    {% if page.lang and page.translation_id %}
-      {% assign translations = site.pages | where: "translation_id", page.translation_id %}
-      {% for t in translations %}
-        <xhtml:link rel="alternate" hreflang="{{ t.lang }}" href="{{ base }}{{ t.url }}" />
-      {% endfor %}
-
-      {% assign pl_version = translations | where: "lang", "pl" | first %}
-      {% if pl_version %}
-        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}{{ pl_version.url }}" />
-      {% endif %}
-    {% endif %}
-
-    <!-- Smart priority -->
-    {% if page.url == "/" %}
-      <priority>1.0</priority>
-    {% elsif page.url contains "/blog" %}
-      <priority>0.8</priority>
-    {% elsif page.url contains "materialy" %}
-      <priority>0.8</priority>
-    {% else %}
-      <priority>0.6</priority>
-    {% endif %}
-
+    {%- if page.lang and page.translation_id -%}
+      {%- assign translations = site.pages | where: "translation_id", page.translation_id -%}
+      {%- for t in translations -%}
+        <xhtml:link rel="alternate" hreflang="{{ t.lang }}" href="{{ base }}{{ t.url | remove: 'index.html' }}" />
+      {%- endfor -%}
+      {%- assign pl_version = translations | where: "lang", "pl" | first -%}
+      {%- if pl_version -%}
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}{{ pl_version.url | remove: 'index.html' }}" />
+      {%- endif -%}
+    {%- endif -%}
+    <priority>{% if page.url == "/" %}1.0{% elsif page.url contains "/blog" or page.url contains "materialy" %}0.8{% else %}0.6{% endif %}</priority>
   </url>
+  {%- endunless -%}
+{%- endfor -%}
 
-  {% endunless %}
-{% endfor %}
-
-<!-- ===================== -->
-<!-- POSTS -->
-<!-- ===================== -->
-
-{% for post in site.posts %}
-  {% unless post.noindex %}
-
+{%- comment -%} ===================== POSTS ===================== {%- endcomment -%}
+{%- for post in site.posts -%}
+  {%- unless post.noindex -%}
   <url>
     <loc>{{ base }}{{ post.url }}</loc>
     <lastmod>{{ post.last_modified_at | default: post.date | date: "%Y-%m-%d" }}</lastmod>
-
-    {% if post.translation_id %}
-      {% assign translations = site.posts | where: "translation_id", post.translation_id %}
-
-      {% for t in translations %}
+    {%- if post.translation_id -%}
+      {%- assign translations = site.posts | where: "translation_id", post.translation_id -%}
+      {%- for t in translations -%}
         <xhtml:link rel="alternate" hreflang="{{ t.lang }}" href="{{ base }}{{ t.url }}" />
-      {% endfor %}
-
-      {% assign pl_version = translations | where: "lang", "pl" | first %}
-      {% if pl_version %}
+      {%- endfor -%}
+      {%- assign pl_version = translations | where: "lang", "pl" | first -%}
+      {%- if pl_version -%}
         <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}{{ pl_version.url }}" />
-      {% endif %}
-    {% endif %}
-
+      {%- endif -%}
+    {%- endif -%}
     <priority>0.65</priority>
-
   </url>
-
-  {% endunless %}
-{% endfor %}
-
+  {%- endunless -%}
+{%- endfor -%}
 </urlset>
