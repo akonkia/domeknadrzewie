@@ -6,12 +6,6 @@ permalink: /404.html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-3WGXSZG17N');
-  </script>
   <meta charset="UTF-8">
   <title>404</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +18,8 @@ permalink: /404.html
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #010603; 
+      /* Lifted the base black to a very deep forest green */
+      background: #040d06; 
       color: #ffffff;
       font-family: system-ui, -apple-system, sans-serif;
     }
@@ -32,11 +27,11 @@ permalink: /404.html
     #bg-image {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      /* Updated path for your Jekyll assets folder */
       background-image: url('/assets/img/yoal-desurmont-jqgsM3B9Fpo-unsplash.jpg'); 
       background-size: cover;
       background-position: center;
-      filter: brightness(0.35) contrast(1.1);
+      /* BRIGHTER: Changed 0.35 to 0.65 to show the leaves */
+      filter: brightness(0.65) contrast(1.05) saturate(1.1);
       z-index: 1;
     }
 
@@ -72,31 +67,31 @@ permalink: /404.html
       font-size: 0.85rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #d4ff00;
-      opacity: 0.6;
+      color: #e6ff66; /* Brighter lime-yellow */
+      opacity: 0.8;
       transition: opacity 1s ease;
-      animation: pulse 2s infinite ease-in-out;
+      animation: pulse 2.5s infinite ease-in-out;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.2; transform: translateX(-50%) scale(0.95); }
-      50% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+      0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(0.98); }
+      50% { opacity: 0.9; transform: translateX(-50%) scale(1.02); }
     }
 
     h1 {
       font-size: clamp(2.5rem, 8vw, 4rem);
       margin-bottom: 10px;
-      color: #d4ff00;
+      color: #e6ff66;
       font-weight: 300;
-      text-shadow: 0 0 20px rgba(0,0,0,0.8);
+      text-shadow: 0 4px 15px rgba(0,0,0,0.4);
     }
 
     p {
       font-size: 1.1rem;
       line-height: 1.6;
       max-width: 600px;
-      opacity: 0.8;
-      text-shadow: 0 0 10px rgba(0,0,0,0.8);
+      opacity: 0.95; /* More readable */
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
     }
 
     .links {
@@ -110,16 +105,17 @@ permalink: /404.html
       padding: 12px 28px;
       border-radius: 999px;
       text-decoration: none;
-      background: rgba(212, 255, 0, 0.1);
-      color: #d4ff00;
-      border: 1px solid rgba(212, 255, 0, 0.3);
+      background: rgba(230, 255, 102, 0.15); /* Slightly more visible buttons */
+      color: #e6ff66;
+      border: 1px solid rgba(230, 255, 102, 0.4);
       transition: all 0.3s ease;
       font-weight: 500;
+      backdrop-filter: blur(4px); /* Adds a premium "glass" feel */
     }
 
     a:hover {
-      background: rgba(212, 255, 0, 0.25);
-      border-color: #d4ff00;
+      background: rgba(230, 255, 102, 0.3);
+      border-color: #e6ff66;
       transform: translateY(-2px);
     }
 
@@ -127,7 +123,7 @@ permalink: /404.html
       position: absolute;
       bottom: 30px;
       font-size: 0.85rem;
-      opacity: 0.4;
+      opacity: 0.6;
       width: 100%;
     }
   </style>
@@ -199,7 +195,7 @@ permalink: /404.html
 
   function updateExcludedZones() {
     const buttons = buttonZone.querySelectorAll('a');
-    const padding = 5; // Extra gap so light doesn't touch the buttons
+    const padding = 10; 
     excludedRects = Array.from(buttons).map(btn => {
       const r = btn.getBoundingClientRect();
       return {
@@ -214,22 +210,22 @@ permalink: /404.html
   class Firefly {
     constructor(x, y) {
       this.x = x; this.y = y;
-      this.vx = (Math.random() - 0.5) * 0.3;
-      this.vy = (Math.random() - 0.5) * 0.3;
-      this.size = Math.random() * 1.5 + 1.5;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.size = Math.random() * 1.5 + 1.8;
       this.life = 1.0;
       this.age = 0;
-      this.deathTrigger = 90 + Math.random() * 60;
-      this.decayRate = 0.0005;
-      this.hue = Math.random() * 12 + 48;
+      this.deathTrigger = 100 + Math.random() * 60;
+      this.decayRate = 0.0004;
+      this.hue = Math.random() * 10 + 50; // Warm Golden Lime
     }
 
     update() {
       this.x += this.vx; this.y += this.vy;
       this.age++;
       if (this.age > this.deathTrigger) {
-        this.decayRate *= 1.12; this.life -= this.decayRate; this.size *= 0.96;
-      } else { this.life -= 0.0002; }
+        this.decayRate *= 1.1; this.life -= this.decayRate; this.size *= 0.97;
+      } else { this.life -= 0.0003; }
     }
 
     draw() {
@@ -244,13 +240,15 @@ permalink: /404.html
         const alpha = this.life;
         ctx.save();
         ctx.globalCompositeOperation = 'screen';
-        const bloom = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 8);
-        bloom.addColorStop(0, `hsla(${this.hue}, 80%, 50%, ${0.15 * alpha})`);
-        bloom.addColorStop(1, `hsla(${this.hue}, 80%, 50%, 0)`);
+        const bloom = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 10);
+        bloom.addColorStop(0, `hsla(${this.hue}, 90%, 60%, ${0.25 * alpha})`);
+        bloom.addColorStop(1, `hsla(${this.hue}, 90%, 60%, 0)`);
         ctx.fillStyle = bloom;
-        ctx.beginPath(); ctx.arc(this.x, this.y, this.size * 8, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.size * 10, 0, Math.PI * 2); ctx.fill();
+
+        // Core
         ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${this.hue}, 100%, 75%, ${0.8 * alpha})`; ctx.fill();
+        ctx.fillStyle = `hsla(${this.hue}, 100%, 80%, ${0.9 * alpha})`; ctx.fill();
         ctx.restore();
       }
     }
@@ -268,14 +266,15 @@ permalink: /404.html
     );
     
     if (!isOverButton) {
-      for (let i = 0; i < 2; i++) fireflies.push(new Firefly(x, y));
+      // Spawn slightly more for a "fuller" feel
+      for (let i = 0; i < 3; i++) fireflies.push(new Firefly(x, y));
     }
   }
 
   function animate() {
     updateExcludedZones();
     ctx.globalCompositeOperation = 'destination-out';
-    ctx.fillStyle = "rgba(0, 0, 0, 0.07)"; 
+    ctx.fillStyle = "rgba(0, 0, 0, 0.08)"; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.globalCompositeOperation = 'source-over';
     
