@@ -6,13 +6,6 @@ permalink: /404.html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WGXSZG17N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-3WGXSZG17N');
-  </script>
   <meta charset="UTF-8">
   <title>404</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,35 +18,39 @@ permalink: /404.html
       width: 100%;
       height: 100%;
       overflow: hidden;
-      /* Lifted the base black to a very deep forest green */
-      background: #040d06; 
+      background: #0a140d; 
       color: #ffffff;
       font-family: system-ui, -apple-system, sans-serif;
     }
 
-    #bg-image {
+    #bg-container {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1;
       background-image: url('/assets/img/yoal-desurmont-jqgsM3B9Fpo-unsplash.jpg'); 
       background-size: cover;
       background-position: center;
-      /* BRIGHTER: Changed 0.35 to 0.65 to show the leaves */
-      filter: brightness(0.65) contrast(1.05) saturate(1.1);
-      z-index: 1;
+    }
+
+    /* This creates a "vignette" so the text is readable but ferns stay bright */
+    #bg-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 2;
+      background: radial-gradient(circle, rgba(0, 10, 5, 0.7) 0%, rgba(0, 10, 5, 0) 80%);
     }
 
     canvas {
       position: absolute;
       top: 0; left: 0;
-      z-index: 2;
+      z-index: 5;
       cursor: crosshair;
     }
 
     #ui-container {
       position: absolute;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       z-index: 10;
       display: flex;
       flex-direction: column;
@@ -66,79 +63,67 @@ permalink: /404.html
       user-select: none;
     }
 
-    #draw-hint {
-      position: absolute;
-      bottom: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #e6ff66; /* Brighter lime-yellow */
-      opacity: 0.8;
-      transition: opacity 1s ease;
-      animation: pulse 2.5s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(0.98); }
-      50% { opacity: 0.9; transform: translateX(-50%) scale(1.02); }
-    }
-
     h1 {
       font-size: clamp(2.5rem, 8vw, 4rem);
       margin-bottom: 10px;
-      color: #e6ff66;
-      font-weight: 300;
-      text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      color: #d4ff00;
+      font-weight: 500;
     }
 
     p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: 1.15rem;
       max-width: 600px;
-      opacity: 0.95; /* More readable */
-      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      opacity: 0.9;
+      line-height: 1.5;
     }
 
     .links {
-      margin-top: 25px;
+      margin-top: 30px;
       pointer-events: auto; 
     }
 
     a {
       display: inline-block;
       margin: 10px 8px;
-      padding: 12px 28px;
+      padding: 12px 30px;
       border-radius: 999px;
       text-decoration: none;
-      background: rgba(230, 255, 102, 0.15); /* Slightly more visible buttons */
-      color: #e6ff66;
-      border: 1px solid rgba(230, 255, 102, 0.4);
+      background: rgba(212, 255, 0, 0.1);
+      color: #d4ff00;
+      border: 1px solid rgba(212, 255, 0, 0.3);
       transition: all 0.3s ease;
-      font-weight: 500;
-      backdrop-filter: blur(4px); /* Adds a premium "glass" feel */
+      font-weight: 600;
+      backdrop-filter: blur(4px);
     }
 
     a:hover {
-      background: rgba(230, 255, 102, 0.3);
-      border-color: #e6ff66;
+      background: rgba(212, 255, 0, 0.2);
+      border-color: #d4ff00;
       transform: translateY(-2px);
     }
 
-    #footer {
+    #draw-hint {
       position: absolute;
-      bottom: 30px;
-      font-size: 0.85rem;
+      bottom: 15%;
+      color: #d4ff00;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       opacity: 0.6;
-      width: 100%;
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.7; }
     }
   </style>
 </head>
 
 <body>
 
-  <div id="bg-image"></div>
+  <div id="bg-container"></div>
+  <div id="bg-overlay"></div>
   <canvas id="fireflyCanvas"></canvas>
 
   <div id="ui-container">
@@ -152,9 +137,8 @@ permalink: /404.html
       <a href="/blog/" id="blog"></a>
     </div>
 
-    <div id="draw-hint">✦ Touch the darkness to draw with light ✦</div>
-
-    <p id="footer"></p>
+    <div id="draw-hint">✦ Maluj światłem na mchu ✦</div>
+    <p id="footer" style="position:absolute; bottom:30px; font-size:0.85rem; opacity:0.6;"></p>
   </div>
 
 <script>
@@ -165,29 +149,24 @@ permalink: /404.html
   let hasInteracted = false;
   let excludedRects = [];
 
-  // Language Setup
   if (isEN) {
     document.documentElement.lang = "en";
     document.getElementById("title").textContent = "🌿 You missed the path";
-    document.getElementById("desc").innerHTML = "This page may have shifted, softened, or disappeared into the undergrowth.";
-    document.getElementById("hint").textContent = "Here’s where you probably meant to go:";
+    document.getElementById("desc").textContent = "This page may have shifted, softened, or disappeared into the undergrowth.";
+    document.getElementById("hint").textContent = "Try one of these paths:";
     document.getElementById("home").textContent = "Home";
     document.getElementById("materials").textContent = "Materials";
     document.getElementById("materials").href = "/en/materials/";
     document.getElementById("blog").textContent = "Blog";
     document.getElementById("blog").href = "/en/blog/";
-    document.getElementById("footer").textContent = "Sometimes getting lost is also part of the journey.";
-    drawHint.textContent = "✦ Move your cursor to draw with light ✦";
+    drawHint.textContent = "✦ Draw with light on the moss ✦";
   } else {
-    document.documentElement.lang = "pl";
     document.getElementById("title").textContent = "🌿 Zgubiłeś ścieżkę";
-    document.getElementById("desc").innerHTML = "Ta strona mogła się zmienić, przesunąć albo zniknąć gdzieś między gałęziami.";
+    document.getElementById("desc").textContent = "Ta strona mogła się zmienić, przesunąć albo zniknąć gdzieś między gałęziami.";
     document.getElementById("hint").textContent = "Możesz spróbować tutaj:";
     document.getElementById("home").textContent = "Strona główna";
     document.getElementById("materials").textContent = "Materiały";
     document.getElementById("blog").textContent = "Blog";
-    document.getElementById("footer").textContent = "Czasem nie trafienie od razu też jest częścią drogi.";
-    drawHint.textContent = "✦ Dotknij ciemności, by malować światłem ✦";
   }
 
   const canvas = document.getElementById("fireflyCanvas");
@@ -202,16 +181,7 @@ permalink: /404.html
 
   function updateExcludedZones() {
     const buttons = buttonZone.querySelectorAll('a');
-    const padding = 10; 
-    excludedRects = Array.from(buttons).map(btn => {
-      const r = btn.getBoundingClientRect();
-      return {
-        left: r.left - padding,
-        right: r.right + padding,
-        top: r.top - padding,
-        bottom: r.bottom + padding
-      };
-    });
+    excludedRects = Array.from(buttons).map(btn => btn.getBoundingClientRect());
   }
 
   class Firefly {
@@ -219,84 +189,61 @@ permalink: /404.html
       this.x = x; this.y = y;
       this.vx = (Math.random() - 0.5) * 0.4;
       this.vy = (Math.random() - 0.5) * 0.4;
-      this.size = Math.random() * 1.5 + 1.8;
+      this.size = Math.random() * 2 + 1.5;
       this.life = 1.0;
-      this.age = 0;
-      this.deathTrigger = 100 + Math.random() * 60;
-      this.decayRate = 0.0004;
-      this.hue = Math.random() * 10 + 50; // Warm Golden Lime
+      this.decay = 0.008 + Math.random() * 0.01;
+      this.hue = Math.random() * 15 + 55; 
     }
-
     update() {
       this.x += this.vx; this.y += this.vy;
-      this.age++;
-      if (this.age > this.deathTrigger) {
-        this.decayRate *= 1.1; this.life -= this.decayRate; this.size *= 0.97;
-      } else { this.life -= 0.0003; }
+      this.life -= this.decay;
     }
-
     draw() {
       if (this.life <= 0) return;
+      
+      const isOverButton = excludedRects.some(r => this.x > r.left && this.x < r.right && this.y > r.top && this.y < r.bottom);
+      if (isOverButton) return;
 
-      const isOverButton = excludedRects.some(rect => 
-        this.x > rect.left && this.x < rect.right && 
-        this.y > rect.top && this.y < rect.bottom
-      );
-
-      if (!isOverButton) {
-        const alpha = this.life;
-        ctx.save();
-        ctx.globalCompositeOperation = 'screen';
-        const bloom = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 10);
-        bloom.addColorStop(0, `hsla(${this.hue}, 90%, 60%, ${0.25 * alpha})`);
-        bloom.addColorStop(1, `hsla(${this.hue}, 90%, 60%, 0)`);
-        ctx.fillStyle = bloom;
-        ctx.beginPath(); ctx.arc(this.x, this.y, this.size * 10, 0, Math.PI * 2); ctx.fill();
-
-        // Core
-        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${this.hue}, 100%, 80%, ${0.9 * alpha})`; ctx.fill();
-        ctx.restore();
-      }
+      ctx.save();
+      ctx.globalCompositeOperation = 'screen';
+      
+      // Soft outer glow
+      const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 10);
+      g.addColorStop(0, `hsla(${this.hue}, 100%, 70%, ${this.life * 0.3})`);
+      g.addColorStop(1, `hsla(${this.hue}, 100%, 70%, 0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.size * 10, 0, Math.PI*2); ctx.fill();
+      
+      // Hot center core
+      ctx.fillStyle = `hsla(${this.hue}, 100%, 85%, ${this.life})`;
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
+      
+      ctx.restore();
     }
   }
 
   function handleInput(x, y) {
-    if (!hasInteracted) {
-      hasInteracted = true;
-      drawHint.style.opacity = "0";
-      setTimeout(() => drawHint.remove(), 1000);
-    }
-    const isOverButton = excludedRects.some(rect => 
-      x > rect.left && x < rect.right && 
-      y > rect.top && y < rect.bottom
-    );
-    
-    if (!isOverButton) {
-      // Spawn slightly more for a "fuller" feel
-      for (let i = 0; i < 3; i++) fireflies.push(new Firefly(x, y));
-    }
+    if(!hasInteracted) { hasInteracted = true; drawHint.style.display = 'none'; }
+    for(let i=0; i<3; i++) fireflies.push(new Firefly(x, y));
   }
 
   function animate() {
     updateExcludedZones();
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.fillStyle = "rgba(0, 0, 0, 0.08)"; 
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.globalCompositeOperation = 'source-over';
+    // Clear the canvas to keep it bright and transparent
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     for (let i = fireflies.length - 1; i >= 0; i--) {
-      fireflies[i].update(); fireflies[i].draw();
+      fireflies[i].update(); 
+      fireflies[i].draw();
       if (fireflies[i].life <= 0) fireflies.splice(i, 1);
     }
     requestAnimationFrame(animate);
   }
 
-  window.addEventListener('mousemove', (e) => handleInput(e.clientX, e.clientY));
-  window.addEventListener('touchmove', (e) => handleInput(e.touches[0].clientX, e.touches[0].clientY));
+  window.addEventListener('mousemove', e => handleInput(e.clientX, e.clientY));
+  window.addEventListener('touchmove', e => handleInput(e.touches[0].clientX, e.touches[0].clientY));
   window.addEventListener('resize', init);
-  init();
-  animate();
+  init(); animate();
 })();
 </script>
 
