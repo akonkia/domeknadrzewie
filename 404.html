@@ -4,11 +4,12 @@ permalink: /404.html
 ---
 
 <!DOCTYPE html>
-<html lang="pl">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Nie znaleziono strony</title>
+  <title>404</title>
   <meta name="robots" content="noindex">
+
   <style>
     body {
       font-family: system-ui, -apple-system, sans-serif;
@@ -44,25 +45,61 @@ permalink: /404.html
     }
   </style>
 </head>
+
 <body>
 
-  <h1>🌿 Zgubiłeś ścieżkę</h1>
-
-  <p>
-    Ta strona mogła się zmienić, przesunąć albo zniknąć gdzieś między gałęziami.
-  </p>
-
-  <p><em>Możesz spróbować tutaj:</em></p>
+  <h1 id="title"></h1>
+  <p id="desc"></p>
+  <p><em id="hint"></em></p>
 
   <div>
-    <a href="/">Strona główna</a>
-    <a href="/materialy/">Materiały</a>
-    <a href="/blog/">Blog</a>
+    <a href="/" id="home"></a>
+    <a href="/materialy/" id="materials"></a>
+    <a href="/blog/" id="blog"></a>
   </div>
 
-  <p style="margin-top:30px; font-size:0.95rem; opacity:0.6;">
-    Czasem nie trafienie od razu też jest częścią drogi.
-  </p>
+  <p id="footer" style="margin-top:30px; font-size:0.95rem; opacity:0.6;"></p>
+
+<script>
+(function () {
+  const isEN = window.location.pathname.startsWith("/en");
+
+  if (isEN) {
+    document.documentElement.lang = "en";
+
+    document.getElementById("title").textContent = "🌿 You missed the path";
+    document.getElementById("desc").innerHTML =
+      "This page may have shifted, softened, or disappeared into the undergrowth.";
+    document.getElementById("hint").textContent =
+      "Here’s where you probably meant to go:";
+
+    document.getElementById("home").textContent = "Home";
+    document.getElementById("materials").textContent = "Materials";
+    document.getElementById("materials").href = "/en/materials/";
+    document.getElementById("blog").textContent = "Blog";
+    document.getElementById("blog").href = "/en/blog/";
+
+    document.getElementById("footer").textContent =
+      "Sometimes getting lost is also part of the path.";
+
+  } else {
+    document.documentElement.lang = "pl";
+
+    document.getElementById("title").textContent = "🌿 Zgubiłeś ścieżkę";
+    document.getElementById("desc").innerHTML =
+      "Ta strona mogła się zmienić, przesunąć albo zniknąć gdzieś między gałęziami.";
+    document.getElementById("hint").textContent =
+      "Możesz spróbować tutaj:";
+
+    document.getElementById("home").textContent = "Strona główna";
+    document.getElementById("materials").textContent = "Materiały";
+    document.getElementById("blog").textContent = "Blog";
+
+    document.getElementById("footer").textContent =
+      "Czasem nie trafienie od razu też jest częścią drogi.";
+  }
+})();
+</script>
 
 </body>
 </html>
