@@ -6,13 +6,6 @@ permalink: /404.html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WGXSZG17N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-3WGXSZG17N');
-  </script>
   <meta charset="UTF-8">
   <title>404</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,12 +32,12 @@ permalink: /404.html
       background-position: center;
     }
 
-    /* This creates a "vignette" so the text is readable but ferns stay bright */
     #bg-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       z-index: 2;
-      background: radial-gradient(circle, rgba(0, 10, 5, 0.7) 0%, rgba(0, 10, 5, 0) 80%);
+      /* Softened the gradient for a more natural forest look */
+      background: radial-gradient(circle, rgba(0, 10, 5, 0.75) 0%, rgba(0, 10, 5, 0.2) 100%);
     }
 
     canvas {
@@ -64,35 +57,36 @@ permalink: /404.html
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
+      padding: 20px;
       box-sizing: border-box;
       pointer-events: none; 
       user-select: none;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      margin-bottom: 10px;
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      margin: 0 0 10px 0;
       color: #d4ff00;
       font-weight: 500;
     }
 
     p {
-      font-size: 1.15rem;
+      font-size: clamp(1rem, 3vw, 1.15rem);
       max-width: 600px;
       opacity: 0.9;
       line-height: 1.5;
+      margin: 5px 0;
     }
 
     .links {
-      margin-top: 30px;
+      margin-top: 25px;
       pointer-events: auto; 
     }
 
     a {
       display: inline-block;
-      margin: 10px 8px;
-      padding: 12px 30px;
+      margin: 8px;
+      padding: 12px 28px;
       border-radius: 999px;
       text-decoration: none;
       background: rgba(212, 255, 0, 0.1);
@@ -109,11 +103,11 @@ permalink: /404.html
       transform: translateY(-2px);
     }
 
+    /* FIXED: Hint now sits below the buttons relatively */
     #draw-hint {
-      position: absolute;
-      bottom: 15%;
+      margin-top: 40px;
       color: #d4ff00;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 2px;
       opacity: 0.6;
@@ -121,8 +115,17 @@ permalink: /404.html
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 0.7; }
+      0%, 100% { opacity: 0.2; transform: scale(0.98); }
+      50% { opacity: 0.7; transform: scale(1.02); }
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.8rem;
+      opacity: 0.5;
+      width: 90%;
+      max-width: 500px;
     }
   </style>
 </head>
@@ -145,7 +148,8 @@ permalink: /404.html
     </div>
 
     <div id="draw-hint">✦ Maluj światłem na mchu ✦</div>
-    <p id="footer" style="position:absolute; bottom:30px; font-size:0.85rem; opacity:0.6;"></p>
+    
+    <p id="footer"></p>
   </div>
 
 <script>
@@ -166,6 +170,7 @@ permalink: /404.html
     document.getElementById("materials").href = "/en/materials/";
     document.getElementById("blog").textContent = "Blog";
     document.getElementById("blog").href = "/en/blog/";
+    document.getElementById("footer").textContent = "Sometimes getting lost is part of the journey.";
     drawHint.textContent = "✦ Draw with light on the moss ✦";
   } else {
     document.getElementById("title").textContent = "🌿 Zgubiłeś ścieżkę";
@@ -174,6 +179,7 @@ permalink: /404.html
     document.getElementById("home").textContent = "Strona główna";
     document.getElementById("materials").textContent = "Materiały";
     document.getElementById("blog").textContent = "Blog";
+    document.getElementById("footer").textContent = "Czasem nietrafienie od razu też jest częścią drogi.";
   }
 
   const canvas = document.getElementById("fireflyCanvas");
@@ -207,38 +213,33 @@ permalink: /404.html
     }
     draw() {
       if (this.life <= 0) return;
-      
       const isOverButton = excludedRects.some(r => this.x > r.left && this.x < r.right && this.y > r.top && this.y < r.bottom);
       if (isOverButton) return;
 
       ctx.save();
       ctx.globalCompositeOperation = 'screen';
-      
-      // Soft outer glow
       const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 10);
       g.addColorStop(0, `hsla(${this.hue}, 100%, 70%, ${this.life * 0.3})`);
       g.addColorStop(1, `hsla(${this.hue}, 100%, 70%, 0)`);
       ctx.fillStyle = g;
       ctx.beginPath(); ctx.arc(this.x, this.y, this.size * 10, 0, Math.PI*2); ctx.fill();
-      
-      // Hot center core
       ctx.fillStyle = `hsla(${this.hue}, 100%, 85%, ${this.life})`;
       ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
-      
       ctx.restore();
     }
   }
 
   function handleInput(x, y) {
-    if(!hasInteracted) { hasInteracted = true; drawHint.style.display = 'none'; }
+    if(!hasInteracted) { 
+      hasInteracted = true; 
+      drawHint.style.visibility = 'hidden'; 
+    }
     for(let i=0; i<3; i++) fireflies.push(new Firefly(x, y));
   }
 
   function animate() {
     updateExcludedZones();
-    // Clear the canvas to keep it bright and transparent
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
     for (let i = fireflies.length - 1; i >= 0; i--) {
       fireflies[i].update(); 
       fireflies[i].draw();
