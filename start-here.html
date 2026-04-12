@@ -1,285 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start here</title>
+
+<title>Projekt: Domek na Drzewie</title>
+
+<link rel="stylesheet" href="/assets/css/main.css">
 
 <style>
-:root {
-  --sage: #678760;
-  --orange: #fb9b27;
-  --gold: #fcc15d;
-  --mist: #d3d4d5;
-  --cream: #f5f4ef;
-  --white: #ffffff;
-  --text: #243126;
-  --muted: #5e675f;
-  --line: rgba(36, 49, 38, 0.1);
-  --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
-  --max: 1120px;
-}
+/* =========================
+   🌲 PARALLAX SECTION
+========================= */
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f4f7f3;
-  color: #2f3a2f;
-}
-
-.container {
-  width: min(calc(100% - 32px), var(--max));
-  margin: 0 auto;
-}
-
-/* ===== NAV ===== */
-
-.site-nav {
-  width: 100%;
-  background: #ffffff;
-  display: grid;
-  grid-template-columns: minmax(320px, 1fr) auto;
-  align-items: stretch;
-  box-shadow: 0 8px 24px rgba(51, 66, 54, 0.08);
-  margin-bottom: 24px;
+.parallax-section {
   position: relative;
-  z-index: 10;
+  height: 80vh;
+  overflow: hidden;
 }
 
-.site-brand {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 22px 28px;
-  text-decoration: none;
-  color: #2f3e34;
-}
-
-.site-brand-logo {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
-}
-
-.site-brand-title {
-  font-size: 25px;
-  font-weight: 700;
-}
-
-.site-brand-subtitle {
-  font-size: 16px;
-  color: #4f5f53;
-}
-
-.site-nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 16px;
-}
-
-.site-nav-link.primary {
-  padding: 14px 22px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  background: var(--sage);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  transition: 0.2s;
-}
-
-.site-nav-link.primary:hover {
-  background: #5f7d5c;
-}
-
-/* ===== MAP ===== */
-
-.map {
-  position: relative;
-  max-width: 900px;
-  margin: 20px auto 40px;
-}
-
-.map img {
-  width: 100%;
-  border-radius: 6px;
-}
-
-/* ZONES */
-
-.zone {
+/* layers container */
+.parallax {
   position: absolute;
-  border-radius: 18px;
+  inset: 0;
 }
 
-.zone::before {
+/* layers */
+.layer {
+  position: absolute;
+  inset: -5%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+/* images */
+.layer.back {
+  background-image: url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/forest-back.png');
+}
+
+.layer.mid {
+      background-image: url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/forest-front.png');
+
+}
+
+.layer.front {
+  background-image: url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/forest-mid.png');
+  pointer-events: none;
+}
+
+/* overlay for readability */
+.parallax::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.12);
-  opacity: 0;
-  transition: 0.25s;
+  background: rgba(15,30,20,0.25);
 }
 
-.zone:hover::before {
-  opacity: 1;
-}
-
-/* LABELS (FIXED) */
-
-.label {
-  position: absolute;
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-  font-weight: 500;
-  line-height: 1.35;
-  max-width: 260px;
-  color: white;
-  text-shadow:
-    0 1px 3px rgba(0,0,0,0.6),
-    0 0 6px rgba(0,0,0,0.4);
-}
-
-/* DESKTOP ZONES */
-
-.zone-top { top: 0%; left: 0%; width: 100%; height: 35%; }
-.zone-center { top: 46%; left: 33%; width: 30%; height: 50%; border-radius: 50%; }
-.zone-left { top: 48%; left: 0%; width: 34%; height: 38%; }
-.zone-right { top: 48%; left: 66%; width: 34%; height: 38%; }
-
-/* LABEL POSITIONS (FIXED) */
-
-.label-top {
-  top: 14%;
-  left: 6%;
-}
-
-.label-center {
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* text inside */
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  color: white;
 }
 
-.label-left {
-  top: 72%;
-  left: 6%;
+.parallax-content h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
 }
 
-.label-right {
-  top: 72%;
-  right: 6%;
-  text-align: right;
+/* =========================
+   minor polish
+========================= */
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
 }
 
-/* MOBILE */
-
-.zone-mobile,
-.label-mobile {
-  display: none;
+.section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
 }
-
-@media (max-width: 700px) {
-
-  .zone-desktop,
-  .label-desktop {
-    display: none;
-  }
-
-  .zone-mobile,
-  .label-mobile {
-    display: block;
-  }
-
-  .map img {
-    height: 75vh;
-    object-fit: cover;
-    object-position: 80% center;
-  }
-
-  .zone-top { height: 35%; }
-  .zone-center { top: 45%; left: -10%; width: 60%; height: 60%; }
-  .zone-bottom { top: 45%; left: 50%; width: 100%; height: 60%; }
-
-  .label-top { top: 18%; left: 16%; }
-  .label-center { top: 65%; left: 12%; transform: none; }
-  .label-bottom { top: 65%; left: 56%; }
-}
-
-/* FOOTER */
 
 .footer {
-  padding: 34px 0;
-}
-
-.footer-box {
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid #ddd;
 }
 </style>
 </head>
 
 <body>
 
-<nav class="site-nav">
-  <a href="/" class="site-brand">
-    <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" class="site-brand-logo">
-    <div>
-      <div class="site-brand-title">Welcome</div>
-      <div class="site-brand-subtitle">Choose a place to begin</div>
+<!-- =========================
+     HEADER (your menu)
+========================= -->
+<header class="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <div class="brand-mark">
+        <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png">
+      </div>
+      <div>
+        <div class="brand-title">Projekt: Domek na Drzewie</div>
+        <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
+      </div>
     </div>
-  </a>
-  <div class="site-nav-links">
-    <a href="/en/sky/" class="site-nav-link primary">Po polsku →</a>
+
+    <nav class="nav-links">
+      <a href="#">O projekcie</a>
+      <a href="/materialy/">Materiały</a>
+      <a href="/blog/">Blog</a>
+      <a href="/en/">English</a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<div class="map">
+<!-- =========================
+     🌲 PARALLAX HERO SECTION
+========================= -->
+<section class="parallax-section">
+  <div class="parallax">
+    <div class="layer back"></div>
+    <div class="layer mid"></div>
+    <div class="layer front"></div>
+  </div>
 
-<img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/890202c2a02607ba5039a0ede80e3aeb74bc06fd/assets/img/for-who-it-is-mindful-hub-starting-place-map.jpg">
+  <div class="parallax-content">
+    <h1>Start here</h1>
+  </div>
+</section>
 
-<!-- DESKTOP -->
-<a href="/blog/" class="zone zone-top zone-desktop"></a>
-<div class="label label-top label-desktop">📖 I want to understand more about the project</div>
 
-<a href="/materialy/dla_dzieci/" class="zone zone-center zone-desktop"></a>
-<div class="label label-center label-desktop">🐿️ Free printable resources for children</div>
 
-<a href="/materialy/kapiele_miejskie/#tydzien-1" class="zone zone-left zone-desktop"></a>
-<div class="label label-left label-desktop">🌱 I want to get closer to nature</div>
-
-<a href="/materialy/" class="zone zone-right zone-desktop"></a>
-<div class="label label-right label-desktop">🍃 Mindfulness exercises</div>
-
-<!-- MOBILE -->
-<a href="/blog/" class="zone zone-top zone-mobile"></a>
-<div class="label label-top label-mobile">📖 Learn more</div>
-
-<a href="/materialy/dla_dzieci/" class="zone zone-center zone-mobile"></a>
-<div class="label label-center label-mobile">🐿️ For children</div>
-
-<a href="/materialy/" class="zone zone-bottom zone-mobile"></a>
-<div class="label label-bottom label-mobile">🌱 Explore nature & mindfulness</div>
-
-</div>
-
-<div class="fallback">
-Not sure? Start here:<br>
-<a href="/materialy/kapiele_miejskie/#tydzien-1">Start with a simple practice</a>
-</div>
-
+<!-- =========================
+     FOOTER
+========================= -->
 <footer class="footer">
-  <div class="container footer-box">
-    <div><strong>Project: Tree House</strong> • We grow naturally</div>
-    <div>April 2026</div>
-  </div>
+  <strong>Projekt: Domek na Drzewie</strong><br>
+  2026
 </footer>
+
+<!-- =========================
+     PARALLAX SCRIPT
+========================= -->
+<script>
+const section = document.querySelector('.parallax-section');
+const layers = document.querySelectorAll('.layer');
+
+document.addEventListener('mousemove', (e) => {
+  const rect = section.getBoundingClientRect();
+
+  const x = (e.clientX - rect.left) / rect.width - 0.5;
+  const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+  layers.forEach((layer, i) => {
+    const depth = [6, 14, 28][i];
+    layer.style.transform =
+      `translate3d(${x * depth}px, ${y * depth}px, 0)`;
+  });
+});
+</script>
 
 </body>
 </html>
