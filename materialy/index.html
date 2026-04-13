@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <script defer src="/assets/js/cards-data.js"></script>
+  <script defer src="/assets/js/current-card.js"></script>
 
   <title>Materiały | Projekt: Domek na Drzewie</title>
   <meta
@@ -858,13 +860,14 @@
       </div>
 
       <nav class="nav-links" id="site-menu" aria-label="Nawigacja">
-        <a href="/">O projekcie</a>
+        <a href="/">Zacznij tutaj</a>
         <a href="/materialy/" class="active" aria-current="page">Materiały</a>
         <a href="/blog/">Blog</a>
         <a class="lang-link" href="/en/materials/" lang="en" hreflang="en">English</a>
         <a href="/sky.html">Niebo dziś</a>
         <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
         <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="/o-nas.html">O projekcie</a>
       </nav>
     </div>
   </header>
@@ -883,19 +886,14 @@
     <div class="container quick-grid">
       <article class="quick-card single-feature">
         <div class="quick-card-top">
-          <span class="quick-kicker">Biblioteka</span>
-          <h3>Dostępne serie materiałów</h3>
-          <p>Tu znajdziesz aktualne kategorie materiałów oraz zasoby do pobrania i czytania.</p>
+          <span class="quick-kicker">Zacznij tutaj</span>
+          <h3>Aktualna karta</h3>
+          <p>Otwórz najnowszą kartę, która ma już gotową wersję polską i angielską.</p>
         </div>
 
-        <div class="quick-card-bottom">
-          <p class="quick-list-title">Obecnie dostępne:</p>
-          <ul class="quick-list">
-            <li><a href="#kapiele_miejskie">Miejskie kąpiele leśne</a></li>
-            <li><a href="#materialy-sezonowe">Karty sezonowe</a></li>
-            <li><a href="#dla-dzieci">Karty do druku dla dzieci</a></li>
-          </ul>
-        </div>
+        <a class="quick-card-bottom" data-current-card-link href="/materialy/kapiele_miejskie/#tydzien-14" aria-label="Otwórz aktualną kartę">
+          <img data-current-card-image src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png" alt="Aktualna karta" />
+        </a>
       </article>
     </div>
   </section>

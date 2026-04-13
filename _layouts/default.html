@@ -86,6 +86,12 @@
             </a>
           {% endif %}
         {% endif %}
+
+        <a href="{% if current_lang == 'en' %}/en/about.html{% else %}/o-nas.html{% endif %}">
+          <span class="nav-label">
+            <span class="nav-pl">{% if current_lang == 'en' %}About us{% else %}O projekcie{% endif %}</span>
+          </span>
+        </a>
       </nav>
     </div>
   </header>

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project: Tree House</title>
-  <meta name="description" content="Project: Tree House - about the project and materials to download or read." />
+  <link rel="stylesheet" href="/assets/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
+  <script defer src="/assets/js/sky-mini-widget.js"></script>
   <script defer src="/assets/js/cards-data.js"></script>
   <script defer src="/assets/js/current-card.js"></script>
   <style>
@@ -51,14 +50,26 @@
       top: 0;
       z-index: 40;
       backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(36,49,38,0.04);
+    }
+
+    .topbar::before {
+      content: "";
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--gold), var(--sage));
     }
 
     .nav {
-      min-height: 88px;
+      min-height: 96px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
+    }
+
+    .nav-head {
+      display: contents;
     }
 
     .brand {
@@ -78,22 +89,89 @@
       flex-shrink: 0;
     }
 
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     .brand-title {
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: 0.01em;
+      line-height: 1.1;
     }
 
     .brand-subtitle {
       margin-top: 4px;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.88rem;
+      line-height: 1.3;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 56px;
+      height: 56px;
+      border: 1px solid rgba(251,155,39,0.30);
+      border-radius: 55% 45% 58% 42% / 44% 53% 47% 56%;
+      background: linear-gradient(135deg, rgba(251,155,39,0.42), rgba(252,193,93,0.52) 48%, rgba(103,135,96,0.30));
+      box-shadow:
+        0 18px 40px rgba(36,49,38,0.14),
+        0 0 0 8px rgba(255,244,196,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      animation: organic-toggle-float 4.2s ease-in-out infinite;
+      transition:
+        transform 0.28s ease,
+        border-radius 0.34s ease,
+        box-shadow 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      transition: transform 0.35s ease, opacity 0.28s ease, border-radius 0.35s ease;
+    }
+
+    .menu-toggle::before {
+      inset: 4px;
+      border-radius: 58% 42% 46% 54% / 48% 58% 42% 52%;
+      background: rgba(255,255,255,0.70);
+      z-index: 0;
+    }
+
+    .menu-toggle::after {
+      width: 84px;
+      height: 84px;
+      right: -22px;
+      top: -26px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.54), rgba(255,255,255,0));
+      opacity: 1;
+      z-index: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2.5px;
+      margin: 0;
+      border-radius: 999px;
+      background: var(--text);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.28);
+      transition: transform 0.28s ease, opacity 0.22s ease, width 0.28s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-toggle span:nth-child(2) {
+      width: 18px;
     }
 
     .nav-links {
@@ -101,547 +179,135 @@
       align-items: stretch;
       gap: 0;
       flex-wrap: wrap;
+      transition: all 0.25s ease;
     }
 
-    .lang-link {
-      min-height: 88px;
-      padding: 0 22px;
+    .nav-links a,
+    .nav-links button {
+      min-height: 96px;
+      padding: 0 26px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--orange) !important;
-      color: white !important;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      border-left: 1px solid rgba(36,49,38,0.06);
-    }
-
-    .lang-link:hover {
-      background: #e68e20 !important;
-      color: white !important;
-    }
-
-    .nav-links button,
-    .nav-links a {
-      min-height: 88px;
-      padding: 0 22px;
       border: 0;
+      border-left: 1px solid rgba(36,49,38,0.06);
       background: transparent;
       cursor: pointer;
-      font: inherit;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--text);
-      border-left: 1px solid rgba(36,49,38,0.06);
       transition: 0.18s ease;
+      font: inherit;
+      text-align: center;
     }
 
-    .nav-links button:hover,
     .nav-links a:hover,
+    .nav-links button:hover,
     .nav-links button.active {
       background: var(--sage);
       color: white;
     }
 
-    .hero {
-      position: relative;
-      min-height: 470px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-        url('/mnt/data/Environmental-Organization-Website-Design-788x871.jpg') center/cover no-repeat;
-      color: white;
-    }
-
-    .hero-inner {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
-      padding: 62px 0;
-      text-align: center;
-    }
-
-    .hero-kicker {
-      display: inline-block;
-      padding: 8px 14px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.2);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
+    .lang-link {
+      background: var(--orange) !important;
+      color: white !important;
       font-weight: 800;
     }
 
     h1, h2, h3, p { margin: 0; }
 
-    h1 {
-      margin-top: 18px;
-      font-size: clamp(2.5rem, 6vw, 4.6rem);
-      line-height: 0.95;
-      letter-spacing: 0.01em;
-      text-transform: uppercase;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.18);
-    }
-
-    .hero-text {
-      margin: 18px auto 0;
-      max-width: 56ch;
-      font-size: 1.08rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.92);
-    }
-
-    .hero-actions {
-      margin-top: 28px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .cta-btn,
-    .social-chip {
-      min-height: 46px;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 0;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.18s ease;
-    }
-
-    .cta-btn.primary {
-      background: var(--sage);
-      color: white;
-    }
-
-    .cta-btn.secondary {
-      background: rgba(255,255,255,0.16);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.24);
-    }
-
-    .quick-grid-wrap {
-      margin-top: -58px;
+    .tiles-wrapper {
+      padding-top: 36px;
       position: relative;
-      z-index: 5;
+      z-index: 10;
     }
 
-    .quick-grid {
+    .tiles {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: 2fr 1fr;
+      grid-auto-rows: 240px;
+      gap: 16px;
     }
 
-    .quick-card {
-  background: white;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-}
-
-    .quick-card-top {
-      background: linear-gradient(135deg, #75a06c, #4f6f49);
-      color: white;
-      padding: 26px;
-      min-height: 170px;
+    .tile {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #111;
+      box-shadow: var(--shadow);
     }
 
-    .quick-card:nth-child(2) .quick-card-top {
-      background: linear-gradient(135deg, #7e9b76, #678760);
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20, 28, 22, 0.08) 0%, rgba(20, 28, 22, 0.22) 48%, rgba(20, 28, 22, 0.78) 100%);
+      z-index: 1;
+      pointer-events: none;
     }
 
-    .quick-card:nth-child(3) .quick-card-top {
-      background: linear-gradient(135deg, #7e9b76, #678760);
+    .tile.big { grid-row: span 2; }
+
+    .tile.big::after {
+      background: linear-gradient(180deg, rgba(20, 28, 22, 0.1) 0%, rgba(20, 28, 22, 0.28) 42%, rgba(20, 28, 22, 0.88) 100%);
     }
 
-    .quick-card-top h3 {
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 12px;
-    }
-
-    .quick-card-bottom img {
+    .tile img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: brightness(0.85);
+      transition: transform 0.8s ease;
     }
 
-    .quick-card:nth-child(2) img {
-  width: 100%;
-  height: 100%;       /* Force image to fill the container height */
-  object-fit: cover;  /* Crops the image to fill the space without distortion */
-  display: block;
-}
+    .tile:hover img { transform: scale(1.03); }
 
-    .quick-card-bottom {
-  min-height: 220px;
-  flex: 1;
-  background: #f6f4ee;
-  border-top: 1px solid rgba(36,49,38,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 20px;
-}
-
-    .quick-card-text {
-      display: block;
-      height: auto;
-      padding: 24px 26px;
-      background: #f8f6f0;
-    }
-
-    .quick-card-text p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 0.97rem;
-    }
-
-    .quick-card-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* mini sky card */
-    .sky-mini-card {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-    .sky-mini-scene {
-  position: relative;
-  min-height: 220px;
-  flex: 1;
-  background: linear-gradient(180deg, #d9ebf6 0%, #f3e4c9 70%, rgba(245,241,232,0.14) 100%);
-  border-top: 1px solid rgba(36,49,38,0.08);
-  overflow: hidden;
-  transition: background 0.8s ease;
-  padding: 0;
-}
-
-    .sky-mini-scene::after {
-      content: "";
+    .tile .label {
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.28), transparent 26%);
-      pointer-events: none;
-      opacity: 0.8;
+      bottom: 24px;
+      left: 24px;
+      z-index: 10;
+      max-width: 28ch;
     }
 
-    .sky-mini-stars,
-    .sky-mini-rain,
-    .sky-mini-snow,
-    .sky-mini-clouds,
-    .sky-mini-sun,
-    .sky-mini-moon,
-    .sky-mini-birds {
-      position: absolute;
-    }
-
-    .sky-mini-stars,
-    .sky-mini-rain,
-    .sky-mini-snow,
-    .sky-mini-clouds {
-      inset: 0;
-    }
-
-    .sky-mini-stars {
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      z-index: 1;
-    }
-
-    .sky-mini-star {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 0 10px rgba(255,255,255,0.7);
-      animation: twinkle 4s ease-in-out infinite;
-    }
-
-    .sky-mini-sun,
-    .sky-mini-moon {
-      border-radius: 50%;
-      transition: left 1s ease, top 1s ease, opacity 1s ease;
-    }
-
-    .sky-mini-sun {
-      width: 54px;
-      height: 54px;
-      background: radial-gradient(circle at 35% 35%, #fff7d5 0%, #f5c768 58%, #e7ab3d 100%);
-      box-shadow: 0 0 34px rgba(245, 199, 104, 0.4);
-      z-index: 2;
-      opacity: 1;
-    }
-
-    .sky-mini-moon {
-      width: 30px;
-      height: 30px;
-      background: #f0eee7;
-      box-shadow: inset -8px 0 0 rgba(207,205,196,0.8), 0 0 18px rgba(255,255,255,0.16);
-      z-index: 1;
-      opacity: 0.15;
-    }
-
-    .sky-mini-cloud {
-      position: absolute;
-      background: rgba(255,255,255,0.9);
-      border-radius: 999px;
-      opacity: 0.9;
-      animation: cloudBreath 16s ease-in-out infinite;
-    }
-
-    .sky-mini-cloud::before,
-    .sky-mini-cloud::after {
-      content: "";
-      position: absolute;
-      background: inherit;
-      border-radius: 50%;
-    }
-
-    .sky-mini-cloud.one { width: 82px; height: 26px; top: 58px; left: 14%; }
-    .sky-mini-cloud.one::before { width: 30px; height: 30px; left: 10px; top: -12px; }
-    .sky-mini-cloud.one::after { width: 38px; height: 38px; right: 12px; top: -16px; }
-
-    .sky-mini-cloud.two { width: 70px; height: 24px; top: 96px; right: 18%; opacity: 0.8; }
-    .sky-mini-cloud.two::before { width: 24px; height: 24px; left: 8px; top: -10px; }
-    .sky-mini-cloud.two::after { width: 30px; height: 30px; right: 10px; top: -12px; }
-
-    .sky-mini-cloud.three { width: 100px; height: 30px; top: 34px; left: 42%; opacity: 0.45; }
-    .sky-mini-cloud.three::before { width: 36px; height: 36px; left: 12px; top: -16px; }
-    .sky-mini-cloud.three::after { width: 42px; height: 42px; right: 14px; top: -18px; }
-
-    .sky-mini-rain,
-    .sky-mini-snow {
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      pointer-events: none;
-    }
-
-    .sky-mini-drop {
-      position: absolute;
-      width: 2px;
-      height: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(187,216,237,0.85));
-      border-radius: 999px;
-      animation: rain 1.2s linear infinite;
-    }
-
-    .sky-mini-flake {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 45%, rgba(220,235,245,0.92) 100%);
-      box-shadow: 0 0 8px rgba(255,255,255,0.45);
-      animation: snowfall 5.8s linear infinite;
-    }
-
-    .sky-mini-birds {
-      right: 16%;
-      top: 58px;
-      color: rgba(70, 85, 71, 0.5);
-      font-size: 18px;
-      letter-spacing: 4px;
-      z-index: 2;
-      transition: opacity 0.8s ease;
-    }
-
-    .sky-mini-overlay {
-      position: absolute;
-      left: 16px;
-      bottom: 14px;
-      z-index: 6;
-      display: grid;
-      gap: 8px;
-      max-width: 30ch;
-    }
-
-    .sky-mini-label,
-    .sky-mini-hook {
-      width: fit-content;
-      box-shadow: 0 8px 18px rgba(31,42,34,0.08);
-    }
-
-    .sky-mini-label {
-      padding: 6px 12px;
-      background: rgba(255,255,255,0.84);
-      border: 1px solid rgba(255,255,255,0.72);
-      font-size: 12px;
-      color: #334236;
-    }
-
-    .sky-mini-hook {
-      margin: 0;
-      padding: 8px 12px;
-      background: rgba(255,255,255,0.76);
-      border: 1px solid rgba(255,255,255,0.64);
-      font-size: 13px;
-      color: #334236;
-    }
-
-    .pages {
-      padding: 48px 0 40px;
-    }
-
-    .page { display: none; }
-    .page.active { display: block; }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-
-    .section-title p {
-      margin: 12px auto 0;
-      max-width: 62ch;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1rem;
-    }
-
-    .about-icons {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 22px;
-    }
-
-    .icon-card,
-    .material-card,
-    .contact-band {
-      text-align: center;
-    }
-
-    .icon-card {
-      padding: 12px 10px;
-    }
-
-    .icon-circle {
-      width: 94px;
-      height: 94px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      background: #3d4a46;
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: 2rem;
+    .tile .label h2 {
+      font-size: 1.8rem;
       font-weight: 800;
+      color: white;
+      text-transform: uppercase;
+      margin: 0;
+      text-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
     }
 
-    .icon-card h3 {
-      font-size: 1.12rem;
-      margin-bottom: 8px;
+    .tile .label p {
+      font-size: 1rem;
+      color: white;
+      opacity: 0.9;
+      margin-top: 4px;
+      line-height: 1.55;
+      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
     }
 
-    .icon-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.96rem;
+    .start-section {
+      padding: 56px 0 0;
     }
 
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 24px;
-    }
-
-    .material-card {
+    .intro-card {
       background: white;
       border: 1px solid rgba(36,49,38,0.08);
       box-shadow: var(--shadow);
-      padding: 28px;
-      grid-column: 1 / -1;
+      border-radius: var(--radius);
+      padding: 32px;
     }
 
-    .material-badge {
-      display: inline-block;
-      padding: 7px 12px;
-      background: rgba(103,135,96,0.12);
-      color: var(--sage);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.75rem;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .material-card h3 {
-      font-size: 1.38rem;
-      margin-bottom: 12px;
+    .intro-card h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
       text-transform: uppercase;
     }
 
-    .material-card > p {
+    .intro-card p {
+      margin-top: 14px;
       color: var(--muted);
       line-height: 1.8;
-      margin-bottom: 18px;
-    }
-
-    .material-list {
-      display: grid;
-      gap: 12px;
-      text-align: left;
-    }
-
-    .material-item {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 150px;
-      gap: 18px;
-      align-items: center;
-      padding: 18px 20px;
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #faf9f5;
-    }
-
-    .material-main {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      min-width: 0;
-    }
-
-    .material-thumb {
-      display: block;
-      width: 150px;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border: 1px solid rgba(36,49,38,0.08);
-      background: #f3f1eb;
-      box-shadow: 0 8px 18px rgba(36,49,38,0.08);
-    }
-
-    .material-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.2s ease;
-    }
-
-    .material-thumb:hover img {
-      transform: scale(1.03);
+      max-width: 64ch;
     }
 
     .contact-band {
@@ -650,6 +316,8 @@
       background: white;
       border: 1px solid rgba(36,49,38,0.08);
       box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      text-align: center;
     }
 
     .contact-band h3 {
@@ -674,6 +342,17 @@
     }
 
     .social-chip {
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 0;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.18s ease;
       background: var(--sage);
       color: white;
     }
@@ -683,7 +362,8 @@
     }
 
     .footer {
-      padding: 0 0 34px;
+      padding: 60px 0 30px;
+      margin-top: 60px;
     }
 
     .footer-box {
@@ -697,140 +377,180 @@
       font-size: 0.95rem;
     }
 
-    .download-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    @keyframes organic-toggle-float {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      35% { transform: rotate(-3deg) translateY(-1px); }
+      70% { transform: rotate(2deg) translateY(1px); }
     }
 
-    .download-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      box-shadow: 0 8px 18px rgba(36,49,38,0.10);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-      white-space: nowrap;
-    }
-
-    .download-links a:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 22px rgba(36,49,38,0.14);
-      filter: brightness(1.03);
-    }
-
-    .download-links a:nth-child(1) {
-      background: linear-gradient(135deg, var(--sage), #88a67f);
-      color: white;
-    }
-
-    .download-links a:nth-child(2) {
-      background: linear-gradient(135deg, var(--gold), var(--orange));
-      color: #3d2a10;
-    }
-
-    .download-links a:nth-child(3) {
-      background: linear-gradient(135deg, #b44f72, #ee7a78);
-      color: white;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.4; transform: scale(0.95); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    @keyframes rain {
-      from { transform: translateY(-12px); opacity: 0; }
-      15% { opacity: 1; }
-      to { transform: translateY(28px); opacity: 0; }
-    }
-
-    @keyframes cloudBreath {
-      0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
-      50% { transform: translateX(10px) translateY(-4px) scale(1.03); }
-    }
-
-    @keyframes snowfall {
-      0% { transform: translateY(-24px) translateX(0px) scale(0.85); opacity: 0; }
-      8% { opacity: 1; }
-      30% { transform: translateY(80px) translateX(18px) scale(1); opacity: 1; }
-      60% { transform: translateY(150px) translateX(-14px) scale(1.06); opacity: 0.95; }
-      100% { transform: translateY(230px) translateX(12px) scale(1.1); opacity: 0; }
-    }
-
-    @media (max-width: 940px) {
-  .quick-grid,
-  .about-icons,
-  .materials-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .quick-grid-wrap {
-    margin-top: 24px;
-  }
-
-  /* Lock Card 2 image height */
-  .quick-card:nth-child(2) img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-      .quick-grid-wrap {
-        margin-top: 24px;
-      }
-    }
-
-    @media (max-width: 760px) {
+    @media (max-width: 850px) {
       .nav {
-        padding: 10px 0 14px;
+        min-height: auto;
+        padding: 12px 0 16px;
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
       }
 
-      .nav-links button,
-      .nav-links a {
-        min-height: 52px;
+      .nav-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
         width: 100%;
-        padding: 0 14px;
       }
 
-      .hero {
-        min-height: 420px;
+      .brand {
+        width: auto;
+        flex: 1;
       }
 
-      h1 {
-        font-size: clamp(2.1rem, 10vw, 3.2rem);
+      .menu-toggle {
+        display: inline-flex;
       }
 
-      .material-item {
+      .nav-links {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,251,242,0.98));
+        border: 1px solid rgba(251,155,39,0.12);
+        border-radius: 30px 24px 34px 22px;
+        box-shadow:
+          0 20px 44px rgba(36,49,38,0.10),
+          inset 0 1px 0 rgba(255,255,255,0.8);
+        position: relative;
+        transform: translateY(-8px) scale(0.985, 0.94);
+        transform-origin: top center;
+        will-change: max-height, opacity, transform, border-radius;
+        transition:
+          max-height 0.58s cubic-bezier(0.25, 0.9, 0.3, 1),
+          opacity 0.32s ease,
+          transform 0.58s cubic-bezier(0.25, 0.9, 0.3, 1),
+          border-radius 0.58s cubic-bezier(0.25, 0.9, 0.3, 1);
+      }
+
+      .nav-links::before,
+      .nav-links::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        transition: transform 0.58s cubic-bezier(0.25, 0.9, 0.3, 1), opacity 0.32s ease;
+      }
+
+      .nav-links::before {
+        inset: 0;
+        border-radius: inherit;
+        background:
+          radial-gradient(circle at 14% 12%, rgba(255,244,196,0.58), transparent 22%),
+          radial-gradient(circle at 88% 18%, rgba(251,155,39,0.16), transparent 18%),
+          radial-gradient(circle at 18% 82%, rgba(103,135,96,0.12), transparent 20%);
+        opacity: 0.85;
+      }
+
+      .nav-links::after {
+        width: 130px;
+        height: 68px;
+        top: -14px;
+        right: 18px;
+        border-radius: 58% 42% 60% 40% / 46% 58% 42% 54%;
+        background: radial-gradient(circle, rgba(255,255,255,0.48), rgba(255,255,255,0));
+        opacity: 0.8;
+      }
+
+      .nav-links.active {
+        max-height: 460px;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        border-radius: 28px 26px 32px 24px;
+      }
+
+      .nav-links a,
+      .nav-links button {
+        min-height: 56px;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0 18px;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(36,49,38,0.06);
+        flex: none;
+        position: relative;
+        z-index: 1;
+        transition: background 0.22s ease, transform 0.22s ease, padding-left 0.22s ease;
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links.active::before {
+        transform: scale(1.01, 1.03);
+      }
+
+      .nav-links.active::after {
+        transform: translate(-5px, 6px) scale(1.03);
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+        width: 8px;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"] {
+        animation: none;
+        transform: rotate(10deg) scale(1.12);
+        border-radius: 38% 62% 42% 58% / 56% 38% 62% 44%;
+        background: linear-gradient(135deg, rgba(251,155,39,0.48), rgba(252,193,93,0.58) 48%, rgba(103,135,96,0.34));
+        box-shadow:
+          0 28px 54px rgba(36,49,38,0.20),
+          0 0 0 12px rgba(255,244,196,0.24),
+          inset 0 1px 0 rgba(255,255,255,0.9);
+      }
+
+      .menu-toggle[aria-expanded="true"]::before {
+        transform: scale(1.10) rotate(14deg);
+        border-radius: 42% 58% 36% 64% / 64% 34% 66% 36%;
+        background: rgba(255,255,255,0.78);
+      }
+
+      .menu-toggle[aria-expanded="true"]::after {
+        transform: translate(-8px, 9px) scale(1.18);
+      }
+
+      .tiles {
         grid-template-columns: 1fr;
+        grid-auto-rows: 300px;
       }
 
-      .material-thumb {
-        width: 100%;
-      }
+      .tile.big { grid-row: span 1; }
+      .tiles-wrapper { padding-top: 24px; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/sky-mini-widget.css">
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
       <div class="nav-head">
-        <a class="brand" href="#about" aria-label="Project: Tree House">
+        <a class="brand" href="#start" aria-label="Project: Tree House">
           <div class="brand-mark">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project Tree House logo" />
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project: Tree House logo">
           </div>
           <div>
             <div class="brand-title">Project: Tree House</div>
-            <div class="brand-subtitle">An educational and social project inspired by nature.</div>
+            <div class="brand-subtitle">An educational and community project inspired by nature.</div>
           </div>
         </a>
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
@@ -841,249 +561,88 @@
       </div>
 
       <nav class="nav-links" id="site-menu" aria-label="Navigation">
-        <button class="active" data-page="about">About</button>
+        <button class="active" type="button">Start Here</button>
         <a href="/en/materials/">Resources</a>
         <a href="/blog/en/">Blog</a>
-        <a class="lang-link" href="/" lang="pl" hreflang="pl">Polish</a>
+        <a class="lang-link" href="/" lang="pl" hreflang="pl">Polski</a>
         <a href="/en/sky.html">Sky today</a>
-        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="/en/about.html">About us</a>
       </nav>
     </div>
   </header>
 
-
-  <section class="hero">
-    <div class="hero-inner">
-      <span class="hero-kicker">A project close to nature</span>
-      <h1>Resources, reflections and education inspired by nature</h1>
-      <p class="hero-text">
-        Project <strong>Tree House</strong> was created out of the need to build a place and materials that bring people closer to nature. We believe that nature has an extraordinary power to regulate, calm and support people, regardless of age or experience.
-      </p>
-    </div>
-  </section>
-
-  <section class="quick-grid-wrap">
-    <div class="container quick-grid">
-      <article class="quick-card">
-        <div class="quick-card-top">
-          <h3>About</h3>
-          <p>We create materials that help people discover the world of plants: simple, accessible, inspiring and rooted in respect for one another and for nature.</p>
-          <p>We want everyone to be able to feel this connection, even for a moment, even in the rush of everyday life, even in the city.</p>
-        </div>
-        <div class="quick-card-bottom quick-card-text">
-          <p>Our tree house is a symbol of a safe place, light between leaves and a moment of pause.</p>
-          <p>Today we are building the foundations: knowledge, resources and ideas that inspire greater mindfulness.</p>
-        </div>
-      </article>
-
-      <article class="quick-card">
-        <div class="quick-card-top">
-          <h3>Resources</h3>
-          <p>Get inspired, download for free and explore what we recommend.</p>
-        </div>
-        <a class="quick-card-bottom" data-current-card-link href="/en/materials/urban-bathing/#tydzien-14" aria-label="Open the current card">
-          <img data-current-card-image src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png" alt="Current mindfulness card" />
+  <section class="tiles-wrapper" id="start">
+    <div class="container">
+      <div class="tiles">
+        <a href="/en/materials/urban-bathing/#tydzien-14" class="tile big" data-current-card-link>
+          <img data-current-card-image src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png" alt="Start here">
+          <div class="label">
+            <h2>Start Here</h2>
+            <p>Mindfulness practices for those looking for rest and breathing space.</p>
+          </div>
         </a>
-     </article> 
-     
-     <article class="quick-card">
-        <div class="quick-card-top">
-          <h3>Sky today</h3>
-          <p>A small preview of the full page: the rhythm of the day, changing light and a quiet look upward.</p>
-        </div>
-        <a class="sky-mini-card" href="/en/sky.html" aria-label="Open Sky today">
-          <div class="sky-mini-scene" id="skyMiniScene">
-            <div class="sky-mini-stars" id="skyMiniStars"></div>
-            <div class="sky-mini-sun" id="skyMiniSun"></div>
-            <div class="sky-mini-moon" id="skyMiniMoon"></div>
 
-            <div class="sky-mini-clouds" id="skyMiniClouds">
+        <a href="/en/sky.html" class="tile" aria-label="Open sky view">
+          <div class="sky-mini-scene sky-mini-scene--tile js-sky-mini" data-label-prefix="Sky today">
+            <div class="sky-mini-stars"></div>
+            <div class="sky-mini-sun"></div>
+            <div class="sky-mini-moon"></div>
+            <div class="sky-mini-clouds">
               <div class="sky-mini-cloud one"></div>
               <div class="sky-mini-cloud two"></div>
               <div class="sky-mini-cloud three"></div>
             </div>
-
-            <div class="sky-mini-rain" id="skyMiniRain"></div>
-            <div class="sky-mini-snow" id="skyMiniSnow"></div>
-            <div class="sky-mini-birds" id="skyMiniBirds">◠◡◠</div>
-
+            <div class="sky-mini-rain"></div>
+            <div class="sky-mini-snow"></div>
+            <div class="sky-mini-birds">◠◡◠</div>
             <div class="sky-mini-overlay">
-              <div class="sky-mini-label" id="skyMiniLabel">Sky today · nearest city</div>
-              <p class="sky-mini-hook" id="skyMiniHook">Today's sky — open the full view</p>
+              <div class="sky-mini-label">Sky today · nearest city</div>
+              <p class="sky-mini-hook">Today's sky — open the full view</p>
             </div>
           </div>
         </a>
-      </article>
+
+        <a href="/blog/en/" class="tile">
+          <img src="/assets/img/start-here/with-children-tile.jpg" alt="With children">
+          <div class="label">
+            <h2>With Children</h2>
+            <p>Together in nature</p>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <main class="pages">
+  <section class="start-section">
     <div class="container">
-      <section id="about" class="page active">
-        <div class="section-title">
-          <h2>Mission</h2>
-          <p>
-            Project <strong>Tree House</strong> helps build a calmer connection with nature and with the people close to us. It combines simple educational materials, reflection and an aesthetic that does not overwhelm.
-          </p>
+      <div class="intro-card">
+        <h2>A Small Guide to the Project</h2>
+        <p>
+          If this is your first visit, start with the downloadable resources or open the sky view to feel the rhythm of the day. This page is meant to lead you to the key places in the project without feeling overloaded.
+        </p>
+      </div>
+
+      <div class="contact-band">
+        <h3>Follow New Publications</h3>
+        <p>Stay up to date — we have big plans.</p>
+        <div class="contact-actions">
+          <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
         </div>
-
-        <div class="about-icons">
-          <article class="icon-card">
-            <div class="icon-circle">🌿</div>
-            <h3>Nature</h3>
-            <p>Plants, seasons, observation and everyday contact with nature.</p>
-          </article>
-
-          <article class="icon-card">
-            <div class="icon-circle">☼</div>
-            <h3>Mindfulness</h3>
-            <p>Short forms that help you slow down and notice more.</p>
-          </article>
-
-          <article class="icon-card">
-            <div class="icon-circle">✎</div>
-            <h3>Resources</h3>
-            <p>Cards, notes, reflections and content to read or download.</p>
-          </article>
-
-          <article class="icon-card">
-            <div class="icon-circle">◎</div>
-            <h3>Accessibility</h3>
-            <p>Simple language, free and inspiring resources, for everyone.</p>
-          </article>
-        </div>
-
-        <div class="contact-band">
-          <h3>Contact</h3>
-          <p>The easiest way to follow the project and stay close to new resources.</p>
-          <div class="contact-actions">
-            <a class="social-chip" href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-            <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="materials" class="page">
-        <div class="section-title">
-          <h2>Resources</h2>
-          <p>
-            To read or download: weekly cards, PDFs, entries, seasonal guides and links to external publications.
-          </p>
-        </div>
-        <div class="materials-grid">
-          <article class="material-card full-width">
-            <span class="material-badge">Urban forest bathing</span>
-            <h3>#domeknadrzewie52</h3>
-            <p>A series of cards for each week of the year, inspired by nature, mindfulness and seasonal observation.</p>
-            <div class="material-list">
-
-              <div class="material-item">
-                <div class="material-main">
-                  <div>
-                    <strong>Week 01</strong>
-                    <span>Theme: Stillness</span>
-                  </div>
-
-                  <div class="download-links">
-                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" download>Image</a>
-                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/1Ben.png" download>Reflection</a>
-                    <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
-                  </div>
-                </div>
-
-                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
-                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" alt="Card preview Week 01" />
-                </a>
-              </div>
-
-              <div class="material-item">
-                <div class="material-main">
-                  <div>
-                    <strong>Week 02</strong>
-                    <span>Theme: Perseverance</span>
-                  </div>
-
-                  <div class="download-links">
-                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" download>Image</a>
-                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/2Ben.png" download>Reflection</a>
-                    <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank" rel="noreferrer">Instagram</a>
-                  </div>
-                </div>
-
-                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" target="_blank" rel="noreferrer">
-                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" alt="Card preview Week 02" />
-                </a>
-              </div>
-
-              <div class="material-item">
-                <div class="material-main">
-                  <div>
-                    <strong>Week 03</strong>
-                    <span>Theme: Slowness</span>
-                  </div>
-
-                  <div class="download-links">
-                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" download>Image</a>
-                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/en/materials/kapiele_miejskie/3Ben.png" download>Reflection</a>
-                    <a href="https://www.instagram.com/reel/DUMYPA-DIhl/" target="_blank" rel="noreferrer">Instagram</a>
-                  </div>
-                </div>
-
-                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" target="_blank" rel="noreferrer">
-                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" alt="Card preview Week 03" />
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="contact-band">
-          <h3>Follow new publications</h3>
-          <p>Stay up to date — we have big plans!</p>
-          <div class="contact-actions">
-            <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-            <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
-  </main>
+  </section>
 
   <footer class="footer">
     <div class="container footer-box">
-      <div><strong>Project: Tree House</strong> • We grow naturally</div>
+      <div><strong>Project: Tree House</strong> • Growing with nature</div>
       <div>March 2026</div>
     </div>
   </footer>
 
   <script>
-    const buttons = document.querySelectorAll('[data-page]');
-    const pages = document.querySelectorAll('.page');
-    const tabs = document.querySelectorAll('.nav-links button');
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-links');
-
-    function setPage(pageId) {
-      pages.forEach(page => page.classList.toggle('active', page.id === pageId));
-      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.page === pageId));
-      window.location.hash = pageId;
-      const main = document.querySelector('.pages');
-      if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        setPage(button.dataset.page);
-        if (navMenu && menuToggle) {
-          navMenu.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-
-    const initial = window.location.hash.replace('#', '');
-    if (initial === 'materials' || initial === 'about') setPage(initial);
 
     if (menuToggle && navMenu) {
       menuToggle.addEventListener('click', () => {
@@ -1091,378 +650,13 @@
         menuToggle.setAttribute('aria-expanded', String(isOpen));
       });
 
-      document.querySelectorAll('.nav-links a').forEach(link => {
+      document.querySelectorAll('.nav-links a').forEach((link) => {
         link.addEventListener('click', () => {
           navMenu.classList.remove('active');
           menuToggle.setAttribute('aria-expanded', 'false');
         });
       });
     }
-
-    (function () {
-      if (!window.SunCalc) return;
-
-      const mini = {
-        scene: document.getElementById('skyMiniScene'),
-        sun: document.getElementById('skyMiniSun'),
-        moon: document.getElementById('skyMiniMoon'),
-        stars: document.getElementById('skyMiniStars'),
-        rain: document.getElementById('skyMiniRain'),
-        snow: document.getElementById('skyMiniSnow'),
-        clouds: document.getElementById('skyMiniClouds'),
-        birds: document.getElementById('skyMiniBirds'),
-        label: document.getElementById('skyMiniLabel'),
-        hook: document.getElementById('skyMiniHook')
-      };
-
-      if (!mini.scene || !mini.sun || !mini.moon || !mini.stars || !mini.rain || !mini.snow || !mini.clouds) return;
-
-      const FALLBACK_LOCATION = {
-        name: 'Wrocław',
-        latitude: 51.1079,
-        longitude: 17.0385,
-        timezone: 'Europe/Warsaw',
-        source: 'fallback'
-      };
-
-      const SUPPORTED_CITIES = [
-        { name: 'Wrocław', latitude: 51.1079, longitude: 17.0385, timezone: 'Europe/Warsaw' },
-        { name: 'Warsaw', latitude: 52.2297, longitude: 21.0122, timezone: 'Europe/Warsaw' },
-        { name: 'Kraków', latitude: 50.0647, longitude: 19.9450, timezone: 'Europe/Warsaw' },
-        { name: 'Poznań', latitude: 52.4064, longitude: 16.9252, timezone: 'Europe/Warsaw' },
-        { name: 'Gdańsk', latitude: 54.3520, longitude: 18.6466, timezone: 'Europe/Warsaw' },
-        { name: 'Sopot', latitude: 54.4416, longitude: 18.5601, timezone: 'Europe/Warsaw' },
-        { name: 'Ostrów Wielkopolski', latitude: 51.6550, longitude: 17.8069, timezone: 'Europe/Warsaw' },
-        { name: 'Jarocin', latitude: 51.9727, longitude: 17.5026, timezone: 'Europe/Warsaw' },
-        { name: 'Łódź', latitude: 51.7592, longitude: 19.4550, timezone: 'Europe/Warsaw' },
-        { name: 'Szczecin', latitude: 53.4285, longitude: 14.5528, timezone: 'Europe/Warsaw' },
-        { name: 'Lublin', latitude: 51.2465, longitude: 22.5684, timezone: 'Europe/Warsaw' },
-        { name: 'Katowice', latitude: 50.2649, longitude: 19.0238, timezone: 'Europe/Warsaw' }
-      ];
-
-      let locationData = { ...FALLBACK_LOCATION };
-
-      function clearChildren(el) {
-        while (el.firstChild) el.removeChild(el.firstChild);
-      }
-
-      function clamp(value, min, max) {
-        return Math.min(max, Math.max(min, value));
-      }
-
-      function toRadians(deg) {
-        return deg * Math.PI / 180;
-      }
-
-      function haversineDistance(lat1, lon1, lat2, lon2) {
-        const R = 6371;
-        const dLat = toRadians(lat2 - lat1);
-        const dLon = toRadians(lon2 - lon1);
-
-        const a =
-          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-          Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
-          Math.sin(dLon / 2) * Math.sin(dLon / 2);
-
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        return R * c;
-      }
-
-      function findNearestSupportedCity(lat, lon) {
-        if (!Number.isFinite(lat) || !Number.isFinite(lon)) return FALLBACK_LOCATION;
-
-        let nearest = SUPPORTED_CITIES[0];
-        let minDistance = haversineDistance(lat, lon, nearest.latitude, nearest.longitude);
-
-        for (const city of SUPPORTED_CITIES.slice(1)) {
-          const distance = haversineDistance(lat, lon, city.latitude, city.longitude);
-          if (distance < minDistance) {
-            minDistance = distance;
-            nearest = city;
-          }
-        }
-
-        return nearest;
-      }
-
-      function saveLocation(loc) {
-        try {
-          localStorage.setItem('dnd-sky-mini-location-en', JSON.stringify({
-            ...loc,
-            savedAt: Date.now()
-          }));
-        } catch (e) {}
-      }
-
-      function loadSavedLocation() {
-        try {
-          const raw = localStorage.getItem('dnd-sky-mini-location-en');
-          if (!raw) return null;
-
-          const parsed = JSON.parse(raw);
-          if (!parsed) return null;
-
-          const maxAge = 1000 * 60 * 60 * 24 * 7;
-          if (!parsed.savedAt || Date.now() - parsed.savedAt > maxAge) return null;
-
-          if (!Number.isFinite(Number(parsed.latitude)) || !Number.isFinite(Number(parsed.longitude))) {
-            return null;
-          }
-
-          return parsed;
-        } catch (e) {
-          return null;
-        }
-      }
-
-      function buildLocalNoon(date, timezone) {
-        const parts = new Intl.DateTimeFormat('en-CA', {
-          timeZone: timezone,
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit'
-        }).formatToParts(date);
-
-        const map = Object.fromEntries(parts.map((p) => [p.type, p.value]));
-        return new Date(
-          Number(map.year),
-          Number(map.month) - 1,
-          Number(map.day),
-          12, 0, 0, 0
-        );
-      }
-
-      function getTimePartsInTimezone(timezone) {
-        const parts = new Intl.DateTimeFormat('en-GB', {
-          timeZone: timezone,
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hourCycle: 'h23'
-        }).formatToParts(new Date());
-
-        const map = Object.fromEntries(parts.map((p) => [p.type, p.value]));
-        return {
-          hour: Number(map.hour),
-          minute: Number(map.minute),
-          second: Number(map.second)
-        };
-      }
-
-      function getAstronomyForDay(date, latitude, longitude, timezone) {
-        const localNoon = buildLocalNoon(date, timezone);
-        const sunTimes = window.SunCalc.getTimes(localNoon, latitude, longitude);
-
-        return {
-          sunrise: sunTimes.sunrise || null,
-          sunset: sunTimes.sunset || null
-        };
-      }
-
-      function getBodyAltitudes(date, latitude, longitude) {
-        const sunPos = window.SunCalc.getPosition(date, latitude, longitude);
-        const moonPos = window.SunCalc.getMoonPosition(date, latitude, longitude);
-
-        return {
-          sunAltitude: sunPos ? sunPos.altitude * 180 / Math.PI : null,
-          moonAltitude: moonPos ? moonPos.altitude * 180 / Math.PI : null
-        };
-      }
-
-      function getSceneFromNow(now, sunriseDate, sunsetDate, timezone) {
-        const timeParts = getTimePartsInTimezone(timezone);
-        const hourValue = timeParts.hour + (timeParts.minute / 60);
-
-        const localNoon = buildLocalNoon(now, timezone);
-        const localProbe = new Date(
-          localNoon.getFullYear(),
-          localNoon.getMonth(),
-          localNoon.getDate(),
-          timeParts.hour,
-          timeParts.minute,
-          timeParts.second || 0,
-          0
-        );
-
-        if (hourValue < 6 || hourValue >= 20) return 'night';
-        if (sunriseDate && localProbe <= new Date(sunriseDate.getTime() + 90 * 60 * 1000)) return 'dawn';
-        if (sunsetDate && localProbe >= new Date(sunsetDate.getTime() - 90 * 60 * 1000)) return 'dusk';
-        return 'day';
-      }
-
-      function getSkyPalette(scene) {
-        return {
-          dawn:  { skyTop: '#bcd7e6', skyBottom: '#f4cda8', sunOpacity: 1,   moonOpacity: 0.2,  stars: 0.08, birds: 0.55, clouds: 0.58 },
-          day:   { skyTop: '#c4e0ef', skyBottom: '#f5dfbf', sunOpacity: 1,   moonOpacity: 0.04, stars: 0,    birds: 1,    clouds: 0.44 },
-          dusk:  { skyTop: '#809ec4', skyBottom: '#eda96e', sunOpacity: 0.9, moonOpacity: 0.24, stars: 0.18, birds: 0.35, clouds: 0.52 },
-          night: { skyTop: '#1c2940', skyBottom: '#374e73', sunOpacity: 0.03, moonOpacity: 1,    stars: 1,    birds: 0,    clouds: 0.32 }
-        }[scene];
-      }
-
-      function populateStars() {
-        clearChildren(mini.stars);
-        for (let i = 0; i < 14; i += 1) {
-          const s = document.createElement('span');
-          s.className = 'sky-mini-star';
-          s.style.left = `${8 + Math.random() * 82}%`;
-          s.style.top = `${8 + Math.random() * 46}%`;
-          s.style.animationDelay = `${Math.random() * 4}s`;
-          mini.stars.appendChild(s);
-        }
-      }
-
-      function populateRain() {
-        clearChildren(mini.rain);
-        for (let i = 0; i < 14; i += 1) {
-          const d = document.createElement('span');
-          d.className = 'sky-mini-drop';
-          d.style.left = `${8 + Math.random() * 84}%`;
-          d.style.top = `${18 + Math.random() * 42}%`;
-          d.style.animationDelay = `${Math.random() * 1.2}s`;
-          d.style.animationDuration = `${0.9 + Math.random() * 0.5}s`;
-          mini.rain.appendChild(d);
-        }
-      }
-
-      function populateSnow() {
-        clearChildren(mini.snow);
-        for (let i = 0; i < 40; i += 1) {
-          const f = document.createElement('span');
-          f.className = 'sky-mini-flake';
-          const size = 3 + Math.random() * 5;
-          f.style.width = `${size}px`;
-          f.style.height = `${size}px`;
-          f.style.left = `${4 + Math.random() * 92}%`;
-          f.style.top = `${-20 - Math.random() * 80}px`;
-          f.style.opacity = `${0.45 + Math.random() * 0.5}`;
-          f.style.animationDelay = `-${Math.random() * 7}s`;
-          f.style.animationDuration = `${5 + Math.random() * 6}s`;
-          mini.snow.appendChild(f);
-        }
-      }
-
-      function applyMiniScene(scene, now, sunriseDate, sunsetDate) {
-        const palette = getSkyPalette(scene);
-        mini.scene.style.background =
-          `linear-gradient(180deg, ${palette.skyTop} 0%, ${palette.skyBottom} 70%, rgba(245,241,232,0.14) 100%)`;
-
-        const daylightTotal =
-          (sunriseDate && sunsetDate)
-            ? Math.max(1, sunsetDate.getTime() - sunriseDate.getTime())
-            : 1;
-
-        const daylightProgress =
-          (sunriseDate && sunsetDate)
-            ? clamp((now.getTime() - sunriseDate.getTime()) / daylightTotal, 0, 1)
-            : 0.5;
-
-        const bodyAltitudes = getBodyAltitudes(now, locationData.latitude, locationData.longitude);
-        const sunVisible =
-          typeof bodyAltitudes.sunAltitude === 'number'
-            ? bodyAltitudes.sunAltitude > -0.8
-            : scene !== 'night';
-
-        const moonVisible =
-          typeof bodyAltitudes.moonAltitude === 'number'
-            ? bodyAltitudes.moonAltitude > -0.8
-            : scene === 'night';
-
-        const sunLeft = 10 + daylightProgress * 76;
-        const sunTop = 132 - Math.sin(Math.PI * clamp(daylightProgress, 0, 1)) * 88;
-        mini.sun.style.left = `${sunLeft}%`;
-        mini.sun.style.top = `${sunTop}px`;
-        mini.sun.style.opacity = sunVisible ? palette.sunOpacity : 0;
-
-        const timeParts = getTimePartsInTimezone(locationData.timezone);
-        const moonSeed = (timeParts.hour + timeParts.minute / 60) / 24;
-        const moonLeft = 12 + moonSeed * 72;
-        const moonTop = 126 - Math.sin(Math.PI * clamp(moonSeed, 0, 1)) * 80;
-        mini.moon.style.left = `${moonLeft}%`;
-        mini.moon.style.top = `${moonTop}px`;
-        mini.moon.style.opacity = moonVisible ? palette.moonOpacity : 0;
-
-        mini.stars.style.opacity = palette.stars;
-        mini.rain.style.opacity = 0;
-        mini.snow.style.opacity = 0;
-        mini.birds.style.opacity = palette.birds;
-
-        [...mini.clouds.children].forEach((cloud, index) => {
-          cloud.style.opacity = Math.max(0, palette.clouds - index * 0.14);
-        });
-
-        mini.label.textContent = `Sky today · ${locationData.name}`;
-
-        if (scene === 'night') mini.hook.textContent = 'Night preview — open the full view';
-        else if (scene === 'dawn') mini.hook.textContent = 'Morning sky — open the full view';
-        else if (scene === 'dusk') mini.hook.textContent = 'Evening sky — open the full view';
-        else mini.hook.textContent = "Today's sky — open the full view";
-      }
-
-      function renderMini() {
-        const now = new Date();
-        const astronomy = getAstronomyForDay(now, locationData.latitude, locationData.longitude, locationData.timezone);
-        const scene = getSceneFromNow(now, astronomy.sunrise, astronomy.sunset, locationData.timezone);
-        applyMiniScene(scene, now, astronomy.sunrise, astronomy.sunset);
-      }
-
-      async function detectApproximateLocationByIP() {
-        try {
-          const response = await fetch('https://ipwho.is/');
-          if (!response.ok) throw new Error('IP lookup failed');
-
-          const data = await response.json();
-          if (!data || data.success === false) throw new Error('No IP location data');
-
-          const lat = Number(data.latitude);
-          const lon = Number(data.longitude);
-
-          if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
-            throw new Error('Invalid coordinates');
-          }
-
-          const nearestCity = findNearestSupportedCity(lat, lon);
-
-          locationData = {
-            ...nearestCity,
-            timezone: (data.timezone && data.timezone.id) ? data.timezone.id : nearestCity.timezone || 'Europe/Warsaw',
-            source: 'ip'
-          };
-
-          saveLocation(locationData);
-          renderMini();
-        } catch (error) {
-          locationData = { ...FALLBACK_LOCATION };
-          saveLocation(locationData);
-          renderMini();
-        }
-      }
-
-      function initMiniLocationLogic() {
-        const saved = loadSavedLocation();
-
-        if (saved) {
-          locationData = {
-            name: saved.name || FALLBACK_LOCATION.name,
-            latitude: Number(saved.latitude) || FALLBACK_LOCATION.latitude,
-            longitude: Number(saved.longitude) || FALLBACK_LOCATION.longitude,
-            timezone: saved.timezone || FALLBACK_LOCATION.timezone,
-            source: saved.source || 'fallback'
-          };
-          renderMini();
-          return;
-        }
-
-        locationData = { ...FALLBACK_LOCATION };
-        renderMini();
-        detectApproximateLocationByIP();
-      }
-
-      populateStars();
-      populateRain();
-      populateSnow();
-      initMiniLocationLogic();
-      setInterval(renderMini, 60000);
-    })();
   </script>
 </body>
 </html>

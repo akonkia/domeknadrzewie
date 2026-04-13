@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <title>Projekt: Domek na Drzewie</title>
+  <meta name="description" content="Projekt: Domek na Drzewie — o projekcie i materiały do pobrania lub czytania." />
+  <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
+  <script defer src="/assets/js/sky-mini-widget.js"></script>
+  <script defer src="/assets/js/cards-data.js"></script>
+  <script defer src="/assets/js/current-card.js"></script>
+  <style>
+    :root {
+      --sage: #678760;
+      --orange: #fb9b27;
+      --gold: #fcc15d;
+      --mist: #d3d4d5;
+      --cream: #f5f4ef;
+      --white: #ffffff;
+      --text: #243126;
+      --muted: #5e675f;
+      --line: rgba(36, 49, 38, 0.1);
+      --hero-overlay: #678760;
+      --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
+      --max: 1120px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #f3f1eb;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid rgba(36,49,38,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid rgba(36,49,38,0.08);
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-subtitle {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .lang-link {
+      min-height: 88px;
+      padding: 0 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--orange) !important;
+      color: white !important;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-left: 1px solid rgba(36,49,38,0.06);
+    }
+
+    .lang-link:hover {
+      background: #e68e20 !important;
+      color: white !important;
+    }
+
+    .nav-links button,
+    .nav-links a {
+      min-height: 88px;
+      padding: 0 22px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text);
+      border-left: 1px solid rgba(36,49,38,0.06);
+      transition: 0.18s ease;
+    }
+
+    .nav-links button:hover,
+    .nav-links a:hover,
+    .nav-links button.active {
+      background: var(--sage);
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+        url('/mnt/data/Environmental-Organization-Website-Design-788x871.jpg') center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 62px 0;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.18);
+    }
+
+    .hero-text {
+      margin: 18px auto 0;
+      max-width: 56ch;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn,
+    .social-chip {
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 0;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.18s ease;
+    }
+
+    .cta-btn.primary {
+      background: var(--sage);
+      color: white;
+    }
+
+    .cta-btn.secondary {
+      background: rgba(255,255,255,0.16);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.24);
+    }
+
+    .quick-grid-wrap {
+      margin-top: -58px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .quick-card {
+  background: white;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+    .quick-card-top {
+      background: linear-gradient(135deg, #7e9b76, #678760);
+      color: white;
+      padding: 26px;
+      min-height: 170px;
+    }
+
+    .quick-card:nth-child(2) .quick-card-top {
+      background: linear-gradient(135deg, #f0b248, #fb9b27);
+    }
+
+    .quick-card:nth-child(3) .quick-card-top {
+      background: linear-gradient(135deg, #7e9b76, #678760);
+    }
+
+    .quick-card-top h3 {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 12px;
+    }
+
+    .quick-card-bottom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .quick-card:nth-child(2) .quick-card-bottom img {
+      object-fit: contain;
+    }
+
+    .quick-card-bottom {
+  min-height: 220px;
+  flex: 1;
+  background: #f6f4ee;
+  border-top: 1px solid rgba(36,49,38,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+    .quick-card-text {
+      display: block;
+      height: auto;
+      padding: 24px 26px;
+      background: #f8f6f0;
+    }
+
+    .quick-card-text p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.97rem;
+    }
+
+    .quick-card-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .sky-mini-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+    .sky-mini-scene {
+      position: relative;
+      height: 220px;
+      background: linear-gradient(180deg, #d9ebf6 0%, #f3e4c9 70%, rgba(245,241,232,0.14) 100%);
+      border-top: 1px solid rgba(36,49,38,0.08);
+      overflow: hidden;
+      transition: background 0.8s ease;
+      padding: 0;
+    }
+
+    .sky-mini-scene {
+  position: relative;
+  min-height: 220px;
+  flex: 1;
+  background: linear-gradient(180deg, #d9ebf6 0%, #f3e4c9 70%, rgba(245,241,232,0.14) 100%);
+  border-top: 1px solid rgba(36,49,38,0.08);
+  overflow: hidden;
+  transition: background 0.8s ease;
+  padding: 0;
+}
+
+    .sky-mini-stars,
+    .sky-mini-rain,
+    .sky-mini-snow,
+    .sky-mini-clouds,
+    .sky-mini-sun,
+    .sky-mini-moon,
+    .sky-mini-birds {
+      position: absolute;
+    }
+
+    .sky-mini-stars,
+    .sky-mini-rain,
+    .sky-mini-snow,
+    .sky-mini-clouds {
+      inset: 0;
+    }
+
+    .sky-mini-stars {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      z-index: 1;
+    }
+
+    .sky-mini-star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 0 10px rgba(255,255,255,0.7);
+      animation: twinkle 4s ease-in-out infinite;
+    }
+
+    .sky-mini-sun,
+    .sky-mini-moon {
+      border-radius: 50%;
+      transition: left 1s ease, top 1s ease, opacity 1s ease;
+    }
+
+    .sky-mini-sun {
+      width: 54px;
+      height: 54px;
+      background: radial-gradient(circle at 35% 35%, #fff7d5 0%, #f5c768 58%, #e7ab3d 100%);
+      box-shadow: 0 0 34px rgba(245, 199, 104, 0.4);
+      z-index: 2;
+      opacity: 1;
+    }
+
+    .sky-mini-moon {
+      width: 30px;
+      height: 30px;
+      background: #f0eee7;
+      box-shadow: inset -8px 0 0 rgba(207,205,196,0.8), 0 0 18px rgba(255,255,255,0.16);
+      z-index: 1;
+      opacity: 0.15;
+    }
+
+    .sky-mini-cloud {
+      position: absolute;
+      background: rgba(255,255,255,0.9);
+      border-radius: 999px;
+      opacity: 0.9;
+      animation: cloudBreath 16s ease-in-out infinite;
+    }
+
+    .sky-mini-cloud::before,
+    .sky-mini-cloud::after {
+      content: "";
+      position: absolute;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .sky-mini-cloud.one { width: 82px; height: 26px; top: 58px; left: 14%; }
+    .sky-mini-cloud.one::before { width: 30px; height: 30px; left: 10px; top: -12px; }
+    .sky-mini-cloud.one::after { width: 38px; height: 38px; right: 12px; top: -16px; }
+
+    .sky-mini-cloud.two { width: 70px; height: 24px; top: 96px; right: 18%; opacity: 0.8; }
+    .sky-mini-cloud.two::before { width: 24px; height: 24px; left: 8px; top: -10px; }
+    .sky-mini-cloud.two::after { width: 30px; height: 30px; right: 10px; top: -12px; }
+
+    .sky-mini-cloud.three { width: 100px; height: 30px; top: 34px; left: 42%; opacity: 0.45; }
+    .sky-mini-cloud.three::before { width: 36px; height: 36px; left: 12px; top: -16px; }
+    .sky-mini-cloud.three::after { width: 42px; height: 42px; right: 14px; top: -18px; }
+
+    .sky-mini-rain,
+    .sky-mini-snow {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+
+    .sky-mini-drop {
+      position: absolute;
+      width: 2px;
+      height: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(187,216,237,0.85));
+      border-radius: 999px;
+      animation: rain 1.2s linear infinite;
+    }
+
+    .sky-mini-flake {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 45%, rgba(220,235,245,0.92) 100%);
+      box-shadow: 0 0 8px rgba(255,255,255,0.45);
+      animation: snowfall 5.8s linear infinite;
+    }
+
+    .sky-mini-birds {
+      right: 16%;
+      top: 58px;
+      color: rgba(70, 85, 71, 0.5);
+      font-size: 18px;
+      letter-spacing: 4px;
+      z-index: 2;
+      transition: opacity 0.8s ease;
+    }
+
+    .sky-mini-overlay {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      z-index: 6;
+      display: grid;
+      gap: 8px;
+      max-width: 30ch;
+    }
+
+    .sky-mini-label,
+    .sky-mini-hook {
+      width: fit-content;
+      box-shadow: 0 8px 18px rgba(31,42,34,0.08);
+    }
+
+    .sky-mini-label {
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(255,255,255,0.72);
+      font-size: 12px;
+      color: #334236;
+    }
+
+    .sky-mini-hook {
+      margin: 0;
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(255,255,255,0.64);
+      font-size: 13px;
+      color: #334236;
+    }
+
+    .pages {
+      padding: 48px 0 40px;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .section-title p {
+      margin: 12px auto 0;
+      max-width: 62ch;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .about-icons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .icon-card,
+    .material-card,
+    .contact-band {
+      text-align: center;
+    }
+
+    .icon-card {
+      padding: 12px 10px;
+    }
+
+    .icon-circle {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #3d4a46;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .icon-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .icon-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .material-card {
+      background: white;
+      border: 1px solid rgba(36,49,38,0.08);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      grid-column: 1 / -1;
+    }
+
+    .material-badge {
+      display: inline-block;
+      padding: 7px 12px;
+      background: rgba(103,135,96,0.12);
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .material-card h3 {
+      font-size: 1.38rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .material-card > p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .material-list {
+      display: grid;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .material-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 20px;
+      border: 1px solid rgba(36,49,38,0.08);
+      background: #faf9f5;
+    }
+
+    .material-main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .material-thumb {
+      display: block;
+      width: 150px;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid rgba(36,49,38,0.08);
+      background: #f3f1eb;
+      box-shadow: 0 8px 18px rgba(36,49,38,0.08);
+    }
+
+    .material-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    .material-thumb:hover img {
+      transform: scale(1.03);
+    }
+
+    .contact-band {
+      margin-top: 30px;
+      padding: 28px;
+      background: white;
+      border: 1px solid rgba(36,49,38,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-band h3 {
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .contact-band p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .social-chip {
+      background: var(--sage);
+      color: white;
+    }
+
+    .social-chip.alt {
+      background: var(--orange);
+    }
+
+    .footer {
+      padding: 0 0 34px;
+    }
+
+    .footer-box {
+      border-top: 1px solid rgba(36,49,38,0.1);
+      padding-top: 20px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .download-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .download-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 18px rgba(36,49,38,0.10);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .download-links a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 22px rgba(36,49,38,0.14);
+      filter: brightness(1.03);
+    }
+
+    .download-links a:nth-child(1) {
+      background: linear-gradient(135deg, var(--sage), #88a67f);
+      color: white;
+    }
+
+    .download-links a:nth-child(2) {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #3d2a10;
+    }
+
+    .download-links a:nth-child(3) {
+      background: linear-gradient(135deg, #b44f72, #ee7a78);
+      color: white;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.4; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    @keyframes rain {
+      from { transform: translateY(-12px); opacity: 0; }
+      15% { opacity: 1; }
+      to { transform: translateY(28px); opacity: 0; }
+    }
+
+    @keyframes cloudBreath {
+      0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
+      50% { transform: translateX(10px) translateY(-4px) scale(1.03); }
+    }
+
+    @keyframes snowfall {
+      0% { transform: translateY(-24px) translateX(0px) scale(0.85); opacity: 0; }
+      8% { opacity: 1; }
+      30% { transform: translateY(80px) translateX(18px) scale(1); opacity: 1; }
+      60% { transform: translateY(150px) translateX(-14px) scale(1.06); opacity: 0.95; }
+      100% { transform: translateY(230px) translateX(12px) scale(1.1); opacity: 0; }
+    }
+
+    @media (max-width: 940px) {
+  .quick-grid,
+  .about-icons,
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-grid-wrap {
+    margin-top: 24px;
+  }
+
+  /* Lock Card 2 image height */
+  .quick-card:nth-child(2) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+
+      .quick-grid-wrap {
+        margin-top: 24px;
+      }
+      /* ADD THIS RULE: Locks Card 2's height on mobile so the image doesn't blow up */
+  .quick-card:nth-child(2) img {
+  width: 100%;
+  height: 100%;       /* Force image to fill the container height */
+  object-fit: cover;  /* Crops the image to fill the space without distortion */
+  display: block;
+}
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 10px 0 14px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links button,
+      .nav-links a {
+        min-height: 52px;
+        width: 100%;
+        padding: 0 14px;
+      }
+
+      .hero {
+        min-height: 420px;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 10vw, 3.2rem);
+      }
+
+      .material-item {
+        grid-template-columns: 1fr;
+      }
+
+      .material-thumb {
+        width: 100%;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/assets/css/sky-mini-widget.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="nav-head">
+        <a class="brand" href="#about" aria-label="Projekt: Domek na Drzewie">
+          <div class="brand-mark">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+          </div>
+          <div>
+            <div class="brand-title">Projekt: Domek na Drzewie</div>
+            <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
+          </div>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="nav-links" id="site-menu" aria-label="Nawigacja">
+        <a href="/">Zacznij tutaj</a>
+        <a href="/materialy/">Materiały</a>
+        <a href="/blog/">Blog</a>
+        <a class="lang-link" href="/en/about.html" lang="en" hreflang="en">English</a>
+        <a href="/sky.html">Niebo dziś</a>
+        <button class="active" data-page="about">O projekcie</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-kicker">Projekt blisko natury</span>
+      <h1>Materiały, refleksje i edukacja inspirowane przyrodą</h1>
+      
+
+    </div>
+  </section>
+
+  <section class="quick-grid-wrap">
+    <div class="container quick-grid">
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>O projekcie</h3>
+          <p>Tworzymy materiały, które pomagają odkrywać świat roślin: proste, przystępne, inspirujące i oparte na szacunku do siebie nawzajem i do natury.</p> 
+          <p>Chcemy, aby każdy mógł poczuć ten kontakt choćby na chwilę, nawet w codziennym pośpiechu, nawet w mieście.</p>
+        </div>
+        <div class="quick-card-bottom quick-card-text">
+          <p>Nasz domek na drzewie jest symbolem bezpiecznego miejsca, światła między liśćmi i chwili zatrzymania.</p>
+          <p>Dziś budujemy podstawy: wiedzę, materiały i idee, które inspirują do większej uważności.</p>
+        </div>
+      </article>
+
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>Materiały</h3>
+          <p>Zainspiruj się, ściągnij za darmo, podpatrz, co polecamy.</p>
+        </div>
+        <a class="quick-card-bottom" data-current-card-link href="/materialy/kapiele_miejskie/#tydzien-14" aria-label="Otwórz aktualną kartę">
+          <img data-current-card-image src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png" alt="Aktualna karta uwaznosci" />
+        </a>
+      </article>
+
+      <article class="quick-card">
+        <div class="quick-card-top">
+          <h3>Niebo dziś</h3>
+          <p>Mały podgląd pełnej strony: rytm dnia, zmieniające się światło i spokojne spojrzenie w górę.</p>
+        </div>
+        <a class="sky-mini-card" href="/sky.html" aria-label="Otwórz stronę Niebo dziś">
+          <div class="sky-mini-scene js-sky-mini" data-label-prefix="Niebo dziś">
+            <div class="sky-mini-stars"></div>
+            <div class="sky-mini-sun"></div>
+            <div class="sky-mini-moon"></div>
+
+            <div class="sky-mini-clouds">
+              <div class="sky-mini-cloud one"></div>
+              <div class="sky-mini-cloud two"></div>
+              <div class="sky-mini-cloud three"></div>
+            </div>
+
+            <div class="sky-mini-rain"></div>
+            <div class="sky-mini-snow"></div>
+            <div class="sky-mini-birds">◠◡◠</div>
+
+            <div class="sky-mini-overlay">
+              <div class="sky-mini-label">Niebo dziś · najbliższe miasto</div>
+              <p class="sky-mini-hook">Dzisiejsze niebo — otwórz pełny widok</p>
+            </div>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <main class="pages">
+    <div class="container">
+      <section id="about" class="page active">
+        <div class="section-title">
+          <h2>Misja</h2>
+          <p>
+            Projekt <strong>Domek na Drzewie</strong> pomaga budować spokojniejszy kontakt z naturą i z bliskimi. Łączy proste materiały edukacyjne, refleksję i estetykę, która nie przytłacza.
+          <br> 
+          <p>
+        Powstał z potrzeby stworzenia miejsca i treści, które zbliżają ludzi do natury. Wierzymy, że przyroda ma niezwykłą moc regulowania, wyciszania i wspierania człowieka, niezależnie od wieku czy doświadczeń.
+    
+          </p>
+        </div>
+
+        <div class="about-icons">
+          <article class="icon-card">
+            <div class="icon-circle">🌿</div>
+            <h3>Natura</h3>
+            <p>Rośliny, sezony, obserwacja i codzienne obcowanie z przyrodą.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">☼</div>
+            <h3>Uważność</h3>
+            <p>Krótkie formy, które pomagają zwolnić i zauważyć więcej.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">✎</div>
+            <h3>Materiały</h3>
+            <p>Karty, notatki, refleksje i treści do czytania lub pobrania.</p>
+          </article>
+
+          <article class="icon-card">
+            <div class="icon-circle">◎</div>
+            <h3>Dostępność</h3>
+            <p>Prosty język, darmowe i inspirujące materiały, dla wszystkich.</p>
+          </article>
+        </div>
+
+        <div class="contact-band">
+          <h3>Kontakt</h3>
+          <p>Najprostszy sposób, by śledzić projekt i mieć łatwy dostęp do nowych materiałów.</p>
+          <div class="contact-actions">
+            <a class="social-chip" href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="materials" class="page">
+        <div class="section-title">
+          <h2>Materiały</h2>
+          <p>
+            Do czytania lub pobierania: karty tygodniowe, PDF-y, wpisy, przewodniki sezonowe i linki do zewnętrznych publikacji.
+          </p>
+        </div>
+        <div class="materials-grid">
+          <article class="material-card full-width">
+            <span class="material-badge">Miejskie kąpiele leśne</span>
+            <h3>#domeknadrzewie52</h3>
+            <p>Seria kart na każdy tydzień roku, inspirowanych przyrodą, uważnością i sezonową obserwacją.</p>
+            <div class="material-list">
+
+              <div class="material-item">
+                <div class="material-main">
+                  <div>
+                    <strong>Tydzień 01</strong>
+                    <span>Temat: Bezruch</span>
+                  </div>
+                  <div class="download-links">
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" download>Obraz</a>
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1B.png" download>Refleksja</a>
+                    <a href="https://www.instagram.com/p/DT_RCYoDvNk/" target="_blank" rel="noreferrer">Instagram</a>
+                  </div>
+                </div>
+
+                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" target="_blank" rel="noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/1A.png" alt="Podgląd karty Tydzień 01" />
+                </a>
+              </div>
+
+              <div class="material-item">
+                <div class="material-main">
+                  <div>
+                    <strong>Tydzień 02</strong>
+                    <span>Temat: Wytrwałość</span>
+                  </div>
+
+                  <div class="download-links">
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" download>Obraz</a>
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2B.png" download>Refleksja</a>
+                    <a href="https://www.instagram.com/p/DUEAsDsjI_j/" target="_blank" rel="noreferrer">Instagram</a>
+                  </div>
+                </div>
+
+                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" target="_blank" rel="noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/2A.png" alt="Podgląd karty Tydzień 02" />
+                </a>
+              </div>
+
+              <div class="material-item">
+                <div class="material-main">
+                  <div>
+                    <strong>Tydzień 03</strong>
+                    <span>Temat: Powolność</span>
+                  </div>
+
+                  <div class="download-links">
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" download>Obraz</a>
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3B.png" download>Refleksja</a>
+                    <a href="https://www.instagram.com/reel/DUMYPA-DIhl/" target="_blank" rel="noreferrer">Instagram</a>
+                  </div>
+                </div>
+
+                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" target="_blank" rel="noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/3A.png" alt="Podgląd karty Tydzień 03" />
+                </a>
+              </div>
+
+              <div class="material-item">
+                <div class="material-main">
+                  <div>
+                    <strong>Tydzień 04</strong>
+                    <span>Temat: Przebudzenie</span>
+                  </div>
+
+                  <div class="download-links">
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" download>Obraz</a>
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4B.png" download>Refleksja</a>
+                    <a href="https://www.instagram.com/p/DUbjN9eDuqn/" target="_blank" rel="noreferrer">Instagram</a>
+                  </div>
+                </div>
+
+                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" target="_blank" rel="noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/4A.png" alt="Podgląd karty Tydzień 04" />
+                </a>
+              </div>
+
+              <div class="material-item">
+                <div class="material-main">
+                  <div>
+                    <strong>Tydzień 05</strong>
+                    <span>Temat: Odpoczynek</span>
+                  </div>
+
+                  <div class="download-links">
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" download>Obraz</a>
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5B.png" download>Refleksja</a>
+                    <a href="https://www.instagram.com/p/DUlPveYjD1b/" target="_blank" rel="noreferrer">Instagram</a>
+                  </div>
+                </div>
+
+                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" target="_blank" rel="noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/5A.png" alt="Podgląd karty Tydzień 05" />
+                </a>
+              </div>
+
+              <div class="material-item">
+                <div class="material-main">
+                  <div>
+                    <strong>Tydzień 06</strong>
+                    <span>Temat: Subtelna energia</span>
+                  </div>
+
+                  <div class="download-links">
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" download>Obraz</a>
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6B.png" download>Refleksja</a>
+                    <a href="https://www.instagram.com/p/DU3e1A7jGsj/" target="_blank" rel="noreferrer">Instagram</a>
+                  </div>
+                </div>
+
+                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" target="_blank" rel="noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/6A.png" alt="Podgląd karty Tydzień 06" />
+                </a>
+              </div>
+
+              <div class="material-item">
+                <div class="material-main">
+                  <div>
+                    <strong>Tydzień 07</strong>
+                    <span>Temat: Potencjał</span>
+                  </div>
+
+                  <div class="download-links">
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" download>Obraz</a>
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7B.png" download>Refleksja</a>
+                    <a href="https://www.instagram.com/p/DVJmcDWjOpY/" target="_blank" rel="noreferrer">Instagram</a>
+                  </div>
+                </div>
+
+                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" target="_blank" rel="noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/7A.png" alt="Podgląd karty Tydzień 07" />
+                </a>
+              </div>
+
+              <div class="material-item">
+                <div class="material-main">
+                  <div>
+                    <strong>Tydzień 08</strong>
+                    <span>Temat: Przebudzenie</span>
+                  </div>
+
+                  <div class="download-links">
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" download>Obraz</a>
+                    <a href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8B.png" download>Refleksja</a>
+                    <a href="https://www.instagram.com/p/DVJmcDWjOpY/" target="_blank" rel="noreferrer">Instagram</a>
+                  </div>
+                </div>
+
+                <a class="material-thumb" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" target="_blank" rel="noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/8A.png" alt="Podgląd karty Tydzień 08" />
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="contact-band">
+          <h3>Śledź nowe publikacje</h3>
+          <p>Bądź na bieżaco - mamy wielkie plany!.</p>
+          <div class="contact-actions">
+            <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-box">
+      <div><strong>Projekt: Domek na Drzewie</strong> • Rośniemy z natury</div>
+      <div>marzec 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('[data-page]');
+    const pages = document.querySelectorAll('.page');
+    const tabs = document.querySelectorAll('.nav-links button');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-links');
+
+    function setPage(pageId) {
+      pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.page === pageId));
+      window.location.hash = pageId;
+      const main = document.querySelector('.pages');
+      if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        setPage(button.dataset.page);
+        if (navMenu && menuToggle) {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    const initial = window.location.hash.replace('#', '');
+    if (initial === 'materials' || initial === 'about') setPage(initial);
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
