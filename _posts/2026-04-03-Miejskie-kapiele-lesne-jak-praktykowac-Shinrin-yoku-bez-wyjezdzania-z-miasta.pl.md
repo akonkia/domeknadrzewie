@@ -6,7 +6,7 @@ cover: /assets/img/fallback/fallback-forest-1.jpg
 cover_alt: Leśne światło w mieście
 excerpt: Odkryj, jak czerpać z terapeutycznej mocy natury w samym sercu miasta. Przewodnik po miejskim Shinrin-yoku wraz z darmowymi kartami uważności.
 
-Tags: [shinrin-yoku,kąpiele leśne, uważność, urban bathing]
+tags: [shinrin-yoku, kąpiele leśne, uważność, urban bathing]
 lang: pl
 ---
 
@@ -73,4 +73,3 @@ Miejskie kąpiele leśne to nie hobby dla wybranych – to narzędzie higieny ps
 Wiemy, że w mieście trudno o skupienie. Dlatego przygotowaliśmy specjalny cykl ćwiczeń, które poprowadzą Cię za rękę. Każda karta to jedno proste zadanie, które możesz wykonać w dowolnym parku lub na skwerze.
 
 🌿 **[Pobierz bezpłatne Karty Miejskich Kąpieli Leśnych i odnajdź swój spokój w samym sercu miasta](https://domeknadrzewie.edu.pl/materialy/kapiele_miejskie/)**
-

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projekt: Domek na Drzewie</title>
+  <title>Project: Tree House</title>
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
   <script defer src="/assets/js/sky-mini-widget.js"></script>
@@ -105,8 +105,6 @@
       display: none;
       width: 56px;
       height: 56px;
-      border: 0;
-      padding: 0;
       border: 1px solid rgba(251,155,39,0.30);
       border-radius: 55% 45% 58% 42% / 44% 53% 47% 56%;
       background: linear-gradient(135deg, rgba(251,155,39,0.42), rgba(252,193,93,0.52) 48%, rgba(103,135,96,0.30));
@@ -282,61 +280,6 @@
       color: white;
       opacity: 0.9;
       margin-top: 4px;
-      line-height: 1.55;
-      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
-    }
-
-    .sky-mini-scene {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, #d9ebf6 0%, #f3e4c9 70%);
-      overflow: hidden;
-    }
-
-    .sky-mini-sun {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: radial-gradient(circle, #fff7d5, #f5c768);
-      border-radius: 50%;
-      top: 15%;
-      left: 15%;
-    }
-
-    .sky-mini-birds {
-      position: absolute;
-      right: 15%;
-      top: 20%;
-      color: rgba(70, 85, 71, 0.4);
-      font-size: 18px;
-    }
-
-    .sky-mini-overlay {
-      position: absolute;
-      left: 24px;
-      bottom: 24px;
-      z-index: 10;
-      max-width: 28ch;
-    }
-
-    .sky-mini-label {
-      padding: 0;
-      background: transparent;
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: white;
-      text-transform: uppercase;
-      width: auto;
-      text-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
-    }
-
-    .sky-mini-hook {
-      padding: 0;
-      background: transparent;
-      font-size: 1rem;
-      color: rgba(255,255,255,0.92);
-      width: auto;
-      margin: 4px 0 0;
       line-height: 1.55;
       text-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
     }
@@ -599,13 +542,13 @@
   <header class="topbar">
     <div class="container nav">
       <div class="nav-head">
-        <a class="brand" href="#start" aria-label="Projekt: Domek na Drzewie">
+        <a class="brand" href="#start" aria-label="Project: Tree House">
           <div class="brand-mark">
-            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project: Tree House logo">
           </div>
           <div>
-            <div class="brand-title">Projekt: Domek na Drzewie</div>
-            <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
+            <div class="brand-title">Project: Tree House</div>
+            <div class="brand-subtitle">An educational and community project inspired by nature.</div>
           </div>
         </a>
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
@@ -615,54 +558,52 @@
         </button>
       </div>
 
-      <nav class="nav-links" id="site-menu" aria-label="Nawigacja">
+      <nav class="nav-links" id="site-menu" aria-label="Navigation">
         <button class="active" type="button">Start Here</button>
-        <a href="/materialy/">Materiały</a>
-        <a href="/blog/">Blog</a>
-        <a class="lang-link" href="/en/start-here.html" lang="en" hreflang="en">English</a>
-        <a href="/sky.html">Niebo dziś</a>
+        <a href="/en/materials/">Resources</a>
+        <a href="/blog/en/">Blog</a>
+        <a class="lang-link" href="/start-here.html" lang="pl" hreflang="pl">Polski</a>
+        <a href="/en/sky.html">Sky today</a>
       </nav>
     </div>
   </header>
 
-  <section class="tiles-wrapper">
+  <section class="tiles-wrapper" id="start">
     <div class="container">
       <div class="tiles">
-        <a href="/materialy/" class="tile big">
-          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png" alt="Materiały">
+        <a href="/en/materials/" class="tile big">
+          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png" alt="Start here">
           <div class="label">
-            <h2>Zacznij tutaj</h2>
-            <p>Ćwiczenia z uważności dla tych, którzy szukają wytchnienia.</p>
+            <h2>Start Here</h2>
+            <p>Mindfulness practices for those looking for rest and breathing space.</p>
           </div>
         </a>
 
-        <a href="/sky.html" class="tile" aria-label="Otwórz widok nieba">
-          <div class="sky-mini-scene sky-mini-scene--tile js-sky-mini" data-label-prefix="Niebo dziś">
+        <a href="/en/sky.html" class="tile" aria-label="Open sky view">
+          <div class="sky-mini-scene sky-mini-scene--tile js-sky-mini" data-label-prefix="Sky today">
             <div class="sky-mini-stars"></div>
             <div class="sky-mini-sun"></div>
             <div class="sky-mini-moon"></div>
-
             <div class="sky-mini-clouds">
               <div class="sky-mini-cloud one"></div>
               <div class="sky-mini-cloud two"></div>
               <div class="sky-mini-cloud three"></div>
             </div>
-
             <div class="sky-mini-rain"></div>
             <div class="sky-mini-snow"></div>
             <div class="sky-mini-birds">◠◡◠</div>
             <div class="sky-mini-overlay">
-              <div class="sky-mini-label">Niebo dziś · najbliższe miasto</div>
-              <p class="sky-mini-hook">Dzisiejsze niebo — otwórz pełny widok</p>
+              <div class="sky-mini-label">Sky today · nearest city</div>
+              <p class="sky-mini-hook">Today's sky — open the full view</p>
             </div>
           </div>
         </a>
 
-        <a href="/blog/" class="tile">
-          <img src="https://picsum.photos/id/1025/800/600" alt="Z dziećmi">
+        <a href="/blog/en/" class="tile">
+          <img src="https://picsum.photos/id/1025/800/600" alt="With children">
           <div class="label">
-            <h2>Z dziećmi</h2>
-            <p>Razem w naturze</p>
+            <h2>With Children</h2>
+            <p>Together in nature</p>
           </div>
         </a>
       </div>
@@ -672,15 +613,15 @@
   <section class="start-section">
     <div class="container">
       <div class="intro-card">
-        <h2>Mały przewodnik po projekcie</h2>
+        <h2>A Small Guide to the Project</h2>
         <p>
-          Jeśli jesteś tu pierwszy raz, zacznij od materiałów do pobrania albo zajrzyj do widoku nieba, żeby poczuć rytm dnia. Ta strona ma prowadzić do najważniejszych miejsc bez przeładowania i bez utraty Twojego obecnego stylu.
+          If this is your first visit, start with the downloadable resources or open the sky view to feel the rhythm of the day. This page is meant to lead you to the key places in the project without feeling overloaded.
         </p>
       </div>
 
       <div class="contact-band">
-        <h3>Śledź nowe publikacje</h3>
-        <p>Bądź na bieżąco - mamy wielkie plany!.</p>
+        <h3>Follow New Publications</h3>
+        <p>Stay up to date — we have big plans.</p>
         <div class="contact-actions">
           <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
           <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
@@ -691,8 +632,8 @@
 
   <footer class="footer">
     <div class="container footer-box">
-      <div><strong>Projekt: Domek na Drzewie</strong> • Rośniemy z natury</div>
-      <div>marzec 2026</div>
+      <div><strong>Project: Tree House</strong> • Growing with nature</div>
+      <div>March 2026</div>
     </div>
   </footer>
 

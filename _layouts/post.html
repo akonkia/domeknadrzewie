@@ -10,13 +10,37 @@ layout: default
 {% else %}
   {% assign month_name = months_pl[month_index] %}
 {% endif %}
+{% assign fallback_covers = site.static_files | where_exp: "file", "file.path contains '/assets/img/fallback/'" | sort: "path" %}
 <article class="post">
   <header class="post-header">
     <span class="post-date">{{ page.date | date: "%-d" }} {{ month_name }} {{ page.date | date: "%Y" }}</span>
     <h1>{{ page.title }}</h1>
   </header>
 
-  {% assign cover_image = page.cover | default: site.default_cover %}
+  {% assign filtered_posts = "" | split: "" %}
+  {% for p in site.posts %}
+    {% assign p_lang = p.lang | join: "" | strip %}
+    {% if p_lang == raw_page_lang %}
+      {% assign filtered_posts = filtered_posts | push: p %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign current_post_index = 0 %}
+  {% for p in filtered_posts %}
+    {% if p.url == page.url %}
+      {% assign current_post_index = forloop.index0 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if page.cover %}
+    {% assign cover_image = page.cover %}
+  {% elsif fallback_covers.size > 0 %}
+    {% assign fallback_index = current_post_index | modulo: fallback_covers.size %}
+    {% assign cover_image = fallback_covers[fallback_index].path %}
+  {% else %}
+    {% assign cover_image = site.default_cover %}
+  {% endif %}
   {% assign cdn = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main" %}
 
   <div class="post-cover-wrap">
@@ -45,14 +69,6 @@ layout: default
 {% comment %} 
   2. BUILD THE FILTERED LIST MANUALLY 
 {% endcomment %}
-{% assign filtered_posts = "" | split: "" %}
-{% for p in site.posts %}
-  {% assign p_lang = p.lang | join: "" | strip %}
-  {% if p_lang == raw_page_lang %}
-    {% assign filtered_posts = filtered_posts | push: p %}
-  {% endif %}
-{% endfor %}
-
 <nav class="post-nav">
   {% for p in filtered_posts %}
     {% if p.url == page.url %}

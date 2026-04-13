@@ -7,7 +7,7 @@ cover_alt: Cichy powrót
 excerpt: "Ćwiczenie uważności na wczesną wiosnę: powrót do miejsca i zauważanie zmian oraz ciągłości."
 translation_id: mindfulness-week-13-spring
 
-Tags: [shinrin-yoku,kąpiele leśne, uważność, urban bathing]
+tags: [shinrin-yoku, kąpiele leśne, uważność, urban bathing]
 lang: pl
 ---
 

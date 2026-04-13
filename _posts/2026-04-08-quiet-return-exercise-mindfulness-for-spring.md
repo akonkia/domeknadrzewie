@@ -7,7 +7,7 @@ cover_alt: Quiet return
 excerpt: "A gentle mindfulness exercise for early spring: return to a familiar place and notice what has changed and what remains."
 translation_id: mindfulness-week-13-spring
 
-Tags: [shinrin-yoku, forest bathing, mindfulness, urban bathing]
+tags: [shinrin-yoku, forest bathing, mindfulness, urban bathing]
 lang: en
 ---
 

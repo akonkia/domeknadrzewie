@@ -7,6 +7,25 @@ permalink: /blog/
 ---
 
 {% assign months_pl = "stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia" | split: "|" %}
+{% assign fallback_covers = site.static_files | where_exp: "file", "file.path contains '/assets/img/fallback/'" | sort: "path" %}
+{% assign filtered_posts = "" | split: "" %}
+{% for p in site.posts %}
+  {% assign p_lang = p.lang | join: "" | strip %}
+  {% if p_lang == "pl" %}
+    {% assign filtered_posts = filtered_posts | push: p %}
+  {% endif %}
+{% endfor %}
+{% assign available_tags = "" | split: "" %}
+{% for post in filtered_posts %}
+  {% if post.tags %}
+    {% for tag in post.tags %}
+      {% unless available_tags contains tag %}
+        {% assign available_tags = available_tags | push: tag %}
+      {% endunless %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% assign available_tags = available_tags | sort %}
 
 <section class="blog-index">
   <div class="blog-intro">
@@ -14,12 +33,26 @@ permalink: /blog/
     <p>Oś czasu projektu: notatki, etapy, materiały i powolny wzrost.</p>
   </div>
 
+  {% if available_tags.size > 0 %}
+    <div class="blog-filter-bar" aria-label="Filtruj wpisy po tagach">
+      <a class="blog-filter-chip" href="{{ '/blog/' | relative_url }}">Wszystkie</a>
+      {% for tag in available_tags %}
+        {% assign tag_slug = tag | slugify %}
+        <a class="blog-filter-chip" href="{{ '/blog/tag/' | append: tag_slug | append: '/' | relative_url }}">{{ tag }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
   <div class="post-list">
-    
-    {% assign filtered_posts = site.posts | where: "lang", "pl" %}
-    
     {% for post in filtered_posts %}
-      {% assign thumb_image = post.cover | default: site.default_cover %}
+      {% if post.cover %}
+        {% assign thumb_image = post.cover %}
+      {% elsif fallback_covers.size > 0 %}
+        {% assign fallback_index = forloop.index0 | modulo: fallback_covers.size %}
+        {% assign thumb_image = fallback_covers[fallback_index].path %}
+      {% else %}
+        {% assign thumb_image = site.default_cover %}
+      {% endif %}
       {% assign thumb_alt = post.cover_alt | default: post.title %}
       {% assign month_index = post.date | date: "%-m" | minus: 1 %}
       
@@ -39,6 +72,15 @@ permalink: /blog/
             
             {% if post.excerpt %}
               <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+            {% endif %}
+
+            {% if post.tags %}
+              <div class="post-tag-list" aria-label="Kategorie wpisu">
+                {% for tag in post.tags %}
+                  {% assign tag_slug = tag | slugify %}
+                  <a class="post-tag" href="{{ '/blog/tag/' | append: tag_slug | append: '/' | relative_url }}">{{ tag }}</a>
+                {% endfor %}
+              </div>
             {% endif %}
             
             <span class="read-more">Czytaj</span>
