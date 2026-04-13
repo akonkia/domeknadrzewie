@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <script src="/assets/js/cards-data.js"></script>
 
   <title>Miejskie kąpiele leśne | Projekt: Domek na Drzewie</title>
   
@@ -147,67 +148,9 @@
   </main>
 
   <script>
-    const cardsData = [
-      { id: 1, title: "Cichy korzeń", theme: "Bezruch", season: "Zima", month: "Styczeń", body: "Wejdź powoli w zieloną przestrzeń. Rób częste pauzy. Usiądź lub stań nieruchomo na pięć minut.", reflection: ["Jakie dźwięki trwają, gdy otoczenie cichnie?", "Gdzie w moim ciele odczuwam stan bezruchu?"], img: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-A.png", imgB: "miejskie-kapiele-lesne-zima-styczen-01-cichy-korzen-B.png", blog: "DT_RCYoDvNk" },
-      { id: 2, title: "Ukryta siła", theme: "Wytrwałość", season: "Zima", month: "Styczeń", body: "Szukaj oznak wytrwałości — igieł wiecznie zielonych, mchu, porostów, szczelnie zamkniętych pąków. Dotykaj ich delikatnie.", reflection: ["Co/kto pomógł mi przetrwać trudne pory roku?", "W jakich okolicznościach czuję w sobie spokój?"], img: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-A.png", imgB: "miejskie-kapiele-lesne-zima-styczen-02-ukryta-sila-B.png", blog: "DUEAsDsjI_j" },
-      { id: 3, title: "Niespieszna Ścieżka", theme: "Powolność", season: "Zima", month: "Styczeń", body: "Idź o połowę wolniej niż zwykle. Niech twój oddech wyznacza rytm. Przy każdym kroku poczuj ziemię w pełni.", reflection: ["Co zaczynam zauważać dopiero wtedy, gdy nigdzie się nie spieszę?", "Dokąd w moim życiu biegnę bez potrzeby?"], img: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-A.png", imgB: "miejskie-kapiele-lesne-zima-styczen-03-niespieszna-sciezka-B.png", blog: "DUV2YvGDUgG" },
-      { id: 4, title: "Światło, które sięga do nas", theme: "Przebudzenie", season: "Zima", month: "Styczeń", body: "Unieś dłoń w stronę światła. Pozwól, by ciepło spoczęło na twoich ubraniach, na skórze, i rozświetliło cichą przestrzeń w tobie.", reflection: ["Która część mnie jest gotowa sięgnąć po coś nowego?", "Co rozgrzewa mnie od środka?"], img: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-A.png", imgB: "miejskie-kapiele-lesne-zima-styczen-04-zimowe-swiatlo-B.png", blog: "DUn-M6TDKpW" },
-      { id: 5, title: "Zimowy oddech", theme: "Odpoczynek", season: "Zima", month: "Luty", body: "Usiądź przy oknie lub na zewnątrz. Obserwuj miękkość każdego oddechu.", reflection: ["Co mogłoby znaczyć, odpoczywać bez poczucia winy?", "Które myśli wciąż krążą, a które mogę teraz wypuścić?"], img: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-A.png", imgB: "miejskie-kapiele-lesne-zima-luty-05-zimowy-oddech-B.png", blog: "DU6D4A6jk5L" },
-      { id: 6, title: "Ukryta iskra", theme: "Subtelna energia", season: "Zima", month: "Luty", body: "Szukaj małych miejsc, w których gromadzi się ciepło. Może to promień słońca na ścianie, albo szalik ogrzany Twoim oddechem.", reflection: ["Jakie ciepło noszę w sobie?", "Gdzie w moim życiu coś się zaczyna?"], img: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-A.png", imgB: "miejskie-kapiele-lesne-zima-luty-06-ukryta-iskra-B.png", blog: "DVMH6kOjGq_" },
-      { id: 7, title: "Oszroniony pąk", theme: "Potencjał", season: "Zima", month: "Luty", body: "Poszukaj krzewu albo drzewa i przyjrzyj się uważnie jego pąkom - małym obietnicom czekającym na odpowiednią chwilę.", reflection: ["Co dojrzewa we mnie po cichu?", "Jaki najmniejszy znak „już się zaczyna” potrafię dziś zauważyć?"], img: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-A.png", imgB: "miejskie-kapiele-lesne-zima-luty-07-oszroniony-pak-B.png", blog: "DVeJb09jrR4" },
-      { id: 8, title: "Pierwszy Chór", theme: "Przebudzenie", season: "Zima", month: "Luty", body: "Wyjdź na 2–3 minuty i posłuchaj. Zauważ, że długo było cicho, a teraz ptasi śpiew wyraźnie się wybija. Najpierw uchwyć jeden głos, potem poszerz uwagę na cały chór.", reflection: ["Co czuję, gdy cisza pęka: ulgę, ciepło, napięcie, spokój?", "Jakie „pierwsze nuty” wracają do mojego życia po okresie milczenia?"], img: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-A.png", imgB: "miejskie-kapiele-lesne-zima-luty-08-pierwszy-chor-B.png", blog: "DVwK83jDq6L" },
-      { id: 9, title: "Zimozielony", theme: "Stałość", season: "Zima", month: "Marzec", body: "Spędź chwilę przy jednym zimozielonym drzewie. Oddychaj razem z nim w rytmie: 4s wdech, 6s wydech.", reflection: ["Jakie małe rzeczy regularnie mnie uspokajają i podtrzymują?"], img: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-A.png", imgB: "miejskie-kapiele-lesne-zima-marzec-09-zimozielony-B.png", blog: "DWCI7kKDHlM" },
-      { id: 10, title: "Odwilż", theme: "Rozluźnianie", season: "Wiosna", month: "Marzec", body: "Wyjdź na zewnątrz i poszukaj oznak roztopu: małych kałuż, ciemniejącej kory, cichego połysku mokrej ziemi.", reflection: ["Gdzie w moim życiu mogę bezpiecznie trochę zmięknąć?", "Co się zmienia, gdy pozwalam tej chwili być dokładnie taką, jaka jest, bez trzymania się i oporu?"], img: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-A.png", imgB: "miejskie-kapiele-lesne-wiosna-marzec-10-odwilz-B.png", blog: "DWUK6lDjNqX" },
-      { id: 11, title: "Przebudzenie Ziemi", theme: "Odradzanie", season: "Wiosna", month: "Marzec", body: "Wyjdź na zewnątrz i zatrzymaj się na moment. Wsłuchaj się w ciche sygnały powracającego życia: śpiew ptaków, dalekie nawoływania, łagodny ruch w gałęziach. Dostrzeż to, co nieśmiało się pojawia.", reflection: ["Jakie dźwięki zwiastują dla mnie odnowę?","Co zaczyna kiełkować w moim życiu, powoli, lecz pewnie?", "Czy potrafię pozwolić temu procesowi toczyć się we własnym rytmie?"], img: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-A.png", imgB: "miejskie-kapiele-lesne-wiosna-marzec-11-przebudzenie-ziemi-B.png", blog: "DWmN1KkDhq_" },
-    {
-  id: 12,
-  title: "Poranne Szepty",
-  theme: "Drobne zachwyty",
-  season: "Wiosna",
-  month: "Marzec",
-  body: "Poświęć kilka minut każdego poranka, by usiąść przy oknie lub pod drzewem. Zamknij oczy, oddychaj spokojnie i pozwól swojej uwadze podążać za dźwiękami wczesnej wiosny — pierwszym śpiewem ptaków, szelestem gałęzi, cichym pulsem budzącego się życia. Zauważ, które z nich przywołują w Tobie spokój, ciekawość lub lekkość.",
-  reflection: [
-    "Które małe radości przemawiają do Ciebie teraz najgłośniej?",
-    "Jak te subtelne momenty wpływają na Twój nastrój lub sposób patrzenia na dzień?",
-    "Gdzie jeszcze w ciągu dnia możesz zatrzymać się, by usłyszeć tę cichą muzykę wokół siebie?"
-  ],
-  img: "wiosna-marzec-tydzien-12-poranne-szepty-wiosenne-paki-niebo-12A.png",
-  imgB: "wiosna-marzec-tydzien-12-poranne-szepty-wiosenne-paki-niebo-12B.png",
-  blog: "DWszgyEjOc_"
-},
-            { 
-  id: 13,
-  title: "Cichy powrót",
-  theme: "Ciągłość",
-  season: "Wiosna",
-  month: "Marzec",
-  body: "Odwiedź miejsce, do którego nie wracałeś/-aś od początku zimy. Zatrzymaj się przed wejściem. Zauważ swój oddech. Następnie wejdź powoli, pozwalając temu miejscu spotkać się z tobą takim/taką, jakim/jaką jesteś teraz.",
-  reflection: [
-    "Co się zmieniło?",
-    "Co pozostało takie samo?",
-    "Co w tobie także powraca?"
-  ],
-  img: "marzec-wiosna-tydzien-13-cwiczenie-uwaznosci-powrot-do-miejsca-13A.png",
-  imgB: "marzec-wiosna-tydzien-13-cwiczenie-uwaznosci-powrot-do-miejsca-13B.png",
-  blog: "2026/04/08/Cichy-powrot-cwiczenie-uwaznosci-na-wiosne/"
-},
-      { 
-  id: 14,
-  title: "Pąk w rozkwicie",
-  theme: "Otwartość",
-  season: "Wiosna",
-  month: "Kwiecień",
-  body: "Znajdź kwiat lub liść, który się otwiera. Zauważ jego kształt, krawędzie i kolor. Zauważ, co się zmienia.",
-  reflection: [
-    "Znajdź jedną rzecz, na którą chcesz się bardziej otworzyć. Co to jest?",
-    "Pomyśl o czymś, przed czym się powstrzymywałeś(-aś). Jak blisko tego jesteś?",
-    "Gdzie może być właściwe, żeby pozostać zamkniętym(-ą)?"
-  ],
-  img: "wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png",
-  imgB: "wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14AB.png",
-  blog: "2026/04/10/otwieranie-sie-krok-po-kroku-cwiczenie-uwaznosci-inspirowane-natura.pl"
-}
-    ];
+    const cardsData = typeof window.getWeeklyCardsForLang === 'function'
+      ? window.getWeeklyCardsForLang('pl')
+      : [];
 
     const listElement = document.getElementById('materialList');
     const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";

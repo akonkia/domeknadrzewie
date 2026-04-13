@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
   <script defer src="/assets/js/sky-mini-widget.js"></script>
+  <script defer src="/assets/js/cards-data.js"></script>
+  <script defer src="/assets/js/current-card.js"></script>
   <style>
     :root {
       --sage: #678760;
@@ -571,8 +573,8 @@
   <section class="tiles-wrapper" id="start">
     <div class="container">
       <div class="tiles">
-        <a href="/en/materials/" class="tile big">
-          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png" alt="Start here">
+        <a href="/en/materials/urban-bathing/#tydzien-14" class="tile big" data-current-card-link>
+          <img data-current-card-image src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png" alt="Start here">
           <div class="label">
             <h2>Start Here</h2>
             <p>Mindfulness practices for those looking for rest and breathing space.</p>
@@ -600,7 +602,7 @@
         </a>
 
         <a href="/blog/en/" class="tile">
-          <img src="https://picsum.photos/id/1025/800/600" alt="With children">
+          <img src="/assets/img/start-here/with-children-tile.jpg" alt="With children">
           <div class="label">
             <h2>With Children</h2>
             <p>Together in nature</p>
