@@ -6,7 +6,7 @@ translation_id:	first-cards-2026
 lang:
   - en
 excerpt: "In early spring 2026, the first weekly cards appeared in the project — as a mindfulness practice and a way to build rhythm."
-tags: [timeline, cards, mindfulness, spring, series]
+tags: [cards, mindfulness, spring, series]
 ---
 
 At the turn of winter and early spring, the first weekly cards began to appear in the project.

@@ -5,7 +5,7 @@ description: "A gentle mindfulness practice inspired by a blossoming flower. Lea
 date: 2026-04-10
 lang: en
 categories: [mindfulness, nature, spring]
-tags: [mindfulness practice, nature meditation, spring mindfulness, awareness exercise, slow living]
+tags: [awareness exercise, mindfulness, nature, spring, mindfulness practice, slow living]
 cover: /assets/img/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png
 translation_id:	flower-in-bloom-2026
 ---

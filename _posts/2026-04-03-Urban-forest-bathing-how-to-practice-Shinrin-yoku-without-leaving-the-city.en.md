@@ -7,7 +7,7 @@ lang: en
 cover: /assets/img/fallback/fallback-forest-1.jpg
 cover_alt: Leśne światło w mieście
 excerpt: "Discover how to tap into the therapeutic power of nature in the heart of the city. A guide to urban Shinrin-yoku with free mindfulness cards."
-tags: [shinrin-yoku, kąpiele leśne, uważność, urban bathing, wellbeing]
+tags: [shinrin-yoku, forest bathing, mindfulness, urban bathing]
 ---
 
 Most of us dream of escaping to the deep wilderness to breathe away from the city noise. But what if the forest is too far away, and you only have a 15-minute break at work? This is where **Urban Forest Bathing** comes in—a unique adaptation of the Japanese art of **Shinrin-yoku**, designed specifically for city dwellers.

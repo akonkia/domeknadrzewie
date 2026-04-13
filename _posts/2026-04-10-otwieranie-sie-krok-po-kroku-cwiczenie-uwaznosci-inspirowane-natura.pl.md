@@ -5,7 +5,7 @@ excerpt: "Delikatne ćwiczenie uważności inspirowane rozkwitającym kwiatem. N
 date: 2026-04-10
 lang: pl
 categories: [uważność, natura, wiosna]
-tags: [ćwiczenie uważności, uważność w naturze, wiosna, praktyka uważności, slow life]
+tags: [ćwiczenie uważności, uważność, natura, wiosna, praktyka uważności, slow life]
 cover: /assets/img/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png
 translation_id:	flower-in-bloom-2026
 ---

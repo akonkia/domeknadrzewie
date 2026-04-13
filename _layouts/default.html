@@ -52,7 +52,7 @@
           </span>
         </a>
 
-        <a href="{% if current_lang == 'en' %}/en/blog/{% else %}/blog/{% endif %}" class="{% if page.url contains '/blog/' %}active{% endif %}">
+        <a href="{% if current_lang == 'en' %}/blog/en/{% else %}/blog/{% endif %}" class="{% if page.url contains '/blog/' %}active{% endif %}">
           <span class="nav-label">
             <span class="nav-pl">Blog</span>
           </span>
@@ -81,7 +81,7 @@
               <span class="nav-label"><span class="nav-pl">Polski</span></span>
             </a>
           {% else %}
-            <a href="/en/blog/" class="lang-switch" style="background: rgba(103, 135, 96, 0.1);">
+            <a href="/blog/en/" class="lang-switch" style="background: rgba(103, 135, 96, 0.1);">
               <span class="nav-label"><span class="nav-pl">English</span></span>
             </a>
           {% endif %}
