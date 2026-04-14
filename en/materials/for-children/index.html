@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
-
-  <title>Wiosenne kolorowanki — zestaw 01 | Projekt: Domek na Drzewie</title>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <title>For Children | Project: Tree House</title>
   <meta
     name="description"
-    content="Wiosenne kolorowanki — zestaw 01. Prosta kolorowanka do druku dla dzieci inspirowana pierwszymi oznakami wiosny."
+    content="Materials for children inspired by nature: colouring pages, simple activities, and printable cards for shared exploration."
   />
 
   <style>
@@ -23,10 +22,11 @@
       --text: #243126;
       --muted: #5e675f;
       --line: rgba(36,49,38,0.08);
-      --hero-overlay: rgba(36, 49, 38, 0.26);
+      --hero-overlay: rgba(36,49,38,0.30);
       --shadow: 0 14px 30px rgba(32, 42, 33, 0.08);
       --max: 1120px;
-      --content: 860px;
+      --content: 900px;
+      --radius: 18px;
     }
 
     * { box-sizing: border-box; }
@@ -41,7 +41,6 @@
 
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-
     h1, h2, h3, p { margin: 0; }
 
     .container {
@@ -290,19 +289,19 @@
 
     .hero {
       position: relative;
-      min-height: 320px;
+      min-height: 300px;
       display: flex;
       align-items: center;
       background:
         linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-        url('https://placehold.co/1600x900/dbe5d3/5e675f?text=Wiosenne+kolorowanki') center/cover no-repeat;
+        url('https://placehold.co/1600x900/d7dfcc/5d6e5a?text=Karty+sezonowe') center/cover no-repeat;
       color: white;
     }
 
     .hero-inner {
       width: min(calc(100% - 32px), 900px);
       margin: 0 auto;
-      padding: 54px 0;
+      padding: 56px 0;
       text-align: center;
     }
 
@@ -350,20 +349,21 @@
       font-weight: 700;
     }
 
-    .info-card,
-    .page-card,
+    .intro-card,
+    .season-card,
+    .resource-card,
     .contact-band {
       background: var(--paper);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
+      border-radius: var(--radius);
     }
 
-    .info-card {
+    .intro-card {
       padding: 30px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
-    .set-badge,
     .section-kicker {
       display: inline-block;
       padding: 7px 12px;
@@ -373,13 +373,10 @@
       letter-spacing: 0.05em;
       font-size: 0.74rem;
       font-weight: 800;
-    }
-
-    .set-badge {
       margin-bottom: 16px;
     }
 
-    .set-title {
+    .intro-title {
       font-size: clamp(1.8rem, 3vw, 2.5rem);
       line-height: 1.06;
       text-transform: uppercase;
@@ -387,38 +384,32 @@
       margin-bottom: 12px;
     }
 
-    .set-meta {
-      color: var(--sage);
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.84rem;
-      margin-bottom: 16px;
-    }
-
-    .set-description {
+    .intro-text {
       color: var(--muted);
       line-height: 1.82;
+      max-width: 68ch;
       margin-bottom: 18px;
-      max-width: 62ch;
     }
 
-    .set-points {
-      margin: 0 0 22px;
+    .intro-points,
+    .resource-points {
+      margin: 0;
       padding: 0;
       list-style: none;
       display: grid;
       gap: 10px;
     }
 
-    .set-points li {
+    .intro-points li,
+    .resource-points li {
       position: relative;
       padding-left: 18px;
       color: var(--muted);
       line-height: 1.75;
     }
 
-    .set-points li::before {
+    .intro-points li::before,
+    .resource-points li::before {
       content: "";
       position: absolute;
       left: 0;
@@ -430,7 +421,136 @@
       transform: translateY(-50%);
     }
 
-    .action-row,
+    .section-head {
+      margin: 0 0 18px;
+    }
+
+    .section-title {
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .season-card {
+      padding: 24px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .season-card.active-season {
+      background: linear-gradient(180deg, #fffdf9 0%, #f7f4ea 100%);
+      border-color: rgba(103,135,96,0.20);
+    }
+
+    .season-card.coming-soon {
+      background: #fcfbf7;
+      opacity: 0.9;
+    }
+
+    .season-name {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+
+    .season-desc {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .season-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      width: fit-content;
+    }
+
+    .season-badge.live {
+      background: rgba(103,135,96,0.14);
+      color: var(--sage);
+    }
+
+    .season-badge.soon {
+      background: rgba(251,155,39,0.14);
+      color: #9c5f11;
+    }
+
+    .resource-card {
+      padding: 18px;
+    }
+
+    .resource-inner {
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .resource-thumb {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #f3f1eb;
+      border-radius: 14px;
+    }
+
+    .resource-thumb img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    .resource-thumb:hover img {
+      transform: scale(1.02);
+    }
+
+    .resource-title {
+      font-size: 1.32rem;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .resource-meta {
+      color: var(--sage-dark);
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .resource-description {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
     .card-actions,
     .contact-actions {
       display: flex;
@@ -438,8 +558,6 @@
       flex-wrap: wrap;
     }
 
-    .button,
-    .action-row a,
     .card-actions a,
     .social-chip {
       display: inline-flex;
@@ -457,8 +575,6 @@
       white-space: nowrap;
     }
 
-    .button:hover,
-    .action-row a:hover,
     .card-actions a:hover,
     .social-chip:hover {
       transform: translateY(-1px);
@@ -476,85 +592,8 @@
       color: #3d2a10;
     }
 
-    .btn-rose {
-      background: linear-gradient(135deg, #b44f72, #ee7a78);
-      color: white;
-    }
-
-    .section-head {
-      margin: 0 0 18px;
-    }
-
-    .section-kicker {
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-size: clamp(1.45rem, 2.5vw, 2rem);
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin-top: 10px;
-      margin-bottom: 8px;
-    }
-
-    .section-text {
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .page-card {
-      padding: 18px;
-    }
-
-    .page-card-inner {
-      display: grid;
-      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
-      gap: 22px;
-      align-items: start;
-    }
-
-    .page-thumb {
-      display: block;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: #f3f1eb;
-    }
-
-    .page-thumb img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      transition: transform 0.2s ease;
-    }
-
-    .page-thumb:hover img {
-      transform: scale(1.02);
-    }
-
-    .page-title {
-      font-size: 1.28rem;
-      line-height: 1.3;
-      margin-bottom: 10px;
-    }
-
-    .page-description {
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.8;
-      margin-bottom: 14px;
-    }
-
-    .file-meta {
-      color: var(--sage-dark);
-      font-size: 0.86rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 16px;
-    }
-
     .contact-band {
-      margin-top: 28px;
+      margin-top: 30px;
       padding: 28px;
       text-align: center;
     }
@@ -592,8 +631,9 @@
       font-size: 0.95rem;
     }
 
-    @media (max-width: 980px) {
-      .page-card-inner {
+    @media (max-width: 900px) {
+      .resource-inner,
+      .season-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -715,15 +755,16 @@
       /* END: Organic mobile menu panel */
 
       .hero {
-        min-height: 280px;
+        min-height: 270px;
       }
 
       h1 {
         font-size: clamp(2rem, 9vw, 3rem);
       }
 
-      .info-card,
-      .page-card,
+      .intro-card,
+      .season-card,
+      .resource-card,
       .contact-band {
         padding: 22px;
       }
@@ -734,13 +775,13 @@
   <header class="topbar">
     <div class="container nav">
       <div class="nav-head">
-        <a class="brand" href="/" aria-label="Projekt: Domek na Drzewie">
+        <a class="brand" href="/en/" aria-label="Project: Tree House">
           <div class="brand-mark">
-            <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project: Tree House logo" />
           </div>
           <div>
-            <div class="brand-title">Projekt: Domek na Drzewie</div>
-            <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
+            <div class="brand-title">Project: Tree House</div>
+            <div class="brand-subtitle">An educational and community project inspired by nature.</div>
           </div>
         </a>
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
@@ -750,97 +791,129 @@
         </button>
       </div>
 
-      <nav class="nav-links" id="site-menu" aria-label="Nawigacja">
-        <a href="/">O projekcie</a>
-        <a href="/materialy/" class="active">Materiały</a>
-        <a class="lang-link" href="/en/materials/colouring_pages/spring_01/" lang="en" hreflang="en">English</a>
-        <a href="/sky.html">Niebo dziś</a>
-        <a href="https://www.instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+      <nav class="nav-links" id="site-menu" aria-label="Navigation">
+        <a href="/en/">Start Here</a>
+        <a href="/en/materials/" class="active">Materials</a>
+        <a class="lang-link" href="/materialy/dla-dzieci/" lang="pl" hreflang="pl">Polski</a>
+        <a href="/en/sky.html">Sky today</a>
+        <a href="/en/about.html">About us</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero-inner">
-      <span class="hero-kicker">Karty do druku dla dzieci</span>
-      <h1>Wiosenne kolorowanki — zestaw 01</h1>
+      <span class="hero-kicker">For children</span>
+      <h1>Printable cards for children</h1>
       <p class="hero-text">
-        Prosta kolorowanka inspirowana pierwszymi oznakami wiosny,
-        spokojną obserwacją i przyrodą blisko domu.
+        Colouring pages, simple activities, and materials for discovering nature together in a calm, accessible way.
       </p>
     </div>
   </section>
 
   <main class="page-wrap">
     <div class="narrow">
-      <nav class="breadcrumbs" aria-label="Okruszki">
-        <a href="/">Strona główna</a>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/en/">Home</a>
         <span> / </span>
-        <a href="/materialy/">Materiały</a>
+        <a href="/en/materials/">Materials</a>
         <span> / </span>
-        <a href="/materialy/dla-dzieci/">Karty do druku dla dzieci</a>
-        <span> / </span>
-        <span>Wiosenne kolorowanki — zestaw 01</span>
+        <span>For children</span>
       </nav>
 
-      <section class="info-card">
-        <span class="set-badge">Kolorowanki do druku</span>
-        <h2 class="set-title">Wiosenne kolorowanki — zestaw 01</h2>
-        <div class="set-meta">1 kolorowanka • PNG i PDF • dla dzieci 4–6 lat</div>
-
-        <p class="set-description">
-          Prosta kolorowanka dla dzieci przedszkolnych inspirowana pierwszymi oznakami wiosny.
-          Dobra do spokojnej aktywności w domu, przedszkolu albo podczas zajęć o przyrodzie.
+      <section class="intro-card">
+        <span class="section-kicker">About this category</span>
+        <h2 class="intro-title">Materials you can return to together with children</h2>
+        <p class="intro-text">
+          This section gathers simple printable materials inspired by nature.
+          They can support conversation, quiet play, a shared walk, or a gentle moment of attention
+          around seasons, plants, and small observations from the natural world.
         </p>
 
-        <ul class="set-points">
-          <li>Darmowa karta do pobrania i wydruku.</li>
-          <li>Motyw: obserwacja przyrody i pierwsze ślady wiosny.</li>
-          <li>Wersja PNG do szybkiego podglądu oraz PDF do druku.</li>
+        <ul class="intro-points">
+          <li>Printable materials for home, preschool, or gentle educational use.</li>
+          <li>Simple formats based on colouring, observation, conversation, and naming what can be seen in nature.</li>
+          <li>An open structure that can grow with new sets and future seasons.</li>
         </ul>
-
-        <div class="action-row">
-          <a class="btn-sage" href="/materialy/dla-dzieci/">Wróć do kategorii</a>
-        </div>
       </section>
 
       <section class="section-head">
-        <span class="section-kicker">Zawartość zestawu</span>
-        <h2 class="section-title">Kolorowanka w tym zestawie</h2>
+        <span class="section-kicker">Available materials</span>
+        <h2 class="section-title">Current sets</h2>
         <p class="section-text">
-          Możesz obejrzeć podgląd obrazka albo pobrać wersję PDF do wydruku.
+          Right now the first spring colouring set is available. More children’s materials will appear here over time.
         </p>
       </section>
 
-      <article class="page-card">
-        <div class="page-card-inner">
-          <a class="page-thumb" href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png" target="_blank" rel="noreferrer">
+      <section class="season-grid" aria-label="Available children’s sets">
+        <article class="season-card active-season">
+          <div>
+            <span class="season-badge live">Available now</span>
+            <h3 class="season-name">Spring colouring pages — set 01</h3>
+            <p class="season-desc">
+              A simple printable set with first signs of spring: birds, buds, flowers, and small nature observations.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-sage" href="#spring-01">View set</a>
+          </div>
+        </article>
+
+        <article class="season-card coming-soon">
+          <div>
+            <span class="season-badge soon">Coming soon</span>
+            <h3 class="season-name">More sets</h3>
+            <p class="season-desc">
+              This is where future colouring pages and gentle nature materials for children will appear.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section id="spring-01" class="section-head">
+        <span class="section-kicker">Available set</span>
+        <h2 class="section-title">Spring colouring pages — set 01</h2>
+        <p class="section-text">
+          The first printable colouring set inspired by nature waking up in early spring.
+        </p>
+      </section>
+
+      <article class="resource-card">
+        <div class="resource-inner">
+          <a class="resource-thumb" href="/en/materials/colouring_pages/spring_01/">
             <img
-              src="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png"
-              alt="Podgląd kolorowanki Krasnal Major na tropie wiosny"
+              src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kolorowanki/wiosna_01/kolorowanki.png"
+              alt="Spring colouring pages — set 01 preview"
             />
           </a>
 
           <div>
-            <h3 class="page-title">Kolorowanka: Krasnal Major na tropie wiosny</h3>
-            <div class="file-meta">Pliki: PNG i PDF</div>
-            <p class="page-description">
-              Prosta karta do druku z motywem spokojnej obserwacji przyrody.
-              Sprawdzi się jako pojedyncza aktywność albo element większego wiosennego zestawu.
+            <h3 class="resource-title">Spring colouring pages — set 01</h3>
+            <div class="resource-meta">Spring • 1 colouring page • PNG and PDF • for children</div>
+
+            <p class="resource-description">
+              A simple printable set with first signs of spring:
+              birds, buds, flowers, and small nature observations.
+              Good for quiet play, conversation, and shared attention to the natural world.
             </p>
 
+            <ul class="resource-points">
+              <li>A simple format suitable for younger children.</li>
+              <li>Illustrations inspired by the first signs of spring.</li>
+              <li>Available in formats for preview and download.</li>
+            </ul>
+
             <div class="card-actions">
-              <a class="btn-sage" href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.pdf" target="_blank" rel="noreferrer">Pobierz PDF</a>
-              <a class="btn-gold" href="https://github.com/akonkia/domeknadrzewie/raw/main/materialy/kolorowanki/wiosna_01/kolorowanki.png" target="_blank" rel="noreferrer">Podgląd PNG</a>
+              <a class="btn-sage" href="/en/materials/colouring_pages/spring_01/">Open set</a>
+              <a class="btn-gold" href="/en/materials/">Back to materials</a>
             </div>
           </div>
         </div>
       </article>
 
       <div class="contact-band">
-        <h3>Śledź nowe materiały</h3>
-        <p>Na Instagramie i Facebooku pojawiają się nowe kolorowanki, karty i kolejne materiały do pobrania.</p>
+        <h3>Follow new materials</h3>
+        <p>Instagram and Facebook are where new downloadable materials, reflections, and nature-inspired ideas appear first.</p>
         <div class="contact-actions">
           <a class="social-chip btn-sage" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
           <a class="social-chip btn-gold" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
@@ -851,8 +924,8 @@
 
   <footer class="footer">
     <div class="container footer-box">
-      <div><strong>Projekt: Domek na Drzewie</strong> • Rośniemy z natury</div>
-      <div>marzec 2026</div>
+      <div><strong>Project: Tree House</strong> • Growing with nature</div>
+      <div>April 2026</div>
     </div>
   </footer>
   <script>

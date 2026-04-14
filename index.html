@@ -367,6 +367,29 @@
       max-width: 64ch;
     }
 
+    .intro-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--sage);
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 14px 28px rgba(36,49,38,0.12);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .intro-link:hover {
+      transform: translateY(-1px);
+      background: #5d7957;
+      box-shadow: 0 18px 34px rgba(36,49,38,0.16);
+    }
+
     .contact-band {
       margin-top: 30px;
       padding: 28px;
@@ -675,15 +698,16 @@
   <section class="start-section">
     <div class="container">
       <div class="intro-card">
-        <h2>Mały przewodnik po projekcie</h2>
+        <h2>O projekcie</h2>
         <p>
-          Jeśli jesteś tu pierwszy raz, zacznij od materiałów do pobrania albo zajrzyj do widoku nieba, żeby poczuć rytm dnia. Ta strona ma prowadzić do najważniejszych miejsc bez przeładowania i bez utraty Twojego obecnego stylu.
+          Domek na Drzewie to miejsce dla uważności, kontaktu z naturą i prostych materiałów, do których można wracać we własnym rytmie.
         </p>
+        <a class="intro-link" href="/o-nas.html">Czytaj więcej</a>
       </div>
 
       <div class="contact-band">
         <h3>Śledź nowe publikacje</h3>
-        <p>Bądź na bieżąco - mamy wielkie plany!.</p>
+        <p>Bądź blisko nowych materiałów, refleksji i kolejnych tygodni serii.</p>
         <div class="contact-actions">
           <a class="social-chip" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
           <a class="social-chip alt" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
@@ -695,7 +719,7 @@
   <footer class="footer">
     <div class="container footer-box">
       <div><strong>Projekt: Domek na Drzewie</strong> • Rośniemy z natury</div>
-      <div>marzec 2026</div>
+      <div>kwiecień 2026</div>
     </div>
   </footer>
 
