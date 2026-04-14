@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page-a-day calendar | Project: Tree House</title>
+  <meta
+    name="description"
+    content="A daily page with the date, Polish name day tradition, the week number, and a quick check of your weekly card rhythm."
+  />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <script src="/assets/js/cards-data.js" defer></script>
+  <script src="/assets/js/day-calendar.js" defer></script>
+  <style>
+    :root {
+      --ink: #2f2a22;
+      --muted: #6f675a;
+      --paper: #f7f0df;
+      --paper-deep: #efe1c2;
+      --paper-shadow: #d4c09b;
+      --accent: #b3562b;
+      --accent-soft: #e8c79c;
+      --line: rgba(47, 42, 34, 0.12);
+      --background: #ebe3d1;
+      --max: 1120px;
+      --shadow: 0 24px 60px rgba(58, 43, 22, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 22%),
+        linear-gradient(180deg, #f3ebdb 0%, var(--background) 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 32px), 1120px); margin: 0 auto; }
+
+    .topbar {
+      background: rgba(255,255,255,0.88);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand-title { font-size: 1.25rem; font-weight: 700; }
+    .brand-subtitle { margin-top: 4px; color: var(--muted); font-size: 0.94rem; }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+
+    .nav-links a {
+      min-height: 88px;
+      padding: 0 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-left: 1px solid var(--line);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: background 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.current {
+      background: rgba(179, 86, 43, 0.08);
+    }
+
+    .hero {
+      padding: 52px 0 26px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(47, 42, 34, 0.08);
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      line-height: 0.95;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      max-width: 44rem;
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: #4f473b;
+    }
+
+    .layout {
+      padding: 16px 0 72px;
+    }
+
+    .calendar-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .paper-stack {
+      position: relative;
+      padding-top: 18px;
+    }
+
+    .paper-stack::before,
+    .paper-stack::after {
+      content: "";
+      position: absolute;
+      inset: 14px 12px auto 12px;
+      height: calc(100% - 20px);
+      border-radius: 28px;
+      background: rgba(239, 225, 194, 0.72);
+      box-shadow: 0 18px 34px rgba(58, 43, 22, 0.08);
+      z-index: 0;
+    }
+
+    .paper-stack::after {
+      inset: 7px 6px auto 6px;
+      background: rgba(247, 240, 223, 0.88);
+    }
+
+    .tear-page {
+      position: relative;
+      z-index: 1;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0) 14%),
+        linear-gradient(180deg, var(--paper) 0%, #f4ead4 100%);
+      border: 1px solid rgba(86, 62, 30, 0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .tear-top {
+      position: relative;
+      padding: 26px 28px 20px;
+      border-bottom: 1px dashed rgba(86, 62, 30, 0.2);
+      background:
+        linear-gradient(180deg, rgba(232,199,156,0.52), rgba(232,199,156,0.12)),
+        repeating-linear-gradient(90deg, transparent 0 16px, rgba(86,62,30,0.02) 16px 17px);
+    }
+
+    .tear-top::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: -16px;
+      height: 30px;
+      background:
+        radial-gradient(circle at 15px 0, transparent 14px, #f4ead4 15px) 0 0 / 30px 30px repeat-x;
+    }
+
+    .tear-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .tear-date {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .tear-day {
+      font-size: clamp(5rem, 14vw, 9rem);
+      line-height: 0.9;
+      font-weight: 700;
+      letter-spacing: -0.08em;
+    }
+
+    .tear-month {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(179, 86, 43, 0.12);
+      color: var(--accent);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .tear-full-date {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: #443a2f;
+      text-transform: capitalize;
+    }
+
+    .tear-body {
+      padding: 46px 28px 30px;
+      display: grid;
+      gap: 26px;
+    }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .fact,
+    .side-card {
+      border-radius: 22px;
+      padding: 22px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(47, 42, 34, 0.08);
+      box-shadow: 0 14px 28px rgba(58, 43, 22, 0.06);
+    }
+
+    .fact-label,
+    .side-label {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fact-value {
+      font-size: 1.28rem;
+      line-height: 1.4;
+    }
+
+    .fact-value.number {
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+
+    .side-column {
+      display: grid;
+      gap: 18px;
+    }
+
+    .side-card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,255,255,0.34)),
+        rgba(255,255,255,0.42);
+    }
+
+    .side-copy {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #463d32;
+    }
+
+    .side-copy strong {
+      color: var(--accent);
+    }
+
+    .action-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .action-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: 1px solid rgba(86, 62, 30, 0.12);
+      background: rgba(255,255,255,0.7);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .action-links a.primary {
+      background: linear-gradient(180deg, #c76a3b 0%, #ac5228 100%);
+      color: #fff9f1;
+      border-color: transparent;
+    }
+
+    .action-links a:hover {
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+      .calendar-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        padding: 10px 0;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .nav-links a {
+        min-height: 56px;
+        border-left: 0;
+        padding: 0 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tear-date {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .fact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tear-top,
+      .tear-body,
+      .side-card {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/en/" aria-label="Project: Tree House">
+        <div class="brand-mark">
+          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project logo">
+        </div>
+        <div>
+          <div class="brand-title">Project: Tree House</div>
+          <div class="brand-subtitle">An educational and social project inspired by nature.</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigation">
+        <a href="/en/">Start Here</a>
+        <a href="/en/materials/">Materials</a>
+        <a href="/blog/en/">Blog</a>
+        <a href="/kartka-z-kalendarza.html" lang="pl" hreflang="pl">Polski</a>
+        <a href="/en/about.html">About us</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <span class="hero-kicker" data-label-tradition>Inspired by a Polish desk calendar</span>
+      <h1 data-calendar-title>Page-a-day calendar</h1>
+      <p data-calendar-lead>A daily tear-off page with the date, Polish name day tradition, and the rhythm of the week.</p>
+    </div>
+  </section>
+
+  <main class="layout">
+    <div class="container calendar-layout">
+      <section class="paper-stack" aria-label="Today's page">
+        <article class="tear-page">
+          <div class="tear-top">
+            <div class="tear-note">
+              <span data-label-season-note>A little tear-off page</span>
+              <span data-label-today>Today</span>
+            </div>
+            <div class="tear-date">
+              <div class="tear-day" data-day-number>14</div>
+              <div>
+                <div class="tear-month" data-month-short>Apr</div>
+                <div class="tear-full-date" data-full-date>Tuesday, 14 April 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tear-body">
+            <div class="fact-grid">
+              <div class="fact">
+                <div class="fact-label" data-label-nameday>Name day</div>
+                <div class="fact-value" data-nameday>Justyna, Walerian</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label" data-label-tomorrow>Tomorrow</div>
+                <div class="fact-value" data-tomorrow-nameday>Tomorrow: Anastazja, Bazyli</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label" data-label-week>Week of the year</div>
+                <div class="fact-value number" data-week-number>16</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label" data-label-day-of-year>Day of the year</div>
+                <div class="fact-value number" data-day-of-year>104</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <aside class="side-column">
+        <article class="side-card">
+          <div class="side-label" data-label-week-range>Week span</div>
+          <div class="side-copy" data-week-range>13 April – 19 April</div>
+        </article>
+
+        <article class="side-card">
+          <div class="side-label" data-label-card-rhythm>Card rhythm</div>
+          <div class="side-copy" data-rhythm-copy>The series is 2 cards behind the calendar week.</div>
+          <div class="side-copy" data-current-card-line>The latest published card currently reaches week 14.</div>
+          <div class="side-copy" data-current-week-line>By the calendar, week 16 is in progress now.</div>
+          <div class="action-links">
+            <a class="primary" data-current-card-href href="/en/materials/urban-bathing/#tydzien-14" data-link-open-current-card>Open the latest published card</a>
+            <a data-open-cards-href href="/en/materials/urban-bathing/" data-link-open-cards>Open the card series</a>
+          </div>
+        </article>
+
+        <article class="side-card">
+          <div class="side-label">Why this page</div>
+          <div class="side-copy" data-footer-copy>You can use this page as a daily ritual and a quick check of which week of the year your series should be matching.</div>
+        </article>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
