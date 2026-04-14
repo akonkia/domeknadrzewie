@@ -2,7 +2,7 @@
   const cardPatternData = {
     pl: {
       pageTitle: "Układ 52 tygodni",
-      pageLead: "Szkielet całego roku: sezonowe klastry, motywy przewodnie i wzory tytułów, które można później wypełniać konkretnymi kartami.",
+      pageLead: "Szkielet całego roku: sezonowe klastry i motywy przewodnie.",
       linkSeries: "Wróć do serii",
       linkCurrent: "Zobacz aktualną kartę",
       linkEnglish: "English",
@@ -80,7 +80,7 @@
     },
     en: {
       pageTitle: "The 52-week pattern",
-      pageLead: "The framework for the full year: seasonal clusters, guiding themes, and title patterns that can later be filled with specific cards.",
+      pageLead: "The framework for the full year: seasonal clusters, guiding themes.",
       linkSeries: "Back to the series",
       linkCurrent: "View the current card",
       linkEnglish: "Polski",
