@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 52-week pattern | Project: Tree House</title>
+  <meta name="description" content="The seasonal 52-week framework for Urban forest bathing: clusters, themes, and example titles." />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <script src="/assets/js/cards-data.js"></script>
+  <script src="/assets/js/cards-pattern-data.js"></script>
+  <script src="/assets/js/cards-pattern-page.js" defer></script>
+  <style>
+    :root {
+      --sage: #678760;
+      --sage-dark: #4e654a;
+      --orange: #fb9b27;
+      --cream: #f4f1ea;
+      --paper: #fffdf8;
+      --text: #243126;
+      --muted: #5e675f;
+      --line: rgba(36,49,38,0.10);
+      --shadow: 0 18px 38px rgba(32,42,33,0.08);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(252,193,93,0.18), transparent 24%),
+        linear-gradient(180deg, #f7f6f0 0%, #eef4e9 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .nav-links { display: flex; flex-wrap: wrap; }
+    .nav-links a {
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .nav-links a.active { color: var(--sage); }
+
+    .hero {
+      padding: 58px 0 26px;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(103,135,96,0.12);
+      color: var(--sage-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(2.3rem, 5.5vw, 4.2rem);
+      line-height: 0.95;
+    }
+    .hero p {
+      max-width: 48rem;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin: 0;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .hero-actions a {
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.85);
+    }
+    .hero-actions a.primary {
+      background: var(--sage);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .cluster-list {
+      display: grid;
+      gap: 22px;
+      padding: 10px 0 68px;
+    }
+    .cluster-card {
+      padding: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+    }
+    .cluster-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .cluster-badge,
+    .cluster-weeks {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      letter-spacing: 0.08em;
+    }
+    .cluster-card h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+    .cluster-subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    .cluster-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .cluster-meta-block,
+    .cluster-examples,
+    .cluster-live,
+    .cluster-empty {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fbfaf6;
+      border: 1px solid rgba(36,49,38,0.08);
+    }
+    .cluster-meta-block span,
+    .cluster-examples h3,
+    .cluster-live h3 {
+      display: block;
+      margin: 0 0 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sage-dark);
+    }
+    .cluster-meta-block p,
+    .cluster-empty p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .cluster-examples {
+      margin-top: 16px;
+    }
+    .cluster-examples ul {
+      margin: 0;
+      padding-left: 18px;
+      columns: 2;
+      gap: 28px;
+    }
+    .cluster-examples li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .cluster-live,
+    .cluster-empty {
+      margin-top: 16px;
+    }
+    .cluster-empty strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+    .live-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .live-card {
+      overflow: hidden;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(36,49,38,0.08);
+    }
+    .live-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .live-card-body {
+      padding: 14px;
+    }
+    .live-card-meta {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .live-card-body strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+    .live-card-body p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 760px) {
+      .cluster-meta-grid {
+        grid-template-columns: 1fr;
+      }
+      .cluster-examples ul {
+        columns: 1;
+      }
+      .nav {
+        padding: 10px 0;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/en/">
+        <div class="brand-mark"><img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo"></div>
+        <div><strong>Project: Tree House</strong></div>
+      </a>
+      <nav class="nav-links">
+        <a href="/en/">Start Here</a>
+        <a href="/en/materials/urban-bathing/" class="active">Materials</a>
+        <a href="/materialy/kapiele_miejskie/uklad-52-tygodni.html" lang="pl" hreflang="pl">Polski</a>
+        <a href="/en/about.html">About us</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <span class="hero-kicker">Year-long framework</span>
+      <h1 data-pattern-title>The 52-week pattern</h1>
+      <p data-pattern-lead>The framework for the full year: seasonal clusters, guiding themes, and title patterns that can later be filled with specific cards.</p>
+      <div class="hero-actions">
+        <a class="primary" href="/en/materials/urban-bathing/" data-link-series>Back to the series</a>
+        <a href="/en/materials/urban-bathing/#tydzien-14" data-link-current>View the current card</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="cluster-list" data-cluster-list></section>
+  </main>
+</body>
+</html>
