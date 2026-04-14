@@ -39,6 +39,16 @@
           <strong>${langPack.emptyTitle}</strong>
         </div>`;
 
+    const placeholdersMarkup = placeholders.length
+      ? `
+        <div class="cluster-examples">
+          <h3>${langPack.plannedTitle}</h3>
+          <ul>
+            ${placeholders.map((week) => `<li>${cluster.slotLabel} ${week}</li>`).join("")}
+          </ul>
+        </div>`
+      : "";
+
     return `
       <article class="cluster-card" id="${cluster.id}">
         <div class="cluster-head">
@@ -53,13 +63,8 @@
             <p>${cluster.subtitle}</p>
           </div>
         </div>
-        <div class="cluster-examples">
-          <h3>${langPack.plannedTitle}</h3>
-          <ul>
-            ${placeholders.map((week) => `<li>${cluster.slotLabel} ${week}</li>`).join("")}
-          </ul>
-        </div>
         ${liveMarkup}
+        ${placeholdersMarkup}
       </article>
     `;
   }
