@@ -7,13 +7,11 @@
       linkCurrent: "Zobacz aktualną kartę",
       linkEnglish: "English",
       liveCardsTitle: "Karty już wpisane w ten klaster",
-      plannedTitle: "Przykładowe tytuły i kierunki",
+      plannedTitle: "Miejsca na przyszłe karty",
       emptyTitle: "Ten klaster czeka jeszcze na swoje karty.",
       emptyBody: "Może tu później pojawić się osobna strona klastra albo zestaw kart z tego odcinka roku.",
       themeLabel: "Tematy",
-      patternLabel: "Wzory tytułów",
       weeksLabel: "Tygodnie",
-      liveStatus: "Opublikowane teraz",
       clusters: [
         {
           id: "deep-winter",
@@ -22,8 +20,7 @@
           emoji: "❄️",
           title: "Zima",
           subtitle: "bezruch, korzenie, wytrwałość, ciche piękno, subtelny ruch",
-          pattern: "Cichy ___, Ukryta ___, Pierwszy ___",
-          examples: ["Cichy korzeń", "Ukryta siła", "Niespieszna ścieżka", "Miękka wytrwałość", "Blade słońce", "Pierwszy jasny kwiat", "Zimowy oddech", "Niskie światło"]
+          slotLabel: "Tydzień"
         },
         {
           id: "early-spring",
@@ -32,8 +29,7 @@
           emoji: "🌿",
           title: "Wczesna wiosna",
           subtitle: "wyłanianie się, odporność, miękkość, wracające życie",
-          pattern: "Czuły ___, Powracający ___, Mała ___",
-          examples: ["Czuły pęd", "Powracająca zieleń", "Mała odwaga", "Poszerzające się światło", "Łagodna odwilż", "Budząca się ziemia", "Cichy powrót", "Pierwsza pieśń"]
+          slotLabel: "Tydzień"
         },
         {
           id: "late-spring",
@@ -42,8 +38,7 @@
           emoji: "🌸",
           title: "Późna wiosna",
           subtitle: "wzrost, pełnia, lekkość, ciekawość",
-          pattern: "Otwarty ___, Jasna ___, Wędrująca ___",
-          examples: ["Otwarty kwiat", "Jasna gałąź", "Wędrująca pszczoła", "Czyste niebo", "Miękki deszcz", "Długi poranek", "Kwitnące powietrze", "Splątane zielenie"]
+          slotLabel: "Tydzień"
         },
         {
           id: "summer",
@@ -52,8 +47,7 @@
           emoji: "☀️",
           title: "Lato",
           subtitle: "żywotność, ekspansja, ciepło, ruch",
-          pattern: "Złoty ___, Ciepły ___, Tańcząca ___",
-          examples: ["Złota ścieżka", "Ciepły wiatr", "Tańcząca trawa", "Słoneczny przypływ", "Szeroka łąka", "Powolna rzeka", "Otwarte pola", "Światło, które zostaje"]
+          slotLabel: "Tydzień"
         },
         {
           id: "early-autumn",
@@ -62,8 +56,7 @@
           emoji: "🍂",
           title: "Wczesna jesień",
           subtitle: "zbiory, ugruntowanie, mięknące krawędzie, zmiana",
-          pattern: "Zwracający się ___, Opadające ___, Zbierający ___",
-          examples: ["Zwracający się liść", "Opadające światło", "Zbierający się cień", "Cichy sad", "Wypłowiała gałąź", "Chrupiąca ścieżka", "Łagodna zmiana", "Niższe słońce"]
+          slotLabel: "Tydzień"
         },
         {
           id: "late-autumn",
@@ -72,8 +65,7 @@
           emoji: "🍁",
           title: "Późna jesień",
           subtitle: "odpuszczanie, odpoczynek, przejrzystość, przemiana",
-          pattern: "Ostatni ___, Nagie ___, Gasnący ___",
-          examples: ["Naga gałąź", "Gasnący kolor", "Ostatnie ciepło", "Otwarte pole", "Miękkie opadanie", "Pusta ścieżka", "Cicha polana", "Długi zmierzch"]
+          slotLabel: "Tydzień"
         },
         {
           id: "winter-return",
@@ -82,8 +74,7 @@
           emoji: "🌑",
           title: "Głęboka zima",
           subtitle: "refleksja, cisza, odnowa, głęboki odpoczynek",
-          pattern: "Głęboka ___, Nieruchome ___, Ukryta ___",
-          examples: ["Głęboka cisza", "Nieruchome powietrze", "Ukryta iskra", "Powracająca noc"]
+          slotLabel: "Tydzień"
         }
       ]
     },
@@ -94,13 +85,11 @@
       linkCurrent: "View the current card",
       linkEnglish: "Polski",
       liveCardsTitle: "Cards already living in this cluster",
-      plannedTitle: "Example titles and directions",
+      plannedTitle: "Places for future cards",
       emptyTitle: "This cluster is still waiting for its cards.",
       emptyBody: "A dedicated cluster page or a fuller set of cards can grow here later.",
       themeLabel: "Themes",
-      patternLabel: "Title pattern",
       weeksLabel: "Weeks",
-      liveStatus: "Published now",
       clusters: [
         {
           id: "deep-winter",
@@ -109,8 +98,7 @@
           emoji: "❄️",
           title: "Winter",
           subtitle: "stillness, roots, endurance, quiet beauty, subtle movement",
-          pattern: "The Quiet ___, The Hidden ___, The First ___",
-          examples: ["The Quiet Root", "The Hidden Strength", "The Unhurried Path", "The Soft Endurance", "The Pale Sun", "The First Bright Bloom", "The Winter Breath", "The Low Light"]
+          slotLabel: "Week"
         },
         {
           id: "early-spring",
@@ -119,8 +107,7 @@
           emoji: "🌿",
           title: "Early spring",
           subtitle: "emergence, resilience, softness, returning life",
-          pattern: "The Tender ___, The Returning ___, The Small ___",
-          examples: ["The Tender Sprout", "The Returning Green", "The Small Courage", "The Widening Light", "The Gentle Thaw", "The Waking Earth", "The Quiet Return", "The First Song"]
+          slotLabel: "Week"
         },
         {
           id: "late-spring",
@@ -129,8 +116,7 @@
           emoji: "🌸",
           title: "Late spring",
           subtitle: "growth, fullness, lightness, curiosity",
-          pattern: "The Open ___, The Bright ___, The Wandering ___",
-          examples: ["The Open Blossom", "The Bright Branch", "The Wandering Bee", "The Clear Sky", "The Soft Rain", "The Long Morning", "The Blooming Air", "The Woven Greens"]
+          slotLabel: "Week"
         },
         {
           id: "summer",
@@ -139,8 +125,7 @@
           emoji: "☀️",
           title: "Summer",
           subtitle: "vitality, expansion, warmth, movement",
-          pattern: "The Golden ___, The Warm ___, The Dancing ___",
-          examples: ["The Golden Path", "The Warm Wind", "The Dancing Grass", "The Sunlit Tide", "The Wide Meadow", "The Slow River", "The Open Fields", "The Light That Lingers"]
+          slotLabel: "Week"
         },
         {
           id: "early-autumn",
@@ -149,8 +134,7 @@
           emoji: "🍂",
           title: "Early autumn",
           subtitle: "harvest, grounding, softening edges, change",
-          pattern: "The Turning ___, The Falling ___, The Gathering ___",
-          examples: ["The Turning Leaf", "The Falling Light", "The Gathering Shade", "The Quiet Orchard", "The Weathered Branch", "The Crisp Path", "The Gentle Shift", "The Lower Sun"]
+          slotLabel: "Week"
         },
         {
           id: "late-autumn",
@@ -159,8 +143,7 @@
           emoji: "🍁",
           title: "Late autumn",
           subtitle: "letting go, rest, clarity, transformation",
-          pattern: "The Last ___, The Bare ___, The Fading ___",
-          examples: ["The Bare Branch", "The Fading Color", "The Last Warmth", "The Open Field", "The Soft Descent", "The Empty Path", "The Quiet Clearing", "The Long Twilight"]
+          slotLabel: "Week"
         },
         {
           id: "winter-return",
@@ -169,8 +152,7 @@
           emoji: "🌑",
           title: "Deep winter",
           subtitle: "reflection, silence, renewal, deep rest",
-          pattern: "The Deep ___, The Still ___, The Hidden ___",
-          examples: ["The Deep Quiet", "The Still Air", "The Hidden Spark", "The Returning Night"]
+          slotLabel: "Week"
         }
       ]
     }

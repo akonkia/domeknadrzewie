@@ -11,6 +11,12 @@
     const liveCards = cards.filter((card) => card.id >= cluster.range[0] && card.id <= cluster.range[1]);
     const imgBase = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
     const cardPage = getLang() === "en" ? "/en/materials/urban-bathing/" : "/materialy/kapiele_miejskie/";
+    const placeholders = [];
+    for (let week = cluster.range[0]; week <= cluster.range[1]; week += 1) {
+      if (!liveCards.some((card) => card.id === week)) {
+        placeholders.push(week);
+      }
+    }
 
     const liveMarkup = liveCards.length
       ? `
@@ -21,7 +27,6 @@
               <a class="live-card" href="${cardPage}#tydzien-${card.id}">
                 <img src="${imgBase}${card.img}" alt="${card.title}">
                 <div class="live-card-body">
-                  <span class="live-card-meta">${langPack.liveStatus}</span>
                   <strong>${getLang() === "en" ? "Week" : "Tydzień"} ${card.id}</strong>
                   <p>${card.title}</p>
                 </div>
@@ -32,7 +37,6 @@
       : `
         <div class="cluster-empty">
           <strong>${langPack.emptyTitle}</strong>
-          <p>${langPack.emptyBody}</p>
         </div>`;
 
     return `
@@ -48,15 +52,11 @@
             <span>${langPack.themeLabel}</span>
             <p>${cluster.subtitle}</p>
           </div>
-          <div class="cluster-meta-block">
-            <span>${langPack.patternLabel}</span>
-            <p>${cluster.pattern}</p>
-          </div>
         </div>
         <div class="cluster-examples">
           <h3>${langPack.plannedTitle}</h3>
           <ul>
-            ${cluster.examples.map((item) => `<li>${item}</li>`).join("")}
+            ${placeholders.map((week) => `<li>${cluster.slotLabel} ${week}</li>`).join("")}
           </ul>
         </div>
         ${liveMarkup}
