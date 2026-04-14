@@ -489,6 +489,12 @@
       grid-column: 1 / -1;
     }
 
+    .material-card.featured-kids {
+      border-color: rgba(251,155,39,0.26);
+      box-shadow: 0 18px 38px rgba(32,42,33,0.1);
+      background: linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
+    }
+
     .material-badge {
       display: inline-block;
       padding: 7px 12px;
@@ -499,6 +505,11 @@
       font-size: 0.75rem;
       font-weight: 800;
       margin-bottom: 14px;
+    }
+
+    .material-card.featured-kids .material-badge {
+      background: rgba(251,155,39,0.16);
+      color: #a95c08;
     }
 
     .material-series-title {
@@ -935,6 +946,40 @@
             </div>
           </article>
 
+          <span id="for-children" class="section-anchor" aria-hidden="true"></span>
+          <article class="material-card featured-kids">
+            <span class="material-badge">Featured</span>
+            <h2 class="material-series-title">Printable cards for children</h2>
+            <p class="material-series-tag">Growing section</p>
+            <p class="material-series-text">
+              Colouring pages, simple activities and materials for shared exploration. This is a dedicated section that will grow with new sets over time.
+            </p>
+
+            <div class="set-grid">
+              <article class="set-card">
+                <a class="set-cover" href="/en/materials/for-children/" aria-label="View the For children category">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kolorowanki/wiosna_01/kolorowanki.png"
+                    alt="For children category thumbnail"
+                  />
+                </a>
+
+                <div class="set-content">
+                  <span class="set-meta">Colouring pages • PNG</span>
+                  <h3>Spring colouring pages — set 01</h3>
+                  <p>
+                    A set of simple printable cards with first signs of spring:
+                    birds, buds, flowers and small nature observations.
+                  </p>
+
+                  <div class="set-actions">
+                    <a href="/en/materials/for-children/">View category</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </article>
+
           <span id="seasonal-materials" class="section-anchor" aria-hidden="true"></span>
           <article class="material-card">
             <span class="material-badge">Seasonal materials</span>
@@ -962,39 +1007,6 @@
 
                   <div class="set-actions">
                     <a href="#" onclick="return false;" aria-disabled="true">Coming soon</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </article>
-
-          <span id="for-children" class="section-anchor" aria-hidden="true"></span>
-          <article class="material-card">
-            <span class="material-badge">For children</span>
-            <h2 class="material-series-title">Printable cards for children</h2>
-            <p class="material-series-text">
-              Colouring pages, simple activities and materials for shared exploration.
-            </p>
-
-            <div class="set-grid">
-              <article class="set-card">
-                <a class="set-cover" href="/en/materials/for-children/" aria-label="View the For children category">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kolorowanki/wiosna_01/kolorowanki.png"
-                    alt="For children category thumbnail"
-                  />
-                </a>
-
-                <div class="set-content">
-                  <span class="set-meta">Colouring pages • PNG</span>
-                  <h3>Spring colouring pages — set 01</h3>
-                  <p>
-                    A set of simple printable cards with first signs of spring:
-                    birds, buds, flowers and small nature observations.
-                  </p>
-
-                  <div class="set-actions">
-                    <a href="/en/materials/for-children/">View category</a>
                   </div>
                 </div>
               </article>
