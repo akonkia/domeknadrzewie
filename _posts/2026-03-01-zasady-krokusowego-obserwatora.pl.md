@@ -3,6 +3,8 @@ layout: post
 title: "Zasady krokusowego obserwatora — jak zachwycać się naturą i jej nie niszczyć"
 date: 2026-03-01
 lang: pl
+cover: /assets/img/Krokus.JPG
+cover_alt: Crocuses in bloom
 translation_id: krokusowy-turysta-2026
 description: "Jak podziwiać krokusy w parkach i zielonych przestrzeniach w sposób uważny i odpowiedzialny? Proste zasady, które pomagają chronić delikatne wiosenne kwiaty i wspierają świadomy kontakt z naturą."
 excerpt: "Proste zasady odpowiedzialnego podziwiania krokusów w parkach — bez niszczenia przyrody."
