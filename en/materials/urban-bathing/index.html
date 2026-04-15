@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
-  <script src="/assets/js/cards-data.js"></script>
+  <script>
+    (function () {
+      const script = document.createElement("script");
+      script.src = "/assets/js/cards-data.js?v=" + Date.now();
+      script.async = false;
+      document.head.appendChild(script);
+    })();
+  </script>
 
   <title>Urban forest bathing| Project: Treehouse</title>
   

@@ -7,8 +7,21 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
   <script defer src="/assets/js/sky-mini-widget.js"></script>
-  <script defer src="/assets/js/cards-data.js"></script>
-  <script defer src="/assets/js/current-card.js"></script>
+  <script>
+    (function () {
+      const bust = Date.now();
+      const cardsData = document.createElement("script");
+      cardsData.src = "/assets/js/cards-data.js?v=" + bust;
+      cardsData.async = false;
+      cardsData.onload = function () {
+        const currentCard = document.createElement("script");
+        currentCard.src = "/assets/js/current-card.js?v=" + bust;
+        currentCard.async = false;
+        document.head.appendChild(currentCard);
+      };
+      document.head.appendChild(cardsData);
+    })();
+  </script>
   <style>
     :root {
       --sage: #678760;
