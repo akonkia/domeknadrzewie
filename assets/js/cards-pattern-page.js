@@ -89,6 +89,13 @@
       currentLink.href = `${lang === "en" ? "/en/materials/urban-bathing/" : "/materialy/kapiele_miejskie/"}#tydzien-${latestCardId}`;
     }
 
+    const jumps = document.querySelector("[data-cluster-jumps]");
+    if (jumps) {
+      jumps.innerHTML = langPack.clusters.map((cluster) => `
+        <a href="#${cluster.id}">${cluster.emoji} ${cluster.title}</a>
+      `).join("");
+    }
+
     const list = document.querySelector("[data-cluster-list]");
     if (!list) return;
     list.innerHTML = langPack.clusters.map((cluster) => renderCluster(cluster, langPack, cards)).join("");

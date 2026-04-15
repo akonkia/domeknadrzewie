@@ -72,6 +72,41 @@
     }
     .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; margin: 0; }
 
+    .section-subnav {
+      margin: 22px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .section-subnav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.92);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: 0.2s;
+    }
+    .section-subnav a.current {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: #fff;
+    }
+    .section-subnav a:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+    .section-subnav a.current:hover {
+      color: #fff;
+    }
+
     /* Filters */
     .filter-section { background: white; padding: 25px; margin: 30px 0; border: 1px solid var(--line); box-shadow: var(--shadow); }
     .filter-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
@@ -135,6 +170,13 @@
   <section class="hero">
     <h1>Urban forest bathing</h1>
   </section>
+
+  <div class="narrow">
+    <nav class="section-subnav" aria-label="Section submenu">
+      <a class="current" href="/en/materials/urban-bathing/">Series</a>
+      <a href="/en/materials/urban-bathing/52-week-pattern.html">The 52-week pattern</a>
+    </nav>
+  </div>
 
   <main class="narrow">
     <section class="filter-section" style="margin-bottom: 0;">

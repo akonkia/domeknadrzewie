@@ -113,6 +113,42 @@
       color: #fff;
       border-color: transparent;
     }
+    .section-subnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 6px;
+    }
+    .section-subnav a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.88);
+    }
+    .section-subnav a.current {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: #fff;
+    }
+    .cluster-jumps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 26px;
+    }
+    .cluster-jumps a {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(36,49,38,0.1);
+      background: rgba(255,255,255,0.76);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
 
     .cluster-list {
       display: grid;
@@ -283,10 +319,15 @@
         <a class="primary" href="/materialy/kapiele_miejskie/" data-link-series>Wróć do serii</a>
         <a href="/materialy/kapiele_miejskie/#tydzien-14" data-link-current>Zobacz aktualną kartę</a>
       </div>
+      <nav class="section-subnav" aria-label="Podmenu sekcji">
+        <a href="/materialy/kapiele_miejskie/">Seria</a>
+        <a class="current" href="/materialy/kapiele_miejskie/uklad-52-tygodni.html">Układ 52 tygodni</a>
+      </nav>
     </div>
   </section>
 
   <main class="container">
+    <nav class="cluster-jumps" data-cluster-jumps aria-label="Skoki do klastrów"></nav>
     <section class="cluster-list" data-cluster-list></section>
   </main>
 </body>
