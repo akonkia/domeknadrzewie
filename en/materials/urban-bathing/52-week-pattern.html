@@ -113,41 +113,24 @@
       color: #fff;
       border-color: transparent;
     }
-    .section-subnav {
+    .breadcrumbs {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 10px;
       margin: 24px 0 6px;
-    }
-    .section-subnav a {
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.88);
-    }
-    .section-subnav a.current {
-      background: var(--sage);
-      border-color: var(--sage);
-      color: #fff;
-    }
-    .cluster-jumps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 0 0 26px;
-    }
-    .cluster-jumps a {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(36,49,38,0.1);
-      background: rgba(255,255,255,0.76);
-      font-size: 0.82rem;
-      font-weight: 700;
       color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .breadcrumbs a {
+      color: var(--muted);
+    }
+    .breadcrumbs .separator {
+      color: rgba(36,49,38,0.35);
+    }
+    .breadcrumbs .current {
+      color: var(--text);
+      font-weight: 700;
     }
 
     .cluster-list {
@@ -319,15 +302,17 @@
         <a class="primary" href="/en/materials/urban-bathing/" data-link-series>Back to the series</a>
         <a href="/en/materials/urban-bathing/#tydzien-14" data-link-current>View the current card</a>
       </div>
-      <nav class="section-subnav" aria-label="Section submenu">
-        <a href="/en/materials/urban-bathing/">Series</a>
-        <a class="current" href="/en/materials/urban-bathing/52-week-pattern.html">The 52-week pattern</a>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/en/materials/">Materials</a>
+        <span class="separator">/</span>
+        <a href="/en/materials/urban-bathing/">Urban forest bathing</a>
+        <span class="separator">/</span>
+        <span class="current">The 52-week pattern</span>
       </nav>
     </div>
   </section>
 
   <main class="container">
-    <nav class="cluster-jumps" data-cluster-jumps aria-label="Jump to clusters"></nav>
     <section class="cluster-list" data-cluster-list></section>
   </main>
 </body>

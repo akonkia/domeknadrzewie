@@ -72,39 +72,28 @@
     }
     .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; margin: 0; }
 
-    .section-subnav {
-      margin: 22px auto 0;
+    .breadcrumbs {
+      margin: 24px auto 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-    .section-subnav a {
-      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.92);
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      transition: 0.2s;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
-    .section-subnav a.current {
-      background: var(--sage);
-      border-color: var(--sage);
-      color: #fff;
+    .breadcrumbs a {
+      color: var(--muted);
+      transition: color 0.2s;
     }
-    .section-subnav a:hover {
-      border-color: var(--sage);
+    .breadcrumbs a:hover {
       color: var(--sage);
     }
-    .section-subnav a.current:hover {
-      color: #fff;
+    .breadcrumbs .separator {
+      color: rgba(36, 49, 38, 0.35);
+    }
+    .breadcrumbs .current {
+      color: var(--text);
+      font-weight: 700;
     }
 
     /* Filters */
@@ -173,9 +162,10 @@
   </section>
 
   <div class="narrow">
-    <nav class="section-subnav" aria-label="Podmenu sekcji">
-      <a class="current" href="/materialy/kapiele_miejskie/">Seria</a>
-      <a href="/materialy/kapiele_miejskie/uklad-52-tygodni.html">Układ 52 tygodni</a>
+    <nav class="breadcrumbs" aria-label="Okruszki">
+      <a href="/materialy/">Materiały</a>
+      <span class="separator">/</span>
+      <span class="current">Miejskie kąpiele leśne</span>
     </nav>
   </div>
 
