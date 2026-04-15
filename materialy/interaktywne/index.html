@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <title>Dla dzieci | Projekt: Domek na Drzewie</title>
+  <meta
+    name="description"
+    content="Materiały dla dzieci inspirowane naturą: kolorowanki, proste aktywności i karty do wspólnego odkrywania przyrody."
+  />
+
+  <style>
+    :root {
+      --sage: #678760;
+      --sage-dark: #587252;
+      --orange: #fb9b27;
+      --gold: #fcc15d;
+      --cream: #f3f1eb;
+      --paper: #fffdf9;
+      --white: #ffffff;
+      --text: #243126;
+      --muted: #5e675f;
+      --line: rgba(36,49,38,0.08);
+      --hero-overlay: rgba(36,49,38,0.30);
+      --shadow: 0 14px 30px rgba(32, 42, 33, 0.08);
+      --max: 1120px;
+      --content: 900px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin: 0; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .narrow {
+      width: min(calc(100% - 32px), var(--content));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-head {
+      display: contents;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-subtitle {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    /* BEGIN: Organic mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      width: 56px;
+      height: 56px;
+      padding: 0;
+      border: 1px solid rgba(251,155,39,0.30);
+      border-radius: 55% 45% 58% 42% / 44% 53% 47% 56%;
+      background: linear-gradient(135deg, rgba(251,155,39,0.42), rgba(252,193,93,0.52) 48%, rgba(103,135,96,0.30));
+      box-shadow:
+        0 18px 40px rgba(36,49,38,0.14),
+        0 0 0 8px rgba(255,244,196,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      animation: organic-toggle-float 4.2s ease-in-out infinite;
+      transition:
+        transform 0.28s ease,
+        border-radius 0.34s ease,
+        box-shadow 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      transition: transform 0.35s ease, opacity 0.28s ease, border-radius 0.35s ease;
+    }
+
+    .menu-toggle::before {
+      inset: 4px;
+      border-radius: 58% 42% 46% 54% / 48% 58% 42% 52%;
+      background: rgba(255,255,255,0.70);
+      z-index: 0;
+    }
+
+    .menu-toggle::after {
+      width: 84px;
+      height: 84px;
+      right: -22px;
+      top: -26px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.54), rgba(255,255,255,0));
+      opacity: 1;
+      z-index: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2.5px;
+      border-radius: 999px;
+      background: var(--text);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.28);
+      transition: transform 0.28s ease, opacity 0.22s ease, width 0.28s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-toggle span:nth-child(2) {
+      width: 18px;
+    }
+
+    .menu-toggle:focus-visible {
+      outline: none;
+      box-shadow:
+        0 20px 42px rgba(36,49,38,0.16),
+        0 0 0 10px rgba(251,155,39,0.16),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    @media (hover: hover) {
+      .menu-toggle:hover {
+        transform: translateY(-3px) rotate(-7deg) scale(1.10);
+        border-radius: 42% 58% 44% 56% / 53% 41% 59% 47%;
+        box-shadow:
+          0 26px 48px rgba(36,49,38,0.18),
+          0 0 0 10px rgba(255,244,196,0.22),
+          inset 0 1px 0 rgba(255,255,255,0.88);
+      }
+
+      .menu-toggle:hover::before {
+        transform: scale(1.06) rotate(10deg);
+        border-radius: 46% 54% 42% 58% / 56% 42% 58% 44%;
+      }
+
+      .menu-toggle:hover::after {
+        transform: translate(-6px, 6px) scale(1.14);
+      }
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(8.5px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+      width: 8px;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] {
+      animation: none;
+      transform: rotate(10deg) scale(1.12);
+      border-radius: 38% 62% 42% 58% / 56% 38% 62% 44%;
+      background: linear-gradient(135deg, rgba(251,155,39,0.48), rgba(252,193,93,0.58) 48%, rgba(103,135,96,0.34));
+      box-shadow:
+        0 28px 54px rgba(36,49,38,0.20),
+        0 0 0 12px rgba(255,244,196,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .menu-toggle[aria-expanded="true"]::before {
+      transform: scale(1.10) rotate(14deg);
+      border-radius: 42% 58% 36% 64% / 64% 34% 66% 36%;
+      background: rgba(255,255,255,0.78);
+    }
+
+    .menu-toggle[aria-expanded="true"]::after {
+      transform: translate(-8px, 9px) scale(1.18);
+    }
+
+    @keyframes organic-toggle-float {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      35% { transform: rotate(-3deg) translateY(-1px); }
+      70% { transform: rotate(2deg) translateY(1px); }
+    }
+    /* END: Organic mobile menu toggle */
+
+    .nav-links a {
+      min-height: 88px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text);
+      border-left: 1px solid rgba(36,49,38,0.06);
+      transition: 0.18s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: var(--sage);
+      color: white;
+    }
+
+    .lang-link {
+      background: var(--orange) !important;
+      color: white !important;
+    }
+
+    .lang-link:hover {
+      background: #e68e20 !important;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+        url('/assets/img/start-here/with-children-tile.jpg') center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-inner {
+      width: min(calc(100% - 32px), 900px);
+      margin: 0 auto;
+      padding: 56px 0;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin-top: 16px;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.16);
+    }
+
+    .hero-text {
+      margin: 18px auto 0;
+      max-width: 60ch;
+      font-size: 1.03rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.93);
+    }
+
+    .page-wrap {
+      padding: 34px 0 44px;
+    }
+
+    .breadcrumbs {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .breadcrumbs a {
+      color: var(--sage);
+      font-weight: 700;
+    }
+
+    .intro-card,
+    .season-card,
+    .resource-card,
+    .contact-band {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .intro-card {
+      padding: 30px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      padding: 7px 12px;
+      background: rgba(103,135,96,0.12);
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.74rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .intro-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.06;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .intro-text {
+      color: var(--muted);
+      line-height: 1.82;
+      max-width: 68ch;
+      margin-bottom: 18px;
+    }
+
+    .intro-points,
+    .resource-points {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .intro-points li,
+    .resource-points li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .intro-points li::before,
+    .resource-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.78em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      transform: translateY(-50%);
+    }
+
+    .section-head {
+      margin: 0 0 18px;
+    }
+
+    .section-title {
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .season-card {
+      padding: 24px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .season-card.active-season {
+      background: linear-gradient(180deg, #fffdf9 0%, #f7f4ea 100%);
+      border-color: rgba(103,135,96,0.20);
+    }
+
+    .season-card.coming-soon {
+      background: #fcfbf7;
+      opacity: 0.9;
+    }
+
+    .season-name {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+
+    .season-desc {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .season-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      width: fit-content;
+    }
+
+    .season-badge.live {
+      background: rgba(103,135,96,0.14);
+      color: var(--sage);
+    }
+
+    .season-badge.soon {
+      background: rgba(251,155,39,0.14);
+      color: #9c5f11;
+    }
+
+    .resource-card {
+      padding: 18px;
+    }
+
+    .resource-inner {
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .resource-thumb {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #f3f1eb;
+      border-radius: 14px;
+    }
+
+    .resource-thumb img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    .resource-thumb:hover img {
+      transform: scale(1.02);
+    }
+
+    .resource-title {
+      font-size: 1.32rem;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .resource-meta {
+      color: var(--sage-dark);
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .resource-description {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .card-actions,
+    .contact-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .card-actions a,
+    .social-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 18px rgba(36,49,38,0.10);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .card-actions a:hover,
+    .social-chip:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 22px rgba(36,49,38,0.14);
+      filter: brightness(1.03);
+    }
+
+    .btn-sage {
+      background: linear-gradient(135deg, var(--sage), #88a67f);
+      color: white;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #3d2a10;
+    }
+
+    .contact-band {
+      margin-top: 30px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .contact-band h3 {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .contact-band p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+
+    .contact-actions {
+      justify-content: center;
+      margin-top: 18px;
+    }
+
+    .footer {
+      padding: 0 0 34px;
+    }
+
+    .footer-box {
+      border-top: 1px solid rgba(36,49,38,0.1);
+      padding-top: 20px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .resource-inner,
+      .season-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 10px 0 14px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 16px;
+      }
+
+      .brand {
+        flex: 1;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      /* BEGIN: Organic mobile menu panel */
+      .nav-links {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,251,242,0.98));
+        border: 1px solid rgba(251,155,39,0.12);
+        border-radius: 30px 24px 34px 22px;
+        box-shadow:
+          0 20px 44px rgba(36,49,38,0.10),
+          inset 0 1px 0 rgba(255,255,255,0.8);
+        position: relative;
+        transform: translateY(-8px) scale(0.985, 0.94);
+        transform-origin: top center;
+        will-change: max-height, opacity, transform, border-radius;
+        transition:
+          max-height 0.58s cubic-bezier(0.25, 0.9, 0.3, 1),
+          opacity 0.32s ease,
+          transform 0.58s cubic-bezier(0.25, 0.9, 0.3, 1),
+          border-radius 0.58s cubic-bezier(0.25, 0.9, 0.3, 1);
+      }
+
+      .nav-links::before,
+      .nav-links::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        transition: transform 0.58s cubic-bezier(0.25, 0.9, 0.3, 1), opacity 0.32s ease;
+      }
+
+      .nav-links::before {
+        inset: 0;
+        border-radius: inherit;
+        background:
+          radial-gradient(circle at 14% 12%, rgba(255,244,196,0.58), transparent 22%),
+          radial-gradient(circle at 88% 18%, rgba(251,155,39,0.16), transparent 18%),
+          radial-gradient(circle at 18% 82%, rgba(103,135,96,0.12), transparent 20%);
+        opacity: 0.85;
+      }
+
+      .nav-links::after {
+        width: 130px;
+        height: 68px;
+        top: -14px;
+        right: 18px;
+        border-radius: 58% 42% 60% 40% / 46% 58% 42% 54%;
+        background: radial-gradient(circle, rgba(255,255,255,0.48), rgba(255,255,255,0));
+        opacity: 0.8;
+      }
+
+      .nav-links.active {
+        max-height: 460px;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        border-radius: 28px 26px 32px 24px;
+      }
+
+      .nav-links a {
+        min-height: 52px;
+        width: 100%;
+        padding: 0 14px;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(36,49,38,0.06);
+        justify-content: flex-start;
+        text-align: left;
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links.active::before {
+        transform: scale(1.01, 1.03);
+      }
+
+      .nav-links.active::after {
+        transform: translate(-5px, 6px) scale(1.03);
+      }
+
+      @media (hover: hover) {
+        .nav-links a:hover {
+          transform: translateX(4px);
+          padding-left: 18px;
+        }
+      }
+      /* END: Organic mobile menu panel */
+
+      .hero {
+        min-height: 270px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 9vw, 3rem);
+      }
+
+      .intro-card,
+      .season-card,
+      .resource-card,
+      .contact-band {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="nav-head">
+        <a class="brand" href="/" aria-label="Projekt: Domek na Drzewie">
+          <div class="brand-mark">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie" />
+          </div>
+          <div>
+            <div class="brand-title">Projekt: Domek na Drzewie</div>
+            <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
+          </div>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="nav-links" id="site-menu" aria-label="Nawigacja">
+        <a href="/">Zacznij tutaj</a>
+        <a href="/materialy/" class="active">Materiały</a>
+        <a href="/blog/">Blog</a>
+        <a class="lang-link" href="/en/materials/interactive/" lang="en" hreflang="en">English</a>
+        <a href="/o-nas.html">O projekcie</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-kicker">Interaktywne</span>
+      <h1>Interaktywne materiały i narzędzia</h1>
+      <p class="hero-text">
+        Strony i narzędzia, które działają na żywo: reagują na porę dnia, pogodę albo aktualny rytm natury.
+      </p>
+    </div>
+  </section>
+
+  <main class="page-wrap">
+    <div class="narrow">
+      <nav class="breadcrumbs" aria-label="Okruszki">
+        <a href="/">Strona główna</a>
+        <span> / </span>
+        <a href="/materialy/">Materiały</a>
+        <span> / </span>
+        <span>Interaktywne</span>
+      </nav>
+
+      <section class="intro-card">
+        <span class="section-kicker">O tej kategorii</span>
+        <h2 class="intro-title">Materiały, które pokazują coś tu i teraz</h2>
+        <p class="intro-text">
+          Ta sekcja zbiera interaktywne strony związane z naturą, obserwacją i spokojnym rytmem dnia.
+          Zamiast plików do pobrania znajdują się tu narzędzia, do których można wracać regularnie:
+          sprawdzić niebo, złapać moment dnia albo spojrzeć na naturę z nowej perspektywy.
+        </p>
+
+        <ul class="intro-points">
+          <li>Narzędzia działające na żywo, a nie tylko statyczne materiały do czytania lub druku.</li>
+          <li>Dobre do codziennego sprawdzania, krótkiego zatrzymania i spokojnej obserwacji.</li>
+          <li>Sekcja otwarta na kolejne interaktywne pomysły.</li>
+        </ul>
+      </section>
+
+      <section class="section-head">
+        <span class="section-kicker">Dostępne materiały</span>
+        <h2 class="section-title">Dostępne teraz</h2>
+        <p class="section-text">
+          Na razie ta kategoria zawiera stronę z aktualnym widokiem nieba. Z czasem mogą pojawić się tu kolejne interaktywne elementy.
+        </p>
+      </section>
+
+      <section class="season-grid" aria-label="Dostępne interaktywne materiały">
+        <article class="season-card active-season">
+          <div>
+            <span class="season-badge live">Dostępne teraz</span>
+            <h3 class="season-name">Niebo dziś</h3>
+            <p class="season-desc">
+              Strona pokazująca aktualne niebo dla najbliższego miasta: porę dnia, fazę światła i atmosferę chwili.
+            </p>
+          </div>
+          <div class="card-actions">
+            <a class="btn-sage" href="#niebo-dzis">Otwórz narzędzie</a>
+          </div>
+        </article>
+
+        <article class="season-card coming-soon">
+          <div>
+            <span class="season-badge soon">W przygotowaniu</span>
+            <h3 class="season-name">Kolejne narzędzia</h3>
+            <p class="season-desc">
+              W tej sekcji mogą pojawić się kolejne strony związane z obserwacją pór roku, rytmu dnia albo przyrodniczych mikro-momentów.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section id="niebo-dzis" class="section-head">
+        <span class="section-kicker">Dostępny materiał</span>
+        <h2 class="section-title">Niebo dziś</h2>
+        <p class="section-text">
+          Interaktywna strona, do której można wracać codziennie, żeby sprawdzić światło, nastrój nieba i aktualną atmosferę dnia.
+        </p>
+      </section>
+
+      <article class="resource-card">
+        <div class="resource-inner">
+          <a class="resource-thumb" href="/sky.html">
+            <img
+              src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/start-here/kwitnaca-galaz.jpg"
+              alt="Podgląd strony Niebo dziś"
+            />
+          </a>
+
+          <div>
+            <h3 class="resource-title">Niebo dziś</h3>
+            <div class="resource-meta">Strona interaktywna • codziennie inna • widok na teraz</div>
+
+            <p class="resource-description">
+              Prosta interaktywna strona inspirowana rytmem dnia i obserwacją nieba.
+              Może być punktem wyjścia do krótkiego zatrzymania, sprawdzenia pogody,
+              spojrzenia w górę albo rozpoczęcia spokojnego spaceru.
+            </p>
+
+            <ul class="resource-points">
+              <li>Zmienia się wraz z porą dnia i warunkami.</li>
+              <li>Łączy prostą informację z nastrojem i obserwacją.</li>
+              <li>Dobra do codziennego rytuału albo krótkiej chwili uważności.</li>
+            </ul>
+
+            <div class="card-actions">
+              <a class="btn-sage" href="/sky.html">Otwórz stronę</a>
+              <a class="btn-gold" href="/materialy/">Wróć do materiałów</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="contact-band">
+        <h3>Śledź nowe materiały</h3>
+        <p>Na Instagramie i Facebooku pojawiają się nowe materiały do pobrania, refleksje i kolejne przyrodnicze inspiracje.</p>
+        <div class="contact-actions">
+          <a class="social-chip btn-sage" href="https://instagram.com/projekt.domeknadrzewie" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="social-chip btn-gold" href="https://www.facebook.com/profile.php?id=61561195080114" target="_blank" rel="noreferrer">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-box">
+      <div><strong>Projekt: Domek na Drzewie</strong> • Rośniemy z natury</div>
+      <div>kwiecień 2026</div>
+    </div>
+  </footer>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-links');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
