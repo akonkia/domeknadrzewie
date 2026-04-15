@@ -169,6 +169,14 @@
     const listElement = document.getElementById('materialList');
     const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
 
+    function getBlogUrl(card) {
+      if (!card.blog) return "#";
+      if (card.blog.includes("/")) {
+        return `https://domeknadrzewie.edu.pl/${card.blog.replace(/^\/+|\/+$/g, "")}/`;
+      }
+      return `https://domeknadrzewie.edu.pl/blog/${card.blog}/`;
+    }
+
     function render(data, isSingleView = false) {
       if (!data.length) { listElement.innerHTML = "<p>Brak kart.</p>"; return; }
       
@@ -192,7 +200,7 @@
               <a href="${imgPath}${card.img}?v=2026" download class="btn-main">Image</a>
               <a href="${imgPath}${card.imgB}?v=2026" download class="btn-alt">Reflection</a>
               <button onclick="copyLink(${card.id})" class="btn-copy">🔗 Copy link</button>
-              <a href="https://domeknadrzewie.edu.pl/blog/${card.blog}/" target="_blank" class="btn-blog">Blog</a>
+              <a href="${getBlogUrl(card)}" target="_blank" class="btn-blog">Blog</a>
           
             </div>
             ${isSingleView ? `
