@@ -38,7 +38,17 @@ permalink: /blog/
     <div class="blog-filter-bar" aria-label="Filtruj wpisy po tagach">
       <a class="blog-filter-chip" href="{{ '/blog/' | relative_url }}">Wszystkie</a>
       {% for tag in available_tags %}
-        {% assign tag_slug = tag | slugify %}
+        {% assign tag_slug = tag
+          | replace: 'ą', 'a'
+          | replace: 'ć', 'c'
+          | replace: 'ę', 'e'
+          | replace: 'ł', 'l'
+          | replace: 'ń', 'n'
+          | replace: 'ó', 'o'
+          | replace: 'ś', 's'
+          | replace: 'ź', 'z'
+          | replace: 'ż', 'z'
+          | slugify %}
         <a class="blog-filter-chip" href="{{ '/blog/tag/' | append: tag_slug | append: '/' | relative_url }}">{{ tag }}</a>
       {% endfor %}
     </div>
@@ -79,7 +89,17 @@ permalink: /blog/
               {% if post.tags %}
                 <div class="post-tag-list" aria-label="Kategorie wpisu">
                   {% for tag in post.tags %}
-                    {% assign tag_slug = tag | slugify %}
+                    {% assign tag_slug = tag
+                      | replace: 'ą', 'a'
+                      | replace: 'ć', 'c'
+                      | replace: 'ę', 'e'
+                      | replace: 'ł', 'l'
+                      | replace: 'ń', 'n'
+                      | replace: 'ó', 'o'
+                      | replace: 'ś', 's'
+                      | replace: 'ź', 'z'
+                      | replace: 'ż', 'z'
+                      | slugify %}
                     <a class="post-tag" href="{{ '/blog/tag/' | append: tag_slug | append: '/' | relative_url }}">{{ tag }}</a>
                   {% endfor %}
                 </div>
