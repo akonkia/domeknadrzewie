@@ -15,6 +15,14 @@
   padding: 0;
 }
 
+.sky-mini-scene--tile {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  flex: none;
+  border-top: 0;
+}
+
 .sky-mini-stars,
 .sky-mini-rain,
 .sky-mini-snow,
