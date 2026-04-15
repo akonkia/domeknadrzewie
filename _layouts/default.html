@@ -46,11 +46,20 @@
           </span>
         </a>
 
-        <a href="{% if current_lang == 'en' %}/en/materials/{% else %}/materialy/{% endif %}">
-          <span class="nav-label">
-            <span class="nav-pl">{% if current_lang == 'en' %}Materials{% else %}Materiały{% endif %}</span>
-          </span>
-        </a>
+        <div class="nav-item-with-submenu">
+          <a href="{% if current_lang == 'en' %}/en/materials/{% else %}/materialy/{% endif %}">
+            <span class="nav-label">
+              <span class="nav-pl">{% if current_lang == 'en' %}Materials{% else %}Materiały{% endif %}</span>
+            </span>
+          </a>
+          <div class="nav-submenu" aria-label="{% if current_lang == 'en' %}Materials sections{% else %}Sekcje materiałów{% endif %}">
+            <a href="{% if current_lang == 'en' %}/en/materials/urban-bathing/{% else %}/materialy/kapiele_miejskie/{% endif %}">
+              <span class="nav-label">
+                <span class="nav-pl">{% if current_lang == 'en' %}Urban bathing{% else %}Miejskie kąpiele leśne{% endif %}</span>
+              </span>
+            </a>
+          </div>
+        </div>
 
         <a href="{% if current_lang == 'en' %}/blog/en/{% else %}/blog/{% endif %}" class="{% if page.url contains '/blog/' %}active{% endif %}">
           <span class="nav-label">
