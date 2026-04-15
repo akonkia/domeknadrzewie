@@ -226,8 +226,7 @@
       position: absolute;
       top: 100%;
       left: 0;
-      min-width: 100%;
-      width: max-content;
+      width: 100%;
       padding-top: 0;
       display: grid;
       gap: 1px;
@@ -244,13 +243,15 @@
 
     .nav-submenu a {
       min-height: auto;
-      padding: 12px 18px 14px;
-      justify-content: flex-start;
+      padding: 12px 14px 14px;
+      justify-content: center;
       border: 0;
       background: rgba(255, 251, 244, 0.98);
       color: var(--ink);
       box-shadow: none;
-      white-space: nowrap;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.15;
     }
 
     .nav-submenu a:only-child {
