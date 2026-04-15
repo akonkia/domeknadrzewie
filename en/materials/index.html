@@ -653,6 +653,18 @@
       transform: scale(1.03);
     }
 
+    .set-cover-sky,
+    .resource-thumb-sky {
+      position: relative;
+    }
+
+    .set-cover-sky .sky-mini-scene,
+    .resource-thumb-sky .sky-mini-scene {
+      min-height: 0;
+      height: 100%;
+      border-top: 0;
+    }
+
     .set-content h3 {
       margin: 0 0 8px;
       font-size: 1.2rem;
@@ -957,6 +969,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/sky-mini-widget.css">
 </head>
 <body>
   <header class="topbar">
@@ -1128,11 +1141,24 @@
 
             <div class="set-grid">
               <article class="set-card">
-                <a class="set-cover" href="/en/materials/interactive/" aria-label="View the Interactive category">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/start-here/kwitnaca-galaz.jpg"
-                    alt="Interactive category thumbnail"
-                  />
+                <a class="set-cover set-cover-sky" href="/en/materials/interactive/" aria-label="View the Interactive category">
+                  <div class="sky-mini-scene js-sky-mini" data-label-prefix="Sky today">
+                    <div class="sky-mini-stars"></div>
+                    <div class="sky-mini-sun"></div>
+                    <div class="sky-mini-moon"></div>
+                    <div class="sky-mini-clouds">
+                      <div class="sky-mini-cloud one"></div>
+                      <div class="sky-mini-cloud two"></div>
+                      <div class="sky-mini-cloud three"></div>
+                    </div>
+                    <div class="sky-mini-rain"></div>
+                    <div class="sky-mini-snow"></div>
+                    <div class="sky-mini-birds">◠◡◠</div>
+                    <div class="sky-mini-overlay">
+                      <div class="sky-mini-label">Sky today · nearest city</div>
+                      <p class="sky-mini-hook">Today's sky — open the full view</p>
+                    </div>
+                  </div>
                 </a>
 
                 <div class="set-content">
@@ -1221,5 +1247,6 @@
       });
     }
   </script>
+  <script src="/assets/js/sky-mini-widget.js" defer></script>
 </body>
 </html>
