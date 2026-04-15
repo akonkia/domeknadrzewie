@@ -19,9 +19,9 @@ tags:
 
 # 🌸 The Crocus Observer’s Guide — How to Admire Nature Without Damaging It
 
-Early spring has its own distinctive colours — whites, violets, lilacs, and soft bands of crocuses appearing in parks, squares, and other green spaces. It is a small natural spectacle that draws the eye and invites wonder. And that is exactly why we need simple guidelines that help preserve this beauty.
+Early spring has its own distinctive colours: whites, violets, lilacs, and soft bands of crocuses appearing in parks, squares, and other green spaces. It is a small natural spectacle that draws the eye and invites wonder. And that is exactly why we need simple guidelines that help preserve this beauty.
 
-The [**Domek na Drzewie**](https://domeknadrzewie.edu.pl/en/) project encourages a mindful connection with nature — calm, conscious, and responsible. **“The Crocus Observer’s Guide”** fits naturally within that philosophy.
+The [**Domek na Drzewie**](https://domeknadrzewie.edu.pl/en/) project encourages a mindful connection with nature - calm, conscious, and responsible. **“The Crocus Observer’s Guide”** fits naturally within that philosophy.
 
 If you would like to deepen this way of being in nature, you can also explore the [**seasonal materials and mindfulness practices**](https://domeknadrzewie.edu.pl/en/materialy/kapiele_miejskie/).
 
@@ -74,14 +74,14 @@ It is a way of seeing:
 - **I admire → I do not possess**
 - **I am present → I do not dominate**
 
-This approach allows you to truly be with nature — not just pass by it.
+This approach allows you to truly be with nature, not just pass by it.
 
 In a similar spirit, the [**Urban Forest Bathing**](https://domeknadrzewie.edu.pl/en/materialy/kapiele_miejskie/) series offers short practices inspired by observing nature and following the rhythm of the year.
 
 ## 🌼 In closing
 
 Crocuses do not need our help to bloom.  
-They need only one thing — for us not to disturb them.
+They need only one thing: for us not to disturb them.
 
 And then they will return again next spring.
 
