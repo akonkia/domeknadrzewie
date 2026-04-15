@@ -7,6 +7,7 @@ permalink: /blog/
 ---
 
 {% assign months_pl = "stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia" | split: "|" %}
+{% assign months_pl_standalone = "Styczeń|Luty|Marzec|Kwiecień|Maj|Czerwiec|Lipiec|Sierpień|Wrzesień|Październik|Listopad|Grudzień" | split: "|" %}
 {% assign fallback_covers = site.static_files | where_exp: "file", "file.path contains '/assets/img/fallback/'" | sort: "path" %}
 {% assign filtered_posts = "" | split: "" %}
 {% for p in site.posts %}
@@ -104,7 +105,7 @@ permalink: /blog/
               {% assign posts_by_month = year_group.items | group_by_exp: "post", "post.date | date: '%m'" %}
               {% for month_group in posts_by_month %}
                 {% assign month_index = month_group.name | plus: 0 | minus: 1 %}
-                <div class="timeline-month">{{ months_pl[month_index] }}</div>
+                <div class="timeline-month">{{ months_pl_standalone[month_index] }}</div>
                 {% for post in month_group.items %}
                   <a class="timeline-entry" href="{{ post.url | relative_url }}">
                     <span class="timeline-entry-meta">
