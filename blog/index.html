@@ -117,8 +117,10 @@ permalink: /blog/
             {% endif %}
 
             <a class="timeline-entry" href="{{ post.url | relative_url }}">
-              <span class="timeline-day">{{ post.date | date: "%-d" }}</span>
-              <span class="timeline-dot" aria-hidden="true"></span>
+              <span class="timeline-entry-meta">
+                <span class="timeline-day">{{ post.date | date: "%-d" }}</span>
+                <span class="timeline-dot" aria-hidden="true"></span>
+              </span>
               <span class="timeline-title">{{ post.title }}</span>
             </a>
 
