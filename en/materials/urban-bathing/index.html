@@ -201,12 +201,15 @@
   </main>
 
   <script>
-    const cardsData = typeof window.getWeeklyCardsForLang === 'function'
-      ? window.getWeeklyCardsForLang('en')
-      : [];
-
     const listElement = document.getElementById('materialList');
     const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
+    const pageLang = 'en';
+
+    function getCardsData() {
+      return typeof window.getWeeklyCardsForLang === 'function'
+        ? window.getWeeklyCardsForLang(pageLang)
+        : [];
+    }
 
     function getBlogUrl(card) {
       if (!card.blog) return "#";
@@ -220,6 +223,7 @@
       if (!data.length) { listElement.innerHTML = "<p>Brak kart.</p>"; return; }
       
       const firstId = 1;
+      const cardsData = getCardsData();
       const lastId = Math.max(...cardsData.map(c => c.id));
 
       listElement.innerHTML = data.map(card => `
@@ -267,6 +271,7 @@
       btn.classList.add('active');
       const type = btn.getAttribute('data-type');
       const val = btn.getAttribute('data-val');
+      const cardsData = getCardsData();
       
       const filtered = val === 'All' ? cardsData : cardsData.filter(c => c[type] === val);
       
@@ -279,6 +284,7 @@
     }
 
     function showSpecificWeek(id) {
+      const cardsData = getCardsData();
       const card = cardsData.find(c => c.id === id);
       if (card) {
         window.location.hash = 'tydzien-' + id;
@@ -299,12 +305,22 @@
       return false;
     }
 
-    window.addEventListener('hashchange', handleRouting);
-    window.addEventListener('DOMContentLoaded', () => {
+    function initPage() {
+      const cardsData = getCardsData();
+      if (!cardsData.length) {
+        window.setTimeout(initPage, 120);
+        return;
+      }
+
       if (!handleRouting()) {
         const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
         render([latest], true);
       }
+    }
+
+    window.addEventListener('hashchange', handleRouting);
+    window.addEventListener('DOMContentLoaded', () => {
+      initPage();
     });
   </script>
 </body>
