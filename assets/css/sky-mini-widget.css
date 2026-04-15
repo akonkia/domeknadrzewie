@@ -23,6 +23,22 @@
   border-top: 0;
 }
 
+.sky-mini-scene--tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 24, 20, 0) 10%,
+    rgba(18, 24, 20, 0.03) 36%,
+    rgba(18, 24, 20, 0.12) 58%,
+    rgba(18, 24, 20, 0.3) 78%,
+    rgba(18, 24, 20, 0.56) 100%
+  );
+  z-index: 5;
+  pointer-events: none;
+}
+
 .sky-mini-stars,
 .sky-mini-rain,
 .sky-mini-snow,
@@ -175,6 +191,41 @@
   color: #334236;
 }
 
+.sky-mini-scene--tile .sky-mini-overlay {
+  left: 24px;
+  right: 20px;
+  bottom: 22px;
+  gap: 4px;
+  max-width: 26ch;
+}
+
+.sky-mini-scene--tile .sky-mini-label,
+.sky-mini-scene--tile .sky-mini-hook {
+  padding: 0;
+  width: auto;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #fff;
+}
+
+.sky-mini-scene--tile .sky-mini-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.86);
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.sky-mini-scene--tile .sky-mini-hook {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.42;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
+}
+
 @keyframes twinkle {
   0%, 100% { opacity: 0.4; transform: scale(0.95); }
   50% { opacity: 1; transform: scale(1.2); }
@@ -209,6 +260,12 @@
     right: 12px;
     bottom: 12px;
     max-width: 100%;
+  }
+
+  .sky-mini-scene--tile .sky-mini-overlay {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
   }
 
   .sky-mini-hook {
