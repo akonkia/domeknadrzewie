@@ -3,6 +3,8 @@ layout: post
 title: "The Crocus Observer’s Guide — How to Admire Nature Without Damaging It"
 date: 2026-03-01
 lang: en
+cover: /assets/img/Krokus.JPG
+cover_alt: Crocuses in bloom
 translation_id: krokusowy-obserwator-2026
 description: "How to admire crocuses in parks and green spaces in a mindful and responsible way. Simple guidelines that help protect delicate spring flowers and encourage a more thoughtful relationship with nature."
 excerpt: "Simple guidelines for admiring crocuses in parks without harming nature."
