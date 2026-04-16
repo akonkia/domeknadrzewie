@@ -44,6 +44,7 @@
     pl: {
       pageTitle: "Kartka z kalendarza",
       pageLead: "Dzienna kartka z datą, imieninami i rytmem tygodnia.",
+      labelDailyThought: "Myśl na dziś",
       labelToday: "Dziś",
       labelTomorrow: "Jutro",
       labelNameday: "Imieniny",
@@ -73,6 +74,7 @@
     en: {
       pageTitle: "Page-a-day calendar",
       pageLead: "A daily tear-off page with the date, Polish name day tradition, and the rhythm of the week.",
+      labelDailyThought: "Thought for today",
       labelToday: "Today",
       labelTomorrow: "Tomorrow",
       labelNameday: "Name day",
@@ -98,6 +100,79 @@
       footer: "You can use this page as a daily ritual and a quick check of which week of the year your series should be matching.",
       dateLocale: "en-GB",
       monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    }
+  };
+
+  const DAILY_WISDOM = {
+    pl: {
+      sayings: [
+        "Kiedy w styczniu lato, w lecie zimno za to.",
+        "Gdy w styczniu woda huczy, to na wiosnę mróz dokuczy.",
+        "Kiedy styczeń mokry trzyma, zwykle bywa długa zima.",
+        "Idzie luty, okuj buty.",
+        "Gdy luty z burzami, prędko wiosna przed nami.",
+        "Gdy mróz w lutym ostro trzyma, tedy już niedługo zima.",
+        "Jeśli luty śnieżny, mroźny, spodziewaj się wczesnej wiosny.",
+        "Co marzec wypiecze, to kwiecień wysiecze.",
+        "Ile w marcu dni mglistych, tyle w żniwa dni dżdżystych.",
+        "Gdy suchy marzec, nagradza kwiecień, bo deszcze sprowadza.",
+        "Marzec, co z deszczem chadza, mokry czerwiec sprowadza.",
+        "Kwiecień wilgotny obiecuje rok stokrotny.",
+        "Deszcze częste w kwietniu wróżą, że owoców będzie dużo.",
+        "Kwiecień, co deszczem rosi, wiele owoców przynosi.",
+        "Choć już w kwietniu słonko grzeje, nieraz pole śnieg zawieje.",
+        "Jeżeli w kwietniu posuszy, nic się w polu nie ruszy.",
+        "Deszcz majowy, chleb gotowy.",
+        "Bywa śnieg i w maju.",
+        "Częste w maju grzmoty rozpraszają chłopom zgryzoty.",
+        "Czerwiec po deszczowym maju często dżdżysty w naszym kraju.",
+        "Grzmoty czerwca rozweselają rolnikom serca.",
+        "Pełnia czerwcowa, burza gotowa.",
+        "Gdy pająk w lipcu przychodzi, to za sobą deszcz przywodzi.",
+        "Lipcowe upały, wrzesień doskonały.",
+        "Gdy sierpień wrzos rozwija, jesień krótka, szybko mija.",
+        "W sierpniu mgły na górach, mroźne Gody; kiedy mgły w dolinach, dla pogody.",
+        "Wrześniowa słota: miarka deszczu, korzec błota.",
+        "Grzmot październikowy, niestatek zimowy.",
+        "Deszcze listopadowe budzą wiatry zimowe.",
+        "Boże Narodzenie po wodzie, Wielkanoc po lodzie.",
+        "Na świętą Łucję noc się z dniem tłucze."
+      ]
+    },
+    en: {
+      sayings: [
+        "If January feels like summer, summer will feel like winter.",
+        "When water roars in January, frost will bite in spring.",
+        "When January stays wet, winter is usually long.",
+        "February is coming, shoe the boots.",
+        "If February brings storms, spring is near.",
+        "If frost grips hard in February, winter will soon be over.",
+        "If February is snowy and frosty, expect an early spring.",
+        "What March bakes, April will cut down.",
+        "As many foggy days in March, so many rainy days at harvest.",
+        "A dry March is repaid by April, for it brings the rains.",
+        "March walking with rain brings a wet June.",
+        "A damp April promises a hundredfold year.",
+        "Frequent April rains foretell abundant fruit.",
+        "April watering with rain brings many fruits.",
+        "Even when April sun grows warm, snow may still sweep the fields.",
+        "If April dries the land, nothing moves in the field.",
+        "A May rain means bread is on the way.",
+        "Snow may still come in May.",
+        "Frequent May thunder eases the farmer's worries.",
+        "After a rainy May, June is often drizzly too.",
+        "June thunder gladdens the farmer's heart.",
+        "A June full moon means a storm is ready.",
+        "When a spider comes in July, it draws rain behind it.",
+        "Hot July brings an excellent September.",
+        "When August opens the heather, autumn is short and quickly passes.",
+        "In August, mist on the hills means a frosty Christmas; in the valleys, fair weather.",
+        "September slush: a measure of rain, a bushel of mud.",
+        "October thunder means an unsettled winter.",
+        "November rains awaken winter winds.",
+        "Christmas in water, Easter on ice.",
+        "On Saint Lucy's day, night wrestles with day."
+      ]
     }
   };
 
@@ -186,6 +261,12 @@
     return monthData[day - 1] || null;
   }
 
+  function getDailyWisdom(date, lang) {
+    const wisdom = DAILY_WISDOM[lang] || DAILY_WISDOM.pl;
+    const dayOfYearIndex = getDayOfYear(date) - 1;
+    return wisdom.sayings[dayOfYearIndex % wisdom.sayings.length];
+  }
+
   function setText(selector, value) {
     const node = document.querySelector(selector);
     if (node) {
@@ -229,6 +310,7 @@
 
     setText("[data-calendar-title]", copy.pageTitle);
     setText("[data-calendar-lead]", copy.pageLead);
+    setText("[data-label-daily-thought]", copy.labelDailyThought);
     setText("[data-label-season-note]", copy.labelSeasonNote);
     setText("[data-label-today]", copy.labelToday);
     setText("[data-label-tomorrow]", copy.labelTomorrow);
@@ -247,6 +329,7 @@
     setText("[data-day-number]", String(today.getUTCDate()));
     setText("[data-month-short]", copy.monthsShort[today.getUTCMonth()]);
     setText("[data-full-date]", formatLongDate(today, copy.dateLocale));
+    setText("[data-daily-thought]", getDailyWisdom(today, lang));
     setText("[data-nameday]", todayNameday);
     setText("[data-tomorrow-nameday]", copy.nextLine(tomorrowNameday));
     setText("[data-week-number]", String(isoWeek));
