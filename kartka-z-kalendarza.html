@@ -13,18 +13,22 @@
   <script src="/assets/js/day-calendar.js" defer></script>
   <style>
     :root {
-      --ink: #2f2a22;
-      --muted: #6f675a;
-      --paper: #f7f0df;
-      --paper-deep: #efe1c2;
-      --paper-shadow: #d4c09b;
-      --accent: #b3562b;
-      --accent-soft: #e8c79c;
-      --line: rgba(47, 42, 34, 0.12);
-      --green: #6f7e5a;
-      --background: #ebe3d1;
+      --ink: #2e3328;
+      --muted: #677161;
+      --paper: #fffaf0;
+      --paper-deep: #f2e8d7;
+      --paper-shadow: rgba(160, 126, 82, 0.2);
+      --accent: #cf7842;
+      --accent-soft: #f4dcb8;
+      --accent-leaf: #7b9872;
+      --line: rgba(64, 55, 40, 0.12);
+      --wall: #f2ede3;
+      --wall-glow: #fbf7f0;
+      --wood: #c99968;
+      --wood-deep: #a66f42;
+      --panel: rgba(255, 250, 242, 0.72);
       --max: 1120px;
-      --shadow: 0 24px 60px rgba(58, 43, 22, 0.14);
+      --shadow: 0 26px 70px rgba(83, 59, 33, 0.18);
     }
 
     * { box-sizing: border-box; }
@@ -33,20 +37,58 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 22%),
-        linear-gradient(180deg, #f3ebdb 0%, var(--background) 100%);
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.96), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(225, 241, 218, 0.72), transparent 20%),
+        linear-gradient(180deg, var(--wall-glow) 0%, var(--wall) 36%, #e8dcc7 100%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.22) 0 2px, transparent 2px 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 100%),
+        linear-gradient(180deg, rgba(214, 182, 142, 0) 0%, rgba(186, 141, 92, 0.09) 72%, rgba(153, 111, 71, 0.18) 100%);
+      background-size: 100% 100%, 100% 160px, 100% 100%;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 31vh;
+      background:
+        linear-gradient(180deg, rgba(120, 87, 53, 0) 0%, rgba(120, 87, 53, 0.08) 12%, rgba(120, 87, 53, 0.12) 100%),
+        repeating-linear-gradient(90deg,
+          #bf8d5f 0 74px,
+          #b27d50 74px 78px,
+          #d5a06a 78px 154px,
+          #b87e50 154px 158px,
+          #c99662 158px 232px);
+      box-shadow: inset 0 18px 30px rgba(255,255,255,0.18);
+      pointer-events: none;
+      z-index: -1;
     }
 
     a { color: inherit; text-decoration: none; }
     .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
 
     .topbar {
-      background: rgba(255,255,255,0.88);
+      background: rgba(255, 250, 243, 0.84);
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 30;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 26px rgba(108, 86, 56, 0.08);
     }
 
     .nav {
@@ -70,7 +112,8 @@
       border-radius: 50%;
       overflow: hidden;
       background: #fff;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(82, 66, 45, 0.12);
+      box-shadow: 0 10px 24px rgba(92, 70, 43, 0.12);
       flex-shrink: 0;
     }
 
@@ -92,19 +135,59 @@
       justify-content: center;
       text-align: center;
       border-left: 1px solid var(--line);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Trebuchet MS", Arial, sans-serif;
       font-size: 0.95rem;
       font-weight: 700;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
     .nav-links a:hover,
     .nav-links a.current {
-      background: rgba(179, 86, 43, 0.08);
+      background: rgba(123, 152, 114, 0.12);
+      color: #3f5741;
     }
 
     .hero {
-      padding: 52px 0 26px;
+      position: relative;
+      padding: 58px 0 28px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      filter: blur(0.2px);
+    }
+
+    .hero::before {
+      top: 34px;
+      right: clamp(12px, 7vw, 80px);
+      width: 150px;
+      height: 220px;
+      background:
+        radial-gradient(circle at 26% 20%, #8aa67d 0 16px, transparent 17px),
+        radial-gradient(circle at 65% 15%, #9ebb8f 0 17px, transparent 18px),
+        radial-gradient(circle at 78% 38%, #79956f 0 18px, transparent 19px),
+        radial-gradient(circle at 37% 45%, #a5bf96 0 22px, transparent 23px),
+        radial-gradient(circle at 62% 62%, #6d8b68 0 20px, transparent 21px),
+        radial-gradient(circle at 20% 68%, #8ea983 0 18px, transparent 19px),
+        linear-gradient(180deg, transparent 0 72%, #8a6847 72% 100%);
+      opacity: 0.72;
+      transform: rotate(6deg);
+    }
+
+    .hero::after {
+      left: clamp(8px, 5vw, 56px);
+      bottom: -8px;
+      width: 120px;
+      height: 120px;
+      background:
+        radial-gradient(circle at 18% 78%, rgba(255,255,255,0.85) 0 10px, transparent 11px),
+        radial-gradient(circle at 42% 48%, rgba(255,255,255,0.85) 0 12px, transparent 13px),
+        radial-gradient(circle at 70% 74%, rgba(255,255,255,0.9) 0 14px, transparent 15px),
+        radial-gradient(circle at 50% 100%, #d8c3a5 0 34px, transparent 35px);
+      opacity: 0.6;
     }
 
     .hero-kicker {
@@ -113,8 +196,9 @@
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(47, 42, 34, 0.08);
+      background: rgba(255, 251, 246, 0.78);
+      border: 1px solid rgba(82, 66, 45, 0.08);
+      box-shadow: 0 12px 24px rgba(95, 74, 47, 0.08);
       font-size: 0.84rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -134,11 +218,11 @@
       margin: 0;
       font-size: 1.15rem;
       line-height: 1.65;
-      color: #4f473b;
+      color: #4f5647;
     }
 
     .layout {
-      padding: 16px 0 72px;
+      padding: 16px 0 88px;
     }
 
     .calendar-layout {
@@ -151,44 +235,77 @@
     .paper-stack {
       position: relative;
       padding-top: 18px;
+      padding-bottom: 28px;
     }
 
-    .paper-stack::before,
+    .paper-stack::before {
+      content: "";
+      position: absolute;
+      left: -26px;
+      bottom: -6px;
+      width: 140px;
+      height: 180px;
+      background:
+        radial-gradient(circle at 40% 24%, #89a67f 0 21px, transparent 22px),
+        radial-gradient(circle at 60% 42%, #9bb692 0 26px, transparent 27px),
+        radial-gradient(circle at 28% 56%, #73906f 0 23px, transparent 24px),
+        radial-gradient(circle at 66% 70%, #89a67f 0 24px, transparent 25px),
+        linear-gradient(180deg, transparent 0 68%, #8f6d49 68% 100%);
+      opacity: 0.88;
+      z-index: 0;
+      transform: rotate(-7deg);
+    }
+
     .paper-stack::after {
       content: "";
       position: absolute;
       inset: 14px 12px auto 12px;
       height: calc(100% - 20px);
-      border-radius: 28px;
-      background: rgba(239, 225, 194, 0.72);
-      box-shadow: 0 18px 34px rgba(58, 43, 22, 0.08);
+      border-radius: 32px;
+      background: rgba(250, 242, 229, 0.74);
+      box-shadow: 0 20px 36px rgba(88, 64, 39, 0.12);
       z-index: 0;
     }
 
     .paper-stack::after {
       inset: 7px 6px auto 6px;
-      background: rgba(247, 240, 223, 0.88);
+      background: rgba(255, 248, 236, 0.9);
     }
 
     .tear-page {
       position: relative;
       z-index: 1;
-      border-radius: 28px;
+      border-radius: 32px;
       overflow: hidden;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0) 14%),
-        linear-gradient(180deg, var(--paper) 0%, #f4ead4 100%);
-      border: 1px solid rgba(86, 62, 30, 0.14);
+        radial-gradient(circle at top, rgba(255,255,255,0.74), transparent 28%),
+        linear-gradient(180deg, #fffdf8 0%, var(--paper) 34%, #f7efe0 100%);
+      border: 1px solid rgba(108, 84, 53, 0.14);
       box-shadow: var(--shadow);
+    }
+
+    .tear-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(125deg, rgba(255,255,255,0.2), transparent 20%),
+        radial-gradient(circle at 14% 18%, rgba(206, 169, 118, 0.08) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 64%, rgba(206, 169, 118, 0.06) 0 2px, transparent 3px),
+        radial-gradient(circle at 34% 78%, rgba(206, 169, 118, 0.05) 0 1.5px, transparent 2.5px);
+      background-size: auto, 22px 22px, 26px 26px, 20px 20px;
+      mix-blend-mode: multiply;
+      opacity: 0.7;
+      pointer-events: none;
     }
 
     .tear-top {
       position: relative;
       padding: 26px 28px 20px;
-      border-bottom: 1px dashed rgba(86, 62, 30, 0.2);
+      border-bottom: 1px dashed rgba(108, 84, 53, 0.2);
       background:
-        linear-gradient(180deg, rgba(232,199,156,0.52), rgba(232,199,156,0.12)),
-        repeating-linear-gradient(90deg, transparent 0 16px, rgba(86,62,30,0.02) 16px 17px);
+        linear-gradient(180deg, rgba(244,220,184,0.65), rgba(244,220,184,0.14)),
+        repeating-linear-gradient(90deg, transparent 0 16px, rgba(108,84,53,0.025) 16px 17px);
     }
 
     .tear-top::after {
@@ -199,7 +316,7 @@
       bottom: -16px;
       height: 30px;
       background:
-        radial-gradient(circle at 15px 0, transparent 14px, #f4ead4 15px) 0 0 / 30px 30px repeat-x;
+        radial-gradient(circle at 15px 0, transparent 14px, #f7efe0 15px) 0 0 / 30px 30px repeat-x;
     }
 
     .tear-note {
@@ -210,7 +327,7 @@
       margin-bottom: 28px;
       color: var(--muted);
       font-size: 0.95rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
@@ -226,13 +343,15 @@
       line-height: 0.9;
       font-weight: 700;
       letter-spacing: -0.08em;
+      color: #384233;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
     }
 
     .tear-month {
       display: inline-flex;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(179, 86, 43, 0.12);
+      background: rgba(123, 152, 114, 0.14);
       color: var(--accent);
       font-size: 1rem;
       text-transform: uppercase;
@@ -242,7 +361,7 @@
     .tear-full-date {
       margin-top: 12px;
       font-size: 1.1rem;
-      color: #443a2f;
+      color: #4f5647;
       text-transform: capitalize;
     }
 
@@ -260,11 +379,12 @@
 
     .fact,
     .side-card {
-      border-radius: 22px;
+      border-radius: 24px;
       padding: 22px;
-      background: rgba(255,255,255,0.48);
-      border: 1px solid rgba(47, 42, 34, 0.08);
-      box-shadow: 0 14px 28px rgba(58, 43, 22, 0.06);
+      background: var(--panel);
+      border: 1px solid rgba(76, 69, 54, 0.08);
+      box-shadow: 0 16px 34px rgba(83, 62, 35, 0.08);
+      backdrop-filter: blur(8px);
     }
 
     .fact-label,
@@ -279,28 +399,48 @@
     .fact-value {
       font-size: 1.28rem;
       line-height: 1.4;
+      color: #394135;
     }
 
     .fact-value.number {
       font-size: 2.4rem;
       line-height: 1;
+      color: #365042;
     }
 
     .side-column {
       display: grid;
       gap: 18px;
+      position: relative;
+    }
+
+    .side-column::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      bottom: -24px;
+      width: 118px;
+      height: 142px;
+      background:
+        radial-gradient(circle at 30% 18%, #9ebb8f 0 16px, transparent 17px),
+        radial-gradient(circle at 60% 28%, #7f9b75 0 18px, transparent 19px),
+        radial-gradient(circle at 42% 48%, #aac49c 0 20px, transparent 21px),
+        radial-gradient(circle at 70% 66%, #7b9872 0 17px, transparent 18px),
+        linear-gradient(180deg, transparent 0 62%, #9b744f 62% 100%);
+      opacity: 0.86;
+      z-index: -1;
     }
 
     .side-card {
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,255,255,0.34)),
-        rgba(255,255,255,0.42);
+        linear-gradient(180deg, rgba(255,255,255,0.74), rgba(255,255,255,0.44)),
+        var(--panel);
     }
 
     .side-copy {
       font-size: 1rem;
       line-height: 1.7;
-      color: #463d32;
+      color: #495041;
     }
 
     .side-copy strong {
@@ -320,29 +460,31 @@
       justify-content: center;
       padding: 12px 18px;
       border-radius: 999px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Trebuchet MS", Arial, sans-serif;
       font-size: 0.95rem;
       font-weight: 700;
-      border: 1px solid rgba(86, 62, 30, 0.12);
-      background: rgba(255,255,255,0.7);
-      transition: transform 0.2s ease, background 0.2s ease;
+      border: 1px solid rgba(106, 88, 59, 0.12);
+      background: rgba(255,255,255,0.74);
+      box-shadow: 0 10px 20px rgba(84, 67, 43, 0.08);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
 
     .action-links a.primary {
-      background: linear-gradient(180deg, #c76a3b 0%, #ac5228 100%);
+      background: linear-gradient(180deg, #d98c54 0%, #c56f3a 100%);
       color: #fff9f1;
       border-color: transparent;
     }
 
     .action-links a:hover {
       transform: translateY(-1px);
+      box-shadow: 0 14px 24px rgba(84, 67, 43, 0.12);
     }
 
     .footer-note {
       margin-top: 6px;
       font-size: 0.98rem;
       line-height: 1.7;
-      color: #554b3e;
+      color: #565c4f;
     }
 
     @media (max-width: 900px) {
@@ -353,6 +495,13 @@
       .nav {
         padding: 10px 0;
         align-items: flex-start;
+      }
+
+      .hero::before,
+      .hero::after,
+      .side-column::after,
+      .paper-stack::before {
+        opacity: 0.46;
       }
 
       .nav-links {
@@ -367,6 +516,10 @@
     }
 
     @media (max-width: 640px) {
+      body::after {
+        height: 22vh;
+      }
+
       .tear-date {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -381,6 +534,13 @@
       .side-card {
         padding-left: 20px;
         padding-right: 20px;
+      }
+
+      .hero::before,
+      .hero::after,
+      .side-column::after,
+      .paper-stack::before {
+        display: none;
       }
     }
   </style>
@@ -465,7 +625,7 @@
 
         <article class="side-card">
           <div class="side-label" data-label-card-rhythm>Rytm kart</div>
-          <div class="side-copy" data-rhythm-copy>Brakuje 2 kart, żeby wrócić do rytmu roku.</div>
+          <div class="side-copy" data-rhythm-copy>Seria rozwija się tydzień po tygodniu, w rytmie roku.</div>
           <div class="side-copy" data-current-card-line>Opublikowana karta domyka na razie tydzień 14.</div>
           <div class="side-copy" data-current-week-line>Według kalendarza trwa teraz tydzień 16.</div>
           <div class="action-links">

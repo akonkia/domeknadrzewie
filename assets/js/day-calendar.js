@@ -59,11 +59,7 @@
       labelPolishTradition: "Stary kalendarz codzienny",
       weekWord: "tydzień",
       dayWord: "dzień",
-      behindOne: "Brakuje 1 karty, żeby wrócić do rytmu roku.",
-      behindMany: (count) => `Brakuje ${count} kart, żeby wrócić do rytmu roku.`,
-      aheadOne: "Seria jest 1 tydzień przed rytmem roku.",
-      aheadMany: (count) => `Seria jest ${count} tygodnie przed rytmem roku.`,
-      synced: "Seria jest dokładnie w rytmie bieżącego tygodnia.",
+      rhythmGeneric: "Seria rozwija się tydzień po tygodniu, w rytmie roku.",
       notStarted: "Seria jeszcze nie ma wspólnego polsko-angielskiego tygodnia.",
       noNameday: "Imieniny niedostępne",
       nextLine: (nameday) => `Jutro: ${nameday}`,
@@ -92,11 +88,7 @@
       labelPolishTradition: "Inspired by a Polish desk calendar",
       weekWord: "week",
       dayWord: "day",
-      behindOne: "The series is 1 card behind the calendar week.",
-      behindMany: (count) => `The series is ${count} cards behind the calendar week.`,
-      aheadOne: "The series is 1 week ahead of the calendar.",
-      aheadMany: (count) => `The series is ${count} weeks ahead of the calendar.`,
-      synced: "The series is exactly aligned with the current week.",
+      rhythmGeneric: "The series unfolds week by week, in step with the year.",
       notStarted: "The series does not yet have a shared Polish-English week.",
       noNameday: "Name day unavailable",
       nextLine: (nameday) => `Tomorrow: ${nameday}`,
@@ -267,19 +259,7 @@
     setText("[data-current-week-line]", copy.targetLine(isoWeek));
     setText("[data-current-card-line]", latestCardWeek ? copy.currentCardLine(latestCardWeek) : copy.notStarted);
 
-    const gap = latestCardWeek == null ? null : isoWeek - latestCardWeek;
-    let rhythmCopy = copy.notStarted;
-    if (gap === 0) {
-      rhythmCopy = copy.synced;
-    } else if (gap === 1) {
-      rhythmCopy = copy.behindOne;
-    } else if (gap > 1) {
-      rhythmCopy = copy.behindMany(gap);
-    } else if (gap === -1) {
-      rhythmCopy = copy.aheadOne;
-    } else if (gap < -1) {
-      rhythmCopy = copy.aheadMany(Math.abs(gap));
-    }
+    const rhythmCopy = latestCardWeek ? copy.rhythmGeneric : copy.notStarted;
     setHtml("[data-rhythm-copy]", rhythmCopy);
 
     setAttr("[data-current-card-href]", "href", latestCardHref);
