@@ -25,7 +25,7 @@
       --text: #243126;
       --muted: #5e675f;
       --line: rgba(36, 49, 38, 0.1);
-      --hero-overlay: rgba(36, 49, 38, 0.4);
+      --hero-overlay: rgba(103, 135, 96, 0.96);
       --shadow: 0 16px 34px rgba(32, 42, 33, 0.08);
       --max: 1120px;
       --content: 980px;
@@ -64,11 +64,14 @@
     .nav-links a.active { color: var(--sage); border-bottom: 2px solid var(--sage); }
 
     /* Hero */
-    .hero { 
-      min-height: 300px; display: flex; align-items: center; justify-content: center; text-align: center;
-      background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), 
-      url('https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/Environmental-Organization-Website-Design-788x871.jpg') center/cover;
-      color: white; 
+    .hero {
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(180deg, var(--hero-overlay), #5d7b56);
+      color: white;
     }
     .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; margin: 0; }
 
