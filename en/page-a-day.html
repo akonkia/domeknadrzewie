@@ -34,11 +34,9 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       color: var(--ink);
-      background:
-        linear-gradient(180deg, rgba(251, 247, 240, 0.78), rgba(244, 236, 223, 0.9)),
-        url("/assets/img/day-calendar-kitchen-backdrop.png") center top / cover no-repeat fixed;
+      background: url("/assets/img/day-calendar-kitchen-backdrop.png") center top / cover no-repeat fixed;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
@@ -49,8 +47,7 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(circle at top center, rgba(255,255,255,0.5), transparent 44%),
-        linear-gradient(180deg, rgba(255,255,255,0.14), rgba(233, 219, 198, 0.2));
+        radial-gradient(circle at top center, rgba(255,255,255,0.2), transparent 38%);
       pointer-events: none;
       z-index: -2;
     }
@@ -60,7 +57,7 @@
       position: fixed;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 28%, rgba(165, 137, 97, 0.12) 100%);
+        linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 30%, rgba(120, 95, 62, 0.05) 100%);
       pointer-events: none;
       z-index: -1;
     }
@@ -148,23 +145,22 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      padding: 7px 14px;
       border-radius: 999px;
-      background: rgba(255, 251, 246, 0.78);
-      border: 1px solid rgba(82, 66, 45, 0.08);
-      box-shadow: 0 12px 24px rgba(95, 74, 47, 0.08);
-      font-size: 0.84rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(82, 66, 45, 0.06);
+      box-shadow: 0 8px 20px rgba(95, 74, 47, 0.06);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
       color: var(--muted);
     }
 
     h1 {
       margin: 18px 0 10px;
       font-size: clamp(2.4rem, 6vw, 4.4rem);
-      line-height: 0.95;
-      font-weight: 700;
-      letter-spacing: -0.03em;
+      line-height: 0.98;
+      font-weight: 600;
+      letter-spacing: -0.04em;
     }
 
     .hero p {
@@ -180,82 +176,36 @@
     }
 
     .calendar-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
-      gap: 28px;
-      align-items: start;
+      display: block;
+      max-width: 760px;
+      margin: 0 auto;
     }
 
     .paper-stack {
-      position: relative;
-      padding-top: 18px;
-      padding-bottom: 28px;
+      padding-top: 8px;
     }
 
-    .paper-stack::before { display: none; }
-
-    .paper-stack::after {
-      content: "";
-      position: absolute;
-      inset: 14px 12px auto 12px;
-      height: calc(100% - 20px);
-      border-radius: 32px;
-      background: rgba(250, 242, 229, 0.74);
-      box-shadow: 0 20px 36px rgba(88, 64, 39, 0.12);
-      z-index: 0;
-    }
-
-    .paper-stack::after {
-      inset: 7px 6px auto 6px;
-      background: rgba(255, 248, 236, 0.9);
-    }
+    .paper-stack::before,
+    .paper-stack::after { display: none; }
 
     .tear-page {
-      position: relative;
-      z-index: 1;
-      border-radius: 32px;
+      border-radius: 28px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.74), transparent 28%),
-        linear-gradient(180deg, #fffdf8 0%, var(--paper) 34%, #f7efe0 100%);
-      border: 1px solid rgba(108, 84, 53, 0.14);
-      box-shadow: var(--shadow);
+      background: rgba(255, 251, 245, 0.9);
+      border: 1px solid rgba(108, 84, 53, 0.1);
+      box-shadow: 0 24px 48px rgba(83, 59, 33, 0.12);
+      backdrop-filter: blur(10px);
     }
 
-    .tear-page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(125deg, rgba(255,255,255,0.2), transparent 20%),
-        radial-gradient(circle at 14% 18%, rgba(206, 169, 118, 0.08) 0 2px, transparent 3px),
-        radial-gradient(circle at 70% 64%, rgba(206, 169, 118, 0.06) 0 2px, transparent 3px),
-        radial-gradient(circle at 34% 78%, rgba(206, 169, 118, 0.05) 0 1.5px, transparent 2.5px);
-      background-size: auto, 22px 22px, 26px 26px, 20px 20px;
-      mix-blend-mode: multiply;
-      opacity: 0.7;
-      pointer-events: none;
-    }
+    .tear-page::before { display: none; }
 
     .tear-top {
-      position: relative;
-      padding: 26px 28px 20px;
-      border-bottom: 1px dashed rgba(108, 84, 53, 0.2);
-      background:
-        linear-gradient(180deg, rgba(244,220,184,0.65), rgba(244,220,184,0.14)),
-        repeating-linear-gradient(90deg, transparent 0 16px, rgba(108,84,53,0.025) 16px 17px);
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid rgba(108, 84, 53, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0));
     }
 
-    .tear-top::after {
-      content: "";
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: -16px;
-      height: 30px;
-      background:
-        radial-gradient(circle at 15px 0, transparent 14px, #f7efe0 15px) 0 0 / 30px 30px repeat-x;
-    }
+    .tear-top::after { display: none; }
 
     .tear-note {
       display: flex;
@@ -264,9 +214,8 @@
       align-items: center;
       margin-bottom: 28px;
       color: var(--muted);
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
     }
 
     .tear-date {
@@ -278,22 +227,21 @@
 
     .tear-day {
       font-size: clamp(5rem, 14vw, 9rem);
-      line-height: 0.9;
-      font-weight: 700;
+      line-height: 0.88;
+      font-weight: 600;
       letter-spacing: -0.08em;
       color: #384233;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
     }
 
     .tear-month {
       display: inline-flex;
-      padding: 8px 14px;
+      padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(123, 152, 114, 0.14);
-      color: var(--accent);
-      font-size: 1rem;
+      background: rgba(123, 152, 114, 0.1);
+      color: #5f775b;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
     }
 
     .tear-full-date {
@@ -304,55 +252,47 @@
     }
 
     .tear-body {
-      padding: 46px 28px 30px;
+      padding: 30px 32px 32px;
       display: grid;
-      gap: 26px;
+      gap: 20px;
     }
 
     .wisdom-card {
-      position: relative;
-      padding: 22px 24px;
-      border-radius: 24px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.78), rgba(248, 239, 223, 0.92)),
-        var(--panel);
-      border: 1px solid rgba(106, 88, 59, 0.1);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.72), 0 14px 28px rgba(84, 67, 43, 0.08);
+      padding: 4px 0 0 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
     }
 
-    .wisdom-card::before {
-      content: "";
-      position: absolute;
-      inset: 14px;
-      border-radius: 18px;
-      border: 1px dashed rgba(123, 152, 114, 0.28);
-      pointer-events: none;
-    }
+    .wisdom-card::before { display: none; }
 
     .wisdom-label {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: var(--muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .wisdom-text {
       position: relative;
-      font-size: 1.18rem;
-      line-height: 1.7;
-      color: #44503f;
-      padding-left: 16px;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: #3f493b;
+      padding-left: 18px;
+      max-width: 36rem;
     }
 
     .wisdom-text::before {
-      content: "“";
+      content: "";
       position: absolute;
-      left: -2px;
-      top: -10px;
-      font-size: 2.2rem;
-      line-height: 1;
-      color: rgba(207, 120, 66, 0.42);
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #c9a06b, #89a67f);
     }
 
     .fact-grid {
@@ -361,99 +301,47 @@
       gap: 18px;
     }
 
-    .fact,
-    .side-card {
-      border-radius: 24px;
-      padding: 22px;
-      background: var(--panel);
-      border: 1px solid rgba(76, 69, 54, 0.08);
-      box-shadow: 0 16px 34px rgba(83, 62, 35, 0.08);
-      backdrop-filter: blur(8px);
+    .week-band {
+      display: grid;
+      gap: 6px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(76, 69, 54, 0.06);
+      box-shadow: none;
+    }
+
+    .fact {
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255,255,255,0.56);
+      border: 1px solid rgba(76, 69, 54, 0.06);
+      box-shadow: none;
+      backdrop-filter: blur(6px);
     }
 
     .fact-label,
-    .side-label {
+    .wisdom-label {
       margin-bottom: 10px;
       color: var(--muted);
-      font-size: 0.86rem;
+      font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .fact-value {
-      font-size: 1.28rem;
+      font-size: 1.12rem;
       line-height: 1.4;
       color: #394135;
     }
 
     .fact-value.number {
-      font-size: 2.4rem;
+      font-size: 2rem;
       line-height: 1;
       color: #365042;
     }
 
-    .side-column {
-      display: grid;
-      gap: 18px;
-      position: relative;
-    }
-
-    .side-column::after { display: none; }
-
-    .side-card {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.74), rgba(255,255,255,0.44)),
-        var(--panel);
-    }
-
-    .side-copy {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #495041;
-    }
-
-    .side-copy strong {
-      color: var(--accent);
-    }
-
-    .action-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .action-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: 1px solid rgba(106, 88, 59, 0.12);
-      background: rgba(255,255,255,0.74);
-      box-shadow: 0 10px 20px rgba(84, 67, 43, 0.08);
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .action-links a.primary {
-      background: linear-gradient(180deg, #d98c54 0%, #c56f3a 100%);
-      color: #fff9f1;
-      border-color: transparent;
-    }
-
-    .action-links a:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 24px rgba(84, 67, 43, 0.12);
-    }
-
     @media (max-width: 900px) {
-      .calendar-layout {
-        grid-template-columns: 1fr;
-      }
-
       .nav {
         padding: 10px 0;
         align-items: flex-start;
@@ -481,10 +369,9 @@
       }
 
       .tear-top,
-      .tear-body,
-      .side-card {
-        padding-left: 20px;
-        padding-right: 20px;
+      .tear-body {
+        padding-left: 22px;
+        padding-right: 22px;
       }
 
     }
@@ -515,9 +402,9 @@
 
   <section class="hero">
     <div class="container">
-      <span class="hero-kicker" data-label-tradition>Inspired by a Polish desk calendar</span>
+      <span class="hero-kicker" data-label-tradition>Daily page</span>
       <h1 data-calendar-title>Page-a-day calendar</h1>
-      <p data-calendar-lead>A daily tear-off page with the date, Polish name day tradition, and the rhythm of the week.</p>
+      <p data-calendar-lead>A daily page with the date, Polish name day tradition, and the rhythm of the week.</p>
     </div>
   </section>
 
@@ -527,7 +414,7 @@
         <article class="tear-page">
           <div class="tear-top">
             <div class="tear-note">
-              <span data-label-season-note>A little tear-off page</span>
+              <span data-label-season-note>For today</span>
               <span data-label-today>Today</span>
             </div>
             <div class="tear-date">
@@ -543,6 +430,11 @@
             <div class="wisdom-card">
               <div class="wisdom-label" data-label-daily-thought>Thought for today</div>
               <div class="wisdom-text" data-daily-thought>A damp April promises a hundredfold year.</div>
+            </div>
+
+            <div class="week-band">
+              <div class="fact-label" data-label-week-range>Week span</div>
+              <div class="fact-value" data-week-range>13 April – 19 April</div>
             </div>
 
             <div class="fact-grid">
@@ -566,29 +458,6 @@
           </div>
         </article>
       </section>
-
-      <aside class="side-column">
-        <article class="side-card">
-          <div class="side-label" data-label-week-range>Week span</div>
-          <div class="side-copy" data-week-range>13 April – 19 April</div>
-        </article>
-
-        <article class="side-card">
-          <div class="side-label" data-label-card-rhythm>Card rhythm</div>
-          <div class="side-copy" data-rhythm-copy>The series unfolds week by week, in step with the year.</div>
-          <div class="side-copy" data-current-card-line>The latest published card currently reaches week 14.</div>
-          <div class="side-copy" data-current-week-line>By the calendar, week 16 is in progress now.</div>
-          <div class="action-links">
-            <a class="primary" data-current-card-href href="/en/materials/urban-bathing/#tydzien-14" data-link-open-current-card>Open the latest published card</a>
-            <a data-open-cards-href href="/en/materials/urban-bathing/" data-link-open-cards>Open the card series</a>
-          </div>
-        </article>
-
-        <article class="side-card">
-          <div class="side-label">Why this page</div>
-          <div class="side-copy" data-footer-copy>You can use this page as a daily ritual and a quick check of which week of the year your series should be matching.</div>
-        </article>
-      </aside>
     </div>
   </main>
 </body>

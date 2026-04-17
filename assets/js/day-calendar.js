@@ -51,29 +51,19 @@
       labelWeek: "Tydzień roku",
       labelWeekRange: "Zakres tygodnia",
       labelDayOfYear: "Dzień roku",
-      labelCardRhythm: "Rytm kart",
-      labelLatestCard: "Ostatnia gotowa karta",
-      labelTargetWeek: "Tydzień, który trwa",
-      labelSeasonNote: "Mała kartka do oderwania",
-      labelOpenCards: "Otwórz serię kart",
-      labelOpenCurrentCard: "Otwórz ostatnią opublikowaną kartę",
-      labelPolishTradition: "Stary kalendarz codzienny",
+      labelSeasonNote: "Na dziś",
+      labelPolishTradition: "Codzienna kartka",
       weekWord: "tydzień",
       dayWord: "dzień",
-      rhythmGeneric: "Seria rozwija się tydzień po tygodniu, w rytmie roku.",
-      notStarted: "Seria jeszcze nie ma wspólnego polsko-angielskiego tygodnia.",
       noNameday: "Imieniny niedostępne",
       nextLine: (nameday) => `Jutro: ${nameday}`,
-      currentCardLine: (week) => `Opublikowana karta domyka na razie tydzień ${week}.`,
-      targetLine: (week) => `Według kalendarza trwa teraz tydzień ${week}.`,
       weekRangeLine: (from, to) => `${from} – ${to}`,
-      footer: "Możesz traktować tę stronę jak codzienną kartkę i szybkie przypomnienie, który tydzień roku właśnie trwa.",
       dateLocale: "pl-PL",
       monthsShort: ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"]
     },
     en: {
       pageTitle: "Page-a-day calendar",
-      pageLead: "A daily tear-off page with the date, Polish name day tradition, and the rhythm of the week.",
+      pageLead: "A daily page with the date, Polish name day tradition, and the rhythm of the week.",
       labelDailyThought: "Thought for today",
       labelToday: "Today",
       labelTomorrow: "Tomorrow",
@@ -81,23 +71,13 @@
       labelWeek: "Week of the year",
       labelWeekRange: "Week span",
       labelDayOfYear: "Day of the year",
-      labelCardRhythm: "Card rhythm",
-      labelLatestCard: "Latest ready card",
-      labelTargetWeek: "Week in progress",
-      labelSeasonNote: "A little tear-off page",
-      labelOpenCards: "Open the card series",
-      labelOpenCurrentCard: "Open the latest published card",
-      labelPolishTradition: "Inspired by a Polish desk calendar",
+      labelSeasonNote: "For today",
+      labelPolishTradition: "Daily page",
       weekWord: "week",
       dayWord: "day",
-      rhythmGeneric: "The series unfolds week by week, in step with the year.",
-      notStarted: "The series does not yet have a shared Polish-English week.",
       noNameday: "Name day unavailable",
       nextLine: (nameday) => `Tomorrow: ${nameday}`,
-      currentCardLine: (week) => `The latest published card currently reaches week ${week}.`,
-      targetLine: (week) => `By the calendar, week ${week} is in progress now.`,
       weekRangeLine: (from, to) => `${from} – ${to}`,
-      footer: "You can use this page as a daily ritual and a quick check of which week of the year your series should be matching.",
       dateLocale: "en-GB",
       monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     }
@@ -299,11 +279,6 @@
     const dayOfYear = getDayOfYear(today);
     const todayNameday = getNameday(today) || copy.noNameday;
     const tomorrowNameday = getNameday(tomorrow) || copy.noNameday;
-    const latestCardWeek = typeof window.getLatestWeeklyCardId === "function" ? window.getLatestWeeklyCardId() : null;
-    const latestCardHref = lang === "en"
-      ? `/en/materials/urban-bathing/#tydzien-${latestCardWeek || 1}`
-      : `/materialy/kapiele_miejskie/#tydzien-${latestCardWeek || 1}`;
-
     document.title = lang === "en"
       ? "Page-a-day calendar | Project: Tree House"
       : "Kartka z kalendarza | Projekt: Domek na Drzewie";
@@ -318,13 +293,7 @@
     setText("[data-label-week]", copy.labelWeek);
     setText("[data-label-week-range]", copy.labelWeekRange);
     setText("[data-label-day-of-year]", copy.labelDayOfYear);
-    setText("[data-label-card-rhythm]", copy.labelCardRhythm);
-    setText("[data-label-latest-card]", copy.labelLatestCard);
-    setText("[data-label-target-week]", copy.labelTargetWeek);
-    setText("[data-link-open-cards]", copy.labelOpenCards);
-    setText("[data-link-open-current-card]", copy.labelOpenCurrentCard);
     setText("[data-label-tradition]", copy.labelPolishTradition);
-    setText("[data-footer-copy]", copy.footer);
 
     setText("[data-day-number]", String(today.getUTCDate()));
     setText("[data-month-short]", copy.monthsShort[today.getUTCMonth()]);
@@ -339,14 +308,6 @@
       formatShortDate(weekRange.sunday, copy.dateLocale)
     ));
 
-    setText("[data-current-week-line]", copy.targetLine(isoWeek));
-    setText("[data-current-card-line]", latestCardWeek ? copy.currentCardLine(latestCardWeek) : copy.notStarted);
-
-    const rhythmCopy = latestCardWeek ? copy.rhythmGeneric : copy.notStarted;
-    setHtml("[data-rhythm-copy]", rhythmCopy);
-
-    setAttr("[data-current-card-href]", "href", latestCardHref);
-    setAttr("[data-open-cards-href]", "href", lang === "en" ? "/en/materials/urban-bathing/" : "/materialy/kapiele_miejskie/");
   }
 
   if (document.readyState === "loading") {
