@@ -3,6 +3,7 @@ layout: post
 title: "Mniszek lekarski to nie chwast? Dlaczego jest ważny dla zapylaczy"
 date: 2026-04-17
 lang: pl
+permalink: /pl/mniszek-lekarski-dla-zapylaczy/
 translation_id: dandelion-pollinators-infographic-2026
 cover: /materialy/sezonowe/mniszek-lekarski-znaczenie-ekologiczne-dla-pszczol.png
 cover_alt: Infografika o znaczeniu mniszka lekarskiego dla zapylaczy
