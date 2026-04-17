@@ -45,9 +45,8 @@
       pageTitle: "Kartka z kalendarza",
       pageLead: "Dzienna kartka z datą, imieninami i rytmem tygodnia.",
       labelWeeklyCard: "Karta uważności tygodnia",
-      weeklyCardEyebrow: "Na ten tydzień",
-      weeklyCardFallback: "Ostatnia dostępna",
       weeklyCardLink: "Zobacz kartę tygodnia",
+      labelHoliday: "Święto",
       labelDailyThought: "Myśl na dziś",
       labelToday: "Dziś",
       labelTomorrow: "Jutro",
@@ -69,9 +68,8 @@
       pageTitle: "Page-a-day calendar",
       pageLead: "A daily page with the date, Polish name day tradition, and the rhythm of the week.",
       labelWeeklyCard: "Mindfulness card of the week",
-      weeklyCardEyebrow: "For this week",
-      weeklyCardFallback: "Latest available",
       weeklyCardLink: "Open weekly card",
+      labelHoliday: "Holiday",
       labelDailyThought: "Thought for today",
       labelToday: "Today",
       labelTomorrow: "Tomorrow",
@@ -321,6 +319,104 @@
     };
   }
 
+  function setHidden(selector, hidden) {
+    document.querySelectorAll(selector).forEach((node) => {
+      node.hidden = hidden;
+    });
+  }
+
+  function setClassToggle(selector, className, enabled) {
+    document.querySelectorAll(selector).forEach((node) => {
+      node.classList.toggle(className, enabled);
+    });
+  }
+
+  function getEasterSunday(year) {
+    const a = year % 19;
+    const b = Math.floor(year / 100);
+    const c = year % 100;
+    const d = Math.floor(b / 4);
+    const e = b % 4;
+    const f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4);
+    const k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31);
+    const day = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(Date.UTC(year, month - 1, day));
+  }
+
+  function isSameUtcDate(a, b) {
+    return a.getUTCFullYear() === b.getUTCFullYear()
+      && a.getUTCMonth() === b.getUTCMonth()
+      && a.getUTCDate() === b.getUTCDate();
+  }
+
+  function getHoliday(date, lang) {
+    const fixedHolidays = {
+      pl: {
+        "1-1": "Nowy Rok",
+        "1-6": "Święto Trzech Króli",
+        "5-1": "Święto Pracy",
+        "5-3": "Święto Konstytucji 3 Maja",
+        "8-15": "Wniebowzięcie Najświętszej Maryi Panny i Święto Wojska Polskiego",
+        "11-1": "Wszystkich Świętych",
+        "11-11": "Narodowe Święto Niepodległości",
+        "12-24": "Wigilia Bożego Narodzenia",
+        "12-25": "Boże Narodzenie",
+        "12-26": "Drugi dzień Bożego Narodzenia"
+      },
+      en: {
+        "1-1": "New Year's Day",
+        "1-6": "Epiphany",
+        "5-1": "Labour Day",
+        "5-3": "Constitution Day",
+        "8-15": "Assumption of Mary and Polish Armed Forces Day",
+        "11-1": "All Saints' Day",
+        "11-11": "National Independence Day",
+        "12-24": "Christmas Eve",
+        "12-25": "Christmas Day",
+        "12-26": "Second Day of Christmas"
+      }
+    };
+
+    const key = `${date.getUTCMonth() + 1}-${date.getUTCDate()}`;
+    const fixedHoliday = fixedHolidays[lang] && fixedHolidays[lang][key];
+    if (fixedHoliday) {
+      return fixedHoliday;
+    }
+
+    const easterSunday = getEasterSunday(date.getUTCFullYear());
+    const movableHolidays = [
+      {
+        date: easterSunday,
+        pl: "Wielkanoc",
+        en: "Easter Sunday"
+      },
+      {
+        date: addDays(easterSunday, 1),
+        pl: "Poniedziałek Wielkanocny",
+        en: "Easter Monday"
+      },
+      {
+        date: addDays(easterSunday, 49),
+        pl: "Zielone Świątki",
+        en: "Pentecost"
+      },
+      {
+        date: addDays(easterSunday, 60),
+        pl: "Boże Ciało",
+        en: "Corpus Christi"
+      }
+    ];
+
+    const match = movableHolidays.find((holiday) => isSameUtcDate(holiday.date, date));
+    return match ? match[lang] : null;
+  }
+
   function render() {
     const lang = getPageLang();
     const copy = COPY[lang];
@@ -346,6 +442,7 @@
     setText("[data-label-week]", copy.labelWeek);
     setText("[data-label-week-range]", copy.labelWeekRange);
     setText("[data-label-day-of-year]", copy.labelDayOfYear);
+    setText("[data-label-holiday]", copy.labelHoliday);
     setText("[data-label-tradition]", copy.labelPolishTradition);
     setText("[data-label-weekly-card]", copy.labelWeeklyCard);
     setText("[data-weekly-card-link-text]", copy.weeklyCardLink);
@@ -366,9 +463,17 @@
       formatShortDate(weekRange.sunday, copy.dateLocale)
     ));
 
+    const holiday = getHoliday(today, lang);
+    const isFreeDay = Boolean(holiday) || today.getUTCDay() === 0;
+    setHidden("[data-holiday-fact]", !holiday);
+    if (holiday) {
+      setText("[data-holiday]", holiday);
+    }
+    setClassToggle(".tear-page", "is-free-day", isFreeDay);
+
     const weeklyCardResult = getWeeklyCardForDate(lang, isoWeek);
     if (weeklyCardResult) {
-      const { card, isFallback } = weeklyCardResult;
+      const { card } = weeklyCardResult;
       const cardUrl = lang === "en"
         ? `/en/materials/urban-bathing/#tydzien-${card.id}`
         : `/materialy/kapiele_miejskie/#tydzien-${card.id}`;
@@ -376,10 +481,8 @@
       const cardTitle = card.title;
       const cardAriaLabel = `${lang === "en" ? "Week" : "Tydzień"} ${card.id}: ${card.title}`;
 
-      setText("[data-weekly-card-eyebrow]", isFallback ? copy.weeklyCardFallback : copy.weeklyCardEyebrow);
       setText("[data-weekly-card-title]", cardTitle);
       setText("[data-weekly-card-body]", card.body);
-      setText("[data-weekly-card-season]", `${card.season} · ${card.month}`);
       setAttrAll("[data-weekly-card-link]", "href", cardUrl);
       setAttrAll("[data-weekly-card-link]", "aria-label", cardAriaLabel);
       setAttr("[data-weekly-card-image]", "src", cardImage);

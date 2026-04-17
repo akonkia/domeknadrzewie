@@ -253,11 +253,6 @@
       color: #2f392d;
     }
 
-    .weekly-card-meta {
-      font-size: 0.88rem;
-      color: #66705f;
-    }
-
     .weekly-card-body {
       margin: 0;
       font-size: 0.94rem;
@@ -296,6 +291,11 @@
       backdrop-filter: blur(10px);
     }
 
+    .tear-page.is-free-day {
+      border-color: rgba(175, 72, 72, 0.22);
+      box-shadow: 0 24px 48px rgba(126, 44, 44, 0.14);
+    }
+
     .tear-page::before { display: none; }
 
     .tear-top {
@@ -305,6 +305,11 @@
     }
 
     .tear-top::after { display: none; }
+
+    .tear-page.is-free-day .tear-top {
+      background: linear-gradient(180deg, rgba(198, 86, 86, 0.1), rgba(255,255,255,0));
+      border-bottom-color: rgba(175, 72, 72, 0.14);
+    }
 
     .tear-date {
       display: grid;
@@ -321,6 +326,10 @@
       color: #384233;
     }
 
+    .tear-page.is-free-day .tear-day {
+      color: #a64646;
+    }
+
     .tear-month {
       display: inline-flex;
       padding: 6px 10px;
@@ -330,6 +339,11 @@
       font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+
+    .tear-page.is-free-day .tear-month {
+      background: rgba(198, 86, 86, 0.12);
+      color: #a14a4a;
     }
 
     .tear-full-date {
@@ -383,10 +397,18 @@
       background: linear-gradient(180deg, #c9a06b, #89a67f);
     }
 
+    .tear-page.is-free-day .wisdom-text::before {
+      background: linear-gradient(180deg, #d48a8a, #b24d4d);
+    }
+
     .fact-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+    }
+
+    .fact-holiday {
+      grid-column: 1 / -1;
     }
 
     .week-band {
@@ -408,6 +430,12 @@
       backdrop-filter: blur(6px);
     }
 
+    .tear-page.is-free-day .fact,
+    .tear-page.is-free-day .week-band {
+      border-color: rgba(175, 72, 72, 0.1);
+      background: rgba(255, 249, 249, 0.72);
+    }
+
     .fact-label,
     .wisdom-label {
       margin-bottom: 8px;
@@ -427,6 +455,12 @@
       font-size: 1.7rem;
       line-height: 1;
       color: #365042;
+    }
+
+    .tear-page.is-free-day .fact-value.number,
+    .tear-page.is-free-day .fact-value,
+    .tear-page.is-free-day .tear-full-date {
+      color: #7f4545;
     }
 
     @media (max-width: 900px) {
@@ -540,6 +574,10 @@
             </div>
 
             <div class="fact-grid">
+              <div class="fact fact-holiday" data-holiday-fact hidden>
+                <div class="fact-label" data-label-holiday>Święto</div>
+                <div class="fact-value" data-holiday>Boże Narodzenie</div>
+              </div>
               <div class="fact">
                 <div class="fact-label" data-label-nameday>Imieniny</div>
                 <div class="fact-value" data-nameday>Justyny, Waleriana</div>
@@ -569,11 +607,6 @@
           <div class="weekly-card-copy">
             <div class="weekly-card-label" data-label-weekly-card>Karta uważności tygodnia</div>
             <div class="weekly-card-title" data-weekly-card-title>Jasna gałąź</div>
-            <div class="weekly-card-meta">
-              <span data-weekly-card-eyebrow>Na ten tydzień</span>
-              <span> · </span>
-              <span data-weekly-card-season>Wiosna · Kwiecień</span>
-            </div>
             <p class="weekly-card-body" data-weekly-card-body>Znajdź gałąź dotkniętą światłem i przez chwilę zostań z tym, co zaczyna się rozjaśniać.</p>
             <a class="weekly-card-link" data-weekly-card-link href="/materialy/kapiele_miejskie/#tydzien-15">
               <span data-weekly-card-link-text>Zobacz kartę tygodnia</span>

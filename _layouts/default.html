@@ -68,6 +68,11 @@
                 <span class="nav-pl">{% if current_lang == 'en' %}Interactive{% else %}Interaktywne{% endif %}</span>
               </span>
             </a>
+            <a href="{% if current_lang == 'en' %}/en/page-a-day.html{% else %}/kartka-z-kalendarza.html{% endif %}">
+              <span class="nav-label">
+                <span class="nav-pl">{% if current_lang == 'en' %}Page-a-day{% else %}Kartka z kalendarza{% endif %}</span>
+              </span>
+            </a>
           </div>
         </div>
 
