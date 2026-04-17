@@ -262,6 +262,12 @@
     }
   }
 
+  function setTextAll(selector, value) {
+    document.querySelectorAll(selector).forEach((node) => {
+      node.textContent = value;
+    });
+  }
+
   function setHtml(selector, value) {
     const node = document.querySelector(selector);
     if (node) {
@@ -349,7 +355,7 @@
     setText("[data-full-date]", formatLongDate(today, copy.dateLocale));
     setText("[data-next-day-number]", String(tomorrow.getUTCDate()));
     setText("[data-next-month-short]", copy.monthsShort[tomorrow.getUTCMonth()]);
-    setText("[data-next-full-date]", formatShortDate(tomorrow, copy.dateLocale));
+    setTextAll("[data-next-full-date]", formatShortDate(tomorrow, copy.dateLocale));
     setText("[data-daily-thought]", getDailyWisdom(today, lang));
     setText("[data-nameday]", todayNameday);
     setText("[data-tomorrow-nameday]", copy.nextLine(tomorrowNameday));
