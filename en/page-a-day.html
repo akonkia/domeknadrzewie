@@ -284,132 +284,16 @@
     }
 
     .paper-stack {
-      position: relative;
-      padding-top: 4px;
-      padding-right: 78px;
-      padding-bottom: 86px;
-    }
-
-    .paper-stack::before,
-    .paper-stack::after {
-      display: none;
-    }
-
-    .next-peek {
-      position: absolute;
-      left: 24px;
-      right: 0;
-      top: 22px;
-      bottom: 0;
-      border-radius: 28px;
-      background: rgba(255, 252, 247, 0.94);
-      border: 1px solid rgba(108, 84, 53, 0.08);
-      box-shadow: 0 14px 28px rgba(83, 59, 33, 0.06);
-      z-index: 0;
-      color: rgba(61, 73, 58, 0.74);
-      overflow: hidden;
-      transition: transform 0.34s ease, box-shadow 0.34s ease;
-    }
-
-    .next-peek::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,255,255,0.28));
-      pointer-events: none;
-    }
-
-    .peek-sheet {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: grid;
-      grid-template-rows: auto 1fr;
-    }
-
-    .peek-top {
-      padding: 18px 20px 14px;
-      border-bottom: 1px solid rgba(108, 84, 53, 0.07);
-      background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
-    }
-
-    .peek-date {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 10px;
-      align-items: end;
-    }
-
-    .next-peek-day {
-      font-size: clamp(3rem, 6vw, 4.4rem);
-      line-height: 0.88;
-      font-weight: 600;
-      letter-spacing: -0.08em;
-      color: #384233;
-    }
-
-    .peek-date-copy {
-      min-width: 0;
-    }
-
-    .next-peek-month {
-      display: inline-flex;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(123, 152, 114, 0.1);
-    }
-
-    .next-peek-full-date {
-      margin-top: 6px;
-      font-size: 0.86rem;
-      color: #4f5647;
-      text-transform: capitalize;
-    }
-
-    .peek-body {
-      padding: 14px 20px 18px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-    }
-
-    .next-peek-meta {
-      text-align: right;
-      font-size: 0.82rem;
-      line-height: 1.4;
-      max-width: 140px;
-      color: #5c6557;
+      max-width: 760px;
     }
 
     .tear-page {
-      position: relative;
-      z-index: 1;
-      margin-right: 58px;
-      margin-bottom: 34px;
       border-radius: 28px;
       overflow: hidden;
       background: rgba(255, 251, 245, 0.9);
       border: 1px solid rgba(108, 84, 53, 0.1);
       box-shadow: 0 24px 48px rgba(83, 59, 33, 0.12);
       backdrop-filter: blur(10px);
-      transition: transform 0.24s ease, box-shadow 0.24s ease, opacity 0.24s ease;
-      transform-origin: top left;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .paper-stack:hover .tear-page {
-        transform: translate3d(-10px, -10px, 0);
-        box-shadow: 0 26px 46px rgba(83, 59, 33, 0.1);
-        opacity: 0.08;
-      }
-
-      .paper-stack:hover .next-peek {
-        transform: translate3d(0, 0, 0);
-        box-shadow: 0 22px 38px rgba(83, 59, 33, 0.12);
-      }
     }
 
     .tear-page::before { display: none; }
@@ -563,33 +447,6 @@
     }
 
     @media (max-width: 640px) {
-      .paper-stack {
-        padding-right: 22px;
-        padding-bottom: 36px;
-      }
-
-      .next-peek {
-        left: 14px;
-        right: 0;
-        top: 18px;
-      }
-
-      .tear-page {
-        margin-right: 16px;
-        margin-bottom: 16px;
-      }
-
-      .next-peek-meta {
-        max-width: 100px;
-        font-size: 0.78rem;
-      }
-
-      .peek-top,
-      .peek-body {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
       .hero-copy {
         padding: 14px 16px 16px;
         border-radius: 20px;
@@ -660,25 +517,6 @@
   <main class="layout">
     <div class="container calendar-layout">
       <section class="paper-stack" aria-label="Today's page">
-        <div class="next-peek" aria-hidden="true">
-          <div class="peek-sheet">
-            <div class="peek-top">
-              <div class="peek-date">
-                <div class="next-peek-day" data-next-day-number>15</div>
-                <div class="peek-date-copy">
-                  <div class="next-peek-month" data-next-month-short>Apr</div>
-                  <div class="next-peek-full-date" data-next-full-date>15 April</div>
-                </div>
-              </div>
-            </div>
-            <div class="peek-body">
-              <div class="next-peek-meta">
-                <div>Tomorrow</div>
-                <div data-next-full-date>15 April</div>
-              </div>
-            </div>
-          </div>
-        </div>
         <article class="tear-page">
           <div class="tear-top">
             <div class="tear-date">
