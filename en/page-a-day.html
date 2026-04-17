@@ -286,39 +286,13 @@
     .paper-stack {
       position: relative;
       padding-top: 4px;
-      padding-right: 52px;
+      padding-right: 78px;
       padding-bottom: 86px;
     }
 
     .paper-stack::before,
     .paper-stack::after {
-      content: "";
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      border-radius: 28px;
-      background: rgba(255, 250, 244, 0.72);
-      border: 1px solid rgba(108, 84, 53, 0.08);
-      pointer-events: none;
-      transform-origin: top center;
-    }
-
-    .paper-stack::before {
-      top: 14px;
-      right: 14px;
-      bottom: 10px;
-      transform: rotate(-1.6deg);
-      box-shadow: 0 16px 30px rgba(83, 59, 33, 0.07);
-    }
-
-    .paper-stack::after {
-      top: 10px;
-      right: 8px;
-      bottom: 26px;
-      left: 12px;
-      transform: rotate(1.1deg);
-      background: rgba(255, 251, 246, 0.82);
-      box-shadow: 0 12px 24px rgba(83, 59, 33, 0.05);
+      display: none;
     }
 
     .next-peek {
@@ -332,10 +306,8 @@
       border: 1px solid rgba(108, 84, 53, 0.08);
       box-shadow: 0 14px 28px rgba(83, 59, 33, 0.06);
       z-index: 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 22px 28px 18px 24px;
+      display: block;
+      padding: 0;
       color: rgba(61, 73, 58, 0.74);
       overflow: hidden;
       transition: transform 0.34s ease, box-shadow 0.34s ease;
@@ -351,24 +323,28 @@
 
     .next-peek-day,
     .next-peek-meta {
-      position: relative;
+      position: absolute;
       z-index: 1;
     }
 
     .next-peek-day {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
+      top: 26px;
+      right: 22px;
+      display: grid;
+      justify-items: end;
+      gap: 8px;
+      text-align: right;
     }
 
     .next-peek-number {
-      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-size: clamp(2.8rem, 6.2vw, 4.2rem);
       line-height: 0.9;
       font-weight: 600;
       letter-spacing: -0.06em;
     }
 
     .next-peek-month {
+      width: fit-content;
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -378,15 +354,18 @@
     }
 
     .next-peek-meta {
+      right: 22px;
+      bottom: 18px;
       text-align: right;
-      font-size: 0.82rem;
-      line-height: 1.35;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      max-width: 132px;
     }
 
     .tear-page {
       position: relative;
       z-index: 1;
-      margin-right: 34px;
+      margin-right: 58px;
       margin-bottom: 34px;
       border-radius: 28px;
       overflow: hidden;
@@ -400,21 +379,13 @@
 
     @media (hover: hover) and (pointer: fine) {
       .paper-stack:hover .tear-page {
-        transform: translate3d(34px, -18px, 0) rotate(-3.2deg);
+        transform: translate3d(-30px, -16px, 0) rotate(-3.2deg);
         box-shadow: 0 34px 60px rgba(83, 59, 33, 0.2);
       }
 
       .paper-stack:hover .next-peek {
-        transform: translateY(4px);
+        transform: translate3d(4px, 2px, 0);
         box-shadow: 0 18px 32px rgba(83, 59, 33, 0.08);
-      }
-
-      .paper-stack:hover::before {
-        transform: rotate(-1.2deg) translate(-8px, 10px);
-      }
-
-      .paper-stack:hover::after {
-        transform: rotate(0.9deg) translate(-4px, 6px);
       }
     }
 
@@ -570,30 +541,26 @@
 
     @media (max-width: 640px) {
       .paper-stack {
-        padding-right: 18px;
+        padding-right: 22px;
         padding-bottom: 36px;
-      }
-
-      .paper-stack::before,
-      .paper-stack::after {
-        left: 10px;
-        right: 10px;
       }
 
       .next-peek {
         left: 14px;
         right: 0;
         top: 18px;
-        padding: 14px 16px 12px;
       }
 
       .tear-page {
-        margin-right: 12px;
+        margin-right: 16px;
         margin-bottom: 16px;
       }
 
       .next-peek-meta {
-        display: none;
+        right: 16px;
+        bottom: 12px;
+        max-width: 92px;
+        font-size: 0.78rem;
       }
 
       .hero-copy {
