@@ -44,6 +44,10 @@
     pl: {
       pageTitle: "Kartka z kalendarza",
       pageLead: "Dzienna kartka z datą, imieninami i rytmem tygodnia.",
+      labelWeeklyCard: "Karta uważności tygodnia",
+      weeklyCardEyebrow: "Na ten tydzień",
+      weeklyCardFallback: "Ostatnia dostępna",
+      weeklyCardLink: "Zobacz kartę tygodnia",
       labelDailyThought: "Myśl na dziś",
       labelToday: "Dziś",
       labelTomorrow: "Jutro",
@@ -64,6 +68,10 @@
     en: {
       pageTitle: "Page-a-day calendar",
       pageLead: "A daily page with the date, Polish name day tradition, and the rhythm of the week.",
+      labelWeeklyCard: "Mindfulness card of the week",
+      weeklyCardEyebrow: "For this week",
+      weeklyCardFallback: "Latest available",
+      weeklyCardLink: "Open weekly card",
       labelDailyThought: "Thought for today",
       labelToday: "Today",
       labelTomorrow: "Tomorrow",
@@ -268,6 +276,45 @@
     }
   }
 
+  function setAttrAll(selector, name, value) {
+    if (value == null) {
+      return;
+    }
+
+    document.querySelectorAll(selector).forEach((node) => {
+      node.setAttribute(name, value);
+    });
+  }
+
+  function getWeeklyCardForDate(lang, isoWeek) {
+    if (typeof window.getWeeklyCardsForLang !== "function") {
+      return null;
+    }
+
+    const cards = window.getWeeklyCardsForLang(lang);
+    if (!Array.isArray(cards) || !cards.length) {
+      return null;
+    }
+
+    const exactMatch = cards.find((card) => card.id === isoWeek);
+    if (exactMatch) {
+      return { card: exactMatch, isFallback: false };
+    }
+
+    const earlierCards = cards.filter((card) => card.id <= isoWeek);
+    if (earlierCards.length) {
+      return {
+        card: earlierCards.reduce((latest, card) => (card.id > latest.id ? card : latest)),
+        isFallback: true
+      };
+    }
+
+    return {
+      card: cards.reduce((latest, card) => (card.id > latest.id ? card : latest)),
+      isFallback: true
+    };
+  }
+
   function render() {
     const lang = getPageLang();
     const copy = COPY[lang];
@@ -294,6 +341,8 @@
     setText("[data-label-week-range]", copy.labelWeekRange);
     setText("[data-label-day-of-year]", copy.labelDayOfYear);
     setText("[data-label-tradition]", copy.labelPolishTradition);
+    setText("[data-label-weekly-card]", copy.labelWeeklyCard);
+    setText("[data-weekly-card-link-text]", copy.weeklyCardLink);
 
     setText("[data-day-number]", String(today.getUTCDate()));
     setText("[data-month-short]", copy.monthsShort[today.getUTCMonth()]);
@@ -310,6 +359,25 @@
       formatShortDate(weekRange.monday, copy.dateLocale),
       formatShortDate(weekRange.sunday, copy.dateLocale)
     ));
+
+    const weeklyCardResult = getWeeklyCardForDate(lang, isoWeek);
+    if (weeklyCardResult) {
+      const { card, isFallback } = weeklyCardResult;
+      const cardUrl = lang === "en"
+        ? `/en/materials/urban-bathing/#tydzien-${card.id}`
+        : `/materialy/kapiele_miejskie/#tydzien-${card.id}`;
+      const cardImage = `/materialy/kapiele_miejskie/${card.img}`;
+      const cardTitle = `${lang === "en" ? "Week" : "Tydzień"} ${card.id}: ${card.title}`;
+
+      setText("[data-weekly-card-eyebrow]", isFallback ? copy.weeklyCardFallback : copy.weeklyCardEyebrow);
+      setText("[data-weekly-card-title]", cardTitle);
+      setText("[data-weekly-card-body]", card.body);
+      setText("[data-weekly-card-season]", `${card.season} · ${card.month}`);
+      setAttrAll("[data-weekly-card-link]", "href", cardUrl);
+      setAttrAll("[data-weekly-card-link]", "aria-label", cardTitle);
+      setAttr("[data-weekly-card-image]", "src", cardImage);
+      setAttr("[data-weekly-card-image]", "alt", cardTitle);
+    }
 
   }
 
