@@ -298,6 +298,9 @@
     setText("[data-day-number]", String(today.getUTCDate()));
     setText("[data-month-short]", copy.monthsShort[today.getUTCMonth()]);
     setText("[data-full-date]", formatLongDate(today, copy.dateLocale));
+    setText("[data-next-day-number]", String(tomorrow.getUTCDate()));
+    setText("[data-next-month-short]", copy.monthsShort[tomorrow.getUTCMonth()]);
+    setText("[data-next-full-date]", formatShortDate(tomorrow, copy.dateLocale));
     setText("[data-daily-thought]", getDailyWisdom(today, lang));
     setText("[data-nameday]", todayNameday);
     setText("[data-tomorrow-nameday]", copy.nextLine(tomorrowNameday));

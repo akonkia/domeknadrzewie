@@ -76,7 +76,7 @@
     }
 
     .nav {
-      min-height: 88px;
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -91,8 +91,8 @@
     }
 
     .brand-mark {
-      width: 58px;
-      height: 58px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       overflow: hidden;
       background: #fff;
@@ -102,8 +102,8 @@
     }
 
     .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .brand-title { font-size: 1.25rem; font-weight: 700; }
-    .brand-subtitle { margin-top: 4px; color: var(--muted); font-size: 0.94rem; }
+    .brand-title { font-size: 1.12rem; font-weight: 700; }
+    .brand-subtitle { margin-top: 4px; color: var(--muted); font-size: 0.88rem; }
 
     .nav-links {
       display: flex;
@@ -112,8 +112,8 @@
     }
 
     .nav-links a {
-      min-height: 88px;
-      padding: 0 22px;
+      min-height: 74px;
+      padding: 0 18px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -133,7 +133,17 @@
 
     .hero {
       position: relative;
-      padding: 58px 0 28px;
+      padding: 26px 0 14px;
+    }
+
+    .hero-copy {
+      display: inline-block;
+      max-width: min(100%, 44rem);
+      padding: 14px 18px 16px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.54));
+      box-shadow: 0 12px 32px rgba(92, 70, 43, 0.08);
+      backdrop-filter: blur(10px);
     }
 
     .hero::before,
@@ -156,23 +166,25 @@
     }
 
     h1 {
-      margin: 18px 0 10px;
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      margin: 12px 0 8px;
+      font-size: clamp(2.2rem, 5.3vw, 3.8rem);
       line-height: 0.98;
       font-weight: 600;
       letter-spacing: -0.04em;
+      color: #2f392d;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.18);
     }
 
     .hero p {
       max-width: 44rem;
       margin: 0;
-      font-size: 1.15rem;
-      line-height: 1.65;
-      color: #4f5647;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #4b5146;
     }
 
     .layout {
-      padding: 16px 0 88px;
+      padding: 6px 0 28px;
     }
 
     .calendar-layout {
@@ -182,51 +194,148 @@
     }
 
     .paper-stack {
-      padding-top: 8px;
+      position: relative;
+      padding-top: 4px;
+      padding-bottom: 26px;
     }
 
     .paper-stack::before,
-    .paper-stack::after { display: none; }
+    .paper-stack::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      border-radius: 28px;
+      background: rgba(255, 250, 244, 0.72);
+      border: 1px solid rgba(108, 84, 53, 0.08);
+      pointer-events: none;
+      transform-origin: top center;
+    }
+
+    .paper-stack::before {
+      top: 14px;
+      bottom: 4px;
+      transform: rotate(-1.6deg);
+      box-shadow: 0 16px 30px rgba(83, 59, 33, 0.07);
+    }
+
+    .paper-stack::after {
+      top: 10px;
+      bottom: 18px;
+      left: 12px;
+      right: 12px;
+      transform: rotate(1.1deg);
+      background: rgba(255, 251, 246, 0.82);
+      box-shadow: 0 12px 24px rgba(83, 59, 33, 0.05);
+    }
+
+    .next-peek {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      top: 16px;
+      bottom: 8px;
+      border-radius: 28px;
+      background: rgba(255, 252, 247, 0.9);
+      border: 1px solid rgba(108, 84, 53, 0.08);
+      box-shadow: 0 14px 28px rgba(83, 59, 33, 0.06);
+      z-index: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 18px 24px 12px;
+      color: rgba(61, 73, 58, 0.62);
+      overflow: hidden;
+    }
+
+    .next-peek::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,255,255,0.28));
+      pointer-events: none;
+    }
+
+    .next-peek-day,
+    .next-peek-meta {
+      position: relative;
+      z-index: 1;
+    }
+
+    .next-peek-day {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .next-peek-number {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      line-height: 0.9;
+      font-weight: 600;
+      letter-spacing: -0.06em;
+    }
+
+    .next-peek-month {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(123, 152, 114, 0.1);
+    }
+
+    .next-peek-meta {
+      text-align: right;
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
 
     .tear-page {
+      position: relative;
+      z-index: 1;
       border-radius: 28px;
       overflow: hidden;
       background: rgba(255, 251, 245, 0.9);
       border: 1px solid rgba(108, 84, 53, 0.1);
       box-shadow: 0 24px 48px rgba(83, 59, 33, 0.12);
       backdrop-filter: blur(10px);
+      transition: transform 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .paper-stack:hover .tear-page {
+        transform: translateY(-4px) rotate(-0.35deg);
+        box-shadow: 0 30px 54px rgba(83, 59, 33, 0.16);
+      }
+
+      .paper-stack:hover::before {
+        transform: rotate(-1deg) translateY(2px);
+      }
+
+      .paper-stack:hover::after {
+        transform: rotate(0.8deg) translateY(1px);
+      }
     }
 
     .tear-page::before { display: none; }
 
     .tear-top {
-      padding: 28px 32px 22px;
+      padding: 20px 26px 16px;
       border-bottom: 1px solid rgba(108, 84, 53, 0.08);
       background: linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0));
     }
 
     .tear-top::after { display: none; }
 
-    .tear-note {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 28px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      letter-spacing: 0.02em;
-    }
-
     .tear-date {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: 18px;
+      gap: 14px;
       align-items: end;
     }
 
     .tear-day {
-      font-size: clamp(5rem, 14vw, 9rem);
+      font-size: clamp(4.2rem, 11vw, 7rem);
       line-height: 0.88;
       font-weight: 600;
       letter-spacing: -0.08em;
@@ -235,26 +344,26 @@
 
     .tear-month {
       display: inline-flex;
-      padding: 7px 12px;
+      padding: 6px 10px;
       border-radius: 999px;
       background: rgba(123, 152, 114, 0.1);
       color: #5f775b;
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .tear-full-date {
-      margin-top: 12px;
-      font-size: 1.1rem;
+      margin-top: 8px;
+      font-size: 1rem;
       color: #4f5647;
       text-transform: capitalize;
     }
 
     .tear-body {
-      padding: 30px 32px 32px;
+      padding: 22px 26px 24px;
       display: grid;
-      gap: 20px;
+      gap: 14px;
     }
 
     .wisdom-card {
@@ -268,7 +377,7 @@
     .wisdom-card::before { display: none; }
 
     .wisdom-label {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: var(--muted);
       font-size: 0.78rem;
       letter-spacing: 0.08em;
@@ -277,8 +386,8 @@
 
     .wisdom-text {
       position: relative;
-      font-size: 1.08rem;
-      line-height: 1.65;
+      font-size: 0.98rem;
+      line-height: 1.5;
       color: #3f493b;
       padding-left: 18px;
       max-width: 36rem;
@@ -298,13 +407,13 @@
     .fact-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 14px;
     }
 
     .week-band {
       display: grid;
       gap: 6px;
-      padding: 14px 16px;
+      padding: 12px 14px;
       border-radius: 18px;
       background: rgba(255,255,255,0.5);
       border: 1px solid rgba(76, 69, 54, 0.06);
@@ -313,7 +422,7 @@
 
     .fact {
       border-radius: 20px;
-      padding: 18px;
+      padding: 14px;
       background: rgba(255,255,255,0.56);
       border: 1px solid rgba(76, 69, 54, 0.06);
       box-shadow: none;
@@ -322,7 +431,7 @@
 
     .fact-label,
     .wisdom-label {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: var(--muted);
       font-size: 0.78rem;
       letter-spacing: 0.08em;
@@ -330,13 +439,13 @@
     }
 
     .fact-value {
-      font-size: 1.12rem;
+      font-size: 1rem;
       line-height: 1.4;
       color: #394135;
     }
 
     .fact-value.number {
-      font-size: 2rem;
+      font-size: 1.7rem;
       line-height: 1;
       color: #365042;
     }
@@ -359,6 +468,31 @@
     }
 
     @media (max-width: 640px) {
+      .paper-stack {
+        padding-bottom: 14px;
+      }
+
+      .paper-stack::before,
+      .paper-stack::after {
+        left: 10px;
+        right: 10px;
+      }
+
+      .next-peek {
+        left: 14px;
+        right: 14px;
+        padding: 14px 16px 10px;
+      }
+
+      .next-peek-meta {
+        display: none;
+      }
+
+      .hero-copy {
+        padding: 14px 16px 16px;
+        border-radius: 20px;
+      }
+
       .tear-date {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -402,21 +536,29 @@
 
   <section class="hero">
     <div class="container">
-      <span class="hero-kicker" data-label-tradition>Daily page</span>
-      <h1 data-calendar-title>Page-a-day calendar</h1>
-      <p data-calendar-lead>A daily page with the date, Polish name day tradition, and the rhythm of the week.</p>
+      <div class="hero-copy">
+        <span class="hero-kicker" data-label-tradition>Daily page</span>
+        <h1 data-calendar-title>Page-a-day calendar</h1>
+        <p data-calendar-lead>A daily page with the date, Polish name day tradition, and the rhythm of the week.</p>
+      </div>
     </div>
   </section>
 
   <main class="layout">
     <div class="container calendar-layout">
       <section class="paper-stack" aria-label="Today's page">
+        <div class="next-peek" aria-hidden="true">
+          <div class="next-peek-day">
+            <div class="next-peek-number" data-next-day-number>15</div>
+            <div class="next-peek-month" data-next-month-short>Apr</div>
+          </div>
+          <div class="next-peek-meta">
+            <div>Tomorrow</div>
+            <div data-next-full-date>15 April</div>
+          </div>
+        </div>
         <article class="tear-page">
           <div class="tear-top">
-            <div class="tear-note">
-              <span data-label-season-note>For today</span>
-              <span data-label-today>Today</span>
-            </div>
             <div class="tear-date">
               <div class="tear-day" data-day-number>14</div>
               <div>
