@@ -373,16 +373,17 @@
         ? `/en/materials/urban-bathing/#tydzien-${card.id}`
         : `/materialy/kapiele_miejskie/#tydzien-${card.id}`;
       const cardImage = `/materialy/kapiele_miejskie/${card.img}`;
-      const cardTitle = `${lang === "en" ? "Week" : "Tydzień"} ${card.id}: ${card.title}`;
+      const cardTitle = card.title;
+      const cardAriaLabel = `${lang === "en" ? "Week" : "Tydzień"} ${card.id}: ${card.title}`;
 
       setText("[data-weekly-card-eyebrow]", isFallback ? copy.weeklyCardFallback : copy.weeklyCardEyebrow);
       setText("[data-weekly-card-title]", cardTitle);
       setText("[data-weekly-card-body]", card.body);
       setText("[data-weekly-card-season]", `${card.season} · ${card.month}`);
       setAttrAll("[data-weekly-card-link]", "href", cardUrl);
-      setAttrAll("[data-weekly-card-link]", "aria-label", cardTitle);
+      setAttrAll("[data-weekly-card-link]", "aria-label", cardAriaLabel);
       setAttr("[data-weekly-card-image]", "src", cardImage);
-      setAttr("[data-weekly-card-image]", "alt", cardTitle);
+      setAttr("[data-weekly-card-image]", "alt", cardAriaLabel);
     }
 
   }
