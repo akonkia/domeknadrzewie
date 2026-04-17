@@ -1,5 +1,6 @@
 (function () {
   const TIME_ZONE = "Europe/Warsaw";
+  const DEFAULT_LOCATION = { name: "Wrocław", latitude: 51.1079, longitude: 17.0385, timezone: TIME_ZONE };
 
   const NAMEDAYS = {
     1: [
@@ -47,6 +48,12 @@
       labelWeeklyCard: "Karta uważności tygodnia",
       weeklyCardLink: "Zobacz kartę tygodnia",
       labelHoliday: "Święto",
+      labelSunrise: "Wschód słońca",
+      labelSunset: "Zachód słońca",
+      labelMoonrise: "Wschód księżyca",
+      labelMoonset: "Zachód księżyca",
+      labelMoonPhase: "Księżyc",
+      labelZodiac: "Znak zodiaku",
       labelDailyThought: "Myśl na dziś",
       labelToday: "Dziś",
       labelTomorrow: "Jutro",
@@ -59,6 +66,9 @@
       weekWord: "tydzień",
       dayWord: "dzień",
       noNameday: "Imieniny niedostępne",
+      moonNeverRises: "Księżyc nie wschodzi",
+      moonNeverSets: "Księżyc nie zachodzi",
+      allDay: "Przez całą dobę",
       nextLine: (nameday) => `Jutro: ${nameday}`,
       weekRangeLine: (from, to) => `${from} – ${to}`,
       dateLocale: "pl-PL",
@@ -70,6 +80,12 @@
       labelWeeklyCard: "Mindfulness card of the week",
       weeklyCardLink: "Open weekly card",
       labelHoliday: "Holiday",
+      labelSunrise: "Sunrise",
+      labelSunset: "Sunset",
+      labelMoonrise: "Moonrise",
+      labelMoonset: "Moonset",
+      labelMoonPhase: "Moon",
+      labelZodiac: "Zodiac sign",
       labelDailyThought: "Thought for today",
       labelToday: "Today",
       labelTomorrow: "Tomorrow",
@@ -82,6 +98,9 @@
       weekWord: "week",
       dayWord: "day",
       noNameday: "Name day unavailable",
+      moonNeverRises: "Moon does not rise",
+      moonNeverSets: "Moon does not set",
+      allDay: "All day",
       nextLine: (nameday) => `Tomorrow: ${nameday}`,
       weekRangeLine: (from, to) => `${from} – ${to}`,
       dateLocale: "en-GB",
@@ -216,6 +235,19 @@
     }).format(date);
   }
 
+  function formatTime(date, locale, timezone) {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+      return "—";
+    }
+
+    return new Intl.DateTimeFormat(locale, {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: timezone
+    }).format(date);
+  }
+
   function getIsoWeekInfo(date) {
     const current = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
     const day = current.getUTCDay() || 7;
@@ -331,6 +363,113 @@
     });
   }
 
+  function getLocalDateParts(date, timezone) {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: timezone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).formatToParts(date);
+    const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return { year: Number(map.year), month: Number(map.month), day: Number(map.day) };
+  }
+
+  function buildLocalNoon(date, timezone) {
+    const { year, month, day } = getLocalDateParts(date, timezone);
+    return new Date(year, month - 1, day, 12, 0, 0, 0);
+  }
+
+  function moonPhaseFromIllumination(phaseValue, lang) {
+    const phases = lang === "en"
+      ? ["New moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full moon", "Waning gibbous", "Last quarter", "Waning crescent"]
+      : ["Nów", "Przybywający sierp", "Pierwsza kwadra", "Przybywający garb", "Pełnia", "Ubywający garb", "Ostatnia kwadra", "Ubywający sierp"];
+
+    if (typeof phaseValue !== "number") return null;
+    if (phaseValue < 0.0625 || phaseValue >= 0.9375) return phases[0];
+    if (phaseValue < 0.1875) return phases[1];
+    if (phaseValue < 0.3125) return phases[2];
+    if (phaseValue < 0.4375) return phases[3];
+    if (phaseValue < 0.5625) return phases[4];
+    if (phaseValue < 0.6875) return phases[5];
+    if (phaseValue < 0.8125) return phases[6];
+    return phases[7];
+  }
+
+  function getAstronomyForDay(date, latitude, longitude, timezone) {
+    if (!window.SunCalc) return null;
+
+    const localNoon = buildLocalNoon(date, timezone);
+    const prevDayNoon = new Date(localNoon.getTime() - 24 * 60 * 60 * 1000);
+    const nextDayNoon = new Date(localNoon.getTime() + 24 * 60 * 60 * 1000);
+
+    const sunTimes = window.SunCalc.getTimes(localNoon, latitude, longitude);
+    const moonToday = window.SunCalc.getMoonTimes(localNoon, latitude, longitude);
+    const moonPrev = window.SunCalc.getMoonTimes(prevDayNoon, latitude, longitude);
+    const moonNext = window.SunCalc.getMoonTimes(nextDayNoon, latitude, longitude);
+    const illumination = window.SunCalc.getMoonIllumination(localNoon);
+
+    const pickNearest = (events) => {
+      const valid = events
+        .filter(Boolean)
+        .filter((eventDate) => eventDate instanceof Date && !Number.isNaN(eventDate.getTime()))
+        .sort((a, b) => Math.abs(a - date) - Math.abs(b - date));
+      return valid[0] || null;
+    };
+
+    return {
+      sunrise: sunTimes.sunrise || null,
+      sunset: sunTimes.sunset || null,
+      moonrise: pickNearest([moonToday.rise, moonPrev.rise, moonNext.rise]),
+      moonset: pickNearest([moonToday.set, moonPrev.set, moonNext.set]),
+      moonAlwaysUp: Boolean(moonToday.alwaysUp),
+      moonAlwaysDown: Boolean(moonToday.alwaysDown),
+      moonPhaseValue: illumination?.phase ?? null
+    };
+  }
+
+  function getZodiacSign(date, lang) {
+    const month = date.getUTCMonth() + 1;
+    const day = date.getUTCDate();
+    const signs = lang === "en"
+      ? [
+          { start: [1, 20], name: "Aquarius" },
+          { start: [2, 19], name: "Pisces" },
+          { start: [3, 21], name: "Aries" },
+          { start: [4, 20], name: "Taurus" },
+          { start: [5, 21], name: "Gemini" },
+          { start: [6, 21], name: "Cancer" },
+          { start: [7, 23], name: "Leo" },
+          { start: [8, 23], name: "Virgo" },
+          { start: [9, 23], name: "Libra" },
+          { start: [10, 23], name: "Scorpio" },
+          { start: [11, 22], name: "Sagittarius" },
+          { start: [12, 22], name: "Capricorn" }
+        ]
+      : [
+          { start: [1, 20], name: "Wodnik" },
+          { start: [2, 19], name: "Ryby" },
+          { start: [3, 21], name: "Baran" },
+          { start: [4, 20], name: "Byk" },
+          { start: [5, 21], name: "Bliźnięta" },
+          { start: [6, 21], name: "Rak" },
+          { start: [7, 23], name: "Lew" },
+          { start: [8, 23], name: "Panna" },
+          { start: [9, 23], name: "Waga" },
+          { start: [10, 23], name: "Skorpion" },
+          { start: [11, 22], name: "Strzelec" },
+          { start: [12, 22], name: "Koziorożec" }
+        ];
+
+    for (let i = signs.length - 1; i >= 0; i -= 1) {
+      const [startMonth, startDay] = signs[i].start;
+      if (month > startMonth || (month === startMonth && day >= startDay)) {
+        return signs[i].name;
+      }
+    }
+
+    return signs[signs.length - 1].name;
+  }
+
   function getEasterSunday(year) {
     const a = year % 19;
     const b = Math.floor(year / 100);
@@ -443,6 +582,12 @@
     setText("[data-label-week-range]", copy.labelWeekRange);
     setText("[data-label-day-of-year]", copy.labelDayOfYear);
     setText("[data-label-holiday]", copy.labelHoliday);
+    setText("[data-label-sunrise]", copy.labelSunrise);
+    setText("[data-label-sunset]", copy.labelSunset);
+    setText("[data-label-moonrise]", copy.labelMoonrise);
+    setText("[data-label-moonset]", copy.labelMoonset);
+    setText("[data-label-moon-phase]", copy.labelMoonPhase);
+    setText("[data-label-zodiac]", copy.labelZodiac);
     setText("[data-label-tradition]", copy.labelPolishTradition);
     setText("[data-label-weekly-card]", copy.labelWeeklyCard);
     setText("[data-weekly-card-link-text]", copy.weeklyCardLink);
@@ -470,6 +615,26 @@
       setText("[data-holiday]", holiday);
     }
     setClassToggle(".tear-page", "is-free-day", isFreeDay);
+
+    const astronomy = getAstronomyForDay(today, DEFAULT_LOCATION.latitude, DEFAULT_LOCATION.longitude, DEFAULT_LOCATION.timezone);
+    if (astronomy) {
+      setText("[data-sunrise]", formatTime(astronomy.sunrise, copy.dateLocale, DEFAULT_LOCATION.timezone));
+      setText("[data-sunset]", formatTime(astronomy.sunset, copy.dateLocale, DEFAULT_LOCATION.timezone));
+      setText("[data-moon-phase]", moonPhaseFromIllumination(astronomy.moonPhaseValue, lang) || "—");
+
+      if (astronomy.moonAlwaysUp) {
+        setText("[data-moonrise]", copy.allDay);
+        setText("[data-moonset]", copy.moonNeverSets);
+      } else if (astronomy.moonAlwaysDown) {
+        setText("[data-moonrise]", copy.moonNeverRises);
+        setText("[data-moonset]", copy.moonNeverSets);
+      } else {
+        setText("[data-moonrise]", astronomy.moonrise ? formatTime(astronomy.moonrise, copy.dateLocale, DEFAULT_LOCATION.timezone) : "—");
+        setText("[data-moonset]", astronomy.moonset ? formatTime(astronomy.moonset, copy.dateLocale, DEFAULT_LOCATION.timezone) : "—");
+      }
+    }
+
+    setText("[data-zodiac]", getZodiacSign(today, lang));
 
     const weeklyCardResult = getWeeklyCardForDate(lang, isoWeek);
     if (weeklyCardResult) {

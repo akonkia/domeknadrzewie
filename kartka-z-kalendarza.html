@@ -9,6 +9,7 @@
     content="Dzienna kartka z kalendarza z imieninami, numerem tygodnia roku i przypomnieniem, jak biegnie rytm serii kart."
   />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js" defer></script>
   <script src="/assets/js/cards-data.js" defer></script>
   <script src="/assets/js/day-calendar.js" defer></script>
   <style>
@@ -411,6 +412,12 @@
       grid-column: 1 / -1;
     }
 
+    .astronomy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
     .week-band {
       display: grid;
       gap: 6px;
@@ -457,6 +464,11 @@
       color: #365042;
     }
 
+    .fact-value.small {
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
     .tear-page.is-free-day .fact-value.number,
     .tear-page.is-free-day .fact-value,
     .tear-page.is-free-day .tear-full-date {
@@ -492,6 +504,10 @@
       }
 
       .fact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .astronomy-grid {
         grid-template-columns: 1fr;
       }
 
@@ -593,6 +609,33 @@
               <div class="fact">
                 <div class="fact-label" data-label-day-of-year>Dzień roku</div>
                 <div class="fact-value number" data-day-of-year>104</div>
+              </div>
+            </div>
+
+            <div class="astronomy-grid">
+              <div class="fact">
+                <div class="fact-label" data-label-sunrise>Wschód słońca</div>
+                <div class="fact-value small" data-sunrise>06:00</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label" data-label-sunset>Zachód słońca</div>
+                <div class="fact-value small" data-sunset>19:30</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label" data-label-zodiac>Znak zodiaku</div>
+                <div class="fact-value small" data-zodiac>Baran</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label" data-label-moon-phase>Księżyc</div>
+                <div class="fact-value small" data-moon-phase>Pełnia</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label" data-label-moonrise>Wschód księżyca</div>
+                <div class="fact-value small" data-moonrise>21:10</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label" data-label-moonset>Zachód księżyca</div>
+                <div class="fact-value small" data-moonset>06:12</div>
               </div>
             </div>
           </div>
