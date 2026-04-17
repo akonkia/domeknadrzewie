@@ -196,7 +196,7 @@
     .paper-stack {
       position: relative;
       padding-top: 4px;
-      padding-bottom: 26px;
+      padding-bottom: 72px;
     }
 
     .paper-stack::before,
@@ -221,7 +221,7 @@
 
     .paper-stack::after {
       top: 10px;
-      bottom: 18px;
+      bottom: 30px;
       left: 12px;
       right: 12px;
       transform: rotate(1.1deg);
@@ -231,21 +231,22 @@
 
     .next-peek {
       position: absolute;
-      left: 22px;
-      right: 22px;
-      top: 16px;
-      bottom: 8px;
+      left: 24px;
+      right: 24px;
+      top: 22px;
+      bottom: 0;
       border-radius: 28px;
-      background: rgba(255, 252, 247, 0.9);
+      background: rgba(255, 252, 247, 0.94);
       border: 1px solid rgba(108, 84, 53, 0.08);
       box-shadow: 0 14px 28px rgba(83, 59, 33, 0.06);
       z-index: 0;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      padding: 18px 24px 12px;
-      color: rgba(61, 73, 58, 0.62);
+      padding: 22px 24px 18px;
+      color: rgba(61, 73, 58, 0.74);
       overflow: hidden;
+      transition: transform 0.34s ease, box-shadow 0.34s ease;
     }
 
     .next-peek::before {
@@ -293,6 +294,7 @@
     .tear-page {
       position: relative;
       z-index: 1;
+      margin-bottom: 30px;
       border-radius: 28px;
       overflow: hidden;
       background: rgba(255, 251, 245, 0.9);
@@ -300,20 +302,26 @@
       box-shadow: 0 24px 48px rgba(83, 59, 33, 0.12);
       backdrop-filter: blur(10px);
       transition: transform 0.24s ease, box-shadow 0.24s ease;
+      transform-origin: top left;
     }
 
     @media (hover: hover) and (pointer: fine) {
       .paper-stack:hover .tear-page {
-        transform: translateY(-4px) rotate(-0.35deg);
-        box-shadow: 0 30px 54px rgba(83, 59, 33, 0.16);
+        transform: translate3d(34px, -18px, 0) rotate(-3.2deg);
+        box-shadow: 0 34px 60px rgba(83, 59, 33, 0.2);
+      }
+
+      .paper-stack:hover .next-peek {
+        transform: translateY(4px);
+        box-shadow: 0 18px 32px rgba(83, 59, 33, 0.08);
       }
 
       .paper-stack:hover::before {
-        transform: rotate(-1deg) translateY(2px);
+        transform: rotate(-1.2deg) translate(-8px, 10px);
       }
 
       .paper-stack:hover::after {
-        transform: rotate(0.8deg) translateY(1px);
+        transform: rotate(0.9deg) translate(-4px, 6px);
       }
     }
 
@@ -469,7 +477,7 @@
 
     @media (max-width: 640px) {
       .paper-stack {
-        padding-bottom: 14px;
+        padding-bottom: 36px;
       }
 
       .paper-stack::before,
@@ -481,7 +489,12 @@
       .next-peek {
         left: 14px;
         right: 14px;
-        padding: 14px 16px 10px;
+        top: 18px;
+        padding: 14px 16px 12px;
+      }
+
+      .tear-page {
+        margin-bottom: 16px;
       }
 
       .next-peek-meta {
