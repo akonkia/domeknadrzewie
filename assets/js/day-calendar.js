@@ -395,6 +395,19 @@
     return phases[7];
   }
 
+  function moonPhaseFromDate(date, lang) {
+    const phases = lang === "en"
+      ? ["New moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full moon", "Waning gibbous", "Last quarter", "Waning crescent"]
+      : ["Nów", "Przybywający sierp", "Pierwsza kwadra", "Przybywający garb", "Pełnia", "Ubywający garb", "Ostatnia kwadra", "Ubywający sierp"];
+
+    const knownNewMoon = new Date("2026-01-18T00:00:00Z");
+    const synodicMonth = 29.53058867;
+    const days = (date - knownNewMoon) / 86400000;
+    const moonAge = ((days % synodicMonth) + synodicMonth) % synodicMonth;
+    const index = Math.floor((moonAge / synodicMonth) * 8) % 8;
+    return phases[index];
+  }
+
   function getAstronomyForDay(date, latitude, longitude, timezone) {
     if (!window.SunCalc) return null;
 
@@ -620,7 +633,7 @@
     if (astronomy) {
       setText("[data-sunrise]", formatTime(astronomy.sunrise, copy.dateLocale, DEFAULT_LOCATION.timezone));
       setText("[data-sunset]", formatTime(astronomy.sunset, copy.dateLocale, DEFAULT_LOCATION.timezone));
-      setText("[data-moon-phase]", moonPhaseFromIllumination(astronomy.moonPhaseValue, lang) || "—");
+      setText("[data-moon-phase]", moonPhaseFromIllumination(astronomy.moonPhaseValue, lang) || moonPhaseFromDate(today, lang));
 
       if (astronomy.moonAlwaysUp) {
         setText("[data-moonrise]", copy.allDay);
@@ -632,6 +645,12 @@
         setText("[data-moonrise]", astronomy.moonrise ? formatTime(astronomy.moonrise, copy.dateLocale, DEFAULT_LOCATION.timezone) : "—");
         setText("[data-moonset]", astronomy.moonset ? formatTime(astronomy.moonset, copy.dateLocale, DEFAULT_LOCATION.timezone) : "—");
       }
+    } else {
+      setText("[data-sunrise]", "—");
+      setText("[data-sunset]", "—");
+      setText("[data-moonrise]", "—");
+      setText("[data-moonset]", "—");
+      setText("[data-moon-phase]", moonPhaseFromDate(today, lang));
     }
 
     setText("[data-zodiac]", getZodiacSign(today, lang));

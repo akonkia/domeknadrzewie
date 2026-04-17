@@ -1028,19 +1028,19 @@
       return phases[index];
     }
 
-    function moonPhaseFromIllumination(phaseValue) {
+    function moonPhaseFromIllumination(phaseValue, illuminationFraction) {
       const phases = LANG === 'en'
         ? ['New moon','Waxing crescent','First quarter','Waxing gibbous','Full moon','Waning gibbous','Last quarter','Waning crescent']
         : ['Nów','Przybywający sierp','Pierwsza kwadra','Przybywający garb','Pełnia','Ubywający garb','Ostatnia kwadra','Ubywający sierp'];
 
       if (typeof phaseValue !== 'number') return null;
-      if (phaseValue < 0.0625 || phaseValue >= 0.9375) return phases[0];
-      if (phaseValue < 0.1875) return phases[1];
-      if (phaseValue < 0.3125) return phases[2];
-      if (phaseValue < 0.4375) return phases[3];
-      if (phaseValue < 0.5625) return phases[4];
-      if (phaseValue < 0.6875) return phases[5];
-      if (phaseValue < 0.8125) return phases[6];
+      if (typeof illuminationFraction === 'number' && illuminationFraction <= 0.02) return phases[0];
+      if (typeof illuminationFraction === 'number' && illuminationFraction >= 0.98) return phases[4];
+      if (phaseValue >= 0.22 && phaseValue < 0.28) return phases[2];
+      if (phaseValue >= 0.72 && phaseValue < 0.78) return phases[6];
+      if (phaseValue < 0.22) return phases[1];
+      if (phaseValue < 0.5) return phases[3];
+      if (phaseValue < 0.72) return phases[5];
       return phases[7];
     }
 
@@ -1057,7 +1057,7 @@
       const moonPrev = window.SunCalc.getMoonTimes(prevDayNoon, latitude, longitude);
       const moonNext = window.SunCalc.getMoonTimes(nextDayNoon, latitude, longitude);
 
-      const illumination = window.SunCalc.getMoonIllumination(localNoon);
+      const illumination = window.SunCalc.getMoonIllumination(date);
 
       const pickNearest = (events) => {
         const valid = events
@@ -1077,7 +1077,8 @@
         moonset,
         moonAlwaysUp: Boolean(moonToday.alwaysUp),
         moonAlwaysDown: Boolean(moonToday.alwaysDown),
-        moonPhaseValue: illumination?.phase ?? null
+        moonPhaseValue: illumination?.phase ?? null,
+        moonIlluminationFraction: illumination?.fraction ?? null
       };
     }
 
@@ -1654,7 +1655,7 @@
       sunriseTimeEl.textContent = sunriseDate ? formatMoonEvent(sunriseDate, timezone) : '—';
       sunsetTimeEl.textContent = sunsetDate ? formatMoonEvent(sunsetDate, timezone) : '—';
       moonPhaseEl.textContent = astronomy?.moonPhaseValue != null
-        ? moonPhaseFromIllumination(astronomy.moonPhaseValue)
+        ? moonPhaseFromIllumination(astronomy.moonPhaseValue, astronomy.moonIlluminationFraction)
         : moonPhaseFromDate(currentDate);
 
       if (astronomy?.moonAlwaysUp) {
