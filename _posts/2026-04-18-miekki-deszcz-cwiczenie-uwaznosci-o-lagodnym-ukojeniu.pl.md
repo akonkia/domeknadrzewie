@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "Miękki deszcz: ćwiczenie uważności o łagodnym ukojen iu (tydzień 16)"
+title: "Miękki deszcz: ćwiczenie uważności o łagodnym ukojeniu (tydzień 16)"
 date: 2026-04-18
 lang: pl
+permalink: /pl/miekki-deszcz-cwiczenie-uwaznosci-o-lagodnym-ukojeniu/
 translation_id: soft-rain-2026
-cover: /assets/img/wiosna-kwiecien-tydzien-16-miekki-deszcz-cwiczenie-uwaznosci-16A.png
+cover: /materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-16-miekki-deszcz-cwiczenie-uwaznosci-16A.png
 cover_alt: Miękki deszcz — ćwiczenie uważności inspirowane deszczem
 excerpt: "Ćwiczenie uważności na wiosnę inspirowane deszczem i wodą. Zobacz, jak miękki deszcz może stać się chwilą ukojenia, wyciszenia i łagodnego powrotu do siebie."
+description: "Miękki deszcz to wiosenne ćwiczenie uważności inspirowane deszczem i wodą. Zatrzymaj się przy rytmie kropli, znajdź łagodne ukojenie i daj sobie chwilę spokojnego oddechu."
 tags:
   - miękki deszcz
   - uważność
@@ -15,6 +17,7 @@ tags:
   - wiosna
   - kontakt z naturą
   - miejskie kąpiele leśne
+image: /materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-16-miekki-deszcz-cwiczenie-uwaznosci-16A.png
 ---
 
 Wiosenny deszcz nie zawsze zachęca do wyjścia. Czasem kojarzy się z pośpiechem, mokrymi rękawami i koniecznością schowania się pod dachem. A jednak właśnie w takich chwilach można znaleźć coś bardzo cennego: **łagodne ukojenie**, które nie przychodzi gwałtownie, tylko osiada powoli — jak krople na szybie, liściach albo brzegu parasola.

@@ -4,9 +4,11 @@ title: "The Soft Rain: a mindfulness exercise on gentle nourishment (week 16)"
 date: 2026-04-18
 lang: en
 translation_id: soft-rain-2026
-cover: /assets/img/wiosna-kwiecien-tydzien-16-miekki-deszcz-cwiczenie-uwaznosci-16A.png
+permalink: /en/the-soft-rain-a-mindfulness-exercise-on-gentle-nourishment/
+cover: /materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-16-miekki-deszcz-cwiczenie-uwaznosci-16A.png
 cover_alt: The Soft Rain — a mindfulness exercise inspired by rain
 excerpt: "A spring mindfulness exercise inspired by rain and water. Discover how soft rain can become a moment of gentle nourishment, calm, and a quiet return to yourself."
+description: "The Soft Rain is a spring mindfulness exercise inspired by rain and water. Pause with the rhythm of falling drops, notice what restores you quietly, and return to yourself gently."
 tags:
   - soft rain
   - mindfulness
@@ -15,6 +17,7 @@ tags:
   - spring mindfulness
   - nature connection
   - urban forest bathing
+image: /materialy/kapiele_miejskie/wiosna-kwiecien-tydzien-16-miekki-deszcz-cwiczenie-uwaznosci-16A.png
 ---
 
 Spring rain does not always feel inviting. Sometimes it means damp sleeves, grey skies, and the urge to hurry indoors. And yet, these very moments can hold something precious: a form of **gentle nourishment** that does not arrive dramatically, but settles softly — like drops on glass, leaves, the curve of an umbrella, or the rim of a bathtub.
