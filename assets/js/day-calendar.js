@@ -54,6 +54,7 @@
       labelMoonset: "🌘 Zachód księżyca",
       labelMoonPhase: "Księżyc",
       labelZodiac: "Znak zodiaku",
+      astronomyLocation: (name) => `Dane astronomiczne dla ${name}.`,
       labelDailyThought: "Myśl na dziś",
       labelToday: "Dziś",
       labelTomorrow: "Jutro",
@@ -86,6 +87,7 @@
       labelMoonset: "🌘 Moonset",
       labelMoonPhase: "Moon",
       labelZodiac: "Zodiac sign",
+      astronomyLocation: (name) => `Astronomy times for ${name}.`,
       labelDailyThought: "Thought for today",
       labelToday: "Today",
       labelTomorrow: "Tomorrow",
@@ -379,6 +381,19 @@
     return new Date(year, month - 1, day, 12, 0, 0, 0);
   }
 
+  function isSameLocalDate(date, targetDate, timezone) {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+      return false;
+    }
+
+    const current = getLocalDateParts(date, timezone);
+    const target = getLocalDateParts(targetDate, timezone);
+
+    return current.year === target.year
+      && current.month === target.month
+      && current.day === target.day;
+  }
+
   function moonPhaseFromIllumination(phaseValue, lang) {
     const phases = lang === "en"
       ? ["New moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full moon", "Waning gibbous", "Last quarter", "Waning crescent"]
@@ -421,19 +436,20 @@
     const moonNext = window.SunCalc.getMoonTimes(nextDayNoon, latitude, longitude);
     const illumination = window.SunCalc.getMoonIllumination(localNoon);
 
-    const pickNearest = (events) => {
+    const pickForSameLocalDate = (events) => {
       const valid = events
         .filter(Boolean)
         .filter((eventDate) => eventDate instanceof Date && !Number.isNaN(eventDate.getTime()))
-        .sort((a, b) => Math.abs(a - date) - Math.abs(b - date));
+        .filter((eventDate) => isSameLocalDate(eventDate, localNoon, timezone))
+        .sort((a, b) => a - b);
       return valid[0] || null;
     };
 
     return {
       sunrise: sunTimes.sunrise || null,
       sunset: sunTimes.sunset || null,
-      moonrise: pickNearest([moonToday.rise, moonPrev.rise, moonNext.rise]),
-      moonset: pickNearest([moonToday.set, moonPrev.set, moonNext.set]),
+      moonrise: pickForSameLocalDate([moonToday.rise, moonPrev.rise, moonNext.rise]),
+      moonset: pickForSameLocalDate([moonToday.set, moonPrev.set, moonNext.set]),
       moonAlwaysUp: Boolean(moonToday.alwaysUp),
       moonAlwaysDown: Boolean(moonToday.alwaysDown),
       moonPhaseValue: illumination?.phase ?? null
@@ -652,6 +668,7 @@
       setText("[data-moonset]", "—");
       setText("[data-moon-phase]", moonPhaseFromDate(today, lang));
     }
+    setText("[data-astronomy-location]", copy.astronomyLocation(DEFAULT_LOCATION.name));
 
     setText("[data-zodiac]", getZodiacSign(today, lang));
 
