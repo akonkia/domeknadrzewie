@@ -415,8 +415,18 @@
     .astronomy-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-areas:
+        "sunrise sunset moonphase"
+        "moonrise moonset zodiac";
       gap: 14px;
     }
+
+    .fact-astro-sunrise { grid-area: sunrise; }
+    .fact-astro-sunset { grid-area: sunset; }
+    .fact-astro-moonrise { grid-area: moonrise; }
+    .fact-astro-moonset { grid-area: moonset; }
+    .fact-astro-moonphase { grid-area: moonphase; }
+    .fact-astro-zodiac { grid-area: zodiac; }
 
     .week-band {
       display: grid;
@@ -613,27 +623,27 @@
             </div>
 
             <div class="astronomy-grid">
-              <div class="fact">
+              <div class="fact fact-astro-sunrise">
                 <div class="fact-label" data-label-sunrise>Sunrise</div>
                 <div class="fact-value small" data-sunrise>—</div>
               </div>
-              <div class="fact">
+              <div class="fact fact-astro-sunset">
                 <div class="fact-label" data-label-sunset>Sunset</div>
                 <div class="fact-value small" data-sunset>—</div>
               </div>
-              <div class="fact">
+              <div class="fact fact-astro-moonrise">
                 <div class="fact-label" data-label-moonrise>Moonrise</div>
                 <div class="fact-value small" data-moonrise>—</div>
               </div>
-              <div class="fact">
+              <div class="fact fact-astro-moonset">
                 <div class="fact-label" data-label-moonset>Moonset</div>
                 <div class="fact-value small" data-moonset>—</div>
               </div>
-              <div class="fact">
+              <div class="fact fact-astro-moonphase">
                 <div class="fact-label" data-label-moon-phase>Moon</div>
                 <div class="fact-value small" data-moon-phase>—</div>
               </div>
-              <div class="fact">
+              <div class="fact fact-astro-zodiac">
                 <div class="fact-label" data-label-zodiac>Zodiac sign</div>
                 <div class="fact-value small" data-zodiac>Aries</div>
               </div>
