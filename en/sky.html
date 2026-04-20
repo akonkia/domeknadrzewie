@@ -949,6 +949,15 @@
       return new Date(year, month - 1, day, 12, 0, 0, 0);
     }
 
+    function isSameLocalDate(date, targetDate, timezone) {
+      if (!(date instanceof Date) || Number.isNaN(date.getTime())) return false;
+      const current = getLocalDateParts(date, timezone);
+      const target = getLocalDateParts(targetDate, timezone);
+      return current.year === target.year
+        && current.month === target.month
+        && current.day === target.day;
+    }
+
     function formatMoonEvent(date, timezone) {
       if (!(date instanceof Date) || Number.isNaN(date.getTime())) return '—';
       return new Intl.DateTimeFormat(LANG === 'en' ? 'en-GB' : 'pl-PL', {
@@ -1060,16 +1069,17 @@
 
       const illumination = window.SunCalc.getMoonIllumination(date);
 
-      const pickNearest = (events) => {
+      const pickForSameLocalDate = (events) => {
         const valid = events
           .filter(Boolean)
           .filter(d => d instanceof Date && !Number.isNaN(d.getTime()))
-          .sort((a, b) => Math.abs(a - date) - Math.abs(b - date));
+          .filter(d => isSameLocalDate(d, localNoon, timezone))
+          .sort((a, b) => a - b);
         return valid[0] || null;
       };
 
-      const moonrise = pickNearest([moonToday.rise, moonPrev.rise, moonNext.rise]);
-      const moonset = pickNearest([moonToday.set, moonPrev.set, moonNext.set]);
+      const moonrise = pickForSameLocalDate([moonToday.rise, moonPrev.rise, moonNext.rise]);
+      const moonset = pickForSameLocalDate([moonToday.set, moonPrev.set, moonNext.set]);
 
       return {
         sunrise: sunTimes.sunrise || null,
