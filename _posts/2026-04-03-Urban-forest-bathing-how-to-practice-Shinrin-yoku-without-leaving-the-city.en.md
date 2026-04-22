@@ -4,6 +4,7 @@ title: "Urban Forest Bathing: How to Practice Shinrin-yoku Without Leaving the C
 date: 2026-04-03
 translation_id: urban-forest-bathing-2026
 lang: en
+permalink: /blog/2026/04/03/Urban-forest-bathing-how-to-practice-Shinrin-yoku-without-leaving-the-city/
 cover: /assets/img/fallback/fallback-forest-1.jpg
 cover_alt: Leśne światło w mieście
 excerpt: "Discover how to tap into the therapeutic power of nature in the heart of the city. A guide to urban Shinrin-yoku with free mindfulness cards."

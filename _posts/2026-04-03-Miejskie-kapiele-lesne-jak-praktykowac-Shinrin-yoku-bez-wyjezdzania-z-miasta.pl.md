@@ -2,6 +2,8 @@
 layout: post
 title: "Miejskie kąpiele leśne: Jak praktykować Shinrin-yoku bez wyjeżdżania z miasta?"
 date: 2026-04-03
+translation_id: urban-forest-bathing-2026
+permalink: /blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/
 cover: /assets/img/fallback/fallback-forest-1.jpg
 cover_alt: Leśne światło w mieście
 excerpt: Odkryj, jak czerpać z terapeutycznej mocy natury w samym sercu miasta. Przewodnik po miejskim Shinrin-yoku wraz z darmowymi kartami uważności.
