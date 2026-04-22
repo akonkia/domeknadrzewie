@@ -632,21 +632,29 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/site-nav.css">
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="/en/" aria-label="Project: Tree House">
-        <div class="brand-mark">
-          <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project logo">
-        </div>
-        <div>
-          <div class="brand-title">Project: Tree House</div>
-          <div class="brand-subtitle">An educational and social project inspired by nature.</div>
-        </div>
-      </a>
+      <div class="nav-head">
+        <a class="brand" href="/en/" aria-label="Project: Tree House">
+          <div class="brand-mark">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project logo">
+          </div>
+          <div>
+            <div class="brand-title">Project: Tree House</div>
+            <div class="brand-subtitle">An educational and community project inspired by nature.</div>
+          </div>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
-      <nav class="nav-links" aria-label="Navigation">
+      <nav class="nav-links" id="site-menu" aria-label="Navigation">
         <a href="/en/">Start Here</a>
         <div class="nav-item-with-submenu">
           <a href="/en/materials/" class="current">Materials</a>
@@ -776,5 +784,23 @@
       </aside>
     </div>
   </main>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-links');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
 </body>
 </html>

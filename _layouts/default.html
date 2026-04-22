@@ -3,6 +3,7 @@
 <head>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/site-nav.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if page.title %}{{ page.title }} | {% endif %}Domek na Drzewie</title>
@@ -28,8 +29,8 @@
             <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo" />
           </span>
           <span class="brand-text">
-            <span class="brand-title">{% if current_lang == 'en' %}The Tree House Project{% else %}Projekt: Domek na Drzewie{% endif %}</span>
-            <span class="brand-subtitle">Blog</span>
+            <span class="brand-title">{% if current_lang == 'en' %}Project: Tree House{% else %}Projekt: Domek na Drzewie{% endif %}</span>
+            <span class="brand-subtitle">{% if current_lang == 'en' %}An educational and community project inspired by nature.{% else %}Projekt edukacyjno-społeczny inspirowany naturą.{% endif %}</span>
           </span>
         </a>
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
@@ -42,7 +43,7 @@
       <nav class="nav-links" id="site-menu" aria-label="Navigation">
         <a href="{% if current_lang == 'en' %}/en/{% else %}/{% endif %}">
           <span class="nav-label">
-            <span class="nav-pl">{% if current_lang == 'en' %}Home{% else %}Strona główna{% endif %}</span>
+            <span class="nav-pl">{% if current_lang == 'en' %}Start Here{% else %}Zacznij tutaj{% endif %}</span>
           </span>
         </a>
 
@@ -91,7 +92,7 @@
           {% for trans in translations %}
             {% assign trans_lang = trans.lang | join: "" | strip %}
             {% if trans_lang != current_lang %}
-              <a href="{{ trans.url | relative_url }}" class="lang-switch" style="background: rgba(103, 135, 96, 0.1); font-weight: bold;">
+              <a href="{{ trans.url | relative_url }}" class="lang-link">
                 <span class="nav-label">
                   <span class="nav-pl">{% if trans_lang == 'en' %}English{% else %}Polski{% endif %}</span>
                 </span>
@@ -101,11 +102,11 @@
         {% else %}
           {% comment %} Fallback for pages without IDs - ensures proper label and link {% endcomment %}
           {% if current_lang == 'en' %}
-            <a href="/blog/" class="lang-switch" style="background: rgba(103, 135, 96, 0.1);">
+            <a href="/blog/" class="lang-link">
               <span class="nav-label"><span class="nav-pl">Polski</span></span>
             </a>
           {% else %}
-            <a href="/blog/en/" class="lang-switch" style="background: rgba(103, 135, 96, 0.1);">
+            <a href="/blog/en/" class="lang-link">
               <span class="nav-label"><span class="nav-pl">English</span></span>
             </a>
           {% endif %}

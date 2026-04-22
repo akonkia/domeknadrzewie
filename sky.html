@@ -638,39 +638,51 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/site-nav.css">
 </head>
 <body>
-  <nav class="site-nav" aria-label="Główna nawigacja">
-    <a href="/" class="site-brand">
-      <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo Projekt: Domek na Drzewie" class="site-brand-logo">
-      <div class="site-brand-text">
-        <span class="site-brand-title">Projekt: Domek na Drzewie</span>
-        <span class="site-brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</span>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="nav-head">
+        <a class="brand" href="/" aria-label="Projekt: Domek na Drzewie">
+          <div class="brand-mark">
+            <img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo Projektu Domek na Drzewie">
+          </div>
+          <div>
+            <div class="brand-title">Projekt: Domek na Drzewie</div>
+            <div class="brand-subtitle">Projekt edukacyjno-społeczny inspirowany naturą.</div>
+          </div>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-    </a>
 
-    <div class="site-nav-links">
-      <a href="/" class="site-nav-link">Zacznij tutaj</a>
-      <div class="site-nav-item-with-submenu">
-        <a href="/materialy/" class="site-nav-link">Materiały</a>
-        <div class="site-nav-submenu" aria-label="Sekcje materiałów">
-          <a href="/materialy/kapiele_miejskie/">Miejskie kąpiele leśne</a>
-          <a href="/materialy/dla-dzieci/">Dla dzieci</a>
-          <a href="/materialy/interaktywne/">Interaktywne</a>
-          <a href="/kartka-z-kalendarza.html">Kartka z kalendarza</a>
+      <nav class="nav-links" id="site-menu" aria-label="Nawigacja">
+        <a href="/">Zacznij tutaj</a>
+        <div class="nav-item-with-submenu">
+          <a href="/materialy/">Materiały</a>
+          <div class="nav-submenu" aria-label="Sekcje materiałów">
+            <a href="/materialy/kapiele_miejskie/">Miejskie kąpiele leśne</a>
+            <a href="/materialy/dla-dzieci/">Dla dzieci</a>
+            <a href="/materialy/interaktywne/">Interaktywne</a>
+            <a href="/kartka-z-kalendarza.html">Kartka z kalendarza</a>
+          </div>
         </div>
-      </div>
-      <a href="/blog/" class="site-nav-link">Blog</a>
-      <a href="/en/sky.html" class="site-nav-link">English</a>
-      <div class="site-nav-item-with-submenu">
-        <a href="/o-nas.html" class="site-nav-link">O projekcie</a>
-        <div class="site-nav-submenu" aria-label="Strony o projekcie">
+        <a href="/blog/">Blog</a>
+        <a class="lang-link" href="/en/sky.html" lang="en" hreflang="en">English</a>
+        <div class="nav-item-with-submenu">
           <a href="/o-nas.html">O projekcie</a>
-          <a href="/kontakt/">Kontakt</a>
+          <div class="nav-submenu" aria-label="Strony o projekcie">
+            <a href="/o-nas.html">O projekcie</a>
+            <a href="/kontakt/">Kontakt</a>
+          </div>
         </div>
-      </div>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <main class="page-shell">
     <div class="wrap">
@@ -1922,6 +1934,23 @@
     updateLivePositions();
     setInterval(updateLivePositions, 60000);
     setInterval(() => refreshWeather(false), 15 * 60 * 1000);
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-links');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 </body>
 </html>

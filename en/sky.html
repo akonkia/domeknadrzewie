@@ -639,39 +639,51 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/site-nav.css">
 </head>
 <body>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a href="/en/" class="site-brand">
-      <img src="/assets/img/logo.png" alt="Project: Tree House logo" class="site-brand-logo">
-      <div class="site-brand-text">
-        <span class="site-brand-title">Project: Tree House</span>
-        <span class="site-brand-subtitle">A nature-inspired educational and community project.</span>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="nav-head">
+        <a class="brand" href="/en/" aria-label="Project: Tree House">
+          <div class="brand-mark">
+            <img src="/assets/img/logo.png" alt="Project: Tree House logo">
+          </div>
+          <div>
+            <div class="brand-title">Project: Tree House</div>
+            <div class="brand-subtitle">An educational and community project inspired by nature.</div>
+          </div>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-    </a>
 
-    <div class="site-nav-links">
-      <a href="/en/" class="site-nav-link">Start Here</a>
-      <div class="site-nav-item-with-submenu">
-        <a href="/en/materials/" class="site-nav-link">Materials</a>
-        <div class="site-nav-submenu" aria-label="Materials sections">
-          <a href="/en/materials/urban-bathing/">Urban bathing</a>
-          <a href="/en/materials/for-children/">For children</a>
-          <a href="/en/materials/interactive/">Interactive</a>
-          <a href="/en/page-a-day.html">Page-a-day</a>
+      <nav class="nav-links" id="site-menu" aria-label="Navigation">
+        <a href="/en/">Start Here</a>
+        <div class="nav-item-with-submenu">
+          <a href="/en/materials/">Materials</a>
+          <div class="nav-submenu" aria-label="Materials sections">
+            <a href="/en/materials/urban-bathing/">Urban bathing</a>
+            <a href="/en/materials/for-children/">For children</a>
+            <a href="/en/materials/interactive/">Interactive</a>
+            <a href="/en/page-a-day.html">Page-a-day</a>
+          </div>
         </div>
-      </div>
-      <a href="/blog/en/" class="site-nav-link">Blog</a>
-      <a href="/sky.html" class="site-nav-link">Polski</a>
-      <div class="site-nav-item-with-submenu">
-        <a href="/en/about.html" class="site-nav-link">About us</a>
-        <div class="site-nav-submenu" aria-label="About pages">
+        <a href="/blog/en/">Blog</a>
+        <a class="lang-link" href="/sky.html" lang="pl" hreflang="pl">Polski</a>
+        <div class="nav-item-with-submenu">
           <a href="/en/about.html">About us</a>
-          <a href="/en/contact/">Contact</a>
+          <div class="nav-submenu" aria-label="About pages">
+            <a href="/en/about.html">About us</a>
+            <a href="/en/contact/">Contact</a>
+          </div>
         </div>
-      </div>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <main class="page-shell">
     <div class="wrap">
@@ -1923,6 +1935,23 @@
     updateLivePositions();
     setInterval(updateLivePositions, 60000);
     setInterval(() => refreshWeather(false), 15 * 60 * 1000);
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-links');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 </body>
 </html>

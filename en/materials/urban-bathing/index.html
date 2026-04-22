@@ -204,16 +204,27 @@
       .material-visual { max-width: 300px; margin: 0 auto; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/site-nav.css">
 </head>
 <body>
 
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="/en/">
-        <div class="brand-mark"><img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Logo" /></div>
-        <div style="margin-left:10px"><strong>Project: Treehouse</strong></div>
-      </a>
-      <nav class="nav-links">
+      <div class="nav-head">
+        <a class="brand" href="/en/" aria-label="Project: Tree House">
+          <div class="brand-mark"><img src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/img/logo.png" alt="Project: Tree House logo" /></div>
+          <div>
+            <div class="brand-title">Project: Tree House</div>
+            <div class="brand-subtitle">An educational and community project inspired by nature.</div>
+          </div>
+        </a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="nav-links" id="site-menu" aria-label="Navigation">
         <a href="/en/">Start Here</a>
         <div class="nav-item-with-submenu">
           <a href="/en/materials/" class="active">Materials</a>
@@ -401,6 +412,23 @@
 
     window.addEventListener('hashchange', handleRouting);
     window.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('.nav-links');
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = navMenu.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
       initPage();
     });
   </script>
