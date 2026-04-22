@@ -1,6 +1,7 @@
 {% assign cloud_posts = include.posts | default: site.posts %}
 {% assign available_tags = "" | split: "" %}
 {% assign featured_tags = include.featured_tags %}
+{% assign tag_cloud_lang = include.lang | default: "" %}
 {% unless featured_tags %}
   {% assign featured_tags = "" | split: "" %}
 {% endunless %}
@@ -39,7 +40,19 @@
       {% assign tag_count = tag_count | plus: 1 %}
     {% endif %}
   {% endfor %}
+  {% assign tag_url = "" %}
+  {% for tag_page in site.pages %}
+    {% assign tag_page_lang = tag_page.lang | join: "" | strip %}
+    {% if tag_page.tag == tag and tag_page_lang == tag_cloud_lang %}
+      {% assign tag_url = tag_page.url %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% assign should_show_tag = false %}
   {% if tag_count > 1 or featured_tags contains tag or tag == include.current_tag %}
+    {% assign should_show_tag = true %}
+  {% endif %}
+  {% if tag_url != blank and should_show_tag %}
     {% assign visible_tags = visible_tags | push: tag %}
   {% endif %}
 {% endfor %}
@@ -64,20 +77,17 @@
           {% endif %}
         {% endfor %}
         {% assign tag_level = tag_count | times: 4 | divided_by: max_tag_count %}
-        {% assign tag_slug = tag
-          | replace: 'ą', 'a'
-          | replace: 'ć', 'c'
-          | replace: 'ę', 'e'
-          | replace: 'ł', 'l'
-          | replace: 'ń', 'n'
-          | replace: 'ó', 'o'
-          | replace: 'ś', 's'
-          | replace: 'ź', 'z'
-          | replace: 'ż', 'z'
-          | slugify %}
+        {% assign tag_url = "" %}
+        {% for tag_page in site.pages %}
+          {% assign tag_page_lang = tag_page.lang | join: "" | strip %}
+          {% if tag_page.tag == tag and tag_page_lang == tag_cloud_lang %}
+            {% assign tag_url = tag_page.url %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
         <a
           class="blog-tag-cloud-link level-{{ tag_level }}{% if tag == include.current_tag %} is-active{% endif %}"
-          href="{{ include.base_url | append: tag_slug | append: '/' | relative_url }}"
+          href="{{ tag_url | relative_url }}"
           title="{{ tag }} ({{ tag_count }})"
           aria-label="{{ tag }} ({{ tag_count }})"
         >
