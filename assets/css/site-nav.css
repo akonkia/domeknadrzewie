@@ -1,3 +1,11 @@
+:root {
+  --site-nav-sage: #678760;
+  --site-nav-orange: #fb9b27;
+  --site-nav-gold: #fcc15d;
+  --site-nav-text: #243126;
+  --site-nav-muted: #5e675f;
+}
+
 .topbar {
   background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid rgba(36, 49, 38, 0.08);
@@ -14,9 +22,9 @@
   height: 4px;
   background: linear-gradient(
     90deg,
-    var(--orange, #fb9b27),
-    var(--gold, #fcc15d),
-    var(--sage, #678760)
+    var(--site-nav-orange, #fb9b27),
+    var(--site-nav-gold, #fcc15d),
+    var(--site-nav-sage, #678760)
   );
 }
 
@@ -64,14 +72,14 @@
   font-weight: 800;
   letter-spacing: 0.01em;
   line-height: 1.1;
-  color: var(--text, #243126);
+  color: var(--site-nav-text, #243126);
 }
 
 .brand-subtitle {
   font-family: Inter, Arial, Helvetica, sans-serif;
   margin-top: 4px;
   font-size: 0.88rem;
-  color: var(--muted, #5e675f);
+  color: var(--site-nav-muted, #5e675f);
   line-height: 1.3;
 }
 
@@ -91,7 +99,7 @@
   background: transparent;
   cursor: pointer;
   font-family: Inter, Arial, Helvetica, sans-serif;
-  color: var(--text, #243126);
+  color: var(--site-nav-text, #243126);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -154,7 +162,7 @@
   justify-content: center;
   border: 0;
   background: rgba(255, 251, 244, 0.98);
-  color: var(--text, #243126);
+  color: var(--site-nav-text, #243126);
   box-shadow: none;
   white-space: normal;
   text-align: center;
@@ -235,7 +243,7 @@
   width: 22px;
   height: 2.5px;
   border-radius: 999px;
-  background: var(--text, #243126);
+  background: var(--site-nav-text, #243126);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
   transition: transform 0.28s ease, opacity 0.22s ease, width 0.28s ease;
   position: relative;
@@ -273,7 +281,7 @@
 .nav-item-with-submenu:focus-within > a,
 .nav-item-with-submenu > a.active,
 .nav-item-with-submenu > a.current {
-  background: var(--sage, #678760);
+  background: var(--site-nav-sage, #678760);
   color: white;
 }
 
@@ -288,7 +296,7 @@
 .nav-submenu a:focus-visible,
 .nav-submenu a.active {
   background: rgba(103, 135, 96, 0.14);
-  color: var(--text, #243126);
+  color: var(--site-nav-text, #243126);
 }
 
 .nav-links a.lang-switch,
@@ -297,7 +305,7 @@
 .nav-links a.lang-link,
 .nav-links a.lang-link:visited,
 .nav-links a.lang-link:active {
-  background: var(--orange, #fb9b27) !important;
+  background: var(--site-nav-orange, #fb9b27) !important;
   color: white !important;
   font-weight: 800;
 }
