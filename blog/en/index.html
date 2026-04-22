@@ -7,6 +7,7 @@ permalink: /blog/en/
 ---
 
 {% assign months_en = "January|February|March|April|May|June|July|August|September|October|November|December" | split: "|" %}
+{% assign featured_tags = "mindfulness|nature|forest bathing|urban bathing|shinrin-yoku|mindfulness exercise|mindfulness practice|returning to nature|nature in the city|spring|winter|slow living" | split: "|" %}
 {% assign fallback_covers = site.static_files | where_exp: "file", "file.path contains '/assets/img/fallback/'" | sort: "path" %}
 {% assign filtered_posts = "" | split: "" %}
 {% for p in site.posts %}
@@ -15,17 +16,6 @@ permalink: /blog/en/
     {% assign filtered_posts = filtered_posts | push: p %}
   {% endif %}
 {% endfor %}
-{% assign available_tags = "" | split: "" %}
-{% for post in filtered_posts %}
-  {% if post.tags %}
-    {% for tag in post.tags %}
-      {% unless available_tags contains tag %}
-        {% assign available_tags = available_tags | push: tag %}
-      {% endunless %}
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-{% assign available_tags = available_tags | sort %}
 
 <section class="blog-index">
   <div class="blog-intro">
@@ -33,25 +23,15 @@ permalink: /blog/en/
     <p>A timeline of the project: notes, milestones, materials, and slow growth.</p>
   </div>
 
-  {% if available_tags.size > 0 %}
-    <div class="blog-filter-bar" aria-label="Filter posts by tag">
-      <a class="blog-filter-chip" href="{{ '/blog/en/' | relative_url }}">All posts</a>
-      {% for tag in available_tags %}
-        {% assign tag_slug = tag
-          | replace: 'ą', 'a'
-          | replace: 'ć', 'c'
-          | replace: 'ę', 'e'
-          | replace: 'ł', 'l'
-          | replace: 'ń', 'n'
-          | replace: 'ó', 'o'
-          | replace: 'ś', 's'
-          | replace: 'ź', 'z'
-          | replace: 'ż', 'z'
-          | slugify %}
-        <a class="blog-filter-chip" href="{{ '/blog/en/tag/' | append: tag_slug | append: '/' | relative_url }}">{{ tag }}</a>
-      {% endfor %}
-    </div>
-  {% endif %}
+  {% include blog-tag-cloud.html
+    posts=filtered_posts
+    featured_tags=featured_tags
+    label="Themes"
+    all_url='/blog/en/'
+    all_label='All posts'
+    base_url='/blog/en/tag/'
+    aria_label='Filter posts by tag'
+  %}
 
   <div class="blog-layout">
     <div class="post-list">

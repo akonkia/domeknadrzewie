@@ -5,6 +5,11 @@ layout: default
 {% assign months_pl = "stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia" | split: "|" %}
 {% assign months_en = "January|February|March|April|May|June|July|August|September|October|November|December" | split: "|" %}
 {% assign current_tag = page.tag | strip %}
+{% if raw_page_lang == "en" %}
+  {% assign featured_tags = "mindfulness|nature|forest bathing|urban bathing|shinrin-yoku|mindfulness exercise|mindfulness practice|returning to nature|nature in the city|spring|winter|slow living" | split: "|" %}
+{% else %}
+  {% assign featured_tags = "uważność|natura|kąpiele leśne|shinrin-yoku|urban bathing|ćwiczenie uważności|powrót do natury|natura w mieście|wiosna|zima" | split: "|" %}
+{% endif %}
 
 {% assign lang_posts = "" | split: "" %}
 {% for p in site.posts %}
@@ -13,18 +18,6 @@ layout: default
     {% assign lang_posts = lang_posts | push: p %}
   {% endif %}
 {% endfor %}
-
-{% assign available_tags = "" | split: "" %}
-{% for post in lang_posts %}
-  {% if post.tags %}
-    {% for tag in post.tags %}
-      {% unless available_tags contains tag %}
-        {% assign available_tags = available_tags | push: tag %}
-      {% endunless %}
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-{% assign available_tags = available_tags | sort %}
 
 {% assign filtered_posts = "" | split: "" %}
 {% for post in lang_posts %}
@@ -43,33 +36,28 @@ layout: default
     {% endif %}
   </div>
 
-  {% if available_tags.size > 0 %}
-    <div class="blog-filter-bar" aria-label="{% if raw_page_lang == 'en' %}Filter posts by tag{% else %}Filtruj wpisy po tagach{% endif %}">
-      {% if raw_page_lang == "en" %}
-        <a class="blog-filter-chip" href="{{ '/blog/en/' | relative_url }}">All posts</a>
-      {% else %}
-        <a class="blog-filter-chip" href="{{ '/blog/' | relative_url }}">Wszystkie</a>
-      {% endif %}
-      {% for tag in available_tags %}
-        {% assign tag_slug = tag
-          | replace: 'ą', 'a'
-          | replace: 'ć', 'c'
-          | replace: 'ę', 'e'
-          | replace: 'ł', 'l'
-          | replace: 'ń', 'n'
-          | replace: 'ó', 'o'
-          | replace: 'ś', 's'
-          | replace: 'ź', 'z'
-          | replace: 'ż', 'z'
-          | slugify %}
-        {% if raw_page_lang == "en" %}
-          {% assign tag_url = '/blog/en/tag/' | append: tag_slug | append: '/' %}
-        {% else %}
-          {% assign tag_url = '/blog/tag/' | append: tag_slug | append: '/' %}
-        {% endif %}
-        <a class="blog-filter-chip{% if tag == current_tag %} is-active{% endif %}" href="{{ tag_url | relative_url }}">{{ tag }}</a>
-      {% endfor %}
-    </div>
+  {% if raw_page_lang == "en" %}
+    {% include blog-tag-cloud.html
+      posts=lang_posts
+      featured_tags=featured_tags
+      label="More themes"
+      all_url='/blog/en/'
+      all_label='All posts'
+      base_url='/blog/en/tag/'
+      current_tag=current_tag
+      aria_label='Filter posts by tag'
+    %}
+  {% else %}
+    {% include blog-tag-cloud.html
+      posts=lang_posts
+      featured_tags=featured_tags
+      label="Więcej tematów"
+      all_url='/blog/'
+      all_label='Wszystkie'
+      base_url='/blog/tag/'
+      current_tag=current_tag
+      aria_label='Filtruj wpisy po tagach'
+    %}
   {% endif %}
 
   <div class="post-list">
