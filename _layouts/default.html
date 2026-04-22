@@ -41,47 +41,19 @@
       </div>
       
       <nav class="nav-links" id="site-menu" aria-label="Navigation">
-        <a href="{% if current_lang == 'en' %}/en/{% else %}/{% endif %}">
-          <span class="nav-label">
-            <span class="nav-pl">{% if current_lang == 'en' %}Start Here{% else %}Zacznij tutaj{% endif %}</span>
-          </span>
-        </a>
+        <a href="{% if current_lang == 'en' %}/en/{% else %}/{% endif %}">{% if current_lang == 'en' %}Start Here{% else %}Zacznij tutaj{% endif %}</a>
 
         <div class="nav-item-with-submenu">
-          <a href="{% if current_lang == 'en' %}/en/materials/{% else %}/materialy/{% endif %}">
-            <span class="nav-label">
-              <span class="nav-pl">{% if current_lang == 'en' %}Materials{% else %}Materiały{% endif %}</span>
-            </span>
-          </a>
+          <a href="{% if current_lang == 'en' %}/en/materials/{% else %}/materialy/{% endif %}">{% if current_lang == 'en' %}Materials{% else %}Materiały{% endif %}</a>
           <div class="nav-submenu" aria-label="{% if current_lang == 'en' %}Materials sections{% else %}Sekcje materiałów{% endif %}">
-            <a href="{% if current_lang == 'en' %}/en/materials/urban-bathing/{% else %}/materialy/kapiele_miejskie/{% endif %}">
-              <span class="nav-label">
-                <span class="nav-pl">{% if current_lang == 'en' %}Urban bathing{% else %}Miejskie kąpiele leśne{% endif %}</span>
-              </span>
-            </a>
-            <a href="{% if current_lang == 'en' %}/en/materials/for-children/{% else %}/materialy/dla-dzieci/{% endif %}">
-              <span class="nav-label">
-                <span class="nav-pl">{% if current_lang == 'en' %}For children{% else %}Dla dzieci{% endif %}</span>
-              </span>
-            </a>
-            <a href="{% if current_lang == 'en' %}/en/materials/interactive/{% else %}/materialy/interaktywne/{% endif %}">
-              <span class="nav-label">
-                <span class="nav-pl">{% if current_lang == 'en' %}Interactive{% else %}Interaktywne{% endif %}</span>
-              </span>
-            </a>
-            <a href="{% if current_lang == 'en' %}/en/page-a-day.html{% else %}/kartka-z-kalendarza.html{% endif %}">
-              <span class="nav-label">
-                <span class="nav-pl">{% if current_lang == 'en' %}Page-a-day{% else %}Kartka z kalendarza{% endif %}</span>
-              </span>
-            </a>
+            <a href="{% if current_lang == 'en' %}/en/materials/urban-bathing/{% else %}/materialy/kapiele_miejskie/{% endif %}">{% if current_lang == 'en' %}Urban bathing{% else %}Miejskie kąpiele leśne{% endif %}</a>
+            <a href="{% if current_lang == 'en' %}/en/materials/for-children/{% else %}/materialy/dla-dzieci/{% endif %}">{% if current_lang == 'en' %}For children{% else %}Dla dzieci{% endif %}</a>
+            <a href="{% if current_lang == 'en' %}/en/materials/interactive/{% else %}/materialy/interaktywne/{% endif %}">{% if current_lang == 'en' %}Interactive{% else %}Interaktywne{% endif %}</a>
+            <a href="{% if current_lang == 'en' %}/en/page-a-day.html{% else %}/kartka-z-kalendarza.html{% endif %}">{% if current_lang == 'en' %}Page-a-day{% else %}Kartka z kalendarza{% endif %}</a>
           </div>
         </div>
 
-        <a href="{% if current_lang == 'en' %}/blog/en/{% else %}/blog/{% endif %}" class="{% if page.url contains '/blog/' %}active{% endif %}">
-          <span class="nav-label">
-            <span class="nav-pl">Blog</span>
-          </span>
-        </a>
+        <a href="{% if current_lang == 'en' %}/blog/en/{% else %}/blog/{% endif %}" class="{% if page.url contains '/blog/' %}active{% endif %}"{% if page.url contains '/blog/' %} aria-current="page"{% endif %}>Blog</a>
 
         {% if page.translation_id %}
           {% assign translations = site.posts | where: "translation_id", page.translation_id %}
@@ -92,43 +64,23 @@
           {% for trans in translations %}
             {% assign trans_lang = trans.lang | join: "" | strip %}
             {% if trans_lang != current_lang %}
-              <a href="{{ trans.url | relative_url }}" class="lang-link">
-                <span class="nav-label">
-                  <span class="nav-pl">{% if trans_lang == 'en' %}English{% else %}Polski{% endif %}</span>
-                </span>
-              </a>
+              <a href="{{ trans.url | relative_url }}" class="lang-link">{% if trans_lang == 'en' %}English{% else %}Polski{% endif %}</a>
             {% endif %}
           {% endfor %}
         {% else %}
           {% comment %} Fallback for pages without IDs - ensures proper label and link {% endcomment %}
           {% if current_lang == 'en' %}
-            <a href="/blog/" class="lang-link">
-              <span class="nav-label"><span class="nav-pl">Polski</span></span>
-            </a>
+            <a href="/blog/" class="lang-link">Polski</a>
           {% else %}
-            <a href="/blog/en/" class="lang-link">
-              <span class="nav-label"><span class="nav-pl">English</span></span>
-            </a>
+            <a href="/blog/en/" class="lang-link">English</a>
           {% endif %}
         {% endif %}
 
         <div class="nav-item-with-submenu">
-          <a href="{% if current_lang == 'en' %}/en/about.html{% else %}/o-nas.html{% endif %}" class="{% if page.url contains '/o-nas.html' or page.url contains '/about.html' or page.url contains '/kontakt/' or page.url contains '/contact/' %}active{% endif %}">
-            <span class="nav-label">
-              <span class="nav-pl">{% if current_lang == 'en' %}About us{% else %}O projekcie{% endif %}</span>
-            </span>
-          </a>
+          <a href="{% if current_lang == 'en' %}/en/about.html{% else %}/o-nas.html{% endif %}" class="{% if page.url contains '/o-nas.html' or page.url contains '/about.html' or page.url contains '/kontakt/' or page.url contains '/contact/' %}active{% endif %}">{% if current_lang == 'en' %}About us{% else %}O projekcie{% endif %}</a>
           <div class="nav-submenu" aria-label="{% if current_lang == 'en' %}About pages{% else %}Strony o projekcie{% endif %}">
-            <a href="{% if current_lang == 'en' %}/en/about.html{% else %}/o-nas.html{% endif %}" class="{% if page.url contains '/o-nas.html' or page.url contains '/about.html' %}active{% endif %}">
-              <span class="nav-label">
-                <span class="nav-pl">{% if current_lang == 'en' %}About us{% else %}O projekcie{% endif %}</span>
-              </span>
-            </a>
-            <a href="{% if current_lang == 'en' %}/en/contact/{% else %}/kontakt/{% endif %}" class="{% if page.url contains '/kontakt/' or page.url contains '/contact/' %}active{% endif %}">
-              <span class="nav-label">
-                <span class="nav-pl">{% if current_lang == 'en' %}Contact{% else %}Kontakt{% endif %}</span>
-              </span>
-            </a>
+            <a href="{% if current_lang == 'en' %}/en/about.html{% else %}/o-nas.html{% endif %}" class="{% if page.url contains '/o-nas.html' or page.url contains '/about.html' %}active{% endif %}">{% if current_lang == 'en' %}About us{% else %}O projekcie{% endif %}</a>
+            <a href="{% if current_lang == 'en' %}/en/contact/{% else %}/kontakt/{% endif %}" class="{% if page.url contains '/kontakt/' or page.url contains '/contact/' %}active{% endif %}">{% if current_lang == 'en' %}Contact{% else %}Kontakt{% endif %}</a>
           </div>
         </div>
       </nav>
