@@ -82,6 +82,12 @@
           </span>
         </a>
 
+        <a href="{% if current_lang == 'en' %}/en/contact/{% else %}/kontakt/{% endif %}" class="{% if page.url contains '/kontakt/' or page.url contains '/contact/' %}active{% endif %}">
+          <span class="nav-label">
+            <span class="nav-pl">{% if current_lang == 'en' %}Contact{% else %}Kontakt{% endif %}</span>
+          </span>
+        </a>
+
         {% if page.translation_id %}
           {% assign translations = site.posts | where: "translation_id", page.translation_id %}
           {% if translations.size == 0 %}
