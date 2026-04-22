@@ -4,6 +4,7 @@ title: "Pąk w rozkwicie — proste ćwiczenie uważności o otwieraniu się (i 
 excerpt: "Delikatne ćwiczenie uważności inspirowane rozkwitającym kwiatem. Naucz się zauważać zmianę, otwierać się we własnym tempie i rozumieć, kiedy jeszcze pozostać zamkniętym."
 date: 2026-04-10
 lang: pl
+permalink: /pl/otwieranie-sie-krok-po-kroku-cwiczenie-uwaznosci-inspirowane-natura/
 categories: [uważność, natura, wiosna]
 tags: [ćwiczenie uważności, uważność, natura, wiosna, praktyka uważności, slow life]
 cover: /assets/img/wiosna-kwiecien-tydzien-14-cwiczenie-uwaznosci-otwierajacy-sie-kwiat-14A.png

@@ -2,6 +2,7 @@
 layout: post
 title: "Cichy powrót: ćwiczenie uważności na wiosnę (tydzień 13)"
 date: 2026-04-08
+permalink: /pl/cichy-powrot-cwiczenie-uwaznosci-na-wiosne/
 cover: /assets/img/marzec-wiosna-tydzien-13-cwiczenie-uwaznosci-powrot-do-miejsca-13A.png
 cover_alt: Cichy powrót
 excerpt: "Ćwiczenie uważności na wczesną wiosnę: powrót do miejsca i zauważanie zmian oraz ciągłości."

@@ -2,6 +2,7 @@
 layout: post
 title: "Quiet Return: a spring mindfulness practice (week 13)"
 date: 2026-04-08
+permalink: /en/quiet-return-exercise-mindfulness-for-spring/
 cover: /assets/img/marzec-wiosna-tydzien-13-cwiczenie-uwaznosci-powrot-do-miejsca-13A.png
 cover_alt: Quiet return
 excerpt: "A gentle mindfulness exercise for early spring: return to a familiar place and notice what has changed and what remains."
