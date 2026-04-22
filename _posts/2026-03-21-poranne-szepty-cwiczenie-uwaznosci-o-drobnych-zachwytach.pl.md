@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Poranne Szepty: ćwiczenie uważności o drobnych zachwytach (tydzień 12)"
-date: 2026-03-19
+date: 2026-03-21
 lang: pl
 translation_id: urban-bathing-week-12-2026
 permalink: /pl/poranne-szepty-cwiczenie-uwaznosci-o-drobnych-zachwytach/

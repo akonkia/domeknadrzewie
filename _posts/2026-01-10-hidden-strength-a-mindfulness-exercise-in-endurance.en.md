@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hidden Strength: a mindfulness exercise in endurance (week 2)"
-date: 2026-03-16
+date: 2026-01-10
 lang: en
 translation_id: urban-bathing-week-02-2026
 permalink: /en/hidden-strength-a-mindfulness-exercise-in-endurance/

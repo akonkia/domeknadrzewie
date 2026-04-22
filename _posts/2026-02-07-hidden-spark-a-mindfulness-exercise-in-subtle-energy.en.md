@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hidden Spark: a mindfulness exercise in subtle energy (week 6)"
-date: 2026-03-16
+date: 2026-02-07
 lang: en
 translation_id: urban-bathing-week-06-2026
 permalink: /en/hidden-spark-a-mindfulness-exercise-in-subtle-energy/

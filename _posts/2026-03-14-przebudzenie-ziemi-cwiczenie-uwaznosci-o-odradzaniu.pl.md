@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Przebudzenie Ziemi: ćwiczenie uważności o odradzaniu (tydzień 11)"
-date: 2026-03-30
+date: 2026-03-14
 lang: pl
 translation_id: urban-bathing-week-11-2026
 permalink: /pl/przebudzenie-ziemi-cwiczenie-uwaznosci-o-odradzaniu/

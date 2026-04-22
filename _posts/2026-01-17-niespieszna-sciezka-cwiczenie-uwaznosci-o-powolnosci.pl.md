@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Niespieszna Ścieżka: ćwiczenie uważności o powolności (tydzień 3)"
-date: 2026-03-16
+date: 2026-01-17
 lang: pl
 translation_id: urban-bathing-week-03-2026
 permalink: /pl/niespieszna-sciezka-cwiczenie-uwaznosci-o-powolnosci/

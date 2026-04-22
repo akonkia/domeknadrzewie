@@ -2,7 +2,7 @@
 layout: post
 title: "The Open Blossom — A Simple Mindfulness Practice for Learning When to Open"
 description: "A gentle mindfulness practice inspired by a blossoming flower. Learn how to notice change, open at your own pace, and understand when not to open yet."
-date: 2026-04-10
+date: 2026-04-04
 lang: en
 permalink: /en/opening-step-by-step-mindfulness-exercise-inspired-by-nature/
 categories: [mindfulness, nature, spring]

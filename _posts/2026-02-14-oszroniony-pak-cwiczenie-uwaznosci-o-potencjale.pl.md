@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Oszroniony pąk: ćwiczenie uważności o potencjale (tydzień 7)"
-date: 2026-03-16
+date: 2026-02-14
 lang: pl
 translation_id: urban-bathing-week-07-2026
 permalink: /pl/oszroniony-pak-cwiczenie-uwaznosci-o-potencjale/

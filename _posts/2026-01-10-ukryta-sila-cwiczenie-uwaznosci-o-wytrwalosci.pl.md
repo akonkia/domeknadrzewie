@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ukryta siła: ćwiczenie uważności o wytrwałości (tydzień 2)"
-date: 2026-03-16
+date: 2026-01-10
 lang: pl
 translation_id: urban-bathing-week-02-2026
 permalink: /pl/ukryta-sila-cwiczenie-uwaznosci-o-wytrwalosci/

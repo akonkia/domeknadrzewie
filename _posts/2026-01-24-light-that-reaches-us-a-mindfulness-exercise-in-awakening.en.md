@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Light That Reaches Us: a mindfulness exercise in awakening (week 4)"
-date: 2026-03-16
+date: 2026-01-24
 lang: en
 translation_id: urban-bathing-week-04-2026
 permalink: /en/light-that-reaches-us-a-mindfulness-exercise-in-awakening/

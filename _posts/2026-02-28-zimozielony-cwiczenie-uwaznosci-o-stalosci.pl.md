@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Zimozielony: ćwiczenie uważności o stałości (tydzień 9)"
-date: 2026-03-16
+date: 2026-02-28
 lang: pl
 translation_id: urban-bathing-week-09-2026
 permalink: /pl/zimozielony-cwiczenie-uwaznosci-o-stalosci/
