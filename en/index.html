@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project: Tree House</title>
+  <title>Project: Tree House | Mindfulness in Nature and Nature-Inspired Resources</title>
+  <meta
+    name="description"
+    content="Project: Tree House — mindfulness in nature, urban mindfulness, urban forest bathing, shinrin-yoku in the city, materials for children, and calm downloadable resources inspired by the seasons."
+  >
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
   <script defer src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/js/sky-mini-widget.js"></script>
@@ -431,6 +435,7 @@
       padding: 32px;
     }
 
+    .intro-card h1,
     .intro-card h2 {
       font-size: clamp(1.8rem, 3vw, 2.4rem);
       text-transform: uppercase;
@@ -441,6 +446,40 @@
       color: var(--muted);
       line-height: 1.8;
       max-width: 64ch;
+    }
+
+    .intro-card .intro-lead {
+      color: var(--text);
+      font-size: 1.02rem;
+      font-weight: 700;
+    }
+
+    .intro-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .intro-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(103,135,96,0.1);
+      color: var(--sage);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .intro-links a:hover {
+      background: rgba(103,135,96,0.18);
+      transform: translateY(-1px);
     }
 
     .intro-link {
@@ -464,6 +503,44 @@
       transform: translateY(-1px);
       background: #5d7957;
       box-shadow: 0 18px 34px rgba(36,49,38,0.16);
+    }
+
+    .home-topic-grid {
+      margin-top: 26px;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-topic-card {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(36,49,38,0.08);
+      background:
+        radial-gradient(circle at top right, rgba(255,248,214,0.4), transparent 26%),
+        rgba(255,255,255,0.82);
+      box-shadow: 0 14px 28px rgba(36,49,38,0.05);
+    }
+
+    .home-topic-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .home-topic-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .home-topic-card a {
+      display: inline-flex;
+      margin-top: 14px;
+      color: var(--sage);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .contact-band {
@@ -721,6 +798,7 @@
 
       .tile.big { grid-row: span 1; }
       .tiles-wrapper { padding-top: 24px; }
+      .home-topic-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/css/sky-mini-widget.css">
@@ -758,7 +836,13 @@
         </div>
         <a href="/blog/en/">Blog</a>
         <a class="lang-link" href="/" lang="pl" hreflang="pl">Polski</a>
-        <a href="/en/about.html">About us</a>
+        <div class="nav-item-with-submenu">
+          <a href="/en/about.html">About us</a>
+          <div class="nav-submenu" aria-label="About pages">
+            <a href="/en/about.html">About us</a>
+            <a href="/en/contact/">Contact</a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -808,11 +892,49 @@
   <section class="start-section">
     <div class="container">
       <div class="intro-card">
-        <h2>About the project</h2>
+        <h1>Project: Tree House</h1>
         <p>
-          Tree House is a place for mindfulness, connection with nature, and simple materials you can return to in your own rhythm.
+          <span class="intro-lead">Mindfulness in nature, urban mindfulness, urban forest bathing, materials for children, and calm downloadable resources inspired by the seasons.</span>
         </p>
+        <p>
+          Tree House gathers simple ways of returning to contact with nature without pressure and without needing to leave the city. Here you will find mindfulness practices inspired by trees, weather, seasons, weekly cards, urban forest bathing, and small rituals of attention rooted in everyday life.
+        </p>
+        <p>
+          The site also grows as a library of materials for children, parents, teachers, and educators: colouring pages, cards, downloadable resources, and seasonal materials that can be used at home, in school, in a library, or during quiet outdoor activities.
+        </p>
+        <div class="intro-links" aria-label="Main site topics">
+          <a href="/en/materials/urban-bathing/">Urban forest bathing</a>
+          <a href="/blog/2026/04/03/Urban-forest-bathing-how-to-practice-Shinrin-yoku-without-leaving-the-city/">Shinrin-yoku in the city</a>
+          <a href="/en/materials/for-children/">Materials for children</a>
+          <a href="/en/materials/">Downloadable resources</a>
+        </div>
         <a class="intro-link" href="/en/about.html">Read more</a>
+      </div>
+
+      <div class="home-topic-grid" aria-label="Main site themes">
+        <article class="home-topic-card">
+          <h3>Mindfulness in nature</h3>
+          <p>Short practices and gentle exercises that help you notice trees, light, rain, breath, and the changing rhythm of the seasons.</p>
+          <a href="/en/materials/urban-bathing/">Explore the series</a>
+        </article>
+
+        <article class="home-topic-card">
+          <h3>Shinrin-yoku in the city</h3>
+          <p>A practical guide to forest bathing and nature-based mindfulness in parks, neighbourhood green spaces, and ordinary city landscapes.</p>
+          <a href="/blog/2026/04/03/Urban-forest-bathing-how-to-practice-Shinrin-yoku-without-leaving-the-city/">Read the guide</a>
+        </article>
+
+        <article class="home-topic-card">
+          <h3>Materials for children</h3>
+          <p>Colouring pages, simple activities, and gentle resources for parents, teachers, and educators who want to explore nature with children.</p>
+          <a href="/en/materials/for-children/">Open the section</a>
+        </article>
+
+        <article class="home-topic-card">
+          <h3>Downloadable resources</h3>
+          <p>Cards, reflections, seasonal materials, and printable resources for home, education, or small everyday rituals inspired by the living world.</p>
+          <a href="/en/materials/">Browse materials</a>
+        </article>
       </div>
 
       <div class="contact-band">

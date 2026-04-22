@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projekt: Domek na Drzewie</title>
+  <title>Projekt: Domek na Drzewie | Uważność w naturze i materiały inspirowane przyrodą</title>
+  <meta
+    name="description"
+    content="Projekt: Domek na Drzewie — uważność w naturze, uważność w mieście, miejskie kąpiele leśne, shinrin-yoku w mieście, materiały dla dzieci i spokojne materiały do pobrania inspirowane przyrodą."
+  >
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
   <script defer src="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/js/sky-mini-widget.js"></script>
@@ -433,6 +437,7 @@
       padding: 32px;
     }
 
+    .intro-card h1,
     .intro-card h2 {
       font-size: clamp(1.8rem, 3vw, 2.4rem);
       text-transform: uppercase;
@@ -443,6 +448,40 @@
       color: var(--muted);
       line-height: 1.8;
       max-width: 64ch;
+    }
+
+    .intro-card .intro-lead {
+      color: var(--text);
+      font-size: 1.02rem;
+      font-weight: 700;
+    }
+
+    .intro-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .intro-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(103,135,96,0.1);
+      color: var(--sage);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .intro-links a:hover {
+      background: rgba(103,135,96,0.18);
+      transform: translateY(-1px);
     }
 
     .intro-link {
@@ -466,6 +505,44 @@
       transform: translateY(-1px);
       background: #5d7957;
       box-shadow: 0 18px 34px rgba(36,49,38,0.16);
+    }
+
+    .home-topic-grid {
+      margin-top: 26px;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-topic-card {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(36,49,38,0.08);
+      background:
+        radial-gradient(circle at top right, rgba(255,248,214,0.4), transparent 26%),
+        rgba(255,255,255,0.82);
+      box-shadow: 0 14px 28px rgba(36,49,38,0.05);
+    }
+
+    .home-topic-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .home-topic-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .home-topic-card a {
+      display: inline-flex;
+      margin-top: 14px;
+      color: var(--sage);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .contact-band {
@@ -723,6 +800,7 @@
 
       .tile.big { grid-row: span 1; }
       .tiles-wrapper { padding-top: 24px; }
+      .home-topic-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/css/sky-mini-widget.css">
@@ -760,7 +838,13 @@
         </div>
         <a href="/blog/">Blog</a>
         <a class="lang-link" href="/en/" lang="en" hreflang="en">English</a>
-        <a href="/o-nas.html">O projekcie</a>
+        <div class="nav-item-with-submenu">
+          <a href="/o-nas.html">O projekcie</a>
+          <div class="nav-submenu" aria-label="Strony o projekcie">
+            <a href="/o-nas.html">O projekcie</a>
+            <a href="/kontakt/">Kontakt</a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -812,11 +896,49 @@
   <section class="start-section">
     <div class="container">
       <div class="intro-card">
-        <h2>O projekcie</h2>
+        <h1>Projekt: Domek na Drzewie</h1>
         <p>
-          Domek na Drzewie to miejsce dla uważności, kontaktu z naturą i prostych materiałów, do których można wracać we własnym rytmie.
+          <span class="intro-lead">Uważność w naturze, uważność w mieście, miejskie kąpiele leśne, materiały dla dzieci i spokojne zasoby do pobrania inspirowane porami roku.</span>
         </p>
+        <p>
+          Domek na Drzewie zbiera proste sposoby wracania do kontaktu z przyrodą bez presji i bez konieczności wyjeżdżania z miasta. Znajdziesz tu ćwiczenia mindfulness inspirowane naturą, karty tygodniowe, miejskie kąpiele leśne i spokojne rytuały uważności osadzone w codzienności.
+        </p>
+        <p>
+          To także biblioteka materiałów dla dzieci, rodziców, nauczycieli i edukatorów: kolorowanek, kart, materiałów do pobrania i sezonowych zasobów, z których można korzystać w domu, w szkole, bibliotece albo podczas własnych zajęć terenowych.
+        </p>
+        <div class="intro-links" aria-label="Główne tematy strony">
+          <a href="/materialy/kapiele_miejskie/">Miejskie kąpiele leśne</a>
+          <a href="/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/">Shinrin-yoku w mieście</a>
+          <a href="/materialy/dla-dzieci/">Materiały dla dzieci</a>
+          <a href="/materialy/">Materiały do pobrania</a>
+        </div>
         <a class="intro-link" href="/o-nas.html">Czytaj więcej</a>
+      </div>
+
+      <div class="home-topic-grid" aria-label="Najważniejsze obszary strony">
+        <article class="home-topic-card">
+          <h3>Uważność w naturze</h3>
+          <p>Ćwiczenia i krótkie praktyki pomagające zauważać drzewa, światło, deszcz, oddech i zmiany pór roku w zwykłym dniu.</p>
+          <a href="/materialy/kapiele_miejskie/">Zobacz serię</a>
+        </article>
+
+        <article class="home-topic-card">
+          <h3>Shinrin-yoku w mieście</h3>
+          <p>Przewodnik po tym, jak praktykować kąpiele leśne i uważność w naturze w parku, na osiedlu i w codziennej miejskiej zieleni.</p>
+          <a href="/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/">Czytaj przewodnik</a>
+        </article>
+
+        <article class="home-topic-card">
+          <h3>Materiały dla dzieci</h3>
+          <p>Kolorowanki, proste aktywności i spokojne pomoce dla rodziców, nauczycieli i edukatorów, którzy chcą wracać do natury razem z dziećmi.</p>
+          <a href="/materialy/dla-dzieci/">Przejdź do działu</a>
+        </article>
+
+        <article class="home-topic-card">
+          <h3>Materiały do pobrania</h3>
+          <p>Karty, refleksje, sezonowe treści i zasoby do wykorzystania w domu, w edukacji albo w małych codziennych rytuałach inspirowanych przyrodą.</p>
+          <a href="/materialy/">Otwórz bibliotekę</a>
+        </article>
       </div>
 
       <div class="contact-band">

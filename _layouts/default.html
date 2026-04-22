@@ -82,12 +82,6 @@
           </span>
         </a>
 
-        <a href="{% if current_lang == 'en' %}/en/contact/{% else %}/kontakt/{% endif %}" class="{% if page.url contains '/kontakt/' or page.url contains '/contact/' %}active{% endif %}">
-          <span class="nav-label">
-            <span class="nav-pl">{% if current_lang == 'en' %}Contact{% else %}Kontakt{% endif %}</span>
-          </span>
-        </a>
-
         {% if page.translation_id %}
           {% assign translations = site.posts | where: "translation_id", page.translation_id %}
           {% if translations.size == 0 %}
@@ -117,11 +111,25 @@
           {% endif %}
         {% endif %}
 
-        <a href="{% if current_lang == 'en' %}/en/about.html{% else %}/o-nas.html{% endif %}">
-          <span class="nav-label">
-            <span class="nav-pl">{% if current_lang == 'en' %}About us{% else %}O projekcie{% endif %}</span>
-          </span>
-        </a>
+        <div class="nav-item-with-submenu">
+          <a href="{% if current_lang == 'en' %}/en/about.html{% else %}/o-nas.html{% endif %}" class="{% if page.url contains '/o-nas.html' or page.url contains '/about.html' or page.url contains '/kontakt/' or page.url contains '/contact/' %}active{% endif %}">
+            <span class="nav-label">
+              <span class="nav-pl">{% if current_lang == 'en' %}About us{% else %}O projekcie{% endif %}</span>
+            </span>
+          </a>
+          <div class="nav-submenu" aria-label="{% if current_lang == 'en' %}About pages{% else %}Strony o projekcie{% endif %}">
+            <a href="{% if current_lang == 'en' %}/en/about.html{% else %}/o-nas.html{% endif %}" class="{% if page.url contains '/o-nas.html' or page.url contains '/about.html' %}active{% endif %}">
+              <span class="nav-label">
+                <span class="nav-pl">{% if current_lang == 'en' %}About us{% else %}O projekcie{% endif %}</span>
+              </span>
+            </a>
+            <a href="{% if current_lang == 'en' %}/en/contact/{% else %}/kontakt/{% endif %}" class="{% if page.url contains '/kontakt/' or page.url contains '/contact/' %}active{% endif %}">
+              <span class="nav-label">
+                <span class="nav-pl">{% if current_lang == 'en' %}Contact{% else %}Kontakt{% endif %}</span>
+              </span>
+            </a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
