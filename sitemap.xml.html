@@ -13,7 +13,7 @@ permalink: /sitemap.xml
   {%- unless page.url contains "/404" or page.url contains ".xml" or page.url contains "/assets/" -%}
   <url>
     <loc>{{ base }}{{ page.url | remove: "index.html" }}</loc>
-    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <lastmod>{{ page.last_modified_at | default: page.date | default: site.time | date: "%Y-%m-%d" }}</lastmod>
     {%- if page.lang and page.translation_id -%}
       {%- assign translations = site.pages | where: "translation_id", page.translation_id -%}
       {%- for t in translations -%}
@@ -24,7 +24,111 @@ permalink: /sitemap.xml
         <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}{{ pl_version.url | remove: 'index.html' }}" />
       {%- endif -%}
     {%- endif -%}
-    <priority>{% if page.url == "/" %}1.0{% elsif page.url contains "/blog" or page.url contains "materialy" %}0.8{% else %}0.6{% endif %}</priority>
+    <priority>{% if page.url == "/" %}1.0{% elsif page.url == "/en/" %}0.9{% elsif page.url contains "/blog" or page.url contains "materialy" or page.url contains "/materials/" %}0.8{% else %}0.6{% endif %}</priority>
+  </url>
+  {%- endunless -%}
+{%- endfor -%}
+
+{%- comment -%} ===================== STATIC HTML FILES ===================== {%- endcomment -%}
+{%- assign static_html_files = site.static_files | where_exp: "file", "file.path contains '.html'" -%}
+
+{%- for file in static_html_files -%}
+  {%- assign path = file.path -%}
+  {%- unless path contains "/404" or path contains "/assets/" or path contains "/blog/" -%}
+  <url>
+    <loc>{{ base }}{{ path | remove: "index.html" }}</loc>
+    <lastmod>{{ file.modified_time | default: site.time | date: "%Y-%m-%d" }}</lastmod>
+    {%- case path -%}
+      {%- when '/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/" />
+      {%- when '/en/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/" />
+      {%- when '/o-nas.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/o-nas.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/about.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/o-nas.html" />
+      {%- when '/en/about.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/o-nas.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/about.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/o-nas.html" />
+      {%- when '/start-here.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/start-here.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/start-here.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/start-here.html" />
+      {%- when '/en/start-here.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/start-here.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/start-here.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/start-here.html" />
+      {%- when '/sky.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/sky.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/sky.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/sky.html" />
+      {%- when '/en/sky.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/sky.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/sky.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/sky.html" />
+      {%- when '/kartka-z-kalendarza.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/kartka-z-kalendarza.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/page-a-day.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/kartka-z-kalendarza.html" />
+      {%- when '/en/page-a-day.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/kartka-z-kalendarza.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/page-a-day.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/kartka-z-kalendarza.html" />
+      {%- when '/materialy/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/" />
+      {%- when '/en/materials/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/" />
+      {%- when '/materialy/dla-dzieci/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/dla-dzieci/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/for-children/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/dla-dzieci/" />
+      {%- when '/en/materials/for-children/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/dla-dzieci/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/for-children/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/dla-dzieci/" />
+      {%- when '/materialy/interaktywne/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/interaktywne/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/interactive/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/interaktywne/" />
+      {%- when '/en/materials/interactive/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/interaktywne/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/interactive/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/interaktywne/" />
+      {%- when '/materialy/kolorowanki/wiosna_01/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/kolorowanki/wiosna_01/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/colouring_pages/spring_01/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/kolorowanki/wiosna_01/" />
+      {%- when '/en/materials/colouring_pages/spring_01/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/kolorowanki/wiosna_01/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/colouring_pages/spring_01/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/kolorowanki/wiosna_01/" />
+      {%- when '/materialy/kapiele_miejskie/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/kapiele_miejskie/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/urban-bathing/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/kapiele_miejskie/" />
+      {%- when '/en/materials/urban-bathing/index.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/kapiele_miejskie/" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/urban-bathing/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/kapiele_miejskie/" />
+      {%- when '/materialy/kapiele_miejskie/uklad-52-tygodni.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/kapiele_miejskie/uklad-52-tygodni.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/urban-bathing/52-week-pattern.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/kapiele_miejskie/uklad-52-tygodni.html" />
+      {%- when '/en/materials/urban-bathing/52-week-pattern.html' -%}
+        <xhtml:link rel="alternate" hreflang="pl" href="{{ base }}/materialy/kapiele_miejskie/uklad-52-tygodni.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="{{ base }}/en/materials/urban-bathing/52-week-pattern.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}/materialy/kapiele_miejskie/uklad-52-tygodni.html" />
+    {%- endcase -%}
+    <priority>{% if path == "/index.html" %}1.0{% elsif path == "/en/index.html" %}0.9{% elsif path contains "materialy" or path contains "/materials/" %}0.8{% else %}0.6{% endif %}</priority>
   </url>
   {%- endunless -%}
 {%- endfor -%}
