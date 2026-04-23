@@ -109,3 +109,5 @@ Jeśli chcesz pójść dalej, możesz:
 - wrócić do [materiałów sezonowych](/materialy/sezonowe/), jeśli pomaga Ci rytm pór roku,
 - sięgnąć po [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/), jeśli wolisz konkretne ćwiczenia,
 - albo zacząć od jednego bardzo prostego pytania: **co żywego mogę zauważyć wokół siebie właśnie dziś?**
+
+_Zdjęcie okładkowe: Marta Zwierzchoniewska, [Pexels](https://www.pexels.com/photo/woman-walking-at-park-19999204/)._

@@ -109,3 +109,5 @@ If you want to go a little further, you can:
 - return to the [materials library](/en/materials/) if you want a broader way into the project,
 - visit [Urban Bathing](/en/materials/urban-bathing/) if you prefer concrete exercises,
 - or begin with one very simple question: **what living thing can I notice around me today?**
+
+_Cover photo: Marta Zwierzchoniewska, [Pexels](https://www.pexels.com/photo/woman-walking-at-park-19999204/)._
