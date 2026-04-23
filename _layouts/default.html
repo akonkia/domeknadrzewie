@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if page.title %}{{ page.title }} | {% endif %}Domek na Drzewie</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 }}{% else %}Nature-inspired writing, reflections, and educational materials.{% endif %}" />
+  <link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}" />
 
   {% if page.translation_id %}
     {% assign translations = site.posts | where: "translation_id", page.translation_id %}
@@ -17,6 +18,10 @@
     {% for trans in translations %}
       <link rel="alternate" hreflang="{{ trans.lang }}" href="{{ site.url }}{{ trans.url }}" />
     {% endfor %}
+    {% assign pl_version = translations | where: "lang", "pl" | first %}
+    {% if pl_version %}
+      <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ pl_version.url }}" />
+    {% endif %}
   {% endif %}
 </head>
 <body>
