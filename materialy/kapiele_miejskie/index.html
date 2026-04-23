@@ -279,7 +279,7 @@
 
     .series-links {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
 
@@ -292,10 +292,23 @@
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
+    .series-link-card::after {
+      content: "→";
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--sage);
+      font-weight: 800;
+      transition: transform 0.18s ease;
+    }
+
     .series-link-card:hover {
       transform: translateY(-1px);
       border-color: rgba(103,135,96,0.28);
       box-shadow: 0 14px 28px rgba(36,49,38,0.08);
+    }
+
+    .series-link-card:hover::after {
+      transform: translateX(3px);
     }
 
     .series-link-card strong {
@@ -367,6 +380,41 @@
 
     .faq-list p {
       margin-top: 10px;
+    }
+
+    .series-block a,
+    .series-faq a,
+    .filter-note a,
+    .section-intro a {
+      color: var(--sage);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 0.18em;
+    }
+
+    .series-block a:hover,
+    .series-faq a:hover,
+    .filter-note a:hover,
+    .section-intro a:hover,
+    .series-block a:focus-visible,
+    .series-faq a:focus-visible,
+    .filter-note a:focus-visible,
+    .section-intro a:focus-visible {
+      color: #4f6d49;
+      text-decoration-thickness: 2px;
+    }
+
+    :where(main, .section-intro, .series-copy, .series-block, .series-faq, .filter-note) :is(p, li, blockquote) a:not([class]) {
+      color: var(--sage);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 0.18em;
+    }
+
+    :where(main, .section-intro, .series-copy, .series-block, .series-faq, .filter-note) :is(p, li, blockquote) a:not([class]):hover,
+    :where(main, .section-intro, .series-copy, .series-block, .series-faq, .filter-note) :is(p, li, blockquote) a:not([class]):focus-visible {
+      color: #4f6d49;
+      text-decoration-thickness: 2px;
     }
 
     /* Filters */
@@ -589,7 +637,7 @@
     </section>
 
     <section class="section-intro">
-      <h2>Archiwum kart tygodniowych</h2>
+      <h2>Archiwum tygodniowych ćwiczeń uważności</h2>
       <p>Tu znajdziesz cały cykl miejskich kąpieli leśnych. Możesz przeglądać wszystkie karty albo zawęzić widok do wybranego sezonu i miesiąca.</p>
     </section>
 

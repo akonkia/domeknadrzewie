@@ -43,6 +43,19 @@
     a { color: inherit; text-decoration: none; }
     h1, h2, h3, p { margin: 0; }
 
+    :where(main, .narrow, .page-shell, .section-intro, .item-copy) :is(p, li, blockquote) a:not([class]) {
+      color: var(--sage);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 0.18em;
+    }
+
+    :where(main, .narrow, .page-shell, .section-intro, .item-copy) :is(p, li, blockquote) a:not([class]):hover,
+    :where(main, .narrow, .page-shell, .section-intro, .item-copy) :is(p, li, blockquote) a:not([class]):focus-visible {
+      color: #4f6d49;
+      text-decoration-thickness: 2px;
+    }
+
     .container {
       width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
