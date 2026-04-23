@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Długi poranek: ćwiczenie uważności o przebudzeniu (tydzień 17)"
-date: 2026-04-25
+date: 2026-04-23
 lang: pl
 permalink: /pl/dlugi-poranek-cwiczenie-uwaznosci-o-przebudzeniu/
 translation_id: long-morning-2026
