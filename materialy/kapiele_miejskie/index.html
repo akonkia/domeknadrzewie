@@ -188,29 +188,98 @@
       line-height: 1.8;
     }
 
-    .series-chips {
+    .series-current-card {
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(36,49,38,0.08);
+      background: linear-gradient(180deg, #fffdf8, #f7fbf3);
+      box-shadow: 0 14px 28px rgba(36,49,38,0.08);
+    }
+
+    .series-current-card-figure {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 14px;
+      background: rgba(103,135,96,0.08);
+    }
+
+    .series-current-card-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .series-current-card-kicker {
+      margin: 0;
+      color: var(--sage);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .series-current-card h3 {
+      margin: 8px 0 0;
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+
+    .series-current-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .series-current-card-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 6px;
     }
 
-    .series-chips span {
+    .series-current-card-actions a {
       display: inline-flex;
       align-items: center;
-      min-height: 38px;
-      padding: 8px 14px;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(103,135,96,0.1);
-      color: var(--sage);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .series-current-card-actions a:hover {
+      transform: translateY(-1px);
+    }
+
+    .series-current-main {
+      background: var(--sage);
+      color: white;
+      box-shadow: 0 12px 24px rgba(36,49,38,0.14);
+    }
+
+    .series-current-alt {
+      background: rgba(103,135,96,0.1);
+      color: var(--sage);
+    }
+
+    .series-guides {
+      margin-bottom: 30px;
+    }
+
+    .series-guides h2 {
+      margin: 0 0 18px;
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
     }
 
     .series-links {
       display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
 
@@ -366,7 +435,8 @@
 
     @media (max-width: 850px) {
       .series-overview-grid,
-      .series-grid { grid-template-columns: 1fr; }
+      .series-grid,
+      .series-links { grid-template-columns: 1fr; }
       .material-item { grid-template-columns: 1fr; }
       .material-visual { max-width: 300px; margin: 0 auto; }
     }
@@ -435,27 +505,21 @@
           <h2>Miejskie kąpiele leśne jako praktyka uważności w naturze</h2>
           <p class="series-lead">Miejskie kąpiele leśne to cotygodniowy cykl kart, który łączy inspirację shinrin-yoku z realiami codziennego życia w mieście. To ćwiczenia uważności w naturze tworzone z myślą o osobach, które chcą wracać do kontaktu z zielenią bez wyjazdu do lasu — w parku, na osiedlu, przy oknie, pod jednym drzewem albo podczas krótkiego spaceru.</p>
           <p>Ta strona jest głównym punktem wejścia do całej serii. Zbiera karty sezon po sezonie, pomaga przejść przez rytm 52 tygodni i pokazuje, jak praktykować mindfulness w parku, miejskie shinrin-yoku i codzienny kontakt z naturą w sposób prosty, łagodny i regularny.</p>
-          <div class="series-chips" aria-label="Główne tematy serii">
-            <span>Shinrin-yoku w mieście</span>
-            <span>Mindfulness w parku</span>
-            <span>Ćwiczenia uważności w naturze</span>
-            <span>Kontakt z naturą na co dzień</span>
+        </div>
+        <aside class="series-current-card" aria-label="Bieżąca karta">
+          <div class="series-current-card-figure">
+            <img id="currentCardImage" src="/assets/img/default-cover.png" alt="Bieżąca karta tygodnia">
           </div>
-        </div>
-        <div class="series-links" aria-label="Powiązane materiały">
-          <a class="series-link-card" href="/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/">
-            <strong>Przewodnik po praktyce</strong>
-            <span>Zacznij od szerszego wprowadzenia do shinrin-yoku w mieście i zobacz, jak korzystać z zieleni bez wyjazdu za miasto.</span>
-          </a>
-          <a class="series-link-card" href="/materialy/kapiele_miejskie/uklad-52-tygodni.html">
-            <strong>Układ 52 tygodni</strong>
-            <span>Poznaj większy rytm całego cyklu: sezony, klastry tematyczne i sposób, w jaki tygodnie układają się w spokojną ścieżkę.</span>
-          </a>
-          <a class="series-link-card" href="/pl/zimowe-karty-uwaznosci-przewodnik-po-tematach-cwiczeniach-i-materialach/">
-            <strong>Zimowy przewodnik po serii</strong>
-            <span>Przejdź do zimowego przewodnika, który zbiera tematy, karty i wpisy blogowe w jednym miejscu.</span>
-          </a>
-        </div>
+          <div>
+            <p class="series-current-card-kicker">Bieżąca karta</p>
+            <h3 id="currentCardTitle">Ładowanie karty…</h3>
+            <p id="currentCardMeta">Tydzień, temat i szybki dostęp do najnowszej praktyki.</p>
+          </div>
+          <div class="series-current-card-actions">
+            <a id="currentCardPrimary" class="series-current-main" href="#materialList">Otwórz kartę</a>
+            <a id="currentCardBlog" class="series-current-alt" href="/blog/" target="_blank" rel="noopener">Czytaj na blogu</a>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -511,6 +575,24 @@
       </div>
     </section>
 
+    <section class="series-guides">
+      <h2>Powiązane przewodniki i materiały</h2>
+      <div class="series-links" aria-label="Powiązane materiały">
+        <a class="series-link-card" href="/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/">
+          <strong>Przewodnik po praktyce</strong>
+          <span>Zacznij od szerszego wprowadzenia do shinrin-yoku w mieście i zobacz, jak korzystać z zieleni bez wyjazdu za miasto.</span>
+        </a>
+        <a class="series-link-card" href="/materialy/kapiele_miejskie/uklad-52-tygodni.html">
+          <strong>Układ 52 tygodni</strong>
+          <span>Poznaj większy rytm całego cyklu: sezony, klastry tematyczne i sposób, w jaki tygodnie układają się w spokojną ścieżkę.</span>
+        </a>
+        <a class="series-link-card" href="/pl/zimowe-karty-uwaznosci-przewodnik-po-tematach-cwiczeniach-i-materialach/">
+          <strong>Zimowy przewodnik po serii</strong>
+          <span>Przejdź do zimowego przewodnika, który zbiera tematy, karty i wpisy blogowe w jednym miejscu.</span>
+        </a>
+      </div>
+    </section>
+
     <section class="filter-section" style="margin-bottom: 0;">
       <div class="filter-group" style="justify-content: space-between;">
         <div>
@@ -547,6 +629,11 @@
     const listElement = document.getElementById('materialList');
     const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
     const pageLang = 'pl';
+    const currentCardImage = document.getElementById('currentCardImage');
+    const currentCardTitle = document.getElementById('currentCardTitle');
+    const currentCardMeta = document.getElementById('currentCardMeta');
+    const currentCardPrimary = document.getElementById('currentCardPrimary');
+    const currentCardBlog = document.getElementById('currentCardBlog');
     const uiText = {
       noCards: 'Brak kart.',
       reflection: 'Refleksja:',
@@ -558,6 +645,18 @@
       prev: '← Poprzedni',
       next: 'Następny →'
     };
+
+    function setCurrentCard(card) {
+      if (!card) return;
+      if (currentCardImage) {
+        currentCardImage.src = `${imgPath}${card.img}?v=2026`;
+        currentCardImage.alt = card.title;
+      }
+      if (currentCardTitle) currentCardTitle.textContent = `Tydzień ${card.id.toString().padStart(2, '0')} — ${card.title}`;
+      if (currentCardMeta) currentCardMeta.textContent = `${card.season} • ${card.month} • ${card.theme}`;
+      if (currentCardPrimary) currentCardPrimary.href = `#tydzien-${card.id}`;
+      if (currentCardBlog) currentCardBlog.href = getBlogUrl(card);
+    }
 
     function getCardsData() {
       return typeof window.getWeeklyCardsForLang === 'function'
@@ -575,6 +674,7 @@
 
     function render(data, isSingleView = false) {
       if (!data.length) { listElement.innerHTML = `<p>${uiText.noCards}</p>`; return; }
+      setCurrentCard(data[0]);
       
       const firstId = 1;
       const cardsData = getCardsData();
