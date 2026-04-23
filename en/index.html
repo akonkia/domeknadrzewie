@@ -433,6 +433,21 @@
       box-shadow: var(--shadow);
       border-radius: var(--radius);
       padding: 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.95fr);
+      gap: 24px 36px;
+      align-items: start;
+    }
+
+    .intro-copy {
+      min-width: 0;
+    }
+
+    .intro-aside {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      padding-top: 8px;
     }
 
     .intro-card h1,
@@ -445,7 +460,10 @@
       margin-top: 14px;
       color: var(--muted);
       line-height: 1.8;
-      max-width: 64ch;
+    }
+
+    .intro-copy p {
+      max-width: 74ch;
     }
 
     .intro-card .intro-lead {
@@ -458,7 +476,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
     }
 
     .intro-links a {
@@ -486,7 +503,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-top: 20px;
       padding: 12px 18px;
       border-radius: 999px;
       background: var(--sage);
@@ -796,6 +812,19 @@
         grid-auto-rows: 300px;
       }
 
+      .intro-card {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .intro-aside {
+        padding-top: 0;
+      }
+
+      .intro-copy p {
+        max-width: none;
+      }
+
       .tile.big { grid-row: span 1; }
       .tiles-wrapper { padding-top: 24px; }
       .home-topic-grid { grid-template-columns: 1fr; }
@@ -893,23 +922,27 @@
   <section class="start-section">
     <div class="container">
       <div class="intro-card">
-        <h1>Project: Tree House</h1>
-        <p>
-          <span class="intro-lead">Mindfulness in nature, urban mindfulness, urban forest bathing, materials for children, and calm downloadable resources inspired by the seasons.</span>
-        </p>
-        <p>
-          Tree House gathers simple ways of returning to contact with nature without pressure and without needing to leave the city. Here you will find mindfulness practices inspired by trees, weather, seasons, weekly cards, urban forest bathing, and small rituals of attention rooted in everyday life.
-        </p>
-        <p>
-          The site also grows as a library of materials for children, parents, teachers, and educators: colouring pages, cards, downloadable resources, and seasonal materials that can be used at home, in school, in a library, or during quiet outdoor activities.
-        </p>
-        <div class="intro-links" aria-label="Main site topics">
-          <a href="/en/materials/urban-bathing/">Urban forest bathing</a>
-          <a href="/blog/2026/04/03/Urban-forest-bathing-how-to-practice-Shinrin-yoku-without-leaving-the-city/">Shinrin-yoku in the city</a>
-          <a href="/en/materials/for-children/">Materials for children</a>
-          <a href="/en/materials/">Downloadable resources</a>
+        <div class="intro-copy">
+          <h1>Project: Tree House</h1>
+          <p>
+            <span class="intro-lead">Mindfulness in nature, urban mindfulness, urban forest bathing, materials for children, and calm downloadable resources inspired by the seasons.</span>
+          </p>
+          <p>
+            Tree House gathers simple ways of returning to contact with nature without pressure and without needing to leave the city. Here you will find mindfulness practices inspired by trees, weather, seasons, weekly cards, urban forest bathing, and small rituals of attention rooted in everyday life.
+          </p>
+          <p>
+            The site also grows as a library of materials for children, parents, teachers, and educators: colouring pages, cards, downloadable resources, and seasonal materials that can be used at home, in school, in a library, or during quiet outdoor activities.
+          </p>
         </div>
-        <a class="intro-link" href="/en/about.html">Read more</a>
+        <div class="intro-aside">
+          <div class="intro-links" aria-label="Main site topics">
+            <a href="/en/materials/urban-bathing/">Urban forest bathing</a>
+            <a href="/blog/2026/04/03/Urban-forest-bathing-how-to-practice-Shinrin-yoku-without-leaving-the-city/">Shinrin-yoku in the city</a>
+            <a href="/en/materials/for-children/">Materials for children</a>
+            <a href="/en/materials/">Downloadable resources</a>
+          </div>
+          <a class="intro-link" href="/en/about.html">Read more</a>
+        </div>
       </div>
 
       <div class="home-topic-grid" aria-label="Main site themes">

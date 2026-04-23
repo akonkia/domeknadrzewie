@@ -435,6 +435,21 @@
       box-shadow: var(--shadow);
       border-radius: var(--radius);
       padding: 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.95fr);
+      gap: 24px 36px;
+      align-items: start;
+    }
+
+    .intro-copy {
+      min-width: 0;
+    }
+
+    .intro-aside {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      padding-top: 8px;
     }
 
     .intro-card h1,
@@ -447,7 +462,10 @@
       margin-top: 14px;
       color: var(--muted);
       line-height: 1.8;
-      max-width: 64ch;
+    }
+
+    .intro-copy p {
+      max-width: 74ch;
     }
 
     .intro-card .intro-lead {
@@ -460,7 +478,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
     }
 
     .intro-links a {
@@ -488,7 +505,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-top: 20px;
       padding: 12px 18px;
       border-radius: 999px;
       background: var(--sage);
@@ -798,6 +814,19 @@
         grid-auto-rows: 300px;
       }
 
+      .intro-card {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .intro-aside {
+        padding-top: 0;
+      }
+
+      .intro-copy p {
+        max-width: none;
+      }
+
       .tile.big { grid-row: span 1; }
       .tiles-wrapper { padding-top: 24px; }
       .home-topic-grid { grid-template-columns: 1fr; }
@@ -897,23 +926,27 @@
   <section class="start-section">
     <div class="container">
       <div class="intro-card">
-        <h1>Projekt: Domek na Drzewie</h1>
-        <p>
-          <span class="intro-lead">Uważność w naturze, uważność w mieście, miejskie kąpiele leśne, materiały dla dzieci i spokojne zasoby do pobrania inspirowane porami roku.</span>
-        </p>
-        <p>
-          Domek na Drzewie zbiera proste sposoby wracania do kontaktu z przyrodą bez presji i bez konieczności wyjeżdżania z miasta. Znajdziesz tu ćwiczenia mindfulness inspirowane naturą, karty tygodniowe, miejskie kąpiele leśne i spokojne rytuały uważności osadzone w codzienności.
-        </p>
-        <p>
-          To także biblioteka materiałów dla dzieci, rodziców, nauczycieli i edukatorów: kolorowanek, kart, materiałów do pobrania i sezonowych zasobów, z których można korzystać w domu, w szkole, bibliotece albo podczas własnych zajęć terenowych.
-        </p>
-        <div class="intro-links" aria-label="Główne tematy strony">
-          <a href="/materialy/kapiele_miejskie/">Miejskie kąpiele leśne</a>
-          <a href="/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/">Shinrin-yoku w mieście</a>
-          <a href="/materialy/dla-dzieci/">Materiały dla dzieci</a>
-          <a href="/materialy/">Materiały do pobrania</a>
+        <div class="intro-copy">
+          <h1>Projekt: Domek na Drzewie</h1>
+          <p>
+            <span class="intro-lead">Uważność w naturze, uważność w mieście, miejskie kąpiele leśne, materiały dla dzieci i spokojne zasoby do pobrania inspirowane porami roku.</span>
+          </p>
+          <p>
+            Domek na Drzewie zbiera proste sposoby wracania do kontaktu z przyrodą bez presji i bez konieczności wyjeżdżania z miasta. Znajdziesz tu ćwiczenia mindfulness inspirowane naturą, karty tygodniowe, miejskie kąpiele leśne i spokojne rytuały uważności osadzone w codzienności.
+          </p>
+          <p>
+            To także biblioteka materiałów dla dzieci, rodziców, nauczycieli i edukatorów: kolorowanek, kart, materiałów do pobrania i sezonowych zasobów, z których można korzystać w domu, w szkole, bibliotece albo podczas własnych zajęć terenowych.
+          </p>
         </div>
-        <a class="intro-link" href="/o-nas.html">Czytaj więcej</a>
+        <div class="intro-aside">
+          <div class="intro-links" aria-label="Główne tematy strony">
+            <a href="/materialy/kapiele_miejskie/">Miejskie kąpiele leśne</a>
+            <a href="/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/">Shinrin-yoku w mieście</a>
+            <a href="/materialy/dla-dzieci/">Materiały dla dzieci</a>
+            <a href="/materialy/">Materiały do pobrania</a>
+          </div>
+          <a class="intro-link" href="/o-nas.html">Czytaj więcej</a>
+        </div>
       </div>
 
       <div class="home-topic-grid" aria-label="Najważniejsze obszary strony">
