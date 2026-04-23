@@ -73,47 +73,49 @@ layout: default
         {% assign month_name = months_pl[month_index] %}
       {% endif %}
 
-      <a class="post-link" href="{{ post.url | relative_url }}">
-        <article class="post-card">
+      <article class="post-card">
+        <a class="post-link post-thumb-link" href="{{ post.url | relative_url }}" aria-label="{% if raw_page_lang == 'en' %}Open post: {{ post.title }}{% else %}Otwórz wpis: {{ post.title }}{% endif %}">
           <div class="post-thumb-frame has-image">
             <img src="{{ thumb_image | relative_url }}" alt="{{ thumb_alt }}">
           </div>
+        </a>
 
-          <div class="post-card-content">
-            <time datetime="{{ post.date | date_to_xmlschema }}">
-              {{ post.date | date: "%-d" }} {{ month_name }} {{ post.date | date: "%Y" }}
-            </time>
-            <h2>{{ post.title }}</h2>
-            {% if post.excerpt %}
-              <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-            {% endif %}
-            {% if post.tags %}
-              <div class="post-tag-list" aria-label="{% if raw_page_lang == 'en' %}Post categories{% else %}Kategorie wpisu{% endif %}">
-                {% for tag in post.tags %}
-                  {% assign tag_url = "" %}
-                  {% for tag_page in site.pages %}
-                    {% assign tag_page_lang = tag_page.lang | join: "" | strip %}
-                    {% if tag_page.tag == tag and tag_page_lang == raw_page_lang %}
-                      {% assign tag_url = tag_page.url %}
-                      {% break %}
-                    {% endif %}
-                  {% endfor %}
-                  {% if tag_url != blank %}
-                    <a class="post-tag{% if tag == current_tag %} is-active{% endif %}" href="{{ tag_url | relative_url }}">{{ tag }}</a>
-                  {% else %}
-                    <span class="post-tag{% if tag == current_tag %} is-active{% endif %}">{{ tag }}</span>
+        <div class="post-card-content">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%-d" }} {{ month_name }} {{ post.date | date: "%Y" }}
+          </time>
+          <h2>
+            <a class="post-link post-title-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+          {% if post.excerpt %}
+            <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+          {% endif %}
+          {% if post.tags %}
+            <div class="post-tag-list" aria-label="{% if raw_page_lang == 'en' %}Post categories{% else %}Kategorie wpisu{% endif %}">
+              {% for tag in post.tags %}
+                {% assign tag_url = "" %}
+                {% for tag_page in site.pages %}
+                  {% assign tag_page_lang = tag_page.lang | join: "" | strip %}
+                  {% if tag_page.tag == tag and tag_page_lang == raw_page_lang %}
+                    {% assign tag_url = tag_page.url %}
+                    {% break %}
                   {% endif %}
                 {% endfor %}
-              </div>
-            {% endif %}
-            {% if raw_page_lang == "en" %}
-              <span class="read-more">Open post</span>
-            {% else %}
-              <span class="read-more">Czytaj</span>
-            {% endif %}
-          </div>
-        </article>
-      </a>
+                {% if tag_url != blank %}
+                  <a class="post-tag{% if tag == current_tag %} is-active{% endif %}" href="{{ tag_url | relative_url }}">{{ tag }}</a>
+                {% else %}
+                  <span class="post-tag{% if tag == current_tag %} is-active{% endif %}">{{ tag }}</span>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% if raw_page_lang == "en" %}
+            <a class="read-more" href="{{ post.url | relative_url }}">Open post</a>
+          {% else %}
+            <a class="read-more" href="{{ post.url | relative_url }}">Czytaj</a>
+          {% endif %}
+        </div>
+      </article>
     {% endfor %}
   </div>
 </section>
