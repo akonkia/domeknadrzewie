@@ -4,8 +4,8 @@ title: "Uważność w naturze — od czego zacząć, jeśli nie medytujesz"
 date: 2026-04-23
 lang: pl
 translation_id: uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz-2026
-cover: /assets/img/default-cover.png
-cover_alt: "Uważność w naturze — od czego zacząć, jeśli nie medytujesz"
+cover: /assets/img/uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz.jpg
+cover_alt: "Spacer wśród drzew w miejskim parku"
 excerpt: "Uważność w naturze nie musi zaczynać się od siadania w ciszy i medytacji. Zobacz, jak wejść w spokojniejszy kontakt z przyrodą prostymi krokami, które mieszczą się w zwykłym dniu."
 tags: [uważność, natura, ćwiczenie uważności, kontakt z naturą, natura w mieście, codzienność]
 ---
