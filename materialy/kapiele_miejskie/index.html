@@ -13,7 +13,8 @@
     })();
   </script>
 
-  <title>Miejskie kąpiele leśne | Projekt: Domek na Drzewie</title>
+  <title>Miejskie kąpiele leśne w mieście | Karty uważności i Shinrin-yoku</title>
+  <meta name="description" content="Miejskie kąpiele leśne: całoroczny cykl kart uważności inspirowanych naturą. Zobacz, jak praktykować Shinrin-yoku w mieście, mindfulness w parku i ćwiczenia uważności w naturze tydzień po tygodniu." />
   
   <style>
     :root {
@@ -137,12 +138,175 @@
       font-weight: 700;
     }
 
+    .series-overview,
+    .series-block,
+    .series-faq {
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .series-overview {
+      margin: 30px 0;
+      padding: 30px;
+    }
+
+    .series-overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.95fr);
+      gap: 26px 30px;
+      align-items: start;
+    }
+
+    .section-kicker {
+      margin: 0 0 12px;
+      color: var(--sage);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .series-copy h2,
+    .series-block h2,
+    .series-faq h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .series-copy p,
+    .series-block p,
+    .series-faq p {
+      margin: 14px 0 0;
+      color: var(--muted);
+    }
+
+    .series-lead {
+      color: var(--text) !important;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .series-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .series-chips span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(103,135,96,0.1);
+      color: var(--sage);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .series-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .series-link-card {
+      display: block;
+      padding: 18px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(36,49,38,0.08);
+      background: linear-gradient(180deg, #fffdf8, #f7fbf3);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .series-link-card:hover {
+      transform: translateY(-1px);
+      border-color: rgba(103,135,96,0.28);
+      box-shadow: 0 14px 28px rgba(36,49,38,0.08);
+    }
+
+    .series-link-card strong {
+      display: block;
+      font-size: 0.96rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+
+    .series-link-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .series-block {
+      padding: 26px;
+    }
+
+    .series-block ul,
+    .series-block ol {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .series-block li + li {
+      margin-top: 10px;
+    }
+
+    .series-faq {
+      margin-bottom: 30px;
+      padding: 26px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .faq-list details {
+      border: 1px solid rgba(36,49,38,0.08);
+      border-radius: 16px;
+      background: #fffdf8;
+      padding: 16px 18px;
+    }
+
+    .faq-list summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--text);
+      list-style: none;
+    }
+
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-list p {
+      margin-top: 10px;
+    }
+
     /* Filters */
     .filter-section { background: white; padding: 25px; margin: 30px 0; border: 1px solid var(--line); box-shadow: var(--shadow); }
     .filter-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
     .filter-label { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; color: var(--sage); min-width: 80px; }
     .filter-btn { padding: 6px 14px; border: 1px solid var(--line); background: transparent; cursor: pointer; border-radius: 20px; font-size: 0.8rem; transition: 0.2s; }
     .filter-btn.active { background: var(--sage); color: white; border-color: var(--sage); }
+    .filter-note { margin: 10px 0 0; color: var(--muted); font-size: 0.95rem; }
 
     /* Cards */
     .material-list { display: grid; gap: 30px; margin-bottom: 50px; }
@@ -201,6 +365,8 @@
     }
 
     @media (max-width: 850px) {
+      .series-overview-grid,
+      .series-grid { grid-template-columns: 1fr; }
       .material-item { grid-template-columns: 1fr; }
       .material-visual { max-width: 300px; margin: 0 auto; }
     }
@@ -262,11 +428,95 @@
   </div>
 
   <main class="narrow">
+    <section class="series-overview">
+      <div class="series-overview-grid">
+        <div class="series-copy">
+          <p class="section-kicker">Całoroczny cykl</p>
+          <h2>Miejskie kąpiele leśne jako praktyka uważności w naturze</h2>
+          <p class="series-lead">Miejskie kąpiele leśne to cotygodniowy cykl kart, który łączy inspirację shinrin-yoku z realiami codziennego życia w mieście. To ćwiczenia uważności w naturze tworzone z myślą o osobach, które chcą wracać do kontaktu z zielenią bez wyjazdu do lasu — w parku, na osiedlu, przy oknie, pod jednym drzewem albo podczas krótkiego spaceru.</p>
+          <p>Ta strona pełni rolę hubu całej serii. Zbiera karty sezon po sezonie, pomaga przejść przez rytm 52 tygodni i pokazuje, jak praktykować mindfulness w parku, miejskie shinrin-yoku i codzienny kontakt z naturą w sposób prosty, łagodny i regularny.</p>
+          <div class="series-chips" aria-label="Główne tematy serii">
+            <span>Shinrin-yoku w mieście</span>
+            <span>Mindfulness w parku</span>
+            <span>Ćwiczenia uważności w naturze</span>
+            <span>Kontakt z naturą na co dzień</span>
+          </div>
+        </div>
+        <div class="series-links" aria-label="Powiązane materiały">
+          <a class="series-link-card" href="/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/">
+            <strong>Przewodnik po praktyce</strong>
+            <span>Zacznij od szerszego wprowadzenia do shinrin-yoku w mieście i zobacz, jak korzystać z zieleni bez wyjazdu za miasto.</span>
+          </a>
+          <a class="series-link-card" href="/materialy/kapiele_miejskie/uklad-52-tygodni.html">
+            <strong>Układ 52 tygodni</strong>
+            <span>Poznaj większy rytm całego cyklu: sezony, klastry tematyczne i sposób, w jaki tygodnie układają się w spokojną ścieżkę.</span>
+          </a>
+          <a class="series-link-card" href="/pl/zimowe-karty-uwaznosci-przewodnik-po-tematach-cwiczeniach-i-materialach/">
+            <strong>Zimowy hub serii</strong>
+            <span>Zobacz przykład sezonowego przewodnika, który zbiera tematy, karty i wpisy blogowe w jednym miejscu.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="series-grid" aria-label="Wprowadzenie do serii">
+      <article class="series-block">
+        <h2>Co znajdziesz na tej stronie</h2>
+        <p>Każda karta w serii prowadzi przez jeden mały krok: obserwację, krótkie zadanie, pytania do refleksji i powrót do jednego konkretnego motywu w przyrodzie.</p>
+        <ul>
+          <li>tygodniowe karty z ćwiczeniem do wykonania w miejskiej zieleni lub przy oknie,</li>
+          <li>pytania, które pomagają zauważać rytm pór roku i własne samopoczucie,</li>
+          <li>obrazy do pobrania oraz rozwinięcia kart w formie wpisów blogowych,</li>
+          <li>możliwość przeglądania serii według sezonów, miesięcy i pojedynczych tygodni.</li>
+        </ul>
+      </article>
+
+      <article class="series-block">
+        <h2>Dla kogo są miejskie kąpiele leśne</h2>
+        <p>To materiały dla osób przebodźcowanych, zmęczonych tempem miasta i szukających prostszego kontaktu z naturą. Dobrze sprawdzają się także dla rodziców, nauczycieli i edukatorów, którzy chcą wprowadzać spokojne praktyki uważności do codzienności.</p>
+        <p>Jeśli szukasz sposobu na mindfulness w parku, krótkie ćwiczenia na osiedlu albo naturę bliżej domu, ten cykl został właśnie po to zaprojektowany.</p>
+      </article>
+
+      <article class="series-block">
+        <h2>Jak zacząć korzystać z serii</h2>
+        <ol>
+          <li>Przejrzyj układ 52 tygodni, żeby zobaczyć większy sezonowy rytm.</li>
+          <li>Wybierz jedną kartę z bieżącego miesiąca albo temat, którego najbardziej teraz potrzebujesz.</li>
+          <li>Wróć do tej samej praktyki 2–3 razy, zamiast szukać od razu kolejnej nowości.</li>
+          <li>Jeśli chcesz wejść głębiej, przejdź z karty do powiązanego wpisu blogowego.</li>
+        </ol>
+      </article>
+
+      <article class="series-block">
+        <h2>Dlaczego ten cykl działa jak strona filarowa</h2>
+        <p>Seria nie jest zbiorem oderwanych kart. Układa się w opowieść o relacji z naturą w mieście: od bezruchu i wytrwałości, przez odpoczynek i subtelną energię, aż po rozluźnianie, wzrost i małe zachwyty. Dzięki temu można wracać tu nie tylko po pojedyncze ćwiczenie, ale po szerszą ścieżkę kontaktu z naturą rozwijaną tydzień po tygodniu.</p>
+      </article>
+    </section>
+
+    <section class="series-faq">
+      <h2>Najczęstsze pytania</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Czy trzeba jechać do lasu, żeby korzystać z tych kart?</summary>
+          <p>Nie. Karty są stworzone właśnie po to, by praktyka była możliwa w mieście: w parku, na skwerze, pod jednym drzewem, przy oknie albo podczas krótkiego spaceru.</p>
+        </details>
+        <details>
+          <summary>Czy miejskie kąpiele leśne to to samo co klasyczne shinrin-yoku?</summary>
+          <p>To bliska, ale miejska adaptacja. Zamiast pełnego zanurzenia w dużym lesie, uczysz się korzystać z dostępnej zieleni i zmysłowej obecności tam, gdzie już jesteś.</p>
+        </details>
+        <details>
+          <summary>Czy te ćwiczenia nadają się także do pracy z dziećmi?</summary>
+          <p>Tak. Wiele kart można wykorzystać bardzo prosto z dziećmi, zwłaszcza jeśli potraktujesz je jako zaproszenia do obserwacji, słuchania, oddychania i zauważania zmian w przyrodzie.</p>
+        </details>
+      </div>
+    </section>
+
     <section class="filter-section" style="margin-bottom: 0;">
       <div class="filter-group" style="justify-content: space-between;">
         <div>
-          <span class="filter-label">Układ:</span>
+          <span class="filter-label">Przegląd serii:</span>
           <strong>52 tygodnie w klastrach sezonowych</strong>
+          <p class="filter-note">Przeglądaj wszystkie karty albo zawęź widok do wybranego sezonu lub miesiąca. Strona działa jak archiwum całego cyklu miejskich kąpieli leśnych.</p>
         </div>
         <div class="download-links">
           <a href="/materialy/kapiele_miejskie/uklad-52-tygodni.html" class="btn-main">Zobacz układ 52 tygodni</a>
@@ -297,6 +547,17 @@
     const listElement = document.getElementById('materialList');
     const imgPath = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/materialy/kapiele_miejskie/";
     const pageLang = 'pl';
+    const uiText = {
+      noCards: 'Brak kart.',
+      reflection: 'Refleksja:',
+      image: 'Obraz',
+      task: 'Zadanie',
+      copy: '🔗 Kopiuj link',
+      copied: '✅ Skopiowano!',
+      blog: 'Blog',
+      prev: '← Poprzedni',
+      next: 'Następny →'
+    };
 
     function getCardsData() {
       return typeof window.getWeeklyCardsForLang === 'function'
@@ -313,7 +574,7 @@
     }
 
     function render(data, isSingleView = false) {
-      if (!data.length) { listElement.innerHTML = "<p>Brak kart.</p>"; return; }
+      if (!data.length) { listElement.innerHTML = `<p>${uiText.noCards}</p>`; return; }
       
       const firstId = 1;
       const cardsData = getCardsData();
@@ -329,32 +590,32 @@
             </header>
             <div class="material-body">${card.body}</div>
             <div class="material-reflection">
-              <strong>Refleksja:</strong>
+              <strong>${uiText.reflection}</strong>
               <ul>${card.reflection.map(q => `<li>${q}</li>`).join('')}</ul>
             </div>
             <div class="download-links">
-              <a href="${imgPath}${card.img}?v=2026" download class="btn-main">Obraz</a>
-              <a href="${imgPath}${card.imgB}?v=2026" download class="btn-alt">Zadanie</a>
-              <button onclick="copyLink(${card.id})" class="btn-copy">🔗 Kopiuj link</button>
-              <a href="${getBlogUrl(card)}" target="_blank" class="btn-blog">Blog</a>
+              <a href="${imgPath}${card.img}?v=2026" download class="btn-main">${uiText.image}</a>
+              <a href="${imgPath}${card.imgB}?v=2026" download class="btn-alt">${uiText.task}</a>
+              <button onclick="copyLink(event, ${card.id})" class="btn-copy">${uiText.copy}</button>
+              <a href="${getBlogUrl(card)}" target="_blank" rel="noopener" class="btn-blog">${uiText.blog}</a>
           
             </div>
             ${isSingleView ? `
             <div class="week-nav-row">
-              <button class="nav-arrow-btn ${card.id <= firstId ? 'disabled' : ''}" onclick="showSpecificWeek(${card.id - 1})">← Poprzedni</button>
-              <button class="nav-arrow-btn ${card.id >= lastId ? 'disabled' : ''}" onclick="showSpecificWeek(${card.id + 1})">Następny →</button>
+              <button class="nav-arrow-btn ${card.id <= firstId ? 'disabled' : ''}" onclick="showSpecificWeek(${card.id - 1})">${uiText.prev}</button>
+              <button class="nav-arrow-btn ${card.id >= lastId ? 'disabled' : ''}" onclick="showSpecificWeek(${card.id + 1})">${uiText.next}</button>
             </div>` : ''}
           </div>
         </article>
       `).join('');
     }
 
-    function copyLink(id) {
+    function copyLink(evt, id) {
       const url = window.location.origin + window.location.pathname + '#tydzien-' + id;
       navigator.clipboard.writeText(url).then(() => {
-        const btn = event.currentTarget;
+        const btn = evt.currentTarget;
         const originalText = btn.innerHTML;
-        btn.innerHTML = "✅ Skopiowano!";
+        btn.innerHTML = uiText.copied;
         setTimeout(() => { btn.innerHTML = originalText; }, 2000);
       });
     }
@@ -367,13 +628,8 @@
       const cardsData = getCardsData();
       
       const filtered = val === 'All' ? cardsData : cardsData.filter(c => c[type] === val);
-      
-      if (type === 'month') {
-        render([filtered[0]], true);
-      } else {
-        const sorted = [...filtered].sort((a,b) => b.id - a.id);
-        render(sorted, false);
-      }
+      const sorted = [...filtered].sort((a,b) => b.id - a.id);
+      render(sorted, false);
     }
 
     function showSpecificWeek(id) {
@@ -406,8 +662,7 @@
       }
 
       if (!handleRouting()) {
-        const latest = [...cardsData].sort((a,b) => b.id - a.id)[0];
-        render([latest], true);
+        render([...cardsData].sort((a,b) => b.id - a.id), false);
       }
     }
 
