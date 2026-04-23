@@ -62,4 +62,4 @@ Ta zimowa ścieżka nie musi być przechodzona od początku do końca. Można we
 
 Zimowe karty dobrze działają właśnie dlatego, że nie próbują przyspieszać sezonu. Nie każą od razu się zmieniać, rozkwitać ani wychodzić naprzód. Najpierw uczą słuchać ciszy, zauważać to, co trwa, i ufać małym sygnałom. A dopiero potem prowadzą dalej.
 
-Jeśli chcesz potraktować tę stronę jak hub, najprostsza droga wygląda tak: najpierw [przejrzyj serię kart](/materialy/kapiele_miejskie/), potem wybierz jeden temat, a później wróć tu po kolejne przejścia. Dzięki temu zima przestaje być pustym odcinkiem między jesienią a wiosną i zaczyna działać jak własna, pełna opowieść.
+Jeśli chcesz potraktować tę stronę jak punkt wejścia do całej zimowej części serii, najprostsza droga wygląda tak: najpierw [przejrzyj serię kart](/materialy/kapiele_miejskie/), potem wybierz jeden temat, a później wróć tu po kolejne przejścia. Dzięki temu zima przestaje być pustym odcinkiem między jesienią a wiosną i zaczyna działać jak własna, pełna opowieść.
