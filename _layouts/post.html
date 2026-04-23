@@ -4,6 +4,7 @@ layout: default
 {% assign raw_page_lang = page.lang | join: "" | strip %}
 {% assign months_pl = "stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia" | split: "|" %}
 {% assign months_en = "January|February|March|April|May|June|July|August|September|October|November|December" | split: "|" %}
+{% assign months_pl_standalone = "Styczeń|Luty|Marzec|Kwiecień|Maj|Czerwiec|Lipiec|Sierpień|Wrzesień|Październik|Listopad|Grudzień" | split: "|" %}
 {% assign month_index = page.date | date: "%-m" | minus: 1 %}
 {% if raw_page_lang == "en" %}
   {% assign month_name = months_en[month_index] %}
@@ -43,14 +44,51 @@ layout: default
   {% endif %}
   {% assign cdn = "https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main" %}
 
-  <div class="post-cover-wrap">
-    <div class="post-cover-frame">
-      <img src="{{ cdn }}{{ cover_image }}" alt="{{ page.title }}" style="width: 100%; height: auto; display: block;">
-    </div>
-  </div>
+  <div class="post-layout">
+    <div class="post-main">
+      <div class="post-cover-wrap">
+        <div class="post-cover-frame">
+          <img src="{{ cdn }}{{ cover_image }}" alt="{{ page.title }}" style="width: 100%; height: auto; display: block;">
+        </div>
+      </div>
 
-  <div class="post-body">
-    {{ content }}
+      <div class="post-body">
+        {{ content }}
+      </div>
+    </div>
+
+    <aside class="blog-timeline post-timeline" aria-label="{% if raw_page_lang == 'en' %}Post timeline{% else %}Oś czasu wpisów{% endif %}">
+      <div class="blog-timeline-card">
+        <div class="blog-timeline-kicker">{% if raw_page_lang == "en" %}Timeline{% else %}Oś czasu{% endif %}</div>
+        <h2>{% if raw_page_lang == "en" %}Year by year{% else %}Rok po roku{% endif %}</h2>
+        <div class="blog-timeline-list">
+          {% assign posts_by_year = filtered_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+          {% for year_group in posts_by_year %}
+            <section class="timeline-year">
+              <h3>{{ year_group.name }}</h3>
+              {% assign posts_by_month = year_group.items | group_by_exp: "post", "post.date | date: '%m'" %}
+              {% for month_group in posts_by_month %}
+                {% assign month_index = month_group.name | plus: 0 | minus: 1 %}
+                {% if raw_page_lang == "en" %}
+                  <div class="timeline-month">{{ months_en[month_index] }}</div>
+                {% else %}
+                  <div class="timeline-month">{{ months_pl_standalone[month_index] }}</div>
+                {% endif %}
+                {% for post in month_group.items %}
+                  <a class="timeline-entry{% if post.url == page.url %} is-current{% endif %}" href="{{ post.url | relative_url }}"{% if post.url == page.url %} aria-current="page"{% endif %}>
+                    <span class="timeline-entry-meta">
+                      <span class="timeline-day">{{ post.date | date: "%-d" }}</span>
+                      <span class="timeline-dot" aria-hidden="true"></span>
+                    </span>
+                    <span class="timeline-title">{{ post.title }}</span>
+                  </a>
+                {% endfor %}
+              {% endfor %}
+            </section>
+          {% endfor %}
+        </div>
+      </div>
+    </aside>
   </div>
 
 

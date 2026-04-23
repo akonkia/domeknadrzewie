@@ -8,8 +8,25 @@ permalink: /sitemap.xml
 
 {%- comment -%} ===================== STATIC PAGES ===================== {%- endcomment -%}
 {%- assign static_pages = site.pages | where_exp: "page", "page.sitemap != false" -%}
+{%- assign allowed_tag_pages_pl = "uważność|natura|wiosna|shinrin-yoku|urban bathing|kąpiele leśne" | split: "|" -%}
+{%- assign allowed_tag_pages_en = "mindfulness|nature|spring|shinrin-yoku|urban bathing|forest bathing" | split: "|" -%}
 
 {%- for page in static_pages -%}
+  {%- assign include_page = true -%}
+  {%- if page.layout == "tag" -%}
+    {%- assign page_lang = page.lang | join: "" | strip -%}
+    {%- assign page_tag = page.tag | strip -%}
+    {%- if page_lang == "en" -%}
+      {%- unless allowed_tag_pages_en contains page_tag -%}
+        {%- assign include_page = false -%}
+      {%- endunless -%}
+    {%- else -%}
+      {%- unless allowed_tag_pages_pl contains page_tag -%}
+        {%- assign include_page = false -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if include_page -%}
   {%- unless page.url contains "/404" or page.url contains ".xml" or page.url contains "/assets/" -%}
   <url>
     <loc>{{ base }}{{ page.url | remove: "index.html" }}</loc>
@@ -27,6 +44,7 @@ permalink: /sitemap.xml
     <priority>{% if page.url == "/" %}1.0{% elsif page.url == "/en/" %}0.9{% elsif page.url contains "/blog" or page.url contains "materialy" or page.url contains "/materials/" %}0.8{% else %}0.6{% endif %}</priority>
   </url>
   {%- endunless -%}
+  {%- endif -%}
 {%- endfor -%}
 
 {%- comment -%} ===================== STATIC HTML FILES ===================== {%- endcomment -%}
