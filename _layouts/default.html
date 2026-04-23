@@ -25,13 +25,13 @@
     <div class="container nav">
       <div class="nav-head">
         <a class="brand" href="{% if current_lang == 'en' %}/en/{% else %}/{% endif %}">
-          <span class="brand-mark">
+          <div class="brand-mark">
             <img src="https://raw.githubusercontent.com/akonkia/domeknadrzewie/main/assets/img/logo.png" alt="Logo" />
-          </span>
-          <span class="brand-text">
-            <span class="brand-title">{% if current_lang == 'en' %}Project: Tree House{% else %}Projekt: Domek na Drzewie{% endif %}</span>
-            <span class="brand-subtitle">{% if current_lang == 'en' %}An educational and community project inspired by nature.{% else %}Projekt edukacyjno-społeczny inspirowany naturą.{% endif %}</span>
-          </span>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">{% if current_lang == 'en' %}Project: Tree House{% else %}Projekt: Domek na Drzewie{% endif %}</div>
+            <div class="brand-subtitle">{% if current_lang == 'en' %}An educational and community project inspired by nature.{% else %}Projekt edukacyjno-społeczny inspirowany naturą.{% endif %}</div>
+          </div>
         </a>
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" type="button">
           <span></span>
