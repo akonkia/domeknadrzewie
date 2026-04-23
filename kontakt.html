@@ -40,7 +40,10 @@ excerpt: "Skontaktuj się z Projektem: Domek na Drzewie. Napisz w sprawie materi
   <h2>Kontakt mailowy</h2>
   <p>
     Możesz napisać na:
-    <a href="mailto:kontakt@domeknadrzewie.edu.pl">kontakt@domeknadrzewie.edu.pl</a>
+    <span class="email-reveal" data-email-user="kontakt" data-email-domain="domeknadrzewie.edu.pl">
+      <button class="email-reveal-button" type="button">Kliknij, aby pokazać adres</button>
+      <span class="email-reveal-output" aria-live="polite"></span>
+    </span>
   </p>
 
   <h2>Social media</h2>
@@ -62,3 +65,29 @@ excerpt: "Skontaktuj się z Projektem: Domek na Drzewie. Napisz w sprawie materi
     Dziękuję, że tu jesteś 🌿
   </p>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".email-reveal").forEach(function (wrapper) {
+      const button = wrapper.querySelector(".email-reveal-button");
+      const output = wrapper.querySelector(".email-reveal-output");
+
+      if (!button || !output) return;
+
+      button.addEventListener("click", function () {
+        const user = wrapper.dataset.emailUser || "";
+        const domain = wrapper.dataset.emailDomain || "";
+        const address = user && domain ? user + "@" + domain : "";
+
+        if (!address) return;
+
+        output.innerHTML = "";
+        const link = document.createElement("a");
+        link.href = "mailto:" + address;
+        link.textContent = address;
+        output.appendChild(link);
+        button.hidden = true;
+      });
+    });
+  });
+</script>
