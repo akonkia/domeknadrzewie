@@ -69,6 +69,8 @@ const pageConfigs = [
   },
 ];
 
+const pageConfigByLang = Object.fromEntries(pageConfigs.map((config) => [config.lang, config]));
+
 function toAbsoluteUrl(url) {
   if (!url) return "";
   if (/^https?:\/\//.test(url)) return url;
@@ -216,9 +218,24 @@ function renderJsonLdBlock(config) {
   ].join("\n");
 }
 
+function renderHreflangBlock(config) {
+  const alternateLang = config.lang === "pl" ? "en" : "pl";
+  const alternateConfig = pageConfigByLang[alternateLang];
+  const xDefaultUrl = pageConfigByLang.pl?.pageUrl || config.pageUrl;
+
+  return [
+    "<!-- AUTO-GENERATED HREFLANG:BEGIN -->",
+    `  <link rel="alternate" hreflang="${config.lang}" href="${config.pageUrl}" />`,
+    `  <link rel="alternate" hreflang="${alternateLang}" href="${alternateConfig.pageUrl}" />`,
+    `  <link rel="alternate" hreflang="x-default" href="${xDefaultUrl}" />`,
+    "<!-- AUTO-GENERATED HREFLANG:END -->",
+  ].join("\n");
+}
+
 for (const config of pageConfigs) {
   const html = fs.readFileSync(config.file, "utf8");
   const block = renderJsonLdBlock(config);
+  const hreflangBlock = renderHreflangBlock(config);
   const currentCard = renderCurrentCard(config);
   const cardList = [
     "<!-- AUTO-GENERATED INITIAL CARDS:BEGIN -->",
@@ -227,6 +244,8 @@ for (const config of pageConfigs) {
   ].join("\n");
 
   if (
+    !html.includes("<!-- AUTO-GENERATED HREFLANG:BEGIN -->") ||
+    !html.includes("<!-- AUTO-GENERATED HREFLANG:END -->") ||
     !html.includes("<!-- AUTO-GENERATED STRUCTURED DATA:BEGIN -->") ||
     !html.includes("<!-- AUTO-GENERATED STRUCTURED DATA:END -->") ||
     !html.includes("<!-- AUTO-GENERATED CURRENT CARD:BEGIN -->") ||
@@ -238,6 +257,10 @@ for (const config of pageConfigs) {
   }
 
   let updatedHtml = html.replace(
+    /<!-- AUTO-GENERATED HREFLANG:BEGIN -->[\s\S]*<!-- AUTO-GENERATED HREFLANG:END -->/,
+    hreflangBlock,
+  );
+  updatedHtml = updatedHtml.replace(
     /<!-- AUTO-GENERATED STRUCTURED DATA:BEGIN -->[\s\S]*<!-- AUTO-GENERATED STRUCTURED DATA:END -->/,
     block,
   );
