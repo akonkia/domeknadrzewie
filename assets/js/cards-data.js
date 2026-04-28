@@ -30,7 +30,8 @@
     "Co pomaga mi wracać na swoją ścieżkę, gdy ją gubię?"
   ], 
   img: "wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18A.png", 
-  imgB: "wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18B.png"
+  imgB: "wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18B.png",
+  blog: "/pl/wedrujaca-pszczola-cwiczenie-uwaznosci-o-celowym-ruchu/"
 }
 
     ],
@@ -64,7 +65,8 @@
     "What helps me return to my path when I lose it?"
   ], 
   img: "wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18A.png", 
-  imgB: "spring-may-week-18-reflection-wandering-bee-purposeful-motion-18Ben.png"
+  imgB: "spring-may-week-18-reflection-wandering-bee-purposeful-motion-18Ben.png",
+  blog: "/en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/"
 }
 
     ]
