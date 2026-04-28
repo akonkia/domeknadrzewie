@@ -4,7 +4,7 @@ title: "Wędrująca pszczoła — ćwiczenie uważności o celowym ruchu"
 date: 2026-04-28
 lang: pl
 translation_id: wandering-bee-purposeful-motion-2026
-cover: /assets/img/wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18A.png
+cover	/materialy/kapiele_miejskie/wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18A.png
 cover_alt: "Pszczoła na żółtym mniszku lekarskim w wiosennej trawie"
 excerpt: "Proste ćwiczenie uważności inspirowane pszczołą, ruchem i wiosenną obserwacją natury. Zatrzymaj się na pięć minut i zauważ, co porusza się z intencją."
 tags:
