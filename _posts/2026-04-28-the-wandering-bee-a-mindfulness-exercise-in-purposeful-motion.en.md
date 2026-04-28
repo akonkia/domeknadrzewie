@@ -4,7 +4,7 @@ title: "The Wandering Bee — a mindfulness exercise in purposeful motion"
 date: 2026-04-28
 lang: en
 translation_id: wandering-bee-purposeful-motion-2026
-permalink: wedrujaca-pszczola-cwiczenie-uwaznosci-o-celowym-ruchu
+permalink: /en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/
 cover: /materialy/kapiele_miejskie/wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18A.png
 cover_alt: "A bee on a yellow dandelion in spring grass"
 excerpt: "A simple nature-based mindfulness exercise inspired by a bee, movement, and spring observation. Pause for five minutes and notice what moves with intention."
