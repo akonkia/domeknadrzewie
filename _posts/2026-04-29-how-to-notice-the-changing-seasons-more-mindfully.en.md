@@ -133,6 +133,8 @@ You can take one of these questions on a walk, to a bench, to a window, or into 
 
 If you would like a guided way to bring this into ordinary routes and city spaces, [Urban Bathing](/en/materials/urban-bathing/) offers simple prompts for mindful contact with nature where you already are.
 
+A good place to begin is also [week 18: The Wandering Bee](/en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/) if you want to pair seasonal noticing with attentive movement along a familiar route.
+
 You may also enjoy [Morning Whispers](/blog/2026/03/21/morning-whispers-a-mindfulness-exercise-in-small-wonders/) if mornings are the easiest time for you to notice small seasonal details before the day becomes busy.
 
 ## Begin with one sign

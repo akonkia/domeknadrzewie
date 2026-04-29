@@ -133,6 +133,8 @@ Możesz zabrać je na spacer, na ławkę, do okna albo do małego ogrodu. Nie ch
 
 Jeśli chcesz wnieść taki sposób patrzenia w codzienne trasy i miejskie miejsca, [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/) dają proste wskazówki do kontaktu z naturą tam, gdzie już jesteś.
 
+Dobrym punktem wejścia może być też [karta tygodnia 18: Wędrująca pszczoła](/pl/wedrujaca-pszczola-cwiczenie-uwaznosci-o-celowym-ruchu/), jeśli chcesz połączyć obserwację sezonowych zmian z uważnym ruchem po znanej trasie.
+
 Możesz też wrócić do wpisu [Poranne szepty](/blog/2026/03/21/poranne-szepty-cwiczenie-uwaznosci-o-drobnych-zachwytach/), jeśli najłatwiej zauważasz drobne sezonowe szczegóły rano, zanim dzień nabierze tempa.
 
 ## Zacznij od jednego znaku

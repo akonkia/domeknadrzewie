@@ -122,6 +122,8 @@ Taki impuls nadaje zauważaniu kształt. Może zachęcać, żeby wsłuchać się
 
 [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/) powstały właśnie do takiej praktyki: łagodnego kontaktu z naturą na ulicach, podwórkach, w parkach, przy oknach i na zwyczajnych trasach. Możesz sięgać po jedną kartę tygodniowo albo po prostu wybrać jedną wskazówkę wtedy, kiedy czujesz się odłączona albo odłączony od świata wokół.
 
+Jeśli chcesz zacząć od konkretnego ćwiczenia, wróć do [karty tygodnia 18: Wędrująca pszczoła](/pl/wedrujaca-pszczola-cwiczenie-uwaznosci-o-celowym-ruchu/), która prowadzi uwagę przez spokojny, celowy ruch w zwykłej miejskiej trasie.
+
 Możesz też zajrzeć do wpisu [Miejskie kąpiele leśne: Jak praktykować Shinrin-yoku bez wyjeżdżania z miasta?](/blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/), jeśli chcesz szerszego wprowadzenia do przenoszenia idei kąpieli leśnych w miejską codzienność.
 
 Niech to pozostanie na tyle małe, żeby dało się do tego wracać.

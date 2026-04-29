@@ -122,6 +122,8 @@ A prompt gives your noticing a shape. It might ask you to listen for one sound, 
 
 [Urban Bathing](/en/materials/urban-bathing/) was created for exactly this kind of practice: gentle contact with nature in streets, courtyards, parks, windows, and ordinary routes. You can use one card a week, or simply choose a prompt when you feel disconnected from the world around you.
 
+If you want one concrete place to begin, return to [week 18: The Wandering Bee](/en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/), which guides attention through calm, purposeful movement along an ordinary city route.
+
 You may also enjoy [Urban Forest Bathing: How to Practice Shinrin-yoku Without Leaving the City?](/blog/2026/04/03/Urban-forest-bathing-how-to-practice-Shinrin-yoku-without-leaving-the-city/) if you want a broader introduction to bringing forest-bathing principles into urban spaces.
 
 Let it stay small enough to repeat.
