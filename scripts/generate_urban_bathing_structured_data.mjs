@@ -242,7 +242,6 @@ for (const config of pageConfigs) {
     renderCardList(config),
     "<!-- AUTO-GENERATED INITIAL CARDS:END -->",
   ].join("\n");
-
   if (
     !html.includes("<!-- AUTO-GENERATED HREFLANG:BEGIN -->") ||
     !html.includes("<!-- AUTO-GENERATED HREFLANG:END -->") ||
@@ -277,4 +276,4 @@ for (const config of pageConfigs) {
   fs.writeFileSync(config.file, updatedHtml);
 }
 
-console.log("Updated structured data for urban bathing pages.");
+console.log("Updated urban bathing HTML, hreflang, and structured data.");
