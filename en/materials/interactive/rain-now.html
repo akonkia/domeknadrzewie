@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gdzie teraz pada? | Open-Meteo</title>
+  <meta name="description" content="Prosty widżet pokazujący, gdzie według Open-Meteo pada teraz deszcz lub śnieg." />
+
+  <style>
+    :root {
+      --bg: #f5f7f1;
+      --panel: #ffffff;
+      --ink: #243026;
+      --muted: #6c7468;
+      --sage: #6f8b68;
+      --sage-dark: #4f6f4a;
+      --rain: #557f9f;
+      --snow: #7d95a8;
+      --mixed: #9b7d9f;
+      --line: rgba(36, 48, 38, 0.12);
+      --shadow: 0 18px 45px rgba(41, 55, 45, 0.12);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(183, 209, 183, 0.5), transparent 34rem),
+        linear-gradient(135deg, #f7f3e8 0%, var(--bg) 52%, #eef4f7 100%);
+      padding: 28px;
+    }
+
+    .weather-page {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+
+    .hero-card,
+    .summary-card,
+    .results-panel {
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card {
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 5vw, 4.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .intro {
+      max-width: 62ch;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    button,
+    select {
+      min-height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      padding: 0 16px;
+    }
+
+    button {
+      cursor: pointer;
+      background: var(--sage);
+      color: #fff;
+      border-color: transparent;
+      font-weight: 750;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      background: var(--sage-dark);
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.7;
+      transform: none;
+    }
+
+    .summary-card {
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+      align-content: center;
+    }
+
+    .summary-number {
+      font-size: 3rem;
+      font-weight: 850;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .summary-label {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .status {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    .dot.rain { background: var(--rain); }
+    .dot.snow { background: var(--snow); }
+    .dot.mixed { background: var(--mixed); }
+
+    .results-panel {
+      padding: clamp(18px, 3vw, 28px);
+    }
+
+    .section-heading {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .updated {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .groups {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .group {
+      min-height: 180px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .group h3 {
+      margin: 0 0 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      font-size: 1rem;
+    }
+
+    .count {
+      min-width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .place-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .place-card {
+      padding: 12px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(36, 48, 38, 0.09);
+    }
+
+    .place-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+      margin-bottom: 7px;
+    }
+
+    .place-name {
+      font-weight: 800;
+    }
+
+    .place-type {
+      white-space: nowrap;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef4ef;
+      color: var(--sage-dark);
+    }
+
+    .place-type.rain { background: rgba(85, 127, 159, 0.12); color: #315f81; }
+    .place-type.snow { background: rgba(125, 149, 168, 0.15); color: #516e84; }
+    .place-type.mixed { background: rgba(155, 125, 159, 0.14); color: #725177; }
+
+    .place-details {
+      display: grid;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .empty {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    .note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .error {
+      color: #9a3d2f;
+      font-weight: 650;
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 18px;
+      }
+
+      .hero,
+      .groups {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="weather-page">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-card">
+        <p class="eyebrow">Open-Meteo · pogoda teraz</p>
+        <h1 id="page-title">Gdzie teraz pada?</h1>
+        <p class="intro">
+          Ten widżet sprawdza wybrane lokalizacje i pokazuje miejsca, w których według Open-Meteo
+          aktualnie występuje deszcz, śnieg albo opad mieszany lub marznący.
+        </p>
+
+        <div class="controls" aria-label="Sterowanie widżetem pogodowym">
+          <button id="refresh-button" type="button">Odśwież dane</button>
+          <select id="filter-select" aria-label="Filtr opadów">
+            <option value="all">Wszystkie opady</option>
+            <option value="rain">Tylko deszcz</option>
+            <option value="snow">Tylko śnieg</option>
+            
+          </select>
+        </div>
+      </div>
+
+      <aside class="summary-card" aria-live="polite">
+        <div class="summary-number" id="summary-number">—</div>
+        <div class="summary-label" id="summary-label">Sprawdzam lokalizacje...</div>
+        <p class="status" id="status-text">Łączenie z Open-Meteo.</p>
+        <div class="legend" aria-label="Legenda">
+          <span class="pill"><span class="dot rain"></span>deszcz</span>
+          <span class="pill"><span class="dot snow"></span>śnieg</span>
+          
+        </div>
+      </aside>
+    </section>
+
+    <section class="results-panel" aria-labelledby="results-title">
+      <div class="section-heading">
+        <h2 id="results-title">Aktualne opady w sprawdzanych miejscach</h2>
+        <span class="updated" id="updated-time">Jeszcze nie odświeżono</span>
+      </div>
+
+      <div class="groups">
+        <section class="group" aria-labelledby="rain-title">
+          <h3 id="rain-title">🌧️ Deszcz <span class="count" id="rain-count">0</span></h3>
+          <ul class="place-list" id="rain-list"></ul>
+        </section>
+
+        <section class="group" aria-labelledby="snow-title">
+          <h3 id="snow-title">❄️ Śnieg <span class="count" id="snow-count">0</span></h3>
+          <ul class="place-list" id="snow-list"></ul>
+        </section>
+      </div>
+
+      <p class="note">
+        Uwaga: to nie jest mapa radarowa, tylko szybkie sprawdzenie wybranych punktów. Jeśli opadów jest dużo,
+        widżet pokazuje reprezentatywny wybór do 10 miejsc w każdej kategorii, maksymalnie 3 z jednego kraju lub regionu.
+        Aby objąć większy obszar, dodaj więcej miejsc do tablicy <code>LOCATIONS</code> w skrypcie.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const LOCATIONS = [
+      // Poland — bigger cities, regional centres, coast, lake districts, and mountain/tourist locations
+      { name: "Warszawa, Poland", lat: 52.2297, lon: 21.0122 },
+      { name: "Kraków, Poland", lat: 50.0647, lon: 19.9450 },
+      { name: "Łódź, Poland", lat: 51.7592, lon: 19.4560 },
+      { name: "Wrocław, Poland", lat: 51.1079, lon: 17.0385 },
+      { name: "Poznań, Poland", lat: 52.4064, lon: 16.9252 },
+      { name: "Gdańsk, Poland", lat: 54.3520, lon: 18.6466 },
+      { name: "Gdynia, Poland", lat: 54.5189, lon: 18.5305 },
+      { name: "Sopot, Poland", lat: 54.4416, lon: 18.5601 },
+      { name: "Szczecin, Poland", lat: 53.4285, lon: 14.5528 },
+      { name: "Bydgoszcz, Poland", lat: 53.1235, lon: 18.0084 },
+      { name: "Toruń, Poland", lat: 53.0138, lon: 18.5984 },
+      { name: "Lublin, Poland", lat: 51.2465, lon: 22.5684 },
+      { name: "Białystok, Poland", lat: 53.1325, lon: 23.1688 },
+      { name: "Katowice, Poland", lat: 50.2649, lon: 19.0238 },
+      { name: "Częstochowa, Poland", lat: 50.8118, lon: 19.1203 },
+      { name: "Radom, Poland", lat: 51.4027, lon: 21.1471 },
+      { name: "Rzeszów, Poland", lat: 50.0412, lon: 21.9991 },
+      { name: "Kielce, Poland", lat: 50.8661, lon: 20.6286 },
+      { name: "Olsztyn, Poland", lat: 53.7784, lon: 20.4801 },
+      { name: "Opole, Poland", lat: 50.6751, lon: 17.9213 },
+      { name: "Zielona Góra, Poland", lat: 51.9356, lon: 15.5062 },
+      { name: "Gorzów Wielkopolski, Poland", lat: 52.7368, lon: 15.2288 },
+      { name: "Elbląg, Poland", lat: 54.1561, lon: 19.4045 },
+      { name: "Płock, Poland", lat: 52.5463, lon: 19.7065 },
+      { name: "Włocławek, Poland", lat: 52.6482, lon: 19.0678 },
+      { name: "Tarnów, Poland", lat: 50.0121, lon: 20.9858 },
+      { name: "Nowy Sącz, Poland", lat: 49.6175, lon: 20.7153 },
+      { name: "Koszalin, Poland", lat: 54.1944, lon: 16.1722 },
+      { name: "Słupsk, Poland", lat: 54.4641, lon: 17.0287 },
+      { name: "Kalisz, Poland", lat: 51.7611, lon: 18.0910 },
+      { name: "Legnica, Poland", lat: 51.2070, lon: 16.1553 },
+      { name: "Wałbrzych, Poland", lat: 50.7840, lon: 16.2844 },
+      { name: "Jelenia Góra, Poland", lat: 50.9044, lon: 15.7194 },
+      { name: "Bielsko-Biała, Poland", lat: 49.8224, lon: 19.0584 },
+      { name: "Gliwice, Poland", lat: 50.2945, lon: 18.6714 },
+      { name: "Zabrze, Poland", lat: 50.3249, lon: 18.7857 },
+      { name: "Bytom, Poland", lat: 50.3484, lon: 18.9157 },
+      { name: "Ruda Śląska, Poland", lat: 50.2558, lon: 18.8556 },
+      { name: "Tychy, Poland", lat: 50.1372, lon: 18.9664 },
+      { name: "Sosnowiec, Poland", lat: 50.2863, lon: 19.1041 },
+      { name: "Dąbrowa Górnicza, Poland", lat: 50.3217, lon: 19.1949 },
+      { name: "Rybnik, Poland", lat: 50.1022, lon: 18.5463 },
+      { name: "Jastrzębie-Zdrój, Poland", lat: 49.9500, lon: 18.5833 },
+      { name: "Chorzów, Poland", lat: 50.2975, lon: 18.9546 },
+      { name: "Siemianowice Śląskie, Poland", lat: 50.3274, lon: 19.0290 },
+      { name: "Mysłowice, Poland", lat: 50.2075, lon: 19.1667 },
+      { name: "Jaworzno, Poland", lat: 50.2053, lon: 19.2740 },
+      { name: "Świętochłowice, Poland", lat: 50.2964, lon: 18.9173 },
+      { name: "Piekary Śląskie, Poland", lat: 50.3794, lon: 18.9270 },
+      { name: "Leszno, Poland", lat: 51.8419, lon: 16.5937 },
+      { name: "Piła, Poland", lat: 53.1515, lon: 16.7382 },
+      { name: "Gniezno, Poland", lat: 52.5349, lon: 17.5827 },
+      { name: "Konin, Poland", lat: 52.2230, lon: 18.2511 },
+      { name: "Ostrów Wielkopolski, Poland", lat: 51.6550, lon: 17.8069 },
+      { name: "Lubin, Poland", lat: 51.4009, lon: 16.2015 },
+      { name: "Głogów, Poland", lat: 51.6636, lon: 16.0845 },
+      { name: "Świdnica, Poland", lat: 50.8438, lon: 16.4886 },
+      { name: "Nysa, Poland", lat: 50.4738, lon: 17.3344 },
+      { name: "Kędzierzyn-Koźle, Poland", lat: 50.3498, lon: 18.2261 },
+      { name: "Racibórz, Poland", lat: 50.0915, lon: 18.2190 },
+      { name: "Przemyśl, Poland", lat: 49.7839, lon: 22.7678 },
+      { name: "Krosno, Poland", lat: 49.6887, lon: 21.7706 },
+      { name: "Sanok, Poland", lat: 49.5600, lon: 22.2050 },
+      { name: "Mielec, Poland", lat: 50.2871, lon: 21.4238 },
+      { name: "Stalowa Wola, Poland", lat: 50.5826, lon: 22.0536 },
+      { name: "Tarnobrzeg, Poland", lat: 50.5730, lon: 21.6794 },
+      { name: "Chełm, Poland", lat: 51.1431, lon: 23.4716 },
+      { name: "Zamość, Poland", lat: 50.7231, lon: 23.2510 },
+      { name: "Biała Podlaska, Poland", lat: 52.0324, lon: 23.1165 },
+      { name: "Puławy, Poland", lat: 51.4166, lon: 21.9694 },
+      { name: "Siedlce, Poland", lat: 52.1676, lon: 22.2902 },
+      { name: "Ostrołęka, Poland", lat: 53.0862, lon: 21.5757 },
+      { name: "Łomża, Poland", lat: 53.1781, lon: 22.0594 },
+      { name: "Suwałki, Poland", lat: 54.1115, lon: 22.9308 },
+      { name: "Ełk, Poland", lat: 53.8282, lon: 22.3647 },
+      { name: "Giżycko, Poland", lat: 54.0381, lon: 21.7644 },
+      { name: "Mrągowo, Poland", lat: 53.8644, lon: 21.3050 },
+      { name: "Ostróda, Poland", lat: 53.6967, lon: 19.9649 },
+      { name: "Iława, Poland", lat: 53.5960, lon: 19.5685 },
+      { name: "Grudziądz, Poland", lat: 53.4841, lon: 18.7537 },
+      { name: "Inowrocław, Poland", lat: 52.7989, lon: 18.2639 },
+      { name: "Starogard Gdański, Poland", lat: 53.9639, lon: 18.5264 },
+      { name: "Tczew, Poland", lat: 54.0924, lon: 18.7779 },
+      { name: "Wejherowo, Poland", lat: 54.6057, lon: 18.2356 },
+      { name: "Kołobrzeg, Poland", lat: 54.1764, lon: 15.5761 },
+      { name: "Świnoujście, Poland", lat: 53.9105, lon: 14.2471 },
+      { name: "Międzyzdroje, Poland", lat: 53.9292, lon: 14.4509 },
+      { name: "Ustka, Poland", lat: 54.5805, lon: 16.8619 },
+      { name: "Łeba, Poland", lat: 54.7600, lon: 17.5550 },
+      { name: "Hel, Poland", lat: 54.6085, lon: 18.8013 },
+      { name: "Zakopane, Poland", lat: 49.2992, lon: 19.9496 },
+      { name: "Kasprowy Wierch, Poland", lat: 49.2319, lon: 19.9817 },
+      { name: "Morskie Oko, Poland", lat: 49.2010, lon: 20.0700 },
+      { name: "Białka Tatrzańska, Poland", lat: 49.3897, lon: 20.1057 },
+      { name: "Bukowina Tatrzańska, Poland", lat: 49.3434, lon: 20.1087 },
+      { name: "Kościelisko, Poland", lat: 49.2907, lon: 19.8890 },
+      { name: "Poronin, Poland", lat: 49.3378, lon: 20.0027 },
+      { name: "Rabka-Zdrój, Poland", lat: 49.6089, lon: 19.9665 },
+      { name: "Krynica-Zdrój, Poland", lat: 49.4214, lon: 20.9594 },
+      { name: "Muszyna, Poland", lat: 49.3566, lon: 20.8972 },
+      { name: "Szczawnica, Poland", lat: 49.4244, lon: 20.4849 },
+      { name: "Krościenko nad Dunajcem, Poland", lat: 49.4408, lon: 20.4264 },
+      { name: "Piwniczna-Zdrój, Poland", lat: 49.4412, lon: 20.7148 },
+      { name: "Ustrzyki Dolne, Poland", lat: 49.4304, lon: 22.5938 },
+      { name: "Wetlina, Poland", lat: 49.1427, lon: 22.4789 },
+      { name: "Cisna, Poland", lat: 49.2139, lon: 22.3277 },
+      { name: "Solina, Poland", lat: 49.4000, lon: 22.4500 },
+      { name: "Wisła, Poland", lat: 49.6563, lon: 18.8591 },
+      { name: "Szczyrk, Poland", lat: 49.7187, lon: 19.0319 },
+      { name: "Ustroń, Poland", lat: 49.7215, lon: 18.8019 },
+      { name: "Żywiec, Poland", lat: 49.6853, lon: 19.1924 },
+      { name: "Korbielów, Poland", lat: 49.5689, lon: 19.3500 },
+      { name: "Zawoja, Poland", lat: 49.6447, lon: 19.5428 },
+      { name: "Karpacz, Poland", lat: 50.7767, lon: 15.7559 },
+      { name: "Szklarska Poręba, Poland", lat: 50.8257, lon: 15.5227 },
+      { name: "Śnieżka, Poland/Czechia", lat: 50.7361, lon: 15.7396 },
+      { name: "Jakuszyce, Poland", lat: 50.8167, lon: 15.4333 },
+      { name: "Świeradów-Zdrój, Poland", lat: 50.9092, lon: 15.3431 },
+      { name: "Duszniki-Zdrój, Poland", lat: 50.4038, lon: 16.3904 },
+      { name: "Polanica-Zdrój, Poland", lat: 50.4037, lon: 16.5127 },
+      { name: "Kudowa-Zdrój, Poland", lat: 50.4429, lon: 16.2439 },
+      { name: "Lądek-Zdrój, Poland", lat: 50.3437, lon: 16.8794 },
+      { name: "Zieleniec, Poland", lat: 50.3392, lon: 16.3892 },
+
+      // Major world cities and capitals — useful baseline points
+      { name: "Warsaw, Poland", lat: 52.2297, lon: 21.0122 },
+      { name: "London, United Kingdom", lat: 51.5072, lon: -0.1276 },
+      { name: "Dublin, Ireland", lat: 53.3498, lon: -6.2603 },
+      { name: "Reykjavík, Iceland", lat: 64.1466, lon: -21.9426 },
+      { name: "Oslo, Norway", lat: 59.9139, lon: 10.7522 },
+      { name: "Stockholm, Sweden", lat: 59.3293, lon: 18.0686 },
+      { name: "Helsinki, Finland", lat: 60.1699, lon: 24.9384 },
+      { name: "Copenhagen, Denmark", lat: 55.6761, lon: 12.5683 },
+      { name: "Berlin, Germany", lat: 52.5200, lon: 13.4050 },
+      { name: "Paris, France", lat: 48.8566, lon: 2.3522 },
+      { name: "Amsterdam, Netherlands", lat: 52.3676, lon: 4.9041 },
+      { name: "Brussels, Belgium", lat: 50.8503, lon: 4.3517 },
+      { name: "Prague, Czechia", lat: 50.0755, lon: 14.4378 },
+      { name: "Vienna, Austria", lat: 48.2082, lon: 16.3738 },
+      { name: "Bern, Switzerland", lat: 46.9480, lon: 7.4474 },
+      { name: "Rome, Italy", lat: 41.9028, lon: 12.4964 },
+      { name: "Madrid, Spain", lat: 40.4168, lon: -3.7038 },
+      { name: "Lisbon, Portugal", lat: 38.7223, lon: -9.1393 },
+      { name: "Athens, Greece", lat: 37.9838, lon: 23.7275 },
+      { name: "Istanbul, Türkiye", lat: 41.0082, lon: 28.9784 },
+      { name: "Moscow, Russia", lat: 55.7558, lon: 37.6173 },
+      { name: "Kyiv, Ukraine", lat: 50.4501, lon: 30.5234 },
+      { name: "New York City, USA", lat: 40.7128, lon: -74.0060 },
+      { name: "Washington, DC, USA", lat: 38.9072, lon: -77.0369 },
+      { name: "Seattle, USA", lat: 47.6062, lon: -122.3321 },
+      { name: "Vancouver, Canada", lat: 49.2827, lon: -123.1207 },
+      { name: "Ottawa, Canada", lat: 45.4215, lon: -75.6972 },
+      { name: "Toronto, Canada", lat: 43.6532, lon: -79.3832 },
+      { name: "Québec City, Canada", lat: 46.8139, lon: -71.2080 },
+      { name: "Mexico City, Mexico", lat: 19.4326, lon: -99.1332 },
+      { name: "Bogotá, Colombia", lat: 4.7110, lon: -74.0721 },
+      { name: "Quito, Ecuador", lat: -0.1807, lon: -78.4678 },
+      { name: "Lima, Peru", lat: -12.0464, lon: -77.0428 },
+      { name: "Santiago, Chile", lat: -33.4489, lon: -70.6693 },
+      { name: "Buenos Aires, Argentina", lat: -34.6037, lon: -58.3816 },
+      { name: "São Paulo, Brazil", lat: -23.5558, lon: -46.6396 },
+      { name: "Rio de Janeiro, Brazil", lat: -22.9068, lon: -43.1729 },
+      { name: "Cape Town, South Africa", lat: -33.9249, lon: 18.4241 },
+      { name: "Nairobi, Kenya", lat: -1.2921, lon: 36.8219 },
+      { name: "Cairo, Egypt", lat: 30.0444, lon: 31.2357 },
+      { name: "Tokyo, Japan", lat: 35.6762, lon: 139.6503 },
+      { name: "Seoul, South Korea", lat: 37.5665, lon: 126.9780 },
+      { name: "Beijing, China", lat: 39.9042, lon: 116.4074 },
+      { name: "Shanghai, China", lat: 31.2304, lon: 121.4737 },
+      { name: "Taipei, Taiwan", lat: 25.0330, lon: 121.5654 },
+      { name: "Hong Kong", lat: 22.3193, lon: 114.1694 },
+      { name: "Bangkok, Thailand", lat: 13.7563, lon: 100.5018 },
+      { name: "Hanoi, Vietnam", lat: 21.0278, lon: 105.8342 },
+      { name: "Singapore", lat: 1.3521, lon: 103.8198 },
+      { name: "Jakarta, Indonesia", lat: -6.2088, lon: 106.8456 },
+      { name: "Manila, Philippines", lat: 14.5995, lon: 120.9842 },
+      { name: "New Delhi, India", lat: 28.6139, lon: 77.2090 },
+      { name: "Mumbai, India", lat: 19.0760, lon: 72.8777 },
+      { name: "Dhaka, Bangladesh", lat: 23.8103, lon: 90.4125 },
+      { name: "Kathmandu, Nepal", lat: 27.7172, lon: 85.3240 },
+      { name: "Canberra, Australia", lat: -35.2809, lon: 149.1300 },
+      { name: "Sydney, Australia", lat: -33.8688, lon: 151.2093 },
+      { name: "Melbourne, Australia", lat: -37.8136, lon: 144.9631 },
+      { name: "Wellington, New Zealand", lat: -41.2865, lon: 174.7762 },
+      { name: "Auckland, New Zealand", lat: -36.8509, lon: 174.7645 },
+
+      // Rain magnets — among the world’s famously wet places
+      { name: "Mawsynram, India", lat: 25.2986, lon: 91.5822 },
+      { name: "Cherrapunji / Sohra, India", lat: 25.2840, lon: 91.7250 },
+      { name: "Tutunendo, Colombia", lat: 5.7500, lon: -76.5400 },
+      { name: "Lloró, Colombia", lat: 5.5000, lon: -76.5400 },
+      { name: "Debundscha, Cameroon", lat: 4.1000, lon: 9.0500 },
+      { name: "San Antonio de Ureca, Equatorial Guinea", lat: 3.2667, lon: 8.6167 },
+      { name: "Mount Waialeale, Hawaii, USA", lat: 22.0733, lon: -159.4978 },
+      { name: "Big Bog, Maui, Hawaii, USA", lat: 20.7086, lon: -156.1772 },
+      { name: "Hilo, Hawaii, USA", lat: 19.7070, lon: -155.0885 },
+      { name: "Yakushima, Japan", lat: 30.3589, lon: 130.5281 },
+      { name: "Milford Sound, New Zealand", lat: -44.6716, lon: 167.9256 },
+      { name: "Cropp River, New Zealand", lat: -43.0700, lon: 171.0100 },
+      { name: "Quinault Rain Forest, USA", lat: 47.4665, lon: -123.8485 },
+      { name: "Forks, Washington, USA", lat: 47.9504, lon: -124.3855 },
+      { name: "Ketchikan, Alaska, USA", lat: 55.3422, lon: -131.6461 },
+      { name: "Juneau, Alaska, USA", lat: 58.3019, lon: -134.4197 },
+      { name: "Prince Rupert, Canada", lat: 54.3150, lon: -130.3208 },
+      { name: "Bergen, Norway", lat: 60.3913, lon: 5.3221 },
+      { name: "Tórshavn, Faroe Islands", lat: 62.0079, lon: -6.7900 },
+      { name: "Glasgow, Scotland", lat: 55.8642, lon: -4.2518 },
+      { name: "Valdivia, Chile", lat: -39.8142, lon: -73.2459 },
+      { name: "Puerto Montt, Chile", lat: -41.4693, lon: -72.9424 },
+      { name: "Chaitén, Chile", lat: -42.9150, lon: -72.7063 },
+
+      // Snow scan: Japan Sea snow belt and Hokkaido
+      { name: "Aomori, Japan", lat: 40.8222, lon: 140.7474 },
+      { name: "Sapporo, Japan", lat: 43.0618, lon: 141.3545 },
+      { name: "Asahikawa, Japan", lat: 43.7706, lon: 142.3650 },
+      { name: "Otaru, Japan", lat: 43.1907, lon: 140.9947 },
+      { name: "Kutchan / Niseko, Japan", lat: 42.9018, lon: 140.7586 },
+      { name: "Niseko, Japan", lat: 42.8048, lon: 140.6874 },
+      { name: "Rusutsu, Japan", lat: 42.7370, lon: 140.8750 },
+      { name: "Furano, Japan", lat: 43.3420, lon: 142.3832 },
+      { name: "Biei, Japan", lat: 43.5882, lon: 142.4670 },
+      { name: "Hakuba, Japan", lat: 36.6982, lon: 137.8619 },
+      { name: "Nozawa Onsen, Japan", lat: 36.9228, lon: 138.4406 },
+      { name: "Myoko Kogen, Japan", lat: 36.8910, lon: 138.1780 },
+      { name: "Yuzawa, Niigata, Japan", lat: 36.9333, lon: 138.8167 },
+      { name: "Niigata, Japan", lat: 37.9161, lon: 139.0364 },
+      { name: "Toyama, Japan", lat: 36.6953, lon: 137.2113 },
+      { name: "Kanazawa, Japan", lat: 36.5613, lon: 136.6562 },
+      { name: "Shirakawa-go, Japan", lat: 36.2706, lon: 136.8986 },
+      { name: "Tateyama, Japan", lat: 36.5750, lon: 137.5950 },
+      { name: "Zao Onsen, Japan", lat: 38.1667, lon: 140.4000 },
+      { name: "Appi Kogen, Japan", lat: 40.0000, lon: 140.9667 },
+
+      // Snow scan: Alaska and Pacific Northwest
+      { name: "Valdez, Alaska, USA", lat: 61.1308, lon: -146.3483 },
+      { name: "Thompson Pass, Alaska, USA", lat: 61.1500, lon: -145.7500 },
+      { name: "Anchorage, Alaska, USA", lat: 61.2176, lon: -149.8997 },
+      { name: "Fairbanks, Alaska, USA", lat: 64.8378, lon: -147.7164 },
+      { name: "Girdwood / Alyeska, Alaska, USA", lat: 60.9425, lon: -149.1664 },
+      { name: "Haines, Alaska, USA", lat: 59.2358, lon: -135.4450 },
+      { name: "Mount Baker, Washington, USA", lat: 48.7768, lon: -121.8144 },
+      { name: "Paradise, Mount Rainier, USA", lat: 46.7853, lon: -121.7350 },
+      { name: "Stevens Pass, Washington, USA", lat: 47.7448, lon: -121.0890 },
+      { name: "Snoqualmie Pass, Washington, USA", lat: 47.4246, lon: -121.4130 },
+      { name: "Timberline Lodge, Oregon, USA", lat: 45.3311, lon: -121.7113 },
+      { name: "Mount Hood Meadows, Oregon, USA", lat: 45.3315, lon: -121.6651 },
+      { name: "Crater Lake, Oregon, USA", lat: 42.9446, lon: -122.1090 },
+      { name: "Mount Shasta, California, USA", lat: 41.3099, lon: -122.3106 },
+      { name: "Truckee, California, USA", lat: 39.3279, lon: -120.1833 },
+      { name: "South Lake Tahoe, USA", lat: 38.9399, lon: -119.9772 },
+      { name: "Mammoth Lakes, California, USA", lat: 37.6485, lon: -118.9721 },
+
+      // Snow scan: Rocky Mountains and interior West
+      { name: "Alta, Utah, USA", lat: 40.5888, lon: -111.6379 },
+      { name: "Snowbird, Utah, USA", lat: 40.5811, lon: -111.6556 },
+      { name: "Park City, Utah, USA", lat: 40.6461, lon: -111.4980 },
+      { name: "Brighton, Utah, USA", lat: 40.5980, lon: -111.5820 },
+      { name: "Jackson Hole, Wyoming, USA", lat: 43.5875, lon: -110.8279 },
+      { name: "Teton Village, Wyoming, USA", lat: 43.5876, lon: -110.8279 },
+      { name: "Big Sky, Montana, USA", lat: 45.2618, lon: -111.3080 },
+      { name: "Whitefish, Montana, USA", lat: 48.4106, lon: -114.3353 },
+      { name: "Bozeman, Montana, USA", lat: 45.6770, lon: -111.0429 },
+      { name: "Steamboat Springs, Colorado, USA", lat: 40.4850, lon: -106.8317 },
+      { name: "Aspen, Colorado, USA", lat: 39.1911, lon: -106.8175 },
+      { name: "Vail, Colorado, USA", lat: 39.6403, lon: -106.3742 },
+      { name: "Breckenridge, Colorado, USA", lat: 39.4817, lon: -106.0384 },
+      { name: "Telluride, Colorado, USA", lat: 37.9375, lon: -107.8123 },
+      { name: "Wolf Creek Pass, Colorado, USA", lat: 37.4781, lon: -106.7939 },
+      { name: "Taos Ski Valley, New Mexico, USA", lat: 36.5964, lon: -105.4506 },
+
+      // Snow scan: Canada
+      { name: "St. John’s, Canada", lat: 47.5615, lon: -52.7126 },
+      { name: "Gander, Canada", lat: 48.9569, lon: -54.6089 },
+      { name: "Corner Brook, Canada", lat: 48.9500, lon: -57.9500 },
+      { name: "Saguenay, Canada", lat: 48.4281, lon: -71.0689 },
+      { name: "Québec City, Canada", lat: 46.8139, lon: -71.2080 },
+      { name: "Montreal, Canada", lat: 45.5017, lon: -73.5673 },
+      { name: "Ottawa, Canada", lat: 45.4215, lon: -75.6972 },
+      { name: "Sudbury, Canada", lat: 46.4917, lon: -80.9930 },
+      { name: "Sault Ste. Marie, Canada", lat: 46.5219, lon: -84.3461 },
+      { name: "Thunder Bay, Canada", lat: 48.3809, lon: -89.2477 },
+      { name: "Winnipeg, Canada", lat: 49.8951, lon: -97.1384 },
+      { name: "Regina, Canada", lat: 50.4452, lon: -104.6189 },
+      { name: "Saskatoon, Canada", lat: 52.1579, lon: -106.6702 },
+      { name: "Calgary, Canada", lat: 51.0447, lon: -114.0719 },
+      { name: "Edmonton, Canada", lat: 53.5461, lon: -113.4938 },
+      { name: "Banff, Canada", lat: 51.1784, lon: -115.5708 },
+      { name: "Lake Louise, Canada", lat: 51.4254, lon: -116.1773 },
+      { name: "Revelstoke, Canada", lat: 50.9981, lon: -118.1957 },
+      { name: "Golden, Canada", lat: 51.2961, lon: -116.9631 },
+      { name: "Fernie, Canada", lat: 49.5042, lon: -115.0631 },
+      { name: "Whistler, Canada", lat: 50.1163, lon: -122.9574 },
+      { name: "Prince George, Canada", lat: 53.9171, lon: -122.7497 },
+      { name: "Whitehorse, Canada", lat: 60.7212, lon: -135.0568 },
+      { name: "Yellowknife, Canada", lat: 62.4540, lon: -114.3718 },
+      { name: "Iqaluit, Canada", lat: 63.7467, lon: -68.5170 },
+
+      // Snow scan: Nordic, Arctic and North Atlantic
+      { name: "Tromsø, Norway", lat: 69.6492, lon: 18.9553 },
+      { name: "Narvik, Norway", lat: 68.4385, lon: 17.4273 },
+      { name: "Bodø, Norway", lat: 67.2804, lon: 14.4049 },
+      { name: "Svolvær, Norway", lat: 68.2342, lon: 14.5683 },
+      { name: "Longyearbyen, Svalbard", lat: 78.2232, lon: 15.6267 },
+      { name: "Kiruna, Sweden", lat: 67.8558, lon: 20.2253 },
+      { name: "Abisko, Sweden", lat: 68.3498, lon: 18.8310 },
+      { name: "Östersund, Sweden", lat: 63.1792, lon: 14.6357 },
+      { name: "Åre, Sweden", lat: 63.3990, lon: 13.0810 },
+      { name: "Rovaniemi, Finland", lat: 66.5039, lon: 25.7294 },
+      { name: "Kittilä / Levi, Finland", lat: 67.6647, lon: 24.8936 },
+      { name: "Saariselkä, Finland", lat: 68.4200, lon: 27.4100 },
+      { name: "Inari, Finland", lat: 68.9060, lon: 27.0288 },
+      { name: "Murmansk, Russia", lat: 68.9585, lon: 33.0827 },
+      { name: "Arkhangelsk, Russia", lat: 64.5393, lon: 40.5170 },
+      { name: "Petrozavodsk, Russia", lat: 61.7782, lon: 34.3640 },
+      { name: "Nuuk, Greenland", lat: 64.1814, lon: -51.6941 },
+      { name: "Ilulissat, Greenland", lat: 69.2198, lon: -51.0986 },
+      { name: "Tasiilaq, Greenland", lat: 65.6135, lon: -37.6337 },
+      { name: "Akureyri, Iceland", lat: 65.6885, lon: -18.1262 },
+      { name: "Ísafjörður, Iceland", lat: 66.0755, lon: -23.1240 },
+
+      // Snow scan: Alps and Central Europe
+      { name: "Chamonix, France", lat: 45.9237, lon: 6.8694 },
+      { name: "Val Thorens, France", lat: 45.2989, lon: 6.5833 },
+      { name: "Tignes, France", lat: 45.4690, lon: 6.9090 },
+      { name: "Val d’Isère, France", lat: 45.4487, lon: 6.9800 },
+      { name: "La Plagne, France", lat: 45.5060, lon: 6.6770 },
+      { name: "Zermatt, Switzerland", lat: 46.0207, lon: 7.7491 },
+      { name: "St. Moritz, Switzerland", lat: 46.4908, lon: 9.8355 },
+      { name: "Davos, Switzerland", lat: 46.8027, lon: 9.8359 },
+      { name: "Andermatt, Switzerland", lat: 46.6357, lon: 8.5939 },
+      { name: "Engelberg, Switzerland", lat: 46.8200, lon: 8.4067 },
+      { name: "Jungfraujoch, Switzerland", lat: 46.5475, lon: 7.9853 },
+      { name: "Innsbruck, Austria", lat: 47.2692, lon: 11.4041 },
+      { name: "St. Anton am Arlberg, Austria", lat: 47.1292, lon: 10.2682 },
+      { name: "Lech, Austria", lat: 47.2086, lon: 10.1418 },
+      { name: "Ischgl, Austria", lat: 47.0127, lon: 10.2918 },
+      { name: "Sölden, Austria", lat: 46.9650, lon: 11.0070 },
+      { name: "Kitzbühel, Austria", lat: 47.4464, lon: 12.3922 },
+      { name: "Garmisch-Partenkirchen, Germany", lat: 47.4917, lon: 11.0955 },
+      { name: "Zugspitze, Germany", lat: 47.4211, lon: 10.9856 },
+      { name: "Cortina d’Ampezzo, Italy", lat: 46.5405, lon: 12.1357 },
+      { name: "Livigno, Italy", lat: 46.5388, lon: 10.1357 },
+      { name: "Sestriere, Italy", lat: 44.9580, lon: 6.8770 },
+      { name: "Bormio, Italy", lat: 46.4676, lon: 10.3700 },
+      { name: "Zakopane, Poland", lat: 49.2992, lon: 19.9496 },
+      { name: "Kasprowy Wierch, Poland", lat: 49.2319, lon: 19.9817 },
+      { name: "Śnieżka, Poland/Czechia", lat: 50.7361, lon: 15.7396 },
+      { name: "Špindlerův Mlýn, Czechia", lat: 50.7262, lon: 15.6094 },
+      { name: "Jasná, Slovakia", lat: 48.9700, lon: 19.5800 },
+      { name: "Białka Tatrzańska, Poland", lat: 49.3897, lon: 20.1057 },
+
+      // Snow scan: Balkans, Caucasus, Türkiye, Central Asia
+      { name: "Gudauri, Georgia", lat: 42.4775, lon: 44.4764 },
+      { name: "Stepantsminda / Kazbegi, Georgia", lat: 42.6580, lon: 44.6411 },
+      { name: "Mestia, Georgia", lat: 43.0455, lon: 42.7298 },
+      { name: "Bakuriani, Georgia", lat: 41.7509, lon: 43.5294 },
+      { name: "Tsaghkadzor, Armenia", lat: 40.5326, lon: 44.7200 },
+      { name: "Erzurum, Türkiye", lat: 39.9000, lon: 41.2700 },
+      { name: "Palandöken, Türkiye", lat: 39.8500, lon: 41.2800 },
+      { name: "Uludağ, Türkiye", lat: 40.0717, lon: 29.2214 },
+      { name: "Kopaonik, Serbia", lat: 43.2850, lon: 20.8110 },
+      { name: "Bansko, Bulgaria", lat: 41.8383, lon: 23.4885 },
+      { name: "Borovets, Bulgaria", lat: 42.2667, lon: 23.6000 },
+      { name: "Poiana Brașov, Romania", lat: 45.5960, lon: 25.5520 },
+      { name: "Sinaia, Romania", lat: 45.3500, lon: 25.5500 },
+      { name: "Bukovel, Ukraine", lat: 48.3530, lon: 24.4120 },
+      { name: "Almaty, Kazakhstan", lat: 43.2389, lon: 76.8897 },
+      { name: "Shymbulak, Kazakhstan", lat: 43.1283, lon: 77.0800 },
+      { name: "Bishkek, Kyrgyzstan", lat: 42.8746, lon: 74.5698 },
+      { name: "Karakol, Kyrgyzstan", lat: 42.4907, lon: 78.3936 },
+      { name: "Gulmarg, Kashmir", lat: 34.0484, lon: 74.3805 },
+      { name: "Leh, Ladakh", lat: 34.1526, lon: 77.5771 },
+      { name: "Manali, India", lat: 32.2432, lon: 77.1892 },
+      { name: "Shimla, India", lat: 31.1048, lon: 77.1734 },
+      { name: "Auli, India", lat: 30.5289, lon: 79.5700 },
+      { name: "Murree, Pakistan", lat: 33.9070, lon: 73.3943 },
+      { name: "Naltar Valley, Pakistan", lat: 36.1390, lon: 74.1910 },
+
+      // Snow scan: South America, Southern Hemisphere winter regions and high Andes
+      { name: "Ushuaia, Argentina", lat: -54.8019, lon: -68.3030 },
+      { name: "Bariloche, Argentina", lat: -41.1335, lon: -71.3103 },
+      { name: "Cerro Catedral, Argentina", lat: -41.1667, lon: -71.4500 },
+      { name: "Las Leñas, Argentina", lat: -35.1470, lon: -70.0810 },
+      { name: "Mendoza High Andes, Argentina", lat: -32.8250, lon: -69.9400 },
+      { name: "Caviahue, Argentina", lat: -37.8667, lon: -71.0500 },
+      { name: "Portillo, Chile", lat: -32.8378, lon: -70.1297 },
+      { name: "Valle Nevado, Chile", lat: -33.3540, lon: -70.2480 },
+      { name: "La Parva, Chile", lat: -33.3370, lon: -70.2920 },
+      { name: "Nevados de Chillán, Chile", lat: -36.9080, lon: -71.4100 },
+      { name: "Antillanca, Chile", lat: -40.7830, lon: -72.2000 },
+      { name: "Corralco, Chile", lat: -38.4000, lon: -71.5800 },
+      { name: "El Colorado, Chile", lat: -33.3500, lon: -70.3000 },
+      { name: "Queenstown, New Zealand", lat: -45.0312, lon: 168.6626 },
+      { name: "Wanaka, New Zealand", lat: -44.7032, lon: 169.1321 },
+      { name: "Mount Hutt, New Zealand", lat: -43.4900, lon: 171.5300 },
+      { name: "Cardrona, New Zealand", lat: -44.8700, lon: 168.9400 },
+      { name: "Treble Cone, New Zealand", lat: -44.6330, lon: 168.9000 },
+      { name: "The Remarkables, New Zealand", lat: -45.0500, lon: 168.8200 },
+      { name: "Mount Ruapehu, New Zealand", lat: -39.2818, lon: 175.5680 },
+      { name: "Thredbo, Australia", lat: -36.5030, lon: 148.3050 },
+      { name: "Perisher, Australia", lat: -36.4050, lon: 148.4110 },
+      { name: "Falls Creek, Australia", lat: -36.8650, lon: 147.2770 },
+      { name: "Mount Buller, Australia", lat: -37.1460, lon: 146.4480 },
+      { name: "Ben Lomond, Tasmania", lat: -41.5300, lon: 147.6600 },
+      { name: "Sani Pass, Lesotho/South Africa", lat: -29.5840, lon: 29.2870 },
+      { name: "Afriski, Lesotho", lat: -28.8236, lon: 28.7298 },
+
+      // Snow scan: Antarctica and subantarctic — often useful when northern winter is quiet
+      { name: "McMurdo Station, Antarctica", lat: -77.8419, lon: 166.6863 },
+      { name: "Scott Base, Antarctica", lat: -77.8492, lon: 166.7680 },
+      { name: "Amundsen–Scott South Pole Station", lat: -90.0000, lon: 0.0000 },
+      { name: "Rothera Research Station, Antarctica", lat: -67.5680, lon: -68.1300 },
+      { name: "Palmer Station, Antarctica", lat: -64.7742, lon: -64.0539 },
+      { name: "King George Island, Antarctica", lat: -62.0167, lon: -58.2500 },
+      { name: "Marambio Base, Antarctica", lat: -64.2400, lon: -56.6300 },
+      { name: "Mawson Station, Antarctica", lat: -67.6033, lon: 62.8738 },
+      { name: "Davis Station, Antarctica", lat: -68.5766, lon: 77.9674 },
+      { name: "Casey Station, Antarctica", lat: -66.2825, lon: 110.5276 },
+      { name: "Macquarie Island, Australia", lat: -54.6208, lon: 158.8556 },
+      { name: "South Georgia / Grytviken", lat: -54.2811, lon: -36.5080 }
+    ];
+
+    const WEATHER_CODES = {
+      51: "lekka mżawka",
+      53: "umiarkowana mżawka",
+      55: "gęsta mżawka",
+      56: "lekka marznąca mżawka",
+      57: "gęsta marznąca mżawka",
+      61: "lekki deszcz",
+      63: "umiarkowany deszcz",
+      65: "silny deszcz",
+      66: "lekki marznący deszcz",
+      67: "silny marznący deszcz",
+      71: "lekki śnieg",
+      73: "umiarkowany śnieg",
+      75: "silny śnieg",
+      77: "ziarna śniegu",
+      80: "lekkie opady deszczu przelotne",
+      81: "umiarkowane opady deszczu przelotne",
+      82: "gwałtowne opady deszczu przelotne",
+      85: "lekkie opady śniegu przelotne",
+      86: "silne opady śniegu przelotne"
+    };
+
+    const RAIN_CODES = new Set([51, 53, 55, 61, 63, 65, 80, 81, 82]);
+    const SNOW_CODES = new Set([71, 73, 75, 77, 85, 86]);
+    const MIXED_CODES = new Set([56, 57, 66, 67]);
+
+    // Tune these if the widget feels too strict or too noisy.
+    // Open-Meteo current precipitation/rain values are usually small for brief showers,
+    // so this removes tiny traces from the visible rain list.
+    const REAL_RAIN_MIN_MM = 0.1;
+    const DRIZZLE_MIN_MM = 0.3;
+    const REAL_SNOW_MIN_CM = 0.05;
+
+    const MEANINGFUL_RAIN_CODES = new Set([
+      63, 65, // moderate / heavy rain
+      81, 82  // moderate / violent rain showers
+    ]);
+
+    const LIGHT_RAIN_CODES = new Set([
+      51, 53, 55, // drizzle
+      61,         // slight rain
+      80          // slight rain showers
+    ]);
+
+    const state = {
+      places: [],
+      failedLocations: [],
+      loading: false
+    };
+
+    const elements = {
+      refreshButton: document.getElementById("refresh-button"),
+      filterSelect: document.getElementById("filter-select"),
+      statusText: document.getElementById("status-text"),
+      summaryNumber: document.getElementById("summary-number"),
+      summaryLabel: document.getElementById("summary-label"),
+      updatedTime: document.getElementById("updated-time"),
+      rainList: document.getElementById("rain-list"),
+      snowList: document.getElementById("snow-list"),
+      rainCount: document.getElementById("rain-count"),
+      snowCount: document.getElementById("snow-count")
+    };
+
+    function numberOrZero(value) {
+      const number = Number(value);
+      return Number.isFinite(number) ? number : 0;
+    }
+
+    function weatherDescription(code) {
+      return WEATHER_CODES[code] || "opad";
+    }
+
+    function formatAmount(value, unit) {
+      const number = numberOrZero(value);
+      return `${number.toFixed(number >= 10 ? 0 : 1)} ${unit}`;
+    }
+
+    function getPlaceRegion(place) {
+      const parts = place.name.split(",").map(part => part.trim()).filter(Boolean);
+      return parts.length > 1 ? parts[parts.length - 1] : "Other";
+    }
+
+    function precipitationScore(place) {
+      return (
+        numberOrZero(place.precipitation) +
+        numberOrZero(place.rain) +
+        numberOrZero(place.showers) +
+        numberOrZero(place.snowfall)
+      );
+    }
+
+    function classifyPlace(place) {
+      const code = Number(place.weatherCode);
+
+      const rainAmount = Math.max(
+        numberOrZero(place.precipitation),
+        numberOrZero(place.rain),
+        numberOrZero(place.showers)
+      );
+
+      const snowAmount = numberOrZero(place.snowfall);
+
+      const realSnow =
+        snowAmount >= REAL_SNOW_MIN_CM ||
+        SNOW_CODES.has(code);
+
+      // Keep moderate/heavy rain codes even if the numeric amount is small.
+      // Open-Meteo's current values can be conservative, especially for brief updates.
+      const meaningfulRainByCode = MEANINGFUL_RAIN_CODES.has(code);
+
+      // Keep slight rain/showers only if there is measurable rain.
+      const lightRainWithAmount =
+        (code === 61 || code === 80) && rainAmount >= REAL_RAIN_MIN_MM;
+
+      // Drizzle is only shown if it is more than a trace.
+      const drizzleWithAmount =
+        (code === 51 || code === 53 || code === 55) && rainAmount >= DRIZZLE_MIN_MM;
+
+      // Also keep any measurable rain amount, even if the code is not perfectly aligned.
+      const measurableRain = rainAmount >= REAL_RAIN_MIN_MM;
+
+      const realRain =
+        meaningfulRainByCode ||
+        lightRainWithAmount ||
+        drizzleWithAmount ||
+        measurableRain;
+
+      // There is no separate mixed category. If snow appears in mixed/freezing conditions,
+      // we prefer to show it under snow so the snow column stays useful.
+      if (realSnow || MIXED_CODES.has(code)) return "snow";
+      if (realRain) return "rain";
+      return "none";
+    }
+
+    function isPositivePrecipitation(place) {
+      return place.type !== "none";
+    }
+
+    function selectRepresentativePlaces(places, maxTotal = 10, maxPerRegion = 3) {
+      const sorted = [...places].sort((a, b) => precipitationScore(b) - precipitationScore(a));
+      const selected = [];
+      const regionCounts = new Map();
+
+      for (const place of sorted) {
+        const region = getPlaceRegion(place);
+        if (regionCounts.has(region)) continue;
+        selected.push(place);
+        regionCounts.set(region, 1);
+        if (selected.length >= maxTotal) return selected;
+      }
+
+      for (const place of sorted) {
+        if (selected.includes(place)) continue;
+        const region = getPlaceRegion(place);
+        const count = regionCounts.get(region) || 0;
+        if (count >= maxPerRegion) continue;
+        selected.push(place);
+        regionCounts.set(region, count + 1);
+        if (selected.length >= maxTotal) return selected;
+      }
+
+      return selected;
+    }
+
+    function chunkArray(items, size) {
+      const chunks = [];
+      for (let i = 0; i < items.length; i += size) {
+        chunks.push(items.slice(i, i + size));
+      }
+      return chunks;
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function buildOpenMeteoUrl(batch) {
+      const latitude = batch.map(place => place.lat).join(",");
+      const longitude = batch.map(place => place.lon).join(",");
+      return "https://api.open-meteo.com/v1/forecast"
+        + `?latitude=${latitude}`
+        + `&longitude=${longitude}`
+        + "&current=temperature_2m,precipitation,rain,showers,snowfall,weather_code"
+        + "&timezone=UTC";
+    }
+
+    async function fetchBatch(batch) {
+      const response = await fetch(buildOpenMeteoUrl(batch));
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+      const results = Array.isArray(data) ? data : [data];
+
+      return results.map((result, index) => {
+        const current = result.current || {};
+        const place = {
+          ...batch[index],
+          time: current.time || "",
+          temperature: current.temperature_2m,
+          precipitation: current.precipitation,
+          rain: current.rain,
+          showers: current.showers,
+          snowfall: current.snowfall,
+          weatherCode: current.weather_code
+        };
+
+        return {
+          ...place,
+          type: classifyPlace(place)
+        };
+      });
+    }
+
+    async function fetchBatchSafely(batch, timeoutMs = 8000) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+      try {
+        const response = await fetch(buildOpenMeteoUrl(batch), {
+          signal: controller.signal
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        const results = Array.isArray(data) ? data : [data];
+
+        const places = results.map((result, index) => {
+          const current = result.current || {};
+          const place = {
+            ...batch[index],
+            time: current.time || "",
+            temperature: current.temperature_2m,
+            precipitation: current.precipitation,
+            rain: current.rain,
+            showers: current.showers,
+            snowfall: current.snowfall,
+            weatherCode: current.weather_code
+          };
+
+          return {
+            ...place,
+            type: classifyPlace(place)
+          };
+        });
+
+        return { places, failed: [] };
+      } catch (error) {
+        console.warn("Open-Meteo batch skipped:", batch.map(place => place.name), error);
+        return {
+          places: [],
+          failed: batch.map(place => place.name)
+        };
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    }
+
+    async function fetchAllPlaces() {
+      // Fast enough for a public page: bigger batches, limited parallelism, timeout per batch.
+      // This avoids the previous “loads forever” behavior with a very long worldwide list.
+      const batches = chunkArray(LOCATIONS, 25);
+      const allPlaces = [];
+      const failedLocations = [];
+      const concurrency = 4;
+      let nextBatchIndex = 0;
+      let completedBatches = 0;
+
+      async function worker() {
+        while (nextBatchIndex < batches.length) {
+          const batchIndex = nextBatchIndex;
+          nextBatchIndex += 1;
+
+          elements.statusText.textContent = `Pobieram dane pogodowe: ${completedBatches + 1}/${batches.length}.`;
+
+          const result = await fetchBatchSafely(batches[batchIndex]);
+          allPlaces.push(...result.places);
+          failedLocations.push(...result.failed);
+          completedBatches += 1;
+
+          // Show partial results while the scan is still running.
+          state.failedLocations = failedLocations;
+          state.places = allPlaces
+            .filter(isPositivePrecipitation)
+            .sort((a, b) => precipitationScore(b) - precipitationScore(a));
+          render();
+        }
+      }
+
+      await Promise.all(Array.from({ length: concurrency }, worker));
+
+      return { allPlaces, failedLocations };
+    }
+
+    function clearLists() {
+      elements.rainList.innerHTML = "";
+      elements.snowList.innerHTML = "";
+      
+    }
+
+    function renderEmpty(list, message) {
+      const li = document.createElement("li");
+      li.className = "empty";
+      li.textContent = message;
+      list.appendChild(li);
+    }
+
+    function getTypeLabel(type) {
+      if (type === "rain") return "deszcz";
+      if (type === "snow") return "śnieg";
+      return "opad";
+    }
+
+    function makePlaceCard(place) {
+      const li = document.createElement("li");
+      li.className = "place-card";
+      li.innerHTML = `
+        <div class="place-top">
+          <span class="place-name">${place.name}</span>
+          <span class="place-type ${place.type}">${getTypeLabel(place.type)}</span>
+        </div>
+        <div class="place-details">
+          <span>${weatherDescription(Number(place.weatherCode))}, ${formatAmount(place.temperature, "°C")}</span>
+          <span>Opad: ${formatAmount(place.precipitation, "mm")} · Deszcz: ${formatAmount(place.rain, "mm")} · Śnieg: ${formatAmount(place.snowfall, "cm")}</span>
+          <span>Pomiar UTC: ${place.time || "brak czasu"}</span>
+        </div>
+      `;
+      return li;
+    }
+
+    function render() {
+      clearLists();
+
+      const selectedFilter = elements.filterSelect.value;
+      const allGroups = {
+        rain: state.places.filter(place => place.type === "rain"),
+        snow: state.places.filter(place => place.type === "snow"),
+        mixed: []
+      };
+
+      const visibleGroups = {
+        rain: selectedFilter === "all" || selectedFilter === "rain"
+          ? selectRepresentativePlaces(allGroups.rain, 10, 3)
+          : [],
+        snow: selectedFilter === "all" || selectedFilter === "snow"
+          ? selectRepresentativePlaces(allGroups.snow, 10, 3)
+          : [],
+        mixed: []
+      };
+
+      visibleGroups.rain.forEach(place => elements.rainList.appendChild(makePlaceCard(place)));
+      visibleGroups.snow.forEach(place => elements.snowList.appendChild(makePlaceCard(place)));
+      
+
+      if (!visibleGroups.rain.length) {
+        renderEmpty(elements.rainList, selectedFilter === "all" || selectedFilter === "rain" ? "Brak deszczu w sprawdzanych lokalizacjach." : "Ukryte przez filtr.");
+      }
+      if (!visibleGroups.snow.length) {
+        renderEmpty(elements.snowList, selectedFilter === "all" || selectedFilter === "snow" ? "Brak śniegu w sprawdzanych lokalizacjach." : "Ukryte przez filtr.");
+      }
+
+      elements.rainCount.textContent = allGroups.rain.length;
+      elements.snowCount.textContent = allGroups.snow.length;
+      
+
+      const visibleCount = visibleGroups.rain.length + visibleGroups.snow.length;
+      elements.summaryNumber.textContent = state.places.length;
+      elements.summaryLabel.textContent = state.places.length === 1
+        ? "lokalizacja z opadem teraz"
+        : "lokalizacji z opadem teraz";
+
+      if (state.places.length > visibleCount) {
+        elements.summaryLabel.textContent += ` · pokazuję ${visibleCount} przykładów`;
+      }
+    }
+
+    async function checkPrecipitationNow() {
+      if (state.loading) return;
+
+      state.loading = true;
+      elements.refreshButton.disabled = true;
+      elements.refreshButton.textContent = "Odświeżam...";
+      elements.statusText.classList.remove("error");
+      elements.statusText.textContent = "Łączę z Open-Meteo.";
+
+      try {
+        const { allPlaces, failedLocations } = await fetchAllPlaces();
+
+        state.failedLocations = failedLocations;
+        state.places = allPlaces
+          .filter(isPositivePrecipitation)
+          .sort((a, b) => precipitationScore(b) - precipitationScore(a));
+
+        const rainCount = state.places.filter(place => place.type === "rain").length;
+        const snowCount = state.places.filter(place => place.type === "snow").length;
+        const skippedNote = failedLocations.length ? ` Pominięto ${failedLocations.length} lokalizacji.` : "";
+
+        elements.statusText.textContent = state.places.length
+          ? `Znaleziono opady: deszcz ${rainCount}, śnieg ${snowCount}.${skippedNote}`
+          : `Nie znaleziono aktualnych opadów w sprawdzanych punktach.${skippedNote}`;
+
+        elements.updatedTime.textContent = `Ostatnie odświeżenie: ${new Date().toLocaleString("pl-PL", {
+          dateStyle: "medium",
+          timeStyle: "short"
+        })}`;
+
+        render();
+      } catch (error) {
+        console.error(error);
+        state.places = [];
+        state.failedLocations = [];
+        clearLists();
+        renderEmpty(elements.rainList, "Nie udało się pobrać danych.");
+        renderEmpty(elements.snowList, "Nie udało się pobrać danych.");
+        
+        elements.summaryNumber.textContent = "—";
+        elements.summaryLabel.textContent = "błąd połączenia";
+        elements.statusText.textContent = `Nie udało się połączyć z Open-Meteo: ${error.message}`;
+        elements.statusText.classList.add("error");
+      } finally {
+        state.loading = false;
+        elements.refreshButton.disabled = false;
+        elements.refreshButton.textContent = "Odśwież dane";
+      }
+    }
+
+    elements.refreshButton.addEventListener("click", checkPrecipitationNow);
+    elements.filterSelect.addEventListener("change", render);
+
+    checkPrecipitationNow();
+    setInterval(checkPrecipitationNow, 15 * 60 * 1000);
+  </script>
+</body>
+</html>
