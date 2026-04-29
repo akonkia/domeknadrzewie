@@ -565,41 +565,42 @@
 
     .newsletter-card {
       margin-top: 30px;
-      padding: 28px;
-      border-radius: var(--radius);
+      padding: 20px 22px;
+      border-radius: 24px;
       border: 1px solid rgba(36,49,38,0.08);
       background:
-        radial-gradient(circle at top right, rgba(255,248,214,0.45), transparent 24%),
+        radial-gradient(circle at top right, rgba(255,248,214,0.38), transparent 20%),
         linear-gradient(135deg, rgba(246,241,231,0.95) 0%, rgba(233,240,228,0.92) 100%);
-      box-shadow: var(--shadow);
+      box-shadow: 0 12px 24px rgba(36,49,38,0.06);
     }
 
     .newsletter-kicker {
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       color: var(--sage);
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     .newsletter-card h2 {
-      margin: 0 0 12px;
-      font-size: clamp(1.6rem, 2vw, 2.2rem);
-      line-height: 1.15;
+      margin: 0 0 8px;
+      font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+      line-height: 1.2;
     }
 
     .newsletter-copy {
-      margin: 0 0 18px;
-      max-width: 44rem;
+      margin: 0 0 14px;
+      max-width: 38rem;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.55;
+      font-size: 0.95rem;
     }
 
     .newsletter-label {
       display: block;
-      margin-bottom: 10px;
-      font-size: 0.95rem;
+      margin-bottom: 8px;
+      font-size: 0.88rem;
       color: var(--ink);
     }
 
@@ -612,8 +613,8 @@
     .newsletter-input {
       flex: 1;
       min-width: 0;
-      min-height: 50px;
-      padding: 14px 16px;
+      min-height: 46px;
+      padding: 12px 15px;
       border-radius: 999px;
       border: 1px solid rgba(93,121,87,0.26);
       background: rgba(255,255,255,0.9);
@@ -628,8 +629,8 @@
     }
 
     .newsletter-button {
-      min-height: 50px;
-      padding: 14px 20px;
+      min-height: 46px;
+      padding: 12px 18px;
       border: 0;
       border-radius: 999px;
       background: var(--sage);
@@ -647,10 +648,10 @@
     }
 
     .newsletter-note {
-      margin: 12px 0 0;
+      margin: 10px 0 0;
       color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
+      font-size: 0.84rem;
+      line-height: 1.45;
     }
 
     .contact-band {
@@ -1069,9 +1070,9 @@
 
       <section class="newsletter-card" aria-labelledby="newsletter-title">
         <p class="newsletter-kicker">Newsletter</p>
-        <h2 id="newsletter-title">Gentle updates from Domek na Drzewie</h2>
+        <h2 id="newsletter-title">Newsletter from Domek na Drzewie</h2>
         <p class="newsletter-copy">
-          New mindfulness cards, nature-inspired writing, and selected materials. No rush, no overload, just a quieter rhythm shaped by the seasons.
+          New cards, writing, and materials. No rush and no overload.
         </p>
         <form
           action="https://buttondown.com/api/emails/embed-subscribe/Domeknadrzewie"
