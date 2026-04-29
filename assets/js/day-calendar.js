@@ -112,74 +112,168 @@
 
   const DAILY_WISDOM = {
     pl: {
-      sayings: [
-        "Kiedy w styczniu lato, w lecie zimno za to.",
-        "Gdy w styczniu woda huczy, to na wiosnę mróz dokuczy.",
-        "Kiedy styczeń mokry trzyma, zwykle bywa długa zima.",
-        "Idzie luty, okuj buty.",
-        "Gdy luty z burzami, prędko wiosna przed nami.",
-        "Gdy mróz w lutym ostro trzyma, tedy już niedługo zima.",
-        "Jeśli luty śnieżny, mroźny, spodziewaj się wczesnej wiosny.",
-        "Co marzec wypiecze, to kwiecień wysiecze.",
-        "Ile w marcu dni mglistych, tyle w żniwa dni dżdżystych.",
-        "Gdy suchy marzec, nagradza kwiecień, bo deszcze sprowadza.",
-        "Marzec, co z deszczem chadza, mokry czerwiec sprowadza.",
-        "Kwiecień wilgotny obiecuje rok stokrotny.",
-        "Deszcze częste w kwietniu wróżą, że owoców będzie dużo.",
-        "Kwiecień, co deszczem rosi, wiele owoców przynosi.",
-        "Choć już w kwietniu słonko grzeje, nieraz pole śnieg zawieje.",
-        "Jeżeli w kwietniu posuszy, nic się w polu nie ruszy.",
-        "Deszcz majowy, chleb gotowy.",
-        "Bywa śnieg i w maju.",
-        "Częste w maju grzmoty rozpraszają chłopom zgryzoty.",
-        "Czerwiec po deszczowym maju często dżdżysty w naszym kraju.",
-        "Grzmoty czerwca rozweselają rolnikom serca.",
-        "Pełnia czerwcowa, burza gotowa.",
-        "Gdy pająk w lipcu przychodzi, to za sobą deszcz przywodzi.",
-        "Lipcowe upały, wrzesień doskonały.",
-        "Gdy sierpień wrzos rozwija, jesień krótka, szybko mija.",
-        "W sierpniu mgły na górach, mroźne Gody; kiedy mgły w dolinach, dla pogody.",
-        "Wrześniowa słota: miarka deszczu, korzec błota.",
-        "Grzmot październikowy, niestatek zimowy.",
-        "Deszcze listopadowe budzą wiatry zimowe.",
-        "Boże Narodzenie po wodzie, Wielkanoc po lodzie.",
-        "Na świętą Łucję noc się z dniem tłucze."
-      ]
+      sayingsByDate: {
+        "1-6": "Na Trzech Króli słońce świeci, wiosna do nas pędem leci.",
+        "1-21": "Święta Agnieszka wypuszcza ptaszka z mieszka.",
+        "2-2": "Gdy na Gromniczną ładnie, dużo śniegu spadnie.",
+        "2-24": "Na świętego Macieja pierwsza skowronka nadzieja.",
+        "3-12": "Na świętego Grzegorza idzie zima do morza.",
+        "3-19": "Na świętego Józefa pięknie, zima szybko pęknie.",
+        "4-23": "Na świętego Wojciecha pierwsza wiosny pociecha.",
+        "5-12": "Pankracy, Serwacy, Bonifacy - źli na ogród chłopacy.",
+        "5-13": "Pankracy, Serwacy, Bonifacy - źli na ogród chłopacy.",
+        "5-14": "Pankracy, Serwacy, Bonifacy - źli na ogród chłopacy.",
+        "5-15": "Święta Zofija kłosy rozwija.",
+        "6-8": "Gdy Medard z deszczem przybywa, tak sześć niedziel bywa.",
+        "6-24": "Na święty Jan jagód dzban.",
+        "7-25": "Na świętego Jakuba chleb z nowego zboża szuka.",
+        "8-24": "Na świętego Bartłomieja od młocki gospodarz nie omija.",
+        "9-29": "Gdy noc jasna na Michała, to nastąpi zima trwała.",
+        "12-4": "Barbara po wodzie, Boże Narodzenie po lodzie.",
+        "12-6": "Na świętego Mikołaja bywa śniegu cała chmara.",
+        "11-11": "Na świętego Marcina najlepsza gęsina.",
+        "11-25": "Na świętą Katarzynę pomyśl o pierzynie.",
+        "11-30": "Święty Andrzej ci ukaże, co ci los przyniesie w darze."
+      },
+      sayingsByMonth: {
+        1: [
+          "Kiedy w styczniu lato, w lecie zimno za to.",
+          "Gdy w styczniu woda huczy, to na wiosnę mróz dokuczy.",
+          "Kiedy styczeń mokry trzyma, zwykle bywa długa zima."
+        ],
+        2: [
+          "Idzie luty, okuj buty.",
+          "Gdy luty z burzami, prędko wiosna przed nami.",
+          "Gdy mróz w lutym ostro trzyma, tedy już niedługo zima.",
+          "Jeśli luty śnieżny, mroźny, spodziewaj się wczesnej wiosny."
+        ],
+        3: [
+          "Co marzec wypiecze, to kwiecień wysiecze.",
+          "Ile w marcu dni mglistych, tyle w żniwa dni dżdżystych.",
+          "Gdy suchy marzec, nagradza kwiecień, bo deszcze sprowadza.",
+          "Marzec, co z deszczem chadza, mokry czerwiec sprowadza."
+        ],
+        4: [
+          "Kwiecień wilgotny obiecuje rok stokrotny.",
+          "Deszcze częste w kwietniu wróżą, że owoców będzie dużo.",
+          "Kwiecień, co deszczem rosi, wiele owoców przynosi.",
+          "Choć już w kwietniu słonko grzeje, nieraz pole śnieg zawieje.",
+          "Jeżeli w kwietniu posuszy, nic się w polu nie ruszy."
+        ],
+        5: [
+          "Deszcz majowy, chleb gotowy.",
+          "Bywa śnieg i w maju.",
+          "Częste w maju grzmoty rozpraszają chłopom zgryzoty."
+        ],
+        6: [
+          "Czerwiec po deszczowym maju często dżdżysty w naszym kraju.",
+          "Grzmoty czerwca rozweselają rolnikom serca.",
+          "Pełnia czerwcowa, burza gotowa."
+        ],
+        7: [
+          "Gdy pająk w lipcu przychodzi, to za sobą deszcz przywodzi.",
+          "Lipcowe upały, wrzesień doskonały."
+        ],
+        8: [
+          "Gdy sierpień wrzos rozwija, jesień krótka, szybko mija.",
+          "W sierpniu mgły na górach, mroźne Gody; kiedy mgły w dolinach, dla pogody."
+        ],
+        9: [
+          "Wrześniowa słota: miarka deszczu, korzec błota."
+        ],
+        10: [
+          "Grzmot październikowy, niestatek zimowy."
+        ],
+        11: [
+          "Deszcze listopadowe budzą wiatry zimowe."
+        ],
+        12: [
+          "Boże Narodzenie po wodzie, Wielkanoc po lodzie.",
+          "Na świętą Łucję noc się z dniem tłucze."
+        ]
+      }
     },
     en: {
-      sayings: [
-        "If January feels like summer, summer will feel like winter.",
-        "When water roars in January, frost will bite in spring.",
-        "When January stays wet, winter is usually long.",
-        "February is coming, shoe the boots.",
-        "If February brings storms, spring is near.",
-        "If frost grips hard in February, winter will soon be over.",
-        "If February is snowy and frosty, expect an early spring.",
-        "What March bakes, April will cut down.",
-        "As many foggy days in March, so many rainy days at harvest.",
-        "A dry March is repaid by April, for it brings the rains.",
-        "March walking with rain brings a wet June.",
-        "A damp April promises a hundredfold year.",
-        "Frequent April rains foretell abundant fruit.",
-        "April watering with rain brings many fruits.",
-        "Even when April sun grows warm, snow may still sweep the fields.",
-        "If April dries the land, nothing moves in the field.",
-        "A May rain means bread is on the way.",
-        "Snow may still come in May.",
-        "Frequent May thunder eases the farmer's worries.",
-        "After a rainy May, June is often drizzly too.",
-        "June thunder gladdens the farmer's heart.",
-        "A June full moon means a storm is ready.",
-        "When a spider comes in July, it draws rain behind it.",
-        "Hot July brings an excellent September.",
-        "When August opens the heather, autumn is short and quickly passes.",
-        "In August, mist on the hills means a frosty Christmas; in the valleys, fair weather.",
-        "September slush: a measure of rain, a bushel of mud.",
-        "October thunder means an unsettled winter.",
-        "November rains awaken winter winds.",
-        "Christmas in water, Easter on ice.",
-        "On Saint Lucy's day, night wrestles with day."
-      ]
+      sayingsByDate: {
+        "1-6": "If Epiphany comes bright with sun, spring may come running toward us.",
+        "1-21": "On Saint Agnes' day, the birds begin to stir from winter hiding.",
+        "2-2": "If Candlemas comes fair and bright, more snow may still arrive.",
+        "2-24": "On Saint Matthias' day comes the first hope of hearing a skylark.",
+        "3-12": "On Saint Gregory's day, winter begins its journey to the sea.",
+        "3-19": "If Saint Joseph's day is bright, winter will soon break.",
+        "4-23": "On Saint Adalbert's day comes the first comfort of spring.",
+        "5-12": "Pankracy, Servatius, and Boniface are no friends of the garden.",
+        "5-13": "Pankracy, Servatius, and Boniface are no friends of the garden.",
+        "5-14": "Pankracy, Servatius, and Boniface are no friends of the garden.",
+        "5-15": "On Saint Sophia's day, the ears of grain begin to show.",
+        "6-8": "If Medard arrives with rain, six more Sundays may follow the same way.",
+        "6-24": "By Saint John's day, the berry jug should be ready.",
+        "7-25": "By Saint James's day, bread begins to look toward the new grain.",
+        "8-24": "By Saint Bartholomew's day, the farmer should not avoid the threshing floor.",
+        "9-29": "If Saint Michael's night is bright, a lasting winter may follow.",
+        "11-11": "On Saint Martin's day, goose is at its best.",
+        "11-25": "On Saint Catherine's day, think of the feather quilt.",
+        "11-30": "Saint Andrew may show what gift fate is preparing for you.",
+        "12-4": "If Saint Barbara comes through water, Christmas may come through ice.",
+        "12-6": "By Saint Nicholas's day, snow may arrive in full force."
+      },
+      sayingsByMonth: {
+        1: [
+          "If January feels like summer, summer will feel like winter.",
+          "When water roars in January, frost will bite in spring.",
+          "When January stays wet, winter is usually long."
+        ],
+        2: [
+          "February is coming, shoe the boots.",
+          "If February brings storms, spring is near.",
+          "If frost grips hard in February, winter will soon be over.",
+          "If February is snowy and frosty, expect an early spring."
+        ],
+        3: [
+          "What March bakes, April will cut down.",
+          "As many foggy days in March, so many rainy days at harvest.",
+          "A dry March is repaid by April, for it brings the rains.",
+          "March walking with rain brings a wet June."
+        ],
+        4: [
+          "A damp April promises a hundredfold year.",
+          "Frequent April rains foretell abundant fruit.",
+          "April watering with rain brings many fruits.",
+          "Even when April sun grows warm, snow may still sweep the fields.",
+          "If April dries the land, nothing moves in the field."
+        ],
+        5: [
+          "A May rain means bread is on the way.",
+          "Snow may still come in May.",
+          "Frequent May thunder eases the farmer's worries."
+        ],
+        6: [
+          "After a rainy May, June is often drizzly too.",
+          "June thunder gladdens the farmer's heart.",
+          "A June full moon means a storm is ready."
+        ],
+        7: [
+          "When a spider comes in July, it draws rain behind it.",
+          "Hot July brings an excellent September."
+        ],
+        8: [
+          "When August opens the heather, autumn is short and quickly passes.",
+          "In August, mist on the hills means a frosty Christmas; in the valleys, fair weather."
+        ],
+        9: [
+          "September slush: a measure of rain, a bushel of mud."
+        ],
+        10: [
+          "October thunder means an unsettled winter."
+        ],
+        11: [
+          "November rains awaken winter winds."
+        ],
+        12: [
+          "Christmas in water, Easter on ice.",
+          "On Saint Lucy's day, night wrestles with day."
+        ]
+      }
     }
   };
 
@@ -283,8 +377,28 @@
 
   function getDailyWisdom(date, lang) {
     const wisdom = DAILY_WISDOM[lang] || DAILY_WISDOM.pl;
-    const dayOfYearIndex = getDayOfYear(date) - 1;
-    return wisdom.sayings[dayOfYearIndex % wisdom.sayings.length];
+    const month = date.getUTCMonth() + 1;
+    const day = date.getUTCDate();
+    const dateKey = `${month}-${day}`;
+    const dayOfMonthIndex = date.getUTCDate() - 1;
+    const exactSaying = wisdom.sayingsByDate?.[dateKey];
+
+    if (exactSaying) {
+      return exactSaying;
+    }
+
+    const monthSayings = wisdom.sayingsByMonth?.[month];
+
+    if (Array.isArray(monthSayings) && monthSayings.length) {
+      return monthSayings[dayOfMonthIndex % monthSayings.length];
+    }
+
+    const fallbackSayings = Object.values(wisdom.sayingsByMonth || {}).flat();
+    if (fallbackSayings.length) {
+      return fallbackSayings[dayOfMonthIndex % fallbackSayings.length];
+    }
+
+    return "";
   }
 
   function setText(selector, value) {
