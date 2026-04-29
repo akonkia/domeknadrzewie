@@ -563,6 +563,96 @@
       text-transform: uppercase;
     }
 
+    .newsletter-card {
+      margin-top: 30px;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(36,49,38,0.08);
+      background:
+        radial-gradient(circle at top right, rgba(255,248,214,0.45), transparent 24%),
+        linear-gradient(135deg, rgba(246,241,231,0.95) 0%, rgba(233,240,228,0.92) 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .newsletter-kicker {
+      margin: 0 0 8px;
+      color: var(--sage);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .newsletter-card h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.6rem, 2vw, 2.2rem);
+      line-height: 1.15;
+    }
+
+    .newsletter-copy {
+      margin: 0 0 18px;
+      max-width: 44rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .newsletter-label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .newsletter-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      min-width: 0;
+      min-height: 50px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(93,121,87,0.26);
+      background: rgba(255,255,255,0.9);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+      border-color: var(--sage);
+      box-shadow: 0 0 0 4px rgba(108,138,91,0.14);
+    }
+
+    .newsletter-button {
+      min-height: 50px;
+      padding: 14px 20px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--sage);
+      color: white;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .newsletter-button:hover {
+      background: #5d7957;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(80,105,68,0.18);
+    }
+
+    .newsletter-note {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
     .contact-band {
       margin-top: 30px;
       padding: 28px;
@@ -832,6 +922,8 @@
       .tile.big { grid-row: span 1; }
       .tiles-wrapper { padding-top: 24px; }
       .home-topic-grid { grid-template-columns: 1fr; }
+      .newsletter-row { flex-direction: column; align-items: stretch; }
+      .newsletter-button { width: 100%; }
     }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/akonkia/domeknadrzewie@main/assets/css/sky-mini-widget.css">
@@ -974,6 +1066,35 @@
           <a href="/en/materials/">Browse materials</a>
         </article>
       </div>
+
+      <section class="newsletter-card" aria-labelledby="newsletter-title">
+        <p class="newsletter-kicker">Newsletter</p>
+        <h2 id="newsletter-title">Gentle updates from Domek na Drzewie</h2>
+        <p class="newsletter-copy">
+          New mindfulness cards, nature-inspired writing, and selected materials. No rush, no overload, just a quieter rhythm shaped by the seasons.
+        </p>
+        <form
+          action="https://buttondown.com/api/emails/embed-subscribe/Domeknadrzewie"
+          method="post"
+          class="embeddable-buttondown-form newsletter-form"
+          target="popupwindow"
+          onsubmit="window.open('https://buttondown.com/Domeknadrzewie', 'popupwindow')"
+        >
+          <label class="newsletter-label" for="bd-email-en">Your email address</label>
+          <div class="newsletter-row">
+            <input
+              type="email"
+              name="email"
+              id="bd-email-en"
+              class="newsletter-input"
+              placeholder="name@example.com"
+              required
+            />
+            <button type="submit" class="newsletter-button">Subscribe</button>
+          </div>
+          <p class="newsletter-note">You can unsubscribe at any time.</p>
+        </form>
+      </section>
 
       <div class="contact-band">
         <h3>Follow New Publications</h3>
