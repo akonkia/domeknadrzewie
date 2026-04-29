@@ -2,6 +2,11 @@
 {% assign available_tags = "" | split: "" %}
 {% assign featured_tags = include.featured_tags %}
 {% assign tag_cloud_lang = include.lang | default: "" %}
+{% if tag_cloud_lang == "en" %}
+  {% assign tag_base_url = "/blog/en/tag/" %}
+{% else %}
+  {% assign tag_base_url = "/blog/tag/" %}
+{% endif %}
 {% unless featured_tags %}
   {% assign featured_tags = "" | split: "" %}
 {% endunless %}
@@ -40,14 +45,8 @@
       {% assign tag_count = tag_count | plus: 1 %}
     {% endif %}
   {% endfor %}
-  {% assign tag_url = "" %}
-  {% for tag_page in site.pages %}
-    {% assign tag_page_lang = tag_page.lang | join: "" | strip %}
-    {% if tag_page.tag == tag and tag_page_lang == tag_cloud_lang %}
-      {% assign tag_url = tag_page.url %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
+  {% assign tag_slug = tag | slugify %}
+  {% assign tag_url = tag_base_url | append: tag_slug | append: "/" %}
   {% assign should_show_tag = false %}
   {% if tag_count > 1 or featured_tags contains tag or tag == include.current_tag %}
     {% assign should_show_tag = true %}
@@ -77,14 +76,8 @@
           {% endif %}
         {% endfor %}
         {% assign tag_level = tag_count | times: 4 | divided_by: max_tag_count %}
-        {% assign tag_url = "" %}
-        {% for tag_page in site.pages %}
-          {% assign tag_page_lang = tag_page.lang | join: "" | strip %}
-          {% if tag_page.tag == tag and tag_page_lang == tag_cloud_lang %}
-            {% assign tag_url = tag_page.url %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
+        {% assign tag_slug = tag | slugify %}
+        {% assign tag_url = tag_base_url | append: tag_slug | append: "/" %}
         <a
           class="blog-tag-cloud-link level-{{ tag_level }}{% if tag == include.current_tag %} is-active{% endif %}"
           href="{{ tag_url | relative_url }}"
