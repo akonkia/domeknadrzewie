@@ -81,7 +81,7 @@
   ], 
   img: "wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18A.png", 
   imgB: "spring-may-week-18-reflection-wandering-bee-purposeful-motion-18Ben.png",
-  blog: "/en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/"
+  blog: "/en/the-woven-greens-mindfulness-practice-about-abundance/"
 },
       { 
   id: 19, 
