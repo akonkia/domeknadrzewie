@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ""Nie trzeba jechać do lasu. Kąpiele leśne bez lasu — jak wracać do natury tam, gdzie jesteś"
+title: "Nie trzeba jechać do lasu. Kąpiele leśne bez lasu — jak wracać do natury tam, gdzie jesteś"
 date: 2026-04-22
 lang: pl
 translation_id: powrot-do-natury-tam-gdzie-juz-jestes-2026
