@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "You Don't Need to Go to the Forest: How to Return to Nature Where You Already Are"
+title: "Forest Bathing Without a Forest: How to Return to Nature Where You Are"
 date: 2026-04-22
 lang: en
 translation_id: powrot-do-natury-tam-gdzie-juz-jestes-2026
