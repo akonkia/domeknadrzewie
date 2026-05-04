@@ -32,6 +32,21 @@
   img: "wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18A.png", 
   imgB: "wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18B.png",
   blog: "/pl/wedrujaca-pszczola-cwiczenie-uwaznosci-o-celowym-ruchu/"
+},
+      { 
+  id: 19, 
+  title: "Splot zieleni", 
+  theme: "Obfitość", 
+  season: "Wiosna", 
+  month: "Maj", 
+  body: "Znajdź miejsce, w którym liście nachodzą na siebie: żywopłot, trawę albo rośliny przy ścieżce. Zauważ, ile odcieni zieleni jest wokół ciebie: jasnych, głębokich, chłodnych, żółtych. Spójrz, jak liście się stykają, jak powtarzają się kształty, jak światło przechodzi przez różne powierzchnie. Pozwól spojrzeniu poruszać się powoli. Nie musisz wszystkiego nazywać ani liczyć.", 
+  reflection: [
+    "Ile odcieni zieleni potrafię zauważyć?", 
+    "Co przeoczam, bo wydaje się zwyczajne?"
+  ], 
+  img: "wiosna-maj-tydzien-19-cwiczenie-uwaznosci-splot-zieleni-obfitosc-19A.png", 
+  imgB: "wiosna-maj-tydzien-19-cwiczenie-uwaznosci-splot-zieleni-obfitosc-19B.png",
+  blog: "/pl/splot-zieleni-cwiczenie-uwaznosci-o-obfitosci/"
 }
 
     ],
@@ -67,6 +82,21 @@
   img: "wiosna-maj-tydzien-18-cwiczenie-uwaznosci-wedrujaca-pszczola-celowy-ruch-18A.png", 
   imgB: "spring-may-week-18-reflection-wandering-bee-purposeful-motion-18Ben.png",
   blog: "/en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/"
+},
+      { 
+  id: 19, 
+  title: "The Woven Greens", 
+  theme: "Abundance", 
+  season: "Spring", 
+  month: "May", 
+  body: "Find a place where leaves overlap: a hedge, a tree crown, grass, vines, or weeds at the edge of a path. Notice how many greens are around you: bright, fresh, deep, cool, silver, yellow, almost blue. See how one leaf rests beside another, how shapes repeat, how light passes through some surfaces. Let your gaze move slowly. You do not need to name everything or count exactly.", 
+  reflection: [
+    "How many greens can I notice?", 
+    "What do I overlook because it feels ordinary?"
+  ], 
+  img: "wiosna-maj-tydzien-19-cwiczenie-uwaznosci-splot-zieleni-obfitosc-19A.png", 
+  imgB: "spring-may-week-19-reflection-the-woven-greens-abundance-19B.png",
+  blog: "/en/the-woven-greens-mindfulness-practice-about-abundance/"
 }
 
     ]
