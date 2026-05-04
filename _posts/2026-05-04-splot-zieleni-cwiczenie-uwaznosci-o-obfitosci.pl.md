@@ -4,7 +4,7 @@ title: "Splot zieleni — ćwiczenie uważności o obfitości"
 date: 2026-05-04
 lang: pl
 translation_id: woven-greens-abundance-2026
-permalink: /blog/2026/05/04/splot-zieleni-cwiczenie-uwaznosci-o-obfitosci/
+permalink: /pl/splot-zieleni-cwiczenie-uwaznosci-o-obfitosci/
 cover: /materialy/kapiele_miejskie/wiosna-maj-tydzien-19-cwiczenie-uwaznosci-splot-zieleni-obfitosc-19A.png
 cover_alt: "Nakładające się zielone liście widziane z góry, przy brzegu ścieżki"
 excerpt: "Tydzień 19 miejskich kąpieli leśnych zaprasza do zauważenia obfitości. Spójrz na nakładające się liście i odcienie zieleni."
