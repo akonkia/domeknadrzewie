@@ -4,7 +4,7 @@ title: "The Woven Greens — a mindfulness practice about abundance"
 date: 2026-05-04
 lang: en
 translation_id: woven-greens-abundance-2026
-permalink: /en/blog/2026/05/08/the-woven-greens-mindfulness-practice-about-abundance/
+permalink: /en/blog/2026/05/04/the-woven-greens-mindfulness-practice-about-abundance/
 cover: /materialy/kapiele_miejskie/wiosna-maj-tydzien-19-cwiczenie-uwaznosci-splot-zieleni-obfitosc-19A.png
 cover_alt: "Overlapping green leaves seen from above, near the edge of a path"
 excerpt: "Week 19 of urban forest bathing invites you to notice abundance. Look at overlapping leaves and the many shades of green."
