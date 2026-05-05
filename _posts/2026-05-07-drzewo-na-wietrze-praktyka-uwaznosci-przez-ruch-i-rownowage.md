@@ -71,7 +71,7 @@ Rozejrzyj się i znajdź jedną rzecz, która należy do świata przyrody: drzew
 
 Zostań przy niej przez jeden spokojny oddech.
 
-## Wersja do poprowadzenia w grupie
+## Jak poprowadzić tę praktykę z dziećmi lub grupą
 
 Ta praktyka dobrze działa wtedy, gdy grupa może wejść w uważność przez ciało i krótki, prosty ruch. Można ją zrobić w sali, na dywanie, w świetlicy, na boisku albo w ogrodzie.
 
