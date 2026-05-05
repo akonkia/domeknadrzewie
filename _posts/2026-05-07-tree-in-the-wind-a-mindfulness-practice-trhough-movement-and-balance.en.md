@@ -71,7 +71,7 @@ Look around and find one thing that belongs to the natural world: a tree, a leaf
 
 Stay with it for one calm breath.
 
-## Version to lead with a group
+## How to lead this practice with children or a group
 
 This practice works well when a group can enter mindfulness through the body and a short, simple movement. It can be done in a room, on a rug, in a common room, on a playground, or in a garden.
 
