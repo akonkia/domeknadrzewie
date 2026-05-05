@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "5 simple mindfulness exercises inspired by nature"
-date: 2026-05-06
+date: 2026-05-05
 lang: en
 translation_id: 5-prostych-cwiczen-uwaznosci-inspirowanych-przyroda-2026
 cover: /assets/img/default-cover.png
