@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "5 prostych ćwiczeń uważności inspirowanych przyrodą"
-date: 2026-05-6
+date: 2026-05-5
 lang: pl
 translation_id: 5-prostych-cwiczen-uwaznosci-inspirowanych-przyroda-2026
 cover: /assets/img/default-cover.png
