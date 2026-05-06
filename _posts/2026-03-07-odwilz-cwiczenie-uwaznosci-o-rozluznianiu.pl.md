@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Odwilż: ćwiczenie uważności o rozluźnianiu (tydzień 10)"
+seo_title: "Odwilż"
 date: 2026-03-07
 lang: pl
 translation_id: urban-bathing-week-10-2026

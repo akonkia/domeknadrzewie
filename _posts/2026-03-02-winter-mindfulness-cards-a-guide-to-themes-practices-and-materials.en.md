@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Winter mindfulness cards: a guide to themes, practices, and materials"
+seo_title: "Winter Mindfulness Cards"
 date: 2026-03-02
 lang: en
 translation_id: winter-cards-hub-2026

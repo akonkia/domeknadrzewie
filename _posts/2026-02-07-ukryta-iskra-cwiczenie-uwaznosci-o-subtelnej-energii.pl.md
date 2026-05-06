@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Ukryta iskra: ćwiczenie uważności o subtelnej energii (tydzień 6)"
+seo_title: "Ukryta iskra"
 date: 2026-02-07
 lang: pl
 translation_id: urban-bathing-week-06-2026

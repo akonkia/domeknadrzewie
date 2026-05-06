@@ -39,16 +39,10 @@
 
 {% assign visible_tags = "" | split: "" %}
 {% for tag in available_tags %}
-  {% assign tag_count = 0 %}
-  {% for post in cloud_posts %}
-    {% if post.tags contains tag %}
-      {% assign tag_count = tag_count | plus: 1 %}
-    {% endif %}
-  {% endfor %}
   {% assign tag_slug = tag | slugify %}
   {% assign tag_url = tag_base_url | append: tag_slug | append: "/" %}
   {% assign should_show_tag = false %}
-  {% if tag_count > 1 or featured_tags contains tag or tag == include.current_tag %}
+  {% if featured_tags contains tag or tag == include.current_tag %}
     {% assign should_show_tag = true %}
   {% endif %}
   {% if tag_url != blank and should_show_tag %}

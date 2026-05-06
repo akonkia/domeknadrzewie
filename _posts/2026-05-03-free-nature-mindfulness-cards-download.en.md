@@ -3,6 +3,7 @@ layout: post
 title: "Free Nature Mindfulness Cards to Download"
 date: 2026-05-05
 lang: en
+permalink: /en/free-nature-mindfulness-cards-download/
 translation_id: free-nature-mindfulness-cards-download
 excerpt: "Free nature mindfulness cards to download: short, gentle exercises for a walk, park, garden, schoolyard, or an ordinary day in the city."
 tags: ["mindfulness", "nature mindfulness", "mindfulness cards", "forest bathing", "urban forest bathing", "free printable resources", "nature activities", "outdoor mindfulness", "nature connection"]
@@ -17,6 +18,8 @@ That can be enough.
 On **Project: Tree House**, you can find free nature mindfulness cards to download — short, simple exercises that help you pause with things we often pass without noticing: a branch, rain, a bird, light, a leaf, a shadow, a bee, the morning air.
 
 The cards were created for ordinary days. They do not require special preparation, a long trip, or any experience with meditation. You can use them on your own, with children, as a family, in school, or during a quiet walk through the city.
+
+If you would like the careful research background behind this kind of practice, you can also read [Does Contact with Nature Really Help? What Research Says](/en/does-contact-with-nature-really-help-what-research-says/).
 
 ## What are nature mindfulness cards?
 
@@ -64,6 +67,8 @@ There are several easy ways to use the cards.
 ### 1. One card for one walk
 
 Choose a card before you leave and let it become a gentle focus. You do not have to follow it strictly. Let the walk answer in its own way.
+
+If you want to begin even more simply, without downloading anything yet, [5 simple mindfulness exercises inspired by nature](/en/5-simple-mindfulness-exercises-inspired-by-nature/) offers a few easy starting points.
 
 ### 2. One card for one week
 
@@ -118,6 +123,8 @@ With children, the simplest prompts often work best:
 - look for something tiny.
 
 You do not need to say, “Now we are practising mindfulness.” You can simply say, “Let’s play noticing for a moment.”
+
+If you want a more movement-based version for children or groups, try [Tree in the Wind. A mindfulness practice through movement and balance](/en/tree-in-the-wind-a-mindfulness-practice-trhough-movement-and-balance/).
 
 ## Cards for teachers and educators
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Quiet Return: a spring mindfulness practice (week 13)"
+seo_title: "Quiet Return"
 date: 2026-03-28
 permalink: /en/quiet-return-exercise-mindfulness-for-spring/
 cover: /assets/img/marzec-wiosna-tydzien-13-cwiczenie-uwaznosci-powrot-do-miejsca-13A.png
@@ -11,8 +12,6 @@ translation_id: mindfulness-week-13-spring
 tags: [shinrin-yoku, forest bathing, mindfulness, urban bathing]
 lang: en
 ---
-
-# Quiet Return
 
 Spring does not always arrive as a sudden shift.  
 Often, it comes quietly — in familiar places we begin to see anew.

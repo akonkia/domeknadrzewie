@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Cichy powrót: ćwiczenie uważności na wiosnę (tydzień 13)"
+seo_title: "Cichy powrót"
 date: 2026-03-28
 permalink: /pl/cichy-powrot-cwiczenie-uwaznosci-na-wiosne/
 cover: /assets/img/marzec-wiosna-tydzien-13-cwiczenie-uwaznosci-powrot-do-miejsca-13A.png
@@ -11,8 +12,6 @@ translation_id: mindfulness-week-13-spring
 tags: [shinrin-yoku, kąpiele leśne, uważność, urban bathing]
 lang: pl
 ---
-
-# Cichy powrót
 
 Wiosna nie zawsze przychodzi jako nagła zmiana.  
 Często pojawia się cicho — w znajomych miejscach, które widzimy na nowo.

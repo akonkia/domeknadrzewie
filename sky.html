@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Niebo dziś — widok z okna</title>
+  <meta name="description" content="Niebo dziś — spokojny widok z okna z informacjami o świetle, słońcu i rytmie dnia, który pomaga uważniej zauważać pogodę i zmiany pory roku." />
 <script defer src="https://cloud.umami.is/script.js" data-website-id="5c1874f7-4673-4774-8133-2b7f9cb019e0"></script>
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
 
@@ -192,6 +193,18 @@
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 20px;
+    }
+
+    .page-intro {
+      grid-column: 1 / -1;
+    }
+
+    .page-intro h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #243127;
     }
 
     .card {
@@ -686,6 +699,10 @@
 
   <main class="page-shell">
     <div class="wrap">
+      <header class="page-intro">
+        <h1>Niebo dziś</h1>
+      </header>
+
       <section class="card sky-card">
         <div class="sky" id="sky">
           <div class="stars" id="stars"></div>

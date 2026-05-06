@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Miękki deszcz: ćwiczenie uważności o łagodnym ukojeniu (tydzień 16)"
+seo_title: "Miękki deszcz"
 date: 2026-04-18
 lang: pl
 permalink: /pl/miekki-deszcz-cwiczenie-uwaznosci-o-lagodnym-ukojeniu/

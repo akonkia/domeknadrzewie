@@ -3,6 +3,7 @@ layout: post
 title: "Drzewo na wietrze. Praktyka uważności przez ruch i równowagę"
 date: 2026-05-07
 lang: pl
+permalink: /pl/drzewo-na-wietrze-praktyka-uwaznosci-przez-ruch-i-rownowage/
 translation_id: drzewo-na-wietrze-praktyka-uwaznosci-przez-ruch-i-rownowage-2026
 cover: /assets/img/default-cover.png
 cover_alt: Praktyka uważności inspirowana ruchem drzewa na wietrze
@@ -13,6 +14,8 @@ tags: [uważność, "praktyka uważności", natura, ruch, równowaga, ciało, "k
 Praktyka uważności może zacząć się od ruchu: od stóp, równowagi, delikatnego kołysania, gestu tak małego, że prawie niewidocznego.
 
 To ćwiczenie można zrobić na zewnątrz, przy prawdziwym drzewie, ale też w klasie, świetlicy, pokoju albo przy oknie. Wystarczy trochę miejsca, obie stopy na ziemi i wyobrażenie drzewa poruszanego przez wiatr.
+
+Jeśli chcesz osadzić tę praktykę w szerszym, codziennym kontakcie z przyrodą, zajrzyj też do wpisu [Jak być bliżej natury w mieście - 7 prostych sposobów](/pl/jak-byc-blizej-natury-w-miescie-7-prostych-sposobow/).
 
 ## Drzewo na wietrze
 
@@ -88,11 +91,15 @@ Osoba prowadząca może powiedzieć:
 
 Oczy mogą zostać otwarte. Ruch może być mały, bezpieczny i spokojny. Każda osoba porusza się tylko tyle, ile jest dla niej wygodne.
 
+Tę praktykę można też połączyć z gotowymi materiałami z wpisu [Darmowe karty uważności w naturze do pobrania](/pl/darmowe-karty-uwaznosci-w-naturze-do-pobrania/), zwłaszcza jeśli chcesz ułożyć z niej spokojną aktywność dla klasy, grupy albo rodziny.
+
 ## Po co wracać do takiego prostego ruchu
 
 Drzewo porusza się, reaguje na wiatr, a potem wraca. Ciało też może przez chwilę sprawdzić taki rytm: odchylenie i powrót, lekkość i stabilność, zmianę i oparcie.
 
 To bardzo prosta praktyka. Może pomóc zauważyć, że spokój bywa łagodnym ruchem, który znajduje swoje miejsce.
+
+Jeśli lubisz takie krótkie wejścia, podobnie prosty początek znajdziesz też we wpisie [5 prostych ćwiczeń uważności inspirowanych przyrodą](/pl/5-prostych-cwiczen-uwaznosci-inspirowanych-przyroda/).
 
 ## Najprostsza wersja
 

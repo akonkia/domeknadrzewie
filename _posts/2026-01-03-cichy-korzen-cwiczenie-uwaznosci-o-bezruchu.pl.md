@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Cichy korzeń: ćwiczenie uważności o bezruchu (tydzień 1)"
+seo_title: "Cichy korzeń"
 date: 2026-01-03
 lang: pl
 translation_id: urban-bathing-week-01-2026

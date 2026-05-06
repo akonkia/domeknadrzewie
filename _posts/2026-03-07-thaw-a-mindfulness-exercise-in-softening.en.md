@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Thaw: a mindfulness exercise in softening (week 10)"
+seo_title: "Thaw"
 date: 2026-03-07
 lang: en
 translation_id: urban-bathing-week-10-2026

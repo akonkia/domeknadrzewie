@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Zimowy oddech: ćwiczenie uważności o odpoczynku (tydzień 5)"
+seo_title: "Zimowy oddech"
 date: 2026-01-31
 lang: pl
 translation_id: urban-bathing-week-05-2026

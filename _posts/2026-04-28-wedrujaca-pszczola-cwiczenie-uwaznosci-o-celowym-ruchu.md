@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Wędrująca pszczoła — ćwiczenie uważności o celowym ruchu"
+seo_title: "Wędrująca pszczoła"
 date: 2026-04-28
 lang: pl
 translation_id: wandering-bee-purposeful-motion-2026

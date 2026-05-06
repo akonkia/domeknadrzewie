@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Evergreen: a mindfulness exercise in steadiness (week 9)"
+seo_title: "Evergreen"
 date: 2026-02-28
 lang: en
 translation_id: urban-bathing-week-09-2026

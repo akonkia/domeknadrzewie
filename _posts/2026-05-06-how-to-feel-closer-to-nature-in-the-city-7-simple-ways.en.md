@@ -3,6 +3,7 @@ layout: post
 title: "How to Feel Closer to Nature in the City: 7 Simple Ways"
 date: 2026-05-06
 lang: en
+permalink: /en/how-to-feel-closer-to-nature-in-the-city-7-simple-ways/
 translation_id: jak-byc-blizej-natury-w-miescie-7-prostych-sposobow-2026
 cover: /assets/img/default-cover.png
 cover_alt: How to feel closer to nature in the city
@@ -16,7 +17,7 @@ But nature in city life is not only the park, the forest, or the carefully plann
 
 To feel closer to nature in the city, you do not need to change your whole life. You need a few small ways to notice what is already living, growing, moving, and weathering around you.
 
-If this idea speaks to you, [You Don't Need to Go to the Forest: How to Return to Nature Where You Already Are](/blog/2026/04/22/you-dont-need-to-go-to-the-forest-how-to-return-to-nature-where-you-already-are/) explores the same thought in more depth: that returning to nature can begin exactly where you are.
+If this idea speaks to you, [You Don't Need to Go to the Forest: How to Return to Nature Where You Already Are](/en/you-dont-need-to-go-to-the-forest-how-to-return-to-nature-where-you-already-are/) explores the same thought in more depth: that returning to nature can begin exactly where you are.
 
 ## Closeness begins with contact
 
@@ -24,7 +25,7 @@ It is easy to think of nature connection as a feeling. But in daily life, it oft
 
 You look up. You hear a bird through an open window. You notice the first sticky leaves on a street tree. You feel wind turn a corner between buildings. You smell wet dust after rain on hot pavement.
 
-These moments may not feel important at first. They are small, and the city is loud. But repeated contact changes what you register. A street you cross every day becomes less like a corridor and more like a place with weather, plants, birds, insects, shade, and seasons.
+These moments may not feel important at first. They are small, and the city is loud. But repeated contact changes what you register. A street you cross every day becomes less like a corridor and more like a place with weather, plants, birds, insects, shade, and seasons. If you would like the careful research context behind that idea, visit [Does Contact with Nature Really Help? What Research Says](/en/does-contact-with-nature-really-help-what-research-says/).
 
 Here are seven simple ways to build that kind of urban nature connection without making it heavy or complicated.
 
@@ -102,7 +103,7 @@ Try walking one block more slowly than usual. Let your attention move between sm
 
 This does not require a special mood. You can be tired, distracted, or busy. The point is not to become perfectly attentive. The point is to let the route be more than a line on a map.
 
-If you are drawn to this kind of practice but do not meditate, [Mindfulness in Nature: Where to Begin If You Don't Meditate](/blog/2026/04/23/mindfulness-in-nature-where-to-begin-if-you-dont-meditate/) offers simple ways to begin through walking, looking, touching, and listening.
+If you are drawn to this kind of practice but do not meditate, [Mindfulness in Nature: Where to Begin If You Don't Meditate](/en/mindfulness-in-nature-where-to-begin-if-you-dont-meditate/) offers simple ways to begin through walking, looking, touching, and listening. [5 simple mindfulness exercises inspired by nature](/en/5-simple-mindfulness-exercises-inspired-by-nature/) also works well if you want a few very concrete prompts to start with.
 
 ## 6. Use urban green space without pressure
 
@@ -122,9 +123,11 @@ A prompt gives your noticing a shape. It might ask you to listen for one sound, 
 
 [Urban Bathing](/en/materials/urban-bathing/) was created for exactly this kind of practice: gentle contact with nature in streets, courtyards, parks, windows, and ordinary routes. You can use one card a week, or simply choose a prompt when you feel disconnected from the world around you.
 
+If you want a quick overview of how to use those materials, read [Free Nature Mindfulness Cards to Download](/en/free-nature-mindfulness-cards-download/).
+
 If you want one concrete place to begin, return to [week 18: The Wandering Bee](/en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/), which guides attention through calm, purposeful movement along an ordinary city route.
 
-You may also enjoy [Urban Forest Bathing: How to Practice Shinrin-yoku Without Leaving the City?](/blog/2026/04/03/Urban-forest-bathing-how-to-practice-Shinrin-yoku-without-leaving-the-city/) if you want a broader introduction to bringing forest-bathing principles into urban spaces.
+You may also enjoy [Urban Forest Bathing: How to Practice Shinrin-yoku Without Leaving the City?](/en/urban-forest-bathing-how-to-practice-shinrin-yoku-without-leaving-the-city/) if you want a broader introduction to bringing forest-bathing principles into urban spaces.
 
 Let it stay small enough to repeat.
 

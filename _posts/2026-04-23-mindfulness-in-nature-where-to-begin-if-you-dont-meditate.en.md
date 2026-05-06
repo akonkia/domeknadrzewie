@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Mindfulness in Nature: Where to Begin If You Don't Meditate"
+seo_title: "Mindfulness in Nature: Where to Begin"
 date: 2026-04-23
 lang: en
+permalink: /en/mindfulness-in-nature-where-to-begin-if-you-dont-meditate/
 translation_id: uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz-2026
 cover: /assets/img/uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz.jpg
 cover_alt: "A walk among trees in a city park"

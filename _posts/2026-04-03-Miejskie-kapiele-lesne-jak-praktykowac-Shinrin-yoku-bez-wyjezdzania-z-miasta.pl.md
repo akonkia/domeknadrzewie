@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Miejskie kąpiele leśne: Jak praktykować Shinrin-yoku bez wyjeżdżania z miasta?"
+seo_title: "Miejskie kąpiele leśne w mieście"
 date: 2026-04-03
 translation_id: urban-forest-bathing-2026
 permalink: /blog/2026/04/03/Miejskie-kapiele-lesne-jak-praktykowac-Shinrin-yoku-bez-wyjezdzania-z-miasta/

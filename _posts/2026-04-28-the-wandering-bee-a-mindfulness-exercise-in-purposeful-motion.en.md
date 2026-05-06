@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Wandering Bee — a mindfulness exercise in purposeful motion"
+seo_title: "The Wandering Bee"
 date: 2026-04-28
 lang: en
 translation_id: wandering-bee-purposeful-motion-2026

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Jasna gałąź: ćwiczenie uważności o świetle i wzrastaniu (tydzień 15)"
+seo_title: "Jasna gałąź"
 date: 2026-04-11
 lang: pl
 permalink: /pl/jasna-galaz-cwiczenie-uwaznosci-o-swietle-i-wzrastaniu/

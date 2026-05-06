@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Urban Forest Bathing: How to Practice Shinrin-yoku Without Leaving the City?"
+seo_title: "Urban Forest Bathing in the City"
 date: 2026-04-03
 translation_id: urban-forest-bathing-2026
 lang: en

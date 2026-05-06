@@ -14,6 +14,34 @@ ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = ROOT / "_posts"
 PL_TAG_DIR = ROOT / "blog" / "tag"
 EN_TAG_DIR = ROOT / "blog" / "en" / "tag"
+FEATURED_TAGS = {
+    "pl": {
+        "uważność",
+        "natura",
+        "kąpiele leśne",
+        "shinrin-yoku",
+        "urban bathing",
+        "ćwiczenie uważności",
+        "powrót do natury",
+        "natura w mieście",
+        "wiosna",
+        "zima",
+    },
+    "en": {
+        "mindfulness",
+        "nature",
+        "forest bathing",
+        "urban bathing",
+        "shinrin-yoku",
+        "mindfulness exercise",
+        "mindfulness practice",
+        "returning to nature",
+        "nature in the city",
+        "spring",
+        "winter",
+        "slow living",
+    },
+}
 
 
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n?", re.DOTALL)
@@ -74,18 +102,29 @@ def parse_frontmatter(path: Path) -> Dict[str, object]:
         return {}
 
     data: Dict[str, object] = {}
+    current_list_key: Optional[str] = None
     for line in match.group(1).splitlines():
+        stripped = line.strip()
+        if current_list_key and stripped.startswith("- "):
+            if not isinstance(data.get(current_list_key), list):
+                data[current_list_key] = []
+            data[current_list_key].append(stripped[2:].strip().strip("'\""))
+            continue
         if ":" not in line:
+            current_list_key = None
             continue
         key, raw_value = line.split(":", 1)
         key = key.strip()
         raw_value = raw_value.strip()
         if not raw_value:
             data[key] = ""
+            current_list_key = key
         elif raw_value.startswith("[") and raw_value.endswith("]"):
             data[key] = parse_list(raw_value)
+            current_list_key = None
         else:
             data[key] = parse_scalar(raw_value)
+            current_list_key = None
     return data
 
 
@@ -165,16 +204,20 @@ def make_translation_id(lang: str, tag: str) -> str:
 def render_archive(tag: str, lang: str, translation_id: str) -> str:
     slug = slugify(tag)
     permalink = f"/blog/tag/{slug}/" if lang == "pl" else f"/blog/en/tag/{slug}/"
-    return (
-        "---\n"
-        "layout: tag\n"
-        f'title: "{tag}"\n'
-        f"lang: {lang}\n"
-        f'tag: "{tag}"\n'
-        f"translation_id: {translation_id}\n"
-        f"permalink: {permalink}\n"
-        "---\n"
-    )
+    noindex = tag not in FEATURED_TAGS.get(lang, set())
+    parts = [
+        "---\n",
+        "layout: tag\n",
+        f'title: "{tag}"\n',
+        f"lang: {lang}\n",
+        f'tag: "{tag}"\n',
+        f"translation_id: {translation_id}\n",
+        f"permalink: {permalink}\n",
+    ]
+    if noindex:
+        parts.append("noindex: true\n")
+    parts.append("---\n")
+    return "".join(parts)
 
 
 def write_archives(base_dir: Path, lang: str, tags: List[str], translation_lookup: Dict[Tuple[str, str], str]) -> None:

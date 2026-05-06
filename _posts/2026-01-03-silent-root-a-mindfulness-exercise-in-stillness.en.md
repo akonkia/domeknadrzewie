@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Silent Root: a mindfulness exercise in stillness (week 1)"
+seo_title: "Silent Root"
 date: 2026-01-03
 lang: en
 translation_id: urban-bathing-week-01-2026

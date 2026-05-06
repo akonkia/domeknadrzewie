@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "First Chorus: a mindfulness exercise in awakening (week 8)"
+seo_title: "First Chorus"
 date: 2026-02-21
 lang: en
 translation_id: urban-bathing-week-08-2026

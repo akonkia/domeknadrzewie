@@ -3,6 +3,7 @@ layout: post
 title: "Tree in the Wind. A mindfulness practice through movement and balance"
 date: 2026-05-07
 lang: en
+permalink: /en/tree-in-the-wind-a-mindfulness-practice-trhough-movement-and-balance/
 translation_id: drzewo-na-wietrze-praktyka-uwaznosci-przez-ruch-i-rownowage-2026
 cover: /assets/img/default-cover.png
 cover_alt: A mindfulness practice inspired by the movement of a tree in the wind
@@ -13,6 +14,8 @@ tags: [mindfulness, "mindfulness practice", nature, movement, balance, body, "na
 Mindfulness practice can begin with movement: with the feet, balance, gentle swaying, a gesture so small it is almost invisible.
 
 This exercise can be done outside, beside a real tree, but also in a classroom, common room, bedroom, or by a window. All you need is a little space, both feet on the ground, and the image of a tree moved by the wind.
+
+If you want to place this practice inside a wider everyday relationship with the living world, read [How to Feel Closer to Nature in the City: 7 Simple Ways](/en/how-to-feel-closer-to-nature-in-the-city-7-simple-ways/).
 
 ## Tree in the Wind
 
@@ -88,11 +91,15 @@ The person leading can say:
 
 Eyes can stay open. The movement can be small, safe, and calm. Each person moves only as much as feels comfortable for them.
 
+This also pairs well with the ready-to-use prompts in [Free Nature Mindfulness Cards to Download](/en/free-nature-mindfulness-cards-download/), especially if you want to build a calm activity for a class, group, or family.
+
 ## Why return to such a simple movement
 
 A tree moves, responds to the wind, and then comes back. The body can also explore this rhythm for a moment: leaning and returning, lightness and stability, change and support.
 
 This is a very simple practice. It can help you notice that calm can be a gentle movement that finds its place.
+
+If you like this kind of short entry point, you may also enjoy [5 simple mindfulness exercises inspired by nature](/en/5-simple-mindfulness-exercises-inspired-by-nature/).
 
 ## The simplest version
 

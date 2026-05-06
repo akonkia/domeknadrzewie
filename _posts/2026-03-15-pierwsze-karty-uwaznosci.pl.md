@@ -43,3 +43,4 @@ Pojawienie się kart zmienia sposób, w jaki projekt się rozwija.
 Z pojedynczego miejsca w sieci zaczyna powstawać coś bardziej regularnego — rytm, który można śledzić tydzień po tygodniu.
 To dopiero początek tej części drogi.
 
+Jeśli chcesz zobaczyć, jak ten rytm wygląda także w krótszej, codziennej formie, zajrzyj do wpisu [Jak korzystać z Kartki z kalendarza i co oznaczają jej elementy](/pl/jak-korzystac-z-kartki-z-kalendarza/) oraz do samej strony [Kartka z kalendarza](/kartka-z-kalendarza.html).

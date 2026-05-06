@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Uważność w naturze — od czego zacząć, jeśli nie medytujesz"
+seo_title: "Uważność w naturze: od czego zacząć"
 date: 2026-04-23
 lang: pl
+permalink: /pl/uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz/
 translation_id: uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz-2026
 cover: /assets/img/uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz.jpg
 cover_alt: "Spacer wśród drzew w miejskim parku"

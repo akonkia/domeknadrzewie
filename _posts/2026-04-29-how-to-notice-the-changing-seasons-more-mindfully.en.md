@@ -3,6 +3,7 @@ layout: post
 title: "How to Notice the Changing Seasons More Mindfully"
 date: 2026-04-29
 lang: en
+permalink: /en/how-to-notice-the-changing-seasons-more-mindfully/
 translation_id: jak-obserwowac-zmiany-por-roku-bardziej-uwaznie-2026
 cover: /assets/img/default-cover.png
 cover_alt: Mindful observation of seasonal change
@@ -16,7 +17,7 @@ Noticing the changing seasons does not require a special place, free afternoons,
 
 This kind of seasonal mindfulness is not about collecting facts. It is a way of staying in gentle contact with time as it passes.
 
-If you live in a city, this still belongs to you. Seasonal change happens between buildings, in courtyards, at bus stops, in street trees, balcony pots, puddles, weeds, and sky. You may also like [You Don't Need to Go to the Forest: How to Return to Nature Where You Already Are](/blog/2026/04/22/you-dont-need-to-go-to-the-forest-how-to-return-to-nature-where-you-already-are/) if you want more ways to notice the living world without leaving everyday life.
+If you live in a city, this still belongs to you. Seasonal change happens between buildings, in courtyards, at bus stops, in street trees, balcony pots, puddles, weeds, and sky. You may also like [You Don't Need to Go to the Forest: How to Return to Nature Where You Already Are](/en/you-dont-need-to-go-to-the-forest-how-to-return-to-nature-where-you-already-are/) if you want more ways to notice the living world without leaving everyday life.
 
 ## Why seasonal noticing matters
 
@@ -39,7 +40,7 @@ At first, you may not see much. Then details begin to appear. Buds swelling. Soi
 
 Returning to the same place makes change easier to see. The season becomes less like a background and more like a slow conversation.
 
-For a gentle guided version of this kind of return, you might enjoy [Quiet Return](/blog/2026/04/08/quiet-return-exercise-mindfulness-for-spring/), a simple mindfulness exercise built around coming back to one place with attention.
+For a gentle guided version of this kind of return, you might enjoy [Quiet Return](/en/quiet-return-exercise-mindfulness-for-spring/), a simple mindfulness exercise built around coming back to one place with attention.
 
 ## 2. Choose one sign of the season
 
@@ -87,7 +88,7 @@ Smell is often one of the quickest ways to feel the season. Wet leaves, cut gras
 
 Touch can be simple too. The roughness of bark. The cool surface of a stone. The dry shell of a seed head. The softness of moss after rain.
 
-For more small practices like this, see [Mindfulness in Nature: Where to Begin If You Don't Meditate](/blog/2026/04/23/mindfulness-in-nature-where-to-begin-if-you-dont-meditate/). It pairs well with everyday seasonal awareness.
+For more small practices like this, see [Mindfulness in Nature: Where to Begin If You Don't Meditate](/en/mindfulness-in-nature-where-to-begin-if-you-dont-meditate/). It pairs well with everyday seasonal awareness.
 
 ## 5. You do not need expert knowledge
 
@@ -135,7 +136,7 @@ If you would like a guided way to bring this into ordinary routes and city space
 
 A good place to begin is also [week 18: The Wandering Bee](/en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/) if you want to pair seasonal noticing with attentive movement along a familiar route.
 
-You may also enjoy [Morning Whispers](/blog/2026/03/21/morning-whispers-a-mindfulness-exercise-in-small-wonders/) if mornings are the easiest time for you to notice small seasonal details before the day becomes busy.
+You may also enjoy [Morning Whispers](/en/morning-whispers-a-mindfulness-exercise-in-small-wonders/) if mornings are the easiest time for you to notice small seasonal details before the day becomes busy.
 
 ## Begin with one sign
 

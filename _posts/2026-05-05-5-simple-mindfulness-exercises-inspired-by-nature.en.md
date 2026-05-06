@@ -3,6 +3,7 @@ layout: post
 title: "5 simple mindfulness exercises inspired by nature"
 date: 2026-05-05
 lang: en
+permalink: /en/5-simple-mindfulness-exercises-inspired-by-nature/
 translation_id: 5-prostych-cwiczen-uwaznosci-inspirowanych-przyroda-2026
 cover: /assets/img/default-cover.png
 cover_alt: Simple mindfulness exercises inspired by nature
@@ -12,7 +13,7 @@ tags: [mindfulness, "mindfulness exercise", nature, "nature connection", everyda
 
 Mindfulness practice can begin with something very concrete: light on leaves, the rhythm of your steps, the smell after rain, or one tree you pass every day on your way.
 
-Contact with nature can happen wherever you are: by a window, on the sidewalk, in a park, at a bus stop, on the way to the shop. Sometimes it is enough to find one thing where your attention can pause a little longer. This is close to the approach I also develop in the post [You do not need to go to the forest. How to return to nature where you already are](/blog/2026/04/22/nie-trzeba-jechac-do-lasu-jak-wracac-do-natury-tam-gdzie-juz-jestes/).
+Contact with nature can happen wherever you are: by a window, on the sidewalk, in a park, at a bus stop, on the way to the shop. Sometimes it is enough to find one thing where your attention can pause a little longer. This is close to the approach I also develop in the post [You Don’t Need to Go to the Forest: How to Return to Nature Where You Already Are](/en/you-dont-need-to-go-to-the-forest-how-to-return-to-nature-where-you-already-are/).
 
 The suggestions below are short, ordinary, and easy to repeat. Choose one and notice how the moment changes when you give it a little more attention.
 
@@ -27,7 +28,7 @@ They help you return:
 - to your surroundings,
 - to the moment that is happening right now.
 
-This is a good beginning especially when your head feels full and classic meditation seems distant. If you would like to see the broader context of this approach first, you can also read [Mindfulness in nature — where to begin if you do not meditate](/blog/2026/04/23/uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz/).
+This is a good beginning especially when your head feels full and classic meditation seems distant. If you would like to see the broader context of this approach first, you can also read [Mindfulness in Nature: Where to Begin If You Don’t Meditate](/en/mindfulness-in-nature-where-to-begin-if-you-dont-meditate/). And if you want the careful research backdrop too, visit [Does Contact with Nature Really Help? What Research Says](/en/does-contact-with-nature-really-help-what-research-says/).
 
 ## 1. One tree, one moment
 
@@ -37,7 +38,7 @@ Stand near it for one minute and notice three things: the shape of the branches,
 
 This small narrowing of attention often works surprisingly well. Instead of sweeping your eyes over the whole surroundings, you stay with one living fragment of the world. After a moment, you begin to see more: texture, direction of growth, tiny differences that were easy to pass by before.
 
-If you like such very simple ways in, [Quiet Root](/blog/2026/01/03/cichy-korzen-cwiczenie-uwaznosci-o-bezruchu/) is close to this exercise. It is the first card from the [Urban Forest Bathing](/materialy/kapiele_miejskie/) cycle.
+If you like such very simple ways in, [Silent Root](/en/silent-root-a-mindfulness-exercise-in-stillness/) is close to this exercise. It is the first card from the [Urban Forest Bathing](/en/materials/urban-bathing/) cycle.
 
 ## 2. Three sounds around you
 
@@ -55,7 +56,7 @@ For a dozen or so steps, walk more slowly than usual. Notice how your foot touch
 
 It is a small practice, but it can shift the rhythm of the day. When the body slows down, even for a moment, sight and hearing also begin to work differently. There is more room for details: an uneven sidewalk, the shadow of a tree, a bird’s call, light reflected in a window.
 
-If this direction feels close to you, you can also visit the exercise [Unhurried Path](/blog/2026/01/17/niespieszna-sciezka-cwiczenie-uwaznosci-o-powolnosci/), which develops this theme step by step.
+If this direction feels close to you, you can also visit the exercise [Unhurried Path](/en/unhurried-path-a-mindfulness-exercise-in-slowness/), which develops this theme step by step.
 
 ## 4. Light on one surface
 
@@ -65,7 +66,7 @@ For a moment, look only at what the light is doing. Is it sharp or diffused? War
 
 This is a good option for people who find it easier to enter focus through looking. Light is constantly changing ordinary surfaces. Sometimes one minute is enough to see that an image that seemed fixed is full of small changes.
 
-You will find a similar thread in the post [Bright Branch](/blog/2026/04/11/jasna-galaz-cwiczenie-uwaznosci-o-swietle-i-wzrastaniu/), where light becomes a starting point for noticing growth and subtle change.
+You will find a similar thread in the post [The Bright Branch](/en/the-bright-branch-a-mindfulness-exercise-on-light-and-growing/), where light becomes a starting point for noticing growth and subtle change.
 
 ## 5. One question at the end of a walk
 
@@ -75,7 +76,7 @@ After a short time outside, or at the end of your route, ask yourself one questi
 
 Sometimes one word is enough: wind, moss, bird, bud, rain, brightness of the sky, grass between paving slabs.
 
-This question gently closes the practice because it leaves only a trace. One thing that, for a moment, stopped being background. Many cards from the [Urban Forest Bathing](/materialy/kapiele_miejskie/) cycle work in a similar way: they do not require a long practice, only a short, concrete pause.
+This question gently closes the practice because it leaves only a trace. One thing that, for a moment, stopped being background. Many cards from the [Urban Forest Bathing](/en/materials/urban-bathing/) cycle work in a similar way: they do not require a long practice, only a short, concrete pause.
 
 ## How to use these suggestions without adding another obligation
 
@@ -91,7 +92,7 @@ It also helps to connect it with something you already do:
 
 Then the practice begins to grow out of everyday life. It is not another task, but another way of entering an ordinary moment.
 
-You will find more similar ideas in the [Urban Forest Bathing](/materialy/kapiele_miejskie/) materials, where short exercises are arranged week by week. And if you are especially interested in mindfulness without classic meditation, return to the text [Mindfulness in nature — where to begin if you do not meditate](/blog/2026/04/23/uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz/).
+You will find more similar ideas in the [Urban Forest Bathing](/en/materials/urban-bathing/) materials, where short exercises are arranged week by week. If you want ready-to-use materials, see also [Free Nature Mindfulness Cards to Download](/en/free-nature-mindfulness-cards-download/). And if you are especially interested in mindfulness without classic meditation, return to the text [Mindfulness in Nature: Where to Begin If You Don’t Meditate](/en/mindfulness-in-nature-where-to-begin-if-you-dont-meditate/).
 
 ## Sources and further reading
 

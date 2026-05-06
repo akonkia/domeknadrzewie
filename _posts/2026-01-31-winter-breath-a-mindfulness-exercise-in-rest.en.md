@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Winter Breath: a mindfulness exercise in rest (week 5)"
+seo_title: "Winter Breath"
 date: 2026-01-31
 lang: en
 translation_id: urban-bathing-week-05-2026

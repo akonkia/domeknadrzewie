@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Soft Rain: a mindfulness exercise on gentle nourishment (week 16)"
+seo_title: "The Soft Rain"
 date: 2026-04-18
 lang: en
 translation_id: soft-rain-2026

@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Zasady krokusowego obserwatora - jak zachwycać się naturą i jej nie niszczyć"
+seo_title: "Zasady krokusowego obserwatora"
 date: 2026-03-01
 lang: pl
+permalink: /pl/zasady-krokusowego-obserwatora/
 cover: /assets/img/Krokus.JPG
 cover_alt: Crocuses in bloom
 translation_id: krokusowy-turysta-2026
@@ -16,8 +18,6 @@ tags:
   - odpowiedzialność
   - wiosna
 ---
-
-# 🌸 Zasady krokusowego obserwatora - jak zachwycać się naturą i jej nie niszczyć
 
 Wczesna wiosna ma swoje charakterystyczne kolory: biele, fiolety, lila i delikatne pasy krokusów pojawiających się w parkach, skwerach i innych zielonych przestrzeniach. To mały spektakl natury, który przyciąga spojrzenia i zachwyt. I właśnie dlatego potrzebujemy prostych zasad, które pozwolą to piękno zachować.
 

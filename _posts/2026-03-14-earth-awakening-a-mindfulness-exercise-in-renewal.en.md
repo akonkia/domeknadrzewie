@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Earth Awakening: a mindfulness exercise in renewal (week 11)"
+seo_title: "Earth Awakening"
 date: 2026-03-14
 lang: en
 translation_id: urban-bathing-week-11-2026

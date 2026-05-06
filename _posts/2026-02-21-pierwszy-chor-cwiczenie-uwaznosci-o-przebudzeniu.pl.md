@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pierwszy Chór: ćwiczenie uważności o przebudzeniu (tydzień 8)"
+seo_title: "Pierwszy chór"
 date: 2026-02-21
 lang: pl
 translation_id: urban-bathing-week-08-2026

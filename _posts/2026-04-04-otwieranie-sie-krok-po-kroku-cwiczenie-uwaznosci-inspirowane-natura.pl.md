@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pąk w rozkwicie — proste ćwiczenie uważności o otwieraniu się (i nie tylko)"
+seo_title: "Pąk w rozkwicie"
 excerpt: "Delikatne ćwiczenie uważności inspirowane rozkwitającym kwiatem. Naucz się zauważać zmianę, otwierać się we własnym tempie i rozumieć, kiedy jeszcze pozostać zamkniętym."
 date: 2026-04-04
 lang: pl

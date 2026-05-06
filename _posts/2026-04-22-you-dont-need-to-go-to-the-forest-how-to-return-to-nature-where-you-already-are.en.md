@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Forest Bathing Without a Forest: How to Return to Nature Where You Are"
+seo_title: "Forest Bathing Without a Forest"
 date: 2026-04-22
 lang: en
+permalink: /en/you-dont-need-to-go-to-the-forest-how-to-return-to-nature-where-you-already-are/
 translation_id: powrot-do-natury-tam-gdzie-juz-jestes-2026
 cover: /assets/img/default-cover.png
 cover_alt: Returning to nature in everyday surroundings
@@ -58,7 +60,7 @@ It is a small experiment, but often a revealing one. Suddenly you can feel the t
 
 There is something valuable about returning. When we come back, we begin to notice continuity and change: fresh leaves, fallen petals, a different quality of light, a different hour of birdsong.
 
-If you want to explore that movement more deeply, you can also read [Quiet Return: a spring mindfulness practice](/blog/2026/04/08/quiet-return-exercise-mindfulness-for-spring/), which gently guides you through coming back to a place and noticing what has shifted there.
+If you want to explore that movement more deeply, you can also read [Quiet Return: a spring mindfulness practice](/en/quiet-return-exercise-mindfulness-for-spring/), which gently guides you through coming back to a place and noticing what has shifted there.
 
 ## How to weave this into everyday life
 

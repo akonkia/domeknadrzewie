@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Long Morning: a mindfulness exercise in awakening (week 17)"
+seo_title: "The Long Morning"
 date: 2026-04-23
 lang: en
 translation_id: long-morning-2026

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Unhurried Path: a mindfulness exercise in slowness (week 3)"
+seo_title: "Unhurried Path"
 date: 2026-01-17
 lang: en
 translation_id: urban-bathing-week-03-2026

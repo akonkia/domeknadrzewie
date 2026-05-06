@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Bright Branch: a mindfulness exercise on light and growing (week 15)"
+seo_title: "The Bright Branch"
 date: 2026-04-11
 lang: en
 translation_id: bright-branch-2026

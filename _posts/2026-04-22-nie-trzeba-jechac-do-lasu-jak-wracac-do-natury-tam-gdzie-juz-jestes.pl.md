@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Nie trzeba jechać do lasu. Kąpiele leśne bez lasu — jak wracać do natury tam, gdzie jesteś"
+seo_title: "Nie trzeba jechać do lasu"
 date: 2026-04-22
 lang: pl
+permalink: /pl/nie-trzeba-jechac-do-lasu-jak-wracac-do-natury-tam-gdzie-juz-jestes/
 translation_id: powrot-do-natury-tam-gdzie-juz-jestes-2026
 cover: /assets/img/default-cover.png
 cover_alt: Powrót do natury w codziennym otoczeniu
@@ -58,7 +60,7 @@ To mały eksperyment, ale często bardzo otwierający. Nagle czuć temperaturę 
 
 Powrót ma swoją wartość. Gdy wracamy, zaczynamy zauważać ciągłość i zmianę: nowe liście, opadłe płatki, inną jakość światła, inną porę śpiewu ptaków.
 
-Jeśli chcesz pójść tym tropem dalej, możesz sięgnąć także po ćwiczenie [Cichy powrót](/blog/2026/04/08/Cichy-powrot-cwiczenie-uwaznosci-na-wiosne/), które prowadzi właśnie przez uważne wracanie do miejsca i zauważanie tego, co się w nim zmienia.
+Jeśli chcesz pójść tym tropem dalej, możesz sięgnąć także po ćwiczenie [Cichy powrót](/pl/cichy-powrot-cwiczenie-uwaznosci-na-wiosne/), które prowadzi właśnie przez uważne wracanie do miejsca i zauważanie tego, co się w nim zmienia.
 
 ## Jak wplatać to w codzienność
 

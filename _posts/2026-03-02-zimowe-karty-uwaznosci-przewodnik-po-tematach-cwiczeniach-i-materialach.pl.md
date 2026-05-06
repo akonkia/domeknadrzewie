@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Zimowe karty uważności: przewodnik po tematach, ćwiczeniach i materiałach"
+seo_title: "Zimowe karty uważności"
 date: 2026-03-02
 lang: pl
 translation_id: winter-cards-hub-2026

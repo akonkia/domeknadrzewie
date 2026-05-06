@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "The Crocus Observer’s Guide — How to Admire Nature Without Damaging It"
+seo_title: "The Crocus Observer’s Guide"
 date: 2026-03-01
 lang: en
+permalink: /en/the-crocus-observers-guide/
 cover: /assets/img/Krokus.JPG
 cover_alt: Crocuses in bloom
 translation_id: krokusowy-obserwator-2026
@@ -16,8 +18,6 @@ tags:
   - responsibility
   - spring
 ---
-
-# 🌸 The Crocus Observer’s Guide — How to Admire Nature Without Damaging It
 
 Early spring has its own distinctive colours: whites, violets, lilacs, and soft bands of crocuses appearing in parks, squares, and other green spaces. It is a small natural spectacle that draws the eye and invites wonder. And that is exactly why we need simple guidelines that help preserve this beauty.
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Morning Whispers: a mindfulness exercise in small wonders (week 12)"
+seo_title: "Morning Whispers"
 date: 2026-03-21
 lang: en
 translation_id: urban-bathing-week-12-2026

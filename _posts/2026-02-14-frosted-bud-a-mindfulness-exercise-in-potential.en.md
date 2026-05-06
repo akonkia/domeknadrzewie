@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Frosted Bud: a mindfulness exercise in potential (week 7)"
+seo_title: "Frosted Bud"
 date: 2026-02-14
 lang: en
 translation_id: urban-bathing-week-07-2026

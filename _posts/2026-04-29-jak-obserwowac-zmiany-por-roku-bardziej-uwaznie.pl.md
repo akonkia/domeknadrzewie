@@ -3,6 +3,7 @@ layout: post
 title: "Jak obserwować zmiany pór roku bardziej uważnie"
 date: 2026-04-29
 lang: pl
+permalink: /pl/jak-obserwowac-zmiany-por-roku-bardziej-uwaznie/
 translation_id: jak-obserwowac-zmiany-por-roku-bardziej-uwaznie-2026
 cover: /assets/img/default-cover.png
 cover_alt: Uważne obserwowanie zmian pór roku
@@ -16,7 +17,7 @@ Zmiana pory roku łatwo umyka, kiedy dzień dzieli się na pracę, sprawy do za�
 
 Taka sezonowa uważność nie polega na zbieraniu faktów. To raczej sposób, by nie tracić kontaktu z czasem, kiedy mija.
 
-Jeśli mieszkasz w mieście, to nadal do Ciebie należy. Pora roku zmienia się między budynkami, na podwórkach, przy przystankach, w drzewach ulicznych, w donicach na balkonach, w kałużach, chwastach i niebie. Jeśli chcesz więcej sposobów na zauważanie tego, co żywe bez wychodzenia z codzienności, zajrzyj też do wpisu [Nie trzeba jechać do lasu. Jak wracać do natury tam, gdzie już jesteś](/blog/2026/04/22/nie-trzeba-jechac-do-lasu-jak-wracac-do-natury-tam-gdzie-juz-jestes/).
+Jeśli mieszkasz w mieście, to nadal do Ciebie należy. Pora roku zmienia się między budynkami, na podwórkach, przy przystankach, w drzewach ulicznych, w donicach na balkonach, w kałużach, chwastach i niebie. Jeśli chcesz więcej sposobów na zauważanie tego, co żywe bez wychodzenia z codzienności, zajrzyj też do wpisu [Nie trzeba jechać do lasu. Jak wracać do natury tam, gdzie już jesteś](/pl/nie-trzeba-jechac-do-lasu-jak-wracac-do-natury-tam-gdzie-juz-jestes/).
 
 ## Dlaczego warto obserwować sezonowe zmiany
 
@@ -39,7 +40,7 @@ Na początku możesz nie widzieć prawie nic. Potem zaczynają wychodzić szczeg
 
 Właśnie powrót sprawia, że zmiana staje się czytelna. Pora roku przestaje być tłem, a zaczyna przypominać powolną rozmowę.
 
-Jeśli chcesz wejść w taki ruch bardziej prowadzonym krokiem, zajrzyj do ćwiczenia [Cichy powrót](/blog/2026/04/08/Cichy-powrot-cwiczenie-uwaznosci-na-wiosne/), które opiera się właśnie na uważnym wracaniu do jednego miejsca.
+Jeśli chcesz wejść w taki ruch bardziej prowadzonym krokiem, zajrzyj do ćwiczenia [Cichy powrót](/pl/cichy-powrot-cwiczenie-uwaznosci-na-wiosne/), które opiera się właśnie na uważnym wracaniu do jednego miejsca.
 
 ## 2. Wybierz jeden ślad sezonu
 
@@ -87,7 +88,7 @@ Zapach jest często najszybszą drogą do rozpoznania sezonu. Mokre liście, sko
 
 Dotyk też może być prosty. Chropowatość kory. Chłód kamienia. Sucha łuska po nasionach. Miękkość mchu po deszczu.
 
-Jeśli chcesz więcej takich małych praktyk, zajrzyj do wpisu [Uważność w naturze - od czego zacząć, jeśli nie medytujesz](/blog/2026/04/23/uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz/). Dobrze łączy się z codziennym zauważaniem sezonu.
+Jeśli chcesz więcej takich małych praktyk, zajrzyj do wpisu [Uważność w naturze - od czego zacząć, jeśli nie medytujesz](/pl/uwaznosc-w-naturze-od-czego-zaczac-jesli-nie-medytujesz/). Dobrze łączy się z codziennym zauważaniem sezonu.
 
 ## 5. Nie potrzebujesz wiedzy eksperckiej
 
@@ -135,7 +136,7 @@ Jeśli chcesz wnieść taki sposób patrzenia w codzienne trasy i miejskie miejs
 
 Dobrym punktem wejścia może być też [karta tygodnia 18: Wędrująca pszczoła](/pl/wedrujaca-pszczola-cwiczenie-uwaznosci-o-celowym-ruchu/), jeśli chcesz połączyć obserwację sezonowych zmian z uważnym ruchem po znanej trasie.
 
-Możesz też wrócić do wpisu [Poranne szepty](/blog/2026/03/21/poranne-szepty-cwiczenie-uwaznosci-o-drobnych-zachwytach/), jeśli najłatwiej zauważasz drobne sezonowe szczegóły rano, zanim dzień nabierze tempa.
+Możesz też wrócić do wpisu [Poranne szepty](/pl/poranne-szepty-cwiczenie-uwaznosci-o-drobnych-zachwytach/), jeśli najłatwiej zauważasz drobne sezonowe szczegóły rano, zanim dzień nabierze tempa.
 
 ## Zacznij od jednego znaku
 

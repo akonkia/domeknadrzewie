@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Mniszek lekarski to nie chwast? Dlaczego jest ważny dla zapylaczy"
+seo_title: "Mniszek lekarski dla zapylaczy"
 date: 2026-04-17
 lang: pl
 permalink: /pl/mniszek-lekarski-dla-zapylaczy/

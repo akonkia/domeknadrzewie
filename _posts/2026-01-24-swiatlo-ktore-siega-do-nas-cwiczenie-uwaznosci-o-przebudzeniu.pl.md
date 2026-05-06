@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Światło, które sięga do nas: ćwiczenie uważności o przebudzeniu (tydzień 4)"
+seo_title: "Światło, które sięga do nas"
 date: 2026-01-24
 lang: pl
 translation_id: urban-bathing-week-04-2026

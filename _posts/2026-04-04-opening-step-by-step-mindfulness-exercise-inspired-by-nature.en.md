@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Open Blossom — A Simple Mindfulness Practice for Learning When to Open"
+seo_title: "The Open Blossom"
 description: "A gentle mindfulness practice inspired by a blossoming flower. Learn how to notice change, open at your own pace, and understand when not to open yet."
 date: 2026-04-04
 lang: en

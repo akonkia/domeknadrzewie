@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Does Contact with Nature Really Help? What Research Says"
+seo_title: "Does Nature Contact Really Help?"
 date: 2026-05-02
 lang: en
+permalink: /en/does-contact-with-nature-really-help-what-research-says/
 translation_id: does-contact-with-nature-really-help
 excerpt: "Does spending time in nature really help us feel better? A careful, readable look at what research suggests — without turning nature into a cure-all."
 tags: ["nature connection", "nature mindfulness", "forest bathing", "urban forest bathing", "mental wellbeing", "green space", "mindfulness in nature", "outdoor wellbeing"]
@@ -50,6 +52,8 @@ It is also:
 > What living world is already close to me?
 
 This is the heart of urban forest bathing and nature mindfulness. A street tree, a patch of grass, a courtyard, rain on glass, or light moving across a wall can become a small point of contact.
+
+If you want a very simple way into this kind of everyday contact, you can also read [How to Feel Closer to Nature in the City: 7 Simple Ways](/en/how-to-feel-closer-to-nature-in-the-city-7-simple-ways/) and [5 simple mindfulness exercises inspired by nature](/en/5-simple-mindfulness-exercises-inspired-by-nature/).
 
 ## What research seems to suggest
 
@@ -241,6 +245,8 @@ The nature mindfulness cards from Project: Tree House were created for this kind
 They are not meant to promise transformation. They are meant to make beginning easier.
 
 Each card offers a short seasonal prompt: something to notice, somewhere to pause, one question to carry inward. You can use them in a park, by a window, with children, on a school walk, in a garden, or during an ordinary city day.
+
+If you would rather begin with ready-to-use materials, visit [Free Nature Mindfulness Cards to Download](/en/free-nature-mindfulness-cards-download/).
 
 If you would like a gentle structure, you can explore the full series here:
 
