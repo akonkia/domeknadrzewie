@@ -70,6 +70,8 @@ Choose a card before you leave and let it become a gentle focus. You do not have
 
 If you want to begin even more simply, without downloading anything yet, [5 simple mindfulness exercises inspired by nature](/en/5-simple-mindfulness-exercises-inspired-by-nature/) offers a few easy starting points.
 
+If you want an even smaller daily entry point into that rhythm, you can also read [How to Use the Page-a-Day Calendar and What Each Part Means](/en/how-to-use-the-page-a-day-calendar/). That page also points you to the current card of the week each day.
+
 ### 2. One card for one week
 
 This works well if you want to build a calm rhythm. You can return to the same theme over several days and notice how the light, weather, attention, or mood changes.

@@ -43,3 +43,5 @@ Can I give it space instead of trying to accelerate it?
 The appearance of the cards changes how the project develops.
 From a single place on the web, it begins to form something more regular — a rhythm that can be followed week by week.
 This is only the beginning of this part of the journey.
+
+If you want to see how that rhythm also appears in a shorter daily form, read [How to Use the Page-a-Day Calendar and What Each Part Means](/en/how-to-use-the-page-a-day-calendar/) and visit the [Page-a-Day calendar](/en/page-a-day.html).

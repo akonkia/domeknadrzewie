@@ -125,6 +125,8 @@ A prompt gives your noticing a shape. It might ask you to listen for one sound, 
 
 If you want a quick overview of how to use those materials, read [Free Nature Mindfulness Cards to Download](/en/free-nature-mindfulness-cards-download/).
 
+If you would rather have a very short daily anchor point, read [How to Use the Page-a-Day Calendar and What Each Part Means](/en/how-to-use-the-page-a-day-calendar/), which shows how to connect the date, weekly rhythm, and mindfulness card with an ordinary day.
+
 If you want one concrete place to begin, return to [week 18: The Wandering Bee](/en/the-wandering-bee-a-mindfulness-exercise-in-purposeful-motion/), which guides attention through calm, purposeful movement along an ordinary city route.
 
 You may also enjoy [Urban Forest Bathing: How to Practice Shinrin-yoku Without Leaving the City?](/en/urban-forest-bathing-how-to-practice-shinrin-yoku-without-leaving-the-city/) if you want a broader introduction to bringing forest-bathing principles into urban spaces.
