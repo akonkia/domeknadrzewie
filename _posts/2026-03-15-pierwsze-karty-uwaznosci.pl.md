@@ -5,6 +5,8 @@ date: 2026-03-31
 translation_id:	first-cards-2026
 lang:
   - pl
+cover: /assets/img/marzec-wiosna-tydzien-13-cwiczenie-uwaznosci-powrot-do-miejsca-13A.png
+cover_alt: Pierwsze karty tygodniowe projektu
 excerpt: "Wczesną wiosną 2026 w projekcie pojawiły się pierwsze karty tygodniowe — jako praktyka uważności i sposób na budowanie rytmu."
 tags: [karty, uważność, wiosna, seria]
 ---

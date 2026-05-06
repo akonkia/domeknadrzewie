@@ -5,6 +5,8 @@ date: 2026-03-31
 translation_id:	first-cards-2026
 lang:
   - en
+cover: /assets/img/marzec-wiosna-tydzien-13-cwiczenie-uwaznosci-powrot-do-miejsca-13A.png
+cover_alt: The first weekly cards in the series
 excerpt: "In early spring 2026, the first weekly cards appeared in the project — as a mindfulness practice and a way to build rhythm."
 tags: [cards, mindfulness, spring, series]
 ---
