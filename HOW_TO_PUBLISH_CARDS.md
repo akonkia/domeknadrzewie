@@ -29,6 +29,7 @@ bash scripts/publish_cards.sh "Add week 19 card"
 - shows the staged changes
 - asks for a commit message if you did not provide one
 - asks whether to push to `origin/main`
+- skips the push prompt automatically when run non-interactively
 
 ## Files it prepares
 

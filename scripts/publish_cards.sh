@@ -15,6 +15,10 @@ cd "${REPO_ROOT}"
 
 bash scripts/update_cards.sh
 
+unstage_ds_store_files() {
+  git restore --staged -- ':(glob)**/.DS_Store' >/dev/null 2>&1 || true
+}
+
 git add assets/js/cards-data.js
 git add materialy/kapiele_miejskie/index.html en/materials/urban-bathing/index.html
 
@@ -30,7 +34,7 @@ if [ -d "_posts" ]; then
   git add _posts
 fi
 
-git reset -- .DS_Store assets/.DS_Store >/dev/null 2>&1 || true
+unstage_ds_store_files
 
 echo
 echo "Staged changes:"
@@ -47,6 +51,11 @@ fi
 COMMIT_MESSAGE="${1:-}"
 
 if [ -z "${COMMIT_MESSAGE}" ]; then
+  if [ ! -t 0 ]; then
+    echo "Commit message is required when running non-interactively."
+    echo 'Run: bash scripts/publish_cards.sh "Add week 19 card"'
+    exit 1
+  fi
   read -r -p "Commit message: " COMMIT_MESSAGE
 fi
 
@@ -58,6 +67,13 @@ fi
 git commit -m "${COMMIT_MESSAGE}"
 
 echo
+if [ ! -t 0 ]; then
+  echo "Commit created locally."
+  echo "Non-interactive run detected, so push was skipped."
+  echo "Push later with: git push origin main"
+  exit 0
+fi
+
 read -r -p "Push to origin/main now? [y/N] " PUSH_NOW
 
 case "${PUSH_NOW}" in
