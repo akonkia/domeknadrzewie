@@ -74,6 +74,13 @@ def slugify(value: str) -> str:
     return normalized.strip("-")
 
 
+def pretty_slug(value: str) -> str:
+    normalized = value.lower().strip()
+    normalized = re.sub(r"\s+", "-", normalized)
+    normalized = re.sub(r"-{2,}", "-", normalized)
+    return normalized.strip("-")
+
+
 def parse_scalar(raw: str) -> str:
     value = raw.strip()
     if value.startswith(("'", '"')) and value.endswith(("'", '"')) and len(value) >= 2:
@@ -220,6 +227,23 @@ def render_archive(tag: str, lang: str, translation_id: str) -> str:
     return "".join(parts)
 
 
+def render_redirect(target_path: str) -> str:
+    return (
+        "<!DOCTYPE html>\n"
+        "<html lang=\"en\">\n"
+        "<head>\n"
+        "  <meta charset=\"utf-8\">\n"
+        f"  <link rel=\"canonical\" href=\"{target_path}\">\n"
+        f"  <meta http-equiv=\"refresh\" content=\"0; url={target_path}\">\n"
+        f"  <script>location.replace({target_path!r});</script>\n"
+        "</head>\n"
+        "<body>\n"
+        f"  <p>Moved to <a href=\"{target_path}\">{target_path}</a>.</p>\n"
+        "</body>\n"
+        "</html>\n"
+    )
+
+
 def write_archives(base_dir: Path, lang: str, tags: List[str], translation_lookup: Dict[Tuple[str, str], str]) -> None:
     if base_dir.exists():
         shutil.rmtree(base_dir)
@@ -227,10 +251,16 @@ def write_archives(base_dir: Path, lang: str, tags: List[str], translation_looku
 
     for tag in tags:
         slug = slugify(tag)
+        alias_slug = pretty_slug(tag)
         translation_id = translation_lookup.get((lang, tag)) or translation_lookup.get((lang, slug)) or make_translation_id(lang, tag)
         target_dir = base_dir / slug
         target_dir.mkdir(parents=True, exist_ok=True)
         (target_dir / "index.html").write_text(render_archive(tag, lang, translation_id), encoding="utf-8")
+        if alias_slug and alias_slug != slug:
+            alias_dir = base_dir / alias_slug
+            alias_dir.mkdir(parents=True, exist_ok=True)
+            redirect_target = f"/blog/tag/{slug}/" if lang == "pl" else f"/blog/en/tag/{slug}/"
+            (alias_dir / "index.html").write_text(render_redirect(redirect_target), encoding="utf-8")
 
 
 def main() -> None:
