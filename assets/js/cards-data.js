@@ -47,6 +47,22 @@
   img: "wiosna-maj-tydzien-19-cwiczenie-uwaznosci-splot-zieleni-obfitosc-19A.png", 
   imgB: "wiosna-maj-tydzien-19-cwiczenie-uwaznosci-splot-zieleni-obfitosc-19B.png",
   blog: "/pl/splot-zieleni-cwiczenie-uwaznosci-o-obfitosci/"
+},
+      {
+  id: 20,
+  title: "Przejrzyste niebo",
+  theme: "Klarowność",
+  season: "Wiosna",
+  month: "Maj",
+  body: "Spędź kilka minut, patrząc w otwarte niebo. Pozwól oczom odpocząć przy jego przestrzeni, kolorze i ruchu. Zauważ chmury, światło, ptaki, gałęzie albo ciche przerwy między nimi. Nie musisz niczego szukać. Po prostu spójrz w górę i pozwól swojej uwadze się rozszerzyć.",
+  reflection: [
+    "Co się rozjaśnia, kiedy patrzę w górę?",
+    "Co wydaje się mniej pilne, kiedy daję temu więcej przestrzeni?",
+    "Co widzę wyraźniej z odrobiny dystansu?"
+  ],
+  img: "wiosna-maj-tydzien-20-cwiczenie-uwaznosci-przejrzyste-niebo-klarownosc-20A.png",
+  imgB: "wiosna-maj-tydzien-20-cwiczenie-uwaznosci-przejrzyste-niebo-klarownosc-20B.png",
+  blog: "/pl/przejrzyste-niebo-cwiczenie-uwaznosci-o-klarownosci/"
 }
 
     ],
@@ -97,6 +113,22 @@
   img: "wiosna-maj-tydzien-19-cwiczenie-uwaznosci-splot-zieleni-obfitosc-19A.png", 
   imgB: "spring-may-week-19-reflection-the-woven-greens-abundance-19B.png",
   blog: "/en/the-woven-greens-mindfulness-practice-about-abundance/"
+},
+      {
+  id: 20,
+  title: "The Clear Sky",
+  theme: "Clarity",
+  season: "Spring",
+  month: "May",
+  body: "Spend a few minutes looking at the open sky. Let your eyes rest on its space, colour, and movement. Notice clouds, light, birds, branches, or the quiet gaps between them. You do not need to search for anything. Just look upward and allow your attention to widen.",
+  reflection: [
+    "What clears when I look upward?",
+    "What feels less urgent when I give it more space?",
+    "What can I see more clearly from a little distance?"
+  ],
+  img: "wiosna-maj-tydzien-20-cwiczenie-uwaznosci-przejrzyste-niebo-klarownosc-20A.png",
+  imgB: "spring-may-week-20-reflection-the-clear-sky-clarity-20Ben.png",
+  blog: "/en/the-clear-sky-a-mindfulness-exercise-in-clarity/"
 }
 
     ]
