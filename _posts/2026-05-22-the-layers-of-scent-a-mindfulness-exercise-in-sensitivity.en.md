@@ -19,11 +19,7 @@ In May, spring often reaches us not only through colour and light, but through s
 
 At first there may be only one note: lilac by a gate, wet soil after rain, freshly cut grass, leaves warmed by sunlight. But if we stay a little longer, more layers begin to appear. What seemed like a single scent opens into a whole landscape.
 
-This card from the [Urban Forest Bathing](/en/materials/urban-bathing/) series invites a very simple practice: pause outdoors and let your sense of smell guide your attention.
-
-![Lilac blossoms held in a hand in May light](/assets/img/spring-may-week-21-layers-of-scent-lilac-21.png)
-
-_Photo: Anna Malysheva, [Pexels](https://www.pexels.com/photo/hand-touching-lilac-blossoms-12471920/)._
+This card from the [Urban Forest Bathing](/en/materials/urban-bathing/) series invites a very simple practice: pause outdoors and let your sense of smell guide your attention. Cover photo: Anna Malysheva, [Pexels](https://www.pexels.com/photo/hand-touching-lilac-blossoms-12471920/).
 
 ## Mindfulness exercise: sensitivity
 

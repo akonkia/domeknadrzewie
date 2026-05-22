@@ -19,11 +19,7 @@ Maj często przychodzi do nas nie tylko przez kolor i światło, ale też przez 
 
 Najpierw może być jeden: bez przy furtce, mokra ziemia po deszczu, świeżo skoszona trawa, liście nagrzane słońcem. A potem, jeśli zostaniemy chwilę dłużej, pojawiają się kolejne warstwy. To, co na początku wydawało się jednym zapachem, okazuje się całym krajobrazem.
 
-Ta karta z cyklu [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/) zaprasza do bardzo prostego ćwiczenia: zatrzymać się na zewnątrz i pozwolić zmysłowi węchu prowadzić uwagę.
-
-![Kwitnący bez trzymany w dłoni w majowym świetle](/assets/img/spring-may-week-21-layers-of-scent-lilac-21.png)
-
-_Zdjęcie: Anna Malysheva, [Pexels](https://www.pexels.com/photo/hand-touching-lilac-blossoms-12471920/)._
+Ta karta z cyklu [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/) zaprasza do bardzo prostego ćwiczenia: zatrzymać się na zewnątrz i pozwolić zmysłowi węchu prowadzić uwagę. Zdjęcie w okładce: Anna Malysheva, [Pexels](https://www.pexels.com/photo/hand-touching-lilac-blossoms-12471920/).
 
 ## Ćwiczenie uważności: wrażliwość
 
