@@ -63,6 +63,22 @@
   img: "wiosna-maj-tydzien-20-cwiczenie-uwaznosci-przejrzyste-niebo-klarownosc-20A.png",
   imgB: "wiosna-maj-tydzien-20-cwiczenie-uwaznosci-przejrzyste-niebo-klarownosc-20B.png",
   blog: "/pl/przejrzyste-niebo-cwiczenie-uwaznosci-o-klarownosci/"
+},
+      {
+  id: 21,
+  title: "Warstwy zapachu",
+  theme: "Wrażliwość",
+  season: "Wiosna",
+  month: "Maj",
+  body: "Zatrzymaj się na zewnątrz i zauważ zapachy wokół siebie: kwiatów, mokrych liści, ziemi, deszczu albo świeżo skoszonej trawy. Zostań chwilę dłużej, żeby pierwszy zapach zdążył się rozluźnić, a pod nim mogły pojawić się kolejne warstwy.",
+  reflection: [
+    "Jaki zapach dociera do mnie jako pierwszy?",
+    "Jakie inne zapachy pojawiają się, kiedy zostaję chwilę dłużej?",
+    "Jakie wspomnienie, nastrój albo miejsce przywołuje jeden z tych zapachów?"
+  ],
+  img: "wiosna-maj-tydzien-21-cwiczenie-uwaznosci-warstwy-zapachu-wrazliwosc-21A.png",
+  imgB: "wiosna-maj-tydzien-21-cwiczenie-uwaznosci-warstwy-zapachu-wrazliwosc-21B.png",
+  blog: "/pl/warstwy-zapachu-cwiczenie-uwaznosci-o-wrazliwosci/"
 }
 
     ],
@@ -129,6 +145,22 @@
   img: "wiosna-maj-tydzien-20-cwiczenie-uwaznosci-przejrzyste-niebo-klarownosc-20A.png",
   imgB: "spring-may-week-20-reflection-the-clear-sky-clarity-20Ben.png",
   blog: "/en/the-clear-sky-a-mindfulness-exercise-in-clarity/"
+},
+      {
+  id: 21,
+  title: "The Layers of Scent",
+  theme: "Sensitivity",
+  season: "Spring",
+  month: "May",
+  body: "Pause outdoors and notice the scents around you: flowers, wet leaves, soil, rain, or freshly cut grass. Stay long enough for the first scent to soften and for others to appear underneath it.",
+  reflection: [
+    "What scent reaches me first?",
+    "What other scents appear when I stay a little longer?",
+    "What memory, mood, or place does one of these scents bring back?"
+  ],
+  img: "wiosna-maj-tydzien-21-cwiczenie-uwaznosci-warstwy-zapachu-wrazliwosc-21A.png",
+  imgB: "spring-may-week-21-mindfulness-exercise-the-layers-of-scent-sensitivity-21Ben.png",
+  blog: "/en/the-layers-of-scent-a-mindfulness-exercise-in-sensitivity/"
 }
 
     ]
