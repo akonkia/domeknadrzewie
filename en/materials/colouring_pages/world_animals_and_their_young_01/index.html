@@ -8,7 +8,7 @@
   <title>Colouring Pages: World Animals and Their Young — Set 01 | Domek na Drzewie Project</title>
   <meta
     name="description"
-    content="Colouring pages: world animals and their young — set 01. 40 printable PNG colouring pages for children plus a full ZIP download."
+    content="Colouring pages: world animals and their young — set 01. 40 free printable PNG colouring pages for children plus a full ZIP download."
   />
 
   <style>
@@ -351,20 +351,46 @@
 
     .hero {
       position: relative;
-      min-height: 320px;
+      min-height: 360px;
       display: flex;
       align-items: center;
       background:
-        linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-        url('https://placehold.co/1600x900/dbe5d3/5e675f?text=Spring+Colouring+Pages') center/cover no-repeat;
+        radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 42%),
+        linear-gradient(135deg, #93a287 0%, #7f9173 54%, #6c7c62 100%);
       color: white;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, rgba(19,31,21,0.12), rgba(19,31,21,0.12)),
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.04) 0,
+          rgba(255,255,255,0.04) 2px,
+          transparent 2px,
+          transparent 18px
+        );
+      pointer-events: none;
     }
 
     .hero-inner {
-      width: min(calc(100% - 32px), 900px);
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 32px), 1100px);
       margin: 0 auto;
-      padding: 54px 0;
-      text-align: center;
+      padding: 52px 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 360px);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 680px;
     }
 
     .hero-kicker {
@@ -378,21 +404,54 @@
       font-weight: 800;
     }
 
-    h1 {
+    .hero h1 {
       margin-top: 16px;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      line-height: 1.02;
+      margin-bottom: 0;
+      font-size: clamp(2.1rem, 4.6vw, 4rem);
+      line-height: 0.98;
       letter-spacing: 0.01em;
       text-transform: uppercase;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.16);
+      text-shadow: 0 4px 18px rgba(0,0,0,0.12);
     }
 
     .hero-text {
-      margin: 18px auto 0;
-      max-width: 60ch;
+      margin: 18px 0 0;
+      max-width: 58ch;
       font-size: 1.03rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.93);
+      line-height: 1.75;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-visual {
+      justify-self: end;
+      width: min(100%, 360px);
+    }
+
+    .hero-preview {
+      margin: 0;
+      padding: 14px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 24px 48px rgba(27,39,30,0.24);
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-preview img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.94);
+    }
+
+    .hero-caption {
+      margin-top: 10px;
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
     }
 
     .page-wrap {
@@ -614,6 +673,66 @@
       margin-bottom: 16px;
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .gallery-card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 18px 40px rgba(36,49,38,0.08);
+    }
+
+    .gallery-thumb {
+      display: block;
+      overflow: hidden;
+      background: #f3f1eb;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.22s ease;
+    }
+
+    .gallery-thumb:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-body {
+      padding: 16px;
+    }
+
+    .gallery-title {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      line-height: 1.45;
+      color: var(--sage-dark);
+    }
+
+    .gallery-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .gallery-actions a {
+      flex: 1 1 140px;
+      text-align: center;
+    }
+
+    .gallery-source {
+      display: none;
+    }
+
     .contact-band {
       margin-top: 28px;
       padding: 28px;
@@ -802,8 +921,28 @@
         min-height: 280px;
       }
 
-      h1 {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .hero-copy {
+        max-width: none;
+      }
+
+      .hero h1 {
         font-size: clamp(2rem, 9vw, 3rem);
+      }
+
+      .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-visual {
+        justify-self: center;
+        width: min(100%, 320px);
       }
 
       .info-card,
@@ -861,12 +1000,20 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <span class="hero-kicker">Printable pages for children</span>
-      <h1>Colouring Pages: World Animals and Their Young — Set 01</h1>
-      <p class="hero-text">
-        A set of 40 printable colouring pages featuring baby animals and their parents:
-        elephants, zebras, giraffes, meerkats, cheetahs, and more world animals.
-      </p>
+      <div class="hero-copy">
+        <span class="hero-kicker">Printable pages for children</span>
+        <h1>Colouring Pages: World Animals and Their Young</h1>
+        <p class="hero-text">
+          A free set of 40 printable colouring pages featuring baby animals and their
+          parents: elephants, zebras, giraffes, meerkats, cheetahs, and more world animals.
+        </p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <figure class="hero-preview">
+          <img src="/en/materials/colouring_pages/world_animals_and_their_young_01/colouring-page-elephant-and-calf-01.png" alt="Preview of an elephant and calf colouring page">
+          <figcaption class="hero-caption">Sample page from set 01</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -887,11 +1034,11 @@
         <h2 class="set-title">Colouring Pages: World Animals and Their Young — Set 01</h2>
         <div class="set-meta">40 colouring pages • PNG • printable ZIP • for children</div>
 
-        <p class="set-description">
-          A simple printable set inspired by world animals and the bond between young
-          animals and their parents. You can download the full pack or save individual
-          PNG files one by one.
-        </p>
+      <p class="set-description">
+        A simple free printable set inspired by world animals and the bond between young
+        animals and their parents. You can download the full pack or save individual
+        PNG files one by one.
+      </p>
 
         <ul class="set-points">
           <li>40 free colouring pages to download.</li>
@@ -909,8 +1056,8 @@
         <span class="section-kicker">What’s included</span>
         <h2 class="section-title">Download the full set or choose an individual file</h2>
         <p class="section-text">
-          If you prefer, download one full ZIP file. You can also open and save each
-          PNG separately using descriptive, search-friendly filenames.
+          If you prefer, download one full ZIP file. You can also preview and save
+          each colouring page separately.
         </p>
       </section>
 
@@ -926,10 +1073,10 @@
           <div>
             <h3 class="page-title">Full downloadable set</h3>
             <div class="file-meta">ZIP • 40 colouring pages • PNG</div>
-            <p class="page-description">
-              This single ZIP includes the complete collection from this set.
-              It is the easiest option if you want everything in one download.
-            </p>
+          <p class="page-description">
+            This single ZIP includes the complete collection of free colouring pages from this set.
+            It is the easiest option if you want everything in one download.
+          </p>
 
             <div class="card-actions">
               <a class="btn-sage" href="world-animals-and-their-young-colouring-pages-printable-set-01.zip" download>Download ZIP</a>
@@ -941,48 +1088,52 @@
 
       <section class="info-card">
         <span class="set-badge">Individual files</span>
-        <h2 class="set-title">PNG colouring pages with SEO-friendly filenames</h2>
-        <ul class="set-points">
-          <li><a href="colouring-page-antelope-and-young-01.png" download>colouring page antelope and young 01</a></li>
-          <li><a href="colouring-page-antelope-and-young-02.png" download>colouring page antelope and young 02</a></li>
-          <li><a href="colouring-page-buffalo-and-calf-01.png" download>colouring page buffalo and calf 01</a></li>
-          <li><a href="colouring-page-caracal-and-young-01.png" download>colouring page caracal and young 01</a></li>
-          <li><a href="colouring-page-caracal-and-young-02.png" download>colouring page caracal and young 02</a></li>
-          <li><a href="colouring-page-cheetah-and-cub-01.png" download>colouring page cheetah and cub 01</a></li>
-          <li><a href="colouring-page-cheetah-and-cub-02.png" download>colouring page cheetah and cub 02</a></li>
-          <li><a href="colouring-page-cheetah-and-cub-03.png" download>colouring page cheetah and cub 03</a></li>
-          <li><a href="colouring-page-elephant-and-calf-01.png" download>colouring page elephant and calf 01</a></li>
-          <li><a href="colouring-page-elephant-and-calf-02.png" download>colouring page elephant and calf 02</a></li>
-          <li><a href="colouring-page-elephant-and-calf-03.png" download>colouring page elephant and calf 03</a></li>
-          <li><a href="colouring-page-elephant-and-calf-04.png" download>colouring page elephant and calf 04</a></li>
-          <li><a href="colouring-page-gazelle-and-young-01.png" download>colouring page gazelle and young 01</a></li>
-          <li><a href="colouring-page-gazelle-and-young-02.png" download>colouring page gazelle and young 02</a></li>
-          <li><a href="colouring-page-gazelle-and-young-03.png" download>colouring page gazelle and young 03</a></li>
-          <li><a href="colouring-page-giraffe-and-calf-01.png" download>colouring page giraffe and calf 01</a></li>
-          <li><a href="colouring-page-giraffe-and-calf-02.png" download>colouring page giraffe and calf 02</a></li>
-          <li><a href="colouring-page-giraffe-and-calf-03.png" download>colouring page giraffe and calf 03</a></li>
-          <li><a href="colouring-page-hippo-and-calf-01.png" download>colouring page hippo and calf 01</a></li>
-          <li><a href="colouring-page-hippo-and-calf-02.png" download>colouring page hippo and calf 02</a></li>
-          <li><a href="colouring-page-hoopoe-and-chick-01.png" download>colouring page hoopoe and chick 01</a></li>
-          <li><a href="colouring-page-leopard-and-cub-01.png" download>colouring page leopard and cub 01</a></li>
-          <li><a href="colouring-page-lion-and-cub-01.png" download>colouring page lion and cub 01</a></li>
-          <li><a href="colouring-page-lioness-and-cub-01.png" download>colouring page lioness and cub 01</a></li>
-          <li><a href="colouring-page-lioness-and-cub-02.png" download>colouring page lioness and cub 02</a></li>
-          <li><a href="colouring-page-meerkat-and-pup-01.png" download>colouring page meerkat and pup 01</a></li>
-          <li><a href="colouring-page-meerkat-and-pup-02.png" download>colouring page meerkat and pup 02</a></li>
-          <li><a href="colouring-page-meerkat-and-pup-03.png" download>colouring page meerkat and pup 03</a></li>
-          <li><a href="colouring-page-ostrich-and-chick-01.png" download>colouring page ostrich and chick 01</a></li>
-          <li><a href="colouring-page-ostrich-and-chick-02.png" download>colouring page ostrich and chick 02</a></li>
-          <li><a href="colouring-page-ostrich-and-chick-03.png" download>colouring page ostrich and chick 03</a></li>
-          <li><a href="colouring-page-rhino-and-calf-01.png" download>colouring page rhino and calf 01</a></li>
-          <li><a href="colouring-page-rhino-and-calf-02.png" download>colouring page rhino and calf 02</a></li>
-          <li><a href="colouring-page-rhinos-by-the-water-01.png" download>colouring page rhinos by the water 01</a></li>
-          <li><a href="colouring-page-tapir-and-calf-01.png" download>colouring page tapir and calf 01</a></li>
-          <li><a href="colouring-page-tapir-and-calf-02.png" download>colouring page tapir and calf 02</a></li>
-          <li><a href="colouring-page-tortoise-and-young-01.png" download>colouring page tortoise and young 01</a></li>
-          <li><a href="colouring-page-zebra-and-foal-01.png" download>colouring page zebra and foal 01</a></li>
-          <li><a href="colouring-page-zebra-and-foal-02.png" download>colouring page zebra and foal 02</a></li>
-          <li><a href="colouring-page-zebra-and-foal-03.png" download>colouring page zebra and foal 03</a></li>
+        <h2 class="set-title">Preview and download individual colouring pages</h2>
+        <ul
+          class="set-points gallery-source"
+          data-gallery-label-preview="Preview"
+          data-gallery-label-download="Download PNG"
+        >
+          <li><a href="colouring-page-antelope-and-young-01.png" download>Antelope and young 01</a></li>
+          <li><a href="colouring-page-antelope-and-young-02.png" download>Antelope and young 02</a></li>
+          <li><a href="colouring-page-buffalo-and-calf-01.png" download>Buffalo and calf 01</a></li>
+          <li><a href="colouring-page-caracal-and-young-01.png" download>Caracal and young 01</a></li>
+          <li><a href="colouring-page-caracal-and-young-02.png" download>Caracal and young 02</a></li>
+          <li><a href="colouring-page-cheetah-and-cub-01.png" download>Cheetah and cub 01</a></li>
+          <li><a href="colouring-page-cheetah-and-cub-02.png" download>Cheetah and cub 02</a></li>
+          <li><a href="colouring-page-cheetah-and-cub-03.png" download>Cheetah and cub 03</a></li>
+          <li><a href="colouring-page-elephant-and-calf-01.png" download>Elephant and calf 01</a></li>
+          <li><a href="colouring-page-elephant-and-calf-02.png" download>Elephant and calf 02</a></li>
+          <li><a href="colouring-page-elephant-and-calf-03.png" download>Elephant and calf 03</a></li>
+          <li><a href="colouring-page-elephant-and-calf-04.png" download>Elephant and calf 04</a></li>
+          <li><a href="colouring-page-gazelle-and-young-01.png" download>Gazelle and young 01</a></li>
+          <li><a href="colouring-page-gazelle-and-young-02.png" download>Gazelle and young 02</a></li>
+          <li><a href="colouring-page-gazelle-and-young-03.png" download>Gazelle and young 03</a></li>
+          <li><a href="colouring-page-giraffe-and-calf-01.png" download>Giraffe and calf 01</a></li>
+          <li><a href="colouring-page-giraffe-and-calf-02.png" download>Giraffe and calf 02</a></li>
+          <li><a href="colouring-page-giraffe-and-calf-03.png" download>Giraffe and calf 03</a></li>
+          <li><a href="colouring-page-hippo-and-calf-01.png" download>Hippo and calf 01</a></li>
+          <li><a href="colouring-page-hippo-and-calf-02.png" download>Hippo and calf 02</a></li>
+          <li><a href="colouring-page-hoopoe-and-chick-01.png" download>Hoopoe and chick 01</a></li>
+          <li><a href="colouring-page-leopard-and-cub-01.png" download>Leopard and cub 01</a></li>
+          <li><a href="colouring-page-lion-and-cub-01.png" download>Lion and cub 01</a></li>
+          <li><a href="colouring-page-lioness-and-cub-01.png" download>Lioness and cub 01</a></li>
+          <li><a href="colouring-page-lioness-and-cub-02.png" download>Lioness and cub 02</a></li>
+          <li><a href="colouring-page-meerkat-and-pup-01.png" download>Meerkat and pup 01</a></li>
+          <li><a href="colouring-page-meerkat-and-pup-02.png" download>Meerkat and pup 02</a></li>
+          <li><a href="colouring-page-meerkat-and-pup-03.png" download>Meerkat and pup 03</a></li>
+          <li><a href="colouring-page-ostrich-and-chick-01.png" download>Ostrich and chick 01</a></li>
+          <li><a href="colouring-page-ostrich-and-chick-02.png" download>Ostrich and chick 02</a></li>
+          <li><a href="colouring-page-ostrich-and-chick-03.png" download>Ostrich and chick 03</a></li>
+          <li><a href="colouring-page-rhino-and-calf-01.png" download>Rhino and calf 01</a></li>
+          <li><a href="colouring-page-rhino-and-calf-02.png" download>Rhino and calf 02</a></li>
+          <li><a href="colouring-page-rhinos-by-the-water-01.png" download>Rhinos by the water 01</a></li>
+          <li><a href="colouring-page-tapir-and-calf-01.png" download>Tapir and calf 01</a></li>
+          <li><a href="colouring-page-tapir-and-calf-02.png" download>Tapir and calf 02</a></li>
+          <li><a href="colouring-page-tortoise-and-young-01.png" download>Tortoise and young 01</a></li>
+          <li><a href="colouring-page-zebra-and-foal-01.png" download>Zebra and foal 01</a></li>
+          <li><a href="colouring-page-zebra-and-foal-02.png" download>Zebra and foal 02</a></li>
+          <li><a href="colouring-page-zebra-and-foal-03.png" download>Zebra and foal 03</a></li>
         </ul>
       </section>
 
@@ -1019,6 +1170,43 @@
           menuToggle.setAttribute('aria-expanded', 'false');
         });
       });
+    }
+
+    const gallerySource = document.querySelector('.gallery-source');
+
+    if (gallerySource) {
+      const previewLabel = gallerySource.dataset.galleryLabelPreview || 'Preview';
+      const downloadLabel = gallerySource.dataset.galleryLabelDownload || 'Download PNG';
+      const links = Array.from(gallerySource.querySelectorAll('a[href]'));
+
+      if (links.length) {
+        const galleryGrid = document.createElement('div');
+        galleryGrid.className = 'gallery-grid';
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          const title = link.textContent.trim();
+          const card = document.createElement('article');
+          card.className = 'gallery-card';
+
+          card.innerHTML = `
+            <a class="gallery-thumb" href="${href}" target="_blank" rel="noreferrer">
+              <img src="${href}" alt="${title}" loading="lazy" />
+            </a>
+            <div class="gallery-body">
+              <h3 class="gallery-title">${title}</h3>
+              <div class="gallery-actions">
+                <a class="btn-sage" href="${href}" target="_blank" rel="noreferrer">${previewLabel}</a>
+                <a class="btn-gold" href="${href}" download>${downloadLabel}</a>
+              </div>
+            </div>
+          `;
+
+          galleryGrid.appendChild(card);
+        });
+
+        gallerySource.insertAdjacentElement('afterend', galleryGrid);
+      }
     }
   </script>
 </body>

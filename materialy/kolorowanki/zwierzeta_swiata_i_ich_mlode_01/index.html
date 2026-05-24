@@ -8,7 +8,7 @@
   <title>Kolorowanki: zwierzęta świata i ich młode — zestaw 01 | Projekt: Domek na Drzewie</title>
   <meta
     name="description"
-    content="Kolorowanki: zwierzęta świata i ich młode — zestaw 01. 40 kolorowanek PNG dla dzieci oraz pełny zestaw ZIP do pobrania i druku."
+    content="Kolorowanki: zwierzęta świata i ich młode — zestaw 01. 40 darmowych kolorowanek PNG dla dzieci oraz pełny zestaw ZIP do pobrania i druku."
   />
 
   <style>
@@ -351,20 +351,46 @@
 
     .hero {
       position: relative;
-      min-height: 320px;
+      min-height: 360px;
       display: flex;
       align-items: center;
       background:
-        linear-gradient(var(--hero-overlay), var(--hero-overlay)),
-        url('https://placehold.co/1600x900/dbe5d3/5e675f?text=Wiosenne+kolorowanki') center/cover no-repeat;
+        radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 42%),
+        linear-gradient(135deg, #93a287 0%, #7f9173 54%, #6c7c62 100%);
       color: white;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, rgba(19,31,21,0.12), rgba(19,31,21,0.12)),
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.04) 0,
+          rgba(255,255,255,0.04) 2px,
+          transparent 2px,
+          transparent 18px
+        );
+      pointer-events: none;
     }
 
     .hero-inner {
-      width: min(calc(100% - 32px), 900px);
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 32px), 1100px);
       margin: 0 auto;
-      padding: 54px 0;
-      text-align: center;
+      padding: 52px 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 360px);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 680px;
     }
 
     .hero-kicker {
@@ -378,21 +404,54 @@
       font-weight: 800;
     }
 
-    h1 {
+    .hero h1 {
       margin-top: 16px;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      line-height: 1.02;
+      margin-bottom: 0;
+      font-size: clamp(2.1rem, 4.6vw, 4rem);
+      line-height: 0.98;
       letter-spacing: 0.01em;
       text-transform: uppercase;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.16);
+      text-shadow: 0 4px 18px rgba(0,0,0,0.12);
     }
 
     .hero-text {
-      margin: 18px auto 0;
-      max-width: 60ch;
+      margin: 18px 0 0;
+      max-width: 58ch;
       font-size: 1.03rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.93);
+      line-height: 1.75;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-visual {
+      justify-self: end;
+      width: min(100%, 360px);
+    }
+
+    .hero-preview {
+      margin: 0;
+      padding: 14px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 24px 48px rgba(27,39,30,0.24);
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-preview img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.94);
+    }
+
+    .hero-caption {
+      margin-top: 10px;
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
     }
 
     .page-wrap {
@@ -614,6 +673,66 @@
       margin-bottom: 16px;
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .gallery-card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 18px 40px rgba(36,49,38,0.08);
+    }
+
+    .gallery-thumb {
+      display: block;
+      overflow: hidden;
+      background: #f3f1eb;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.22s ease;
+    }
+
+    .gallery-thumb:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-body {
+      padding: 16px;
+    }
+
+    .gallery-title {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      line-height: 1.45;
+      color: var(--sage-dark);
+    }
+
+    .gallery-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .gallery-actions a {
+      flex: 1 1 140px;
+      text-align: center;
+    }
+
+    .gallery-source {
+      display: none;
+    }
+
     .contact-band {
       margin-top: 28px;
       padding: 28px;
@@ -802,8 +921,28 @@
         min-height: 280px;
       }
 
-      h1 {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .hero-copy {
+        max-width: none;
+      }
+
+      .hero h1 {
         font-size: clamp(2rem, 9vw, 3rem);
+      }
+
+      .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-visual {
+        justify-self: center;
+        width: min(100%, 320px);
       }
 
       .info-card,
@@ -861,12 +1000,20 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <span class="hero-kicker">Karty do druku dla dzieci</span>
-      <h1>Kolorowanki: zwierzęta świata i ich młode — zestaw 01</h1>
-      <p class="hero-text">
-        Zestaw 40 kolorowanek do druku z motywem małych zwierząt i ich rodziców:
-        słonie, zebry, żyrafy, surykatki, gepardy i inne zwierzęta świata.
-      </p>
+      <div class="hero-copy">
+        <span class="hero-kicker">Karty do druku dla dzieci</span>
+        <h1>Kolorowanki: zwierzęta świata i ich młode</h1>
+        <p class="hero-text">
+          Darmowy zestaw 40 kolorowanek do druku z motywem małych zwierząt i ich
+          rodziców: słonie, zebry, żyrafy, surykatki, gepardy i inne zwierzęta świata.
+        </p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <figure class="hero-preview">
+          <img src="/materialy/kolorowanki/zwierzeta_swiata_i_ich_mlode_01/kolorowanka-slon-i-sloniatko-01.png" alt="Podgląd kolorowanki ze słoniem i słoniątkiem">
+          <figcaption class="hero-caption">Przykładowa karta z zestawu 01</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -887,11 +1034,11 @@
         <h2 class="set-title">Kolorowanki: zwierzęta świata i ich młode — zestaw 01</h2>
         <div class="set-meta">40 kolorowanek • PNG • ZIP do druku • dla dzieci</div>
 
-        <p class="set-description">
-          Zestaw prostych kolorowanek inspirowanych zwierzętami świata i relacją
-          między małymi zwierzętami a ich rodzicami. Można pobrać cały pakiet albo
-          wybrać pojedyncze pliki PNG.
-        </p>
+      <p class="set-description">
+        Darmowy zestaw prostych kolorowanek inspirowanych zwierzętami świata i relacją
+        między małymi zwierzętami a ich rodzicami. Można pobrać cały pakiet albo
+        wybrać pojedyncze pliki PNG.
+      </p>
 
         <ul class="set-points">
           <li>40 darmowych kolorowanek do pobrania.</li>
@@ -909,8 +1056,8 @@
         <span class="section-kicker">Zawartość zestawu</span>
         <h2 class="section-title">Pobierz cały zestaw lub wybierz pojedynczy plik</h2>
         <p class="section-text">
-          Jeśli wolisz, pobierz cały pakiet ZIP. Możesz też otworzyć i zapisać
-          osobno każdą kolorowankę z przyjaznym, opisowym adresem pliku.
+          Jeśli wolisz, pobierz cały pakiet ZIP. Możesz też najpierw obejrzeć
+          i zapisać osobno każdą kolorowankę.
         </p>
       </section>
 
@@ -926,10 +1073,10 @@
           <div>
             <h3 class="page-title">Pełny zestaw do pobrania</h3>
             <div class="file-meta">ZIP • 40 kolorowanek • PNG</div>
-            <p class="page-description">
-              W jednym pliku znajdziesz cały komplet kolorowanek z tego zestawu.
-              To najwygodniejsza opcja, jeśli chcesz pobrać wszystko naraz.
-            </p>
+          <p class="page-description">
+            W jednym pliku znajdziesz cały komplet darmowych kolorowanek z tego zestawu.
+            To najwygodniejsza opcja, jeśli chcesz pobrać wszystko naraz.
+          </p>
 
             <div class="card-actions">
               <a class="btn-sage" href="kolorowanki-zwierzeta-swiata-i-ich-mlode-zestaw-01.zip" download>Pobierz ZIP</a>
@@ -941,48 +1088,52 @@
 
       <section class="info-card">
         <span class="set-badge">Pojedyncze pliki</span>
-        <h2 class="set-title">Kolorowanki PNG z dobrymi nazwami SEO</h2>
-        <ul class="set-points">
-          <li><a href="kolorowanka-antylopa-i-mlode-01.png" download>kolorowanka antylopa i mlode 01</a></li>
-          <li><a href="kolorowanka-antylopa-i-mlode-02.png" download>kolorowanka antylopa i mlode 02</a></li>
-          <li><a href="kolorowanka-bawol-i-mlode-01.png" download>kolorowanka bawol i mlode 01</a></li>
-          <li><a href="kolorowanka-dudek-i-piskle-01.png" download>kolorowanka dudek i piskle 01</a></li>
-          <li><a href="kolorowanka-gazela-i-mlode-01.png" download>kolorowanka gazela i mlode 01</a></li>
-          <li><a href="kolorowanka-gazela-i-mlode-02.png" download>kolorowanka gazela i mlode 02</a></li>
-          <li><a href="kolorowanka-gazela-i-mlode-03.png" download>kolorowanka gazela i mlode 03</a></li>
-          <li><a href="kolorowanka-gepard-i-mlode-01.png" download>kolorowanka gepard i mlode 01</a></li>
-          <li><a href="kolorowanka-gepard-i-mlode-02.png" download>kolorowanka gepard i mlode 02</a></li>
-          <li><a href="kolorowanka-gepard-i-mlode-03.png" download>kolorowanka gepard i mlode 03</a></li>
-          <li><a href="kolorowanka-hipopotam-i-mlode-01.png" download>kolorowanka hipopotam i mlode 01</a></li>
-          <li><a href="kolorowanka-hipopotam-i-mlode-02.png" download>kolorowanka hipopotam i mlode 02</a></li>
-          <li><a href="kolorowanka-karakal-i-mlode-01.png" download>kolorowanka karakal i mlode 01</a></li>
-          <li><a href="kolorowanka-karakal-i-mlode-02.png" download>kolorowanka karakal i mlode 02</a></li>
-          <li><a href="kolorowanka-lampart-i-mlode-01.png" download>kolorowanka lampart i mlode 01</a></li>
-          <li><a href="kolorowanka-lew-i-lwiatko-01.png" download>kolorowanka lew i lwiatko 01</a></li>
-          <li><a href="kolorowanka-lwica-i-lwiatko-01.png" download>kolorowanka lwica i lwiatko 01</a></li>
-          <li><a href="kolorowanka-lwica-i-lwiatko-02.png" download>kolorowanka lwica i lwiatko 02</a></li>
-          <li><a href="kolorowanka-nosorozce-przy-wodzie-01.png" download>kolorowanka nosorozce przy wodzie 01</a></li>
-          <li><a href="kolorowanka-nosorozec-i-mlode-01.png" download>kolorowanka nosorozec i mlode 01</a></li>
-          <li><a href="kolorowanka-nosorozec-i-mlode-02.png" download>kolorowanka nosorozec i mlode 02</a></li>
-          <li><a href="kolorowanka-slon-i-sloniatko-01.png" download>kolorowanka slon i sloniatko 01</a></li>
-          <li><a href="kolorowanka-slon-i-sloniatko-02.png" download>kolorowanka slon i sloniatko 02</a></li>
-          <li><a href="kolorowanka-slon-i-sloniatko-03.png" download>kolorowanka slon i sloniatko 03</a></li>
-          <li><a href="kolorowanka-slon-i-sloniatko-04.png" download>kolorowanka slon i sloniatko 04</a></li>
-          <li><a href="kolorowanka-strus-i-piskle-01.png" download>kolorowanka strus i piskle 01</a></li>
-          <li><a href="kolorowanka-strus-i-piskle-02.png" download>kolorowanka strus i piskle 02</a></li>
-          <li><a href="kolorowanka-strus-i-piskle-03.png" download>kolorowanka strus i piskle 03</a></li>
-          <li><a href="kolorowanka-surykatka-i-mlode-01.png" download>kolorowanka surykatka i mlode 01</a></li>
-          <li><a href="kolorowanka-surykatka-i-mlode-02.png" download>kolorowanka surykatka i mlode 02</a></li>
-          <li><a href="kolorowanka-surykatka-i-mlode-03.png" download>kolorowanka surykatka i mlode 03</a></li>
-          <li><a href="kolorowanka-tapir-i-mlode-01.png" download>kolorowanka tapir i mlode 01</a></li>
-          <li><a href="kolorowanka-tapir-i-mlode-02.png" download>kolorowanka tapir i mlode 02</a></li>
-          <li><a href="kolorowanka-zebra-i-zrebie-01.png" download>kolorowanka zebra i zrebie 01</a></li>
-          <li><a href="kolorowanka-zebra-i-zrebie-02.png" download>kolorowanka zebra i zrebie 02</a></li>
-          <li><a href="kolorowanka-zebra-i-zrebie-03.png" download>kolorowanka zebra i zrebie 03</a></li>
-          <li><a href="kolorowanka-zolw-ladowy-i-mlode-01.png" download>kolorowanka zolw ladowy i mlode 01</a></li>
-          <li><a href="kolorowanka-zyrafa-i-mlode-01.png" download>kolorowanka zyrafa i mlode 01</a></li>
-          <li><a href="kolorowanka-zyrafa-i-mlode-02.png" download>kolorowanka zyrafa i mlode 02</a></li>
-          <li><a href="kolorowanka-zyrafa-i-mlode-03.png" download>kolorowanka zyrafa i mlode 03</a></li>
+        <h2 class="set-title">Obejrzyj i pobierz pojedyncze kolorowanki</h2>
+        <ul
+          class="set-points gallery-source"
+          data-gallery-label-preview="Podgląd"
+          data-gallery-label-download="Pobierz PNG"
+        >
+          <li><a href="kolorowanka-antylopa-i-mlode-01.png" download>Antylopa i młode 01</a></li>
+          <li><a href="kolorowanka-antylopa-i-mlode-02.png" download>Antylopa i młode 02</a></li>
+          <li><a href="kolorowanka-bawol-i-mlode-01.png" download>Bawół i młode 01</a></li>
+          <li><a href="kolorowanka-dudek-i-piskle-01.png" download>Dudek i pisklę 01</a></li>
+          <li><a href="kolorowanka-gazela-i-mlode-01.png" download>Gazela i młode 01</a></li>
+          <li><a href="kolorowanka-gazela-i-mlode-02.png" download>Gazela i młode 02</a></li>
+          <li><a href="kolorowanka-gazela-i-mlode-03.png" download>Gazela i młode 03</a></li>
+          <li><a href="kolorowanka-gepard-i-mlode-01.png" download>Gepard i młode 01</a></li>
+          <li><a href="kolorowanka-gepard-i-mlode-02.png" download>Gepard i młode 02</a></li>
+          <li><a href="kolorowanka-gepard-i-mlode-03.png" download>Gepard i młode 03</a></li>
+          <li><a href="kolorowanka-hipopotam-i-mlode-01.png" download>Hipopotam i młode 01</a></li>
+          <li><a href="kolorowanka-hipopotam-i-mlode-02.png" download>Hipopotam i młode 02</a></li>
+          <li><a href="kolorowanka-karakal-i-mlode-01.png" download>Karakal i młode 01</a></li>
+          <li><a href="kolorowanka-karakal-i-mlode-02.png" download>Karakal i młode 02</a></li>
+          <li><a href="kolorowanka-lampart-i-mlode-01.png" download>Lampart i młode 01</a></li>
+          <li><a href="kolorowanka-lew-i-lwiatko-01.png" download>Lew i lwiątko 01</a></li>
+          <li><a href="kolorowanka-lwica-i-lwiatko-01.png" download>Lwica i lwiątko 01</a></li>
+          <li><a href="kolorowanka-lwica-i-lwiatko-02.png" download>Lwica i lwiątko 02</a></li>
+          <li><a href="kolorowanka-nosorozce-przy-wodzie-01.png" download>Nosorożce przy wodzie 01</a></li>
+          <li><a href="kolorowanka-nosorozec-i-mlode-01.png" download>Nosorożec i młode 01</a></li>
+          <li><a href="kolorowanka-nosorozec-i-mlode-02.png" download>Nosorożec i młode 02</a></li>
+          <li><a href="kolorowanka-slon-i-sloniatko-01.png" download>Słoń i słoniątko 01</a></li>
+          <li><a href="kolorowanka-slon-i-sloniatko-02.png" download>Słoń i słoniątko 02</a></li>
+          <li><a href="kolorowanka-slon-i-sloniatko-03.png" download>Słoń i słoniątko 03</a></li>
+          <li><a href="kolorowanka-slon-i-sloniatko-04.png" download>Słoń i słoniątko 04</a></li>
+          <li><a href="kolorowanka-strus-i-piskle-01.png" download>Struś i pisklę 01</a></li>
+          <li><a href="kolorowanka-strus-i-piskle-02.png" download>Struś i pisklę 02</a></li>
+          <li><a href="kolorowanka-strus-i-piskle-03.png" download>Struś i pisklę 03</a></li>
+          <li><a href="kolorowanka-surykatka-i-mlode-01.png" download>Surykatka i młode 01</a></li>
+          <li><a href="kolorowanka-surykatka-i-mlode-02.png" download>Surykatka i młode 02</a></li>
+          <li><a href="kolorowanka-surykatka-i-mlode-03.png" download>Surykatka i młode 03</a></li>
+          <li><a href="kolorowanka-tapir-i-mlode-01.png" download>Tapir i młode 01</a></li>
+          <li><a href="kolorowanka-tapir-i-mlode-02.png" download>Tapir i młode 02</a></li>
+          <li><a href="kolorowanka-zebra-i-zrebie-01.png" download>Zebra i źrebię 01</a></li>
+          <li><a href="kolorowanka-zebra-i-zrebie-02.png" download>Zebra i źrebię 02</a></li>
+          <li><a href="kolorowanka-zebra-i-zrebie-03.png" download>Zebra i źrebię 03</a></li>
+          <li><a href="kolorowanka-zolw-ladowy-i-mlode-01.png" download>Żółw lądowy i młode 01</a></li>
+          <li><a href="kolorowanka-zyrafa-i-mlode-01.png" download>Żyrafa i młode 01</a></li>
+          <li><a href="kolorowanka-zyrafa-i-mlode-02.png" download>Żyrafa i młode 02</a></li>
+          <li><a href="kolorowanka-zyrafa-i-mlode-03.png" download>Żyrafa i młode 03</a></li>
         </ul>
       </section>
 
@@ -1019,6 +1170,43 @@
           menuToggle.setAttribute('aria-expanded', 'false');
         });
       });
+    }
+
+    const gallerySource = document.querySelector('.gallery-source');
+
+    if (gallerySource) {
+      const previewLabel = gallerySource.dataset.galleryLabelPreview || 'Podgląd';
+      const downloadLabel = gallerySource.dataset.galleryLabelDownload || 'Pobierz PNG';
+      const links = Array.from(gallerySource.querySelectorAll('a[href]'));
+
+      if (links.length) {
+        const galleryGrid = document.createElement('div');
+        galleryGrid.className = 'gallery-grid';
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          const title = link.textContent.trim();
+          const card = document.createElement('article');
+          card.className = 'gallery-card';
+
+          card.innerHTML = `
+            <a class="gallery-thumb" href="${href}" target="_blank" rel="noreferrer">
+              <img src="${href}" alt="${title}" loading="lazy" />
+            </a>
+            <div class="gallery-body">
+              <h3 class="gallery-title">${title}</h3>
+              <div class="gallery-actions">
+                <a class="btn-sage" href="${href}" target="_blank" rel="noreferrer">${previewLabel}</a>
+                <a class="btn-gold" href="${href}" download>${downloadLabel}</a>
+              </div>
+            </div>
+          `;
+
+          galleryGrid.appendChild(card);
+        });
+
+        gallerySource.insertAdjacentElement('afterend', galleryGrid);
+      }
     }
   </script>
 </body>
