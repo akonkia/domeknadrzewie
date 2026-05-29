@@ -79,6 +79,22 @@
   img: "wiosna-maj-tydzien-21-cwiczenie-uwaznosci-warstwy-zapachu-wrazliwosc-21A.png",
   imgB: "wiosna-maj-tydzien-21-cwiczenie-uwaznosci-warstwy-zapachu-wrazliwosc-21B.png",
   blog: "/pl/warstwy-zapachu-cwiczenie-uwaznosci-o-wrazliwosci/"
+},
+      {
+  id: 22,
+  title: "Światło, ku któremu rosnę",
+  theme: "Wzrastanie",
+  season: "Wiosna",
+  month: "Maj",
+  body: "Zatrzymaj się przy roślinie i zauważ, w którą stronę się kieruje. Może liście obracają się ku słońcu. Może łodyga wygina się lekko w stronę jaśniejszego miejsca. Przez chwilę obserwuj ten cichy ruch ku światłu.",
+  reflection: [
+    "W stronę czego ja naturalnie się pochylam?",
+    "Co ostatnio przyciąga moją uwagę w dobry, żywy sposób?",
+    "Gdzie czuję w sobie mały ruch wzrostu?"
+  ],
+  img: "wiosna-maj-tydzien-22-cwiczenie-uwaznosci-swiatlo-ku-ktoremu-rosne-wzrastanie-22A.png",
+  imgB: "wiosna-maj-tydzien-22-cwiczenie-uwaznosci-swiatlo-ku-ktoremu-rosne-wzrastanie-22B.png",
+  blog: "/pl/swiatlo-ku-ktoremu-rosne-cwiczenie-uwaznosci-o-wzrastaniu/"
 }
 
     ],
@@ -161,6 +177,22 @@
   img: "wiosna-maj-tydzien-21-cwiczenie-uwaznosci-warstwy-zapachu-wrazliwosc-21A.png",
   imgB: "spring-may-week-21-mindfulness-exercise-the-layers-of-scent-sensitivity-21Ben.png",
   blog: "/en/the-layers-of-scent-a-mindfulness-exercise-in-sensitivity/"
+},
+      {
+  id: 22,
+  title: "The Leaning Light",
+  theme: "Growth",
+  season: "Spring",
+  month: "May",
+  body: "Pause beside a plant and notice which way it is turning. Maybe its leaves are turning toward the sun. Maybe its stem is bending slightly toward a brighter place. For a moment, observe this quiet movement toward light.",
+  reflection: [
+    "What do I naturally lean toward?",
+    "What has been drawing my attention recently in a good, living way?",
+    "Where do I feel a small movement of growth within myself?"
+  ],
+  img: "wiosna-maj-tydzien-22-cwiczenie-uwaznosci-swiatlo-ku-ktoremu-rosne-wzrastanie-22A.png",
+  imgB: "spring-may-week-22-mindfulness-exercise-the-leaning-light-growth-22Ben.png",
+  blog: "/en/the-leaning-light-a-mindfulness-exercise-in-growth/"
 }
 
     ]
