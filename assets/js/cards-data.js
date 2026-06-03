@@ -95,6 +95,21 @@
   img: "wiosna-maj-tydzien-22-cwiczenie-uwaznosci-swiatlo-ku-ktoremu-rosne-wzrastanie-22A.png",
   imgB: "wiosna-maj-tydzien-22-cwiczenie-uwaznosci-swiatlo-ku-ktoremu-rosne-wzrastanie-22B.png",
   blog: "/pl/swiatlo-ku-ktoremu-rosne-cwiczenie-uwaznosci-o-wzrastaniu/"
+},
+      {
+  id: 23,
+  title: "Łagodny cień",
+  theme: "Ochrona",
+  season: "Wiosna",
+  month: "Czerwiec",
+  body: "Usiądź na chwilę pod drzewem, daszkiem albo w cieniu budynku. Zauważ, jak zmienia się powietrze, kiedy nie stoisz bezpośrednio w słońcu. Poczuj chłód na skórze. Niech to będzie chwila odpoczynku - nie chowania się przed światem, ale znalezienia miejsca, w którym możesz oddychać trochę swobodniej.",
+  reflection: [
+    "Co daje mi poczucie osłony?",
+    "Gdzie mogę odpocząć, nie znikając?"
+  ],
+  img: "wiosna-czerwiec-tydzien-23-cwiczenie-uwaznosci-lagodny-cien-ochrona-23A.png",
+  imgB: "wiosna-czerwiec-tydzien-23-cwiczenie-uwaznosci-lagodny-cien-ochrona-23B.png",
+  blog: "/pl/lagodny-cien-cwiczenie-uwaznosci-o-ochronie/"
 }
 
     ],
@@ -193,6 +208,21 @@
   img: "wiosna-maj-tydzien-22-cwiczenie-uwaznosci-swiatlo-ku-ktoremu-rosne-wzrastanie-22A.png",
   imgB: "spring-may-week-22-mindfulness-exercise-the-leaning-light-growth-22Ben.png",
   blog: "/en/the-leaning-light-a-mindfulness-exercise-in-growth/"
+},
+      {
+  id: 23,
+  title: "The Gentle Shade",
+  theme: "Protection",
+  season: "Spring",
+  month: "June",
+  body: "Sit for a moment under a tree, an awning, or the shade of a building. Notice how the air changes when you are not standing directly in the sun. Feel the coolness on your skin. Let this be a moment of rest - not hiding from the world, but finding a place where you can breathe a little more freely.",
+  reflection: [
+    "What gives me a sense of shelter?",
+    "Where can I rest without disappearing?"
+  ],
+  img: "wiosna-czerwiec-tydzien-23-cwiczenie-uwaznosci-lagodny-cien-ochrona-23A.png",
+  imgB: "spring-june-week-23-mindfulness-exercise-the-gentle-shade-protection-23Ben.png",
+  blog: "/en/the-gentle-shade-a-mindfulness-exercise-in-protection/"
 }
 
     ]
