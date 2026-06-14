@@ -110,6 +110,21 @@
   img: "wiosna-czerwiec-tydzien-23-cwiczenie-uwaznosci-lagodny-cien-ochrona-23A.png",
   imgB: "wiosna-czerwiec-tydzien-23-cwiczenie-uwaznosci-lagodny-cien-ochrona-23B.png",
   blog: "/pl/lagodny-cien-cwiczenie-uwaznosci-o-ochronie/"
+},
+      {
+  id: 24,
+  title: "Powolna rzeka",
+  theme: "Przepływ",
+  season: "Wiosna",
+  month: "Czerwiec",
+  body: "Popatrz przez chwilę na coś, co płynie: rzekę, strumień, deszczówkę przy krawężniku, wiatr poruszający liśćmi, chmury przesuwające się po niebie albo nawet ruch uliczny. Zauważ, że ruch nie zawsze oznacza pośpiech. Niektóre rzeczy odnajdują drogę powoli, podążając za tym, co możliwe.",
+  reflection: [
+    "Gdzie mogę pozwolić sobie poruszać się bardziej naturalnie?",
+    "Co staje się łatwiejsze, kiedy przestaję to wymuszać?"
+  ],
+  img: "wiosna-czerwiec-tydzien-24-cwiczenie-uwaznosci-powolna-rzeka-przeplyw-24A.png",
+  imgB: "wiosna-czerwiec-tydzien-24-cwiczenie-uwaznosci-powolna-rzeka-przeplyw-24B.png",
+  blog: "/pl/powolna-rzeka-cwiczenie-uwaznosci-o-przeplywie/"
 }
 
     ],
@@ -223,6 +238,22 @@
   img: "wiosna-czerwiec-tydzien-23-cwiczenie-uwaznosci-lagodny-cien-ochrona-23A.png",
   imgB: "spring-june-week-23-mindfulness-exercise-the-gentle-shade-protection-23Ben.png",
   blog: "/en/the-gentle-shade-a-mindfulness-exercise-in-protection/"
+},
+      {
+  id: 24,
+  title: "The Slow River",
+  theme: "Flow",
+  season: "Spring",
+  month: "June",
+  body: "Watch something flow: a river, a stream, rainwater in the gutter, wind moving through leaves, clouds crossing the sky, or even traffic passing by. Notice that movement does not always mean rushing. Some things find their way slowly, by following what is already possible.",
+  reflection: [
+    "Where can I allow myself to move more naturally?",
+    "What feels easier when I stop forcing it?",
+    "What path is already opening in front of me?"
+  ],
+  img: "wiosna-czerwiec-tydzien-24-cwiczenie-uwaznosci-powolna-rzeka-przeplyw-24A.png",
+  imgB: "spring-june-week-24-mindfulness-exercise-the-slow-river-flow-24Ben.png",
+  blog: "/en/the-slow-river-a-mindfulness-exercise-in-flow/"
 }
 
     ]

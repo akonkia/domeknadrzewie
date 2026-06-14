@@ -48,7 +48,7 @@ layout: default
     <div class="post-main">
       <div class="post-cover-wrap">
         <div class="post-cover-frame">
-          <img src="{{ cdn }}{{ cover_image }}" alt="{{ page.title }}" style="width: 100%; height: auto; display: block;">
+          <img src="{{ cdn }}{{ cover_image }}" alt="{{ page.cover_alt | default: page.title }}" style="width: 100%; height: auto; display: block;">
         </div>
       </div>
 
