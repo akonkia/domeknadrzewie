@@ -139,9 +139,16 @@
     container.querySelectorAll(".filter-btn").forEach((button) => {
       button.addEventListener("click", () => {
         state[type] = button.getAttribute("data-val");
+        clearWeekHash();
         renderFromState();
       });
     });
+  }
+
+  function clearWeekHash() {
+    if (window.location.hash && window.location.hash.startsWith("#tydzien-")) {
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+    }
   }
 
   function renderFilters() {

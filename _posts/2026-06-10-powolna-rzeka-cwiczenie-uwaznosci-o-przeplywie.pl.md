@@ -19,7 +19,7 @@ tags: [uważność, natura, wiosna, czerwiec, "kąpiele leśne", shinrin-yoku, "
 
 Nie każdy ruch jest sygnałem pośpiechu. Rzeka płynie, chmury przesuwają się po niebie, liście poruszają się na wietrze, a deszczówka znajduje ujście przy krawężniku. Wszystko się porusza, ale nic nie wygląda tak, jakby musiało natychmiast gdzieś dotrzeć.
 
-Ta karta z cyklu [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/) zaprasza do zauważenia właśnie takiego ruchu. Zdjęcie w okładce pokazuje małą łódkę na spokojnej rzece pod wysokim mostem i szerokim niebem. Woda nadal płynie, choć cała scena wydaje się cicha i rozległa. To dobre przypomnienie, że przepływ nie zawsze musi być szybki, żeby był prawdziwy.
+Ta karta z cyklu [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/) zaprasza do zauważenia właśnie takiego ruchu. Zdjęcie w okładce pokazuje małą łódkę na spokojnej rzece pod wysokim mostem i szerokim niebem. Woda nadal płynie, choć cała scena wydaje się cicha i rozległa. To dobre przypomnienie, że przepływ nie zawsze musi być szybki, żeby był prawdziwy. Zdjęcie: SHOX, Pexels.
 
 ## Ćwiczenie uważności: przepływ
 

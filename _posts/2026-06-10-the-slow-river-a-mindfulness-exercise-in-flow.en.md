@@ -19,7 +19,7 @@ tags: [mindfulness, nature, spring, June, "forest bathing", shinrin-yoku, "mindf
 
 Not every kind of movement is a sign of hurry. A river flows, clouds pass across the sky, leaves shift in the wind, and rainwater finds its way along the curb. Everything is moving, yet nothing seems desperate to arrive.
 
-This card from the [Urban Forest Bathing](/en/materials/urban-bathing/) series invites you to notice that kind of motion. The cover image shows a small boat on a calm river beneath a tall bridge and a wide sky. The water is still moving, even though the whole scene feels spacious and quiet. It is a helpful reminder that flow does not have to be fast in order to be real.
+This card from the [Urban Forest Bathing](/en/materials/urban-bathing/) series invites you to notice that kind of motion. The cover image shows a small boat on a calm river beneath a tall bridge and a wide sky. The water is still moving, even though the whole scene feels spacious and quiet. It is a helpful reminder that flow does not have to be fast in order to be real. Cover photo: SHOX, Pexels.
 
 ## Mindfulness exercise: flow
 
