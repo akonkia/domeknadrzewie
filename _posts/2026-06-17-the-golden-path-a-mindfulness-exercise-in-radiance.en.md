@@ -17,7 +17,7 @@ tags: [mindfulness, nature, June, "forest bathing", shinrin-yoku, "mindfulness e
 
 ## The Golden Path
 
-A city can seem hard-edged until light touches it. Then rooflines, window frames, pale walls, and ornamented facades begin to glow differently. What looked ordinary a moment ago becomes warm, delicate, and briefly more alive.
+A city can seem hard-edged until light touches it. Then rooflines, window frames, pale walls, and ornamented facades look different. What looked ordinary a moment ago becomes warmer, more delicate, and briefly more alive.
 
 This card from the [Urban Forest Bathing](/en/materials/urban-bathing/) series invites that exact kind of looking. The cover image shows a row of pale townhouses under a wide sky, each one catching the light a little differently. You do not need to leave the city to find a moment like this. Sometimes it begins simply by looking up.
 
