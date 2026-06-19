@@ -125,6 +125,22 @@
   img: "wiosna-czerwiec-tydzien-24-cwiczenie-uwaznosci-powolna-rzeka-przeplyw-24A.png",
   imgB: "wiosna-czerwiec-tydzien-24-cwiczenie-uwaznosci-powolna-rzeka-przeplyw-24B.png",
   blog: "/pl/powolna-rzeka-cwiczenie-uwaznosci-o-przeplywie/"
+},
+      {
+  id: 25,
+  title: "Złota ścieżka",
+  theme: "Blask",
+  season: "Lato",
+  month: "Czerwiec",
+  body: "Podczas spaceru spójrz w górę i zobacz, jak słońce maluje miasto. Światło może zbierać się na dachach, rozjaśniać ramy okien albo na chwilę zamieniać jasne ściany w złoto. Podążaj wzrokiem za tymi małymi miejscami jasności. Spójrz na miasto trochę inaczej.",
+  reflection: [
+    "Który budynek albo detal przyciągnął dziś moją uwagę?",
+    "Jak światło zmieniło odbiór tego miejsca?",
+    "Co w moim dniu przyniosło trochę ciepła albo jasności?"
+  ],
+  img: "lato-czerwiec-tydzien-25-cwiczenie-uwaznosci-zlota-sciezka-blask-25A.png",
+  imgB: "lato-czerwiec-tydzien-25-cwiczenie-uwaznosci-zlota-sciezka-blask-25B.png",
+  blog: "/pl/zlota-sciezka-cwiczenie-uwaznosci-o-blasku/"
 }
 
     ],
@@ -254,6 +270,22 @@
   img: "wiosna-czerwiec-tydzien-24-cwiczenie-uwaznosci-powolna-rzeka-przeplyw-24A.png",
   imgB: "spring-june-week-24-mindfulness-exercise-the-slow-river-flow-24Ben.png",
   blog: "/en/the-slow-river-a-mindfulness-exercise-in-flow/"
+},
+      {
+  id: 25,
+  title: "The Golden Path",
+  theme: "Radiance",
+  season: "Summer",
+  month: "June",
+  body: "As you walk, look up and notice how the sun paints the city. Light may gather on rooflines, brighten window frames, or turn pale walls gold for a moment. Follow these small places of brightness with your eyes. Notice the city in a new way.",
+  reflection: [
+    "Which detail caught my attention today?",
+    "How did the light change the way this place felt?",
+    "What in my day brought a little warmth or brightness?"
+  ],
+  img: "lato-czerwiec-tydzien-25-cwiczenie-uwaznosci-zlota-sciezka-blask-25A.png",
+  imgB: "summer-june-week-25-mindfulness-exercise-the-golden-path-radiance-25Ben.png",
+  blog: "/en/the-golden-path-a-mindfulness-exercise-in-radiance/"
 }
 
     ]
