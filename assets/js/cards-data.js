@@ -141,6 +141,21 @@
   img: "lato-czerwiec-tydzien-25-cwiczenie-uwaznosci-zlota-sciezka-blask-25A.png",
   imgB: "lato-czerwiec-tydzien-25-cwiczenie-uwaznosci-zlota-sciezka-blask-25B.png",
   blog: "/pl/zlota-sciezka-cwiczenie-uwaznosci-o-blasku/"
+},
+      {
+  id: 26,
+  title: "Szeroki plac",
+  theme: "Otwartość",
+  season: "Lato",
+  month: "Czerwiec",
+  body: "Znajdź w mieście miejsce, gdzie robi się trochę więcej przestrzeni: plac, most, bulwar, szeroki chodnik albo widok między budynkami. Zatrzymaj się na chwilę i rozejrzyj się powoli. Zobacz, gdzie kończą się ściany, gdzie zaczyna się niebo i którędy może przejść powietrze.",
+  reflection: [
+    "Które miejskie miejsce dało mi dziś poczucie przestrzeni?",
+    "Co zauważyłam, kiedy spojrzałam dalej niż zwykle?"
+  ],
+  img: "lato-czerwiec-tydzien-26-cwiczenie-uwaznosci-szeroki-plac-otwartosc-26A.png",
+  imgB: "lato-czerwiec-tydzien-26-cwiczenie-uwaznosci-szeroki-plac-otwartosc-26B.png",
+  blog: "/pl/szeroki-plac-cwiczenie-uwaznosci-o-otwartosci/"
 }
 
     ],
@@ -286,6 +301,21 @@
   img: "lato-czerwiec-tydzien-25-cwiczenie-uwaznosci-zlota-sciezka-blask-25A.png",
   imgB: "summer-june-week-25-mindfulness-exercise-the-golden-path-radiance-25Ben.png",
   blog: "/en/the-golden-path-a-mindfulness-exercise-in-radiance/"
+},
+      {
+  id: 26,
+  title: "The Wide Square",
+  theme: "Openness",
+  season: "Summer",
+  month: "June",
+  body: "Find a place in the city where there is a little more space: a square, bridge, boulevard, wide pavement, or opening between buildings. Pause for a moment and look around slowly. Notice where the walls end, where the sky begins, and where the air can move through.",
+  reflection: [
+    "Which urban place gave me a sense of space today?",
+    "What did I notice when I looked farther than usual?"
+  ],
+  img: "lato-czerwiec-tydzien-26-cwiczenie-uwaznosci-szeroki-plac-otwartosc-26A.png",
+  imgB: "summer-june-week-26-mindfulness-exercise-the-wide-square-openness-26Ben.png",
+  blog: "/en/the-wide-square-a-mindfulness-exercise-in-openness/"
 }
 
     ]
