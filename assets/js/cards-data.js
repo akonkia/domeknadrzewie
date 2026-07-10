@@ -156,6 +156,21 @@
   img: "lato-czerwiec-tydzien-26-cwiczenie-uwaznosci-szeroki-plac-otwartosc-26A.png",
   imgB: "lato-czerwiec-tydzien-26-cwiczenie-uwaznosci-szeroki-plac-otwartosc-26B.png",
   blog: "/pl/szeroki-plac-cwiczenie-uwaznosci-o-otwartosci/"
+},
+      {
+  id: 27,
+  title: "Tańcząca trawa",
+  theme: "Zabawa",
+  season: "Lato",
+  month: "Lipiec",
+  body: "Znajdź trawę, drzewo albo kilka liści poruszających się na wietrze. Obserwuj, jak kołyszą się, pochylają i znów unoszą. Pozwól swojemu ciału odpowiedzieć na ich rytm: rozluźnij ramiona, poruszaj ramionami lub dłońmi, zakołysz się albo zrób kilka lekkich kroków. Niech przez chwilę ruch nie ma żadnego celu poza przyjemnością.",
+  reflection: [
+    "Co dziś obudziło we mnie lekkość?",
+    "Co mogę zrobić bez celu, tylko dla przyjemności?"
+  ],
+  img: "lato-lipiec-tydzien-27-cwiczenie-uwaznosci-tanczaca-trawa-zabawa-27A.png",
+  imgB: "lato-lipiec-tydzien-27-cwiczenie-uwaznosci-tanczaca-trawa-zabawa-27B.png",
+  blog: "/pl/tanczaca-trawa-cwiczenie-uwaznosci-o-zabawie/"
 }
 
     ],
@@ -316,6 +331,21 @@
   img: "lato-czerwiec-tydzien-26-cwiczenie-uwaznosci-szeroki-plac-otwartosc-26A.png",
   imgB: "summer-june-week-26-mindfulness-exercise-the-wide-square-openness-26Ben.png",
   blog: "/en/the-wide-square-a-mindfulness-exercise-in-openness/"
+},
+      {
+  id: 27,
+  title: "The Dancing Grass",
+  theme: "Play",
+  season: "Summer",
+  month: "July",
+  body: "Find a patch of grass, a tree, or a few leaves moving in the breeze. Notice how they sway, bend, and rise again. Let your body answer their rhythm: loosen your shoulders, move your arms and hands, gently rock, or take a few light steps. For a moment, let movement have no purpose beyond the joy of it.",
+  reflection: [
+    "What awakened lightness in me today?",
+    "What can I do without a goal, just for pleasure?"
+  ],
+  img: "lato-lipiec-tydzien-27-cwiczenie-uwaznosci-tanczaca-trawa-zabawa-27A.png",
+  imgB: "summer-july-week-27-mindfulness-exercise-the-dancing-grass-play-27Ben.png",
+  blog: "/en/the-dancing-grass-a-mindfulness-exercise-in-play/"
 }
 
     ]
