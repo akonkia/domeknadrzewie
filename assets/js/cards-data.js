@@ -171,6 +171,21 @@
   img: "lato-lipiec-tydzien-27-cwiczenie-uwaznosci-tanczaca-trawa-zabawa-27A.png",
   imgB: "lato-lipiec-tydzien-27-cwiczenie-uwaznosci-tanczaca-trawa-zabawa-27B.png",
   blog: "/pl/tanczaca-trawa-cwiczenie-uwaznosci-o-zabawie/"
+},
+      {
+  id: 28,
+  title: "Miejski przypływ",
+  theme: "Rytm",
+  season: "Lato",
+  month: "Lipiec",
+  body: "Znajdź miejsce, w którym możesz usłyszeć powtarzający się dźwięk: fontannę, fale, wiatr wśród liści, kroki albo szum miasta. Zauważ, jak dźwięk powraca, zmienia się i znów cichnie. Pozwól, by twój oddech stopniowo odnalazł jego tempo. Po prostu podążaj za rytmem, który już płynie wokół ciebie.",
+  reflection: [
+    "Jakie rytmy wspierają mnie w codziennym życiu?",
+    "Gdzie potrzebuję więcej regularności, a gdzie więcej swobody?"
+  ],
+  img: "lato-lipiec-tydzien-28-cwiczenie-uwaznosci-miejski-przyplyw-rytm-28A.png",
+  imgB: "lato-lipiec-tydzien-28-cwiczenie-uwaznosci-miejski-przyplyw-rytm-28B.png",
+  blog: "/pl/miejski-przyplyw-cwiczenie-uwaznosci-o-rytmie/"
 }
 
     ],
@@ -346,6 +361,21 @@
   img: "lato-lipiec-tydzien-27-cwiczenie-uwaznosci-tanczaca-trawa-zabawa-27A.png",
   imgB: "summer-july-week-27-mindfulness-exercise-the-dancing-grass-play-27Ben.png",
   blog: "/en/the-dancing-grass-a-mindfulness-exercise-in-play/"
+},
+      {
+  id: 28,
+  title: "The Moving Tide",
+  theme: "Rhythm",
+  season: "Summer",
+  month: "July",
+  body: "Find a place where you can hear a repeating sound: a fountain, waves, wind moving through leaves, footsteps, or the hum of the city. Notice how the sound returns, shifts, and softens again. Let your breathing gradually find its pace. Simply follow the rhythm already moving around you.",
+  reflection: [
+    "Which rhythms support me in my daily life?",
+    "Where do I need more regularity, and where do I need more freedom?"
+  ],
+  img: "lato-lipiec-tydzien-28-cwiczenie-uwaznosci-miejski-przyplyw-rytm-28A.png",
+  imgB: "summer-july-week-28-mindfulness-exercise-the-moving-tide-rhythm-28Ben.png",
+  blog: "/en/the-moving-tide-a-mindfulness-exercise-in-rhythm/"
 }
 
     ]
