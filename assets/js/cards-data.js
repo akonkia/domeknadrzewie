@@ -186,6 +186,21 @@
   img: "lato-lipiec-tydzien-28-cwiczenie-uwaznosci-miejski-przyplyw-rytm-28A.png",
   imgB: "lato-lipiec-tydzien-28-cwiczenie-uwaznosci-miejski-przyplyw-rytm-28B.png",
   blog: "/pl/miejski-przyplyw-cwiczenie-uwaznosci-o-rytmie/"
+},
+      {
+  id: 29,
+  title: "Ciepły wiatr",
+  theme: "Ukojenie",
+  season: "Lato",
+  month: "Lipiec",
+  body: "Wyjdź na chwilę na zewnątrz i poczuj powietrze przesuwające się po skórze. Zauważ wiatr na dłoniach, twarzy lub we włosach. Pozwól ramionom opaść, a oddechowi zwolnić. Nie musisz za nim podążać ani go zatrzymywać. Po prostu pozwól mu przepływać wokół ciebie i zabrać ze sobą odrobinę napięcia.",
+  reflection: [
+    "Co pomaga mojemu ciału rozluźnić się i odpocząć?",
+    "Co mogę choć na chwilę odpuścić?"
+  ],
+  img: "lato-lipiec-tydzien-29-cwiczenie-uwaznosci-cieply-wiatr-ukojenie-29A.png",
+  imgB: "lato-lipiec-tydzien-29-cwiczenie-uwaznosci-cieply-wiatr-ukojenie-29B.png",
+  blog: "/pl/cieply-wiatr-cwiczenie-uwaznosci-o-ukojeniu/"
 }
 
     ],
@@ -376,6 +391,21 @@
   img: "lato-lipiec-tydzien-28-cwiczenie-uwaznosci-miejski-przyplyw-rytm-28A.png",
   imgB: "summer-july-week-28-mindfulness-exercise-the-moving-tide-rhythm-28Ben.png",
   blog: "/en/the-moving-tide-a-mindfulness-exercise-in-rhythm/"
+},
+      {
+  id: 29,
+  title: "The Warm Wind",
+  theme: "Ease",
+  season: "Summer",
+  month: "July",
+  body: "Step outside and notice the air moving across your skin. Feel the breeze on your hands, your face, or through your hair. Let your shoulders soften and your breathing become slower. You do not need to follow the wind or hold on to it. Simply allow it to move around you, carrying a little of the tension away.",
+  reflection: [
+    "What helps my body soften and relax?",
+    "What can I let go of, just for a moment?"
+  ],
+  img: "lato-lipiec-tydzien-29-cwiczenie-uwaznosci-cieply-wiatr-ukojenie-29A.png",
+  imgB: "summer-july-week-29-mindfulness-exercise-the-warm-wind-ease-29Ben.png",
+  blog: "/en/the-warm-wind-a-mindfulness-exercise-in-ease/"
 }
 
     ]

@@ -19,7 +19,7 @@ tags: [uważność, natura, lipiec, "kąpiele leśne", shinrin-yoku, "ćwiczenie
 
 Miasto ma własne fale. Nie zawsze są wodne. Czasem są zrobione z kroków, przejeżdżających tramwajów, szumu ulicy, wiatru w liściach albo wody spadającej w fontannie. Powracają, oddalają się, zmieniają swoje natężenie i znów wracają. Jeśli zatrzymać się na chwilę, można usłyszeć w nich nie tylko hałas, ale rytm.
 
-Ta karta z cyklu [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/) zaprasza właśnie do takiego słuchania. Zdjęcie w okładce pokazuje ulicę o zmierzchu, rozmyte światła pojazdów i miasto zanurzone w różowym wieczorze. Wszystko wydaje się w ruchu, a jednak ten ruch ma swoją powtarzalność. To dobry moment, by zauważyć, że rytm istnieje także tam, gdzie zwykle widzimy tylko pośpiech.
+Ta karta z cyklu [Miejskie kąpiele leśne](/materialy/kapiele_miejskie/) zaprasza właśnie do takiego słuchania. Zdjęcie w okładce pokazuje ulicę o zmierzchu, rozmyte światła pojazdów i miasto zanurzone w różowym wieczorze. Wszystko wydaje się w ruchu, a jednak ten ruch ma swoją powtarzalność. To dobry moment, by zauważyć, że rytm istnieje także tam, gdzie zwykle widzimy tylko pośpiech. Zdjęcie okładkowe: Adam KNL, [Pexels](https://www.pexels.com/photo/35793399/).
 
 ## Ćwiczenie uważności: rytm
 

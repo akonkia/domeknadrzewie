@@ -19,7 +19,7 @@ tags: [mindfulness, nature, July, "forest bathing", shinrin-yoku, "mindfulness e
 
 A city has its own tides. They are not always made of water. Sometimes they are made of footsteps, passing trams, the hum of traffic, wind in the leaves, or water falling in a fountain. They return, recede, shift in intensity, and come back again. If you pause for a moment, you can hear not only noise, but rhythm.
 
-This card from the [Urban Forest Bathing](/en/materials/urban-bathing/) series invites exactly that kind of listening. The cover image shows a street at dusk, blurred vehicle lights, and a city held in a pink evening sky. Everything seems in motion, and yet that motion has repetition inside it. It is a good reminder that rhythm exists even in places where we usually notice only speed.
+This card from the [Urban Forest Bathing](/en/materials/urban-bathing/) series invites exactly that kind of listening. The cover image shows a street at dusk, blurred vehicle lights, and a city held in a pink evening sky. Everything seems in motion, and yet that motion has repetition inside it. It is a good reminder that rhythm exists even in places where we usually notice only speed. Cover photo: Adam KNL, [Pexels](https://www.pexels.com/photo/35793399/).
 
 ## Mindfulness exercise: rhythm
 
