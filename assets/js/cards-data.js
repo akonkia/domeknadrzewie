@@ -201,6 +201,21 @@
   img: "lato-lipiec-tydzien-29-cwiczenie-uwaznosci-cieply-wiatr-ukojenie-29A.png",
   imgB: "lato-lipiec-tydzien-29-cwiczenie-uwaznosci-cieply-wiatr-ukojenie-29B.png",
   blog: "/pl/cieply-wiatr-cwiczenie-uwaznosci-o-ukojeniu/"
+},
+      {
+  id: 30,
+  title: "Szeroki horyzont",
+  theme: "Przestrzeń",
+  season: "Lato",
+  month: "Lipiec",
+  body: "Znajdź miejsce, z którego możesz spojrzeć daleko: przez pole, ze wzgórza, wzdłuż szerokiej ulicy albo w stronę horyzontu. Pozwól oczom odpocząć na tym, co odległe, zamiast skupiać się na tym, co znajduje się tuż przed tobą. Pozwól swojej uwadze wykroczyć poza granice dzisiejszego dnia.",
+  reflection: [
+    "Co wygląda inaczej, gdy robię krok wstecz i widzę szerszy obraz?",
+    "Która troska staje się mniejsza, gdy daję jej więcej przestrzeni?"
+  ],
+  img: "lato-lipiec-tydzien-30-cwiczenie-uwaznosci-szeroki-horyzont-przestrzen-30A.png",
+  imgB: "lato-lipiec-tydzien-30-cwiczenie-uwaznosci-szeroki-horyzont-przestrzen-30B.png",
+  blog: "/pl/szeroki-horyzont-cwiczenie-uwaznosci-o-przestrzeni/"
 }
 
     ],
@@ -406,6 +421,21 @@
   img: "lato-lipiec-tydzien-29-cwiczenie-uwaznosci-cieply-wiatr-ukojenie-29A.png",
   imgB: "summer-july-week-29-mindfulness-exercise-the-warm-wind-ease-29Ben.png",
   blog: "/en/the-warm-wind-a-mindfulness-exercise-in-ease/"
+},
+      {
+  id: 30,
+  title: "The Wide Horizon",
+  theme: "Expansion",
+  season: "Summer",
+  month: "July",
+  body: "Find a place where you can look far into the distance: across a field, from a hill, along a wide street, or toward the horizon. Let your eyes rest on what is far away instead of what is immediately in front of you. For a moment, allow your attention to stretch beyond the boundaries of the day.",
+  reflection: [
+    "What looks different when I step back and see the wider picture?",
+    "Which concern feels smaller when I give it more space?"
+  ],
+  img: "lato-lipiec-tydzien-30-cwiczenie-uwaznosci-szeroki-horyzont-przestrzen-30A.png",
+  imgB: "summer-july-week-30-mindfulness-exercise-the-wide-horizon-expansion-30Ben.png",
+  blog: "/en/the-wide-horizon-a-mindfulness-exercise-in-expansion/"
 }
 
     ]
