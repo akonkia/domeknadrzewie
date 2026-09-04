@@ -315,14 +315,20 @@
     renderFromState();
   }
 
+  function bootstrapPage() {
+    initMenu();
+    initPage();
+  }
+
   window.addEventListener("hashchange", () => {
     if (!handleRouting()) {
       renderList(getFilteredCards(), false);
     }
   });
 
-  window.addEventListener("DOMContentLoaded", () => {
-    initMenu();
-    initPage();
-  });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootstrapPage, { once: true });
+  } else {
+    bootstrapPage();
+  }
 })();
