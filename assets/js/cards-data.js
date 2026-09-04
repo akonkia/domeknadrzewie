@@ -216,6 +216,21 @@
   img: "lato-lipiec-tydzien-30-cwiczenie-uwaznosci-szeroki-horyzont-przestrzen-30A.png",
   imgB: "lato-lipiec-tydzien-30-cwiczenie-uwaznosci-szeroki-horyzont-przestrzen-30B.png",
   blog: "/pl/szeroki-horyzont-cwiczenie-uwaznosci-o-przestrzeni/"
+},
+      {
+  id: 31,
+  title: "Światło, które zostaje",
+  theme: "Obecność",
+  season: "Lato",
+  month: "Lipiec",
+  body: "Wieczorem zwróć uwagę na światło. Zobacz, jak powoli znika z okien, ścian, drzew i ulicy, jak zmienia kolory i sprawia, że znajome miejsca wyglądają przez chwilę inaczej. Nie spiesz się, żeby odejść. Zostań jeszcze moment i po prostu obserwuj, jak dzień cichnie.",
+  reflection: [
+    "W jakich chwilach chciałbym/chciałabym zostać trochę dłużej?",
+    "Co staje się widoczne, kiedy zwalniam?"
+  ],
+  img: "lato-lipiec-tydzien-31-cwiczenie-uwaznosci-swiatlo-ktore-zostaje-obecnosc-31A.png",
+  imgB: "lato-lipiec-tydzien-31-cwiczenie-uwaznosci-swiatlo-ktore-zostaje-obecnosc-31B.png",
+  blog: "/pl/swiatlo-ktore-zostaje-cwiczenie-uwaznosci-o-obecnosci/"
 }
 
     ],
@@ -436,6 +451,21 @@
   img: "lato-lipiec-tydzien-30-cwiczenie-uwaznosci-szeroki-horyzont-przestrzen-30A.png",
   imgB: "summer-july-week-30-mindfulness-exercise-the-wide-horizon-expansion-30Ben.png",
   blog: "/en/the-wide-horizon-a-mindfulness-exercise-in-expansion/"
+},
+      {
+  id: 31,
+  title: "The Light That Lingers",
+  theme: "Presence",
+  season: "Summer",
+  month: "July",
+  body: "In the evening, notice the light. Watch how slowly it leaves the windows, walls, trees, and streets, how the colours change, and how familiar places look different for a little while. Do not hurry away. Stay for another moment and simply watch the day grow quiet.",
+  reflection: [
+    "What moments would I like to stay in a little longer?",
+    "What becomes visible when I slow down?"
+  ],
+  img: "lato-lipiec-tydzien-31-cwiczenie-uwaznosci-swiatlo-ktore-zostaje-obecnosc-31A.png",
+  imgB: "summer-july-week-31-mindfulness-exercise-the-light-that-lingers-presence-31Ben.png",
+  blog: "/en/the-light-that-lingers-a-mindfulness-exercise-in-presence/"
 }
 
     ]
