@@ -2,7 +2,7 @@
 layout: post
 title: "Gęstniejący cień — ćwiczenie uważności o granicach"
 seo_title: "Gęstniejący cień"
-date: 2026-09-22 00:00:00 +0200
+date: 2026-08-26 00:00:00 +0200
 lang: pl
 translation_id: gathering-shade-boundaries-2026
 permalink: /pl/gestniejacy-cien-cwiczenie-uwaznosci-o-granicach/

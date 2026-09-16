@@ -2,7 +2,7 @@
 layout: post
 title: "The Ripe Season — a mindfulness exercise in abundance"
 seo_title: "The Ripe Season"
-date: 2026-09-18 00:00:00 +0200
+date: 2026-08-12 00:00:00 +0200
 lang: en
 translation_id: ripe-season-abundance-2026
 permalink: /en/the-ripe-season-a-mindfulness-exercise-in-abundance/

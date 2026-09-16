@@ -2,7 +2,7 @@
 layout: post
 title: "The Gentle Shift — a mindfulness exercise in adaptation"
 seo_title: "The Gentle Shift"
-date: 2026-09-26 00:00:00 +0200
+date: 2026-09-09 00:00:00 +0200
 lang: en
 translation_id: gentle-shift-adaptation-2026
 permalink: /en/the-gentle-shift-a-mindfulness-exercise-in-adaptation/

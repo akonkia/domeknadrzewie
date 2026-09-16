@@ -2,7 +2,7 @@
 layout: post
 title: "The Weathered Branch — a mindfulness exercise in endurance"
 seo_title: "The Weathered Branch"
-date: 2026-09-24 00:00:00 +0200
+date: 2026-09-02 00:00:00 +0200
 lang: en
 translation_id: weathered-branch-endurance-2026
 permalink: /en/the-weathered-branch-a-mindfulness-exercise-in-endurance/

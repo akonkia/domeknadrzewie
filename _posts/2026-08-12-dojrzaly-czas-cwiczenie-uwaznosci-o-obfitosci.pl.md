@@ -2,7 +2,7 @@
 layout: post
 title: "Dojrzały czas — ćwiczenie uważności o obfitości"
 seo_title: "Dojrzały czas"
-date: 2026-09-18 00:00:00 +0200
+date: 2026-08-12 00:00:00 +0200
 lang: pl
 translation_id: ripe-season-abundance-2026
 permalink: /pl/dojrzaly-czas-cwiczenie-uwaznosci-o-obfitosci/

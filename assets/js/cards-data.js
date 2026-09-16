@@ -269,7 +269,7 @@
   theme: "Uważność",
   season: "Lato",
   month: "Sierpień",
-  releaseAt: "2026-09-20T00:00:00+02:00",
+  releaseAt: "2026-09-19T00:00:00+02:00",
   body: "Podczas spaceru wsłuchaj się w dźwięki pod stopami. Suche liście, żwir, chodnik, trawa, kałuża, spokojny rytm własnych kroków. Zauważ, jak zmienia się podłoże i jak każde z nich odpowiada innym dźwiękiem. Niech odgłos kroków przywróci Cię do chwili obecnej.",
   reflection: [
     "Jak brzmi dziś ruch?",
@@ -285,7 +285,7 @@
   theme: "Granice",
   season: "Lato",
   month: "Sierpień",
-  releaseAt: "2026-09-22T00:00:00+02:00",
+  releaseAt: "2026-09-21T00:00:00+02:00",
   body: "Znajdź miejsce, w którym słońce spotyka się z cieniem. Usiądź blisko tej granicy i zauważ różnicę: ciepło po jednej stronie, chłód po drugiej. Niech ta granica przypomni Ci, że ograniczenia nie zawsze coś odbierają. Czasem tworzą przestrzeń, w której możemy odpocząć, odetchnąć i po prostu być.",
   reflection: [
     "Jakie granice wspierają mnie teraz?",
@@ -301,7 +301,7 @@
   theme: "Wytrwałość",
   season: "Lato",
   month: "Wrzesień",
-  releaseAt: "2026-09-24T00:00:00+02:00",
+  releaseAt: "2026-09-22T00:00:00+02:00",
   body: "Znajdź gałąź, pień albo kawałek drewna i połóż na nim dłoń. Zwróć uwagę na nierówności, pęknięcia, gładkie miejsca i ślady czasu. Poczuj, jak doświadczenia powoli kształtują powierzchnię, nie odbierając jej siły. Niech ta faktura przypomni Ci, że bycie kształtowanym przez doświadczenie nie znaczy, że stajemy się słabsi.",
   reflection: [
     "Co ukształtowało mnie z biegiem czasu?",
@@ -317,7 +317,7 @@
   theme: "Adaptacja",
   season: "Lato",
   month: "Wrzesień",
-  releaseAt: "2026-09-26T00:00:00+02:00",
+  releaseAt: "2026-09-23T00:00:00+02:00",
   body: "Zwróć uwagę na powietrze o dwóch różnych porach dnia: na przykład rano i wieczorem. Poczuj zmianę temperatury, światła, ruchu albo zapachu. Zauważ, jak naturalnie reaguje na nią Twoje ciało. Nie każda zmiana wymaga wysiłku. Czasem wystarczy drobne dostosowanie — dodatkowa warstwa, wolniejsze tempo, inny rytm.",
   reflection: [
     "Jak dostosowuję się do zmian w ciągu dnia?",
@@ -599,7 +599,7 @@
   theme: "Awareness",
   season: "Summer",
   month: "August",
-  releaseAt: "2026-09-20T00:00:00+02:00",
+  releaseAt: "2026-09-19T00:00:00+02:00",
   body: "As you walk, listen to the sounds beneath your feet. Dry leaves, gravel, pavement, grass, a puddle, the quiet rhythm of your own steps. Notice how the ground changes as you move, and how each surface answers differently. Let the sound of walking bring you back into the present moment.",
   reflection: [
     "What does movement sound like today?",
@@ -615,7 +615,7 @@
   theme: "Boundaries",
   season: "Summer",
   month: "August",
-  releaseAt: "2026-09-22T00:00:00+02:00",
+  releaseAt: "2026-09-21T00:00:00+02:00",
   body: "Find a place where sunlight meets shade. Sit close to the edge and notice the difference: warmth on one side, coolness on the other. Let this boundary remind you that limits do not always shut things out. Sometimes they create the conditions in which we can rest, breathe, and stay.",
   reflection: [
     "What boundaries are supporting me right now?",
@@ -631,7 +631,7 @@
   theme: "Endurance",
   season: "Summer",
   month: "September",
-  releaseAt: "2026-09-24T00:00:00+02:00",
+  releaseAt: "2026-09-22T00:00:00+02:00",
   body: "Find a branch, trunk, or piece of wood and rest your hand against it. Notice the ridges, cracks, smooth places, and scars. Feel how time has left its mark, slowly shaping the surface without taking away its strength. Let the texture remind you that being shaped by experience is not the same as being diminished.",
   reflection: [
     "What has shaped me over time?",
@@ -647,7 +647,7 @@
   theme: "Adaptation",
   season: "Summer",
   month: "September",
-  releaseAt: "2026-09-26T00:00:00+02:00",
+  releaseAt: "2026-09-23T00:00:00+02:00",
   body: "Notice the air at two different moments of the day, perhaps in the morning and again in the evening. Feel the change in temperature, light, movement, or scent. Let yourself notice how naturally your body responds. Some changes ask for effort. Others invite a small adjustment: a layer added, a slower pace, a different rhythm.",
   reflection: [
     "How do I adapt as the day changes?",

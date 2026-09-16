@@ -2,7 +2,7 @@
 layout: post
 title: "Gałąź z historią — ćwiczenie uważności o wytrwałości"
 seo_title: "Gałąź z historią"
-date: 2026-09-24 00:00:00 +0200
+date: 2026-09-02 00:00:00 +0200
 lang: pl
 translation_id: weathered-branch-endurance-2026
 permalink: /pl/galaz-z-historia-cwiczenie-uwaznosci-o-wytrwalosci/

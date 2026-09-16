@@ -2,7 +2,7 @@
 layout: post
 title: "The Gathering Shade — a mindfulness exercise in boundaries"
 seo_title: "The Gathering Shade"
-date: 2026-09-22 00:00:00 +0200
+date: 2026-08-26 00:00:00 +0200
 lang: en
 translation_id: gathering-shade-boundaries-2026
 permalink: /en/the-gathering-shade-a-mindfulness-exercise-in-boundaries/

@@ -2,7 +2,7 @@
 layout: post
 title: "Łagodna zmiana — ćwiczenie uważności o adaptacji"
 seo_title: "Łagodna zmiana"
-date: 2026-09-26 00:00:00 +0200
+date: 2026-09-09 00:00:00 +0200
 lang: pl
 translation_id: gentle-shift-adaptation-2026
 permalink: /pl/lagodna-zmiana-cwiczenie-uwaznosci-o-adaptacji/
