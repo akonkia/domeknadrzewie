@@ -2,7 +2,7 @@
 layout: post
 title: "Trzeszcząca ścieżka — ćwiczenie uważności podczas spaceru"
 seo_title: "Trzeszcząca ścieżka"
-date: 2026-09-27 00:00:00 +0200
+date: 2026-09-20 00:00:00 +0200
 lang: pl
 translation_id: crisp-path-awareness-2026
 permalink: /pl/trzeszczaca-sciezka-cwiczenie-uwaznosci-podczas-spaceru/

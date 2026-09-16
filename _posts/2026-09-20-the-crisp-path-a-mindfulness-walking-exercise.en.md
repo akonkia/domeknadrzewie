@@ -2,7 +2,7 @@
 layout: post
 title: "The Crisp Path — a mindfulness walking exercise"
 seo_title: "The Crisp Path"
-date: 2026-09-27 00:00:00 +0200
+date: 2026-09-20 00:00:00 +0200
 lang: en
 translation_id: crisp-path-awareness-2026
 permalink: /en/the-crisp-path-a-mindfulness-walking-exercise/

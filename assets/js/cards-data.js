@@ -269,7 +269,7 @@
   theme: "Uważność",
   season: "Lato",
   month: "Sierpień",
-  releaseAt: "2026-09-27T00:00:00+02:00",
+  releaseAt: "2026-09-20T00:00:00+02:00",
   body: "Podczas spaceru wsłuchaj się w dźwięki pod stopami. Suche liście, żwir, chodnik, trawa, kałuża, spokojny rytm własnych kroków. Zauważ, jak zmienia się podłoże i jak każde z nich odpowiada innym dźwiękiem. Niech odgłos kroków przywróci Cię do chwili obecnej.",
   reflection: [
     "Jak brzmi dziś ruch?",
@@ -551,7 +551,7 @@
   theme: "Awareness",
   season: "Summer",
   month: "August",
-  releaseAt: "2026-09-27T00:00:00+02:00",
+  releaseAt: "2026-09-20T00:00:00+02:00",
   body: "As you walk, listen to the sounds beneath your feet. Dry leaves, gravel, pavement, grass, a puddle, the quiet rhythm of your own steps. Notice how the ground changes as you move, and how each surface answers differently. Let the sound of walking bring you back into the present moment.",
   reflection: [
     "What does movement sound like today?",
