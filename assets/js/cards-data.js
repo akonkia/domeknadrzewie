@@ -294,6 +294,22 @@
   img: "lato-sierpien-tydzien-35-cwiczenie-uwaznosci-gestniejacy-cien-granice-35A.png",
   imgB: "lato-sierpien-tydzien-35-cwiczenie-uwaznosci-gestniejacy-cien-granice-35B.png",
   blog: "/pl/gestniejacy-cien-cwiczenie-uwaznosci-o-granicach/"
+},
+      {
+  id: 36,
+  title: "Gałąź z historią",
+  theme: "Wytrwałość",
+  season: "Lato",
+  month: "Wrzesień",
+  releaseAt: "2026-09-24T00:00:00+02:00",
+  body: "Znajdź gałąź, pień albo kawałek drewna i połóż na nim dłoń. Zwróć uwagę na nierówności, pęknięcia, gładkie miejsca i ślady czasu. Poczuj, jak doświadczenia powoli kształtują powierzchnię, nie odbierając jej siły. Niech ta faktura przypomni Ci, że bycie kształtowanym przez doświadczenie nie znaczy, że stajemy się słabsi.",
+  reflection: [
+    "Co ukształtowało mnie z biegiem czasu?",
+    "Co pomagało mi zachować stabilność mimo zmian?"
+  ],
+  img: "lato-wrzesien-tydzien-36-cwiczenie-uwaznosci-galaz-z-historia-wytrwalosc-36A.png",
+  imgB: "lato-wrzesien-tydzien-36-cwiczenie-uwaznosci-galaz-z-historia-wytrwalosc-36B.png",
+  blog: "/pl/galaz-z-historia-cwiczenie-uwaznosci-o-wytrwalosci/"
 }
 
     ],
@@ -592,6 +608,22 @@
   img: "lato-sierpien-tydzien-35-cwiczenie-uwaznosci-gestniejacy-cien-granice-35A.png",
   imgB: "summer-august-week-35-mindfulness-exercise-the-gathering-shade-boundaries-35Ben.png",
   blog: "/en/the-gathering-shade-a-mindfulness-exercise-in-boundaries/"
+},
+      {
+  id: 36,
+  title: "The Weathered Branch",
+  theme: "Endurance",
+  season: "Summer",
+  month: "September",
+  releaseAt: "2026-09-24T00:00:00+02:00",
+  body: "Find a branch, trunk, or piece of wood and rest your hand against it. Notice the ridges, cracks, smooth places, and scars. Feel how time has left its mark, slowly shaping the surface without taking away its strength. Let the texture remind you that being shaped by experience is not the same as being diminished.",
+  reflection: [
+    "What has shaped me over time?",
+    "What has helped me remain steady through change?"
+  ],
+  img: "lato-wrzesien-tydzien-36-cwiczenie-uwaznosci-galaz-z-historia-wytrwalosc-36A.png",
+  imgB: "summer-september-week-36-mindfulness-exercise-the-weathered-branch-endurance-36Ben.png",
+  blog: "/en/the-weathered-branch-a-mindfulness-exercise-in-endurance/"
 }
 
     ]
