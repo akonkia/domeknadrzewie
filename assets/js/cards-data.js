@@ -278,6 +278,22 @@
   img: "lato-sierpien-tydzien-34-cwiczenie-uwaznosci-trzeszczaca-sciezka-uwaznosc-34A.png",
   imgB: "lato-sierpien-tydzien-34-cwiczenie-uwaznosci-trzeszczaca-sciezka-uwaznosc-34B.png",
   blog: "/pl/trzeszczaca-sciezka-cwiczenie-uwaznosci-podczas-spaceru/"
+},
+      {
+  id: 35,
+  title: "Gęstniejący cień",
+  theme: "Granice",
+  season: "Lato",
+  month: "Sierpień",
+  releaseAt: "2026-09-22T00:00:00+02:00",
+  body: "Znajdź miejsce, w którym słońce spotyka się z cieniem. Usiądź blisko tej granicy i zauważ różnicę: ciepło po jednej stronie, chłód po drugiej. Niech ta granica przypomni Ci, że ograniczenia nie zawsze coś odbierają. Czasem tworzą przestrzeń, w której możemy odpocząć, odetchnąć i po prostu być.",
+  reflection: [
+    "Jakie granice wspierają mnie teraz?",
+    "Gdzie odrobina większej przestrzeni pomogłaby mi poczuć się swobodniej?"
+  ],
+  img: "lato-sierpien-tydzien-35-cwiczenie-uwaznosci-gestniejacy-cien-granice-35A.png",
+  imgB: "lato-sierpien-tydzien-35-cwiczenie-uwaznosci-gestniejacy-cien-granice-35B.png",
+  blog: "/pl/gestniejacy-cien-cwiczenie-uwaznosci-o-granicach/"
 }
 
     ],
@@ -560,6 +576,22 @@
   img: "lato-sierpien-tydzien-34-cwiczenie-uwaznosci-trzeszczaca-sciezka-uwaznosc-34A.png",
   imgB: "summer-august-week-34-mindfulness-exercise-the-crisp-path-awareness-34Ben.png",
   blog: "/en/the-crisp-path-a-mindfulness-walking-exercise/"
+},
+      {
+  id: 35,
+  title: "The Gathering Shade",
+  theme: "Boundaries",
+  season: "Summer",
+  month: "August",
+  releaseAt: "2026-09-22T00:00:00+02:00",
+  body: "Find a place where sunlight meets shade. Sit close to the edge and notice the difference: warmth on one side, coolness on the other. Let this boundary remind you that limits do not always shut things out. Sometimes they create the conditions in which we can rest, breathe, and stay.",
+  reflection: [
+    "What boundaries are supporting me right now?",
+    "Where would a little more space help me feel at ease?"
+  ],
+  img: "lato-sierpien-tydzien-35-cwiczenie-uwaznosci-gestniejacy-cien-granice-35A.png",
+  imgB: "summer-august-week-35-mindfulness-exercise-the-gathering-shade-boundaries-35Ben.png",
+  blog: "/en/the-gathering-shade-a-mindfulness-exercise-in-boundaries/"
 }
 
     ]
