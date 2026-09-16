@@ -326,6 +326,21 @@
   img: "lato-wrzesien-tydzien-37-cwiczenie-uwaznosci-lagodna-zmiana-adaptacja-37A.png",
   imgB: "lato-wrzesien-tydzien-37-cwiczenie-uwaznosci-lagodna-zmiana-adaptacja-37B.png",
   blog: "/pl/lagodna-zmiana-cwiczenie-uwaznosci-o-adaptacji/"
+},
+      {
+  id: 38,
+  title: "Długi cień",
+  theme: "Perspektywa",
+  season: "Lato",
+  month: "Wrzesień",
+  releaseAt: "2026-09-24T00:00:00+02:00",
+  body: "Znajdź długi cień rzucany przez drzewo, balustradę, latarnię, budynek albo przez Ciebie. Prześledź go wzrokiem od miejsca, w którym się zaczyna, aż po jego koniec. Zauważ, jak niskie słońce potrafi rozciągnąć coś zwyczajnego w zupełnie nowy kształt. Przez chwilę po prostu przyjrzyj się temu, jak znajome rzeczy zmieniają się, kiedy patrzymy na nie pod innym kątem.",
+  reflection: [
+    "Co wygląda inaczej, kiedy zmieniam perspektywę?"
+  ],
+  img: "lato-wrzesien-tydzien-38-cwiczenie-uwaznosci-dlugi-cien-perspektywa-38A.png",
+  imgB: "lato-wrzesien-tydzien-38-cwiczenie-uwaznosci-dlugi-cien-perspektywa-38B.png",
+  blog: "/pl/dlugi-cien-cwiczenie-uwaznosci-o-perspektywie/"
 }
 
     ],
@@ -656,6 +671,21 @@
   img: "lato-wrzesien-tydzien-37-cwiczenie-uwaznosci-lagodna-zmiana-adaptacja-37A.png",
   imgB: "summer-september-week-37-mindfulness-exercise-the-gentle-shift-adaptation-37Ben.png",
   blog: "/en/the-gentle-shift-a-mindfulness-exercise-in-adaptation/"
+},
+      {
+  id: 38,
+  title: "The Long Shadow",
+  theme: "Perspective",
+  season: "Summer",
+  month: "September",
+  releaseAt: "2026-09-24T00:00:00+02:00",
+  body: "Find a long shadow cast by a tree, railing, lamppost, building, or by you. Follow it with your eyes from where it begins to where it ends. Notice how the low sun stretches something ordinary into a completely different shape. For a moment, simply enjoy how familiar things can look unfamiliar from another angle.",
+  reflection: [
+    "What looks different when I change my perspective?"
+  ],
+  img: "lato-wrzesien-tydzien-38-cwiczenie-uwaznosci-dlugi-cien-perspektywa-38A.png",
+  imgB: "summer-september-week-38-mindfulness-exercise-the-long-shadow-perspective-38Ben.png",
+  blog: "/en/the-long-shadow-a-mindfulness-exercise-in-perspective/"
 }
 
     ]
