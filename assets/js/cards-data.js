@@ -231,6 +231,21 @@
   img: "lato-lipiec-tydzien-31-cwiczenie-uwaznosci-swiatlo-ktore-zostaje-obecnosc-31A.png",
   imgB: "lato-lipiec-tydzien-31-cwiczenie-uwaznosci-swiatlo-ktore-zostaje-obecnosc-31B.png",
   blog: "/pl/swiatlo-ktore-zostaje-cwiczenie-uwaznosci-o-obecnosci/"
+},
+      {
+  id: 32,
+  title: "Zmieniający się liść",
+  theme: "Subtelna zmiana",
+  season: "Lato",
+  month: "Sierpień",
+  body: "Znajdź jeden liść, który zaczyna zmieniać kolor. Przyjrzyj się miejscu, w którym zieleń przechodzi w żółć, czerwień albo brąz. Zauważ, że zmiana nie dzieje się od razu: jedna część już się zmienia, podczas gdy druga pozostaje taka sama. Zatrzymaj się przy nim na chwilę. Niech ta mała przemiana przypomni Ci, że zmiany mogą zaczynać się cicho, niemal niezauważalnie.",
+  reflection: [
+    "Jaka mała zmiana zaczyna się we mnie?",
+    "Co chcę zabrać ze sobą, gdy pora roku zaczyna się zmieniać?"
+  ],
+  img: "lato-sierpien-tydzien-32-cwiczenie-uwaznosci-zmieniajacy-sie-lisc-subtelna-zmiana-32A.png",
+  imgB: "lato-sierpien-tydzien-32-cwiczenie-uwaznosci-zmieniajacy-sie-lisc-subtelna-zmiana-32B.png",
+  blog: "/pl/zmieniajacy-sie-lisc-cwiczenie-uwaznosci-o-subtelnej-zmianie/"
 }
 
     ],
@@ -466,6 +481,21 @@
   img: "lato-lipiec-tydzien-31-cwiczenie-uwaznosci-swiatlo-ktore-zostaje-obecnosc-31A.png",
   imgB: "summer-july-week-31-mindfulness-exercise-the-light-that-lingers-presence-31Ben.png",
   blog: "/en/the-light-that-lingers-a-mindfulness-exercise-in-presence/"
+},
+      {
+  id: 32,
+  title: "The Turning Leaf",
+  theme: "Subtle Change",
+  season: "Summer",
+  month: "August",
+  body: "Find one leaf beginning to change colour. Look closely at where the green gives way to yellow, red, or brown. Notice how the change does not happen all at once: one part shifts while another remains the same. Stay with it for a moment. Let this small turning remind you that change can begin quietly, almost before we notice it.",
+  reflection: [
+    "What small change is beginning in me?",
+    "What do I want to carry with me as the season turns?"
+  ],
+  img: "lato-sierpien-tydzien-32-cwiczenie-uwaznosci-zmieniajacy-sie-lisc-subtelna-zmiana-32A.png",
+  imgB: "summer-august-week-32-mindfulness-exercise-the-turning-leaf-subtle-change-32Ben.png",
+  blog: "/en/the-turning-leaf-a-mindfulness-exercise-in-subtle-change/"
 }
 
     ]
