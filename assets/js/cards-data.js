@@ -310,6 +310,22 @@
   img: "lato-wrzesien-tydzien-36-cwiczenie-uwaznosci-galaz-z-historia-wytrwalosc-36A.png",
   imgB: "lato-wrzesien-tydzien-36-cwiczenie-uwaznosci-galaz-z-historia-wytrwalosc-36B.png",
   blog: "/pl/galaz-z-historia-cwiczenie-uwaznosci-o-wytrwalosci/"
+},
+      {
+  id: 37,
+  title: "Łagodna zmiana",
+  theme: "Adaptacja",
+  season: "Lato",
+  month: "Wrzesień",
+  releaseAt: "2026-09-26T00:00:00+02:00",
+  body: "Zwróć uwagę na powietrze o dwóch różnych porach dnia: na przykład rano i wieczorem. Poczuj zmianę temperatury, światła, ruchu albo zapachu. Zauważ, jak naturalnie reaguje na nią Twoje ciało. Nie każda zmiana wymaga wysiłku. Czasem wystarczy drobne dostosowanie — dodatkowa warstwa, wolniejsze tempo, inny rytm.",
+  reflection: [
+    "Jak dostosowuję się do zmian w ciągu dnia?",
+    "Jaka mała zmiana mogłaby dziś przynieść mi więcej komfortu?"
+  ],
+  img: "lato-wrzesien-tydzien-37-cwiczenie-uwaznosci-lagodna-zmiana-adaptacja-37A.png",
+  imgB: "lato-wrzesien-tydzien-37-cwiczenie-uwaznosci-lagodna-zmiana-adaptacja-37B.png",
+  blog: "/pl/lagodna-zmiana-cwiczenie-uwaznosci-o-adaptacji/"
 }
 
     ],
@@ -624,6 +640,22 @@
   img: "lato-wrzesien-tydzien-36-cwiczenie-uwaznosci-galaz-z-historia-wytrwalosc-36A.png",
   imgB: "summer-september-week-36-mindfulness-exercise-the-weathered-branch-endurance-36Ben.png",
   blog: "/en/the-weathered-branch-a-mindfulness-exercise-in-endurance/"
+},
+      {
+  id: 37,
+  title: "The Gentle Shift",
+  theme: "Adaptation",
+  season: "Summer",
+  month: "September",
+  releaseAt: "2026-09-26T00:00:00+02:00",
+  body: "Notice the air at two different moments of the day, perhaps in the morning and again in the evening. Feel the change in temperature, light, movement, or scent. Let yourself notice how naturally your body responds. Some changes ask for effort. Others invite a small adjustment: a layer added, a slower pace, a different rhythm.",
+  reflection: [
+    "How do I adapt as the day changes?",
+    "What small adjustment would make today feel easier?"
+  ],
+  img: "lato-wrzesien-tydzien-37-cwiczenie-uwaznosci-lagodna-zmiana-adaptacja-37A.png",
+  imgB: "summer-september-week-37-mindfulness-exercise-the-gentle-shift-adaptation-37Ben.png",
+  blog: "/en/the-gentle-shift-a-mindfulness-exercise-in-adaptation/"
 }
 
     ]
