@@ -22,7 +22,16 @@ const sandbox = {
 vm.createContext(sandbox);
 vm.runInContext(cardsSource, sandbox, { filename: cardsDataPath });
 
-const cardsByLang = sandbox.window.weeklyCardsData;
+const cardsAsOf = process.env.CARDS_AS_OF ? new Date(process.env.CARDS_AS_OF) : new Date();
+
+if (Number.isNaN(cardsAsOf.getTime())) {
+  throw new Error(`Invalid CARDS_AS_OF value: ${process.env.CARDS_AS_OF}`);
+}
+
+const cardsByLang = {
+  pl: sandbox.window.getWeeklyCardsForLang?.("pl", cardsAsOf),
+  en: sandbox.window.getWeeklyCardsForLang?.("en", cardsAsOf),
+};
 
 if (!cardsByLang?.pl || !cardsByLang?.en) {
   throw new Error("Could not load weekly card data from assets/js/cards-data.js");

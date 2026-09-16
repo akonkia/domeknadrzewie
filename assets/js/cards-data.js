@@ -246,6 +246,22 @@
   img: "lato-sierpien-tydzien-32-cwiczenie-uwaznosci-zmieniajacy-sie-lisc-subtelna-zmiana-32A.png",
   imgB: "lato-sierpien-tydzien-32-cwiczenie-uwaznosci-zmieniajacy-sie-lisc-subtelna-zmiana-32B.png",
   blog: "/pl/zmieniajacy-sie-lisc-cwiczenie-uwaznosci-o-subtelnej-zmianie/"
+},
+      {
+  id: 33,
+  title: "Dojrzały czas",
+  theme: "Obfitość",
+  season: "Lato",
+  month: "Sierpień",
+  releaseAt: "2026-09-18T00:00:00+02:00",
+  body: "Wybierz coś sezonowego do jedzenia. Zwróć uwagę na kolor, zapach i smak. Zatrzymaj się na chwilę przy tym, co daje ta pora roku. Niech przypomni Ci, że niektóre rzeczy potrzebują czasu, zanim dojrzeją.",
+  reflection: [
+    "Co w moim życiu jest już gotowe, by się tym cieszyć?",
+    "Co dojrzało dzięki czasowi i trosce?"
+  ],
+  img: "lato-sierpien-tydzien-33-cwiczenie-uwaznosci-dojrzaly-czas-obfitosc-33A.png",
+  imgB: "lato-sierpien-tydzien-33-cwiczenie-uwaznosci-dojrzaly-czas-obfitosc-33B.png",
+  blog: "/pl/dojrzaly-czas-cwiczenie-uwaznosci-o-obfitosci/"
 }
 
     ],
@@ -496,24 +512,51 @@
   img: "lato-sierpien-tydzien-32-cwiczenie-uwaznosci-zmieniajacy-sie-lisc-subtelna-zmiana-32A.png",
   imgB: "summer-august-week-32-mindfulness-exercise-the-turning-leaf-subtle-change-32Ben.png",
   blog: "/en/the-turning-leaf-a-mindfulness-exercise-in-subtle-change/"
+},
+      {
+  id: 33,
+  title: "The Ripe Season",
+  theme: "Abundance",
+  season: "Summer",
+  month: "August",
+  releaseAt: "2026-09-18T00:00:00+02:00",
+  body: "Choose something seasonal to eat. Notice its colour, scent, and flavour. Take a moment to enjoy what this part of the year offers. Let it remind you that some things need time before they are ready.",
+  reflection: [
+    "What is ready to be enjoyed in my life?",
+    "What has ripened through time and care?"
+  ],
+  img: "lato-sierpien-tydzien-33-cwiczenie-uwaznosci-dojrzaly-czas-obfitosc-33A.png",
+  imgB: "summer-august-week-33-mindfulness-exercise-the-ripe-season-abundance-33Ben.png",
+  blog: "/en/the-ripe-season-a-mindfulness-exercise-in-abundance/"
 }
 
     ]
   };
   
-  function getWeeklyCardsForLang(lang) {
-    return weeklyCardsData[lang] || weeklyCardsData.pl;
+  function isWeeklyCardReleased(card, now = new Date()) {
+    if (!card.releaseAt) return true;
+
+    const releaseTime = Date.parse(card.releaseAt);
+    const currentTime = now instanceof Date ? now.getTime() : new Date(now).getTime();
+
+    return Number.isFinite(releaseTime) && Number.isFinite(currentTime) && currentTime >= releaseTime;
   }
 
-  function getLatestWeeklyCardId() {
-    const sharedIds = getWeeklyCardsForLang("pl")
+  function getWeeklyCardsForLang(lang, now = new Date()) {
+    const cards = weeklyCardsData[lang] || weeklyCardsData.pl;
+    return cards.filter((card) => isWeeklyCardReleased(card, now));
+  }
+
+  function getLatestWeeklyCardId(now = new Date()) {
+    const sharedIds = getWeeklyCardsForLang("pl", now)
       .map((card) => card.id)
-      .filter((id) => getWeeklyCardsForLang("en").some((card) => card.id === id));
+      .filter((id) => getWeeklyCardsForLang("en", now).some((card) => card.id === id));
 
     return sharedIds.length ? Math.max(...sharedIds) : null;
   }
 
   window.weeklyCardsData = weeklyCardsData;
+  window.isWeeklyCardReleased = isWeeklyCardReleased;
   window.getWeeklyCardsForLang = getWeeklyCardsForLang;
   window.getLatestWeeklyCardId = getLatestWeeklyCardId;
 })();
