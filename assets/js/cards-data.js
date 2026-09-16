@@ -262,6 +262,22 @@
   img: "lato-sierpien-tydzien-33-cwiczenie-uwaznosci-dojrzaly-czas-obfitosc-33A.png",
   imgB: "lato-sierpien-tydzien-33-cwiczenie-uwaznosci-dojrzaly-czas-obfitosc-33B.png",
   blog: "/pl/dojrzaly-czas-cwiczenie-uwaznosci-o-obfitosci/"
+},
+      {
+  id: 34,
+  title: "Trzeszcząca ścieżka",
+  theme: "Uważność",
+  season: "Lato",
+  month: "Sierpień",
+  releaseAt: "2026-09-27T00:00:00+02:00",
+  body: "Podczas spaceru wsłuchaj się w dźwięki pod stopami. Suche liście, żwir, chodnik, trawa, kałuża, spokojny rytm własnych kroków. Zauważ, jak zmienia się podłoże i jak każde z nich odpowiada innym dźwiękiem. Niech odgłos kroków przywróci Cię do chwili obecnej.",
+  reflection: [
+    "Jak brzmi dziś ruch?",
+    "Co zmienia się, kiedy zwracam uwagę na drogę pod stopami?"
+  ],
+  img: "lato-sierpien-tydzien-34-cwiczenie-uwaznosci-trzeszczaca-sciezka-uwaznosc-34A.png",
+  imgB: "lato-sierpien-tydzien-34-cwiczenie-uwaznosci-trzeszczaca-sciezka-uwaznosc-34B.png",
+  blog: "/pl/trzeszczaca-sciezka-cwiczenie-uwaznosci-podczas-spaceru/"
 }
 
     ],
@@ -528,6 +544,22 @@
   img: "lato-sierpien-tydzien-33-cwiczenie-uwaznosci-dojrzaly-czas-obfitosc-33A.png",
   imgB: "summer-august-week-33-mindfulness-exercise-the-ripe-season-abundance-33Ben.png",
   blog: "/en/the-ripe-season-a-mindfulness-exercise-in-abundance/"
+},
+      {
+  id: 34,
+  title: "The Crisp Path",
+  theme: "Awareness",
+  season: "Summer",
+  month: "August",
+  releaseAt: "2026-09-27T00:00:00+02:00",
+  body: "As you walk, listen to the sounds beneath your feet. Dry leaves, gravel, pavement, grass, a puddle, the quiet rhythm of your own steps. Notice how the ground changes as you move, and how each surface answers differently. Let the sound of walking bring you back into the present moment.",
+  reflection: [
+    "What does movement sound like today?",
+    "What changes when I pay attention to the path beneath me?"
+  ],
+  img: "lato-sierpien-tydzien-34-cwiczenie-uwaznosci-trzeszczaca-sciezka-uwaznosc-34A.png",
+  imgB: "summer-august-week-34-mindfulness-exercise-the-crisp-path-awareness-34Ben.png",
+  blog: "/en/the-crisp-path-a-mindfulness-walking-exercise/"
 }
 
     ]
