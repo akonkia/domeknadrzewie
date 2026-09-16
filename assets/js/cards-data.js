@@ -341,6 +341,22 @@
   img: "lato-wrzesien-tydzien-38-cwiczenie-uwaznosci-dlugi-cien-perspektywa-38A.png",
   imgB: "lato-wrzesien-tydzien-38-cwiczenie-uwaznosci-dlugi-cien-perspektywa-38B.png",
   blog: "/pl/dlugi-cien-cwiczenie-uwaznosci-o-perspektywie/"
+},
+      {
+  id: 39,
+  title: "Smak wspomnienia",
+  theme: "Smak wspomnienia",
+  season: "Jesień",
+  month: "Wrzesień",
+  releaseAt: "2026-09-26T00:00:00+02:00",
+  body: "Wybierz sezonowy owoc i weź pierwszy kęs powoli. Zwróć uwagę na smak, zapach i fakturę, a potem na to, co ze sobą przynosi. Kuchnię, ogród, osobę, miejsce, konkretną jesień. Nie szukaj wspomnienia. Pozwól, żeby smak sam je odnalazł.",
+  reflection: [
+    "Jakie wspomnienie wróciło wraz z tym smakiem?",
+    "Jaką część mnie ten smak przywołał?"
+  ],
+  img: "jesien-wrzesien-tydzien-39-cwiczenie-uwaznosci-smak-wspomnienia-39A.png",
+  imgB: "jesien-wrzesien-tydzien-39-cwiczenie-uwaznosci-smak-wspomnienia-39B.png",
+  blog: "/pl/smak-wspomnienia-cwiczenie-uwaznosci-o-pamieci/"
 }
 
     ],
@@ -686,6 +702,22 @@
   img: "lato-wrzesien-tydzien-38-cwiczenie-uwaznosci-dlugi-cien-perspektywa-38A.png",
   imgB: "summer-september-week-38-mindfulness-exercise-the-long-shadow-perspective-38Ben.png",
   blog: "/en/the-long-shadow-a-mindfulness-exercise-in-perspective/"
+},
+      {
+  id: 39,
+  title: "The Taste of Memory",
+  theme: "Remembering",
+  season: "Autumn",
+  month: "September",
+  releaseAt: "2026-09-26T00:00:00+02:00",
+  body: "Choose a seasonal fruit and take the first bite slowly. Notice the flavour, scent, texture, and then notice what it brings with it. A kitchen, a garden, a person, a place, a particular autumn. Don’t try to search for a memory. Let the taste find one for you.",
+  reflection: [
+    "What memory came back with this taste?",
+    "What part of myself did it bring closer?"
+  ],
+  img: "jesien-wrzesien-tydzien-39-cwiczenie-uwaznosci-smak-wspomnienia-39A.png",
+  imgB: "autumn-september-week-39-mindfulness-exercise-the-taste-of-memory-remembering-39Ben.png",
+  blog: "/en/the-taste-of-memory-a-mindfulness-exercise-in-remembering/"
 }
 
     ]
