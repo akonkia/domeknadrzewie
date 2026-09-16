@@ -357,6 +357,22 @@
   img: "jesien-wrzesien-tydzien-39-cwiczenie-uwaznosci-smak-wspomnienia-39A.png",
   imgB: "jesien-wrzesien-tydzien-39-cwiczenie-uwaznosci-smak-wspomnienia-39B.png",
   blog: "/pl/smak-wspomnienia-cwiczenie-uwaznosci-o-pamieci/"
+},
+      {
+  id: 40,
+  title: "Między porami roku",
+  theme: "Przejście",
+  season: "Jesień",
+  month: "Wrzesień",
+  releaseAt: "2026-09-29T00:00:00+02:00",
+  body: "Poszukaj miejsca, w którym lato i jesień zdają się istnieć jednocześnie. Zielony liść obok żółtego, późny kwiat pośród opadłych liści. Zauważ oba te światy, bez potrzeby wybierania, który z nich bardziej pasuje. Zmiana nie zawsze od razu zastępuje to, co było wcześniej. Czasem przez jakiś czas jedno i drugie trwa obok siebie.",
+  reflection: [
+    "Co zabieram ze sobą do kolejnego etapu?",
+    "Na co zaczynam robić miejsce?"
+  ],
+  img: "jesien-wrzesien-tydzien-40-cwiczenie-uwaznosci-miedzy-porami-roku-przejscie-40A.png",
+  imgB: "jesien-wrzesien-tydzien-40-cwiczenie-uwaznosci-miedzy-porami-roku-przejscie-40B.png",
+  blog: "/pl/miedzy-porami-roku-cwiczenie-uwaznosci-o-przejsciu/"
 }
 
     ],
@@ -718,6 +734,22 @@
   img: "jesien-wrzesien-tydzien-39-cwiczenie-uwaznosci-smak-wspomnienia-39A.png",
   imgB: "autumn-september-week-39-mindfulness-exercise-the-taste-of-memory-remembering-39Ben.png",
   blog: "/en/the-taste-of-memory-a-mindfulness-exercise-in-remembering/"
+},
+      {
+  id: 40,
+  title: "Between Seasons",
+  theme: "Transition",
+  season: "Autumn",
+  month: "September",
+  releaseAt: "2026-09-29T00:00:00+02:00",
+  body: "Look for a place where summer and autumn seem to exist at the same time. A green leaf beside a yellow one, a late flower among fallen leaves. Notice both without deciding which one belongs more. Change does not always replace what came before. Sometimes, for a while, both remain.",
+  reflection: [
+    "What am I carrying with me into the next season?",
+    "What am I beginning to make room for?"
+  ],
+  img: "jesien-wrzesien-tydzien-40-cwiczenie-uwaznosci-miedzy-porami-roku-przejscie-40A.png",
+  imgB: "autumn-september-week-40-mindfulness-exercise-between-seasons-transition-40Ben.png",
+  blog: "/en/between-seasons-a-mindfulness-exercise-in-transition/"
 }
 
     ]
