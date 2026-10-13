@@ -373,6 +373,22 @@
   img: "jesien-wrzesien-tydzien-40-cwiczenie-uwaznosci-miedzy-porami-roku-przejscie-40A.png",
   imgB: "jesien-wrzesien-tydzien-40-cwiczenie-uwaznosci-miedzy-porami-roku-przejscie-40B.png",
   blog: "/pl/miedzy-porami-roku-cwiczenie-uwaznosci-o-przejsciu/"
+},
+      {
+  id: 41,
+  title: "Łagodne opadanie",
+  theme: "Odpuszczanie",
+  season: "Jesień",
+  month: "Październik",
+  releaseAt: "2026-10-06T00:00:00+02:00",
+  body: "Obserwuj liść spadający z drzewa. Przyjrzyj się, jak odrywa się od gałęzi, kołysze na wietrze i powoli opada na ziemię. Nie spieszy się, nie walczy z ruchem powietrza. Po prostu pozwala się unieść, a potem opaść. Zatrzymaj się przy nim na chwilę. Niech ten mały ruch przypomni Ci, że nie wszystko trzeba zatrzymywać. Niektóre rzeczy można po prostu łagodnie puścić.",
+  reflection: [
+    "Co mogę odłożyć z łagodnością?",
+    "Czego nie muszę już dłużej trzymać?"
+  ],
+  img: "jesien-pazdziernik-tydzien-41-cwiczenie-uwaznosci-lagodne-opadanie-odpuszczanie-41A.png",
+  imgB: "jesien-pazdziernik-tydzien-41-cwiczenie-uwaznosci-lagodne-opadanie-odpuszczanie-41B.png",
+  blog: "/pl/lagodne-opadanie-cwiczenie-uwaznosci-o-odpuszczaniu/"
 }
 
     ],
@@ -750,6 +766,22 @@
   img: "jesien-wrzesien-tydzien-40-cwiczenie-uwaznosci-miedzy-porami-roku-przejscie-40A.png",
   imgB: "autumn-september-week-40-mindfulness-exercise-between-seasons-transition-40Ben.png",
   blog: "/en/between-seasons-a-mindfulness-exercise-in-transition/"
+},
+      {
+  id: 41,
+  title: "The Soft Descent",
+  theme: "Release",
+  season: "Autumn",
+  month: "October",
+  releaseAt: "2026-10-06T00:00:00+02:00",
+  body: "Watch a leaf fall from a tree. Notice how it lets go of the branch, sways in the breeze, and slowly makes its way to the ground. It does not hurry or resist the moving air. It simply allows itself to drift and settle. Stay with it for a moment. Let this small movement remind you that not everything needs to be held on to. Some things can simply be released, gently.",
+  reflection: [
+    "What can I put down gently?",
+    "What no longer needs to be held?"
+  ],
+  img: "jesien-pazdziernik-tydzien-41-cwiczenie-uwaznosci-lagodne-opadanie-odpuszczanie-41A.png",
+  imgB: "autumn-october-week-41-mindfulness-exercise-the-soft-descent-release-41Ben.png",
+  blog: "/en/the-soft-descent-a-mindfulness-exercise-in-release/"
 }
 
     ]
