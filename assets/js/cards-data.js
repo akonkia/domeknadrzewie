@@ -389,6 +389,22 @@
   img: "jesien-pazdziernik-tydzien-41-cwiczenie-uwaznosci-lagodne-opadanie-odpuszczanie-41A.png",
   imgB: "jesien-pazdziernik-tydzien-41-cwiczenie-uwaznosci-lagodne-opadanie-odpuszczanie-41B.png",
   blog: "/pl/lagodne-opadanie-cwiczenie-uwaznosci-o-odpuszczaniu/"
+},
+      {
+  id: 42,
+  title: "Kolory przemijania",
+  theme: "Nietrwałość",
+  season: "Jesień",
+  month: "Październik",
+  releaseAt: "2026-10-13T00:00:00+02:00",
+  body: "Przyjrzyj się kolorom wokół siebie. Zauważ, jak zieleń liści ustępuje żółci i brązom, a niebo zmienia odcienie wraz z upływem dnia. Kolory, które widzisz teraz, za chwilę będą już inne. Pomyśl o tym, że przemijanie nie zawsze oznacza stratę.",
+  reflection: [
+    "Co zmienia się w moim życiu, mimo że próbuję to zatrzymać?",
+    "Czy potrafię dostrzec piękno w tym, co przemija?"
+  ],
+  img: "jesien-pazdziernik-tydzien-42-cwiczenie-uwaznosci-kolory-przemijania-nietrwalosc-42A.png",
+  imgB: "jesien-pazdziernik-tydzien-42-cwiczenie-uwaznosci-kolory-przemijania-nietrwalosc-42B.png",
+  blog: "/pl/kolory-przemijania-cwiczenie-uwaznosci-o-nietrwalosci/"
 }
 
     ],
@@ -782,6 +798,22 @@
   img: "jesien-pazdziernik-tydzien-41-cwiczenie-uwaznosci-lagodne-opadanie-odpuszczanie-41A.png",
   imgB: "autumn-october-week-41-mindfulness-exercise-the-soft-descent-release-41Ben.png",
   blog: "/en/the-soft-descent-a-mindfulness-exercise-in-release/"
+},
+      {
+  id: 42,
+  title: "The Colours of Passing",
+  theme: "Impermanence",
+  season: "Autumn",
+  month: "October",
+  releaseAt: "2026-10-13T00:00:00+02:00",
+  body: "Look at the colours around you. Notice how green leaves give way to yellow and brown, and how the sky changes shades as the day unfolds. The colours you see now will soon be different. Consider that impermanence does not always mean loss.",
+  reflection: [
+    "What is changing in my life, even as I try to hold on to it?",
+    "Can I find beauty in what is passing?"
+  ],
+  img: "jesien-pazdziernik-tydzien-42-cwiczenie-uwaznosci-kolory-przemijania-nietrwalosc-42A.png",
+  imgB: "autumn-october-week-42-mindfulness-exercise-the-colours-of-passing-impermanence-42Ben.png",
+  blog: "/en/the-colours-of-passing-a-mindfulness-exercise-in-impermanence/"
 }
 
     ]
